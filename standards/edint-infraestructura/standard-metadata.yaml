@@ -1,0 +1,59 @@
+title: "EDINT Infrastructure Ontology (Ontología de Infraestructura)"
+publisher: "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM) as technical developer"
+sourceUrl: "https://github.com/EDINT-Ontologia/edint-ontologia-infraestructura/tree/main"
+sourceOntologyIRI: "http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/infraestructura"
+sourceOntologyVersion: "0.2.0"
+domains:
+  - SmartCities
+  - UrbanInfrastructure
+description: >
+  Vocabulary for representing a municipality's public and private infrastructure
+  facilities (educational, cultural, social, sports and health centers, on-street
+  and off-street parking, shared-bicycle stations) together with the sensors,
+  observations, violations, management roles and organizations involved in
+  operating and monitoring them. Reuses SOSA/SSN (sensors and observations),
+  GeoSPARQL (geometry), schema.org and Dublin Core.
+license: "CC-BY-SA-4.0"
+licenseNote: >
+  The source ontology is published under CC-BY-SA-4.0 (ShareAlike), while Smart
+  Data Models contributions are conventionally published under CC-BY-4.0. This
+  discrepancy has not been resolved and should be checked with the EDINT
+  maintainers and/or the Smart Data Models review board before promoting these
+  candidates beyond this repository.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated from the EDINT Infrastructure Ontology (documentation/ontology.ttl,
+  version 0.2.0) on 2026-07-21. Scope: the 11 entities fully or mostly defined in
+  the ontology's own namespace (edintinf:). Deliberately excluded from this pass:
+  the traffic-sensor branch (Tramo, Incidencia, EquipoTrafico, ObservacionTrafico,
+  PropiedadMedicionTrafico), which reuses an external ontology
+  (ciudadesabiertas.es/def/transporte/trafico#) not included in the source
+  repository, and which likely overlaps with the existing SDM Transportation
+  subject (RoadSegment, TrafficFlowObserved).
+
+  Known gaps / assumptions made during translation (see per-model notes for
+  detail):
+    - No SHACL shapes exist in the source repository (shapes/ is an empty
+      template) — required/optional and cardinality decisions follow SDM
+      convention (id/type required, all else optional) rather than a source
+      constraint.
+    - Real example instance data exists in the source repo only for Facility
+      (335 records in examples/example.ttl); examples for the other 10 models
+      are synthetic, built from the ontology's class definitions and comments.
+    - The ontology's Point class defines only xETRS89/yETRS89 (a projected
+      coordinate system, likely ETRS89 UTM zone 30N / EPSG:25830 based on
+      sample values in mappings/data/*.csv), not WGS84 latitude/longitude.
+      NGSI-LD GeoProperty requires WGS84 GeoJSON. Example coordinates in this
+      contribution are illustrative Madrid locations, not verified
+      reprojections of specific source records.
+    - Parking and BikeSharingStation are modeled as thin Facility
+      specializations (the source ontology defines no attributes of their
+      own) and likely duplicate the official dataModel.Parking subject and
+      any existing bike-sharing model — check before promoting.
+    - Organization likely duplicates the official dataModel.Organization
+      subject — check before promoting.
+    - The InfrastructureType controlled vocabulary (234 concepts) is too
+      large for a JSON Schema enum; infrastructureType is kept as a
+      Relationship to the concept URI rather than an enumerated Property.

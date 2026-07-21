@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.1.0",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-infraestructura/models/Parking/schema.json",
+  "modelTags": "EDINT,UrbanInfrastructure",
+  "title": "Smart Data Models - EDINT Infrastructure - Parking",
+  "description": "A Facility specialization for on-street and off-street parking areas. The source ontology (edintinf:Parking) defines no attributes beyond those inherited from Facility; it is distinguished only by its NGSI-LD type and, typically, its infrastructureType value. NOTE: this concept is likely to overlap with the already-existing official Smart Data Models 'dataModel.Parking' subject (e.g. OffStreetParking/OnStreetParking) — check for duplication before promoting this candidate.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Parking"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Parking'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. Point providing the geographical position of the entity.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "number"
+          },
+          "description": "Property. Coordinates of the Point, in WGS84 [longitude, latitude] order."
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    },
+    "address": {
+      "type": "object",
+      "description": "Property. Model:'https://schema.org/address'. The mailing address.",
+      "properties": {
+        "streetAddress": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/streetAddress'."
+        },
+        "addressLocality": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/addressLocality'."
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/postalCode'."
+        },
+        "addressRegion": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/addressRegion'."
+        },
+        "addressCountry": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/addressCountry'."
+        }
+      }
+    },
+    "infrastructureType": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Reference to a concept of the InfrastructureType controlled vocabulary (234 concepts covering education, culture, sports, health, social and parking facility types; see kos/skos-InfrastructureType.ttl in the source ontology). Too large to enumerate as a fixed list; kept as a Relationship to the concept URI."
+    },
+    "belongsTo": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Territorial unit (e.g. city district / 'Barrio') the facility belongs to. Defined in an external territorial ontology not included in the source repository; kept as an opaque Relationship."
+    },
+    "containsFacility": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Other Facility entities physically contained within this one (e.g. an exhibition hall inside a cultural center)."
+    },
+    "hasObservationPoint": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The ObservationPoint(s) associated with this facility, where access or counting sensors are deployed."
+    },
+    "hasRegisteredOwner": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The Organization that is the registered owner of this facility."
+    },
+    "openingHours": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/openingHours'. The general opening hours, e.g. 'Mo,Tu,We,Th,Fr 08:00-18:00'."
+    },
+    "regularActivity": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "CulturalCenterActivity",
+          "Exhibition",
+          "Concert",
+          "Theatre",
+          "Workshop"
+        ],
+        "description": "Property. Regular activity offered at the facility, from the RegularActivity controlled vocabulary."
+      },
+      "description": "Property. Regular activity offered at the facility, from the RegularActivity controlled vocabulary."
+    },
+    "publicService": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "ComplementaryService",
+          "WifiZone",
+          "PhoneSupport",
+          "Cafeteria",
+          "HealthFacilityService",
+          "MedicalAndNursingCare",
+          "HealthPrograms",
+          "DiagnosisAndMinorSurgery",
+          "PhysiotherapyAndRehabilitation"
+        ],
+        "description": "Property. Public service provided by the facility, from the PublicService controlled vocabulary."
+      },
+      "description": "Property. Public service provided by the facility, from the PublicService controlled vocabulary."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

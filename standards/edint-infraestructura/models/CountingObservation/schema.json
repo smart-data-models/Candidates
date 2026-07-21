@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.1.0",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-infraestructura/models/CountingObservation/schema.json",
+  "modelTags": "EDINT,UrbanInfrastructure",
+  "title": "Smart Data Models - EDINT Infrastructure - CountingObservation",
+  "description": "Observation on the number of people or vehicles that a sensor counts (edintinf:CountingObservation, subclass of sosa:Observation).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "CountingObservation"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'CountingObservation'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "madeBySensor": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The CountingSensor that made this observation (sosa:madeBySensor)."
+    },
+    "featureOfInterest": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The entity whose quality was observed (sosa:hasFeatureOfInterest)."
+    },
+    "observedProperty": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The property that was observed (sosa:observedProperty)."
+    },
+    "result": {
+      "type": [
+        "string",
+        "number",
+        "boolean"
+      ],
+      "description": "Property. The simple value of the observation, typically a people/vehicle count (sosa:hasSimpleResult). The source ontology does not constrain its datatype; left permissive."
+    },
+    "resultTime": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/DateTime'. Instant when the observation result was generated (sosa:resultTime).",
+      "format": "date-time"
+    },
+    "phenomenonTime": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/DateTime'. Instant or interval when the observed situation occurred (sosa:phenomenonTime).",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
