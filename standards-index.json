@@ -1,0 +1,95 @@
+[
+  {
+    "slug": "edint-infraestructura",
+    "title": "EDINT Infrastructure Ontology (Ontología de Infraestructura)",
+    "description": "Vocabulary for representing a municipality's public and private infrastructure facilities (educational, cultural, social, sports and health centers, on-street and off-street parking, shared-bicycle stations) together with the sensors, observations, violations, management roles and organizations involved in operating and monitoring them. Reuses SOSA/SSN (sensors and observations), GeoSPARQL (geometry), schema.org and Dublin Core.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-infraestructura/tree/main",
+    "license": "CC-BY-SA-4.0",
+    "domains": [
+      "SmartCities",
+      "UrbanInfrastructure"
+    ],
+    "modelCount": 11,
+    "models": [
+      {
+        "name": "AccessObservation",
+        "title": "Smart Data Models - EDINT Infrastructure - AccessObservation",
+        "description": "Observation carried out at any entrance to a municipal facility. This includes pedestrian or vehicle access (edintinf:AccessObservation, subclass of sosa:Observation).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-infraestructura/models/AccessObservation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura/models/AccessObservation"
+      },
+      {
+        "name": "AccessSensor",
+        "title": "Smart Data Models - EDINT Infrastructure - AccessSensor",
+        "description": "A device that records the access of people or vehicles. This could be an LPR (license plate recognition) camera, a building entrance door sensor, or other similar devices (edintinf:AccessSensor, subclass of sosa:Sensor).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-infraestructura/models/AccessSensor/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura/models/AccessSensor"
+      },
+      {
+        "name": "BikeSharingStation",
+        "title": "Smart Data Models - EDINT Infrastructure - BikeSharingStation",
+        "description": "A Facility specialization for shared-bicycle stations (edintinf:EstacionBicicleta). Like Parking, the source ontology defines no attributes of its own beyond those inherited from Facility. Check for overlap with any existing bike-sharing SDM model before promoting this candidate.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-infraestructura/models/BikeSharingStation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura/models/BikeSharingStation"
+      },
+      {
+        "name": "CountingObservation",
+        "title": "Smart Data Models - EDINT Infrastructure - CountingObservation",
+        "description": "Observation on the number of people or vehicles that a sensor counts (edintinf:CountingObservation, subclass of sosa:Observation).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-infraestructura/models/CountingObservation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura/models/CountingObservation"
+      },
+      {
+        "name": "CountingSensor",
+        "title": "Smart Data Models - EDINT Infrastructure - CountingSensor",
+        "description": "A device that records the number of people or vehicles that it observes (edintinf:CountingSensor, subclass of sosa:Sensor).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-infraestructura/models/CountingSensor/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura/models/CountingSensor"
+      },
+      {
+        "name": "Facility",
+        "title": "Smart Data Models - EDINT Infrastructure - Facility",
+        "description": "It refers to service buildings (public or private), leisure areas, commercial areas or any other element that directly affects mobility, acting as a focus of attraction for persons or vehicles. Source: EDINT Infrastructure Ontology (edintinf:Facility).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-infraestructura/models/Facility/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura/models/Facility"
+      },
+      {
+        "name": "ManagementRole",
+        "title": "Smart Data Models - EDINT Infrastructure - ManagementRole",
+        "description": "The role that the municipal administration or one of its departments plays in the management of a municipal facility. This may include ownership, maintenance, security, among others (edintinf:ManagementRole).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-infraestructura/models/ManagementRole/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura/models/ManagementRole"
+      },
+      {
+        "name": "ObservationPoint",
+        "title": "Smart Data Models - EDINT Infrastructure - ObservationPoint",
+        "description": "Points where access or counting observations can be made using sensors (edintinf:ObservationPoint). The source ontology defines no attributes of its own beyond location; it is the target of the Facility.hasObservationPoint relationship.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-infraestructura/models/ObservationPoint/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura/models/ObservationPoint"
+      },
+      {
+        "name": "Organization",
+        "title": "Smart Data Models - EDINT Infrastructure - Organization",
+        "description": "Any public or private organization that owns or manages an element of the infrastructure (edintinf:Organization). NOTE: check for overlap with the existing official Smart Data Models 'dataModel.Organization' subject before promoting this candidate.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-infraestructura/models/Organization/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura/models/Organization"
+      },
+      {
+        "name": "Parking",
+        "title": "Smart Data Models - EDINT Infrastructure - Parking",
+        "description": "A Facility specialization for on-street and off-street parking areas. The source ontology (edintinf:Parking) defines no attributes beyond those inherited from Facility; it is distinguished only by its NGSI-LD type and, typically, its infrastructureType value. NOTE: this concept is likely to overlap with the already-existing official Smart Data Models 'dataModel.Parking' subject (e.g. OffStreetParking/OnStreetParking) — check for duplication before promoting this candidate.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-infraestructura/models/Parking/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura/models/Parking"
+      },
+      {
+        "name": "Violation",
+        "title": "Smart Data Models - EDINT Infrastructure - Violation",
+        "description": "Non-compliance or violation of traffic or access rules, road laws or local ordinances by a person or a driver or owner of a vehicle (edintinf:Violation).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-infraestructura/models/Violation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura/models/Violation"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura"
+  }
+]

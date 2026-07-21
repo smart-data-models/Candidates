@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Data Models — Candidates</title>
+<meta name="description" content="Search the Smart Data Models Candidates repository — early-stage translations of external standards and ontologies into the SDM/NGSI-LD shape.">
+<style>
+  :root {
+    --bg: #ffffff; --fg: #1a1a1a; --muted: #666666; --card-bg: #f7f7f8;
+    --border: #e2e2e5; --accent: #0f62d6; --accent-bg: #eaf1fd; --tag-bg: #eef0f3;
+    --warn-bg: #fff7e6; --warn-border: #f0c36d; --warn-fg: #6b4d00;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14161a; --fg: #eaeaec; --muted: #a0a3ab; --card-bg: #1c1f25;
+      --border: #2b2f37; --accent: #6ea8fe; --accent-bg: #182634; --tag-bg: #262a32;
+      --warn-bg: #2b2410; --warn-border: #6b4d00; --warn-fg: #f0c36d;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14161a; --fg: #eaeaec; --muted: #a0a3ab; --card-bg: #1c1f25;
+    --border: #2b2f37; --accent: #6ea8fe; --accent-bg: #182634; --tag-bg: #262a32;
+    --warn-bg: #2b2410; --warn-border: #6b4d00; --warn-fg: #f0c36d;
+  }
+  :root[data-theme="light"] {
+    --bg: #ffffff; --fg: #1a1a1a; --muted: #666666; --card-bg: #f7f7f8;
+    --border: #e2e2e5; --accent: #0f62d6; --accent-bg: #eaf1fd; --tag-bg: #eef0f3;
+    --warn-bg: #fff7e6; --warn-border: #f0c36d; --warn-fg: #6b4d00;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+  header h1 { font-size: 1.6rem; margin: 0 0 0.3rem; }
+  header p { color: var(--muted); margin: 0 0 1.5rem; max-width: 700px; }
+  header a { color: var(--accent); }
+  .controls { display: flex; gap: 0.6rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  #search {
+    flex: 1 1 260px; padding: 0.6rem 0.8rem; font-size: 1rem;
+    border: 1px solid var(--border); border-radius: 8px; background: var(--card-bg); color: var(--fg);
+  }
+  #domain-filter {
+    padding: 0.6rem 0.8rem; border: 1px solid var(--border); border-radius: 8px;
+    background: var(--card-bg); color: var(--fg); font-size: 1rem;
+  }
+  #count { color: var(--muted); font-size: 0.9rem; margin-bottom: 1rem; }
+  .card {
+    border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg);
+    padding: 1.1rem 1.3rem; margin-bottom: 1rem;
+  }
+  .card h2 { margin: 0 0 0.3rem; font-size: 1.15rem; }
+  .card h2 a { color: var(--fg); text-decoration: none; }
+  .card h2 a:hover { color: var(--accent); }
+  .card .meta { color: var(--muted); font-size: 0.85rem; margin-bottom: 0.5rem; }
+  .card .desc { margin: 0.4rem 0 0.7rem; }
+  .tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+  .tag {
+    background: var(--tag-bg); border-radius: 999px; padding: 0.15rem 0.65rem;
+    font-size: 0.78rem; color: var(--muted);
+  }
+  .models { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .model-chip {
+    background: var(--accent-bg); color: var(--accent); border-radius: 6px;
+    padding: 0.2rem 0.55rem; font-size: 0.82rem; text-decoration: none;
+  }
+  .model-chip:hover { text-decoration: underline; }
+  .license-warn {
+    display: inline-block; margin-top: 0.6rem; font-size: 0.82rem;
+    background: var(--warn-bg); border: 1px solid var(--warn-border); color: var(--warn-fg);
+    border-radius: 6px; padding: 0.25rem 0.6rem;
+  }
+  #empty, #loading { color: var(--muted); padding: 2rem 0; text-align: center; }
+  footer { margin-top: 2.5rem; color: var(--muted); font-size: 0.85rem; }
+  footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Smart Data Models — Candidates</h1>
+    <p>
+      Early-stage translations of external standards and ontologies into the Smart Data
+      Models / NGSI-LD shape. Not yet official — search below, try a model, open a pull
+      request. Read the <a href="https://smartdatamodels.org" target="_blank" rel="noopener">announcement post</a>
+      or browse the <a href="https://github.com/smart-data-models/Candidates" target="_blank" rel="noopener">GitHub repository</a>.
+    </p>
+  </header>
+
+  <div class="controls">
+    <input id="search" type="search" placeholder="Search standards, models, descriptions…" autocomplete="off">
+    <select id="domain-filter"><option value="">All domains</option></select>
+  </div>
+  <div id="count"></div>
+  <div id="loading">Loading candidates…</div>
+  <div id="results"></div>
+  <div id="empty" style="display:none">No candidates match your search.</div>
+
+  <footer>
+    Generated automatically from the repository's <code>standards/</code> tree.
+    See <a href="https://github.com/smart-data-models/Candidates/blob/master/tools/generate_index.py">tools/generate_index.py</a>.
+  </footer>
+</div>
+
+<script>
+(function () {
+  var DATA_URL = "index-data.json";
+  var state = { data: [], query: "", domain: "" };
+
+  function esc(s) {
+    return String(s || "").replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function matches(entry, query) {
+    if (!query) return true;
+    var haystack = [entry.title, entry.description, entry.slug]
+      .concat((entry.domains || []))
+      .concat((entry.models || []).map(function (m) { return m.name + " " + m.title + " " + m.description; }))
+      .join(" ")
+      .toLowerCase();
+    return haystack.indexOf(query.toLowerCase()) !== -1;
+  }
+
+  function render() {
+    var results = state.data.filter(function (e) {
+      var domainOk = !state.domain || (e.domains || []).indexOf(state.domain) !== -1;
+      return domainOk && matches(e, state.query);
+    });
+
+    document.getElementById("count").textContent =
+      results.length + " standard" + (results.length === 1 ? "" : "s") +
+      " · " + results.reduce(function (n, e) { return n + e.modelCount; }, 0) + " candidate models";
+
+    var container = document.getElementById("results");
+    document.getElementById("empty").style.display = results.length ? "none" : "block";
+
+    container.innerHTML = results.map(function (e) {
+      var domainTags = (e.domains || []).map(function (d) { return '<span class="tag">' + esc(d) + '</span>'; }).join("");
+      var modelChips = (e.models || []).map(function (m) {
+        return '<a class="model-chip" href="' + esc(m.githubUrl) + '" target="_blank" rel="noopener">' + esc(m.name) + '</a>';
+      }).join("");
+      var licenseWarn = (e.license && e.license.toUpperCase().indexOf("CC-BY-4") === -1)
+        ? '<div class="license-warn">License: ' + esc(e.license) + ' — check compatibility before reuse</div>'
+        : "";
+      return (
+        '<div class="card">' +
+          '<h2><a href="' + esc(e.githubUrl) + '" target="_blank" rel="noopener">' + esc(e.title) + '</a></h2>' +
+          '<div class="meta">' + esc(e.slug) + (e.publisher ? " · " + esc(e.publisher) : "") + '</div>' +
+          '<div class="tags">' + domainTags + '</div>' +
+          '<p class="desc">' + esc(e.description) + '</p>' +
+          '<div class="models">' + modelChips + '</div>' +
+          licenseWarn +
+        '</div>'
+      );
+    }).join("");
+  }
+
+  function populateDomains() {
+    var domains = {};
+    state.data.forEach(function (e) { (e.domains || []).forEach(function (d) { domains[d] = true; }); });
+    var select = document.getElementById("domain-filter");
+    Object.keys(domains).sort().forEach(function (d) {
+      var opt = document.createElement("option");
+      opt.value = d; opt.textContent = d;
+      select.appendChild(opt);
+    });
+  }
+
+  fetch(DATA_URL)
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (data) {
+      state.data = data;
+      document.getElementById("loading").style.display = "none";
+      populateDomains();
+      render();
+    })
+    .catch(function (err) {
+      document.getElementById("loading").textContent =
+        "Could not load candidate index (" + err.message + "). Try refreshing, or browse the repository directly.";
+    });
+
+  document.getElementById("search").addEventListener("input", function (e) {
+    state.query = e.target.value;
+    render();
+  });
+  document.getElementById("domain-filter").addEventListener("change", function (e) {
+    state.domain = e.target.value;
+    render();
+  });
+})();
+</script>
+</body>
+</html>
