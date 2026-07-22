@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.1.0",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-turismo/models/Alcazar/schema.json",
+  "modelTags": "EDINT,SEGITTUR,Tourism",
+  "title": "Smart Data Models - EDINT Tourism - Alcazar",
+  "description": "Alcazar (fortified palace), a specialization of HistoricalOrCulturalResource (estur:HistoricalOrCulturalResource, SEGITTUR Core Tourism Ontology) — one of 43 such subclasses in the full ontology (others include Museum, Castle, Cathedral, Monastery, etc.), of which this candidate only covers the three demonstrated with real example data. NOTE: the source repository's example data uses the misspellings 'Amphiteatre' and 'Acueduct'; the authoritative ontology spells these 'Amphitheatre' and 'Aqueduct', which are used here.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Alcazar"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Alcazar'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this resource (estur:name)."
+    },
+    "hasLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The Location of this resource (estur:hasLocation)."
+    },
+    "hasContactPoint": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The ContactPoint of this resource, if any (estur:hasContactPoint)."
+    },
+    "hasDescription": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The Description of this resource (estur:hasDescription)."
+    },
+    "hasBookingChannel": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The BookingChannel(s) through which a visit to this resource can be booked, if applicable (estur:hasBookingChannel). Formally consistent here: HistoricalOrCulturalResource is a direct subclass of TourismResource, which is in hasBookingChannel's declared domain."
+    },
+    "hasMultimedia": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Multimedia resources associated with this resource (estur:hasMultimedia)."
+    },
+    "hasOpeningHours": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The opening hours of this resource (estur:hasOpeningHours)."
+    },
+    "offersAdditionalHistoricalAndCulturalResourceService": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Additional services offered at this resource, from the HistoricalAndCulturalResourceService controlled vocabulary (estur:offersAdditionalHistoricalAndCulturalResourceService)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

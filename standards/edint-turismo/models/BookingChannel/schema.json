@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.1.0",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-turismo/models/BookingChannel/schema.json",
+  "modelTags": "EDINT,SEGITTUR,Tourism",
+  "title": "Smart Data Models - EDINT Tourism - BookingChannel",
+  "description": "A channel through which a tourism resource, service or organisation can be booked (estur:BookingChannel, a ContactPoint subclass, SEGITTUR Core Tourism Ontology).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "BookingChannel"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'BookingChannel'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "email": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/email'. Inherited from ContactPoint."
+    },
+    "telephone": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/telephone'. Inherited from ContactPoint."
+    },
+    "url": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. One or more booking URLs; inherited from ContactPoint. Modeled as an array because the source ontology's own documentation example uses multiple values for the same channel (e.g. a direct booking URL and a central reservations URL)."
+    },
+    "app": {
+      "type": "string",
+      "description": "Property. Inherited from ContactPoint."
+    },
+    "instantMessagingService": {
+      "type": "string",
+      "description": "Property. Inherited from ContactPoint."
+    },
+    "onSite": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The Place where this booking channel operates on-site (estur:onSite)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

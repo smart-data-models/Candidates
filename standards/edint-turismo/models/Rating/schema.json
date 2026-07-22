@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.1.0",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-turismo/models/Rating/schema.json",
+  "modelTags": "EDINT,SEGITTUR,Tourism",
+  "title": "Smart Data Models - EDINT Tourism - Rating",
+  "description": "A rating of a tourism resource, service or organisation (estur:Rating, SEGITTUR Core Tourism Ontology). NOTE: the source ontology's own SHACL shapes define a different, incompatible field set for Rating (bookingValue/googleReviewValue/tripAdvisorValue as floats, plus a flat 'stars' integer directly on Hotel) that does not match either the OWL property definitions or any real example data found. This candidate follows ratingUnit/ratingValue because that is what the real, published open-data examples (and the OWL definitions) actually use — check with SEGITTUR before assuming either naming scheme is final.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Rating"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Rating'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "ratingUnit": {
+      "type": "string",
+      "description": "Property. Unit associated to the rating of a resource, service or organisation, e.g. 'stars' for a hotel star rating (estur:ratingUnit)."
+    },
+    "ratingValue": {
+      "type": "string",
+      "description": "Property. Value associated to the rating, e.g. '3' for a 3-star rating (estur:ratingValue)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.1.0",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-turismo/models/ContactPoint/schema.json",
+  "modelTags": "EDINT,SEGITTUR,Tourism",
+  "title": "Smart Data Models - EDINT Tourism - ContactPoint",
+  "description": "A means of contacting a tourism entity or organisation (estur:ContactPoint, SEGITTUR Core Tourism Ontology).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ContactPoint"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ContactPoint'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "email": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/email'."
+    },
+    "telephone": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/telephone'."
+    },
+    "url": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/URL'."
+    },
+    "app": {
+      "type": "string",
+      "description": "Property. A mobile app associated with this contact point (estur:app)."
+    },
+    "instantMessagingService": {
+      "type": "string",
+      "description": "Property. An instant messaging service/handle associated with this contact point (estur:instantMessagingService)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

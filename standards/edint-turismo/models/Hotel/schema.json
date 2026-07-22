@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.1.0",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-turismo/models/Hotel/schema.json",
+  "modelTags": "EDINT,SEGITTUR,Tourism",
+  "title": "Smart Data Models - EDINT Tourism - Hotel",
+  "description": "Hotel, a specialization of AccommodationEstablishment (estur:AccommodationEstablishment via TourismOrRelatedFacility, SEGITTUR Core Tourism Ontology). NOTE: the source repository's README uses the misspelling 'AccomodationEstablishment' (single 'm'); the authoritative ontology spells it 'AccommodationEstablishment' (double 'm'), which is used throughout this candidate.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Hotel"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Hotel'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this accommodation establishment (estur:name)."
+    },
+    "registrationNumber": {
+      "type": "string",
+      "description": "Property. Official tourism registration number of the establishment (estur:registrationNumber)."
+    },
+    "numberOfAccommodationUnits": {
+      "type": "integer",
+      "description": "Property. Number of accommodation units (rooms/apartments) (estur:numberOfAccommodationUnits). NOTE: the real open-data example this was translated from used the misspelled term 'numberOfAccomodationUnits' (single 'm'), which does not exist in the authoritative SEGITTUR ontology; the correctly spelled 'numberOfAccommodationUnits' is used here."
+    },
+    "numberOfBeds": {
+      "type": "integer",
+      "description": "Property. Number of beds (estur:numberOfBeds)."
+    },
+    "checkInHours": {
+      "type": "string",
+      "description": "Property. Check-in hours, e.g. '15:00' (estur:checkInHours)."
+    },
+    "checkOutHours": {
+      "type": "string",
+      "description": "Property. Check-out hours, e.g. '12:00' (estur:checkOutHours)."
+    },
+    "autonomousCheckIn": {
+      "type": "boolean",
+      "description": "Property. Whether autonomous (unattended) check-in is available (estur:autonomousCheckIn)."
+    },
+    "hasPriceClass": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Reference to a concept of the PriceClass controlled vocabulary (estur:hasPriceClass). Kept as a Relationship to the concept URI rather than an enumerated Property; see https://ontologia.segittur.es/turismo/kos/priceclass/ for the full vocabulary."
+    },
+    "offersAdditionalAccommodationService": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Additional services offered (e.g. restaurant, pool), from the AccommodationService controlled vocabulary (estur:offersAdditionalAccommodationService). See https://ontologia.segittur.es/turismo/kos/accommodationservice/ for the full vocabulary."
+    },
+    "typeOfAccommodationRate": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The types of rate offered (e.g. accommodation only, breakfast, half board, full board), from the AccommodationRateType controlled vocabulary (estur:typeOfAccommodationRate). NOTE: the real open-data example this was translated from used the term 'offersAccommodationRateType', which does not exist in the authoritative SEGITTUR ontology; the correct 'typeOfAccommodationRate' is used here. See https://ontologia.segittur.es/turismo/kos/accomodationratetype/ for the full vocabulary."
+    },
+    "accommodationUnitCategory": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Reference to a concept of the AccommodationUnitCategory controlled vocabulary (estur:accommodationUnitCategory)."
+    },
+    "offersAdditionalTouristOrRelatedFacility": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Additional tourist or related facility services offered (estur:offersAdditionalTouristOrRelatedFacility)."
+    },
+    "accommodationRating": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The Rating of this accommodation establishment (estur:accommodationRating)."
+    },
+    "hasLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The Location of this accommodation establishment (estur:hasLocation)."
+    },
+    "hasContactPoint": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The ContactPoint of this accommodation establishment (estur:hasContactPoint)."
+    },
+    "hasDescription": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The Description of this accommodation establishment (estur:hasDescription)."
+    },
+    "hasBookingChannel": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The BookingChannel(s) through which this accommodation can be booked (estur:hasBookingChannel). NOTE: the source ontology's own domain declaration for hasBookingChannel (TourismOrganisation/TourismResource/TourismService) does not formally include AccommodationEstablishment's actual superclass chain (TourismOrRelatedFacility/Place/TourismEntity) — a domain/usage inconsistency in the ontology itself. This property is included here because the ontology's own documentation example uses it directly on a Hotel instance."
+    },
+    "hasMultimedia": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Multimedia resources associated with this establishment (estur:hasMultimedia)."
+    },
+    "hasOpeningHours": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The opening hours of this establishment (estur:hasOpeningHours)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

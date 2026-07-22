@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.1.0",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-turismo/models/Location/schema.json",
+  "modelTags": "EDINT,SEGITTUR,Tourism",
+  "title": "Smart Data Models - EDINT Tourism - Location",
+  "description": "The location of a tourism entity (accommodation, historical/cultural resource, etc.), modeled as a standalone, referenceable resource, matching the source ontology's own design (estur:Location, SEGITTUR Core Tourism Ontology).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Location"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Location'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. Point providing the WGS84 geographical position, derived from the source ontology's gsp:lat/gsp:long values.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "number"
+          },
+          "description": "Property. Coordinates in WGS84 [longitude, latitude] order."
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    },
+    "streetAddress": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/streetAddress'."
+    },
+    "locality": {
+      "type": "string",
+      "description": "Property. The locality/municipality (estur:locality). NOTE: one illustrative example in the source repository used a non-standard 'estur:city' term for this same concept; 'locality' is the property actually used in the real open-data examples and is kept here as the faithful mapping."
+    },
+    "county": {
+      "type": "string",
+      "description": "Property. The county/comarca (estur:county)."
+    },
+    "province": {
+      "type": "string",
+      "description": "Property. The province (estur:province)."
+    },
+    "autonomousCommunity": {
+      "type": "string",
+      "description": "Property. The autonomous community / region (estur:autonomousCommunity)."
+    },
+    "country": {
+      "type": "string",
+      "description": "Property. The country (estur:country)."
+    },
+    "postalCode": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/postalCode'."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

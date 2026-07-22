@@ -1,0 +1,98 @@
+title: "SEGITTUR Core Tourism Ontology, as demonstrated by the EDINT Tourism repository"
+publisher: "SEGITTUR (Sociedad Estatal para la Gestión de la Innovación y las Tecnologías Turísticas), with the Ontology Engineering Group (Universidad Politécnica de Madrid), Globaldit and Gnoss as technical developers"
+sourceUrl: "https://github.com/EDINT-Ontologia/edint-ontologia-turismo"
+sourceOntologyIRI: "https://ontologia.segittur.es/turismo/def/core#"
+sourceOntologyVersion: "1.2.0"
+sourceOntologyDocumentation: "https://ontologia.segittur.es/turismo/def/core/"
+domains:
+  - SmartDestinations
+  - PointOfInterest
+description: >
+  Vocabulary for representing tourism accommodation establishments (hotels, guest
+  houses, aparthotels) and historical/cultural resources (fortified palaces,
+  amphitheatres, aqueducts, and 40+ related types), together with their location,
+  contact points, booking channels, ratings and descriptions. Drawn from
+  SEGITTUR's Core Tourism Ontology (estur:), a large (388-class) reference model
+  for a Network of Tourism Sector Ontologies serving Spain's future Intelligent
+  Destination Platform (PID).
+license: "CC-BY-SA-4.0"
+licenseNote: >
+  Both the source repository and SEGITTUR's own ontology declare CC-BY-SA-4.0
+  (ShareAlike), while Smart Data Models contributions are conventionally
+  published under CC-BY-4.0. Not resolved — same open item as the earlier
+  edint-infraestructura candidate; check with SEGITTUR and/or the Smart Data
+  Models review board before promoting these candidates further.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-07-23. IMPORTANT STRUCTURAL NOTE: the GitHub repository
+  linked as sourceUrl (EDINT-Ontologia/edint-ontologia-turismo) contains no
+  ontology of its own — its README states it "only includes usage examples."
+  The actual formal ontology (classes, properties, SHACL shapes) is published
+  externally by SEGITTUR at https://ontologia.segittur.es/turismo/def/core/,
+  and is a MUCH larger reference model: 388 classes, 99 object properties, 90
+  datatype properties, dozens of SKOS controlled vocabularies, and real SHACL
+  constraints. This candidate translates only the 11 classes actually
+  demonstrated with real open-data examples in the EDINT repository (Hotel,
+  Hostal, Aparthotel, Alcazar, Amphitheatre, Aqueduct, ContactPoint,
+  BookingChannel, Rating, Description, Location) — a deliberately narrow slice
+  of the full SEGITTUR ontology, chosen to match what this specific repository
+  evidences with real data, not the full reference model's scope.
+
+  Known gaps / assumptions made during translation:
+    - HIGHER DUPLICATION RISK than usual: this covers tourism accommodation
+      and points of interest, and smartdatamodels.org already has official
+      "SmartDestinations" and "PointOfInterest" domains/subjects. A real
+      overlap check against existing official SDM models was NOT performed
+      before this translation (by explicit choice, to avoid blocking on
+      research) — this should be the first thing checked before promoting
+      any of these candidates.
+    - The source ontology contains internal inconsistencies that required
+      editorial judgment calls, resolved in favor of what the real, published
+      open-data examples actually use (per explicit instruction) rather than
+      newer/stricter definitions found elsewhere in the same ontology:
+        * Rating: the OWL ontology defines ratingUnit/ratingValue (matches the
+          real examples, used here); the ontology's own SHACL shapes instead
+          define bookingValue/googleReviewValue/tripAdvisorValue (all floats),
+          and Hotel's own SHACL shape adds a third, incompatible pattern — a
+          flat 'stars' integer directly on Hotel. All three appear to be
+          different generations of the same concept that were never
+          reconciled in the source. None of the SHACL-only fields are used
+          here since no real example data exists for them.
+        * Location: real examples use gsp:lat/gsp:long (external GeoSPARQL
+          vocabulary, WGS84) — mapped here to a proper NGSI-LD GeoProperty.
+          The ontology's own SHACL shape separately defines estur:latitude/
+          estur:longitude AND a WKT/GML 'shape' field — a third, unused
+          geometry representation.
+        * hasBookingChannel is used directly on a Hotel instance in the
+          ontology's own documentation example, but its formal domain
+          declaration (TourismOrganisation/TourismResource/TourismService)
+          does not actually cover Hotel's real superclass chain
+          (AccommodationEstablishment -> TourismOrRelatedFacility ->
+          Place/TourismEntity) — a domain/usage mismatch in the source
+          ontology itself, not something introduced by this translation.
+        * Several property/class names used in the source repository's own
+          example files do not match the authoritative ontology and were
+          silently corrected here: numberOfAccomodationUnits ->
+          numberOfAccommodationUnits, offersAccommodationRateType ->
+          typeOfAccommodationRate, Amphiteatre -> Amphitheatre,
+          Acueduct -> Aqueduct. The README additionally spells the
+          accommodation superclass "AccomodationEstablishment" (single 'm'),
+          corrected here to the authoritative "AccommodationEstablishment".
+    - Scope explicitly excludes: 38 further HistoricalOrCulturalResource
+      subclasses (Museum, Castle, Cathedral, Monastery, etc. — all share the
+      same property set as Alcazar/Amphitheatre/Aqueduct and could be added
+      on request), Hostel and VacationRentals (accommodation subclasses named
+      in the README but with no real example instance in this repository),
+      and the remaining ~370 classes of SEGITTUR's full reference ontology
+      (events, transport infrastructure, tourism organisations, natural
+      resources, etc.) — none of which this specific repository demonstrates.
+    - ContactPoint/BookingChannel/Rating/Description/Location are modeled as
+      separate, referenceable NGSI-LD entities (via Relationship) rather than
+      embedded inline objects, matching the source ontology's own
+      resource-oriented design (each has its own URI in the real example
+      data) — a different choice than the previous edint-infraestructura
+      candidate, which embedded its equivalent structures (address, location)
+      inline. Revisit if inline embedding is preferred for consistency across
+      Candidates entries.
