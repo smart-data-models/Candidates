@@ -184,5 +184,28 @@
       }
     ],
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-turismo"
+  },
+  {
+    "slug": "madrid-accidentes-trafico",
+    "title": "Accidentes de Tráfico de la Ciudad de Madrid (Traffic Accidents in the City of Madrid)",
+    "description": "Traffic accidents in the City of Madrid with victims and/or municipal property damage, registered by Policía Municipal. Sourced from a PDF field specification (in Spanish) rather than a formal ontology -- this candidate was built directly from that specification and cross-checked against the real, published CSV dataset for the year 2023.",
+    "publisher": "Dirección General de la Policía Municipal, Ayuntamiento de Madrid",
+    "sourceUrl": "https://datos.madrid.es/dataset/300228-0-accidentes-trafico-detalle",
+    "license": "Not stated in the source PDF specification. The Madrid open data portal's general terms of use should be checked before promoting this candidate; not verified as part of this translation.",
+    "domains": [
+      "Transportation",
+      "SmartCities"
+    ],
+    "modelCount": 1,
+    "models": [
+      {
+        "name": "AccidentInvolvedPerson",
+        "title": "Smart Data Models - Madrid Traffic Accidents - AccidentInvolvedPerson",
+        "description": "A record of one person involved in a traffic accident in the City of Madrid, as registered by the Policia Municipal (drivers, passengers, pedestrians, witnesses). The source dataset publishes one row per involved person, not per accident -- accident-level fields (location, weather, type, coordinates) are repeated identically across every person in the same accident, which this candidate's entity design mirrors faithfully. Source: 'Accidentes de Trafico de la Ciudad de Madrid', Direccion General de la Policia Municipal, version November 2023.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/madrid-accidentes-trafico/models/AccidentInvolvedPerson/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/madrid-accidentes-trafico/models/AccidentInvolvedPerson"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/madrid-accidentes-trafico"
   }
 ]

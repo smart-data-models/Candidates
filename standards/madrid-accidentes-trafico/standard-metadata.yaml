@@ -1,0 +1,125 @@
+title: "Accidentes de Tráfico de la Ciudad de Madrid (Traffic Accidents in the City of Madrid)"
+publisher: "Dirección General de la Policía Municipal, Ayuntamiento de Madrid"
+sourceUrl: "https://datos.madrid.es/dataset/300228-0-accidentes-trafico-detalle"
+sourceSpecificationPdf: "https://datos.madrid.es/dataset/300228-0-accidentes-trafico-detalle/resource/300228-29-accidentes-trafico-detalle/download/300228-29-accidentes-trafico-detalle.pdf"
+sourceSpecificationVersion: "Versión Noviembre 2023 (última actualización 28/11/2023)"
+domains:
+  - Transportation
+  - SmartCities
+description: >
+  Traffic accidents in the City of Madrid with victims and/or municipal property
+  damage, registered by Policía Municipal. Sourced from a PDF field specification
+  (in Spanish) rather than a formal ontology -- this candidate was built directly
+  from that specification and cross-checked against the real, published CSV
+  dataset for the year 2023.
+license: "Not stated in the source PDF specification. The Madrid open data portal's general terms of use should be checked before promoting this candidate; not verified as part of this translation."
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from PDF specification to SDM candidate artifacts, cross-checked against real published data"
+notes: |
+  Translated on 2026-07-28 from the PDF specification (3 pages, 19 columns) at
+  the sourceSpecificationPdf URL above, then verified against the real 2023
+  CSV dataset (48,830 rows) at
+  https://datos.madrid.es/dataset/300228-0-accidentes-trafico-detalle/resource/300228-3-accidentes-trafico-detalle-csv/download/300228-3-accidentes-trafico-detalle-csv.csv
+
+  ENTITY DESIGN: the source dataset publishes one row per person involved in
+  an accident (drivers, passengers, pedestrians, witnesses) -- NOT one row per
+  accident. The real 2023 data has 20,672 unique accidents (num_expediente)
+  across 48,830 rows: on average 2.36 person-rows per accident, up to 44 rows
+  for one major incident. Accident-level fields (location, weather, type,
+  coordinates) are therefore repeated identically across every person-row of
+  the same accident. This candidate deliberately mirrors that structure with
+  a single flat entity (AccidentInvolvedPerson) rather than splitting into a
+  separate TrafficAccident + InvolvedParty pair, per explicit instruction --
+  this trades normalization for a simpler, more direct 1:1 mapping from CSV
+  row to entity instance. Reconsider the split if this candidate is developed
+  further and the duplication becomes a real concern.
+
+  HANDLING OF THE LITERAL STRING "NULL": six of the nineteen source columns
+  (estado_meteorologico, tipo_vehiculo, cod_lesividad, lesividad,
+  positiva_alcohol, positiva_droga) use the literal text "NULL" as real CSV
+  content in a large fraction of rows (e.g. positiva_droga is "NULL" in 99.6%
+  of rows; cod_lesividad is "NULL" in 47% of rows) -- these are NOT empty/blank
+  fields, they are the four-character string "NULL". Per explicit instruction,
+  this candidate preserves "NULL" as a literal enum member wherever it occurs
+  in the real data, rather than normalizing it to JSON null or omitting the
+  property. Genuinely blank/empty CSV fields (observed rarely: numero,
+  cod_distrito, coordenada_x_utm/coordenada_y_utm) are treated as normal
+  omitted optional properties, since there is no literal text to preserve.
+
+  DISCREPANCIES FOUND BETWEEN THE PDF SPECIFICATION AND THE REAL PUBLISHED
+  DATA (resolved in favour of the real data throughout, per this session's
+  established precedent):
+    - tipo_accidente: the PDF describes 8 broad categories in prose (grouping
+      e.g. frontal/fronto-lateral/lateral collisions under one "Colisión
+      doble" heading, and animal strikes/falls-from-the-road/other under one
+      "Otras causas" heading). The real data instead records 13 more granular
+      values as independent categories (e.g. "Colisión fronto-lateral",
+      "Colisión lateral" and "Colisión frontal" appear separately; "Atropello
+      a animal", "Despeñamiento" and "Solo salida de la vía" likewise). The
+      schema's enum uses the 13 real values, not the PDF's 8 prose categories.
+    - hora: the PDF states hour values are bucketed into 1-hour ranges; the
+      real data has full minute-level precision (1,250 distinct values across
+      48,830 rows) and inconsistent zero-padding (e.g. "1:15:00", not
+      "01:15:00"). Kept as a plain string, not parsed into a hint-of-precision
+      format the PDF implies but the data doesn't have.
+    - sexo: the PDF states the possible values are "hombre, Mujer o no
+      asignado"; the real data uses "Desconocido" instead of "no asignado".
+    - estado_meteorológico: the CSV header itself carries an accent not
+      present in the PDF's column name ("estado_meteorologico"). The enum
+      also includes the inconsistently-capitalised real value
+      "LLuvia intensa" (should arguably be "Lluvia intensa"), preserved as-is.
+    - cod_lesividad / lesividad: the PDF states a blank value means "Sin
+      asistencia sanitaria" (same meaning as code 14); the real data instead
+      uses the literal string "NULL" for ~47% of rows and separately still
+      uses code 14 / "Sin asistencia sanitaria" for another ~30% of rows --
+      two different real-data representations that appear to mean the same
+      thing, never reconciled in the source. Not resolved here; flagged for
+      whoever develops this candidate further.
+    - Coordenada_y_utm: capitalised inconsistently in the PDF itself (capital
+      C, unlike every other column name).
+
+  COORDINATE SYSTEM: coordenada_x_utm/coordenada_y_utm are in a projected
+  system (values in the real data range x:[429081-455483], y:[4463487-4495568],
+  consistent with ETRS89 / UTM zone 30N, EPSG:25830 -- the same system found
+  in the earlier edint-infraestructura candidate). NOT WGS84. No coordinate
+  reprojection library (e.g. pyproj) was available at translation time, so
+  no NGSI-LD GeoProperty was constructed; the two UTM values are exposed as
+  plain numeric properties. Revisit with a verified EPSG:25830 -> EPSG:4326
+  transform if a proper GeoProperty is wanted.
+
+  DUPLICATION RISK: not checked against any existing official Smart Data
+  Models Transportation-subject model (e.g. any existing RoadAccident-style
+  model) before this translation, consistent with this session's established
+  default for Candidates entries -- check before promoting.
+
+  LICENSE: the source PDF specification does not state a license for the
+  dataset. This was not independently researched as part of this translation;
+  do not assume CC-BY or any other specific license without checking Madrid's
+  open data portal terms directly.
+
+csvValidation: |
+  This candidate's schema.json was tested against the real published 2023 CSV
+  (see sourceUrl) using tools/validate_against_csv.py in this repository:
+
+      python3 tools/validate_against_csv.py \
+        --schema standards/madrid-accidentes-trafico/models/AccidentInvolvedPerson/schema.json \
+        --csv <path-to-300228-3-accidentes-trafico-detalle-csv.csv> \
+        --mapping standards/madrid-accidentes-trafico/models/AccidentInvolvedPerson/csv-mapping.json \
+        --delimiter ";" --date-columns fecha --sample 48830
+
+  RESULT: 48,830/48,830 real rows (100%) validate successfully -- the entire
+  2023 dataset, not a sample -- once the "fecha" column is converted from the
+  source's dd/mm/yyyy to ISO 8601 (the schema's declared format:"date"; the
+  tool does this conversion via --date-columns). Without that conversion,
+  100% of rows fail on "fecha" ('01/01/2023' is not a 'date') -- this is
+  expected and is not a schema defect: any real ingestion pipeline converts
+  source dates before constructing NGSI-LD entities, and format:"date"
+  correctly rejects the raw source string. A representative stratified
+  sample (2,000 rows, guaranteeing every distinct enum value appears at
+  least once, seed 42) was also validated separately with the same result.
+
+  No other validation errors were found against the real data at any sample
+  size, including the rarest categorical values (e.g. tipo_accidente =
+  "Despeñamiento", 6 occurrences in the whole year; estado_meteorologico =
+  "Granizando", 7 occurrences).

@@ -1,0 +1,247 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.1.0",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/madrid-accidentes-trafico/models/AccidentInvolvedPerson/schema.json",
+  "modelTags": "Madrid,TrafficAccident,OpenData",
+  "title": "Smart Data Models - Madrid Traffic Accidents - AccidentInvolvedPerson",
+  "description": "A record of one person involved in a traffic accident in the City of Madrid, as registered by the Policia Municipal (drivers, passengers, pedestrians, witnesses). The source dataset publishes one row per involved person, not per accident -- accident-level fields (location, weather, type, coordinates) are repeated identically across every person in the same accident, which this candidate's entity design mirrors faithfully. Source: 'Accidentes de Trafico de la Ciudad de Madrid', Direccion General de la Policia Municipal, version November 2023.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "AccidentInvolvedPerson"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'AccidentInvolvedPerson'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "numExpediente": {
+      "type": "string",
+      "description": "Property. Case file number, format AAAASNNNNNN where AAAA is the accident year and S denotes a case with an accident (num_expediente in the source). Shared by every person involved in the same accident -- use this to group rows into a single accident if needed.",
+      "pattern": "^[0-9]{4}S[0-9]{6}$"
+    },
+    "fecha": {
+      "type": "string",
+      "description": "Property. Date of the accident (fecha in the source). Source format is dd/mm/aaaa; converted to ISO 8601 (YYYY-MM-DD) here.",
+      "format": "date"
+    },
+    "hora": {
+      "type": "string",
+      "description": "Property. Time of the accident (hora in the source), as recorded verbatim -- H:MM:SS, not zero-padded. NOTE: the source PDF specification states hour values are bucketed into 1-hour ranges, but the real published CSV data has full minute-level precision; this candidate follows the real data."
+    },
+    "localizacion": {
+      "type": "string",
+      "description": "Property. Location description: 'calle 1 - calle 2' for an intersection, or a single street (localizacion in the source)."
+    },
+    "numero": {
+      "type": "string",
+      "description": "Property. Street number, when meaningful for the location (numero in the source). Kept as a string since it is sometimes absent for intersections."
+    },
+    "codDistrito": {
+      "type": "string",
+      "description": "Property. District code, 1-21 (cod_distrito in the source)."
+    },
+    "distrito": {
+      "type": "string",
+      "description": "Property. District name (distrito in the source)."
+    },
+    "tipoAccidente": {
+      "type": "string",
+      "enum": [
+        "Alcance",
+        "Atropello a animal",
+        "Atropello a persona",
+        "Caída",
+        "Choque contra obstáculo fijo",
+        "Colisión frontal",
+        "Colisión fronto-lateral",
+        "Colisión lateral",
+        "Colisión múltiple",
+        "Despeñamiento",
+        "Otro",
+        "Solo salida de la vía",
+        "Vuelco"
+      ],
+      "description": "Property. Type of accident (tipo_accidente in the source). NOTE: the source PDF describes 8 broad categories in prose (e.g. grouping frontal/fronto-lateral/lateral collisions under one 'Colision doble' heading), but the real published data records 13 more granular values; this candidate enumerates the values actually observed in the real data."
+    },
+    "estadoMeteorologico": {
+      "type": "string",
+      "enum": [
+        "Despejado",
+        "Granizando",
+        "LLuvia intensa",
+        "Lluvia débil",
+        "NULL",
+        "Nublado",
+        "Se desconoce"
+      ],
+      "description": "Property. Weather conditions at the time of the accident (estado_meteorologico in the source; the source CSV header itself carries an accent -- 'meteorológico' -- not present in the source PDF specification). Includes the literal value 'NULL' and the inconsistently-capitalised 'LLuvia intensa', preserved exactly as they appear in the real published data."
+    },
+    "tipoVehiculo": {
+      "type": "string",
+      "enum": [
+        "Ambulancia SAMUR",
+        "Autobus EMT",
+        "Autobús",
+        "Autobús articulado",
+        "Autobús articulado EMT",
+        "Autocaravana",
+        "Bicicleta",
+        "Bicicleta EPAC (pedaleo asistido)",
+        "Camión de bomberos",
+        "Camión rígido",
+        "Ciclo",
+        "Ciclo de motor L1e-A",
+        "Ciclomotor",
+        "Ciclomotor de dos ruedas L1e-B",
+        "Cuadriciclo ligero",
+        "Cuadriciclo no ligero",
+        "Furgoneta",
+        "Maquinaria de obras",
+        "Microbús <= 17 plazas",
+        "Moto de tres ruedas > 125cc",
+        "Motocicleta > 125cc",
+        "Motocicleta hasta 125cc",
+        "NULL",
+        "Otros vehículos con motor",
+        "Otros vehículos sin motor",
+        "Patinete no eléctrico",
+        "Remolque",
+        "Semiremolque",
+        "Sin especificar",
+        "Todo terreno",
+        "Tractocamión",
+        "Tren/metro",
+        "Turismo",
+        "VMU eléctrico",
+        "Vehículo articulado"
+      ],
+      "description": "Property. Type of vehicle involved (tipo_vehiculo in the source). Enumerates all 35 distinct values observed in the real published data, including the literal value 'NULL' (used e.g. for pedestrians, who are not associated with a vehicle)."
+    },
+    "tipoPersona": {
+      "type": "string",
+      "enum": [
+        "Conductor",
+        "Pasajero",
+        "Peatón"
+      ],
+      "description": "Property. Role of the person in the accident (tipo_persona in the source): driver, passenger or pedestrian."
+    },
+    "rangoEdad": {
+      "type": "string",
+      "enum": [
+        "De 10 a 14 años",
+        "De 15 a 17 años",
+        "De 18 a 20 años",
+        "De 21 a 24 años",
+        "De 25 a 29 años",
+        "De 30 a 34 años",
+        "De 35 a 39 años",
+        "De 40 a 44 años",
+        "De 45 a 49 años",
+        "De 50 a 54 años",
+        "De 55 a 59 años",
+        "De 6 a 9 años",
+        "De 60 a 64 años",
+        "De 65 a 69 años",
+        "De 70 a 74 años",
+        "Desconocido",
+        "Menor de 5 años",
+        "Más de 74 años"
+      ],
+      "description": "Property. Age bracket of the affected person (rango_edad in the source)."
+    },
+    "sexo": {
+      "type": "string",
+      "enum": [
+        "Desconocido",
+        "Hombre",
+        "Mujer"
+      ],
+      "description": "Property. Sex of the affected person (sexo in the source). NOTE: the source PDF specification states the possible values are 'hombre, Mujer o no asignado', but the real published data uses 'Desconocido' rather than 'no asignado'; this candidate follows the real data."
+    },
+    "codLesividad": {
+      "type": "string",
+      "enum": [
+        "1",
+        "14",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "77",
+        "NULL"
+      ],
+      "description": "Property. Injury severity code (cod_lesividad in the source; see the source PDF for the full code table). Kept as a string enum rather than a number because the real published data uses the literal value 'NULL' for the majority of rows (no assessed injury), which the source PDF describes as occurring on a blank line instead -- this candidate follows the real data."
+    },
+    "lesividad": {
+      "type": "string",
+      "enum": [
+        "Asistencia sanitaria ambulatoria con posterioridad",
+        "Asistencia sanitaria inmediata en centro de salud o mutua",
+        "Asistencia sanitaria sólo en el lugar del accidente",
+        "Atención en urgencias sin posterior ingreso",
+        "Fallecido 24 horas",
+        "Ingreso inferior o igual a 24 horas",
+        "Ingreso superior a 24 horas",
+        "NULL",
+        "Se desconoce",
+        "Sin asistencia sanitaria"
+      ],
+      "description": "Property. Injury severity description, corresponding to codLesividad (lesividad in the source)."
+    },
+    "coordenadaXUtm": {
+      "type": "number",
+      "description": "Property. X coordinate of the accident location, in the ETRS89 / UTM zone 30N projected coordinate system (coordenada_x_utm in the source; not WGS84 -- no verified reprojection was available at translation time, see standard-metadata.yaml)."
+    },
+    "coordenadaYUtm": {
+      "type": "number",
+      "description": "Property. Y coordinate of the accident location, in the ETRS89 / UTM zone 30N projected coordinate system (Coordenada_y_utm in the source, capitalised inconsistently there)."
+    },
+    "positivaAlcohol": {
+      "type": "string",
+      "enum": [
+        "N",
+        "NULL",
+        "S"
+      ],
+      "description": "Property. Whether the person tested positive for alcohol (positiva_alcohol in the source). Includes the literal value 'NULL' observed in the real data, in addition to the 'N'/'S' values described in the source PDF."
+    },
+    "positivaDroga": {
+      "type": "string",
+      "enum": [
+        "1",
+        "NULL"
+      ],
+      "description": "Property. Whether the person tested positive for drugs (positiva_droga in the source): the literal string 'NULL', or '1' if positive."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
