@@ -10,8 +10,15 @@
       "Smart-Sensoring",
       "SmartCities"
     ],
-    "modelCount": 2,
+    "modelCount": 4,
     "models": [
+      {
+        "name": "Collection",
+        "title": "Smart Data Models - Brick Schema - Collection",
+        "description": "A logical grouping of points, equipment or other entities that doesn't correspond to a physical or system relationship (brick:Collection and its subclasses, e.g. Automation_Collection). INCOMPLETE BY DESIGN: Collection has no Brick-native membership property in any real Brick example checked (examples/collection/collection.ttl, examples/chiller-system/chiller-plant.ttl, examples/iaq_sensor_deployment) -- every real Collection instance found expresses its membership via RealEstateCore's rec:includes / rec:hasMember, not a Brick property. One of Brick's own example files even comments on this directly. This schema is therefore published as a placeholder (identity + brickClass only, no members) rather than either inventing a non-Brick property or silently omitting Collection altogether. A membership Relationship should be added once the planned RealEstateCore candidate exists for it to point to.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/brick-schema/models/Collection/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/brick-schema/models/Collection"
+      },
       {
         "name": "Equipment",
         "title": "Smart Data Models - Brick Schema - Equipment",
@@ -25,6 +32,13 @@
         "description": "A telemetry point exposed by a piece of building Equipment or associated with a Location: a sensor, setpoint, command, status, alarm or parameter (brick:Point and its subclasses, Brick Schema). This candidate models Point generically -- see the brickClass property -- rather than as hundreds of separate entity types.",
         "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/brick-schema/models/Point/schema.json",
         "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/brick-schema/models/Point"
+      },
+      {
+        "name": "System",
+        "title": "Smart Data Models - Brick Schema - System",
+        "description": "A functional grouping of equipment that together provide a building service, e.g. an HVAC system or a chilled water system (brick:System and its subclasses). INCOMPLETE BY DESIGN: System has no Brick-native membership property in any real Brick example checked (examples/collection/collection.ttl, examples/chiller-system/chiller-plant.ttl, examples/iaq_sensor_deployment) -- every real System instance found expresses its membership via RealEstateCore's rec:includes / rec:hasMember, not a Brick property. One of Brick's own example files even comments on this directly. This schema is therefore published as a placeholder (identity + brickClass only, no members) rather than either inventing a non-Brick property or silently omitting System altogether. A membership Relationship should be added once the planned RealEstateCore candidate exists for it to point to.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/brick-schema/models/System/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/brick-schema/models/System"
       }
     ],
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/brick-schema"

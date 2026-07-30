@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/brick-schema/models/System/schema.json",
+  "modelTags": "BrickSchema,BuildingAutomation,IoT",
+  "title": "Smart Data Models - Brick Schema - System",
+  "description": "A functional grouping of equipment that together provide a building service, e.g. an HVAC system or a chilled water system (brick:System and its subclasses). INCOMPLETE BY DESIGN: System has no Brick-native membership property in any real Brick example checked (examples/collection/collection.ttl, examples/chiller-system/chiller-plant.ttl, examples/iaq_sensor_deployment) -- every real System instance found expresses its membership via RealEstateCore's rec:includes / rec:hasMember, not a Brick property. One of Brick's own example files even comments on this directly. This schema is therefore published as a placeholder (identity + brickClass only, no members) rather than either inventing a non-Brick property or silently omitting System altogether. A membership Relationship should be added once the planned RealEstateCore candidate exists for it to point to.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "System"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'System'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Human-readable label (rdfs:label in the source)."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "brickClass": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The specific Brick class of this system (e.g. https://brickschema.org/schema/Brick#HVAC_System, Chilled_Water_System). INCOMPLETE BY DESIGN: System has no Brick-native membership property in any real Brick example checked (examples/collection/collection.ttl, examples/chiller-system/chiller-plant.ttl, examples/iaq_sensor_deployment) -- every real System instance found expresses its membership via RealEstateCore's rec:includes / rec:hasMember, not a Brick property. One of Brick's own example files even comments on this directly. This schema is therefore published as a placeholder (identity + brickClass only, no members) rather than either inventing a non-Brick property or silently omitting System altogether. A membership Relationship should be added once the planned RealEstateCore candidate exists for it to point to."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

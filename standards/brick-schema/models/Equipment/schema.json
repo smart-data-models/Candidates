@@ -69,6 +69,14 @@
         "format": "uri"
       },
       "description": "Relationship. Other Equipment or a Location that this equipment feeds air, water or energy to (brick:feeds)."
+    },
+    "isFedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Other Equipment that feeds air, water or energy to this equipment (brick:isFedBy, the documented inverse of feeds). Not present in this candidate's own example.json instance (rtu, which is upstream in its air-chain and has nothing feeding it) -- exemplified richly and reciprocally with feeds elsewhere in the source repository, in examples/chiller-system/chiller-plant.ttl (e.g. a Chiller isFedBy several Chilled_Water_Pump and Condenser_Water_Pump instances)."
     }
   },
   "required": [

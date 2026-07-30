@@ -43,18 +43,60 @@ notes: |
   large controlled vocabularies (e.g. InfrastructureType, AccommodationRateType
   in the earlier EDINT candidates).
 
-  SCOPE EXCLUDES: Location, Collection, and System -- deferred, not because
-  they're unimportant, but because the real example this candidate is
-  grounded in models all Location/Building/Site/Collection-membership
-  concepts via RealEstateCore (REC), a companion ontology, not via Brick's
-  own equivalent classes/properties. Brick's own SHACL shapes for Collection
-  membership explicitly reference rec:includes / rec:hasMember rather than
-  a Brick-native property, confirming this isn't a translation shortcut but
-  something genuinely built into how Brick expects to be used in practice.
-  REC is a separate, planned future candidate (per explicit instruction);
-  Location/Collection/System are natural to revisit once that exists, so
-  the Relationship they'd need (Point.isPointOf's target, Equipment.feeds'
-  target) can point to something actually modeled in this repository.
+  UPDATE 2026-07-31 (second pass): added Collection and System as thin
+  placeholder entities (brickClass only, no members) and Equipment.isFedBy.
+  Location remains fully out of scope -- see below, the reason turned out to
+  be stronger than originally thought.
+
+  LOCATION IS DEPRECATED IN THE SOURCE ONTOLOGY ITSELF, NOT JUST
+  REC-DEPENDENT IN PRACTICE: checked directly against Brick.ttl v1.4.4 after
+  being asked to verify. `brick:Location` and `brick:Space` (and by
+  inheritance the ~108 classes under them -- Room, Building, Floor, Site,
+  Zone, Storey, Wing, Outdoor_Area, Outside, Region, etc.) all carry
+  `owl:deprecated true`, `deprecatedInVersion "1.4.0"`, and an explicit
+  `deprecationMitigationMessage`: "Brick location classes are being phased
+  out in favor of RealEstateCore classes." `brick:Location isReplacedBy
+  rec:Architecture`; `brick:Space isReplacedBy rec:Space`. 185 classes are
+  marked deprecated in the whole Brick namespace; the Location branch
+  accounts for the large majority of them. None of Point, Equipment,
+  Collection, System, or any of the specific leaf classes used anywhere in
+  this candidate (CO2_Level_Sensor, Rooftop_Unit, Automation_Collection,
+  HVAC_System, the chiller-plant classes, etc.) are deprecated -- checked
+  individually. Modeling Location now, even from clean real example data
+  (examples/simple_apartment/apartment.ttl has real, pure-Brick Room/
+  Apartment/HVAC_Zone/Lighting_Zone/isPartOf usage with no REC dependency),
+  would mean publishing a schema for something the ontology's own
+  maintainers are actively retiring. Left for the planned RealEstateCore
+  candidate, which is the ontology's own stated replacement path, not
+  merely this session's preference.
+
+  COLLECTION AND SYSTEM ARE PUBLISHED INCOMPLETE, ON PURPOSE: neither class
+  is deprecated, but neither has a Brick-native membership property either.
+  Checked three real examples spanning two different domains
+  (examples/collection/collection.ttl, examples/chiller-system/chiller-plant.ttl,
+  examples/iaq_sensor_deployment) and every single Collection/System instance
+  in all three uses RealEstateCore's rec:includes (or, per Brick's own SHACL
+  shapes, its alternative rec:hasMember) for membership -- never a Brick
+  property. One of Brick's own example files (collection.ttl) comments on
+  this directly: "collection includes point, equip" via rec:includes, with
+  no Brick alternative offered. Per explicit instruction, Collection and
+  System are still published now (brickClass + identity only, no members)
+  rather than withheld entirely, so the entity types exist in the repository
+  already -- but they cannot do their one real job (grouping) until the
+  planned RealEstateCore candidate gives them something to point a
+  membership Relationship at.
+
+  EQUIPMENT.isFedBy ADDED: the documented inverse of feeds, confirmed with
+  real, rich, reciprocal usage in examples/chiller-system/chiller-plant.ttl
+  (e.g. a Chiller isFedBy several Chilled_Water_Pump and Condenser_Water_Pump
+  instances) -- a different real example than the one this candidate's own
+  Equipment.examples/example.json is drawn from, since the rtu (Rooftop_Unit)
+  instance used there is upstream in its air-chain and has nothing feeding
+  it. The property is documented on the schema; the example.json instance
+  was intentionally left unchanged rather than swapped to a chiller instance,
+  to avoid fragmenting this candidate's examples across two unrelated
+  deployment scenarios (residential IAQ vs. a commercial chiller plant) for
+  the sake of one optional property.
 
   REAL DISCREPANCIES FOUND BETWEEN THE CHOSEN EXAMPLE AND THE RELEASED
   ONTOLOGY (v1.4.4), resolved in favour of the released, authoritative
