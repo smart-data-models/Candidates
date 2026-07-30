@@ -125,6 +125,33 @@ notes: |
   chosen source example. Other Temperature_Sensor family members share the
   same property shape and could be added the same way on request.
 
+  UPDATE 2026-07-31 (fourth pass): audited, after being asked directly,
+  whether the single-property nested objects in this candidate (resolution:
+  {value}) are a faithful mapping or a misinterpretation. Verified against
+  the source ontology's own formal SHACL shapes: bsh:ResolutionShape (the
+  shape governing brick:resolution) declares exactly one property,
+  brick:value -- confirming resolution is genuinely single-field in the
+  source, not an artifact of this translation. brick:resolution is one of
+  ~45 properties Brick declares as brick:EntityProperty (area, azimuth,
+  coolingCapacity, resolution, thermalTransmittance, volume, yearBuilt,
+  ...) -- all owl:ObjectProperty relationships to a small wrapper node
+  rather than plain literals, evidently so a common pattern can be shared
+  across the family. Not all members have only one field: e.g.
+  bsh:TemperatureCoefficientPerDegreeCelsiusShape and bsh:TiltShape (also
+  EntityProperty) additionally require brick:hasUnit -- Resolution's own
+  shape simply doesn't. Checked bsh:AggregationShape (governing
+  brick:aggregate) the same way and confirmed it matches this candidate's
+  2-field modeling (aggregationFunction, aggregationInterval).
+
+  FOUND AND FIXED WHILE AUDITING: bsh:AggregationShape constrains
+  aggregationFunction to exactly 7 values (max, min, count, mean, sum,
+  median, mode) via SHACL sh:in -- this candidate had left it as an
+  unconstrained string across all 7 models that carry `aggregate` (Point
+  and the six dedicated sensor schemas). Added the enum; verified it
+  correctly rejects an invalid value ("average") and that both existing
+  real examples using aggregate (CO2LevelSensor, PM25Sensor, both "mean")
+  still validate.
+
   EQUIPMENT.isFedBy ADDED: the documented inverse of feeds, confirmed with
   real, rich, reciprocal usage in examples/chiller-system/chiller-plant.ttl
   (e.g. a Chiller isFedBy several Chilled_Water_Pump and Condenser_Water_Pump

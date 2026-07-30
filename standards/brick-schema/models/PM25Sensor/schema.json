@@ -77,7 +77,16 @@
       "properties": {
         "aggregationFunction": {
           "type": "string",
-          "description": "Property. E.g. 'mean' (brick:aggregationFunction)."
+          "description": "Property. E.g. 'mean' (brick:aggregationFunction), constrained to exactly these 7 values per the source ontology's bsh:AggregationShape SHACL definition.",
+          "enum": [
+            "max",
+            "min",
+            "count",
+            "mean",
+            "sum",
+            "median",
+            "mode"
+          ]
         },
         "aggregationInterval": {
           "type": "string",
