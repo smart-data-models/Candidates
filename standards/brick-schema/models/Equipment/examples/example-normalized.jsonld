@@ -1,0 +1,34 @@
+{
+  "id": "urn:ngsi-ld:Equipment:rtu",
+  "type": "Equipment",
+  "name": {
+    "type": "Property",
+    "value": "Packaged rooftop unit"
+  },
+  "brickClass": {
+    "type": "Relationship",
+    "object": "https://brickschema.org/schema/Brick#Rooftop_Unit"
+  },
+  "hasPoint": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:Point:rtu_fan_command",
+      "urn:ngsi-ld:Point:rtu_supply_air_flow"
+    ]
+  },
+  "hasPart": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:Equipment:air_filter"
+    ]
+  },
+  "feeds": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:Location:home_hvac_zone"
+    ]
+  },
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/brick-schema/models/Equipment/context.jsonld"
+  ]
+}

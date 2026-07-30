@@ -1,5 +1,35 @@
 [
   {
+    "slug": "brick-schema",
+    "title": "Brick Schema",
+    "description": "Uniform metadata schema for buildings: a vocabulary for describing the points (sensors, setpoints, commands, statuses, alarms), equipment (AHUs, chillers, pumps, VAVs, network devices, etc.), and their relationships (hasPoint/isPointOf, hasPart/isPartOf, feeds/isFedBy, hasUnit via QUDT) in building automation and IoT deployments. Widely used in the building controls / smart buildings community.",
+    "publisher": "Brick Consortium (UC Berkeley, with industry and academic contributors); ontology hosted at ontology.brickschema.org",
+    "sourceUrl": "https://github.com/BrickSchema/Brick",
+    "license": "BSD-3-Clause",
+    "domains": [
+      "Smart-Sensoring",
+      "SmartCities"
+    ],
+    "modelCount": 2,
+    "models": [
+      {
+        "name": "Equipment",
+        "title": "Smart Data Models - Brick Schema - Equipment",
+        "description": "A physical piece of equipment in a building's mechanical, electrical or IT systems: an air handling unit, chiller, pump, VAV box, thermostat, network device, etc. (brick:Equipment and its subclasses, Brick Schema). Modeled generically -- see the brickClass property -- rather than as hundreds of separate entity types.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/brick-schema/models/Equipment/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/brick-schema/models/Equipment"
+      },
+      {
+        "name": "Point",
+        "title": "Smart Data Models - Brick Schema - Point",
+        "description": "A telemetry point exposed by a piece of building Equipment or associated with a Location: a sensor, setpoint, command, status, alarm or parameter (brick:Point and its subclasses, Brick Schema). This candidate models Point generically -- see the brickClass property -- rather than as hundreds of separate entity types.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/brick-schema/models/Point/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/brick-schema/models/Point"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/brick-schema"
+  },
+  {
     "slug": "edint-infraestructura",
     "title": "EDINT Infrastructure Ontology (Ontología de Infraestructura)",
     "description": "Vocabulary for representing a municipality's public and private infrastructure facilities (educational, cultural, social, sports and health centers, on-street and off-street parking, shared-bicycle stations) together with the sensors, observations, violations, management roles and organizations involved in operating and monitoring them. Reuses SOSA/SSN (sensors and observations), GeoSPARQL (geometry), schema.org and Dublin Core.",

@@ -1,0 +1,19 @@
+{
+  "id": "urn:ngsi-ld:Point:kitchen_stove_co2",
+  "type": "Point",
+  "name": "Kitchen stove CO2 level sensor",
+  "brickClass": "https://brickschema.org/schema/Brick#CO2_Level_Sensor",
+  "isPointOf": "urn:ngsi-ld:Location:kitchen",
+  "hasUnit": "http://qudt.org/vocab/unit/PPM",
+  "aggregate": {
+    "aggregationFunction": "mean",
+    "aggregationInterval": "PT5M"
+  },
+  "resolution": {
+    "value": 1
+  },
+  "hasExternalReference": {
+    "hasTimeseriesId": "9fc239e8-0101-5254-895f-25f62278dcd4",
+    "storedAt": "postgres://iaq-data.example.com:5432/iaq"
+  }
+}

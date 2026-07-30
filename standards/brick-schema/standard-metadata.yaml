@@ -1,0 +1,99 @@
+title: "Brick Schema"
+publisher: "Brick Consortium (UC Berkeley, with industry and academic contributors); ontology hosted at ontology.brickschema.org"
+sourceUrl: "https://github.com/BrickSchema/Brick"
+sourceOntologyVersion: "v1.4.4 (released 2025-05-02)"
+sourceOntologyDownload: "https://github.com/BrickSchema/Brick/releases/download/v1.4.4/Brick.ttl"
+sourceExampleUrl: "https://github.com/BrickSchema/Brick/tree/master/examples/iaq_sensor_deployment"
+domains:
+  - Smart-Sensoring
+  - SmartCities
+description: >
+  Uniform metadata schema for buildings: a vocabulary for describing the
+  points (sensors, setpoints, commands, statuses, alarms), equipment (AHUs,
+  chillers, pumps, VAVs, network devices, etc.), and their relationships
+  (hasPoint/isPointOf, hasPart/isPartOf, feeds/isFedBy, hasUnit via QUDT) in
+  building automation and IoT deployments. Widely used in the building
+  controls / smart buildings community.
+license: "BSD-3-Clause"
+licenseNote: >
+  Unlike the two EDINT candidates and unresolved for the Madrid accidents
+  candidate, this source has a clean, unambiguous, permissive license --
+  both the GitHub repository and the ontology file's own dcterms:license
+  statement confirm BSD-3-Clause. No ShareAlike or unstated-license concerns
+  here.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-07-31 from Brick v1.4.4 (1,518 classes total: 1,431 in
+  the core Brick namespace, 80 in BrickShape, 5 in Brick/ref), grounded in
+  the real example at examples/iaq_sensor_deployment/iaq_sensor_deployment.ttl
+  (a residential indoor air quality monitoring deployment) in the source repo.
+
+  SCALE AND MODELING STRATEGY: Brick's ~1,500 classes are overwhelmingly a
+  classification taxonomy, not ~1,500 distinct rich schemas -- 937 of them
+  are Point subclasses (specific sensor/setpoint/command/status/alarm types)
+  and 331 are Equipment subclasses (specific device types), each typically
+  carrying only the same small set of structural relationships (hasPoint,
+  isPointOf, hasUnit, hasPart, feeds, ...). Per explicit instruction, this
+  candidate therefore models exactly two generic entity types -- Point and
+  Equipment -- with the specific Brick class captured as a `brickClass`
+  Relationship attribute, rather than instantiating hundreds of separate
+  NGSI-LD entity types. This mirrors how this session has handled other
+  large controlled vocabularies (e.g. InfrastructureType, AccommodationRateType
+  in the earlier EDINT candidates).
+
+  SCOPE EXCLUDES: Location, Collection, and System -- deferred, not because
+  they're unimportant, but because the real example this candidate is
+  grounded in models all Location/Building/Site/Collection-membership
+  concepts via RealEstateCore (REC), a companion ontology, not via Brick's
+  own equivalent classes/properties. Brick's own SHACL shapes for Collection
+  membership explicitly reference rec:includes / rec:hasMember rather than
+  a Brick-native property, confirming this isn't a translation shortcut but
+  something genuinely built into how Brick expects to be used in practice.
+  REC is a separate, planned future candidate (per explicit instruction);
+  Location/Collection/System are natural to revisit once that exists, so
+  the Relationship they'd need (Point.isPointOf's target, Equipment.feeds'
+  target) can point to something actually modeled in this repository.
+
+  REAL DISCREPANCIES FOUND BETWEEN THE CHOSEN EXAMPLE AND THE RELEASED
+  ONTOLOGY (v1.4.4), resolved in favour of the released, authoritative
+  ontology terms (the reverse of this session's usual default, because here
+  the "real data" file uses invalid/nonexistent terms, not just differently
+  granular real ones):
+    - The example uses `brick:hosts` (and its claimed inverse
+      `brick:isHostedBy`) on IAQ_Sensor_Equipment instances for the
+      equipment-to-point relationship. Neither term exists anywhere in the
+      released Brick v1.4.4 ontology. The same example file correctly uses
+      `brick:hasPoint` for the identical relationship on other equipment
+      (Rooftop_Unit, Filter, Space_Heater, Exhaust_Fan, Thermostat,
+      Controller) a few dozen lines later -- an internal inconsistency
+      within the example itself. This candidate's Equipment.hasPoint uses
+      the valid, real `hasPoint` term throughout.
+    - The example uses `brick:isControlledBy` (Exhaust_Fan controlled by a
+      Controller). This term does not exist in the released ontology either
+      (checked as ObjectProperty, DatatypeProperty, and generic rdf:Property
+      -- no match under any declaration). Not included in this candidate;
+      no valid substitute was identified. Worth raising with the Brick
+      maintainers, or checking a more recent unreleased ontology version.
+    - `brick:value` (used inside the `brick:resolution` blank node) IS valid,
+      just declared as a generic `rdf:Property` rather than an OWL
+      Datatype/ObjectProperty -- easy to miss with a type-filtered query;
+      noted here in case it trips up anyone else inspecting this ontology
+      programmatically.
+
+  DUPLICATION RISK: real and significant, deliberately not checked in
+  detail before this translation (per explicit instruction, consistent with
+  this session's established default). Smart Data Models already has an
+  official dataModel.Device subject (Device, DeviceMeasurement, DeviceModel,
+  Camera, Modbus, ...) under the Smart-Sensoring domain, and a
+  dataModel.Building subject (Building, BuildingOperation, BuildingType,
+  ...) under SmartCities. Brick's Equipment and Point map fairly directly
+  onto Device/DeviceMeasurement conceptually; Brick's (out-of-scope-here)
+  Location branch would likely map onto Building. This should be the first
+  thing checked before promoting this candidate.
+
+  GEOMETRY / SPATIAL DATA: out of scope for this pass -- Point and Equipment
+  carry no direct location coordinates in Brick's own model (spatial
+  position, when present at all in real deployments, comes from the
+  REC-modeled Location/Room, deferred per above).
