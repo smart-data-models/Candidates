@@ -86,6 +86,45 @@ notes: |
   planned RealEstateCore candidate gives them something to point a
   membership Relationship at.
 
+  UPDATE 2026-07-31 (third pass): added six dedicated leaf-class schemas
+  alongside the generic Point -- CO2LevelSensor, ZoneAirTemperatureSensor,
+  PM25Sensor, PM10Sensor, RelativeHumiditySensor, OccupancySensor -- after
+  being asked whether Brick's individual per-class documentation pages
+  (e.g. ontology.brickschema.org/brick/CO2_Level_Sensor.html) could be
+  mapped directly. Investigation found those pages are client-side rendered
+  ("Explorer" app) and don't expose per-class content to a plain fetch, but
+  the same underlying data lives in Brick.ttl itself: every measurement-type
+  Point leaf class decomposes into hasQuantity (65 distinct values used
+  ontology-wide, e.g. CO2_Concentration, Temperature) + hasSubstance (31
+  values, e.g. Air, Zone_Air) + hasAssociatedTag (532 distinct tags). Per
+  explicit instruction, these six classes -- all with real examples in
+  iaq_sensor_deployment.ttl -- got dedicated schemas where hasQuantity and
+  (where applicable) hasSubstance are JSON Schema `const` values, since they
+  are definitional for the exact class, not a per-instance choice; hasUnit
+  remains variable, since the same sensor type can report in different
+  units across deployments. OccupancySensor has no hasSubstance property at
+  all (rather than an empty/null one) because the ontology itself declares
+  none for that class -- occupancy isn't a property of a substance the way
+  a gas concentration or temperature is.
+
+  NAMING FIX: Brick's own class names use underscore-separated Title_Case
+  (CO2_Level_Sensor), and one (PM2.5_Sensor) contains a literal dot. Both
+  violate this repository's PascalCase-only naming convention (checked
+  automatically for every candidate in this session). Renamed to
+  CO2LevelSensor, ZoneAirTemperatureSensor, PM25Sensor, PM10Sensor,
+  RelativeHumiditySensor, OccupancySensor for the NGSI-LD `type`; each
+  schema's description explicitly states the real Brick class name so the
+  correspondence isn't lost.
+
+  ZoneAirTemperatureSensor represents one member of Brick's broader
+  Temperature_Sensor family (which also includes e.g.
+  Outside_Air_Temperature_Sensor, Discharge_Air_Temperature_Sensor) -- the
+  specific leaf class chosen because it's the exact one instantiated in the
+  real example (a thermostat's zone sensor), not the more generic
+  Temperature_Sensor itself, which has no direct real instance in the
+  chosen source example. Other Temperature_Sensor family members share the
+  same property shape and could be added the same way on request.
+
   EQUIPMENT.isFedBy ADDED: the documented inverse of feeds, confirmed with
   real, rich, reciprocal usage in examples/chiller-system/chiller-plant.ttl
   (e.g. a Chiller isFedBy several Chilled_Water_Pump and Condenser_Water_Pump

@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/brick-schema/models/PM10Sensor/schema.json",
+  "modelTags": "BrickSchema,BuildingAutomation,IoT",
+  "title": "Smart Data Models - Brick Schema - PM10Sensor",
+  "description": "Measures the concentration of PM10 (particulate matter, <=10 micrometers) in air. A dedicated schema for this specific Brick Point leaf class (brick:PM10_Sensor, hierarchy: Particulate_Matter_Sensor -> Sensor -> Point), alongside the generic Point entity this candidate also publishes. NOTE: the source ontology names this class 'PM10_Sensor' (Brick uses underscore-separated Title_Case); the NGSI-LD entity type here is 'PM10Sensor', renamed to strict PascalCase per this repository's naming convention (no underscores, no dots -- 'PM10_Sensor' contains both). hasQuantity and hasSubstance are fixed (const) here because they are definitional for this exact class, not a per-instance choice.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "PM10Sensor"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'PM10Sensor'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Human-readable label (rdfs:label in the source)."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "isPointOf": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The Equipment or Location this point belongs to (brick:isPointOf). May be absent when the relationship is only asserted from the Equipment side (brick:hasPoint) and left for a reasoner to materialize the inverse -- real in the source data (see the thermostat's Zone_Air_Temperature_Sensor)."
+    },
+    "hasUnit": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The unit of measurement, as a QUDT unit concept URI (brick:hasUnit). Not fixed at the class level -- different deployments of the same sensor type may report in different units."
+    },
+    "hasQuantity": {
+      "type": "string",
+      "format": "uri",
+      "const": "https://brickschema.org/schema/Brick#PM10_Concentration",
+      "description": "Relationship. Concentration of PM10 particulate matter (brick:PM10_Concentration). Fixed for this class."
+    },
+    "hasSubstance": {
+      "type": "string",
+      "format": "uri",
+      "const": "https://brickschema.org/schema/Brick#Air",
+      "description": "Relationship. Air (brick:Air). Fixed for this class."
+    },
+    "hasAssociatedTag": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Brick's tag-based classification for this class (brick:hasAssociatedTag). The tags declared on this class in the source ontology are: Matter, PM10, Particulate, Point, Sensor."
+    },
+    "aggregate": {
+      "type": "object",
+      "description": "Property. How the point's raw data is reduced before storage (brick:aggregate).",
+      "properties": {
+        "aggregationFunction": {
+          "type": "string",
+          "description": "Property. E.g. 'mean' (brick:aggregationFunction)."
+        },
+        "aggregationInterval": {
+          "type": "string",
+          "description": "Property. ISO 8601 duration, e.g. 'PT5M' (brick:aggregationInterval)."
+        }
+      }
+    },
+    "resolution": {
+      "type": "object",
+      "description": "Property. The smallest change in value the point's sensor can distinguish (brick:resolution).",
+      "properties": {
+        "value": {
+          "type": "number",
+          "description": "Property. The resolution value (brick:value)."
+        }
+      }
+    },
+    "hasExternalReference": {
+      "type": "object",
+      "description": "Property. A pointer to where this point's actual time-series data is stored (ref:hasExternalReference).",
+      "properties": {
+        "hasTimeseriesId": {
+          "type": "string",
+          "description": "Property. Opaque identifier of the timeseries (ref:hasTimeseriesId)."
+        },
+        "storedAt": {
+          "type": "string",
+          "description": "Property. Connection string / location of the timeseries store (ref:storedAt)."
+        }
+      }
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

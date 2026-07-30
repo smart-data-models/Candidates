@@ -10,8 +10,15 @@
       "Smart-Sensoring",
       "SmartCities"
     ],
-    "modelCount": 4,
+    "modelCount": 10,
     "models": [
+      {
+        "name": "CO2LevelSensor",
+        "title": "Smart Data Models - Brick Schema - CO2LevelSensor",
+        "description": "Measures the concentration of CO2 in air (brick:CO2_Level_Sensor's own definition, verbatim, in the source ontology). A dedicated schema for this specific Brick Point leaf class (brick:CO2_Level_Sensor, hierarchy: CO2_Sensor -> Sensor -> Point), alongside the generic Point entity this candidate also publishes. NOTE: the source ontology names this class 'CO2_Level_Sensor' (Brick uses underscore-separated Title_Case); the NGSI-LD entity type here is 'CO2LevelSensor', renamed to strict PascalCase per this repository's naming convention (no underscores, no dots -- 'CO2_Level_Sensor' contains both). hasQuantity and hasSubstance are fixed (const) here because they are definitional for this exact class, not a per-instance choice.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/brick-schema/models/CO2LevelSensor/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/brick-schema/models/CO2LevelSensor"
+      },
       {
         "name": "Collection",
         "title": "Smart Data Models - Brick Schema - Collection",
@@ -27,6 +34,27 @@
         "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/brick-schema/models/Equipment"
       },
       {
+        "name": "OccupancySensor",
+        "title": "Smart Data Models - Brick Schema - OccupancySensor",
+        "description": "Detects the presence or count of occupants. Unlike the other five classes in this batch, Occupancy_Sensor has no brick:hasSubstance in the source ontology (occupancy isn't a property of a substance/medium the way temperature or a gas concentration is) -- this schema therefore has no hasSubstance property at all, rather than an empty or null one. A dedicated schema for this specific Brick Point leaf class (brick:Occupancy_Sensor, hierarchy: Sensor -> Point), alongside the generic Point entity this candidate also publishes. NOTE: the source ontology names this class 'Occupancy_Sensor' (Brick uses underscore-separated Title_Case); the NGSI-LD entity type here is 'OccupancySensor', renamed to strict PascalCase per this repository's naming convention (no underscores, no dots -- 'Occupancy_Sensor' contains both). hasQuantity are fixed (const) here because they are definitional for this exact class, not a per-instance choice.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/brick-schema/models/OccupancySensor/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/brick-schema/models/OccupancySensor"
+      },
+      {
+        "name": "PM10Sensor",
+        "title": "Smart Data Models - Brick Schema - PM10Sensor",
+        "description": "Measures the concentration of PM10 (particulate matter, <=10 micrometers) in air. A dedicated schema for this specific Brick Point leaf class (brick:PM10_Sensor, hierarchy: Particulate_Matter_Sensor -> Sensor -> Point), alongside the generic Point entity this candidate also publishes. NOTE: the source ontology names this class 'PM10_Sensor' (Brick uses underscore-separated Title_Case); the NGSI-LD entity type here is 'PM10Sensor', renamed to strict PascalCase per this repository's naming convention (no underscores, no dots -- 'PM10_Sensor' contains both). hasQuantity and hasSubstance are fixed (const) here because they are definitional for this exact class, not a per-instance choice.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/brick-schema/models/PM10Sensor/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/brick-schema/models/PM10Sensor"
+      },
+      {
+        "name": "PM25Sensor",
+        "title": "Smart Data Models - Brick Schema - PM25Sensor",
+        "description": "Measures the concentration of PM2.5 (fine particulate matter, <=2.5 micrometers) in air. A dedicated schema for this specific Brick Point leaf class (brick:PM2.5_Sensor, hierarchy: Particulate_Matter_Sensor -> Sensor -> Point), alongside the generic Point entity this candidate also publishes. NOTE: the source ontology names this class 'PM2.5_Sensor' (Brick uses underscore-separated Title_Case); the NGSI-LD entity type here is 'PM25Sensor', renamed to strict PascalCase per this repository's naming convention (no underscores, no dots -- 'PM2.5_Sensor' contains both). hasQuantity and hasSubstance are fixed (const) here because they are definitional for this exact class, not a per-instance choice.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/brick-schema/models/PM25Sensor/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/brick-schema/models/PM25Sensor"
+      },
+      {
         "name": "Point",
         "title": "Smart Data Models - Brick Schema - Point",
         "description": "A telemetry point exposed by a piece of building Equipment or associated with a Location: a sensor, setpoint, command, status, alarm or parameter (brick:Point and its subclasses, Brick Schema). This candidate models Point generically -- see the brickClass property -- rather than as hundreds of separate entity types.",
@@ -34,11 +62,25 @@
         "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/brick-schema/models/Point"
       },
       {
+        "name": "RelativeHumiditySensor",
+        "title": "Smart Data Models - Brick Schema - RelativeHumiditySensor",
+        "description": "Measures the relative humidity of air. A dedicated schema for this specific Brick Point leaf class (brick:Relative_Humidity_Sensor, hierarchy: Humidity_Sensor -> Sensor -> Point), alongside the generic Point entity this candidate also publishes. NOTE: the source ontology names this class 'Relative_Humidity_Sensor' (Brick uses underscore-separated Title_Case); the NGSI-LD entity type here is 'RelativeHumiditySensor', renamed to strict PascalCase per this repository's naming convention (no underscores, no dots -- 'Relative_Humidity_Sensor' contains both). hasQuantity and hasSubstance are fixed (const) here because they are definitional for this exact class, not a per-instance choice.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/brick-schema/models/RelativeHumiditySensor/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/brick-schema/models/RelativeHumiditySensor"
+      },
+      {
         "name": "System",
         "title": "Smart Data Models - Brick Schema - System",
         "description": "A functional grouping of equipment that together provide a building service, e.g. an HVAC system or a chilled water system (brick:System and its subclasses). INCOMPLETE BY DESIGN: System has no Brick-native membership property in any real Brick example checked (examples/collection/collection.ttl, examples/chiller-system/chiller-plant.ttl, examples/iaq_sensor_deployment) -- every real System instance found expresses its membership via RealEstateCore's rec:includes / rec:hasMember, not a Brick property. One of Brick's own example files even comments on this directly. This schema is therefore published as a placeholder (identity + brickClass only, no members) rather than either inventing a non-Brick property or silently omitting System altogether. A membership Relationship should be added once the planned RealEstateCore candidate exists for it to point to.",
         "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/brick-schema/models/System/schema.json",
         "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/brick-schema/models/System"
+      },
+      {
+        "name": "ZoneAirTemperatureSensor",
+        "title": "Smart Data Models - Brick Schema - ZoneAirTemperatureSensor",
+        "description": "A temperature sensor for the air within an HVAC zone -- one specific member of Brick's broader Temperature_Sensor family (which also includes e.g. Outside_Air_Temperature_Sensor, Discharge_Air_Temperature_Sensor). Modeled as its own class here because this is the exact leaf class in the real example data (a thermostat's zone sensor); the other family members share the same property shape and could be added the same way. A dedicated schema for this specific Brick Point leaf class (brick:Zone_Air_Temperature_Sensor, hierarchy: Air_Temperature_Sensor -> Temperature_Sensor -> Sensor -> Point), alongside the generic Point entity this candidate also publishes. NOTE: the source ontology names this class 'Zone_Air_Temperature_Sensor' (Brick uses underscore-separated Title_Case); the NGSI-LD entity type here is 'ZoneAirTemperatureSensor', renamed to strict PascalCase per this repository's naming convention (no underscores, no dots -- 'Zone_Air_Temperature_Sensor' contains both). hasQuantity and hasSubstance are fixed (const) here because they are definitional for this exact class, not a per-instance choice.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/brick-schema/models/ZoneAirTemperatureSensor/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/brick-schema/models/ZoneAirTemperatureSensor"
       }
     ],
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/brick-schema"
