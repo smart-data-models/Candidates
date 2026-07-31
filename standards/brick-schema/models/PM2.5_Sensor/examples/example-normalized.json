@@ -1,0 +1,54 @@
+{
+  "id": "urn:ngsi-ld:PM2.5_Sensor:kitchen_stove_pm2_5",
+  "type": "PM2.5_Sensor",
+  "name": {
+    "type": "Text",
+    "value": "Kitchen stove PM2.5 sensor"
+  },
+  "isPointOf": {
+    "type": "URL",
+    "value": "urn:ngsi-ld:Location:kitchen"
+  },
+  "hasUnit": {
+    "type": "URL",
+    "value": "http://qudt.org/vocab/unit/MicroGM-PER-M3"
+  },
+  "hasQuantity": {
+    "type": "URL",
+    "value": "https://brickschema.org/schema/Brick#PM2.5_Concentration"
+  },
+  "hasSubstance": {
+    "type": "URL",
+    "value": "https://brickschema.org/schema/Brick#Air"
+  },
+  "hasAssociatedTag": {
+    "type": "URL",
+    "value": [
+      "https://brickschema.org/schema/BrickTag#Matter",
+      "https://brickschema.org/schema/BrickTag#PM2.5",
+      "https://brickschema.org/schema/BrickTag#Particulate",
+      "https://brickschema.org/schema/BrickTag#Point",
+      "https://brickschema.org/schema/BrickTag#Sensor"
+    ]
+  },
+  "aggregate": {
+    "type": "StructuredValue",
+    "value": {
+      "aggregationFunction": "mean",
+      "aggregationInterval": "PT5M"
+    }
+  },
+  "resolution": {
+    "type": "StructuredValue",
+    "value": {
+      "value": 1
+    }
+  },
+  "hasExternalReference": {
+    "type": "StructuredValue",
+    "value": {
+      "hasTimeseriesId": "976fa3c7-e535-5dbb-b07f-81c41143723d",
+      "storedAt": "postgres://iaq-data.example.com:5432/iaq"
+    }
+  }
+}

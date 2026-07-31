@@ -87,8 +87,8 @@ notes: |
   membership Relationship at.
 
   UPDATE 2026-07-31 (third pass): added six dedicated leaf-class schemas
-  alongside the generic Point -- CO2LevelSensor, ZoneAirTemperatureSensor,
-  PM25Sensor, PM10Sensor, RelativeHumiditySensor, OccupancySensor -- after
+  alongside the generic Point -- CO2_Level_Sensor, Zone_Air_Temperature_Sensor,
+  PM2.5_Sensor, PM10_Sensor, Relative_Humidity_Sensor, Occupancy_Sensor -- after
   being asked whether Brick's individual per-class documentation pages
   (e.g. ontology.brickschema.org/brick/CO2_Level_Sensor.html) could be
   mapped directly. Investigation found those pages are client-side rendered
@@ -102,21 +102,33 @@ notes: |
   (where applicable) hasSubstance are JSON Schema `const` values, since they
   are definitional for the exact class, not a per-instance choice; hasUnit
   remains variable, since the same sensor type can report in different
-  units across deployments. OccupancySensor has no hasSubstance property at
+  units across deployments. Occupancy_Sensor has no hasSubstance property at
   all (rather than an empty/null one) because the ontology itself declares
   none for that class -- occupancy isn't a property of a substance the way
   a gas concentration or temperature is.
 
-  NAMING FIX: Brick's own class names use underscore-separated Title_Case
-  (CO2_Level_Sensor), and one (PM2.5_Sensor) contains a literal dot. Both
-  violate this repository's PascalCase-only naming convention (checked
-  automatically for every candidate in this session). Renamed to
-  CO2LevelSensor, ZoneAirTemperatureSensor, PM25Sensor, PM10Sensor,
-  RelativeHumiditySensor, OccupancySensor for the NGSI-LD `type`; each
-  schema's description explicitly states the real Brick class name so the
-  correspondence isn't lost.
+  NAMING: entity type names PRESERVE Brick's own class names verbatim --
+  CO2_Level_Sensor, Zone_Air_Temperature_Sensor, PM2.5_Sensor (including its
+  literal dot), PM10_Sensor, Relative_Humidity_Sensor, Occupancy_Sensor.
+  These were initially renamed to strict PascalCase (CO2LevelSensor,
+  PM25Sensor, etc.), reasoning that Brick's underscore/dot naming violated
+  this repository's PascalCase convention. That was corrected after
+  explicit feedback: camelCase/PascalCase is this repository's
+  *recommendation*, not a hard requirement, and the original class/property
+  name from a source ontology should be changed only when a character is
+  technically impossible in JSON Schema or forbidden by NGSI-LD -- neither
+  underscores nor dots are (JSON strings and JSON Schema enum values permit
+  both; NGSI-LD's forbidden-character set is `< > " ' = ; ( )` plus control
+  characters, which doesn't include either). Renaming was therefore
+  unnecessary and has been reverted; the model directory names, `type`
+  enum values, `$id` paths, and every `context.jsonld` term now match the
+  real Brick class names and their real IRIs (e.g.
+  `https://brickschema.org/schema/Brick#CO2_Level_Sensor`) exactly. Property
+  names (hasQuantity, hasUnit, aggregationFunction, ...) are unaffected --
+  Brick's own property names are already camelCase natively, so no
+  conversion was ever needed there.
 
-  ZoneAirTemperatureSensor represents one member of Brick's broader
+  Zone_Air_Temperature_Sensor represents one member of Brick's broader
   Temperature_Sensor family (which also includes e.g.
   Outside_Air_Temperature_Sensor, Discharge_Air_Temperature_Sensor) -- the
   specific leaf class chosen because it's the exact one instantiated in the
@@ -149,8 +161,21 @@ notes: |
   unconstrained string across all 7 models that carry `aggregate` (Point
   and the six dedicated sensor schemas). Added the enum; verified it
   correctly rejects an invalid value ("average") and that both existing
-  real examples using aggregate (CO2LevelSensor, PM25Sensor, both "mean")
+  real examples using aggregate (CO2_Level_Sensor, PM2.5_Sensor, both "mean")
   still validate.
+
+  UPDATE 2026-07-31 (fifth pass): reverted the PascalCase renaming from the
+  third pass -- see the NAMING note above for the corrected policy and
+  reasoning. All entity directory names, `type` enum values, `$id` paths,
+  and `context.jsonld` terms/IRIs now use Brick's real class names verbatim.
+  Also found and fixed a bug introduced by the original renaming: each
+  context.jsonld's mapped IRI for the entity's own type term had been built
+  from the (incorrect) renamed value, e.g. mapping the JSON key
+  "CO2_Level_Sensor" to the non-existent IRI ".../Brick#CO2LevelSensor"
+  instead of the real ".../Brick#CO2_Level_Sensor" -- a real defect beyond
+  the naming-convention question itself, since it broke the context's core
+  purpose (mapping a term to its real ontology IRI), not just a cosmetic
+  mismatch. Fixed and re-validated across all 10 models.
 
   EQUIPMENT.isFedBy ADDED: the documented inverse of feeds, confirmed with
   real, rich, reciprocal usage in examples/chiller-system/chiller-plant.ttl

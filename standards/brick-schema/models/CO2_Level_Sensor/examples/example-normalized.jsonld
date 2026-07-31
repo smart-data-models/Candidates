@@ -1,0 +1,56 @@
+{
+  "id": "urn:ngsi-ld:CO2_Level_Sensor:kitchen_stove_co2",
+  "type": "CO2_Level_Sensor",
+  "name": {
+    "type": "Property",
+    "value": "Kitchen stove CO2 level sensor"
+  },
+  "isPointOf": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:Location:kitchen"
+  },
+  "hasUnit": {
+    "type": "Relationship",
+    "object": "http://qudt.org/vocab/unit/PPM"
+  },
+  "hasQuantity": {
+    "type": "Relationship",
+    "object": "https://brickschema.org/schema/Brick#CO2_Concentration"
+  },
+  "hasSubstance": {
+    "type": "Relationship",
+    "object": "https://brickschema.org/schema/Brick#Air"
+  },
+  "hasAssociatedTag": {
+    "type": "Relationship",
+    "object": [
+      "https://brickschema.org/schema/BrickTag#CO2",
+      "https://brickschema.org/schema/BrickTag#Level",
+      "https://brickschema.org/schema/BrickTag#Point",
+      "https://brickschema.org/schema/BrickTag#Sensor"
+    ]
+  },
+  "aggregate": {
+    "type": "Property",
+    "value": {
+      "aggregationFunction": "mean",
+      "aggregationInterval": "PT5M"
+    }
+  },
+  "resolution": {
+    "type": "Property",
+    "value": {
+      "value": 1
+    }
+  },
+  "hasExternalReference": {
+    "type": "Property",
+    "value": {
+      "hasTimeseriesId": "9fc239e8-0101-5254-895f-25f62278dcd4",
+      "storedAt": "postgres://iaq-data.example.com:5432/iaq"
+    }
+  },
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/brick-schema/models/CO2_Level_Sensor/context.jsonld"
+  ]
+}

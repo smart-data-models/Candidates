@@ -1,0 +1,41 @@
+{
+  "id": "urn:ngsi-ld:PM10_Sensor:kitchen_stove_pm10",
+  "type": "PM10_Sensor",
+  "name": {
+    "type": "Text",
+    "value": "Kitchen stove PM10 sensor"
+  },
+  "isPointOf": {
+    "type": "URL",
+    "value": "urn:ngsi-ld:Location:kitchen"
+  },
+  "hasUnit": {
+    "type": "URL",
+    "value": "http://qudt.org/vocab/unit/MicroGM-PER-M3"
+  },
+  "hasQuantity": {
+    "type": "URL",
+    "value": "https://brickschema.org/schema/Brick#PM10_Concentration"
+  },
+  "hasSubstance": {
+    "type": "URL",
+    "value": "https://brickschema.org/schema/Brick#Air"
+  },
+  "hasAssociatedTag": {
+    "type": "URL",
+    "value": [
+      "https://brickschema.org/schema/BrickTag#Matter",
+      "https://brickschema.org/schema/BrickTag#PM10",
+      "https://brickschema.org/schema/BrickTag#Particulate",
+      "https://brickschema.org/schema/BrickTag#Point",
+      "https://brickschema.org/schema/BrickTag#Sensor"
+    ]
+  },
+  "hasExternalReference": {
+    "type": "StructuredValue",
+    "value": {
+      "hasTimeseriesId": "e3038726-5c92-5001-af41-6fa309cc077f",
+      "storedAt": "postgres://iaq-data.example.com:5432/iaq"
+    }
+  }
+}

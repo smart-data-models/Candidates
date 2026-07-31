@@ -1,0 +1,41 @@
+{
+  "id": "urn:ngsi-ld:Relative_Humidity_Sensor:kitchen_stove_relative_humidity",
+  "type": "Relative_Humidity_Sensor",
+  "name": {
+    "type": "Text",
+    "value": "Kitchen stove relative humidity sensor"
+  },
+  "isPointOf": {
+    "type": "URL",
+    "value": "urn:ngsi-ld:Location:kitchen"
+  },
+  "hasUnit": {
+    "type": "URL",
+    "value": "http://qudt.org/vocab/unit/PERCENT_RH"
+  },
+  "hasQuantity": {
+    "type": "URL",
+    "value": "http://qudt.org/vocab/quantitykind/RelativeHumidity"
+  },
+  "hasSubstance": {
+    "type": "URL",
+    "value": "https://brickschema.org/schema/Brick#Air"
+  },
+  "hasAssociatedTag": {
+    "type": "URL",
+    "value": [
+      "https://brickschema.org/schema/BrickTag#Air",
+      "https://brickschema.org/schema/BrickTag#Humidity",
+      "https://brickschema.org/schema/BrickTag#Point",
+      "https://brickschema.org/schema/BrickTag#Relative",
+      "https://brickschema.org/schema/BrickTag#Sensor"
+    ]
+  },
+  "hasExternalReference": {
+    "type": "StructuredValue",
+    "value": {
+      "hasTimeseriesId": "c3ae4dd5-637e-5fb6-a5a9-3e13ced35b39",
+      "storedAt": "postgres://iaq-data.example.com:5432/iaq"
+    }
+  }
+}
