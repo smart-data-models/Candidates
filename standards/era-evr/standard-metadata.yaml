@@ -1,0 +1,118 @@
+title: "ERA EVR (European Vehicle Register)"
+publisher: "European Union Agency for Railways (ERA)"
+sourceUrl: "https://rinf.data.era.europa.eu/era-vocabulary/"
+sourceOntologyVersion: "ERA Ontology v3.3.3 (released 2026-07-28)"
+sourceOntologyDownload: "https://rinf.data.era.europa.eu/era-vocabulary/ontology.ttl"
+sourceOntologyRepository: "https://gitlab.com/era-europa-eu/public/interoperable-data-programme/era-ontology/era-ontology"
+sourceApplicationGuide: "https://rinf.data.era.europa.eu/era-vocabulary/evr-appGuide/"
+sourceDOI: "https://doi.org/10.5281/zenodo.15089005"
+secondarySource:
+  title: "Verified Permissions Ontology (VPA)"
+  url: "https://w3id.org/vpa"
+  download: "https://linkedvocabs.org/onto/vpa/ontology.ttl"
+  license: "CC-BY-4.0"
+  note: >
+    Same secondary source as era-eradis; see that candidate's notes for why
+    it was fetched. Reused here for the same Permission/Request/Case/
+    Compliance/Restriction inheritance pattern.
+domains:
+  - Transportation
+description: >
+  EVR is the last of the four registers (alongside RINF, ERATV, ERADIS)
+  published under the single ERA Ontology v3.3.3 -- see era-rinf's
+  standard-metadata.yaml for the shared ontology-wide context. EVR registers
+  individual VEHICLES (as opposed to ERATV, which authorises vehicle TYPES):
+  each vehicle's identity and technical data as manufactured (European
+  Vehicle Number, keeper, owner, ECM, manufacturing details), its Vehicle
+  Keeper Marking (VKM), national-level registration properties defined by
+  individual member states, and the registration process itself
+  (VehicleRegistration, its Application, Case, compliance Check, and
+  Restriction) plus the closely related vehicle (not vehicle-type)
+  authorisation-for-placing-in-service process (VehicleAuthorisation, Case,
+  Notification).
+license: "European Union Public Licence v1.2 (EUPL-1.2)"
+licenseNote: >
+  Primary source EUPL-1.2, same as the other three ERA candidates. The VPA
+  secondary source is CC-BY-4.0, same dual-licence situation as era-eradis.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-08-11, last of the four ERA sub-standard passes (after
+  era-rinf, era-eratv, era-eradis), from the same ontology.ttl + vpa
+  ontology.ttl parses -- see era-eradis's standard-metadata.yaml for the
+  full explanation of why the vpa: (Verified Permissions Ontology) source is
+  needed and how the era:X subClassOf vpa:Y inheritance is applied.
+
+  ENTITY SET (14 top-level NGSI-LD types): Vehicle (19 properties -- the
+  individual vehicle's own identity/technical data: European Vehicle
+  Number, keeper/owner/ECM organisation roles, manufacturing details,
+  vehicle series membership), VehicleAuthorisation/Case/Notification
+  (subClassOf vpa:Permission/Case/Request respectively -- the "placing in
+  service" authorisation for a SPECIFIC vehicle, distinct from ERATV's
+  VehicleTypeAuthorisation for the type as a whole), VehicleRegistration/
+  Application/Case/Check/Restriction (subClassOf vpa:Permission/Request/
+  Case/Compliance/Restriction respectively -- structurally identical
+  inheritance pattern to ERATV's VehicleTypeAuthorisation* family, applied
+  here to the registration rather than authorisation process),
+  VehicleSeries, VehicleSet (both subClassOf era:Bag + vpa:Scope, neither of
+  which contributes any properties in this ontology snapshot -- genuinely
+  thin, 6-property envelope-only entities; still published since they are
+  real, distinct register concepts, not abstract hubs), VehicleKeeperMarking
+  (subClassOf era:OrganisationRole, published in era-rinf -- this candidate
+  climbs into era-rinf's own entity for inheritance, not just vpa:, gaining
+  hasOrganisationRole/imCode/nandoCode/roleOf plus vpa:OrganisationRole's
+  grants/requests), NationalRegistrationProperty (member-state-defined
+  registration fields, generic key/value shape: nationalPropertyIdentifier
+  as a Concept + nationalPropertyValue as an untyped Literal since the
+  ontology states the datatype varies per national property definition),
+  ERTMSErrorChangeRequest (subClassOf skos:Concept -- modeled with its own
+  1 property only; skos:Concept itself is the universal codelist-term
+  mechanism used everywhere in this ontology and is deliberately never
+  climbed into for inheritance, consistent with treating all other
+  Concept-ranged properties as open codelist references rather than a real
+  class hierarchy).
+
+  VehicleAuthorisation* vs VehicleTypeAuthorisation* (era-eratv): these are
+  two distinct, parallel processes in the source ontology -- a vehicle TYPE
+  is authorised once (ERATV), then each individual VEHICLE of that type
+  still requires its own placing-in-service authorisation (EVR) referencing
+  the type authorisation. Both families share the same vpa:Permission/
+  Request/Case inheritance shape by construction, which is why their
+  property counts and structure look so similar across the two candidates.
+
+  CONTROLLED VOCABULARIES: same open string/uri (not enum) treatment as the
+  other three ERA candidates.
+
+  EXAMPLE SCENARIO: one fictional vehicle ("94 87 4040 001-2", an instance of
+  era-eratv's "Fictorail X40" vehicle type), its VKM, registration, and
+  authorisation-for-placing-in-service records, cross-referencing
+  era-eratv's VehicleType and era-rinf's OrganisationRole where a
+  relationship target already exists in a published standard.
+
+  THIS COMPLETES THE FOUR-PART ERA ONTOLOGY TRANSLATION (era-rinf,
+  era-eratv, era-eradis, era-evr), all parsed from the single shared
+  ontology.ttl (plus the vpa secondary source for eradis/evr). Cross-cutting
+  gaps noted across all four passes, in case this work continues: (1) the
+  era-skos concept schemes were never fetched, so all Concept-ranged
+  properties across all four candidates remain open string/uri rather than
+  closed enums -- the single highest-value follow-up; (2) the vpa: hub
+  classes (Permission, Request, Case, Compliance, Restriction, Evidence,
+  EvidenceDocument, Requirement, Scope) are inlined into every subclass that
+  needs them but never published as their own shared model -- a dedicated
+  "vpa" candidate would remove the duplication; (3) duplication against
+  Smart Data Models' existing dataModel.Transportation subject was not
+  checked in detail in any of the four passes (each candidate's notes flag
+  this individually) and should be done before promoting any of these four
+  out of Candidates/.
+
+  UPDATE 2026-08-11: fetched era-skos and patched 15 enum-constrained
+  Concept-ranged property occurrences across this candidate's 14 models,
+  same era:inSkosConceptScheme cross-reference described in era-rinf's
+  standard-metadata.yaml. areaOfUse/authorisingMemberState/
+  registeringMemberState point at the external EU Publications Office
+  'country' authority table (not in era-skos) and remain open string/uri --
+  the clearest concrete case, across all four candidates, of the "external
+  authority table" gap noted in era-rinf's update. All 14 examples
+  re-validated against the now-stricter schemas -- 0 failures. This closes
+  out the era-skos enrichment pass across all four ERA sub-standards.
