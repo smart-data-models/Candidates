@@ -1,0 +1,132 @@
+title: "ERA ERADIS (documents/certification register)"
+publisher: "European Union Agency for Railways (ERA)"
+sourceUrl: "https://rinf.data.era.europa.eu/era-vocabulary/"
+sourceOntologyVersion: "ERA Ontology v3.3.3 (released 2026-07-28)"
+sourceOntologyDownload: "https://rinf.data.era.europa.eu/era-vocabulary/ontology.ttl"
+sourceOntologyRepository: "https://gitlab.com/era-europa-eu/public/interoperable-data-programme/era-ontology/era-ontology"
+sourceApplicationGuide: "https://rinf.data.era.europa.eu/era-vocabulary/eradis-appGuide/"
+sourceDOI: "https://doi.org/10.5281/zenodo.15089005"
+secondarySource:
+  title: "Verified Permissions Ontology (VPA)"
+  url: "https://w3id.org/vpa"
+  download: "https://linkedvocabs.org/onto/vpa/ontology.ttl"
+  license: "CC-BY-4.0"
+  note: >
+    Generic permission/compliance/evidence framework that most ERADIS (and
+    several ERATV/EVR) classes subclass. Fetched and parsed the same way as
+    ontology.ttl; see notes below for why this was necessary.
+domains:
+  - Transportation
+description: >
+  ERADIS is one of four registers (alongside RINF, ERATV, EVR) published
+  under the single ERA Ontology v3.3.3 -- see era-rinf's standard-metadata.yaml
+  for the shared ontology-wide context. ERADIS covers the certification and
+  compliance-documentation side of the railway authorisation processes:
+  Certificates (safety certificates for railway undertakings), Conformity
+  Assessment Body (CAB) evidence, assessment/audit checks and restrictions,
+  Certification Level Documents, EC Declarations of Verification/Conformity,
+  document sets, validity constraints on certificates/decisions, and
+  references to the Technical Specifications for Interoperability (TSIs)
+  those checks are performed against.
+license: "European Union Public Licence v1.2 (EUPL-1.2)"
+licenseNote: >
+  Primary source (ontology.ttl) is EUPL-1.2, same as era-rinf/era-eratv. The
+  secondary VPA ontology this candidate also depends on is separately
+  licensed CC-BY-4.0 (stated in its own ontology header) -- both licences
+  apply to this candidate's derivation; EUPL-1.2 to the era: namespace
+  content, CC-BY-4.0 to the vpa: namespace content it inlines.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-08-11, third of four ERA sub-standard passes (after
+  era-rinf, era-eratv), from the same ontology.ttl parse plus a second
+  source (see secondarySource above).
+
+  WHY A SECOND ONTOLOGY WAS FETCHED: an initial pass extracting only
+  ontology.ttl found that 12 of 14 candidate ERADIS classes
+  (CABAssessmentCheck, CABAuditCheck, CABAddition, CABCertificate,
+  CABEvidence, CABRestriction, DocumentSet, ForbiddenAssessmentConstraint,
+  MaxDurationConstraint, TechnicalSpecForInteroperability,
+  UnlimitedValidityConstraint, ValidityConstraint) declare ZERO properties of
+  their own directly in the era: namespace -- ontology.ttl only re-uses them
+  as rdfs:subClassOf targets of vpa: (Verified Permissions Ontology) classes
+  (Compliance, Restriction, EvidenceDocument, Evidence, Permission). Rather
+  than publish a dozen near-empty id/type-only entities, the vpa: ontology
+  (https://w3id.org/vpa, resolved via 303 redirect to
+  https://linkedvocabs.org/onto/vpa/ontology.ttl, 932 lines, 31 classes, 67
+  properties) was fetched and parsed the same way, and its own properties on
+  Compliance/Restriction/EvidenceDocument/Evidence/Permission are inlined
+  into the era: leaf classes that subclass them -- e.g. CABAssessmentCheck
+  (subClassOf era:Compliance, which itself has 2 own era: properties AND is
+  rdfs:subClassOf vpa:Compliance, which has 5 more) ends up with 8
+  meaningful properties instead of an empty shell. This is the same
+  cross-ontology inheritance already applied retroactively to era-eratv's
+  VehicleTypeAuthorisation/Application/Case/Check (see that candidate's
+  "UPDATE 2026-08-11" note) -- documented once in full here since ERADIS is
+  where it matters most.
+
+  ENTITY SET (14 top-level NGSI-LD types): Certificate,
+  CABCertificate/CertificationLevelDocument/ECDeclaration (all
+  vpa:EvidenceDocument subclasses -- vpa:EvidenceDocument itself contributed
+  0 own properties, so these three carry only their own era: fields plus the
+  standard envelope), DocumentSet, CABEvidence (era:DocumentSet ->
+  vpa:Evidence, 4 inherited vpa: properties), CABAssessmentCheck/CABAuditCheck
+  (era:Compliance hub), CABAddition/CABRestriction (era:Restriction hub, so
+  also carrying the same ~20-property Restriction vocabulary used by RINF's
+  and ERATV's restriction classes), UnlimitedValidityConstraint,
+  MaxDurationConstraint, ForbiddenAssessmentConstraint,
+  TechnicalSpecForInteroperability (vpa:Requirement hub, 1 inherited
+  property: section).
+
+  NOT PUBLISHED: era:ValidityConstraint itself (abstract hub with 0 own
+  properties, 3 concrete subclasses already published individually -- same
+  "don't publish empty abstract hubs" policy as era:Feature/
+  era:InfrastructureElement in RINF); the vpa: hub classes themselves
+  (Permission, Request, Case, Compliance, Restriction, Evidence,
+  EvidenceDocument, Requirement, Scope) -- used only for inheritance, exactly
+  as era:Feature/InfrastructureElement are in RINF. A dedicated shared "vpa"
+  candidate covering these hubs directly may be worth creating later, since
+  they recur identically across all three registers modeled so far (flagged
+  already in era-eratv's notes).
+
+  MaxDurationConstraint.years / MaxDurationConstraint.months ARE A NAMED
+  EXCEPTION TO "NEVER FABRICATE PROPERTIES": era:MaxDurationConstraint's own
+  rdfs:comment explicitly states it "is a subclass of time:DurationDescription
+  [and] uses time:years (and possibly time:months) to express the duration"
+  -- naming the exact properties -- but the W3C OWL-Time ontology itself
+  (http://www.w3.org/2006/time) was not fetched in this pass (would be a
+  third external ontology dependency for two fields). These two properties
+  were added by hand, quoting the source's own comment as justification, as
+  the one deliberate exception to this session's default of only ever
+  emitting properties actually found in a parsed ontology file.
+
+  DUPLICATION WITH RINF/ERATV: era:Restriction's ~20-property vocabulary
+  (wheelSetGauge, trainDetectionSystemType, protectionLegacySystem,
+  temperatureRange, gaugingProfile, ...) is now inlined into RINF's
+  Restriction-adjacent classes (none directly -- RINF has no Restriction
+  subclass), ERATV's VehicleTypeAuthorisationRestriction, and here into
+  CABAddition/CABRestriction, identically each time, because the source
+  ontology itself re-declares the same property set's domain per concrete
+  subclass rather than relying purely on subClassOf inheritance. This is
+  faithful to the source, not a translation artifact, but worth knowing when
+  comparing schemas across these three candidates.
+
+  CONTROLLED VOCABULARIES: same open string/uri (not enum) treatment as
+  RINF/ERATV, for the same reason.
+
+  EXAMPLE SCENARIO: one fictional safety certificate and its supporting CAB
+  evidence/checks/restrictions, cross-referencing era-eratv's "Fictorail X40"
+  vehicle type and era-rinf's "Fictburg" operational point/border point
+  where a relationship target already exists in a published standard.
+
+  UPDATE 2026-08-11: fetched era-skos and patched 22 enum-constrained
+  Concept-ranged property occurrences (vehicleTypeCategory, state,
+  areaOfOperation's siblings, ...) across this candidate's 14 models, same
+  era:inSkosConceptScheme cross-reference described in era-rinf's
+  standard-metadata.yaml. Note most of ERADIS's own Concept-like fields
+  (complianceResult, checkResult, permissionStatus, ...) come from the vpa:
+  ontology rather than era: and have no era:inSkosConceptScheme annotation
+  at all -- these remain open string/uri, not a gap specific to this pass.
+  All 14 examples re-validated against the now-stricter schemas -- 0
+  failures.

@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eradis/models/DocumentSet/schema.json",
+  "modelTags": "ERA,ERADIS,Railway,Certification,Compliance",
+  "title": "Smart Data Models - ERA ERADIS - DocumentSet",
+  "description": "Application Document Set (era:DocumentSet's own definition, verbatim, in the source ontology): A collection of documents belonging together, as they contain - as a set - evidence in an ERA process like registration or authorisation. Inherits attributes from era:Evidence (inlined here rather than via schema $ref, per this repo's convention).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "DocumentSet"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'DocumentSet'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "statesCompliance": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. stating, through a collective set of evidence providing documents, a (non)compliance, instantiated as a `vpa:Compliance` Target type (Compliance) is not published as its own SDM model yet."
+    },
+    "submittedFor": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. supporting, holding evidence of compliance in order to enable the Permitting Body to verify and permit Target type (Request) is not published as its own SDM model yet."
+    },
+    "supportsCase": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. supporting, as a collective set of evidence providing documents, a specific case, as such also supporting the request Target type (Case) is not published as its own SDM model yet."
+    },
+    "supportsScope": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. supporting, as a collective set of evidence providing documents, a specific, material scope within a case, as such also supporting the request Target type (Scope) is not published as its own SDM model yet."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
