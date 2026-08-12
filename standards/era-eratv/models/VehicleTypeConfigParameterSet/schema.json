@@ -1,0 +1,322 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eratv/models/VehicleTypeConfigParameterSet/schema.json",
+  "modelTags": "ERA,ERATV,Railway,VehicleType",
+  "title": "Smart Data Models - ERA ERATV - VehicleTypeConfigParameterSet",
+  "description": "Vehicle type configuration parameter set (era:VehicleTypeConfigParameterSet's own definition, verbatim, in the source ontology): Stub class linking a VehicleTypeConfiguration (`era:forConfiguration`) with parameters of the VehicleType that depend on that configuration.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "VehicleTypeConfigParameterSet"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'VehicleTypeConfigParameterSet'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "assessedCantDeficiency": {
+      "type": "integer",
+      "description": "Property. Cant deficiency (maximum uncompensated lateral acceleration) for which the vehicle has been assessed. For dual gauge vehicles values for each gauge have to be indicated."
+    },
+    "axleSpacingDistance": {
+      "type": "object",
+      "description": "Property. Position of the axles along the unit. a: Distance between axles; b: Distance from end axle to the end of the nearest coupling plane; c: distance between two inside axles. Embeds era:AxleSpacing (source 'stub' value class, not separately identified).",
+      "properties": {
+        "axleSpacingDistanceA": {
+          "type": "number",
+          "description": "Property. Position of the axles along the unit: a: Distance between axles"
+        },
+        "axleSpacingDistanceB": {
+          "type": "number",
+          "description": "Property. Position of the axles along the unit: b: Distance from end axle to the end of the nearest coupling plane"
+        },
+        "axleSpacingDistanceC": {
+          "type": "number",
+          "description": "Property. Position of the axles along the unit: c: distance between two inside axles."
+        },
+        "axleSpacingExplanation": {
+          "type": "string",
+          "description": "Property. Explanation of the values for a, b and c"
+        }
+      }
+    },
+    "catenaryMaxRatedCurrent": {
+      "type": "integer",
+      "description": "Property. Maximum rated current from the catenary (to be indicated for each electrical energy supply system the vehicle is equipped for), given in A."
+    },
+    "contactStripMaterial": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Indication of which contact strip materials are permitted to be used on the infrastructure or with which the vehicles (of the VehicleType) may be equipped with. (RINF/ERATV register parameter index: 1.1.1.2.3.4) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Contact strip materials' SKOS concept scheme (http://data.europa.eu/949/concepts/contact-strip-materials/ContactStripMaterials), 52 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/contact-strip-materials/10",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/20",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/30",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/40",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/50",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/60",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/70",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/80",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/1950-mm-sk-carbon-with-additive-material-1450-mm-it-si-carbon-with-additive-material-and-coated-with-copper",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/1950-mm-sk-carbon-with-additive-material-1450-mm-si-carbon-with-additive-material-and-coated-with-copper",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/and-coated-with-copper",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/carbon",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/carbon-and-copper-kasperowsy-type",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/carbon-and-steel",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/carbon-bh424c",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/carbon-loaded-copper-called-high-intensity",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/carbon-sk-85-cu",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/carbon-steel-grease",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/carbon-with-additive-material",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/carbon-with-additive-material-and-coated-with-copper",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/carbon-with-additive-material-sk01acu",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/carbon-with-cladded-copper",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/carbon-with-cladded-copper-kasperowski-type-",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/carbon-with-cladded-copper-steel-winter",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/carbon-with-copper-inserts",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/carbon-with-metal",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/carbone-con-inserti-in-rame",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/composite-carbon",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/copper",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/copper-and-steel",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/copper-steel",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/copper-the-locomotive-shall-be-equipped-with-carbon-contact-strips-before-13-06-2021",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/copper-with-additive-material",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/en-gjl-200",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/gemetalliseerd-kool",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/graphite",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/graphite-carbon",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/if-permitted-by-rinf-impregnated-carbon-with-cladded-copper-are-allowed",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/impregnated-carbon-with-additive-material",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/metalized-carbon",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/metallised-carbon-sk85-cu",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/metallized-carbon",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/mixed-material-kasperosky-type-",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/n-a-shoegear",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/n-a-third-rail-shoegear",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/none",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/not-applicable",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/plain-carbon",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/rh85m6",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/sk85acu",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/spheroidal-graphite-cast-iron",
+        "http://data.europa.eu/949/concepts/contact-strip-materials/eratv/steel-winter-"
+      ]
+    },
+    "emergencyBrakeProfile": {
+      "type": "object",
+      "description": "Relationship. Emergency Brake: Stopping distance and deceleration profile for each load condition per design maximum speed. Embeds era:BrakingProfile (source 'stub' value class, not separately identified).",
+      "properties": {
+        "profileDeceleration": {
+          "type": "number",
+          "description": "Property. Maximum train deceleration given in m/s² for a certain braking profile, at design maximum speed."
+        },
+        "profileLoadConditionMass": {
+          "type": "integer",
+          "description": "Property. Load Condition mass defining the braking profile, at design maximum speed."
+        },
+        "profileStoppingDistance": {
+          "type": "integer",
+          "description": "Property. Maximum train stopping distance given in m for a certain braking profile, at design maximum speed."
+        }
+      }
+    },
+    "energySupplyMaxPower": {
+      "type": "number",
+      "description": "Property. Maximum power (to be indicated for each energy supply system the vehicle is equipped for), given in kW."
+    },
+    "etcsBaselineCompatibility": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. If the ETCS Baseline.Version is not fully compatible, it shall be indicated (use era:etcsBaselineIncompleteCompatibility for textual). Controlled-vocabulary value: IRI of a skos:Concept from the relevant ERA code list (see era-skos), not enumerated here as the source ontology leaves this range open."
+    },
+    "forConfiguration": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The configuration for which the ParameterSet or Restriction is valid."
+    },
+    "hasAutomaticDroppingDevice": {
+      "type": "boolean",
+      "description": "Property. Automatic dropping device (ADD) fitted (to be indicated for each energy supply system the vehicle is equipped for)."
+    },
+    "hasBrakingPerformance": {
+      "type": "object",
+      "description": "Property. Braking performance of a vehicle type (configuration). Embeds era:BrakingPerformance (source 'stub' value class, not separately identified).",
+      "properties": {
+        "serviceBrakingProfile": {
+          "type": "string",
+          "format": "uri",
+          "description": "Relationship. Service Brake: Stopping distance and deceleration profile for specific load condition at design maximum speed."
+        },
+        "withBrakedMass": {
+          "type": "number",
+          "description": "Property. Braked mass."
+        },
+        "withBrakedMassPercentage": {
+          "type": "number",
+          "description": "Property. Braked mass percentage (lambda)."
+        }
+      }
+    },
+    "hasCurrentLimitation": {
+      "type": "boolean",
+      "description": "Property. Electric units equipped with power or current limitation function."
+    },
+    "hasOCLChargeableTractionStorage": {
+      "type": "boolean",
+      "description": "Property. Vehicle equipped with electric energy storage for traction purposes and with the function of charging with OCL at standstill."
+    },
+    "hasOnboardEnergyMeasurement": {
+      "type": "boolean",
+      "description": "Property. TSI conform energy meter for billing purposes installed on board."
+    },
+    "hasParkingBrake": {
+      "type": "boolean",
+      "description": "Property. Indicates if a vehicle type (configuration) has a parking brake."
+    },
+    "hasVehicleTypeConfiguration": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. It is used to link a vehicle type configuration set with a vehicle type configuration"
+    },
+    "hasWheelSlideProtectionSystem": {
+      "type": "boolean",
+      "description": "Property. Indicates the presence of a wheel slide protection system."
+    },
+    "massPerWheel": {
+      "type": "number",
+      "description": "Property. Mass per wheel, given in kg."
+    },
+    "maxCurrentStandstillPantograph": {
+      "type": "number",
+      "description": "Property. Indication of the maximum allowable train current at standstill expressed in amperes. (RINF/ERATV register parameter index: 1.1.1.2.2.3, 1.2.2.0.6.1)"
+    },
+    "maximumBrakeThermalEnergyCapacity": {
+      "type": "number",
+      "description": "Property. Maximum brake thermal energy capacity given in kJ"
+    },
+    "maximumDesignSpeed": {
+      "type": "number",
+      "description": "Property. Maximum design speed."
+    },
+    "maximumLocomotivesCoupled": {
+      "type": "integer",
+      "description": "Property. Maximum number of trainsets or locomotives coupled together in multiple operation."
+    },
+    "minVehicleImpedance": {
+      "type": "string",
+      "description": "Property. Impedance as defined in the specification referenced in Appendix A-1, index [D] (RINF/ERATV register parameter index: 1.1.1.3.4.2.2, 1.2.1.1.3.2.2)"
+    },
+    "minimumContactWireHeight": {
+      "type": "number",
+      "description": "Property. Indication of the minimum contact wire height expressed in metres. (RINF/ERATV register parameter index: 1.1.1.2.2.6)"
+    },
+    "numberOfPantographsInContactWithOCL": {
+      "type": "integer",
+      "description": "Property. Number of pantographs in contact with the overhead contact line (OCL) (to be indicated for each energy supply system the vehicle is equipped for)."
+    },
+    "quasiStaticGuidingForce": {
+      "type": "number",
+      "description": "Property. Quasi-static guiding force (if exceeds the limit defined in TSI or not defined in the TSI), given in kN."
+    },
+    "railInclination": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. An angle defining the inclination of the head of a rail relative to the running surface. (RINF/ERATV register parameter index: 1.1.1.1.4.3) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Rail Inclinations' SKOS concept scheme (http://data.europa.eu/949/concepts/rail-inclinations/RailInclinations), 22 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/rail-inclinations/0",
+        "http://data.europa.eu/949/concepts/rail-inclinations/10",
+        "http://data.europa.eu/949/concepts/rail-inclinations/20",
+        "http://data.europa.eu/949/concepts/rail-inclinations/25",
+        "http://data.europa.eu/949/concepts/rail-inclinations/30",
+        "http://data.europa.eu/949/concepts/rail-inclinations/40",
+        "http://data.europa.eu/949/concepts/rail-inclinations/50",
+        "http://data.europa.eu/949/concepts/rail-inclinations/60",
+        "http://data.europa.eu/949/concepts/rail-inclinations/70",
+        "http://data.europa.eu/949/concepts/rail-inclinations/80",
+        "http://data.europa.eu/949/concepts/rail-inclinations/eratv/100",
+        "http://data.europa.eu/949/concepts/rail-inclinations/eratv/110",
+        "http://data.europa.eu/949/concepts/rail-inclinations/eratv/120",
+        "http://data.europa.eu/949/concepts/rail-inclinations/eratv/130",
+        "http://data.europa.eu/949/concepts/rail-inclinations/eratv/140",
+        "http://data.europa.eu/949/concepts/rail-inclinations/eratv/150",
+        "http://data.europa.eu/949/concepts/rail-inclinations/eratv/160",
+        "http://data.europa.eu/949/concepts/rail-inclinations/eratv/170",
+        "http://data.europa.eu/949/concepts/rail-inclinations/eratv/180",
+        "http://data.europa.eu/949/concepts/rail-inclinations/eratv/20-30-40",
+        "http://data.europa.eu/949/concepts/rail-inclinations/eratv/20-40",
+        "http://data.europa.eu/949/concepts/rail-inclinations/eratv/40-20"
+      ]
+    },
+    "shortestDistanceBetweenPantographsInContactWithOCL": {
+      "type": "string",
+      "description": "Property. Shortest distance between two pantographs in contact with the OCL (to be indicated for each energy supply system the vehicle is equipped for; to be indicated for single and, if applicable, multiple operation) (only if number of raised pantographs is more than 1)."
+    },
+    "totalVehicleMass": {
+      "type": "integer",
+      "description": "Property. Total vehicle mass (for each vehicle of the unit), given in kg."
+    },
+    "vehicleContactForce": {
+      "type": "number",
+      "description": "Property. Mean contact force."
+    },
+    "vehicleContactForceFormula": {
+      "type": "string",
+      "description": "Property. Contact force formula."
+    },
+    "vehiclePantographHead": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Pantograph head geometry (to be indicated for each energy supply system the vehicle is equipped for). Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'CompliantPantograph Heads' SKOS concept scheme (http://data.europa.eu/949/concepts/compliant-pantograph-heads/CompliantPantographHeads), 6 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/compliant-pantograph-heads/10",
+        "http://data.europa.eu/949/concepts/compliant-pantograph-heads/20",
+        "http://data.europa.eu/949/concepts/compliant-pantograph-heads/30",
+        "http://data.europa.eu/949/concepts/compliant-pantograph-heads/40",
+        "http://data.europa.eu/949/concepts/compliant-pantograph-heads/50",
+        "http://data.europa.eu/949/concepts/compliant-pantograph-heads/eratv/40"
+      ]
+    },
+    "vehicleTypeMaximumSpeedAndCantDeficiency": {
+      "type": "object",
+      "description": "Property. Relates the vehicle type with its values of maximum speed and cant deficiency. Embeds era:MaximumSpeedAndCantDeficiency (source 'stub' value class, not separately identified).",
+      "properties": {
+        "vehicleTypeMaximumCantDeficiency": {
+          "type": "integer",
+          "description": "Property. Part of the combination of maximum speed and maximum cant deficiency for which the vehicle was assessed. Corresponds to the maximum cant deficiency."
+        },
+        "vehicleTypeMaximumSpeed": {
+          "type": "integer",
+          "description": "Property. Part of the combination of maximum speed and maximum cant deficiency for which the vehicle was assessed. Corresponds to the maximum speed."
+        }
+      }
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-evr/models/VehicleRegistrationApplication/schema.json",
+  "modelTags": "ERA,EVR,Railway,VehicleRegister",
+  "title": "Smart Data Models - ERA EVR - VehicleRegistrationApplication",
+  "description": "Application for Vehicle Registration (era:VehicleRegistrationApplication's own definition, verbatim, in the source ontology): Keepers should fill in an application for registration with the required information (Appendix 4 of EVR Decision).  A keeper shall submit an application for registration through\nthe European Vehicle Register to a Member State of its choice within the area of use of the vehicle.\n\nA VehicleRegistrationApplication traces the state of this process, links to the RegistrationCase(s), and a registration entity independent of any railway undertaking which\nwill be responsible for the processing of the applications and updating of data in the European Vehicle Register. Inherits attributes from era:Request (inlined here rather than via schema $ref, per this repo's convention).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "VehicleRegistrationApplication"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'VehicleRegistrationApplication'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "constitutedBy": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. holds as a complete, independent, possibly sole part, embodies as one element of potentially more Target type (Case) is not published as its own SDM model yet."
+    },
+    "requestFor": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. aiming to be enabled to act as covered by the Permission and its conditions, by receiving Target type (Permission) is not published as its own SDM model yet."
+    },
+    "status": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. the status of the Request, or constituting Case(s), as it is being treated by the PermittingBody Controlled-vocabulary value: IRI of a skos:Concept from the relevant ERA code list (see era-skos), not enumerated here as the source ontology leaves this range open."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

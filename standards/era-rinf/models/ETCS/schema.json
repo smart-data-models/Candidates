@@ -1,0 +1,389 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/ETCS/schema.json",
+  "modelTags": "ERA,RINF,Railway,Infrastructure",
+  "title": "Smart Data Models - ERA RINF - ETCS",
+  "description": "ETCS (era:ETCS's own definition, verbatim, in the source ontology): TSI compliant train protection system ERTMS / ETCS application level and baseline related to the track side equipment.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ETCS"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ETCS'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "dNvovtrp": {
+      "type": "number",
+      "description": "Property. Maximum distance for overriding the train trip in metres, according to the specification referenced in Appendix A-1, index [C]. (RINF register parameter index: 1.1.1.3.2.16.5, 1.2.1.1.1.16.5)",
+      "minimum": 0.0,
+      "maximum": 327670.0
+    },
+    "dNvpotrp": {
+      "type": "number",
+      "description": "Property. Maximum distance for reversing in Post Trip mode in metres, according to the specification referenced in Appendix A-1, index [C]. (RINF register parameter index: 1.1.1.3.2.16.7, 1.2.1.1.1.16.7)",
+      "minimum": 0.0,
+      "maximum": 327670.0
+    },
+    "dNvroll": {
+      "type": "number",
+      "description": "Property. Parameter used by the ETCS on-board to supervise the distance allowed to be travelled under the roll-away protection and the reverse movement protection, in metres\nAccording to the specification referenced in Appendix A-1, index [C] (RINF register parameter index: 1.1.1.3.2.16.1, 1.2.1.1.1.16.1)",
+      "minimum": 0.0,
+      "maximum": 327670.0
+    },
+    "etcsBaseline": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. ETCS baseline installed lineside. (RINF register parameter index: 1.1.1.3.2.2, 1.2.1.1.1.2) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'ETCS Baselines' SKOS concept scheme (http://data.europa.eu/949/concepts/etcs-baselines/ETCSBaselines), 7 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/etcs-baselines/00",
+        "http://data.europa.eu/949/concepts/etcs-baselines/10",
+        "http://data.europa.eu/949/concepts/etcs-baselines/20",
+        "http://data.europa.eu/949/concepts/etcs-baselines/30",
+        "http://data.europa.eu/949/concepts/etcs-baselines/40",
+        "http://data.europa.eu/949/concepts/etcs-baselines/50",
+        "http://data.europa.eu/949/concepts/etcs-baselines/60"
+      ]
+    },
+    "etcsImplementsLevelCrossingProcedure": {
+      "type": "boolean",
+      "description": "Property. If the trackside does not implement any solution to cover non-protected LXs (which are normally protected by means of a technical system), then drivers will be required to comply with instructions received from other sources (RINF register parameter index: 1.1.1.3.2.13, 1.2.1.1.1.13)"
+    },
+    "etcsInfill": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Information about installed trackside equipment capable to transmit infill information by loop or Global System for Mobile communications for Railways (GSM-R) for level 1 installations. (RINF register parameter index: 1.1.1.3.2.4, 1.2.1.1.1.4) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'ETCS Infills' SKOS concept scheme (http://data.europa.eu/949/concepts/etcs-infills/ETCSInfills), 4 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/etcs-infills/10",
+        "http://data.europa.eu/949/concepts/etcs-infills/20",
+        "http://data.europa.eu/949/concepts/etcs-infills/30",
+        "http://data.europa.eu/949/concepts/etcs-infills/40"
+      ]
+    },
+    "etcsInfillLineAccess": {
+      "type": "boolean",
+      "description": "Property. Indication whether infill is required to access the line for safety reasons. (RINF register parameter index: 1.1.1.3.2.3, 1.2.1.1.1.3)"
+    },
+    "etcsLevelType": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. ETCS application level related to the track side equipment. (RINF register parameter index: 1.1.1.3.2.1, 1.2.1.1.1.1) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'ETCS Levels' SKOS concept scheme (http://data.europa.eu/949/concepts/etcs-levels/ETCSLevels), 5 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/etcs-levels/20",
+        "http://data.europa.eu/949/concepts/etcs-levels/30",
+        "http://data.europa.eu/949/concepts/etcs-levels/50",
+        "http://data.europa.eu/949/concepts/etcs-levels/60",
+        "http://data.europa.eu/949/concepts/etcs-levels/70"
+      ]
+    },
+    "etcsMVersion": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. ETCS M_version according to the specification referenced in Appendix A-1, index [C], SRS 7.5.1.79. (RINF register parameter index: 1.1.1.3.2.10, 1.2.1.1.1.10) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'ETCS M Versions' SKOS concept scheme (http://data.europa.eu/949/concepts/etcs-m-versions/ETCSMVersions), 8 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/etcs-m-versions/00",
+        "http://data.europa.eu/949/concepts/etcs-m-versions/10",
+        "http://data.europa.eu/949/concepts/etcs-m-versions/11",
+        "http://data.europa.eu/949/concepts/etcs-m-versions/20",
+        "http://data.europa.eu/949/concepts/etcs-m-versions/21",
+        "http://data.europa.eu/949/concepts/etcs-m-versions/22",
+        "http://data.europa.eu/949/concepts/etcs-m-versions/23",
+        "http://data.europa.eu/949/concepts/etcs-m-versions/30"
+      ]
+    },
+    "etcsSystemCompatibility": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. ETCS requirements used for demonstrating technical compatibility. (RINF register parameter index: 1.1.1.3.2.9, 1.2.1.1.1.9) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'ETCS System Compatibilities' SKOS concept scheme (http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities), 146 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/10",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/101",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/102",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/103",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/105",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/106",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/107",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/108",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/109",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/110",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/111",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/112",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/113",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/114",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/115",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/116",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/117",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/118",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/119",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/120",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/121",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/122",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/123",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/124",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/125",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/126",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/127",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/128",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/20",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/201",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/202",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/203",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/204",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/205",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/206",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/207",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/208",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/209",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/210",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/211",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/212",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/213",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/214",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/215",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/216",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/217",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/218",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/219",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/220",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/221",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/222",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/223",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/224",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/225",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/226",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/227",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/228",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/229",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/230",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/231",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/237",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/239",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/240",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/241",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/242",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/243",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/245",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/246",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/247",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/248",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/249",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/250",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/251",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/252",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/253",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/254",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/255",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/256",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/257",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/258",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/259",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/260",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/261",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/263",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/266",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/267",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/268",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/269",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/270",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/271",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/272",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/273",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/280",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/281",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/282",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/283",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/284",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/285",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/286",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/287",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/288",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/289",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/290",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/291",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/292",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/293",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/294",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/295",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/296",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/297",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/298",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/299",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/30",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/300",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/301",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/50",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/60",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/70",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/71",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/72",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/73",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/74",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/75",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/76",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/77",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/78",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/79",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/80",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/81",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/82",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/83",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/84",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/85",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/86",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/87",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/88",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/89",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/90",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/91",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/92",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/93",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/94",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/95",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/96",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/eratv/ESC-NP-CCS7-4a",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/eratv/Not-applicable"
+      ]
+    },
+    "etcsTransmitsTrackConditions": {
+      "type": "boolean",
+      "description": "Property. If the trackside does not provide Track Conditions, the driver will need to be informed about such conditions via alternative methods.\nAccording to the specification referenced in Appendix A-1, index [C] (RINF register parameter index: 1.1.1.3.2.12, 1.2.1.1.1.12)"
+    },
+    "etcsTransmittedTrackConditions": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Transmittable track conditions by the CCSSubsystem, according to the specification referenced in Appendix A-1, index [C] (RINF register parameter index: 1.1.1.3.2.12.1, 1.2.1.1.1.12.1) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Track Conditions transmitted to the Onboard (Subset-026, version 4.0 - 5.8.12)' SKOS concept scheme (http://data.europa.eu/949/concepts/transmitted-tcs/TransmittedTrackConditions), 14 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/transmitted-tcs/5-8-12-a",
+        "http://data.europa.eu/949/concepts/transmitted-tcs/5-8-12-b",
+        "http://data.europa.eu/949/concepts/transmitted-tcs/5-8-12-c",
+        "http://data.europa.eu/949/concepts/transmitted-tcs/5-8-12-d",
+        "http://data.europa.eu/949/concepts/transmitted-tcs/5-8-12-e",
+        "http://data.europa.eu/949/concepts/transmitted-tcs/5-8-12-f",
+        "http://data.europa.eu/949/concepts/transmitted-tcs/5-8-12-g",
+        "http://data.europa.eu/949/concepts/transmitted-tcs/5-8-12-h",
+        "http://data.europa.eu/949/concepts/transmitted-tcs/5-8-12-i",
+        "http://data.europa.eu/949/concepts/transmitted-tcs/bigMetalMasses",
+        "http://data.europa.eu/949/concepts/transmitted-tcs/switchOffEddyCurrentBrakeForEmergencyBrake",
+        "http://data.europa.eu/949/concepts/transmitted-tcs/switchOffEddyCurrentBrakeForServiceBrake",
+        "http://data.europa.eu/949/concepts/transmitted-tcs/switchOffMagneticShoeBrake",
+        "http://data.europa.eu/949/concepts/transmitted-tcs/switchOffRegenerativeBrake"
+      ]
+    },
+    "hasETCSRestrictionsConditions": {
+      "type": "boolean",
+      "description": "Property. Indication whether restrictions or conditions due to partial compliance with the TSI CCS exist. (RINF register parameter index: 1.1.1.3.2.6, 1.2.1.1.1.6)"
+    },
+    "hasEtcsNationalPacket44": {
+      "type": "boolean",
+      "description": "Property. Indication whether data for national packet 44 applications is transmitted between track and train. (RINF register parameter index: 1.1.1.3.2.5, 1.2.1.1.1.5)"
+    },
+    "mNvcontact": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. On-Board system reaction when T_NVCONTACT expires\nAccording to the specification referenced in Appendix A-1, index [C] (RINF register parameter index: 1.1.1.3.2.16.9, 1.2.1.1.1.16.9) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'ETCS Reactions after expired T_NVCONTACT' SKOS concept scheme (http://data.europa.eu/949/concepts/etcs-reactions-contact/ETCSReactionsNVContact), 4 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/etcs-reactions-contact/00",
+        "http://data.europa.eu/949/concepts/etcs-reactions-contact/01",
+        "http://data.europa.eu/949/concepts/etcs-reactions-contact/10",
+        "http://data.europa.eu/949/concepts/etcs-reactions-contact/11"
+      ]
+    },
+    "mNvderun": {
+      "type": "boolean",
+      "description": "Property. Entry of Driver ID permitted while running According to the specification referenced in Appendix A-1, index [C] (RINF register parameter index: 1.1.1.3.2.16.10, 1.2.1.1.1.16.10)"
+    },
+    "nationalValuesBrakeModel": {
+      "type": "string",
+      "description": "Property. Set of parameters for adapting the braking curves calculated by the ETCS on-board system to match accuracy, performance and safety margins imposed by the infrastructure manager.\nIt copies the content of Packet 3 or of Packet 203 as defined in the specification referenced in Appendix A-1, index [C]. (RINF register parameter index: 1.1.1.3.2.16.13, 1.2.1.1.1.16.13)"
+    },
+    "qNvdriverAdhes": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Qualifier determining whether the driver is allowed to modify the adhesion factor used by the ETCS on-board to calculate the braking curves.\nAccording to the specification referenced in Appendix A-1, index [C] (RINF register parameter index: 1.1.1.3.2.16.11, 1.2.1.1.1.16.11) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Driver allowed to change adhesion factor Qualifiers' SKOS concept scheme (http://data.europa.eu/949/concepts/adhf-qualifier/AdhesionFactorChange), 2 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/adhf-qualifier/0",
+        "http://data.europa.eu/949/concepts/adhf-qualifier/1"
+      ]
+    },
+    "qNvemrrls": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Qualifier defining whether the application of the emergency brake for reasons other than a trip can be revoked as soon as the conditions for it have disappeared or after the train has come to a complete standstill.\nAccording to the specification referenced in Appendix A-1, index [C] (RINF register parameter index: 1.1.1.3.2.16.2, 1.2.1.1.1.16.2) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Emergency Brake Release Command Qualifiers' SKOS concept scheme (http://data.europa.eu/949/concepts/ebr-qualifier/EBReleaseQualifier), 2 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/ebr-qualifier/0",
+        "http://data.europa.eu/949/concepts/ebr-qualifier/1"
+      ]
+    },
+    "qNvsbtsmperm": {
+      "type": "boolean",
+      "description": "Property. Permission to use service brake in target speed monitoring (RINF register parameter index: 1.1.1.3.2.16.12, 1.2.1.1.1.16.12)"
+    },
+    "reasonsEtcsRadioBlockCenterReject": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. List of cases subject to system design choices made by the infrastructure manager according to the specification referenced in Appendix A-1, index [C] (RINF register parameter index: 1.1.1.3.2.15, 1.2.1.1.1.15) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'ETCS Reasons RBC can reject a train' SKOS concept scheme (http://data.europa.eu/949/concepts/etcs-rbc-reject-reasons/ETCSRBCRejectionReasons), 4 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/etcs-rbc-reject-reasons/00",
+        "http://data.europa.eu/949/concepts/etcs-rbc-reject-reasons/01",
+        "http://data.europa.eu/949/concepts/etcs-rbc-reject-reasons/02",
+        "http://data.europa.eu/949/concepts/etcs-rbc-reject-reasons/03"
+      ]
+    },
+    "tNvcontact": {
+      "type": "integer",
+      "description": "Property. Maximum time without a safe message from Radio Block Center before train reacts in seconds.\nAccording to the specification referenced in Appendix A-1, index [C] (RINF register parameter index: 1.1.1.3.2.16.8, 1.2.1.1.1.16.8)",
+      "minimum": 0,
+      "maximum": 255
+    },
+    "tNvovtrp": {
+      "type": "integer",
+      "description": "Property. Maximum time for overriding the train trip in seconds.\nAccording to the specification referenced in Appendix A-1, index [C] (RINF register parameter index: 1.1.1.3.2.16.6, 1.2.1.1.1.16.6)",
+      "minimum": 0,
+      "maximum": 255
+    },
+    "trainIntegrityOnBoardRequired": {
+      "type": "boolean",
+      "description": "Property. Indication whether train confirmation from on-board is required to access the line for safety reasons. (RINF register parameter index: 1.1.1.3.2.8, 1.2.1.1.1.8)"
+    },
+    "vNvallowovtrp": {
+      "type": "integer",
+      "description": "Property. Speed limit allowing the driver to select the  override  function in km/h\nAccording to the specification referenced in Appendix A-1, index [C] (RINF register parameter index: 1.1.1.3.2.16.3, 1.2.1.1.1.16.3)",
+      "minimum": 0,
+      "maximum": 600
+    },
+    "vNvsupovtrp": {
+      "type": "integer",
+      "description": "Property. Override speed limit to be supervised when the \"override\" function is active in km/h.\nAccording to the specification referenced in Appendix A-1, index [C] (RINF register parameter index: 1.1.1.3.2.16.4, 1.2.1.1.1.16.4)",
+      "minimum": 0,
+      "maximum": 600
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/PrimaryLocation/schema.json",
+  "modelTags": "ERA,RINF,Railway,Infrastructure",
+  "title": "Smart Data Models - ERA RINF - PrimaryLocation",
+  "description": "Primary Location (era:PrimaryLocation's own definition, verbatim, in the source ontology): Primary Location is a place used by IM to define a path for a train in TAF/TAP TSI framework/messages. This location is a rail point inside the rail network where train starts, ends, stops, or runs through or change line. This location must be managed by an Infrastructure Manager (IM) identified by company code.\n\nPrimary locations are identified by single and unique Primary Location codes. Primary location code is allocated based on processes defined by national entity. Primary location codes are used in any kind of TAF/TAP communication. Inherits attributes from era:InfrastructureElement/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "PrimaryLocation"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'PrimaryLocation'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "containerHandlingFlag": {
+      "type": "boolean",
+      "description": "Property. Indicates whether a primary location is suitable for handling containers and loading or unloading of containers."
+    },
+    "freightFlag": {
+      "type": "boolean",
+      "description": "Property. Indicates whether a freight train can perform commercial freight activity at a primary location."
+    },
+    "handoverPointFlag": {
+      "type": "boolean",
+      "description": "Property. Indicates whether a primary location is a point where legal responsibility changes between Infrastructure Managers. This can be, but does not have to be, in conjunction with a state border."
+    },
+    "inNUTS3": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Reference to NUTS-3 place or city Controlled-vocabulary value: IRI of a skos:Concept from the relevant ERA code list (see era-skos), not enumerated here as the source ontology leaves this range open."
+    },
+    "passengerFlag": {
+      "type": "boolean",
+      "description": "Property. Indicates whether a passenger train can perform commercial passenger activity at a primary location."
+    },
+    "primaryLocationCode": {
+      "type": "string",
+      "description": "Property. Primary location code developed for information exchange in accordance with the TSIs relating to the telematics applications subsystem. (RINF register parameter index: 1.2.0.0.0.3)"
+    },
+    "primaryLocationName": {
+      "type": "string",
+      "description": "Property."
+    },
+    "belongsTo": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Indicates that an infrastructure element belongs to a certain subset that contains common characteristics. Target type (CommonCharacteristicsSubset) is not published as its own SDM model in this RINF pass."
+    },
+    "canonicalURI": {
+      "type": "string",
+      "description": "Property. The canonical URI is defined for each instance of an Infrastructure element, e.g. section of line, operational point, track, tunnel, siding.\nObjects of the infrastructure generated through RML mappings include (when provided) their validity start and end dates. With its identifier, plus all identifiers of its \"parent\" elements, and its validity dates, a hash URI is generated.\nThe canonical URI is the element's URI with its identifiers and without the validity dates. All of the hash URIs of an element point to its canonical URI.\nAdditionally, SoLs point to the canonical URIs of their start OP and end OP."
+    },
+    "exemptSpecialVehiclesFromATO": {
+      "type": "boolean",
+      "description": "Property. Indicates whether special vehicles are exempted from the need to install ATO (Automatic Train Operation) for this infrastructure element."
+    },
+    "exemptSpecialVehiclesFromETCS": {
+      "type": "boolean",
+      "description": "Property. Indicates whether special vehicles are exempted from the need to install ETCS (European Train Control System) for this infrastructure element."
+    },
+    "exemptSpecialVehiclesFromRMR": {
+      "type": "boolean",
+      "description": "Property. Indicates whether special vehicles are exempted from the need to install RMR (Railway Mobile Radio) for this infrastructure element."
+    },
+    "hasPart": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri",
+        "description": "Relationship. Indicates that an infrastructure element is composed of one or more other (distinct) infrastructure elements.\nThis property is used to represent part-whole relationships between infrastructure elements.\nAn element cannot be a part of itself."
+      },
+      "description": "Relationship. Indicates that an infrastructure element is composed of one or more other (distinct) infrastructure elements.\nThis property is used to represent part-whole relationships between infrastructure elements.\nAn element cannot be a part of itself."
+    },
+    "hashSource": {
+      "type": "string",
+      "description": "Property. This property indicates for each infrastructure element, the source, i.e. the identifier  or key that was input to the hash function in order to generate the hash value that is part of the hash URI."
+    },
+    "inCountry": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Indicates the country in which an entity resides. Controlled-vocabulary value: IRI of a skos:Concept from the relevant ERA code list (see era-skos), not enumerated here as the source ontology leaves this range open."
+    },
+    "infrastructureManager": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Relates a subset with common characteristics with its IM, represented by an instance of organisation role that points to the \"infrastructure manager\" concept in the taxonomy."
+    },
+    "isPartOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri",
+        "description": "Relationship. Indicates that an infrastructure element is a part of another (distinct) infrastructure element.\nAn element cannot be part of itself.\nThis property is the inverse of era:hasPart and represents the partial or whole-part relationship between infrastructure elements."
+      },
+      "description": "Relationship. Indicates that an infrastructure element is a part of another (distinct) infrastructure element.\nAn element cannot be part of itself.\nThis property is the inverse of era:hasPart and represents the partial or whole-part relationship between infrastructure elements."
+    },
+    "netReference": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The reference that a physical infrastructure element has it on the topology. It may be used to define the positioning or a representation as a point, line or area"
+    },
+    "operatingLanguage": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. The language or languages used in daily operation by infrastructure manager and published in its Network Statement, for the communication of operational or safety related messages between the staff of the infrastructure manager and the railway undertaking. (RINF register parameter index: 1.1.0.0.1.2, 1.2.0.0.0.8) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Language' SKOS concept scheme (http://publications.europa.eu/resource/authority/language), 26 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://publications.europa.eu/resource/authority/language/BUL",
+        "http://publications.europa.eu/resource/authority/language/CES",
+        "http://publications.europa.eu/resource/authority/language/DAN",
+        "http://publications.europa.eu/resource/authority/language/DEU",
+        "http://publications.europa.eu/resource/authority/language/ELL",
+        "http://publications.europa.eu/resource/authority/language/ENG",
+        "http://publications.europa.eu/resource/authority/language/EST",
+        "http://publications.europa.eu/resource/authority/language/FIN",
+        "http://publications.europa.eu/resource/authority/language/FRA",
+        "http://publications.europa.eu/resource/authority/language/GLE",
+        "http://publications.europa.eu/resource/authority/language/HRV",
+        "http://publications.europa.eu/resource/authority/language/HUN",
+        "http://publications.europa.eu/resource/authority/language/ITA",
+        "http://publications.europa.eu/resource/authority/language/LAV",
+        "http://publications.europa.eu/resource/authority/language/LIT",
+        "http://publications.europa.eu/resource/authority/language/MLT",
+        "http://publications.europa.eu/resource/authority/language/NLD",
+        "http://publications.europa.eu/resource/authority/language/NOR",
+        "http://publications.europa.eu/resource/authority/language/POL",
+        "http://publications.europa.eu/resource/authority/language/POR",
+        "http://publications.europa.eu/resource/authority/language/RON",
+        "http://publications.europa.eu/resource/authority/language/RUS",
+        "http://publications.europa.eu/resource/authority/language/SLK",
+        "http://publications.europa.eu/resource/authority/language/SLV",
+        "http://publications.europa.eu/resource/authority/language/SPA",
+        "http://publications.europa.eu/resource/authority/language/SWE"
+      ]
+    },
+    "parameterApplicability": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Relates an infrastructure element or a common characteristics subset with the applicability of a certain parameter. Target type (ParameterApplicability) is not published as its own SDM model in this RINF pass."
+    },
+    "primaryLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Primary location code developed for information exchange in accordance with the TSIs relating to the telematics applications subsystem. (RINF register parameter index: 1.2.0.0.0.3)"
+    },
+    "validity": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Relates a feature with a temporal feature to indicate a validity period. Target type (TemporalFeature) is not published as its own SDM model in this RINF pass."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

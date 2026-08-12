@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eradis/models/CertificationLevelDocument/schema.json",
+  "modelTags": "ERA,ERADIS,Railway,Certification,Compliance",
+  "title": "Smart Data Models - ERA ERADIS - CertificationLevelDocument",
+  "description": "Certification Level Document (era:CertificationLevelDocument's own definition, verbatim, in the source ontology): Certification Level Document, as issued by a NoBo in the process of its certification/verification activities [RFU-STR-001]. The class can be reused as well for DeBo and AsBo certificates. Inherits attributes from era:EvidenceDocument (inlined here rather than via schema $ref, per this repo's convention).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "CertificationLevelDocument"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'CertificationLevelDocument'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "resultAnnex": {
+      "type": "string",
+      "description": "Property. Annex of the assessment/audit result"
+    },
+    "resultReport": {
+      "type": "string",
+      "description": "Property. Report about the assessment/audit result (either NoBo File or NoBo Conformity Assessment Report, with identifier, revision, date)"
+    },
+    "resultStatement": {
+      "type": "string",
+      "description": "Property. Statement about the assessment/audit result"
+    },
+    "sequenceStatement": {
+      "type": "string",
+      "description": "Property. Statement about the superceded CLD"
+    },
+    "state": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Denoting the state of the certificate/declaration. Can be in one of the following: Amended, New, Suspended, Withdrawn. Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'States for Evidence Document & Permissions' SKOS concept scheme (http://data.europa.eu/949/concepts/evidence-document-states/DocStates), 15 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/evidence-document-states/amended",
+        "http://data.europa.eu/949/concepts/evidence-document-states/draft",
+        "http://data.europa.eu/949/concepts/evidence-document-states/expired",
+        "http://data.europa.eu/949/concepts/evidence-document-states/inForce",
+        "http://data.europa.eu/949/concepts/evidence-document-states/invalid",
+        "http://data.europa.eu/949/concepts/evidence-document-states/new",
+        "http://data.europa.eu/949/concepts/evidence-document-states/rejected",
+        "http://data.europa.eu/949/concepts/evidence-document-states/renewed",
+        "http://data.europa.eu/949/concepts/evidence-document-states/revocationRequested",
+        "http://data.europa.eu/949/concepts/evidence-document-states/revoked",
+        "http://data.europa.eu/949/concepts/evidence-document-states/submitted",
+        "http://data.europa.eu/949/concepts/evidence-document-states/suspended",
+        "http://data.europa.eu/949/concepts/evidence-document-states/updated",
+        "http://data.europa.eu/949/concepts/evidence-document-states/valid",
+        "http://data.europa.eu/949/concepts/evidence-document-states/withdrawn"
+      ]
+    },
+    "validityStatement": {
+      "type": "string",
+      "description": "Property. Statement about the validity of the CLD"
+    },
+    "checkedCompliance": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The Compliance checks having been documented by the Appropriate Body in the EvidenceDocument. Target type (Compliance) is not published as its own SDM model yet."
+    },
+    "closes": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. within the accredited competencies of the issuer of the EvidenceDocument, confirms that the evidence shown in the context of the Requirement was (not, partially or fully) fulfilled, where needed in presence of a Restriction. Target type (Requirement) is not published as its own SDM model yet."
+    },
+    "documentCase": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. as an Evidence Document, documenting/supporting the Case specifically Target type (Case) is not published as its own SDM model yet."
+    },
+    "documentRequest": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. as an Evidence Document, documenting/supporting the Request as a whole Target type (Request) is not published as its own SDM model yet."
+    },
+    "documentScope": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. as an Evidence Document, documenting/supporting the Scope explicitly Target type (Scope) is not published as its own SDM model yet."
+    },
+    "documentStatus": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. the status of the Evidence Document, from a controlled Vocabulary, expressing how it evolves from being drafted to being valid and eventually possibly revoked/withdrawn. Controlled-vocabulary value: IRI of a skos:Concept from the relevant ERA code list (see era-skos), not enumerated here as the source ontology leaves this range open."
+    },
+    "valid": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. valid during a certain time Target type (Interval) is not published as its own SDM model yet."
+    },
+    "versionNumber": {
+      "type": "integer",
+      "description": "Property. An integer representing any sequence number of a version of an EvidenceDocument. Subsequent EvidenceDocuments SHOULD use `dcterms:isReplacedBy` and `dcterms:replaces` to indicate their relation."
+    },
+    "withRestriction": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. when taken into account in the final act to be permitted, can be accepted if the conditions of the Restriction are fully answered to Target type (Restriction) is not published as its own SDM model yet."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

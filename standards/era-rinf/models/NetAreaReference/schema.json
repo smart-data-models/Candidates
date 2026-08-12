@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/NetAreaReference/schema.json",
+  "modelTags": "ERA,RINF,Railway,Infrastructure",
+  "title": "Smart Data Models - ERA RINF - NetAreaReference",
+  "description": "Net Area Reference (era:NetAreaReference's own definition, verbatim, in the source ontology): Represents an area reference in the network. Inherits attributes from era:NetBasicReference/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "NetAreaReference"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'NetAreaReference'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "includes": {
+      "type": "string",
+      "description": "Property. List of linear references included in an network area reference."
+    },
+    "validity": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Relates a feature with a temporal feature to indicate a validity period. Target type (TemporalFeature) is not published as its own SDM model in this RINF pass."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

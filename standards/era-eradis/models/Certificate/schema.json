@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eradis/models/Certificate/schema.json",
+  "modelTags": "ERA,ERADIS,Railway,Certification,Compliance",
+  "title": "Smart Data Models - ERA ERADIS - Certificate",
+  "description": "Certificate (era:Certificate's own definition, verbatim, in the source ontology): Base class for those Certificates in the ERADIS register, which allow a IOD/SD described process. Inherits attributes from era:Permission (inlined here rather than via schema $ref, per this repo's convention).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Certificate"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Certificate'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "areaOfOperation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. (33) ‘area of operation’ means a network or networks within one or more Member States where a railway undertaking intends to operate.; Controlled-vocabulary value: IRI of a skos:Concept from the relevant ERA code list (see era-skos), not enumerated here as the source ontology leaves this range open."
+    },
+    "borderPointStation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Link a certificate to the border station for operations Target type (OperationalPoint/ReferenceBorderPoint) is published under the era-rinf standard."
+    },
+    "coversDangerousGoods": {
+      "type": "boolean",
+      "description": "Property. Covers for a `type of operation` involving the freight transport of dangerous goods"
+    },
+    "coversHighSpeed": {
+      "type": "boolean",
+      "description": "Property. Covers for `type of operation` of passenger transport services at speeds higher than 250km/h, or speeds considered as such through TEN-T."
+    },
+    "coversOnlyShunting": {
+      "type": "boolean",
+      "description": "Property. Covers for a `type of operation` limited to only shunting operations"
+    },
+    "relatedCertificate": {
+      "type": "string",
+      "description": "Property. Identification number of a related Certificate."
+    },
+    "transportationVolumeFreight": {
+      "type": "string",
+      "description": "Property. The transportation volume for freight services."
+    },
+    "transportationVolumePassenger": {
+      "type": "string",
+      "description": "Property. The transportation volume for passenger services."
+    },
+    "vehicleTypeCategory": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Vehicle Categories' SKOS concept scheme (http://data.europa.eu/949/concepts/vehicle-types/Categories), 4 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/vehicle-types/1X",
+        "http://data.europa.eu/949/concepts/vehicle-types/3X-4X",
+        "http://data.europa.eu/949/concepts/vehicle-types/5X",
+        "http://data.europa.eu/949/concepts/vehicle-types/7X"
+      ]
+    },
+    "vehicleTypeSubCategory": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Indicates the further classification (but not any family/platform) of vehicles within a vehicle category. Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Vehicle Sub Categories' SKOS concept scheme (http://data.europa.eu/949/concepts/vehicle-types/SubCategories), 26 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/vehicle-types/CarCarrier",
+        "http://data.europa.eu/949/concepts/vehicle-types/Coach",
+        "http://data.europa.eu/949/concepts/vehicle-types/DrivingCoach",
+        "http://data.europa.eu/949/concepts/vehicle-types/DrivingVan",
+        "http://data.europa.eu/949/concepts/vehicle-types/EmergencyVehicles",
+        "http://data.europa.eu/949/concepts/vehicle-types/EnvrionmentVehicles",
+        "http://data.europa.eu/949/concepts/vehicle-types/FixedRakeOfCoaches",
+        "http://data.europa.eu/949/concepts/vehicle-types/FreightTrainset",
+        "http://data.europa.eu/949/concepts/vehicle-types/FreightWagon",
+        "http://data.europa.eu/949/concepts/vehicle-types/FreightWagonsRake",
+        "http://data.europa.eu/949/concepts/vehicle-types/HauledSpecialVehicle",
+        "http://data.europa.eu/949/concepts/vehicle-types/InfraInspectionVehicles",
+        "http://data.europa.eu/949/concepts/vehicle-types/Locomotive",
+        "http://data.europa.eu/949/concepts/vehicle-types/OnTrackMachines",
+        "http://data.europa.eu/949/concepts/vehicle-types/OtherHauledPassenger",
+        "http://data.europa.eu/949/concepts/vehicle-types/OtherTractionVehicles",
+        "http://data.europa.eu/949/concepts/vehicle-types/PassengerTrainset",
+        "http://data.europa.eu/949/concepts/vehicle-types/PersonnelCarriage",
+        "http://data.europa.eu/949/concepts/vehicle-types/PowerUnit",
+        "http://data.europa.eu/949/concepts/vehicle-types/Railcar",
+        "http://data.europa.eu/949/concepts/vehicle-types/RoadRailVehicles",
+        "http://data.europa.eu/949/concepts/vehicle-types/SelfPropelledSpecialVehicle",
+        "http://data.europa.eu/949/concepts/vehicle-types/SeparateRailBogies",
+        "http://data.europa.eu/949/concepts/vehicle-types/Shunter",
+        "http://data.europa.eu/949/concepts/vehicle-types/TramTrain",
+        "http://data.europa.eu/949/concepts/vehicle-types/Van"
+      ]
+    },
+    "permissionStatus": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. the status of the Permission, from a controlled Vocabulary, expressing how it evolves from being drafted to being valid and eventually possibly revoked/withdrawn. Controlled-vocabulary value: IRI of a skos:Concept from the relevant ERA code list (see era-skos), not enumerated here as the source ontology leaves this range open."
+    },
+    "permits": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. the process, activity, role or other scope which the Permission allows to the Requesting Body to execute or hold Controlled-vocabulary value: IRI of a skos:Concept from the relevant ERA code list (see era-skos), not enumerated here as the source ontology leaves this range open."
+    },
+    "requestedIn": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. aiming to be enabled to act as covered by the Permission and its conditions, by issuing Target type (Request) is not published as its own SDM model yet."
+    },
+    "submittedIn": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The submission of a permission or evidence to a case Target type (Case) is not published as its own SDM model yet."
+    },
+    "valid": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. valid during a certain time Target type (Interval) is not published as its own SDM model yet."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

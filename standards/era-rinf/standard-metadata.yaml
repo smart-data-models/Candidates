@@ -1,0 +1,204 @@
+title: "ERA RINF (Register of Infrastructure)"
+publisher: "European Union Agency for Railways (ERA)"
+sourceUrl: "https://rinf.data.era.europa.eu/era-vocabulary/"
+sourceOntologyVersion: "ERA Ontology v3.3.3 (released 2026-07-28)"
+sourceOntologyDownload: "https://rinf.data.era.europa.eu/era-vocabulary/ontology.ttl"
+sourceOntologyRepository: "https://gitlab.com/era-europa-eu/public/interoperable-data-programme/era-ontology/era-ontology"
+sourceApplicationGuide: "https://rinf.data.era.europa.eu/era-vocabulary/rinf-appGuide/"
+sourceDOI: "https://doi.org/10.5281/zenodo.15089005"
+domains:
+  - Transportation
+  - SmartCities
+description: >
+  RINF is one of four registers (alongside ERATV, ERADIS, EVR) published under
+  the single ERA Ontology v3.3.3. RINF itself covers the physical and
+  topological railway infrastructure of the EU network: operational points,
+  tracks (running tracks and sidings), sections of line, tunnels, bridges,
+  platforms, level crossings, switches, signals, electrification (contact
+  line systems, pantograph/phase-separation parameters), control-command and
+  signalling (ETCS, Radio Block Centres, train detection systems, GSM-R), and
+  the abstract network/topology graph model (NetElement, LinearElement,
+  NetRelation, linear positioning systems) that ties physical assets to a
+  navigable network representation. This candidate is the RINF sub-standard
+  only; ERATV (authorised vehicle types), ERADIS (authorisation/certification
+  documents), and EVR (vehicle register) are separate sub-standards of the
+  same ontology, planned as later candidates under their own standards/
+  folders (era-eratv, era-eradis, era-evr) since they are distinct subject
+  areas with their own entity graphs, sharing only a handful of admin classes
+  (era:Body, era:OrganisationRole) with RINF.
+license: "European Union Public Licence v1.2 (EUPL-1.2)"
+licenseNote: >
+  Stated directly on the ontology's own publication page. Unambiguous,
+  OSI-approved copyleft-with-compatibility-clause licence; no ShareAlike
+  uncertainty of the kind flagged on other candidates in this repository.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-08-11 from ERA Ontology v3.3.3 (ontology.ttl, ~15,000
+  RDF triples, 131 owl:Class declarations and 859 owl:ObjectProperty /
+  owl:DatatypeProperty / owl:AnnotationProperty declarations across the whole
+  ontology, i.e. all four sub-standards plus imported W3C/OGC vocabularies
+  combined in one file). This pass models RINF only, per explicit scoping
+  decision.
+
+  METHOD: the landing/guide pages ERA publishes are largely client-rendered
+  and only gave descriptive summaries, not literal property names, datatypes
+  or cardinalities. Per explicit instruction, this candidate was built by
+  downloading ontology.ttl directly and parsing it with rdflib (not by
+  transcribing the guide text), then generating schema.json/context.jsonld
+  mechanically from the parsed class/property graph (domains, ranges, xsd
+  datatype restrictions, rdfs:subClassOf, owl:deprecated, and era:rinfIndex/
+  era:applicable/era:formatNote annotation properties actually present in the
+  ontology) so that every property name, IRI, and RINF register index quoted
+  in a schema's description is copied verbatim from the source, not
+  reconstructed from a paraphrase. example.json instances are illustrative
+  (fictional operational points "Fictburg"/"Exemploix" forming one coherent,
+  internally cross-referenced scenario across all 38 entities) since RINF's
+  real register data is not publicly redistributable in bulk from this
+  session; a curated subset of the most visible fields (track gauge, ETCS
+  level, contact line voltage, platform height, line category, gauging
+  profile, IM/organisation codes, document/tunnel/signal identifiers, ...)
+  uses real values/format conventions quoted directly from the RINF
+  Application Guide; the remainder of the ~700 total properties across all
+  38 models use a readable placeholder derived from the property's own
+  ontology label, which is honest about being a placeholder rather than
+  fabricating a precise-looking but invented value for parameters this
+  session has no authoritative source value for.
+
+  ENTITY SET (38 top-level NGSI-LD types): physical infrastructure --
+  OperationalPoint, SectionOfLine, Track, RunningTrack, Siding, Tunnel,
+  Bridge, PlatformEdge, LevelCrossing, Switch, Signal, HABD, RadioBlockCenter,
+  PrimaryLocation, SubsidiaryLocation, ReferenceBorderPoint, SpecialArea,
+  SpecialTunnelArea, KilometricPost; electrification/signalling -- ETCS,
+  ContactLineSystem, TrainDetectionSystem; topology/network graph model
+  (included per explicit instruction) -- LinearElement, LinearElementSection,
+  NonLinearElement, NetRelation, NetAreaReference, NetPointReference,
+  NetLinearReference, LinearPositioningSystem, LinearPositioningSystemCoordinate,
+  TopologicalCoordinate, Orientation, TENTCorridor, LinesideDistanceIndication;
+  cross-cutting -- Document, Body, OrganisationRole.
+
+  ABSTRACT SUPERCLASSES NOT PUBLISHED AS THEIR OWN MODEL: era:Feature,
+  era:InfrastructureElement, era:Track, era:SpecialArea, era:NetElement,
+  era:NetBasicReference declare zero or near-zero properties of their own --
+  all of their real content is the set of properties inherited by their leaf
+  subclasses. Rather than publish empty/near-empty schemas for these, their
+  properties are inlined directly into every leaf entity's own schema.json
+  (e.g. RunningTrack's 136 properties include Track's 6 own properties plus
+  InfrastructureElement's and Feature's own properties, flattened, not
+  referenced via $ref/allOf). era:Track itself DOES get a schema (it has 6
+  own properties and is a concrete, not abstract, class in the ontology)
+  even though its only real instances in practice are its subclasses
+  RunningTrack and Siding.
+
+  VALUE-HOLDER "STUB" CLASSES EMBEDDED AS NESTED OBJECTS, NOT SEPARATE
+  ENTITIES: era:LoadCapability, era:PhaseInfo, era:SystemSeparationInfo,
+  era:RaisedPantographsDistanceAndSpeed, era:MinimumVerticalRadius,
+  era:MinVehicleImpedance, era:MaximumMagneticField, and
+  era:FrenchTrainDetectionSystemLimitation are embedded as nested JSON
+  objects on the one property that references each (e.g.
+  RunningTrack.trackLoadCapability is an object with loadCapabilityLineCategory
+  + loadCapabilitySpeed inline) rather than published as their own
+  id/type/examples NGSI-LD entities. Several of these are explicitly called
+  "Stub class for ..." in the ontology's own rdfs:comment; none carries an
+  identity of its own independent of the parameter it decorates. This
+  mirrors the precedent already set by the brick-schema candidate in this
+  same repository (its resolution/aggregate nested-object treatment of
+  single/few-field Brick wrapper classes).
+
+  DEPRECATED CLASSES AND PROPERTIES EXCLUDED (per owl:deprecated true in the
+  ontology, not just guessed from wording): classes InfrastructureManager,
+  Manufacturer, VehicleKeeper, LineReference, NationalRailwayLine,
+  MinAxleLoadVehicleCategory. Properties -- 100 owl:deprecated true
+  properties found ontology-wide; the RINF-relevant ones excluded include
+  validityStartDate/validityEndDate and currentlyValid on Feature/
+  InfrastructureElement (superseded by era:parameterApplicability's interval
+  model), hasAbstraction, lineReference, infrastructureMgr (superseded by
+  era:netReference and era:infrastructureManager respectively), the bare
+  "track"/"siding"/"platformEdge" direct object properties on OperationalPoint/
+  SectionOfLine/Signal/RunningTrack (apparently superseded by routing physical
+  elements through the topology graph via era:netReference instead of a
+  direct link -- worth confirming with ERA, not stated explicitly anywhere
+  found in this pass), opInfoPerCountry/borderPointOf on OperationalPoint
+  (superseded by era:referenceBorderPoint), and the ~15 "tsiCompliant*"
+  legacy TrainDetectionSystem properties superseded by the Regulation (EU)
+  2019/777 amendment. era:tafTAPCode on OperationalPoint is excluded too --
+  not owl:deprecated but its own rdfs:comment says "Not used anymore. It has
+  been replaced by era:primaryLocationCode", the one case found where the
+  ontology's deprecation flag and its comment text disagree.
+  era:passesThroughTunnel (Track -> Tunnel) IS owl:deprecated in this
+  ontology version with no direct replacement property found -- flagging
+  this one specifically since losing the direct track/tunnel link seems
+  like a real modelling gap, not an intentional simplification like the
+  others above.
+
+  CONTROLLED VOCABULARIES (rdfs:range era:Concept) MODELED AS OPEN STRING/URI,
+  NOT ENUM: roughly a third of all RINF properties point to skos:Concept
+  (e.g. opType, platformHeight, contactLineSystemType, etcsLevelType,
+  lineCategory, gaugingProfile, ...). ontology.ttl itself declares these
+  open (rdfs:range skos:Concept, no owl:oneOf/sh:in enumeration) -- the
+  actual concept-scheme members live in ERA's separate "era-skos" download,
+  not cross-referenced against every property in this pass given the scale
+  (~230 Concept-ranged properties across 38 entities). Modeled as
+  `{"type": "string", "format": "uri"}` (a codelist-IRI Property, not an
+  NGSI-LD Relationship, since concept individuals are not separately
+  published as NGSI-LD entities here) rather than inventing a closed enum
+  the source ontology does not itself declare. A handful of the most visible
+  fields (track gauge, ETCS level, contact line voltage, platform height,
+  line category, gauging profile) use realistic illustrative example values
+  quoted from the RINF Application Guide text; the schema-level constraint
+  remains open on all of them. FOLLOW-UP: fetching era-skos and adding real
+  enum lists per property would meaningfully increase fidelity and is the
+  most valuable next improvement to this candidate.
+
+  RELATIONSHIP TARGETS NOT YET PUBLISHED AS THEIR OWN MODEL IN THIS PASS:
+  era:CommonCharacteristicsSubset (RINF's subset/deduplication grouping
+  mechanism), era:ParameterApplicability (temporal applicability intervals
+  for a parameter value), era:TemporalFeature (validity-period wrapper), and
+  era:Vehicle/era:VehicleType (compatibility-check targets, which properly
+  belong to the planned era-eratv candidate). Properties pointing at these
+  are still typed as NGSI-LD Relationships (string, format uri) rather than
+  silently downgraded to a plain string, since they are genuine links in the
+  source graph -- the schema description on each such property says
+  explicitly which target type is not yet published.
+
+  DUPLICATION RISK, NOT CHECKED IN DETAIL (per this session's established
+  default, consistent with the brick-schema candidate's note): Smart Data
+  Models already publishes dataModel.Transportation (RoadSegment, Corridor,
+  ...) which likely overlaps conceptually with SectionOfLine/LinearElement/
+  NetRelation, and a generic Building/Infrastructure vocabulary that may
+  overlap with Bridge/Tunnel. Should be checked before promoting this
+  candidate out of Candidates/.
+
+  GEOMETRY: Tunnel.startLocation/endLocation are the only direct coordinate
+  properties found in RINF's own classes (era:opengis Point range), modeled
+  as inline GeoJSON Point objects. All other physical infrastructure elements
+  carry no direct lat/lon in the source ontology -- positioning is entirely
+  via the LRS/topology mechanism (KilometricPost, LinearPositioningSystem,
+  NetPointReference/NetLinearReference/NetAreaReference), which is exactly
+  why the topology graph model was included in this pass at the user's
+  explicit request rather than treated as optional plumbing.
+
+  UPDATE 2026-08-11: fetched era-skos (the SKOS concept-scheme file
+  referenced from the same landing page, ~3.9MB TTL, 130 ERA-defined
+  concept schemes, 14,731 concepts) to close the "open codelist" gap noted
+  above. Found that ontology.ttl itself carries an era:inSkosConceptScheme
+  annotation directly on most Concept-ranged properties, pointing at the
+  exact scheme URI -- an authoritative, machine-readable mapping, not a
+  name-guess. Cross-referencing the two files mapped 106 of this candidate's
+  Concept-ranged properties to a real, non-empty scheme; each now has a
+  JSON Schema `enum` of the scheme's real concept IRIs (sizes ranged from 2
+  to 278 concepts) instead of an open string/uri, and example.json values
+  were replaced with real concept IRIs from the matched scheme (previously
+  fabricated placeholders like ".../concepts/opType/1"). All 38 examples
+  re-validated against the now-stricter enum-constrained schemas -- 0
+  failures. Properties still left open (no scheme found): 10 reference
+  external EU Publications Office authority tables (country, language,
+  NUTS) not present in era-skos itself; 2 have a scheme URI in
+  ontology.ttl that doesn't resolve to anything in era-skos (missing
+  "concepts/" path segment or a bare-namespace typo -- source ontology
+  data-quality issues, not this candidate's error); a further handful of
+  vpa:-native Concept properties (e.g. permissionStatus, checkResult) have
+  no era:-specific scheme at all. Fetching the EU Publications Office's own
+  country/language/NUTS authority tables would close the first of these
+  three remaining gaps and is the natural next follow-up.

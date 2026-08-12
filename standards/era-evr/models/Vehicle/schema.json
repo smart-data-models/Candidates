@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-evr/models/Vehicle/schema.json",
+  "modelTags": "ERA,EVR,Railway,VehicleRegister",
+  "title": "Smart Data Models - ERA EVR - Vehicle",
+  "description": "Vehicle (era:Vehicle's own definition, verbatim, in the source ontology): A specific vehicle or wagon able and allowed to operate over railway infrastructure.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Vehicle"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Vehicle'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasCompositeBrakeBlockRetrofitted": {
+      "type": "boolean",
+      "description": "Property. Indicates if a vehicle's composite brake block is retrofitted"
+    },
+    "inVehicleSeries": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Manufacturing series of a vehicle."
+    },
+    "manufacturingCountry": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Indicates the country in which a vehicle or vehicle type is manufactured. Controlled-vocabulary value: IRI of a skos:Concept from the relevant ERA code list (see era-skos), not enumerated here as the source ontology leaves this range open."
+    },
+    "manufacturingSerialNumber": {
+      "type": "string",
+      "description": "Property. Manufacturing serial number as marked on the vehicle frame."
+    },
+    "manufacturingYear": {
+      "type": "integer",
+      "description": "Property. Indicates the year in which a vehicle is manufactured. (xsd:gYear)"
+    },
+    "operationalRestriction": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Indicates an operational restriction of vehicle or wagon. Parking brake type (if the vehicle is fitted with it). Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Restrictions' SKOS concept scheme (http://data.europa.eu/949/concepts/restrictions/Restrictions), 7 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/restrictions/eratv/2-7-1",
+        "http://data.europa.eu/949/concepts/restrictions/eratv/2-7-2",
+        "http://data.europa.eu/949/concepts/restrictions/eratv/2-7-3",
+        "http://data.europa.eu/949/concepts/restrictions/eratv/2-7-4",
+        "http://data.europa.eu/949/concepts/restrictions/eratv/2-7-5",
+        "http://data.europa.eu/949/concepts/restrictions/eratv/2-7-6",
+        "http://data.europa.eu/949/concepts/restrictions/eratv/2-7-7"
+      ]
+    },
+    "previousVehicleNumber": {
+      "type": "string",
+      "description": "Property."
+    },
+    "vehicleECM": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Indicates the organization that is charge of maintenance. Target type (OrganisationRole) is published under the era-rinf standard."
+    },
+    "vehicleKeeper": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Indicates the organization that owns/operated a vehicle or wagon. Target type (OrganisationRole) is published under the era-rinf standard."
+    },
+    "vehicleKeeperMarking": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Indicates the Vehicle Keeper Marking (VKM) associated with a vehicle."
+    },
+    "vehicleNumber": {
+      "type": "string",
+      "description": "Property. European Vehicle Number. Numeric identification code as defined in Appendix 6 of Annex II of the EVR Regulation."
+    },
+    "vehicleOwner": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Indicates the organization that owns a vehicle or wagon. Target type (OrganisationRole) is published under the era-rinf standard."
+    },
+    "vehicleType": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Indicates the vehicle type of a specific vehicle or wagon. Target type (VehicleType) is published under the era-eratv standard."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

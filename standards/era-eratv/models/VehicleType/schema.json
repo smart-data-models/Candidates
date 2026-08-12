@@ -1,0 +1,1792 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eratv/models/VehicleType/schema.json",
+  "modelTags": "ERA,ERATV,Railway,VehicleType",
+  "title": "Smart Data Models - ERA ERATV - VehicleType",
+  "description": "Vehicle Type (era:VehicleType's own definition, verbatim, in the source ontology): A vehicle type that has been authorized to operate on the EU railway infrastructure. Type means a vehicle type defining the basic design characteristics of the vehicle as covered by a type or design examination certificate described in the relevant verification module.\n\nBasic design characteristics means the parameters that are used to identify the vehicle type as specified in the issued vehicle type authorisation and recorded in the European Register of Authorised Vehicle Types ('ERATV').\n\nThe above mentioned certificate should be documented using era:certificate.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "VehicleType"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'VehicleType'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "alternativeTypeName": {
+      "type": "string",
+      "description": "Property. Alternative name of a vehicle type.\nFor the type name, use `rdfs:label`."
+    },
+    "altitudeRange": {
+      "type": "string",
+      "description": "Property. Altitude range A1, A2 or A<integer> (integer era:altitudeRangeDetail)."
+    },
+    "altitudeRangeDetail": {
+      "type": "integer",
+      "description": "Property. Altitude range value for 'X' if value 'AX' is selected in altitude range."
+    },
+    "assessedCantDeficiency": {
+      "type": "integer",
+      "description": "Property. Cant deficiency (maximum uncompensated lateral acceleration) for which the vehicle has been assessed. For dual gauge vehicles values for each gauge have to be indicated."
+    },
+    "atoCommunicationSystem": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Supported ATO communication systems from trackside. (RINF/ERATV register parameter index: 1.1.1.3.13.3, 1.2.1.1.10.3) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'ATO Communication System' SKOS concept scheme (http://data.europa.eu/949/concepts/ato-commsys/ATOCommSystem), 2 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/ato-commsys/gsmr",
+        "http://data.europa.eu/949/concepts/ato-commsys/public"
+      ]
+    },
+    "atoOnBoardImplementation": {
+      "type": "string",
+      "description": "Property. ATO on-board implementation."
+    },
+    "atoSystemVersion": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. ATO system version according to the specification referenced in TSI CCS 2023/1695 (RINF/ERATV register parameter index: 1.1.1.3.13.2, 1.2.1.1.10.2) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'ATO System Versions' SKOS concept scheme (http://data.europa.eu/949/concepts/ato-s-versions/ATOSystemVersions), 2 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/ato-s-versions/0",
+        "http://data.europa.eu/949/concepts/ato-s-versions/1"
+      ]
+    },
+    "axleBearingConditionMonitoring": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Axle bearing condition monitoring. Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Axle Bearing Condition Monitoring' SKOS concept scheme (http://data.europa.eu/949/concepts/axle-monitoring/AxleBearingMonitoring), 4 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/axle-monitoring/eratv/Not_applicable_due_to_low_travelling_speed_acc_to_iDeBo_Assessment",
+        "http://data.europa.eu/949/concepts/axle-monitoring/eratv/Onboard",
+        "http://data.europa.eu/949/concepts/axle-monitoring/eratv/SpecificCase",
+        "http://data.europa.eu/949/concepts/axle-monitoring/eratv/Trackside"
+      ]
+    },
+    "axleSpacing": {
+      "type": "string",
+      "description": "Property. Position of the axles along the unit. a: Distance between axles; b: Distance from end axle to the end of the nearest coupling plane; c: distance between two inside axles."
+    },
+    "axleSpacingDistance": {
+      "type": "object",
+      "description": "Property. Position of the axles along the unit. a: Distance between axles; b: Distance from end axle to the end of the nearest coupling plane; c: distance between two inside axles. Embeds era:AxleSpacing (source 'stub' value class, not separately identified).",
+      "properties": {
+        "axleSpacingDistanceA": {
+          "type": "number",
+          "description": "Property. Position of the axles along the unit: a: Distance between axles"
+        },
+        "axleSpacingDistanceB": {
+          "type": "number",
+          "description": "Property. Position of the axles along the unit: b: Distance from end axle to the end of the nearest coupling plane"
+        },
+        "axleSpacingDistanceC": {
+          "type": "number",
+          "description": "Property. Position of the axles along the unit: c: distance between two inside axles."
+        },
+        "axleSpacingExplanation": {
+          "type": "string",
+          "description": "Property. Explanation of the values for a, b and c"
+        }
+      }
+    },
+    "boardingAids": {
+      "type": "string",
+      "description": "Property. Description of any integrated boarding aids (if provided)."
+    },
+    "brakeWeightPercentage": {
+      "type": "string",
+      "description": "Property. Brake weight percentage (lambda) or Braked mass."
+    },
+    "certificate": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. For this Vehicle Type (and its underlying authorisation cases),\n- the type or design examination certificate (`era:CertificationLevelDocument`) described in the relevant verification module as issued by Notified Bodies, supporting the EC Declaration(s) of Verification for the subsystems in scope of the type's authorisation by an authorizing entity.\n- a National certificate reference (`vpa:EvidenceDocument`)\n\nUse only if no link can be made with the underlying authorisation and its presented certificates. Target type (EvidenceDocument) is not published as its own SDM model yet."
+    },
+    "compatibleWithLineCategory": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Indicates the EN line categories with which a vehicle type is compatible. Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Line Categories' SKOS concept scheme (http://data.europa.eu/949/concepts/line-category/LineCategories), 14 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/line-category/10",
+        "http://data.europa.eu/949/concepts/line-category/100",
+        "http://data.europa.eu/949/concepts/line-category/110",
+        "http://data.europa.eu/949/concepts/line-category/120",
+        "http://data.europa.eu/949/concepts/line-category/130",
+        "http://data.europa.eu/949/concepts/line-category/140",
+        "http://data.europa.eu/949/concepts/line-category/20",
+        "http://data.europa.eu/949/concepts/line-category/30",
+        "http://data.europa.eu/949/concepts/line-category/40",
+        "http://data.europa.eu/949/concepts/line-category/50",
+        "http://data.europa.eu/949/concepts/line-category/60",
+        "http://data.europa.eu/949/concepts/line-category/70",
+        "http://data.europa.eu/949/concepts/line-category/80",
+        "http://data.europa.eu/949/concepts/line-category/90"
+      ]
+    },
+    "configDependentParameter": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. This property is used to link a vehicle type with a configuration parameter set, which is a group of parameters which depend on a VehicleTypeConfiguration."
+    },
+    "dangerousGoodsTankCode": {
+      "type": "string",
+      "description": "Property. Dangerous goods for which the vehicle is suitable (tank code)."
+    },
+    "dataGSMRNetwork": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Data SIM Card GSM-R Home Network. Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'GSM-R Networks' SKOS concept scheme (http://data.europa.eu/949/concepts/gsmr-networks/GSMRNetworks), 40 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/gsmr-networks/10",
+        "http://data.europa.eu/949/concepts/gsmr-networks/100",
+        "http://data.europa.eu/949/concepts/gsmr-networks/110",
+        "http://data.europa.eu/949/concepts/gsmr-networks/120",
+        "http://data.europa.eu/949/concepts/gsmr-networks/130",
+        "http://data.europa.eu/949/concepts/gsmr-networks/140",
+        "http://data.europa.eu/949/concepts/gsmr-networks/150",
+        "http://data.europa.eu/949/concepts/gsmr-networks/160",
+        "http://data.europa.eu/949/concepts/gsmr-networks/170",
+        "http://data.europa.eu/949/concepts/gsmr-networks/180",
+        "http://data.europa.eu/949/concepts/gsmr-networks/190",
+        "http://data.europa.eu/949/concepts/gsmr-networks/20",
+        "http://data.europa.eu/949/concepts/gsmr-networks/200",
+        "http://data.europa.eu/949/concepts/gsmr-networks/210",
+        "http://data.europa.eu/949/concepts/gsmr-networks/220",
+        "http://data.europa.eu/949/concepts/gsmr-networks/230",
+        "http://data.europa.eu/949/concepts/gsmr-networks/240",
+        "http://data.europa.eu/949/concepts/gsmr-networks/250",
+        "http://data.europa.eu/949/concepts/gsmr-networks/260",
+        "http://data.europa.eu/949/concepts/gsmr-networks/270",
+        "http://data.europa.eu/949/concepts/gsmr-networks/280",
+        "http://data.europa.eu/949/concepts/gsmr-networks/290",
+        "http://data.europa.eu/949/concepts/gsmr-networks/30",
+        "http://data.europa.eu/949/concepts/gsmr-networks/300",
+        "http://data.europa.eu/949/concepts/gsmr-networks/310",
+        "http://data.europa.eu/949/concepts/gsmr-networks/320",
+        "http://data.europa.eu/949/concepts/gsmr-networks/330",
+        "http://data.europa.eu/949/concepts/gsmr-networks/340",
+        "http://data.europa.eu/949/concepts/gsmr-networks/350",
+        "http://data.europa.eu/949/concepts/gsmr-networks/360",
+        "http://data.europa.eu/949/concepts/gsmr-networks/370",
+        "http://data.europa.eu/949/concepts/gsmr-networks/380",
+        "http://data.europa.eu/949/concepts/gsmr-networks/390",
+        "http://data.europa.eu/949/concepts/gsmr-networks/40",
+        "http://data.europa.eu/949/concepts/gsmr-networks/400",
+        "http://data.europa.eu/949/concepts/gsmr-networks/50",
+        "http://data.europa.eu/949/concepts/gsmr-networks/60",
+        "http://data.europa.eu/949/concepts/gsmr-networks/70",
+        "http://data.europa.eu/949/concepts/gsmr-networks/80",
+        "http://data.europa.eu/949/concepts/gsmr-networks/90"
+      ]
+    },
+    "dataRadioCompatible": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Radio requirements used for demonstrating technical compatibility data. (RINF/ERATV register parameter index: 1.1.1.3.3.10, 1.2.1.1.2.10) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Radio System Compatibilities Data' SKOS concept scheme (http://data.europa.eu/949/concepts/radio-system-compatibilities-data/RadioSystemCompatibilitiesData), 37 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/10",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/100",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/110",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/111",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/112",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/113",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/114",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/115",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/160",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/20",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/50",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/501",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/502",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/503",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/504",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/505",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/506",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/507",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/508",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/509",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/510",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/511",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/512",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/513",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/514",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/515",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/516",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/60",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/61",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/62",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/63",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/64",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/70",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/80",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/90",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/eratv/RSC-NP-CCS7-4a",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-data/eratv/not-applicable"
+      ]
+    },
+    "designMassExceptionalPayload": {
+      "type": "integer",
+      "description": "Property. Design mass under exceptional payload."
+    },
+    "designMassNormalPayload": {
+      "type": "integer",
+      "description": "Property. Design mass under normal payload."
+    },
+    "designMassWorkingOrder": {
+      "type": "integer",
+      "description": "Property. Design mass in working order."
+    },
+    "drivingCabs": {
+      "type": "integer",
+      "description": "Property. Number of driving cabs.\n\nFor vehicle types without driving cabs, this property should not be used, or the number of driving cabs is to be set to zero (0)."
+    },
+    "endCouplingType": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Type of end coupling (indicating tensile and compressive forces). Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'End Coupling Type' SKOS concept scheme (http://data.europa.eu/949/concepts/end-coupling-type/EndCouplingType), 76 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/1-mn-according-to-en-15566-a1-article-4-1",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/1000_kN_850_kN",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/100kN_draw_hook_850_kN_coupler",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/1350_1500_kN",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/1350kN_screw_coupling_and_1500kN_draw_hook",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/1_side_manual_-_UIC_1_side_GF",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/850_Kn_screw_coupling",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Alternative_manual_end_coupling",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Automatic",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Automatic_Type_10",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Automatic_Type_10_Dellner_Nordic_variant",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Automatic_Type_10_Scharfenberg",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Automatic_Type_10_Schwab",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Automatic_Type_10_tensile_force1000_kN_compressive_force_1500_kN_yield",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Automatic_Type_12",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Automatic_Type_12_Scharfenberg",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Automatic_Type_35_Scharfenberg",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Automatic_coupler_DELLNER_Typ_12",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Automatic_coupler_with_integrated_screw_coupler",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/C",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/C_according_to_UIC_520_app._8",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Coupleur_inter-caisse_manuel_UIC_520",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Crochet_1500_kN_tendeur_dattelage_1350_kN",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Dellner_Type_12_Autocoupler",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Draw_gear_and_hook_1000kN_Screw_coupler_850kN",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Drawhook",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Ext_1_Coupleur_automatique_FKG-15-10-59R-EL",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/FK-15-8-5-200H_EL_Schwab",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/GF_Coupling_on_drivers_cab_side_manual_UIC_on_other_side",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Inter_machine_coupling_acc_to_EN_15746-1_with_towing_rod",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Manual",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Manual_Tensile_force_850_kN",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Manual_UIC_135_100_t",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Manual_UIC_135_150t",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Manual_UIC_85_100_t",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Manual_UIC_type_1_buffer_1500_k_Fdraw_gear",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Manual_coupling_SA3",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Manual_semi-permament",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/No_standard",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/None",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Other_specify",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/RG_15_1000kN",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/RK900",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Ringfeder_86_G_145_Ringfeder_4040_G145",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Rockinger_RO841B4",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/SA-3_Couplers",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/SA-3_Couplers_Automatic_coupler_with_integrated_screw_coupler",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/SA-3_coupler_with_integrated_screw_coupler",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Scharfenberg",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Scharfenberg_Typ_20",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Scharfenberg_type_GF_traction_1000_N_compression_1500_N",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Schwab",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Schwab_FK-15-8-5-200_H-EL",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Screw_coupling_850_kN",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Semi-Automatic",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Tensile_1000_kN_compressive_1500_kN",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Type_10_Nordic",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/UIC",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/UIC_520",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/UIC_850_kN",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/UIC_hook_crew_coupling_122t_ultimate_force",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/UIC_skruvkoppel",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/Vapiti",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/buffer_1500_kN_draw_gear_1000_kN_screw_coupling_850_kN",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/buffer_1500_kN_draw_gear_1000_kN_screw_coupling_KL_850_kN_screw_coupling_KL2_1350_kN",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/crochet_de_traction",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/crochet_de_traction_pas_de_tendeur",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/draw_gear_Stabeg_KN_5019_buffer",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/manual_1-000kN_tensile_300kN_Buffer_coupler_compressive_force",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/manual_and_automatic",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/mechanically_and_pneumatically_COUPLING",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/pouze_pro_nouzove_odtazeni",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/screw_coupling",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/semi-permanent_coupler",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/type_330",
+        "http://data.europa.eu/949/concepts/end-coupling-type/eratv/with_screw"
+      ]
+    },
+    "energySupplySystem": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Indication of the traction supply system (nominal voltage and frequency). (RINF/ERATV register parameter index: 1.1.1.2.2.1.2) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Energy Supply Systems' SKOS concept scheme (http://data.europa.eu/949/concepts/energy-supply-systems/EnergySupplySystems), 19 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/energy-supply-systems/AC10",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/AC20",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/DC30",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/DC40",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/DC60",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/DC70",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/DC80",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/DC90",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/1-2kv",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/1000V-ac-16-2-3hz",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/1000v-ac-50hz",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/1500v-ac-50hz",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/3x400v-50hz",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/autonomous",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/dc-1-5kv-specific-case-fr",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/hybrid",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/none-for-hauled-passenger-vehicles-and-special-vehicles",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/notFitted",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/three-phase"
+      ]
+    },
+    "etcsBaseline": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. ETCS baseline installed lineside. (RINF/ERATV register parameter index: 1.1.1.3.2.2, 1.2.1.1.1.2) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'ETCS Baselines' SKOS concept scheme (http://data.europa.eu/949/concepts/etcs-baselines/ETCSBaselines), 7 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/etcs-baselines/00",
+        "http://data.europa.eu/949/concepts/etcs-baselines/10",
+        "http://data.europa.eu/949/concepts/etcs-baselines/20",
+        "http://data.europa.eu/949/concepts/etcs-baselines/30",
+        "http://data.europa.eu/949/concepts/etcs-baselines/40",
+        "http://data.europa.eu/949/concepts/etcs-baselines/50",
+        "http://data.europa.eu/949/concepts/etcs-baselines/60"
+      ]
+    },
+    "etcsBaselineCompatibility": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. If the ETCS Baseline.Version is not fully compatible, it shall be indicated (use era:etcsBaselineIncompleteCompatibility for textual). Controlled-vocabulary value: IRI of a skos:Concept from the relevant ERA code list (see era-skos), not enumerated here as the source ontology leaves this range open."
+    },
+    "etcsDataCommApp": {
+      "type": "string",
+      "description": "Property. Data communication application for ETCS implementation."
+    },
+    "etcsEquipmentOnBoardLevel": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. ETCS equipment on-board and its level. Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'ETCS Equipment Levels' SKOS concept scheme (http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/ETCSEquipmentLevels), 17 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Decision_2006_679_EC_Set_1",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Decision_2006_860_EC_Set_1",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Decision_2008_386_EC_Set_1",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Decision_2012_463_EU_Set_1",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Decision_2012_696_EU_Set_1",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Decision_2012_696_EU_Set_2",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Decision_2015_14_Set_1",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Decision_2015_14_Set_2",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Implementing_Regulation_EU_2019_776_Set_1",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Implementing_Regulation_EU_2019_776_Set_2",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Implementing_Regulation_EU_2020_420_Only_German_Set_2",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Implementing_Regulation_EU_2020_420_Only_German_Set_3",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Implementing_Regulation__EU_2020_387_Set_2",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Regulation_2016_919_Set_1",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Regulation_2016_919_Set_2",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Regulation_2016_919_Set_3",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/eratv/Regulation_2020_387_Set_3"
+      ]
+    },
+    "etcsInfill": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Information about installed trackside equipment capable to transmit infill information by loop or Global System for Mobile communications for Railways (GSM-R) for level 1 installations. (RINF/ERATV register parameter index: 1.1.1.3.2.4, 1.2.1.1.1.4) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'ETCS Infills' SKOS concept scheme (http://data.europa.eu/949/concepts/etcs-infills/ETCSInfills), 4 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/etcs-infills/10",
+        "http://data.europa.eu/949/concepts/etcs-infills/20",
+        "http://data.europa.eu/949/concepts/etcs-infills/30",
+        "http://data.europa.eu/949/concepts/etcs-infills/40"
+      ]
+    },
+    "etcsNationalApplications": {
+      "type": "string",
+      "description": "Property. ETCS national applications implemented (NID_XUSER of Packet 44)."
+    },
+    "etcsOnBoardImplementation": {
+      "type": "string",
+      "description": "Property. ETCS on-board implementation."
+    },
+    "etcsOnboardSystemVersions": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Envelope of legally operated ETCS system versions Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'ETCS M Versions' SKOS concept scheme (http://data.europa.eu/949/concepts/etcs-m-versions/ETCSMVersions), 8 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/etcs-m-versions/00",
+        "http://data.europa.eu/949/concepts/etcs-m-versions/10",
+        "http://data.europa.eu/949/concepts/etcs-m-versions/11",
+        "http://data.europa.eu/949/concepts/etcs-m-versions/20",
+        "http://data.europa.eu/949/concepts/etcs-m-versions/21",
+        "http://data.europa.eu/949/concepts/etcs-m-versions/22",
+        "http://data.europa.eu/949/concepts/etcs-m-versions/23",
+        "http://data.europa.eu/949/concepts/etcs-m-versions/30"
+      ]
+    },
+    "etcsSystemCompatibility": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. ETCS requirements used for demonstrating technical compatibility. (RINF/ERATV register parameter index: 1.1.1.3.2.9, 1.2.1.1.1.9) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'ETCS System Compatibilities' SKOS concept scheme (http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities), 146 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/10",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/101",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/102",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/103",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/105",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/106",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/107",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/108",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/109",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/110",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/111",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/112",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/113",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/114",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/115",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/116",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/117",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/118",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/119",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/120",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/121",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/122",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/123",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/124",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/125",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/126",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/127",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/128",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/20",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/201",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/202",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/203",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/204",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/205",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/206",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/207",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/208",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/209",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/210",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/211",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/212",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/213",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/214",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/215",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/216",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/217",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/218",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/219",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/220",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/221",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/222",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/223",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/224",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/225",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/226",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/227",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/228",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/229",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/230",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/231",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/237",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/239",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/240",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/241",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/242",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/243",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/245",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/246",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/247",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/248",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/249",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/250",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/251",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/252",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/253",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/254",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/255",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/256",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/257",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/258",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/259",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/260",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/261",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/263",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/266",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/267",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/268",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/269",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/270",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/271",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/272",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/273",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/280",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/281",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/282",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/283",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/284",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/285",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/286",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/287",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/288",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/289",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/290",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/291",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/292",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/293",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/294",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/295",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/296",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/297",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/298",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/299",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/30",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/300",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/301",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/50",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/60",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/70",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/71",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/72",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/73",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/74",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/75",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/76",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/77",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/78",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/79",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/80",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/81",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/82",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/83",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/84",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/85",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/86",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/87",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/88",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/89",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/90",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/91",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/92",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/93",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/94",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/95",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/96",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/eratv/ESC-NP-CCS7-4a",
+        "http://data.europa.eu/949/concepts/etcs-system-compatibilities/eratv/Not-applicable"
+      ]
+    },
+    "fireSafetyCategory": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Fire safety category for tunnels. Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Rolling Stock Fire Categories' SKOS concept scheme (http://data.europa.eu/949/concepts/rolling-stock-fire/Categories), 9 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/rolling-stock-fire/10",
+        "http://data.europa.eu/949/concepts/rolling-stock-fire/20",
+        "http://data.europa.eu/949/concepts/rolling-stock-fire/30",
+        "http://data.europa.eu/949/concepts/rolling-stock-fire/eratv/10",
+        "http://data.europa.eu/949/concepts/rolling-stock-fire/eratv/20",
+        "http://data.europa.eu/949/concepts/rolling-stock-fire/eratv/no-category-acceptable-in-unnels-shorter-then-1km",
+        "http://data.europa.eu/949/concepts/rolling-stock-fire/eratv/not-applicable",
+        "http://data.europa.eu/949/concepts/rolling-stock-fire/eratv/otm",
+        "http://data.europa.eu/949/concepts/rolling-stock-fire/eratv/srt-tsi"
+      ]
+    },
+    "fixedSeats": {
+      "type": "string",
+      "description": "Property. Number of fixed seats (min to max number)."
+    },
+    "gaugingProfile": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Gauges as defined in European standard or other local gauges, including lower or upper part. (RINF/ERATV register parameter index: 1.1.1.1.3.1.1, 1.2.1.0.3.4) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Gauging Profiles' SKOS concept scheme (http://data.europa.eu/949/concepts/gaugings/GaugingProfiles), 101 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/gaugings/10",
+        "http://data.europa.eu/949/concepts/gaugings/100",
+        "http://data.europa.eu/949/concepts/gaugings/110",
+        "http://data.europa.eu/949/concepts/gaugings/120",
+        "http://data.europa.eu/949/concepts/gaugings/130",
+        "http://data.europa.eu/949/concepts/gaugings/140",
+        "http://data.europa.eu/949/concepts/gaugings/150",
+        "http://data.europa.eu/949/concepts/gaugings/160",
+        "http://data.europa.eu/949/concepts/gaugings/170",
+        "http://data.europa.eu/949/concepts/gaugings/180",
+        "http://data.europa.eu/949/concepts/gaugings/190",
+        "http://data.europa.eu/949/concepts/gaugings/20",
+        "http://data.europa.eu/949/concepts/gaugings/200",
+        "http://data.europa.eu/949/concepts/gaugings/210",
+        "http://data.europa.eu/949/concepts/gaugings/220",
+        "http://data.europa.eu/949/concepts/gaugings/230",
+        "http://data.europa.eu/949/concepts/gaugings/240",
+        "http://data.europa.eu/949/concepts/gaugings/250",
+        "http://data.europa.eu/949/concepts/gaugings/260",
+        "http://data.europa.eu/949/concepts/gaugings/270",
+        "http://data.europa.eu/949/concepts/gaugings/280",
+        "http://data.europa.eu/949/concepts/gaugings/290",
+        "http://data.europa.eu/949/concepts/gaugings/30",
+        "http://data.europa.eu/949/concepts/gaugings/300",
+        "http://data.europa.eu/949/concepts/gaugings/310",
+        "http://data.europa.eu/949/concepts/gaugings/320",
+        "http://data.europa.eu/949/concepts/gaugings/330",
+        "http://data.europa.eu/949/concepts/gaugings/340",
+        "http://data.europa.eu/949/concepts/gaugings/341",
+        "http://data.europa.eu/949/concepts/gaugings/342",
+        "http://data.europa.eu/949/concepts/gaugings/350",
+        "http://data.europa.eu/949/concepts/gaugings/360",
+        "http://data.europa.eu/949/concepts/gaugings/370",
+        "http://data.europa.eu/949/concepts/gaugings/380",
+        "http://data.europa.eu/949/concepts/gaugings/389",
+        "http://data.europa.eu/949/concepts/gaugings/390",
+        "http://data.europa.eu/949/concepts/gaugings/40",
+        "http://data.europa.eu/949/concepts/gaugings/400",
+        "http://data.europa.eu/949/concepts/gaugings/410",
+        "http://data.europa.eu/949/concepts/gaugings/411",
+        "http://data.europa.eu/949/concepts/gaugings/412",
+        "http://data.europa.eu/949/concepts/gaugings/413",
+        "http://data.europa.eu/949/concepts/gaugings/414",
+        "http://data.europa.eu/949/concepts/gaugings/415",
+        "http://data.europa.eu/949/concepts/gaugings/416",
+        "http://data.europa.eu/949/concepts/gaugings/417",
+        "http://data.europa.eu/949/concepts/gaugings/418",
+        "http://data.europa.eu/949/concepts/gaugings/419",
+        "http://data.europa.eu/949/concepts/gaugings/420",
+        "http://data.europa.eu/949/concepts/gaugings/421",
+        "http://data.europa.eu/949/concepts/gaugings/422",
+        "http://data.europa.eu/949/concepts/gaugings/423",
+        "http://data.europa.eu/949/concepts/gaugings/424",
+        "http://data.europa.eu/949/concepts/gaugings/425",
+        "http://data.europa.eu/949/concepts/gaugings/426",
+        "http://data.europa.eu/949/concepts/gaugings/427",
+        "http://data.europa.eu/949/concepts/gaugings/428",
+        "http://data.europa.eu/949/concepts/gaugings/429",
+        "http://data.europa.eu/949/concepts/gaugings/430",
+        "http://data.europa.eu/949/concepts/gaugings/431",
+        "http://data.europa.eu/949/concepts/gaugings/432",
+        "http://data.europa.eu/949/concepts/gaugings/433",
+        "http://data.europa.eu/949/concepts/gaugings/434",
+        "http://data.europa.eu/949/concepts/gaugings/435",
+        "http://data.europa.eu/949/concepts/gaugings/436",
+        "http://data.europa.eu/949/concepts/gaugings/437",
+        "http://data.europa.eu/949/concepts/gaugings/438",
+        "http://data.europa.eu/949/concepts/gaugings/50",
+        "http://data.europa.eu/949/concepts/gaugings/510",
+        "http://data.europa.eu/949/concepts/gaugings/520",
+        "http://data.europa.eu/949/concepts/gaugings/530",
+        "http://data.europa.eu/949/concepts/gaugings/540",
+        "http://data.europa.eu/949/concepts/gaugings/541",
+        "http://data.europa.eu/949/concepts/gaugings/60",
+        "http://data.europa.eu/949/concepts/gaugings/70",
+        "http://data.europa.eu/949/concepts/gaugings/80",
+        "http://data.europa.eu/949/concepts/gaugings/90",
+        "http://data.europa.eu/949/concepts/gaugings/eratv/csn-28-0312",
+        "http://data.europa.eu/949/concepts/gaugings/eratv/de3-lower-parts-gi2",
+        "http://data.europa.eu/949/concepts/gaugings/eratv/dk1",
+        "http://data.europa.eu/949/concepts/gaugings/eratv/g1-gi1",
+        "http://data.europa.eu/949/concepts/gaugings/eratv/g1-gi2",
+        "http://data.europa.eu/949/concepts/gaugings/eratv/g1-gl1",
+        "http://data.europa.eu/949/concepts/gaugings/eratv/g1-up-and-gi2-down",
+        "http://data.europa.eu/949/concepts/gaugings/eratv/g1-with-gic2-upper-parts",
+        "http://data.europa.eu/949/concepts/gaugings/eratv/g2-gl1-with-timber-casette-20-feet",
+        "http://data.europa.eu/949/concepts/gaugings/eratv/galibo-renfe-01-10-86",
+        "http://data.europa.eu/949/concepts/gaugings/eratv/gb-gi2",
+        "http://data.europa.eu/949/concepts/gaugings/eratv/gb-m6",
+        "http://data.europa.eu/949/concepts/gaugings/eratv/gc-gl1",
+        "http://data.europa.eu/949/concepts/gaugings/eratv/gl1",
+        "http://data.europa.eu/949/concepts/gaugings/eratv/n01",
+        "http://data.europa.eu/949/concepts/gaugings/eratv/nl-dutch-network",
+        "http://data.europa.eu/949/concepts/gaugings/eratv/nntr-bek-1465-bilag-3",
+        "http://data.europa.eu/949/concepts/gaugings/eratv/ocf-02",
+        "http://data.europa.eu/949/concepts/gaugings/eratv/per-altesse-greater-3250-mm-previsto-505-1",
+        "http://data.europa.eu/949/concepts/gaugings/eratv/per-altesse-less-3250-mm-rispetta-uic-505-1",
+        "http://data.europa.eu/949/concepts/gaugings/eratv/uic-505-1",
+        "http://data.europa.eu/949/concepts/gaugings/eratv/uic-505-1-excluding-doorsteps",
+        "http://data.europa.eu/949/concepts/gaugings/eratv/w6a-uk-network",
+        "http://data.europa.eu/949/concepts/gaugings/eratv/w6a-upper-lower-sectors-uk-network"
+      ]
+    },
+    "gsmRRadioDataCommunication": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. GSM-R Radio Data communication on board and its Baseline. Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'GSM-R Radio Data Communications' SKOS concept scheme (http://data.europa.eu/949/concepts/gsm-r-radio-data-communication/GSMRRadioDataCommunications), 14 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/gsm-r-radio-data-communication/eratv/Decision_2006_860_EC_Set_1",
+        "http://data.europa.eu/949/concepts/gsm-r-radio-data-communication/eratv/Decision_2012_463_EU_Set_1",
+        "http://data.europa.eu/949/concepts/gsm-r-radio-data-communication/eratv/Decision_2012_696_EU_Set_1",
+        "http://data.europa.eu/949/concepts/gsm-r-radio-data-communication/eratv/Decision_2012_696_EU_Set_2",
+        "http://data.europa.eu/949/concepts/gsm-r-radio-data-communication/eratv/Decision_2012_88_EU_Set_1",
+        "http://data.europa.eu/949/concepts/gsm-r-radio-data-communication/eratv/Decision_2015_14_Set_1",
+        "http://data.europa.eu/949/concepts/gsm-r-radio-data-communication/eratv/Implementing_Regulation_EU_2019_776_Set_1",
+        "http://data.europa.eu/949/concepts/gsm-r-radio-data-communication/eratv/Implementing_Regulation_EU_2019_776_Set_2",
+        "http://data.europa.eu/949/concepts/gsm-r-radio-data-communication/eratv/Implementing_Regulation_EU_2020420_Only_German_Set_2",
+        "http://data.europa.eu/949/concepts/gsm-r-radio-data-communication/eratv/Implementing_Regulation_EU_2020_420_Only_German_Set_1",
+        "http://data.europa.eu/949/concepts/gsm-r-radio-data-communication/eratv/Implementing_Regulation_EU_2020_420_Only_German_Set_3",
+        "http://data.europa.eu/949/concepts/gsm-r-radio-data-communication/eratv/None",
+        "http://data.europa.eu/949/concepts/gsm-r-radio-data-communication/eratv/Regulation_2016_919_Set_1",
+        "http://data.europa.eu/949/concepts/gsm-r-radio-data-communication/eratv/Regulation_2016_919_Set_2"
+      ]
+    },
+    "gsmRSetsInDrivingCab": {
+      "type": "integer",
+      "description": "Property. Number of GSM-R mobile sets in driving cab for data transmission."
+    },
+    "gsmRVersion": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. GSM-R functional requirements specification (FRS) and system requirements specification (SRS) in accordance with the specification respectively referenced in Appendix A-1, index [E] and index [F], version number or baseline installed. (RINF/ERATV register parameter index: 1.1.1.3.3.1, 1.2.1.1.2.1) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'GSM-R Versions' SKOS concept scheme (http://data.europa.eu/949/concepts/gsmr-versions/GSMRVersions), 13 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/gsmr-versions/00",
+        "http://data.europa.eu/949/concepts/gsmr-versions/50",
+        "http://data.europa.eu/949/concepts/gsmr-versions/eratv/6-14",
+        "http://data.europa.eu/949/concepts/gsmr-versions/eratv/7-15",
+        "http://data.europa.eu/949/concepts/gsmr-versions/eratv/7-3-0_15-3-0-Decision-2012-696-EU_Set_1",
+        "http://data.europa.eu/949/concepts/gsmr-versions/eratv/7-3-0_15-3-0-Decision-2012-696-EU_Set_2",
+        "http://data.europa.eu/949/concepts/gsmr-versions/eratv/7-4-0_15-4-0-Decision-2015-14_Set_1",
+        "http://data.europa.eu/949/concepts/gsmr-versions/eratv/7-4-0_15-4-0-Decision-2015-14_Set_2",
+        "http://data.europa.eu/949/concepts/gsmr-versions/eratv/8-0-0_16-0-0-Regulation-2016-919_Set_1",
+        "http://data.europa.eu/949/concepts/gsmr-versions/eratv/8-0-0_16-0-0-Regulation-2016-919_Set_2",
+        "http://data.europa.eu/949/concepts/gsmr-versions/eratv/8-0-0_16-0-0-Regulation-2016-919_Set_3",
+        "http://data.europa.eu/949/concepts/gsmr-versions/eratv/8-1-0_16-1-0",
+        "http://data.europa.eu/949/concepts/gsmr-versions/eratv/Implementing_Regulation_EU_2023-1695_B1MR1"
+      ]
+    },
+    "hasBrakingPerformance": {
+      "type": "object",
+      "description": "Property. Braking performance of a vehicle type (configuration). Embeds era:BrakingPerformance (source 'stub' value class, not separately identified).",
+      "properties": {
+        "serviceBrakingProfile": {
+          "type": "string",
+          "format": "uri",
+          "description": "Relationship. Service Brake: Stopping distance and deceleration profile for specific load condition at design maximum speed."
+        },
+        "withBrakedMass": {
+          "type": "number",
+          "description": "Property. Braked mass."
+        },
+        "withBrakedMassPercentage": {
+          "type": "number",
+          "description": "Property. Braked mass percentage (lambda)."
+        }
+      }
+    },
+    "hasCantDefficiencyCompensation": {
+      "type": "boolean",
+      "description": "Property. Vehicle equipped with a cant deficiency compensation system (tilting vehicle)."
+    },
+    "hasCantDeficiencyCompensation": {
+      "type": "boolean",
+      "description": "Property. Vehicle equipped with a cant deficiency compensation system (tilting vehicle)."
+    },
+    "hasCurrentLimitation": {
+      "type": "boolean",
+      "description": "Property. Electric units equipped with power or current limitation function."
+    },
+    "hasEddyCurrentBrake": {
+      "type": "boolean",
+      "description": "Property. Eddy current track brake fitted. New property defined to distinguish it from eddyCurrentBraking which is a RINF SKOS property."
+    },
+    "hasEddyCurrentBrakePrevention": {
+      "type": "boolean",
+      "description": "Property. Possibility of preventing the use of the eddy current track brake (only if fitted with eddy current brake)"
+    },
+    "hasFerromagneticWheelMaterial": {
+      "type": "boolean",
+      "description": "Property. Wheel material is ferromagnetic."
+    },
+    "hasFlangeLubrication": {
+      "type": "boolean",
+      "description": "Property. Indicates if the vehicle type is fitted for flange lubrication."
+    },
+    "hasLubricationDevicePrevention": {
+      "type": "boolean",
+      "description": "Property. Possibility of preventing the use of the lubrication device (only if fitted with flange lubrication)."
+    },
+    "hasMagneticBrake": {
+      "type": "boolean",
+      "description": "Property. Magnetic track brake fitted. New property defined to distinguish it from magneticBraking which is a RINF SKOS property."
+    },
+    "hasMagneticBrakePrevention": {
+      "type": "boolean",
+      "description": "Property. Possibility of preventing the use of the magnetic track brake (only if fitted with magnetic brake)"
+    },
+    "hasMandatoryParkingBrake": {
+      "type": "boolean",
+      "description": "Property. All vehicles of this type must be equipped with a parking brake (parking brake mandatory for vehicles of this type)."
+    },
+    "hasOnboardDerailmentFunction": {
+      "type": "boolean",
+      "description": "Property. Presence of derailment prevention and detection function."
+    },
+    "hasParkingBrake": {
+      "type": "boolean",
+      "description": "Property. Indicates if a vehicle type (configuration) has a parking brake."
+    },
+    "hasRegenerativeBrake": {
+      "type": "boolean",
+      "description": "Property. Indication whether regenerative braking is permitted or not."
+    },
+    "hasRegenerativeBrakePrevention": {
+      "type": "boolean",
+      "description": "Property. Possibility of preventing the use of the regenerative brake (only if fitted with regenerative brake)."
+    },
+    "hasSandingPrevention": {
+      "type": "boolean",
+      "description": "Property. Possibility of preventing the use of sanding."
+    },
+    "hasShuntingRestrictions": {
+      "type": "boolean",
+      "description": "Property. Indicates the presence of shunting restrictions."
+    },
+    "hasSignalProcessingDerailmentFunction": {
+      "type": "boolean",
+      "description": "Property. Presence of derailment prevention and detection by signal processing."
+    },
+    "hasTrainIntegrityConfirmation": {
+      "type": "boolean",
+      "description": "Property. Managing information about the completeness of the train"
+    },
+    "hasWheelSlideProtectionSystem": {
+      "type": "boolean",
+      "description": "Property. Indicates the presence of a wheel slide protection system."
+    },
+    "includedVersionsVariant": {
+      "type": "string",
+      "description": "Property. Reserved for VehicleTypes authorised under the Fourth Railway Package (Since 2018/545).\n\nComplementing the vehicleTypeNumber of 10 characters, is a combination of maximally two 3-digit groups ('ZZZ[-VVV]'), which represent\nthe type's evolution after creation, as versions (of variants), variants (of variants), be it never as variants of versions."
+    },
+    "isPassByNoiseMeasuredUnderReferenceConditions": {
+      "type": "boolean",
+      "description": "Property. Pass-by noise level was measured under reference conditions."
+    },
+    "isTransportableOnFerry": {
+      "type": "boolean",
+      "description": "Property. Indicates the suitability for transport on ferries."
+    },
+    "legacyRadioSystem": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Indication of radio legacy systems installed. (RINF/ERATV register parameter index: 1.1.1.3.6.1, 1.2.1.1.5.1) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Legacy Radio Systems' SKOS concept scheme (http://data.europa.eu/949/concepts/legacy-radio-systems/LegacyRadioSystems), 133 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/101",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/102",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/103",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/104",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/105",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/106",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/107",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/108",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/109",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/110",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/111",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/112",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/113",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/114",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/115",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/116",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/117",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/118",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/119",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/120",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/121",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/122",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/123",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/124",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/125",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/26",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/27",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/28",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/29",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/30",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/31",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/32",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/33",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/34",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/35",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/36",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/37",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/38",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/39",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/40",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/41",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/42",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/43",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/44",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/45",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/46",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/47",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/48",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/49",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/50",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/51",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/52",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/53",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/54",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/55",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/56",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/57",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/58",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/59",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/60",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/61",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/62",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/63",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/64",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/65",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/66",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/67",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/68",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/69",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/70",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/71",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/72",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/73",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/74",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/75",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/76",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/77",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/78",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/79",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/80",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/81",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/82",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/83",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/84",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/85",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/86",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/87",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/88",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/89",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/90",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/91",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/92",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/93",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/94",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/95",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/96",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/97",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/98",
+        "http://data.europa.eu/949/concepts/eratv/legacy-radio-systems/99",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/01",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/02",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/03",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/04",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/05",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/06",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/07",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/08",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/09",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/10",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/100",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/11",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/12",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/13",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/14",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/15",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/16",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/17",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/18",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/19",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/20",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/21",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/22",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/23",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/24",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/25",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/26",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/27",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/28",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/29",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/30",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/31",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/32",
+        "http://data.europa.eu/949/concepts/legacy-radio-systems/33"
+      ]
+    },
+    "legacyRadioSystemComment": {
+      "type": "string",
+      "description": "Property. ADDITIONAL COMMENTS ON: Class B or other radio systems installed"
+    },
+    "lengthOfVehicle": {
+      "type": "number",
+      "description": "Property."
+    },
+    "loadingPlatformHeight": {
+      "type": "integer",
+      "description": "Property. Height of loading platform (for flat wagons and combined transport), given in mm."
+    },
+    "manufacturingCountry": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Indicates the country in which a vehicle or vehicle type is manufactured. Controlled-vocabulary value: IRI of a skos:Concept from the relevant ERA code list (see era-skos), not enumerated here as the source ontology leaves this range open."
+    },
+    "massPerWheel": {
+      "type": "number",
+      "description": "Property. Mass per wheel, given in kg."
+    },
+    "maxDistConsecutiveAxle": {
+      "type": "integer",
+      "description": "Property. Indication of maximum permitted distance between two consecutive axles in case of TSI non-compliance, given in millimetres."
+    },
+    "maxFlangeHeight": {
+      "type": "number",
+      "description": "Property. Deprecated according to the amendment to the Regulation (EU) 2019/777. However, the parameter remains as it is also an ERATV parameter. Maximum flange height, given in millimetres."
+    },
+    "maxLengthVehicleNose": {
+      "type": "integer",
+      "description": "Property. Maximum length of the vehicle nose."
+    },
+    "maximumAverageDeceleration": {
+      "type": "number",
+      "description": "Property. Maximum train deceleration given in m/s²."
+    },
+    "maximumBrakeThermalEnergyCapacity": {
+      "type": "number",
+      "description": "Property. Maximum brake thermal energy capacity given in kJ"
+    },
+    "maximumContactWireHeight": {
+      "type": "number",
+      "description": "Property. Indication of the maximum contact wire height expressed in metres. (RINF/ERATV register parameter index: 1.1.1.2.2.5)"
+    },
+    "maximumDesignSpeed": {
+      "type": "number",
+      "description": "Property. Maximum design speed."
+    },
+    "maximumLocomotivesCoupled": {
+      "type": "integer",
+      "description": "Property. Maximum number of trainsets or locomotives coupled together in multiple operation."
+    },
+    "minAxleLoad": {
+      "type": "number",
+      "description": "Property. Minimum (permitted) axle load, given in tonnes."
+    },
+    "minDistConsecutiveAxle": {
+      "type": "integer",
+      "description": "Property."
+    },
+    "minDistFirstLastAxle": {
+      "type": "integer",
+      "description": "Property."
+    },
+    "minFlangeHeight": {
+      "type": "number",
+      "description": "Property."
+    },
+    "minFlangeThickness": {
+      "type": "number",
+      "description": "Property."
+    },
+    "minInServiceWheelDiameter": {
+      "type": "integer",
+      "description": "Property. Minimum in-service wheel diameter expressed in millimetres."
+    },
+    "minRimWidth": {
+      "type": "number",
+      "description": "Property. Minimum wheel rim width"
+    },
+    "minWheelDiameter": {
+      "type": "integer",
+      "description": "Property."
+    },
+    "minimumConcaveVerticalRadius": {
+      "type": "number",
+      "description": "Property. Minimum vertical concave curve radius capability."
+    },
+    "minimumConvexVerticalRadius": {
+      "type": "number",
+      "description": "Property. Minimum vertical convex curve radius capability."
+    },
+    "minimumHorizontalRadius": {
+      "type": "number",
+      "description": "Property. Radius of the smallest horizontal curve of the track in metres. (RINF/ERATV register parameter index: 1.1.1.1.3.7, 1.2.2.0.3.2)"
+    },
+    "nonCodedRestrictions": {
+      "type": "string",
+      "description": "Property. Groups the non-coded restrictions, as a set of sentences. Can be used for any subClassOf `era:Restriction`."
+    },
+    "numberOfToilet": {
+      "type": "integer",
+      "description": "Property. Number of toilets."
+    },
+    "operationalMassNormalPayload": {
+      "type": "integer",
+      "description": "Property. Operational mass under normal payload."
+    },
+    "operationalMassWorkingOrder": {
+      "type": "integer",
+      "description": "Property. Operational mass in working order."
+    },
+    "parkingBrakeMaximumGradient": {
+      "type": "number",
+      "description": "Property. Maximum gradient on which the unit is kept immobilised by the parking brake alone (if the vehicle is fitted with it)."
+    },
+    "passByNoiseLevel": {
+      "type": "number",
+      "description": "Property. Pass-by noise level given in dB(A)."
+    },
+    "permissiblePayloadForLineCategory": {
+      "type": "object",
+      "description": "Property. Permissible payload for different line categories. Embeds era:PermissiblePayload (source 'stub' value class, not separately identified).",
+      "properties": {
+        "forLineCategory": {
+          "type": "string",
+          "format": "uri",
+          "description": "Property. Allows to link a configuration parameter set to a line category Controlled-vocabulary value: IRI of a skos:Concept from the relevant ERA code list (see era-skos), not enumerated here as the source ontology leaves this range open."
+        },
+        "permissiblePayloadMass": {
+          "type": "number",
+          "description": "Property."
+        }
+      }
+    },
+    "portableBoardingAids": {
+      "type": "string",
+      "description": "Property. Description of any portable boarding aids if considered in the design of the vehicle for meeting the PRM TSI requirements."
+    },
+    "previousVehicleType": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Denotes a previous VehicleType."
+    },
+    "prioritySeat": {
+      "type": "string",
+      "description": "Property. Number of priority seats (min to max number)."
+    },
+    "prmAccessibleToilet": {
+      "type": "integer",
+      "description": "Property. Number of PRM accessible toilets."
+    },
+    "protectionLegacySystem": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Indication of which class B system is installed. (RINF/ERATV register parameter index: 1.1.1.3.5.3, 1.2.1.1.4.1) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Train Protection Legacy Systems' SKOS concept scheme (http://data.europa.eu/949/concepts/train-protection-legacy-systems/TrainProtectionLegacySystems), 136 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/00",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/01",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/02",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/03",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/04",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/05",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/06",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/07",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/08",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/09",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/10",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/11",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/12",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/13",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/14",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/15",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/16",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/17",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/18",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/19",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/20",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/21",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/22",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/23",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/24",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/25",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/26",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/27",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/28",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/29",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/30",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/31",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/32",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/33",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/34",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/35",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/36",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/37",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/38",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/39",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/40",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/41",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/42",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/43",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/44",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/45",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/46",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/47",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/48",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/49",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/50",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/51",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/52",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/53",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/54",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/55",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/56",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/57",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/58",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/59",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/60",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/61",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/2-Systeme-ZBS-mit-Fahrzeuggerat-Zub242t-der-Siemens-AG-und-mechanische-Fahrsperre",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/3SL-2M",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/ALSN-KLUB-U",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/ALSN-KPD-3PV",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/ALSN-and-EPV-KPD-3PA",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/ATB-ATB-EG-met-Vv-functionaliteit",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/ATC",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/ATESS",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/ATESS-BRS",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/ATF",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/ATP-RSDD-SCMT",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/ATP00-9G016AF-Baseline-1-2-8",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/AWS",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/BL3-version-2-4-0A",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/CA",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/Crocodile-Ebicab",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/DK-STM-ZUB-123",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/EBULA",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/EDA-3100-ELM-2003",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/ETCS-L1-LS-KVB",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/Ebicab-500",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/Ebicab-500-600",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/Ebicab-600",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/Ebicab-700",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/Ebicab-900",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/EuroSIGNUM",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/EuroZUB",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/GNT-Geschwindigkeitsuberwachung-fur-NeiTech-ZugeZub-262",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/GNT-ZUB-262",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/GSMR",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/INDUSI-PZB",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/Indusi-PZB-PZB-90-I60R",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/Integra-Signum",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/Integra-ZUB-262",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/KARM",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/LZB-LZB-L72-and-LZB-L72-CE-I",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/LZB80E",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/MEMOR",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/MIREL-RM2",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/MIREL-VZ1",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/Mirel",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/No-Class-B-train-radio-systems-fitted-AWS-trainborne-equipment-is-fitted-TPWS-train-sub-system-is-provided",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/PZB",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/PZB-I60R",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/PZB-LZB80E",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/RS",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/Radio-Stop",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/SA",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/SCMT-07-02",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/SIFA",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/SSB--SCMT-SSC-BL3",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/SSC-BL3",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/SSC-SCMT-BL3",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/STM",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/STM-A-KVB",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/STM-ATC-2",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/STM-LZB",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/STM1N-3R2",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/STM2N-ATP-VR-RHK",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/Systeme-SACEM-et-KCVB-ligne-A-du-RER",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/TACHYMETRIE",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/TBL1",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/TBL2",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/TPWS",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/Tripcock",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/VAD",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/VEPS",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/VEPS-V-1-5-1-6",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/ZSL90",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/ZUB-262",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/ZUB-262-ct-Bistandard-TRAINGUARD200-Signum",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/ZUB-262ct",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/ZUB-262ct-Integra",
+        "http://data.europa.eu/949/concepts/train-protection-legacy-systems/eratv/nav-informacijas"
+      ]
+    },
+    "protectionLegacySystemComment": {
+      "type": "string",
+      "description": "Property. ADDITIONAL COMMENTS ON: Class B or other train protection, control and warning systems installed"
+    },
+    "radioSwitchOverSpecialCondition": {
+      "type": "string",
+      "description": "Property. Special conditions implemented on-board to switch over between different radio systems. Given as combination of systems installed on board ('System XX'_'System YY')."
+    },
+    "railInclination": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. An angle defining the inclination of the head of a rail relative to the running surface. (RINF/ERATV register parameter index: 1.1.1.1.4.3) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Rail Inclinations' SKOS concept scheme (http://data.europa.eu/949/concepts/rail-inclinations/RailInclinations), 22 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/rail-inclinations/0",
+        "http://data.europa.eu/949/concepts/rail-inclinations/10",
+        "http://data.europa.eu/949/concepts/rail-inclinations/20",
+        "http://data.europa.eu/949/concepts/rail-inclinations/25",
+        "http://data.europa.eu/949/concepts/rail-inclinations/30",
+        "http://data.europa.eu/949/concepts/rail-inclinations/40",
+        "http://data.europa.eu/949/concepts/rail-inclinations/50",
+        "http://data.europa.eu/949/concepts/rail-inclinations/60",
+        "http://data.europa.eu/949/concepts/rail-inclinations/70",
+        "http://data.europa.eu/949/concepts/rail-inclinations/80",
+        "http://data.europa.eu/949/concepts/rail-inclinations/eratv/100",
+        "http://data.europa.eu/949/concepts/rail-inclinations/eratv/110",
+        "http://data.europa.eu/949/concepts/rail-inclinations/eratv/120",
+        "http://data.europa.eu/949/concepts/rail-inclinations/eratv/130",
+        "http://data.europa.eu/949/concepts/rail-inclinations/eratv/140",
+        "http://data.europa.eu/949/concepts/rail-inclinations/eratv/150",
+        "http://data.europa.eu/949/concepts/rail-inclinations/eratv/160",
+        "http://data.europa.eu/949/concepts/rail-inclinations/eratv/170",
+        "http://data.europa.eu/949/concepts/rail-inclinations/eratv/180",
+        "http://data.europa.eu/949/concepts/rail-inclinations/eratv/20-30-40",
+        "http://data.europa.eu/949/concepts/rail-inclinations/eratv/20-40",
+        "http://data.europa.eu/949/concepts/rail-inclinations/eratv/40-20"
+      ]
+    },
+    "safeConsistLengthInformationNecessary": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Indication whether safe consist train length information from on-board is required to access the line for safety reasons and the required safety integrity level. (RINF/ERATV register parameter index: 1.1.1.3.2.11, 1.2.1.1.1.11) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Safe Consistent Length required with SIL' SKOS concept scheme (http://data.europa.eu/949/concepts/safe-consist-length/SafeConsistLengthNecessary), 3 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/safe-consist-length/00",
+        "http://data.europa.eu/949/concepts/safe-consist-length/02",
+        "http://data.europa.eu/949/concepts/safe-consist-length/04"
+      ]
+    },
+    "sleepingPlace": {
+      "type": "string",
+      "description": "Property. Number of sleeping places (min to max number)"
+    },
+    "snowIceHailConditions": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Snow, ice and hail conditions. Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Ice Conditions' SKOS concept scheme (http://data.europa.eu/949/concepts/ice-conditions/IceConditions), 5 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/ice-conditions/Nominal",
+        "http://data.europa.eu/949/concepts/ice-conditions/S1",
+        "http://data.europa.eu/949/concepts/ice-conditions/S2",
+        "http://data.europa.eu/949/concepts/ice-conditions/S3",
+        "http://data.europa.eu/949/concepts/ice-conditions/Severe"
+      ]
+    },
+    "startingNoiseLevel": {
+      "type": "number",
+      "description": "Property. starting noise level given in dB(A)."
+    },
+    "staticAxleLoadExceptionalPayload": {
+      "type": "number",
+      "description": "Property. Static axle load under exceptional payload."
+    },
+    "staticAxleLoadNormalPayload": {
+      "type": "number",
+      "description": "Property. Static axle load under normal payload."
+    },
+    "staticAxleLoadWorkingOrder": {
+      "type": "number",
+      "description": "Property. Static axle load in working order."
+    },
+    "stationaryNoiseLevel": {
+      "type": "number",
+      "description": "Property. stationary noise level given in dB(A)."
+    },
+    "supportedPlatformHeight": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Platform height for which the vehicle is designed. Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Platform Heights' SKOS concept scheme (http://data.europa.eu/949/concepts/platform-heights/PlatformHeights), 67 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/platform-heights/10",
+        "http://data.europa.eu/949/concepts/platform-heights/100",
+        "http://data.europa.eu/949/concepts/platform-heights/110",
+        "http://data.europa.eu/949/concepts/platform-heights/120",
+        "http://data.europa.eu/949/concepts/platform-heights/130",
+        "http://data.europa.eu/949/concepts/platform-heights/140",
+        "http://data.europa.eu/949/concepts/platform-heights/150",
+        "http://data.europa.eu/949/concepts/platform-heights/160",
+        "http://data.europa.eu/949/concepts/platform-heights/20",
+        "http://data.europa.eu/949/concepts/platform-heights/220",
+        "http://data.europa.eu/949/concepts/platform-heights/30",
+        "http://data.europa.eu/949/concepts/platform-heights/300",
+        "http://data.europa.eu/949/concepts/platform-heights/350",
+        "http://data.europa.eu/949/concepts/platform-heights/380",
+        "http://data.europa.eu/949/concepts/platform-heights/40",
+        "http://data.europa.eu/949/concepts/platform-heights/50",
+        "http://data.europa.eu/949/concepts/platform-heights/60",
+        "http://data.europa.eu/949/concepts/platform-heights/70",
+        "http://data.europa.eu/949/concepts/platform-heights/80",
+        "http://data.europa.eu/949/concepts/platform-heights/90",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/0",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/1-47m",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/1030",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/1070_1150",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/1080",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/1190_mm",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/1_060",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/200-550",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/250-350",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/250-550_mm",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/250_300",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/265",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/270",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/290",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/300-1000",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/300-900mm",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/300_to_1000_mm",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/320",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/350_550",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/350_mm",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/350_mm_to_760_mm",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/360",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/380_550",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/385",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/385-750",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/385-760",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/500",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/530",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/540_760",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/550_1150",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/550_760",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/585",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/600",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/650",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/700",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/70_550",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/750",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/760_840",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/790",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/800",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/830",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/860",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/915_1100",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/915_to_1100mm",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/Over_than_900mm_until_1150mm",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/from_300_to_1000_mm",
+        "http://data.europa.eu/949/concepts/platform-heights/eratv/from_300_to_900_mm"
+      ]
+    },
+    "temperatureRange": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Temperature range for unrestricted access to the line. (RINF/ERATV register parameter index: 1.1.1.1.2.6) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Temperature ranges' SKOS concept scheme (http://data.europa.eu/949/concepts/temperature-ranges/TemperatureRanges), 4 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/temperature-ranges/10",
+        "http://data.europa.eu/949/concepts/temperature-ranges/20",
+        "http://data.europa.eu/949/concepts/temperature-ranges/30",
+        "http://data.europa.eu/949/concepts/temperature-ranges/40"
+      ]
+    },
+    "thermalCapacityDistance": {
+      "type": "number",
+      "description": "Property. Thermal capacity distance. If no reference case is indicated."
+    },
+    "thermalCapacityGradient": {
+      "type": "number",
+      "description": "Property. Thermal capacity gradient (If no reference case is indicated)"
+    },
+    "thermalCapacitySpeed": {
+      "type": "number",
+      "description": "Property. Thermal capacity speed (If no reference case is indicated)"
+    },
+    "thermalCapacityTSIReference": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Reference case of a TSI thermal capacity. Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Thermal Capacity TSI References' SKOS concept scheme (http://data.europa.eu/949/concepts/thermal-capacity/ThermalCapacityTSIReferences), 4 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/thermal-capacity/eratv/Reference_case_60_km_h_21_mm_m_45_min",
+        "http://data.europa.eu/949/concepts/thermal-capacity/eratv/Reference_case_70_km_h_21_mm_m_40_km",
+        "http://data.europa.eu/949/concepts/thermal-capacity/eratv/Reference_case_90_of_design_speed_Category_1_of_HS_INF_TSI_Dec_2008_217_EC",
+        "http://data.europa.eu/949/concepts/thermal-capacity/eratv/Reference_case_of_80_km_h_21_mm_m_46_km"
+      ]
+    },
+    "thermalCapacityTime": {
+      "type": "number",
+      "description": "Property. Thermal capacity time (If no reference case is indicated)"
+    },
+    "totalVehicleMass": {
+      "type": "integer",
+      "description": "Property. Total vehicle mass (for each vehicle of the unit), given in kg."
+    },
+    "trainControlSwitchOverSpecialCondition": {
+      "type": "string",
+      "description": "Property. Special conditions implemented on-board to switch over between different train protection control and warning systems. Given as combination of systems installed on board ('System XX'_'System YY')."
+    },
+    "trainDetectionSystemType": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Indication of types of train detection systems installed. (RINF/ERATV register parameter index: 1.1.1.3.7.1.1, 1.2.1.1.3.1.1) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Train Detection Systems' SKOS concept scheme (http://data.europa.eu/949/concepts/train-detection/TrainDetectionSystems), 4 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/train-detection/10",
+        "http://data.europa.eu/949/concepts/train-detection/20",
+        "http://data.europa.eu/949/concepts/train-detection/30",
+        "http://data.europa.eu/949/concepts/train-detection/eratv/axle-counters"
+      ]
+    },
+    "typeVersionId": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Indicates the registrationVersion with Ids 10, 20 and 30 indicating registration according to Directive 2008/57/EC and implementing Decision 2011/665/EU, and 40 and 50 indicating registration according to regime described in Directive 2008/57/EC.\nThe allowed values for this property belong to the SKOS Concept Scheme http://data.europa.eu/949/concepts/type-version-ids/TypeVersionIds. Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Vehicle Type Version Ids' SKOS concept scheme (http://data.europa.eu/949/concepts/type-version-ids/TypeVersionIds), 5 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/type-version-ids/eratv/10",
+        "http://data.europa.eu/949/concepts/type-version-ids/eratv/20",
+        "http://data.europa.eu/949/concepts/type-version-ids/eratv/30",
+        "http://data.europa.eu/949/concepts/type-version-ids/eratv/40",
+        "http://data.europa.eu/949/concepts/type-version-ids/eratv/50"
+      ]
+    },
+    "typeVersionNumber": {
+      "type": "string",
+      "description": "Property. Serial number that identifies a vehicle type."
+    },
+    "usesGroup555": {
+      "type": "boolean",
+      "description": "Property. Indication if group 555 is used trackside or whether onboard has Voice SIM Card support for Group ID 555. (RINF/ERATV register parameter index: 1.1.1.3.3.4, 1.2.1.1.2.4)"
+    },
+    "vehicleCategory": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Indicates the core purpose of a railway vehicle: delivering traction, transporting goods or passengers or serving as a special vehicle. Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Vehicle Categories' SKOS concept scheme (http://data.europa.eu/949/concepts/vehicle-types/Categories), 4 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/vehicle-types/1X",
+        "http://data.europa.eu/949/concepts/vehicle-types/3X-4X",
+        "http://data.europa.eu/949/concepts/vehicle-types/5X",
+        "http://data.europa.eu/949/concepts/vehicle-types/7X"
+      ]
+    },
+    "vehicleContactForce": {
+      "type": "number",
+      "description": "Property. Mean contact force."
+    },
+    "vehicleContactForceFormula": {
+      "type": "string",
+      "description": "Property. Contact force formula."
+    },
+    "vehicleMaxSandingOutput": {
+      "type": "number",
+      "description": "Property. Vehicle Maximum sanding output, given in grams per second."
+    },
+    "vehicleSubCategory": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Indicates the further classification (but not any family/platform) of vehicles within a vehicle category. Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Vehicle Categories' SKOS concept scheme (http://data.europa.eu/949/concepts/vehicle-types/Categories), 4 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/vehicle-types/1X",
+        "http://data.europa.eu/949/concepts/vehicle-types/3X-4X",
+        "http://data.europa.eu/949/concepts/vehicle-types/5X",
+        "http://data.europa.eu/949/concepts/vehicle-types/7X"
+      ]
+    },
+    "vehicleTypeCategory": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Vehicle Categories' SKOS concept scheme (http://data.europa.eu/949/concepts/vehicle-types/Categories), 4 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/vehicle-types/1X",
+        "http://data.europa.eu/949/concepts/vehicle-types/3X-4X",
+        "http://data.europa.eu/949/concepts/vehicle-types/5X",
+        "http://data.europa.eu/949/concepts/vehicle-types/7X"
+      ]
+    },
+    "vehicleTypeManufacturer": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. VehicleType Manufacturer identification and contact data Target type (OrganisationRole) is published under the era-rinf standard."
+    },
+    "vehicleTypeNumber": {
+      "type": "string",
+      "description": "Property. Each type of vehicle shall receive a number consisting of 10 digits with the structure as in Annex III of the ERATV Decision.\n\nFor the full Vehicle Identifier, use `dcterms:identifier`.\nFor the complement before Fourth Railway package, use `era:includedVersions`.\nFor the complements after the Fourth Railway Package, use `era:includedVersionsVariant`."
+    },
+    "vehicleTypePlatform": {
+      "type": "string",
+      "description": "Property. The Type Holder's name for the Type's Family/Platform, as encoded in the first set of 3 numbers in the `dcterms:identifier` of the Type."
+    },
+    "vehicleTypeSubCategory": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Indicates the further classification (but not any family/platform) of vehicles within a vehicle category. Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Vehicle Sub Categories' SKOS concept scheme (http://data.europa.eu/949/concepts/vehicle-types/SubCategories), 26 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/vehicle-types/CarCarrier",
+        "http://data.europa.eu/949/concepts/vehicle-types/Coach",
+        "http://data.europa.eu/949/concepts/vehicle-types/DrivingCoach",
+        "http://data.europa.eu/949/concepts/vehicle-types/DrivingVan",
+        "http://data.europa.eu/949/concepts/vehicle-types/EmergencyVehicles",
+        "http://data.europa.eu/949/concepts/vehicle-types/EnvrionmentVehicles",
+        "http://data.europa.eu/949/concepts/vehicle-types/FixedRakeOfCoaches",
+        "http://data.europa.eu/949/concepts/vehicle-types/FreightTrainset",
+        "http://data.europa.eu/949/concepts/vehicle-types/FreightWagon",
+        "http://data.europa.eu/949/concepts/vehicle-types/FreightWagonsRake",
+        "http://data.europa.eu/949/concepts/vehicle-types/HauledSpecialVehicle",
+        "http://data.europa.eu/949/concepts/vehicle-types/InfraInspectionVehicles",
+        "http://data.europa.eu/949/concepts/vehicle-types/Locomotive",
+        "http://data.europa.eu/949/concepts/vehicle-types/OnTrackMachines",
+        "http://data.europa.eu/949/concepts/vehicle-types/OtherHauledPassenger",
+        "http://data.europa.eu/949/concepts/vehicle-types/OtherTractionVehicles",
+        "http://data.europa.eu/949/concepts/vehicle-types/PassengerTrainset",
+        "http://data.europa.eu/949/concepts/vehicle-types/PersonnelCarriage",
+        "http://data.europa.eu/949/concepts/vehicle-types/PowerUnit",
+        "http://data.europa.eu/949/concepts/vehicle-types/Railcar",
+        "http://data.europa.eu/949/concepts/vehicle-types/RoadRailVehicles",
+        "http://data.europa.eu/949/concepts/vehicle-types/SelfPropelledSpecialVehicle",
+        "http://data.europa.eu/949/concepts/vehicle-types/SeparateRailBogies",
+        "http://data.europa.eu/949/concepts/vehicle-types/Shunter",
+        "http://data.europa.eu/949/concepts/vehicle-types/TramTrain",
+        "http://data.europa.eu/949/concepts/vehicle-types/Van"
+      ]
+    },
+    "vehiclesComposingFixedFormation": {
+      "type": "integer",
+      "description": "Property. Number of vehicles composing the fixed formation (for fixed formation only). Note: the value is mandatory for all vehicle categories. If the vehicle is composed of only one car, the indicated value shall be '1'."
+    },
+    "voiceGSMRNetwork": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Voice SIM Card GSM-R Home Network Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'GSM-R Networks' SKOS concept scheme (http://data.europa.eu/949/concepts/gsmr-networks/GSMRNetworks), 40 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/gsmr-networks/10",
+        "http://data.europa.eu/949/concepts/gsmr-networks/100",
+        "http://data.europa.eu/949/concepts/gsmr-networks/110",
+        "http://data.europa.eu/949/concepts/gsmr-networks/120",
+        "http://data.europa.eu/949/concepts/gsmr-networks/130",
+        "http://data.europa.eu/949/concepts/gsmr-networks/140",
+        "http://data.europa.eu/949/concepts/gsmr-networks/150",
+        "http://data.europa.eu/949/concepts/gsmr-networks/160",
+        "http://data.europa.eu/949/concepts/gsmr-networks/170",
+        "http://data.europa.eu/949/concepts/gsmr-networks/180",
+        "http://data.europa.eu/949/concepts/gsmr-networks/190",
+        "http://data.europa.eu/949/concepts/gsmr-networks/20",
+        "http://data.europa.eu/949/concepts/gsmr-networks/200",
+        "http://data.europa.eu/949/concepts/gsmr-networks/210",
+        "http://data.europa.eu/949/concepts/gsmr-networks/220",
+        "http://data.europa.eu/949/concepts/gsmr-networks/230",
+        "http://data.europa.eu/949/concepts/gsmr-networks/240",
+        "http://data.europa.eu/949/concepts/gsmr-networks/250",
+        "http://data.europa.eu/949/concepts/gsmr-networks/260",
+        "http://data.europa.eu/949/concepts/gsmr-networks/270",
+        "http://data.europa.eu/949/concepts/gsmr-networks/280",
+        "http://data.europa.eu/949/concepts/gsmr-networks/290",
+        "http://data.europa.eu/949/concepts/gsmr-networks/30",
+        "http://data.europa.eu/949/concepts/gsmr-networks/300",
+        "http://data.europa.eu/949/concepts/gsmr-networks/310",
+        "http://data.europa.eu/949/concepts/gsmr-networks/320",
+        "http://data.europa.eu/949/concepts/gsmr-networks/330",
+        "http://data.europa.eu/949/concepts/gsmr-networks/340",
+        "http://data.europa.eu/949/concepts/gsmr-networks/350",
+        "http://data.europa.eu/949/concepts/gsmr-networks/360",
+        "http://data.europa.eu/949/concepts/gsmr-networks/370",
+        "http://data.europa.eu/949/concepts/gsmr-networks/380",
+        "http://data.europa.eu/949/concepts/gsmr-networks/390",
+        "http://data.europa.eu/949/concepts/gsmr-networks/40",
+        "http://data.europa.eu/949/concepts/gsmr-networks/400",
+        "http://data.europa.eu/949/concepts/gsmr-networks/50",
+        "http://data.europa.eu/949/concepts/gsmr-networks/60",
+        "http://data.europa.eu/949/concepts/gsmr-networks/70",
+        "http://data.europa.eu/949/concepts/gsmr-networks/80",
+        "http://data.europa.eu/949/concepts/gsmr-networks/90"
+      ]
+    },
+    "voiceOperationalCommImpl": {
+      "type": "string",
+      "description": "Property. Voice and operational communication implementation."
+    },
+    "voiceRadioCompatible": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Radio requirements used for demonstrating technical compatibility voice. (RINF/ERATV register parameter index: 1.1.1.3.3.9, 1.2.1.1.2.9) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Radio System Compatibilities Voice' SKOS concept scheme (http://data.europa.eu/949/concepts/radio-system-compatibilities-voice/RadioSystemCompatibilitiesVoice), 17 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/eratv/radio-system-compatibilities-voice/200",
+        "http://data.europa.eu/949/concepts/eratv/radio-system-compatibilities-voice/210",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-voice/10",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-voice/100",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-voice/110",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-voice/120",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-voice/130",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-voice/140",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-voice/150",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-voice/160",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-voice/180",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-voice/190",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-voice/20",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-voice/50",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-voice/60",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-voice/70",
+        "http://data.europa.eu/949/concepts/radio-system-compatibilities-voice/80"
+      ]
+    },
+    "wagonDerailmentFunction": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Presence and type of derailment detection and prevention function(s). Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Wagon Derailment Protection/Warning Functions' SKOS concept scheme (http://data.europa.eu/949/concepts/wagon-derailment-function/WagonDerailmentFunction), 4 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/wagon-derailment-function/eratv/00",
+        "http://data.europa.eu/949/concepts/wagon-derailment-function/eratv/01",
+        "http://data.europa.eu/949/concepts/wagon-derailment-function/eratv/10",
+        "http://data.europa.eu/949/concepts/wagon-derailment-function/eratv/11"
+      ]
+    },
+    "wheelSetGauge": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. A single value expressed in millimetres that identifies the track gauge. (RINF/ERATV register parameter index: 1.1.1.1.4.1, 1.2.1.0.4.1) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Nominal Track Gauges' SKOS concept scheme (http://data.europa.eu/949/concepts/nominal-track-gauges/NominalTrackGauges), 8 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/nominal-track-gauges/10",
+        "http://data.europa.eu/949/concepts/nominal-track-gauges/20",
+        "http://data.europa.eu/949/concepts/nominal-track-gauges/30",
+        "http://data.europa.eu/949/concepts/nominal-track-gauges/40",
+        "http://data.europa.eu/949/concepts/nominal-track-gauges/50",
+        "http://data.europa.eu/949/concepts/nominal-track-gauges/60",
+        "http://data.europa.eu/949/concepts/nominal-track-gauges/70",
+        "http://data.europa.eu/949/concepts/nominal-track-gauges/80"
+      ]
+    },
+    "wheelSetGaugeChangeoverFacility": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Wheelset gauge changeover facility. The allowed values for this property belong to the SKOS Concept Scheme http://data.europa.eu/949/concepts/gauge-changeover-facilities/GaugeChangeoverFacilities Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Gauge Changeover Facilities' SKOS concept scheme (http://data.europa.eu/949/concepts/gauge-changeover-facilities/GaugeChangeoverFacilities), 10 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/gauge-changeover-facilities/eratv/1-435mm_1-668mm",
+        "http://data.europa.eu/949/concepts/gauge-changeover-facilities/eratv/1435_1668mm_bogie_axle_change",
+        "http://data.europa.eu/949/concepts/gauge-changeover-facilities/eratv/Bogie_axle_change",
+        "http://data.europa.eu/949/concepts/gauge-changeover-facilities/eratv/Exchange_of_the_wheelset",
+        "http://data.europa.eu/949/concepts/gauge-changeover-facilities/eratv/Manual_change_of_wheelsets",
+        "http://data.europa.eu/949/concepts/gauge-changeover-facilities/eratv/NA",
+        "http://data.europa.eu/949/concepts/gauge-changeover-facilities/eratv/SEMIAUTOMATICO",
+        "http://data.europa.eu/949/concepts/gauge-changeover-facilities/eratv/TSI_WAG_7_1_2_c_The_unit_must_not_be_equipped_with_variable_gauge_wheelsets",
+        "http://data.europa.eu/949/concepts/gauge-changeover-facilities/eratv/change_of_wheelsets_at_the_border_line",
+        "http://data.europa.eu/949/concepts/gauge-changeover-facilities/eratv/exchange_of_bogie_1-435mm_1-668mm_incl_CFCB"
+      ]
+    },
+    "wheelSetGaugeTransformationMethod": {
+      "type": "string",
+      "description": "Property. Wheel gauge transformation method. Defined if more than one wheel gauges have been selected."
+    },
+    "wheelchairSleepingPlace": {
+      "type": "string",
+      "description": "Property. Number of wheelchair accessible sleeping places (min to max number)."
+    },
+    "wheelchairSpace": {
+      "type": "string",
+      "description": "Property. Number of wheelchair spaces (min to max number)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

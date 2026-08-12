@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/Body/schema.json",
+  "modelTags": "ERA,RINF,Railway,Infrastructure",
+  "title": "Smart Data Models - ERA RINF - Body",
+  "description": "Body (era:Body's own definition, verbatim, in the source ontology): Is an organisation or a physical person",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Body"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Body'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "alternativeCode": {
+      "type": "string",
+      "description": "Property. Alternative code resulting of the integration of RISC into SRMO for managing organisation code"
+    },
+    "faxNumber": {
+      "type": "string",
+      "description": "Property. Fax number of a body."
+    },
+    "organisationCode": {
+      "type": "string",
+      "description": "Property. Four alpha-numeric code allocated by ERA to a body. It represents the Infrastructure Manager (IM) code in RINF.\nInfrastructure manager means any body or firm responsible in particular for establishing, managing and maintaining railway infrastructure, including traffic management and control-command signalling; \nthe functions of the infrastructure manager on a network or part of a network may be allocated to different bodies or firms. Definition in (Article 3(2)) (RINF register parameter index: 1.1.0.0.0.1, 1.1.1.1.8.1, 1.2.1.0.0.1, 1.2.1.0.5.1, 1.2.1.0.6.1, 1.2.2.0.0.1, 1.2.2.0.5.1)"
+    },
+    "organisationSize": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. The size of a given organisation or body. Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Organisation sizes' SKOS concept scheme (http://data.europa.eu/949/concepts/org-size/OrgSizes), 4 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/org-size/10",
+        "http://data.europa.eu/949/concepts/org-size/20",
+        "http://data.europa.eu/949/concepts/org-size/30",
+        "http://data.europa.eu/949/concepts/org-size/40"
+      ]
+    },
+    "role": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Indicates the relationship of a Body to the organisation roles that it can play."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

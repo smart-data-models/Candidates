@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/NetPointReference/schema.json",
+  "modelTags": "ERA,RINF,Railway,Infrastructure",
+  "title": "Smart Data Models - ERA RINF - NetPointReference",
+  "description": "Net Point Reference (era:NetPointReference's own definition, verbatim, in the source ontology): Represents a point reference in the network. Inherits attributes from era:NetBasicReference/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "NetPointReference"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'NetPointReference'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "appliesToDirection": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. The direction relative to the origin of the linear element towards the point reference applies. Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Directions of the orientation of a railway element' SKOS concept scheme (http://data.europa.eu/949/concepts/orientations/OrientationDirections), 3 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/orientations/00",
+        "http://data.europa.eu/949/concepts/orientations/01",
+        "http://data.europa.eu/949/concepts/orientations/02"
+      ]
+    },
+    "hasLrsCoordinate": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Specifies the LRS coordinate associated with a topological coordinate."
+    },
+    "hasTopoCoordinate": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Specifies the topological coordinate of a network point reference."
+    },
+    "validity": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Relates a feature with a temporal feature to indicate a validity period. Target type (TemporalFeature) is not published as its own SDM model in this RINF pass."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

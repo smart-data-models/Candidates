@@ -1,0 +1,72 @@
+{
+  "id": "urn:ngsi-ld:TrainDetectionSystem:t1-tds",
+  "type": "TrainDetectionSystem",
+  "dateCreated": {
+    "type": "Property",
+    "value": "2026-01-10T09:00:00Z"
+  },
+  "dateModified": {
+    "type": "Property",
+    "value": "2026-06-01T12:00:00Z"
+  },
+  "source": {
+    "type": "Relationship",
+    "object": "https://rinf.data.era.europa.eu/"
+  },
+  "dataProvider": {
+    "type": "Property",
+    "value": "European Union Agency for Railways (ERA)"
+  },
+  "frequencyBandsForDetection": {
+    "type": "Relationship",
+    "object": "http://data.europa.eu/949/concepts/train-detection/A0_TC"
+  },
+  "maximumInterferenceCurrent": {
+    "type": "Property",
+    "value": 200.0
+  },
+  "maximumInterferenceCurrentEvaluation": {
+    "type": "Property",
+    "value": "Maximum Interference Current Evaluation"
+  },
+  "minVehicleImpedance": {
+    "type": "Property",
+    "value": {
+      "minImpedanceFrequency": 50.0,
+      "minImpedanceResistance": 10.0,
+      "minVehicleImpedanceVoltages": "https://rinf.data.era.europa.eu/documents/doc1.pdf",
+      "minVehicleInputCapacitance": 10.0,
+      "minVehicleInputImpedance": 10.0
+    }
+  },
+  "tdsFrenchTrainDetectionSystemLimitation": {
+    "type": "Property",
+    "value": {
+      "frenchTrainDetectionSystemLimitationApplicable": true,
+      "frenchTrainDetectionSystemLimitationNumber": "https://rinf.data.era.europa.eu/documents/doc1.pdf"
+    }
+  },
+  "tdsMaximumMagneticField": {
+    "type": "Property",
+    "value": {
+      "maximumMagneticFieldDirectionX": 10,
+      "maximumMagneticFieldDirectionY": 10,
+      "maximumMagneticFieldDirectionZ": 10
+    }
+  },
+  "trainDetectionSystemSpecificCheck": {
+    "type": "Relationship",
+    "object": "http://data.europa.eu/949/concepts/train-detection-specific-checks/eratv/10"
+  },
+  "trainDetectionSystemSpecificCheckDocument": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:Document:doc1"
+  },
+  "trainDetectionSystemType": {
+    "type": "Relationship",
+    "object": "http://data.europa.eu/949/concepts/train-detection/10"
+  },
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/TrainDetectionSystem/context.jsonld"
+  ]
+}

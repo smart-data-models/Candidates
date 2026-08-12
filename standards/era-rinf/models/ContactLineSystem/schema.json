@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/ContactLineSystem/schema.json",
+  "modelTags": "ERA,RINF,Railway,Infrastructure",
+  "title": "Smart Data Models - ERA RINF - ContactLineSystem",
+  "description": "Contact Line System (era:ContactLineSystem's own definition, verbatim, in the source ontology): System that is used to transmit electrical energy to road or rail vehicles.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ContactLineSystem"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ContactLineSystem'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "conditionalRegenerativeBrake": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Indication whether regenerative braking is permitted, not permitted, or permitted under specific conditions. (RINF register parameter index: 1.1.1.2.2.4) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Regenerative Braking' SKOS concept scheme (http://data.europa.eu/949/concepts/regenerative-braking/RegenerativeBraking), 5 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/regenerative-braking/10",
+        "http://data.europa.eu/949/concepts/regenerative-braking/20",
+        "http://data.europa.eu/949/concepts/regenerative-braking/30",
+        "http://data.europa.eu/949/concepts/regenerative-braking/40",
+        "http://data.europa.eu/949/concepts/regenerative-braking/50"
+      ]
+    },
+    "conditionsAppliedRegenerativeBraking": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Name and/or reference of the document specifying the conditions applying in regards to regenerative braking. (RINF register parameter index: 1.1.1.2.2.4.1)"
+    },
+    "contactLineSystemType": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Indication of the type of the contact line system. (RINF register parameter index: 1.1.1.2.2.1.1) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Contact Line Systems' SKOS concept scheme (http://data.europa.eu/949/concepts/contact-line-systems/ContactLineSystems), 4 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/contact-line-systems/10",
+        "http://data.europa.eu/949/concepts/contact-line-systems/20",
+        "http://data.europa.eu/949/concepts/contact-line-systems/30",
+        "http://data.europa.eu/949/concepts/contact-line-systems/40"
+      ]
+    },
+    "currentLimitationRequired": {
+      "type": "boolean",
+      "description": "Property. Indication of whether an on board current or power limitation function on vehicles is required. (RINF register parameter index: 1.1.1.2.5.1)"
+    },
+    "energySupplySystem": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Indication of the traction supply system (nominal voltage and frequency). (RINF register parameter index: 1.1.1.2.2.1.2) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Energy Supply Systems' SKOS concept scheme (http://data.europa.eu/949/concepts/energy-supply-systems/EnergySupplySystems), 19 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/energy-supply-systems/AC10",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/AC20",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/DC30",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/DC40",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/DC60",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/DC70",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/DC80",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/DC90",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/1-2kv",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/1000V-ac-16-2-3hz",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/1000v-ac-50hz",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/1500v-ac-50hz",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/3x400v-50hz",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/autonomous",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/dc-1-5kv-specific-case-fr",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/hybrid",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/none-for-hauled-passenger-vehicles-and-special-vehicles",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/notFitted",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/three-phase"
+      ]
+    },
+    "maxCurrentStandstillPantograph": {
+      "type": "number",
+      "description": "Property. Indication of the maximum allowable train current at standstill expressed in amperes. (RINF register parameter index: 1.1.1.2.2.3, 1.2.2.0.6.1)"
+    },
+    "maxTrainCurrent": {
+      "type": "integer",
+      "description": "Property. Indication of the maximum allowable train current expressed in amperes. (RINF register parameter index: 1.1.1.2.2.2)"
+    },
+    "maximumContactWireHeight": {
+      "type": "number",
+      "description": "Property. Indication of the maximum contact wire height expressed in metres. (RINF register parameter index: 1.1.1.2.2.5)"
+    },
+    "minimumContactWireHeight": {
+      "type": "number",
+      "description": "Property. Indication of the minimum contact wire height expressed in metres. (RINF register parameter index: 1.1.1.2.2.6)"
+    },
+    "umax2": {
+      "type": "integer",
+      "description": "Property. Highest non-permanent voltage (Umax2) for France on lines not compliant with values defined in the EN50163:2004+A1:2007+A2:2020+A3:2022 (RINF register parameter index: 1.1.1.2.2.1.3)"
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
