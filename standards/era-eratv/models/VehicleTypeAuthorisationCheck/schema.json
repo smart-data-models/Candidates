@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eratv/models/VehicleTypeAuthorisationCheck/schema.json",
+  "modelTags": "ERA,ERATV,Railway,VehicleType",
+  "title": "Smart Data Models - ERA ERATV - VehicleTypeAuthorisationCheck",
+  "description": "Vehicle Type Authorisation Compliance Check (era:VehicleTypeAuthorisationCheck's own definition, verbatim, in the source ontology): A verification result as executed by a competent body on a section of a legal reference. The check can be positive or negative, and in the latter case, a restriction is expected.\n\nThis Class is used to improve the link between verification outcomes and the verified scope of that process, and support its structured documentation. Inherits attributes from era:Compliance (inlined here rather than via schema $ref, per this repo's convention).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "VehicleTypeAuthorisationCheck"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'VehicleTypeAuthorisationCheck'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "checkResult": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. For a Compliance check, a structured expression of the result. Can detail and should be consistent with the boolean result under `isCompliant`. Controlled-vocabulary value: IRI of a skos:Concept from the relevant ERA code list (see era-skos), not enumerated here as the source ontology leaves this range open."
+    },
+    "checkedRequirement": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. For a Compliance check, the Requirement which was (globally or in part) checked by the Appropriate Body. Target type (Requirement) is not published as its own SDM model yet."
+    },
+    "checkedSection": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. For a Compliance check, the section of the Requirement which was individually checked by the Appropriate Body. The sections in scope of the verification are registered under each Requirement itself. Controlled-vocabulary value: IRI of a skos:Concept from the relevant ERA code list (see era-skos), not enumerated here as the source ontology leaves this range open."
+    },
+    "complianceResult": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. The outcome of a compliance check, expressed as a SKOS concept. Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Compliance Check Result' SKOS concept scheme (http://data.europa.eu/949/concepts/compliance-check-result/ComplianceCheckResult), 7 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/compliance-check-result/FullyCompliant",
+        "http://data.europa.eu/949/concepts/compliance-check-result/NotCompliant_Derogation_Art7a",
+        "http://data.europa.eu/949/concepts/compliance-check-result/NotCompliant_Derogation_Art7b",
+        "http://data.europa.eu/949/concepts/compliance-check-result/NotCompliant_Derogation_Art7c",
+        "http://data.europa.eu/949/concepts/compliance-check-result/NotCompliant_Derogation_Art7d",
+        "http://data.europa.eu/949/concepts/compliance-check-result/NotCompliant_Derogation_Art7e",
+        "http://data.europa.eu/949/concepts/compliance-check-result/PartiallyCompliant"
+      ]
+    },
+    "isCompliant": {
+      "type": "boolean",
+      "description": "Property. For the verified section of a Requirement: true when fully compliant, false in other cases (in which a clarifying Restriction is possible)"
+    },
+    "isOptional": {
+      "type": "boolean",
+      "description": "Property. Indicates whether a compliance check concerns an optional function or optional requirement."
+    },
+    "statement": {
+      "type": "string",
+      "description": "Property. Any statement on the Compliance, like e.g. those typically filled in on checklists, annexed to the Permission"
+    },
+    "withRestriction": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. when taken into account in the final act to be permitted, can be accepted if the conditions of the Restriction are fully answered to Target type (Restriction) is not published as its own SDM model yet."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

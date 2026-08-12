@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eratv/models/VehicleTypeAuthorisationApplication/schema.json",
+  "modelTags": "ERA,ERATV,Railway,VehicleType",
+  "title": "Smart Data Models - ERA ERATV - VehicleTypeAuthorisationApplication",
+  "description": "Vehicle Type Authorisation Case (era:VehicleTypeAuthorisationApplication's own definition, verbatim, in the source ontology): The request, as submitted by the Applicant in line with (EU)2018/545, to allow the vehicle type authorisation and/or the vehicle authorisation for placing on the market.\nThe application consists of one or more authorisation cases as described in Art. 14 of (EU)2018/545, and for authorisations before the Fourth Railway Package, a HistoricalAuthorisationCase must be used.\n\nThe outcome of the application process is a `era:VehicleAuthorisation` or `era:VehicleTypeAuthorisation`. Inherits attributes from era:Request (inlined here rather than via schema $ref, per this repo's convention).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "VehicleTypeAuthorisationApplication"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'VehicleTypeAuthorisationApplication'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "isPreEngagementApplication": {
+      "type": "boolean",
+      "description": "Property. Determines if the Application for Vehicle (Type) Authorisation is determining a preEngagementBaseline, and not yet the authorisation itself."
+    },
+    "preEngagementBaseline": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Denotes the opinion on the approach proposed by the applicant in the pre-engagement application, including a determination of the version of the TSIs and national rules that are to be applied for the subsequent application for authorisation Target type (Document) is published under the era-rinf standard."
+    },
+    "constitutedBy": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. holds as a complete, independent, possibly sole part, embodies as one element of potentially more Target type (Case) is not published as its own SDM model yet."
+    },
+    "requestFor": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. aiming to be enabled to act as covered by the Permission and its conditions, by receiving Target type (Permission) is not published as its own SDM model yet."
+    },
+    "status": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. the status of the Request, or constituting Case(s), as it is being treated by the PermittingBody Controlled-vocabulary value: IRI of a skos:Concept from the relevant ERA code list (see era-skos), not enumerated here as the source ontology leaves this range open."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eratv/models/VehicleTypeConfiguration/schema.json",
+  "modelTags": "ERA,ERATV,Railway,VehicleType",
+  "title": "Smart Data Models - ERA ERATV - VehicleTypeConfiguration",
+  "description": "Vehicle type configuration (era:VehicleTypeConfiguration's own definition, verbatim, in the source ontology): The combination of supported Gauge, Energy Systems and/or CCO Systems for a vehicle type",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "VehicleTypeConfiguration"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'VehicleTypeConfiguration'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "forEnergySupplySystem": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Configuration corresponding to the rinf concept in energy supply system. Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Energy Supply Systems' SKOS concept scheme (http://data.europa.eu/949/concepts/energy-supply-systems/EnergySupplySystems), 19 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/energy-supply-systems/AC10",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/AC20",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/DC30",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/DC40",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/DC60",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/DC70",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/DC80",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/DC90",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/1-2kv",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/1000V-ac-16-2-3hz",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/1000v-ac-50hz",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/1500v-ac-50hz",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/3x400v-50hz",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/autonomous",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/dc-1-5kv-specific-case-fr",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/hybrid",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/none-for-hauled-passenger-vehicles-and-special-vehicles",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/notFitted",
+        "http://data.europa.eu/949/concepts/energy-supply-systems/eratv/three-phase"
+      ]
+    },
+    "forOnBoardClassA": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Configuration corresponding to the rinf concept in ETC CCS. Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'ETCS Equipment Levels' SKOS concept scheme (http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/ETCSEquipmentLevels), 17 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Decision_2006_679_EC_Set_1",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Decision_2006_860_EC_Set_1",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Decision_2008_386_EC_Set_1",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Decision_2012_463_EU_Set_1",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Decision_2012_696_EU_Set_1",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Decision_2012_696_EU_Set_2",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Decision_2015_14_Set_1",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Decision_2015_14_Set_2",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Implementing_Regulation_EU_2019_776_Set_1",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Implementing_Regulation_EU_2019_776_Set_2",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Implementing_Regulation_EU_2020_420_Only_German_Set_2",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Implementing_Regulation_EU_2020_420_Only_German_Set_3",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Implementing_Regulation__EU_2020_387_Set_2",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Regulation_2016_919_Set_1",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Regulation_2016_919_Set_2",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/Regulation_2016_919_Set_3",
+        "http://data.europa.eu/949/concepts/etcs-equipment-on-board-level/eratv/Regulation_2020_387_Set_3"
+      ]
+    },
+    "forOnBoardClassB": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Configuration corresponding to the rinf concept in \"Other Protection Control and Warnings concepts. Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Other Protection Control and Warnings' SKOS concept scheme (http://data.europa.eu/949/concepts/other-protection-control-warning/OtherProtectionControlWarnings), 47 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/01",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/02",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/04",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/07",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/09",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/10",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/100",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/12",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/13",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/16",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/19",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/21",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/23",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/25",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/26",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/27",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/28",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/29",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/30",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/32",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/33",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/34",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/36",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/37",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/38",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/39",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/40",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/41",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/42",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/43",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/44",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/45",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/46",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/47",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/48",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/49",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/50",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/51",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/52",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/53",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/55",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/56",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/57",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/58",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/59",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/60",
+        "http://data.europa.eu/949/concepts/other-protection-control-warning/61"
+      ]
+    },
+    "forWheelSetGauge": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Configuration corresponding to the rinf concept in wheel set gauge concepts Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Nominal Track Gauges' SKOS concept scheme (http://data.europa.eu/949/concepts/nominal-track-gauges/NominalTrackGauges), 8 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/nominal-track-gauges/10",
+        "http://data.europa.eu/949/concepts/nominal-track-gauges/20",
+        "http://data.europa.eu/949/concepts/nominal-track-gauges/30",
+        "http://data.europa.eu/949/concepts/nominal-track-gauges/40",
+        "http://data.europa.eu/949/concepts/nominal-track-gauges/50",
+        "http://data.europa.eu/949/concepts/nominal-track-gauges/60",
+        "http://data.europa.eu/949/concepts/nominal-track-gauges/70",
+        "http://data.europa.eu/949/concepts/nominal-track-gauges/80"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

@@ -1,0 +1,176 @@
+title: "ERA ERATV (European Register of Authorised Vehicle Types)"
+publisher: "European Union Agency for Railways (ERA)"
+sourceUrl: "https://rinf.data.era.europa.eu/era-vocabulary/"
+sourceOntologyVersion: "ERA Ontology v3.3.3 (released 2026-07-28)"
+sourceOntologyDownload: "https://rinf.data.era.europa.eu/era-vocabulary/ontology.ttl"
+sourceOntologyRepository: "https://gitlab.com/era-europa-eu/public/interoperable-data-programme/era-ontology/era-ontology"
+sourceApplicationGuide: "https://rinf.data.era.europa.eu/era-vocabulary/eratv-appGuide/"
+sourceDOI: "https://doi.org/10.5281/zenodo.15089005"
+domains:
+  - Transportation
+description: >
+  ERATV is one of four registers (alongside RINF, ERADIS, EVR) published
+  under the single ERA Ontology v3.3.3 -- see the era-rinf candidate's
+  standard-metadata.yaml for the shared ontology-wide context. ERATV itself covers authorised
+  railway VEHICLE TYPES (as opposed to EVR, which registers individual
+  vehicles): the vehicle type's technical characteristics (dimensions, mass,
+  braking performance, gauging, ETCS/GSM-R/ATO on-board equipment, noise,
+  energy supply compatibility, ...), its per-configuration variants
+  (VehicleTypeConfiguration / VehicleTypeConfigParameterSet, since a single
+  type can be authorised in several technical configurations, e.g. different
+  energy supply systems or ETCS on-board versions), and the type-authorisation
+  process itself (VehicleTypeAuthorisation, its Application, Case, compliance
+  Check, and Restriction).
+license: "European Union Public Licence v1.2 (EUPL-1.2)"
+licenseNote: >
+  Same source publication as era-rinf; see that candidate's licenseNote.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-08-11 from the same ontology.ttl parse used for
+  era-rinf (see that candidate's notes for the full extraction methodology:
+  rdflib parse of the source TTL, mechanical schema generation from
+  domains/ranges/datatypes/owl:deprecated, no guide-text transcription).
+
+  SCOPING ERATV vs EVR vs ERADIS: the ontology namespace mixes all four
+  ERA registers' classes together with generic "Vehicle*" naming and no
+  structural marker of which register a class belongs to. Classification
+  here is based on fetching the three separate application guide pages
+  (eratv-appGuide, eradis-appGuide, evr-appGuide) plus reasoning about which
+  process owns each class: ERATV = vehicle TYPE authorisation and its
+  technical parameters; EVR = individual VEHICLE registration (era:Vehicle,
+  era:VehicleRegistration*, era:VehicleSeries/Set, era:VehicleKeeperMarking,
+  era:NationalRegistrationProperty); ERADIS = certification/compliance
+  documents (era:Certificate, era:CAB*, era:CertificationLevelDocument,
+  era:ECDeclaration, era:TechnicalSpecForInteroperability, the
+  ValidityConstraint family). era:VehicleAuthorisation/
+  VehicleAuthorisationCase/VehicleAuthorisationNotification (singular
+  "Vehicle", not "VehicleType") are placed under the planned EVR candidate,
+  not here, since they authorise a specific vehicle for placing on the
+  market rather than a type. This 4-way split is this session's best
+  reasoned assignment, not an explicit partition stated anywhere in the
+  ontology itself -- worth double-checking against ERA's own register
+  documentation before promoting any of these candidates out of Candidates/.
+
+  ENTITY SET (8 top-level NGSI-LD types): VehicleType (150 properties -- by
+  far the largest, covering nearly every TSI-regulated technical
+  characteristic of a vehicle type), VehicleTypeConfiguration,
+  VehicleTypeConfigParameterSet (the per-configuration variant of many of
+  VehicleType's own technical parameters -- both exist because a type can
+  have configuration-INDEPENDENT characteristics on VehicleType itself and
+  configuration-DEPENDENT ones on VehicleTypeConfigParameterSet, linked via
+  forConfiguration/hasVehicleTypeConfiguration), VehicleTypeAuthorisation,
+  VehicleTypeAuthorisationApplication, VehicleTypeAuthorisationCase,
+  VehicleTypeAuthorisationCheck, VehicleTypeAuthorisationRestriction.
+
+  INHERITANCE FROM THE SHARED era:Compliance / era:Restriction HUBS: unlike
+  RINF's inheritance chains (era:Feature -> era:InfrastructureElement -> ...,
+  all within the RINF-authored part of the ontology), VehicleTypeAuthorisationCheck
+  is rdfs:subClassOf era:Compliance and VehicleTypeAuthorisationRestriction
+  is rdfs:subClassOf era:Restriction -- two generic hub classes shared across
+  ERATV, EVR and ERADIS (a compliance check or restriction looks structurally
+  the same regardless of which register process it gates). era:Compliance's
+  own properties (complianceResult, isOptional) are inlined into
+  VehicleTypeAuthorisationCheck the same way RINF inlines era:Feature into
+  every physical entity. era:Restriction's own properties largely turned out
+  to already be explicitly re-declared per concrete Restriction subclass via
+  multi-class rdfs:domain unions (e.g. era:wheelSetGauge's domain already
+  explicitly lists VehicleTypeAuthorisationRestriction), so climbing to
+  era:Restriction added no properties beyond what direct-domain matching
+  already found -- confirmed by inspection, not assumed. era:Compliance and
+  era:Restriction themselves are NOT published as their own models, same
+  abstract-hub treatment as era:Feature/era:InfrastructureElement in RINF.
+  This same era:Compliance/era:Restriction inheritance will recur for
+  ERADIS's CAB*Check/CAB*Restriction classes and EVR's
+  VehicleRegistrationCheck/Restriction in the next two passes.
+
+  VALUE-HOLDER "STUB" CLASSES EMBEDDED AS NESTED OBJECTS, SAME POLICY AS
+  RINF: era:AxleSpacing, era:BrakingPerformance, era:BrakingProfile,
+  era:MaximumSpeedAndCantDeficiency, era:PermissiblePayload are embedded
+  inline on the one property that references each, not published as
+  separate entities. era:MinAxleLoadVehicleCategory is owl:deprecated and
+  excluded entirely (same as in RINF). One two-level nesting case:
+  era:BrakingPerformance (nested inside VehicleType.hasBrakingPerformance)
+  itself has a serviceBrakingProfile property pointing to era:BrakingProfile
+  -- rather than nest three levels deep, that inner reference is rendered as
+  an NGSI-LD Relationship (string, format uri) to a separately-instantiated
+  BrakingProfile, while VehicleTypeConfigParameterSet.emergencyBrakeProfile
+  (a direct, non-nested property) fully embeds BrakingProfile inline. This
+  asymmetry is intentional -- one level of embedding, not zero, not three --
+  not an oversight.
+
+  DEPRECATED PROPERTIES EXCLUDED (owl:deprecated true, checked
+  programmatically): era:manufacturer (VehicleType -> era:Manufacturer,
+  superseded by era:vehicleTypeManufacturer -> era:OrganisationRole),
+  era:category/era:subCategory (superseded by era:vehicleCategory/
+  era:vehicleSubCategory), era:includedVersions (superseded by
+  era:includedVersionsVariant), era:letterMarking, era:maxFlangeHeight is
+  NOT deprecated despite its own comment mentioning a 2019/777 amendment
+  context ("the parameter remains as it is also an ERATV parameter") --
+  double-checked directly, kept.
+
+  SOURCE ONTOLOGY QUIRK, KEPT AS-IS: VehicleType declares both
+  era:hasCantDefficiencyCompensation (sic, misspelled "Defficiency") and
+  era:hasCantDeficiencyCompensation (correct spelling) as two separate,
+  neither-deprecated properties with identical labels and comments. Both are
+  preserved verbatim rather than silently dropping the apparent typo, since
+  this candidate's policy is to reproduce the source ontology's actual
+  declarations, not to guess at and correct what look like authoring
+  mistakes upstream. Worth flagging to ERA directly.
+
+  CONTROLLED VOCABULARIES: same open string/uri (not enum) treatment as
+  RINF, for the same reason (era-skos not cross-referenced in this pass).
+  A curated set of the most visible fields (vehicle category, gauge, ETCS
+  baseline, energy supply system, TSI compliance areas) use realistic
+  illustrative values in the example.
+
+  RELATIONSHIP TARGETS PUBLISHED ELSEWHERE: era:OrganisationRole and
+  era:Document (vehicleTypeManufacturer, certificate's underlying documents,
+  etc.) are published under era-rinf, not duplicated here -- properties
+  pointing at them are typed as ordinary NGSI-LD Relationships with a note
+  identifying which standard publishes the target. era:Vehicle,
+  era:VehicleSeries, era:VehicleSet, era:EvidenceDocument are not yet
+  published anywhere (planned for era-evr / a possible shared-framework
+  candidate for the vpa: Verified Permissions Ontology) -- properties
+  pointing at them are still typed as Relationships, flagged as pointing to
+  an as-yet-unpublished target.
+
+  UPDATE 2026-08-11 (second pass): discovered that era:Permission,
+  era:Request, era:Case, era:Compliance's imported vpa: counterparts, and
+  era:Restriction's, are subclasses of the actual "Verified Permissions
+  Ontology" (https://w3id.org/vpa, resolved from https://w3id.org/vpa# via
+  a 303 redirect to https://linkedvocabs.org/onto/vpa/ontology.ttl) rather
+  than an unreachable abstraction -- fetched and parsed it the same way as
+  ontology.ttl (rdflib, 932 lines, 31 classes, 67 properties, CC-BY-4.0).
+  This gave real structure to what would otherwise have been near-empty
+  entities: VehicleTypeAuthorisation gained permissionStatus/permits/
+  requestedIn/submittedIn/valid (from vpa:Permission, 7->12 properties),
+  VehicleTypeAuthorisationApplication gained requestFor/status/constitutedBy
+  (from vpa:Request, 8->11), VehicleTypeAuthorisationCase gained concerns/
+  constitutes/status (from vpa:Case, 13->17), and VehicleTypeAuthorisationCheck
+  gained checkResult/checkedRequirement/checkedSection/isCompliant/statement/
+  withRestriction (from vpa:Compliance, 8->14). All entities regenerated,
+  re-validated (still 0 issues), examples rebuilt. vpa:Permission/Request/
+  Case/Compliance/Restriction/Evidence/EvidenceDocument/Requirement/Scope
+  are themselves still not published as their own SDM models (same
+  abstract-hub treatment, now applied across two source ontologies instead
+  of one) -- worth a dedicated shared "vpa" candidate of its own if ERA's
+  compliance/authorisation framework is judged worth modeling generically,
+  since it recurs identically across ERATV, ERADIS and EVR.
+
+  EXAMPLE SCENARIO: one fictional vehicle type ("Fictorail X40", an EMU),
+  its one configuration, and its authorisation case/application/check/
+  restriction, cross-referenced by urn:ngsi-ld id -- same fictional-but-
+  coherent approach as era-rinf's Fictburg/Exemploix scenario, and
+  deliberately using a different invented brand ("Fictorail") to avoid
+  implying any connection between the two illustrative scenarios.
+
+  UPDATE 2026-08-11: fetched era-skos and patched 53 enum-constrained
+  Concept-ranged property occurrences (vehicleCategory, wheelSetGauge,
+  gaugingProfile, etcsBaseline, energySupplySystem, contactStripMaterial,
+  ...) across this candidate's 8 models with real SKOS concept IRIs, using
+  the same era:inSkosConceptScheme annotation cross-reference described in
+  full in era-rinf's standard-metadata.yaml. Example values updated to real
+  concept IRIs from the matched schemes; all 8 examples re-validated against
+  the now-stricter schemas -- 0 failures.

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eratv/models/VehicleTypeAuthorisation/schema.json",
+  "modelTags": "ERA,ERATV,Railway,VehicleType",
+  "title": "Smart Data Models - ERA ERATV - VehicleTypeAuthorisation",
+  "description": "Vehicle Type Authorisation (era:VehicleTypeAuthorisation's own definition, verbatim, in the source ontology): (16) the decision issued by the authorising entity based on reasonable assurance that the applicant and the entities involved in the design,\nmanufacture, verification and validation of the vehicle type have fulfilled their obligations and responsibilities in order to ensure conformity with the essential\nrequirements of the applicable legislation enabling that a vehicle manufactured according to this design may be placed on the market and may be used safely in the\narea of use of the vehicle type according to the conditions for use of the vehicle and other restrictions, when applicable, specified in the vehicle type authorisation\nand to be applied to all vehicle authorised in conformity to this type; Inherits attributes from era:Permission (inlined here rather than via schema $ref, per this repo's convention).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "VehicleTypeAuthorisation"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'VehicleTypeAuthorisation'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "vehicleTypeAuthorisationHolder": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Indicates the vehicle type authorisation holder. Target type (OrganisationRole) is published under the era-rinf standard."
+    },
+    "permissionStatus": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. the status of the Permission, from a controlled Vocabulary, expressing how it evolves from being drafted to being valid and eventually possibly revoked/withdrawn. Controlled-vocabulary value: IRI of a skos:Concept from the relevant ERA code list (see era-skos), not enumerated here as the source ontology leaves this range open."
+    },
+    "permits": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. the process, activity, role or other scope which the Permission allows to the Requesting Body to execute or hold Controlled-vocabulary value: IRI of a skos:Concept from the relevant ERA code list (see era-skos), not enumerated here as the source ontology leaves this range open."
+    },
+    "requestedIn": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. aiming to be enabled to act as covered by the Permission and its conditions, by issuing Target type (Request) is not published as its own SDM model yet."
+    },
+    "submittedIn": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The submission of a permission or evidence to a case Target type (Case) is not published as its own SDM model yet."
+    },
+    "valid": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. valid during a certain time Target type (Interval) is not published as its own SDM model yet."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
