@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/LinesideDistanceIndication/schema.json",
+  "modelTags": "ERA,RINF,Railway,Infrastructure",
+  "title": "Smart Data Models - ERA RINF - LinesideDistanceIndication",
+  "description": "Lineside indications of distance (era:LinesideDistanceIndication's own definition, verbatim, in the source ontology): Frequency, appearance and positioning of a sign indicating distance as reference post. Two types of signs are normally available: kilometre post and hectometre post.\n- A kilometre post is a lineside sign indicating the distance from a specific point, usually being the starting point of the railway line.\n- A hectometre post is a lineside sign indicating a relative distance.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "LinesideDistanceIndication"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'LinesideDistanceIndication'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "linesideDistanceIndicationAppearance": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Indication of types of appearance of track lineside distance indications. Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Lineside distance indication appearance' SKOS concept scheme (http://data.europa.eu/949/concepts/lineside-distance-indication-appearance/LinesideDistanceIndicationAppearance), 4 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/lineside-distance-indication-appearance/00",
+        "http://data.europa.eu/949/concepts/lineside-distance-indication-appearance/01",
+        "http://data.europa.eu/949/concepts/lineside-distance-indication-appearance/02",
+        "http://data.europa.eu/949/concepts/lineside-distance-indication-appearance/03"
+      ]
+    },
+    "linesideDistanceIndicationFrequency": {
+      "type": "integer",
+      "description": "Property. Frequency of track lineside distance indications."
+    },
+    "linesideDistanceIndicationPositioning": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Indication of the side along the track where the lineside indication is positioned (left or right, or both sides). Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Lineside distance indication positioning' SKOS concept scheme (http://data.europa.eu/949/concepts/lineside-distance-indication-positioning/LinesideDistanceIndicationPositioning), 3 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/lineside-distance-indication-positioning/00",
+        "http://data.europa.eu/949/concepts/lineside-distance-indication-positioning/01",
+        "http://data.europa.eu/949/concepts/lineside-distance-indication-positioning/02"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

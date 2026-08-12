@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/OrganisationRole/schema.json",
+  "modelTags": "ERA,RINF,Railway,Infrastructure",
+  "title": "Smart Data Models - ERA RINF - OrganisationRole",
+  "description": "Organisation Role (era:OrganisationRole's own definition, verbatim, in the source ontology): Represents an n-ary relationship between a Body and a role",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "OrganisationRole"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'OrganisationRole'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasOrganisationRole": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Relates the Organisation role instance (the role played by an Organisation)  with the specific role in the taxonomy of organisation roles. Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Organisation roles' SKOS concept scheme (http://data.europa.eu/949/concepts/organisation-roles/OrgRoles), 92 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/organisation-roles/AB",
+        "http://data.europa.eu/949/concepts/organisation-roles/AB-CSM",
+        "http://data.europa.eu/949/concepts/organisation-roles/ADME",
+        "http://data.europa.eu/949/concepts/organisation-roles/ALBO",
+        "http://data.europa.eu/949/concepts/organisation-roles/ARCC",
+        "http://data.europa.eu/949/concepts/organisation-roles/ASBO",
+        "http://data.europa.eu/949/concepts/organisation-roles/Applicant",
+        "http://data.europa.eu/949/concepts/organisation-roles/AuthorisingEntity",
+        "http://data.europa.eu/949/concepts/organisation-roles/CAB",
+        "http://data.europa.eu/949/concepts/organisation-roles/CAB-NNTR",
+        "http://data.europa.eu/949/concepts/organisation-roles/CAB-TSI",
+        "http://data.europa.eu/949/concepts/organisation-roles/CB",
+        "http://data.europa.eu/949/concepts/organisation-roles/CIT",
+        "http://data.europa.eu/949/concepts/organisation-roles/CONS",
+        "http://data.europa.eu/949/concepts/organisation-roles/DEBO",
+        "http://data.europa.eu/949/concepts/organisation-roles/DISTR",
+        "http://data.europa.eu/949/concepts/organisation-roles/EC",
+        "http://data.europa.eu/949/concepts/organisation-roles/EC-DoV-IB",
+        "http://data.europa.eu/949/concepts/organisation-roles/ECM",
+        "http://data.europa.eu/949/concepts/organisation-roles/ECM-CB",
+        "http://data.europa.eu/949/concepts/organisation-roles/ECM-b",
+        "http://data.europa.eu/949/concepts/organisation-roles/ECM-c",
+        "http://data.europa.eu/949/concepts/organisation-roles/ECM-d",
+        "http://data.europa.eu/949/concepts/organisation-roles/ERA",
+        "http://data.europa.eu/949/concepts/organisation-roles/EUBody",
+        "http://data.europa.eu/949/concepts/organisation-roles/EUI",
+        "http://data.europa.eu/949/concepts/organisation-roles/Holder",
+        "http://data.europa.eu/949/concepts/organisation-roles/IAG",
+        "http://data.europa.eu/949/concepts/organisation-roles/IM",
+        "http://data.europa.eu/949/concepts/organisation-roles/IM-1",
+        "http://data.europa.eu/949/concepts/organisation-roles/IM-2",
+        "http://data.europa.eu/949/concepts/organisation-roles/ISS",
+        "http://data.europa.eu/949/concepts/organisation-roles/ITI",
+        "http://data.europa.eu/949/concepts/organisation-roles/ITO",
+        "http://data.europa.eu/949/concepts/organisation-roles/Keeper",
+        "http://data.europa.eu/949/concepts/organisation-roles/LIA",
+        "http://data.europa.eu/949/concepts/organisation-roles/LICA",
+        "http://data.europa.eu/949/concepts/organisation-roles/MS",
+        "http://data.europa.eu/949/concepts/organisation-roles/MWS",
+        "http://data.europa.eu/949/concepts/organisation-roles/MWS-b",
+        "http://data.europa.eu/949/concepts/organisation-roles/MWS-c",
+        "http://data.europa.eu/949/concepts/organisation-roles/MWS-d",
+        "http://data.europa.eu/949/concepts/organisation-roles/Manufacturer",
+        "http://data.europa.eu/949/concepts/organisation-roles/Manufacturer-AB",
+        "http://data.europa.eu/949/concepts/organisation-roles/Manufacturer-CAB",
+        "http://data.europa.eu/949/concepts/organisation-roles/NAB",
+        "http://data.europa.eu/949/concepts/organisation-roles/NAB-ASBO",
+        "http://data.europa.eu/949/concepts/organisation-roles/NAB-ECM",
+        "http://data.europa.eu/949/concepts/organisation-roles/NEA",
+        "http://data.europa.eu/949/concepts/organisation-roles/NEG",
+        "http://data.europa.eu/949/concepts/organisation-roles/NIB",
+        "http://data.europa.eu/949/concepts/organisation-roles/NOBO",
+        "http://data.europa.eu/949/concepts/organisation-roles/NRB",
+        "http://data.europa.eu/949/concepts/organisation-roles/NRE",
+        "http://data.europa.eu/949/concepts/organisation-roles/NRI",
+        "http://data.europa.eu/949/concepts/organisation-roles/NRIA",
+        "http://data.europa.eu/949/concepts/organisation-roles/NSA",
+        "http://data.europa.eu/949/concepts/organisation-roles/NSA-AuthorisingEntity",
+        "http://data.europa.eu/949/concepts/organisation-roles/NSA-ECM-CB",
+        "http://data.europa.eu/949/concepts/organisation-roles/NSA-RU-SCB",
+        "http://data.europa.eu/949/concepts/organisation-roles/OTIF",
+        "http://data.europa.eu/949/concepts/organisation-roles/Owner",
+        "http://data.europa.eu/949/concepts/organisation-roles/PM",
+        "http://data.europa.eu/949/concepts/organisation-roles/PRMORG",
+        "http://data.europa.eu/949/concepts/organisation-roles/RB",
+        "http://data.europa.eu/949/concepts/organisation-roles/RB-ASBO",
+        "http://data.europa.eu/949/concepts/organisation-roles/RB-ECM",
+        "http://data.europa.eu/949/concepts/organisation-roles/RC",
+        "http://data.europa.eu/949/concepts/organisation-roles/RCO",
+        "http://data.europa.eu/949/concepts/organisation-roles/REGB",
+        "http://data.europa.eu/949/concepts/organisation-roles/RES",
+        "http://data.europa.eu/949/concepts/organisation-roles/RETA",
+        "http://data.europa.eu/949/concepts/organisation-roles/ROSCO",
+        "http://data.europa.eu/949/concepts/organisation-roles/RU",
+        "http://data.europa.eu/949/concepts/organisation-roles/RU-1",
+        "http://data.europa.eu/949/concepts/organisation-roles/RU-2",
+        "http://data.europa.eu/949/concepts/organisation-roles/RU-3",
+        "http://data.europa.eu/949/concepts/organisation-roles/RU-4",
+        "http://data.europa.eu/949/concepts/organisation-roles/RU-5",
+        "http://data.europa.eu/949/concepts/organisation-roles/RU-6",
+        "http://data.europa.eu/949/concepts/organisation-roles/RU-7",
+        "http://data.europa.eu/949/concepts/organisation-roles/RU-SCB",
+        "http://data.europa.eu/949/concepts/organisation-roles/SB",
+        "http://data.europa.eu/949/concepts/organisation-roles/SFO",
+        "http://data.europa.eu/949/concepts/organisation-roles/SFO-1",
+        "http://data.europa.eu/949/concepts/organisation-roles/SFO-2",
+        "http://data.europa.eu/949/concepts/organisation-roles/SM",
+        "http://data.europa.eu/949/concepts/organisation-roles/SP",
+        "http://data.europa.eu/949/concepts/organisation-roles/TCO",
+        "http://data.europa.eu/949/concepts/organisation-roles/TDGCA",
+        "http://data.europa.eu/949/concepts/organisation-roles/TU",
+        "http://data.europa.eu/949/concepts/organisation-roles/VRE"
+      ]
+    },
+    "nandoCode": {
+      "type": "string",
+      "description": "Property."
+    },
+    "roleOf": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Indicates the corresponding Body that plays a certain organisation role."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

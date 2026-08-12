@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/TopologicalCoordinate/schema.json",
+  "modelTags": "ERA,RINF,Railway,Infrastructure",
+  "title": "Smart Data Models - ERA RINF - TopologicalCoordinate",
+  "description": "Topological Coordinate (era:TopologicalCoordinate's own definition, verbatim, in the source ontology): Represents a topological coordinate.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "TopologicalCoordinate"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'TopologicalCoordinate'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "offsetFromOrigin": {
+      "type": "number",
+      "description": "Property. Offset from the origin in a topological coordinate."
+    },
+    "onLinearElement": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Specifies the linear element a coordinate is associated with."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

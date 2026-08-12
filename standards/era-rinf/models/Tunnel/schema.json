@@ -1,0 +1,303 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/Tunnel/schema.json",
+  "modelTags": "ERA,RINF,Railway,Infrastructure",
+  "title": "Smart Data Models - ERA RINF - Tunnel",
+  "description": "Tunnel (era:Tunnel's own definition, verbatim, in the source ontology): A railway tunnel is an excavation or a construction around the track provided to allow the railway to pass for example higher land, buildings or water. Inherits attributes from era:InfrastructureElement/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Tunnel"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Tunnel'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "complianceInfTsi": {
+      "type": "boolean",
+      "description": "Property. Compliance of the tunnel with TSI INF at the maximum permitted speed (RINF register parameter index: 1.1.1.1.8.8.1)"
+    },
+    "crossSectionArea": {
+      "type": "integer",
+      "description": "Property. Smallest cross section area in square metres of the tunnel (RINF register parameter index: 1.1.1.1.8.8)"
+    },
+    "demonstrationSRT": {
+      "type": "string",
+      "description": "Property. Unique number for EI declarations following the same format requirements as specified for EC declarations in Annex VII of Commission Implementing Regulation (EU) 2019/250. (RINF register parameter index: 1.1.1.1.8.6, 1.2.1.0.5.4, 1.2.2.0.5.4)"
+    },
+    "dieselThermalAllowed": {
+      "type": "boolean",
+      "description": "Property. Indication whether it is allowed to use diesel or other thermal traction in the tunnel (RINF register parameter index: 1.2.1.0.5.9)"
+    },
+    "endLocation": {
+      "type": "object",
+      "description": "Property. Geographical coordinates in decimal degrees and km of the line at the end of a tunnel. (RINF register parameter index: 1.1.1.1.8.4) GeoJSON Point (WGS84).",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    },
+    "existOpeningHoursLimitation": {
+      "type": "boolean",
+      "description": "Property. Indicate, if there are any opening hours of the section of a line or Tunnel or Bridge."
+    },
+    "existRestrictedDangerousGood": {
+      "type": "boolean",
+      "description": "Property. Indicate, if there are any limits on transportation of dangerous goods."
+    },
+    "existRestrictedTypeOfVehicleOfTunnel": {
+      "type": "boolean",
+      "description": "Property. Indicate, if there are any limits on specific type of vehicle in the tunnel."
+    },
+    "existTrainExclusionOfSimultaneity": {
+      "type": "boolean",
+      "description": "Property. Indicate, if passenger and freight trains meeting together in a tunnel is allowed"
+    },
+    "hasEmergencyPlan": {
+      "type": "boolean",
+      "description": "Property. Indication whether emergency plan exists. (RINF register parameter index: 1.1.1.1.8.9, 1.2.1.0.5.6, 1.2.2.0.5.6)"
+    },
+    "hasEvacuationAndRescuePoints": {
+      "type": "boolean",
+      "description": "Property. Indication of existence of evacuation and rescue points (RINF register parameter index: 1.1.1.1.8.13, 1.2.1.0.5.11, 1.2.2.0.5.10)"
+    },
+    "hasWalkway": {
+      "type": "boolean",
+      "description": "Property. Indication of existence of walkways (RINF register parameter index: 1.1.1.1.8.12, 1.2.1.0.5.10, 1.2.2.0.5.9)"
+    },
+    "lengthOfTunnel": {
+      "type": "number",
+      "description": "Property. Length of a tunnel in metres from entrance portal to exit portal. (RINF register parameter index: 1.1.1.1.8.7, 1.2.1.0.5.5, 1.2.2.0.5.5)"
+    },
+    "lineReferenceTunnelEnd": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Part of the End of tunnel that indicates the km of the line at the end of a tunnel.\n\nThe End of tunnel is the Geographical coordinates in decimal degrees and km of the line at the end of a tunnel. (RINF register parameter index: 1.1.1.1.8.4)"
+    },
+    "lineReferenceTunnelStart": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Part of the Start of tunnel that indicates the km of the line at the beginning of a tunnel.\n\nThe Start of tunnel is the Geographical coordinates in decimal degrees and km of the line at the beginning of a tunnel. (RINF register parameter index: 1.1.1.1.8.3)"
+    },
+    "maxTunnelSpeed": {
+      "type": "integer",
+      "description": "Property. Indicate the speed limit in a tunnel"
+    },
+    "nationalRollingStockFireCategory": {
+      "type": "string",
+      "description": "Property. Categorisation of how a passenger train with a fire on board will continue to operate for a defined time period - according to national rules if they exist. (RINF register parameter index: 1.1.1.1.8.11, 1.2.1.0.5.8, 1.2.2.0.5.8)"
+    },
+    "openingHoursLimitation": {
+      "type": "string",
+      "description": "Property. Opening hours of the section of a line or tunnel or a bridge"
+    },
+    "restrictedDangerousGood": {
+      "type": "string",
+      "description": "Property. Description of the type of dangerous good that are not allowed in the tunnel"
+    },
+    "restrictedTypeOfVehicleInTunnel": {
+      "type": "string",
+      "description": "Property. Specific types of vehicles restricted in the tunnel."
+    },
+    "rollingStockFireCategory": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Categorisation how a passenger train with a fire on board will continue to operate for a defined time period (RINF register parameter index: 1.1.1.1.8.10, 1.2.1.0.5.7, 1.2.2.0.5.7) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Rolling Stock Fire Categories' SKOS concept scheme (http://data.europa.eu/949/concepts/rolling-stock-fire/Categories), 9 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://data.europa.eu/949/concepts/rolling-stock-fire/10",
+        "http://data.europa.eu/949/concepts/rolling-stock-fire/20",
+        "http://data.europa.eu/949/concepts/rolling-stock-fire/30",
+        "http://data.europa.eu/949/concepts/rolling-stock-fire/eratv/10",
+        "http://data.europa.eu/949/concepts/rolling-stock-fire/eratv/20",
+        "http://data.europa.eu/949/concepts/rolling-stock-fire/eratv/no-category-acceptable-in-unnels-shorter-then-1km",
+        "http://data.europa.eu/949/concepts/rolling-stock-fire/eratv/not-applicable",
+        "http://data.europa.eu/949/concepts/rolling-stock-fire/eratv/otm",
+        "http://data.europa.eu/949/concepts/rolling-stock-fire/eratv/srt-tsi"
+      ]
+    },
+    "specialTunnelArea": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Relates a tunnel with a special area or location."
+    },
+    "startLocation": {
+      "type": "object",
+      "description": "Property. Part of the Start of tunnel that indicates the Geographical coordinates according to the standard World Geodetic System (WGS). Precision for both geographical latitude and geographical longitude is assumed as [NN.NNNNNNN] in degrees with decimals what gives discretion of 10 cm in the network.\nThe Start of tunnel is the Geographical coordinates in decimal degrees and km of the line at the beginning of a tunnel. (RINF register parameter index: 1.1.1.1.8.3) GeoJSON Point (WGS84).",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    },
+    "tunnelDocRef": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Electronic document available from the IM stored by the Agency with precise description of the clearance gauge and geometry of the tunnel. (RINF register parameter index: 1.1.1.1.8.8.2)"
+    },
+    "tunnelIdentification": {
+      "type": "string",
+      "description": "Property. Unique tunnel identification or unique tunnel number within Member State (RINF register parameter index: 1.1.1.1.8.2, 1.2.1.0.5.2, 1.2.2.0.5.2)"
+    },
+    "verificationSRT": {
+      "type": "string",
+      "description": "Property. Unique number for EC declarations in accordance with Commission Implementing Regulation (EU) 2019/250. (RINF register parameter index: 1.1.1.1.8.5, 1.2.1.0.5.3, 1.2.2.0.5.3)"
+    },
+    "belongsTo": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Indicates that an infrastructure element belongs to a certain subset that contains common characteristics. Target type (CommonCharacteristicsSubset) is not published as its own SDM model in this RINF pass."
+    },
+    "canonicalURI": {
+      "type": "string",
+      "description": "Property. The canonical URI is defined for each instance of an Infrastructure element, e.g. section of line, operational point, track, tunnel, siding.\nObjects of the infrastructure generated through RML mappings include (when provided) their validity start and end dates. With its identifier, plus all identifiers of its \"parent\" elements, and its validity dates, a hash URI is generated.\nThe canonical URI is the element's URI with its identifiers and without the validity dates. All of the hash URIs of an element point to its canonical URI.\nAdditionally, SoLs point to the canonical URIs of their start OP and end OP."
+    },
+    "exemptSpecialVehiclesFromATO": {
+      "type": "boolean",
+      "description": "Property. Indicates whether special vehicles are exempted from the need to install ATO (Automatic Train Operation) for this infrastructure element."
+    },
+    "exemptSpecialVehiclesFromETCS": {
+      "type": "boolean",
+      "description": "Property. Indicates whether special vehicles are exempted from the need to install ETCS (European Train Control System) for this infrastructure element."
+    },
+    "exemptSpecialVehiclesFromRMR": {
+      "type": "boolean",
+      "description": "Property. Indicates whether special vehicles are exempted from the need to install RMR (Railway Mobile Radio) for this infrastructure element."
+    },
+    "hasPart": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri",
+        "description": "Relationship. Indicates that an infrastructure element is composed of one or more other (distinct) infrastructure elements.\nThis property is used to represent part-whole relationships between infrastructure elements.\nAn element cannot be a part of itself."
+      },
+      "description": "Relationship. Indicates that an infrastructure element is composed of one or more other (distinct) infrastructure elements.\nThis property is used to represent part-whole relationships between infrastructure elements.\nAn element cannot be a part of itself."
+    },
+    "hashSource": {
+      "type": "string",
+      "description": "Property. This property indicates for each infrastructure element, the source, i.e. the identifier  or key that was input to the hash function in order to generate the hash value that is part of the hash URI."
+    },
+    "inCountry": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Indicates the country in which an entity resides. Controlled-vocabulary value: IRI of a skos:Concept from the relevant ERA code list (see era-skos), not enumerated here as the source ontology leaves this range open."
+    },
+    "infrastructureManager": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Relates a subset with common characteristics with its IM, represented by an instance of organisation role that points to the \"infrastructure manager\" concept in the taxonomy."
+    },
+    "isPartOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri",
+        "description": "Relationship. Indicates that an infrastructure element is a part of another (distinct) infrastructure element.\nAn element cannot be part of itself.\nThis property is the inverse of era:hasPart and represents the partial or whole-part relationship between infrastructure elements."
+      },
+      "description": "Relationship. Indicates that an infrastructure element is a part of another (distinct) infrastructure element.\nAn element cannot be part of itself.\nThis property is the inverse of era:hasPart and represents the partial or whole-part relationship between infrastructure elements."
+    },
+    "netReference": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The reference that a physical infrastructure element has it on the topology. It may be used to define the positioning or a representation as a point, line or area"
+    },
+    "operatingLanguage": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. The language or languages used in daily operation by infrastructure manager and published in its Network Statement, for the communication of operational or safety related messages between the staff of the infrastructure manager and the railway undertaking. (RINF register parameter index: 1.1.0.0.1.2, 1.2.0.0.0.8) Controlled-vocabulary value: IRI of a skos:Concept from ERA's 'Language' SKOS concept scheme (http://publications.europa.eu/resource/authority/language), 26 concepts, enumerated below from era-skos.",
+      "enum": [
+        "http://publications.europa.eu/resource/authority/language/BUL",
+        "http://publications.europa.eu/resource/authority/language/CES",
+        "http://publications.europa.eu/resource/authority/language/DAN",
+        "http://publications.europa.eu/resource/authority/language/DEU",
+        "http://publications.europa.eu/resource/authority/language/ELL",
+        "http://publications.europa.eu/resource/authority/language/ENG",
+        "http://publications.europa.eu/resource/authority/language/EST",
+        "http://publications.europa.eu/resource/authority/language/FIN",
+        "http://publications.europa.eu/resource/authority/language/FRA",
+        "http://publications.europa.eu/resource/authority/language/GLE",
+        "http://publications.europa.eu/resource/authority/language/HRV",
+        "http://publications.europa.eu/resource/authority/language/HUN",
+        "http://publications.europa.eu/resource/authority/language/ITA",
+        "http://publications.europa.eu/resource/authority/language/LAV",
+        "http://publications.europa.eu/resource/authority/language/LIT",
+        "http://publications.europa.eu/resource/authority/language/MLT",
+        "http://publications.europa.eu/resource/authority/language/NLD",
+        "http://publications.europa.eu/resource/authority/language/NOR",
+        "http://publications.europa.eu/resource/authority/language/POL",
+        "http://publications.europa.eu/resource/authority/language/POR",
+        "http://publications.europa.eu/resource/authority/language/RON",
+        "http://publications.europa.eu/resource/authority/language/RUS",
+        "http://publications.europa.eu/resource/authority/language/SLK",
+        "http://publications.europa.eu/resource/authority/language/SLV",
+        "http://publications.europa.eu/resource/authority/language/SPA",
+        "http://publications.europa.eu/resource/authority/language/SWE"
+      ]
+    },
+    "parameterApplicability": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Relates an infrastructure element or a common characteristics subset with the applicability of a certain parameter. Target type (ParameterApplicability) is not published as its own SDM model in this RINF pass."
+    },
+    "primaryLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Primary location code developed for information exchange in accordance with the TSIs relating to the telematics applications subsystem. (RINF register parameter index: 1.2.0.0.0.3)"
+    },
+    "validity": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Relates a feature with a temporal feature to indicate a validity period. Target type (TemporalFeature) is not published as its own SDM model in this RINF pass."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
