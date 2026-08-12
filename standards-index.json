@@ -272,6 +272,585 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-turismo"
   },
   {
+    "slug": "era-eradis",
+    "title": "ERA ERADIS (documents/certification register)",
+    "description": "ERADIS is one of four registers (alongside RINF, ERATV, EVR) published under the single ERA Ontology v3.3.3 -- see era-rinf's standard-metadata.yaml for the shared ontology-wide context. ERADIS covers the certification and compliance-documentation side of the railway authorisation processes: Certificates (safety certificates for railway undertakings), Conformity Assessment Body (CAB) evidence, assessment/audit checks and restrictions, Certification Level Documents, EC Declarations of Verification/Conformity, document sets, validity constraints on certificates/decisions, and references to the Technical Specifications for Interoperability (TSIs) those checks are performed against.",
+    "publisher": "European Union Agency for Railways (ERA)",
+    "sourceUrl": "https://rinf.data.era.europa.eu/era-vocabulary/",
+    "license": "European Union Public Licence v1.2 (EUPL-1.2)",
+    "domains": [
+      "Transportation"
+    ],
+    "modelCount": 14,
+    "models": [
+      {
+        "name": "CABAddition",
+        "title": "Smart Data Models - ERA ERADIS - CABAddition",
+        "description": "CAB assessed addition (era:CABAddition's own definition, verbatim, in the source ontology): An additionally allowed Option, Added Function which was confirmed by a CAB Inherits attributes from era:Restriction (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eradis/models/CABAddition/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-eradis/models/CABAddition"
+      },
+      {
+        "name": "CABAssessmentCheck",
+        "title": "Smart Data Models - ERA ERADIS - CABAssessmentCheck",
+        "description": "CAB Assessment Check (era:CABAssessmentCheck's own definition, verbatim, in the source ontology): A compliance check as executed by a Conformity Assessment Body. The class can be used NoBo, DeBo and/or AsBo checks. Inherits attributes from era:Compliance (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eradis/models/CABAssessmentCheck/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-eradis/models/CABAssessmentCheck"
+      },
+      {
+        "name": "CABAuditCheck",
+        "title": "Smart Data Models - ERA ERADIS - CABAuditCheck",
+        "description": "CAB Audit Check (era:CABAuditCheck's own definition, verbatim, in the source ontology): A compliance observation as executed by a Conformity Assessment Body in an audit. The class can be used NoBo, DeBo and/or AsBo checks. Inherits attributes from era:Compliance (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eradis/models/CABAuditCheck/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-eradis/models/CABAuditCheck"
+      },
+      {
+        "name": "CABCertificate",
+        "title": "Smart Data Models - ERA ERADIS - CABCertificate",
+        "description": "Certificate from a CAB (era:CABCertificate's own definition, verbatim, in the source ontology): A `vpa:EvidenceDocument` from a Conformity Assessment Body examining any other reference than a TSI or its annexes. Inherits attributes from era:EvidenceDocument (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eradis/models/CABCertificate/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-eradis/models/CABCertificate"
+      },
+      {
+        "name": "CABEvidence",
+        "title": "Smart Data Models - ERA ERADIS - CABEvidence",
+        "description": "Evidence from a CAB (era:CABEvidence's own definition, verbatim, in the source ontology): A `era:DocumentSet` which mainly contains Certification Level Documents or Certificates of Conformity from a Conformity Assessment Body. Inherits attributes from era:DocumentSet/era:Evidence (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eradis/models/CABEvidence/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-eradis/models/CABEvidence"
+      },
+      {
+        "name": "CABRestriction",
+        "title": "Smart Data Models - ERA ERADIS - CABRestriction",
+        "description": "CAB restriction (era:CABRestriction's own definition, verbatim, in the source ontology): A Restriction which was issued by a CAB Inherits attributes from era:Restriction (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eradis/models/CABRestriction/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-eradis/models/CABRestriction"
+      },
+      {
+        "name": "Certificate",
+        "title": "Smart Data Models - ERA ERADIS - Certificate",
+        "description": "Certificate (era:Certificate's own definition, verbatim, in the source ontology): Base class for those Certificates in the ERADIS register, which allow a IOD/SD described process. Inherits attributes from era:Permission (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eradis/models/Certificate/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-eradis/models/Certificate"
+      },
+      {
+        "name": "CertificationLevelDocument",
+        "title": "Smart Data Models - ERA ERADIS - CertificationLevelDocument",
+        "description": "Certification Level Document (era:CertificationLevelDocument's own definition, verbatim, in the source ontology): Certification Level Document, as issued by a NoBo in the process of its certification/verification activities [RFU-STR-001]. The class can be reused as well for DeBo and AsBo certificates. Inherits attributes from era:EvidenceDocument (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eradis/models/CertificationLevelDocument/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-eradis/models/CertificationLevelDocument"
+      },
+      {
+        "name": "DocumentSet",
+        "title": "Smart Data Models - ERA ERADIS - DocumentSet",
+        "description": "Application Document Set (era:DocumentSet's own definition, verbatim, in the source ontology): A collection of documents belonging together, as they contain - as a set - evidence in an ERA process like registration or authorisation. Inherits attributes from era:Evidence (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eradis/models/DocumentSet/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-eradis/models/DocumentSet"
+      },
+      {
+        "name": "ECDeclaration",
+        "title": "Smart Data Models - ERA ERADIS - ECDeclaration",
+        "description": "EC Declaration of Verification/Conformity (era:ECDeclaration's own definition, verbatim, in the source ontology): EC Declaration of Verification/Conformity/Suitability for Use, as issued by an Applicant in the process of certification/verification activities for IC's or subsystems. Inherits attributes from era:EvidenceDocument (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eradis/models/ECDeclaration/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-eradis/models/ECDeclaration"
+      },
+      {
+        "name": "ForbiddenAssessmentConstraint",
+        "title": "Smart Data Models - ERA ERADIS - ForbiddenAssessmentConstraint",
+        "description": "Forbidden assessment constraint (era:ForbiddenAssessmentConstraint's own definition, verbatim, in the source ontology): A validity constraint signalling that the combination of CLD type and assessment module is structurally not permitted under this TSI.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eradis/models/ForbiddenAssessmentConstraint/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-eradis/models/ForbiddenAssessmentConstraint"
+      },
+      {
+        "name": "MaxDurationConstraint",
+        "title": "Smart Data Models - ERA ERADIS - MaxDurationConstraint",
+        "description": "Maximum duration constraint (era:MaxDurationConstraint's own definition, verbatim, in the source ontology): A validity constraint that imposes an upper bound on the CLD validity period. Being a subclass of time:DurationDescription, it uses time:years (and potentially time:months, time:days) to express the maximum allowed duration.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eradis/models/MaxDurationConstraint/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-eradis/models/MaxDurationConstraint"
+      },
+      {
+        "name": "TechnicalSpecForInteroperability",
+        "title": "Smart Data Models - ERA ERADIS - TechnicalSpecForInteroperability",
+        "description": "Technical Specification for Interoperability (era:TechnicalSpecForInteroperability's own definition, verbatim, in the source ontology): Technical Specification for Interoperability Inherits attributes from era:Requirement (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eradis/models/TechnicalSpecForInteroperability/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-eradis/models/TechnicalSpecForInteroperability"
+      },
+      {
+        "name": "UnlimitedValidityConstraint",
+        "title": "Smart Data Models - ERA ERADIS - UnlimitedValidityConstraint",
+        "description": "Unlimited validity constraint (era:UnlimitedValidityConstraint's own definition, verbatim, in the source ontology): A validity constraint signalling that the CLD has no expiry — no end date or duration should be specified.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eradis/models/UnlimitedValidityConstraint/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-eradis/models/UnlimitedValidityConstraint"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-eradis"
+  },
+  {
+    "slug": "era-eratv",
+    "title": "ERA ERATV (European Register of Authorised Vehicle Types)",
+    "description": "ERATV is one of four registers (alongside RINF, ERADIS, EVR) published under the single ERA Ontology v3.3.3 -- see the era-rinf candidate's standard-metadata.yaml for the shared ontology-wide context. ERATV itself covers authorised railway VEHICLE TYPES (as opposed to EVR, which registers individual vehicles): the vehicle type's technical characteristics (dimensions, mass, braking performance, gauging, ETCS/GSM-R/ATO on-board equipment, noise, energy supply compatibility, ...), its per-configuration variants (VehicleTypeConfiguration / VehicleTypeConfigParameterSet, since a single type can be authorised in several technical configurations, e.g. different energy supply systems or ETCS on-board versions), and the type-authorisation process itself (VehicleTypeAuthorisation, its Application, Case, compliance Check, and Restriction).",
+    "publisher": "European Union Agency for Railways (ERA)",
+    "sourceUrl": "https://rinf.data.era.europa.eu/era-vocabulary/",
+    "license": "European Union Public Licence v1.2 (EUPL-1.2)",
+    "domains": [
+      "Transportation"
+    ],
+    "modelCount": 8,
+    "models": [
+      {
+        "name": "VehicleType",
+        "title": "Smart Data Models - ERA ERATV - VehicleType",
+        "description": "Vehicle Type (era:VehicleType's own definition, verbatim, in the source ontology): A vehicle type that has been authorized to operate on the EU railway infrastructure. Type means a vehicle type defining the basic design characteristics of the vehicle as covered by a type or design examination certificate described in the relevant verification module.\n\nBasic design characteristics means the parameters that are used to identify the vehicle type as specified in the issued vehicle type authorisation and recorded in the European Register of Authorised Vehicle Types ('ERATV').\n\nThe above mentioned certificate should be documented using era:certificate.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eratv/models/VehicleType/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-eratv/models/VehicleType"
+      },
+      {
+        "name": "VehicleTypeAuthorisation",
+        "title": "Smart Data Models - ERA ERATV - VehicleTypeAuthorisation",
+        "description": "Vehicle Type Authorisation (era:VehicleTypeAuthorisation's own definition, verbatim, in the source ontology): (16) the decision issued by the authorising entity based on reasonable assurance that the applicant and the entities involved in the design,\nmanufacture, verification and validation of the vehicle type have fulfilled their obligations and responsibilities in order to ensure conformity with the essential\nrequirements of the applicable legislation enabling that a vehicle manufactured according to this design may be placed on the market and may be used safely in the\narea of use of the vehicle type according to the conditions for use of the vehicle and other restrictions, when applicable, specified in the vehicle type authorisation\nand to be applied to all vehicle authorised in conformity to this type; Inherits attributes from era:Permission (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eratv/models/VehicleTypeAuthorisation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-eratv/models/VehicleTypeAuthorisation"
+      },
+      {
+        "name": "VehicleTypeAuthorisationApplication",
+        "title": "Smart Data Models - ERA ERATV - VehicleTypeAuthorisationApplication",
+        "description": "Vehicle Type Authorisation Case (era:VehicleTypeAuthorisationApplication's own definition, verbatim, in the source ontology): The request, as submitted by the Applicant in line with (EU)2018/545, to allow the vehicle type authorisation and/or the vehicle authorisation for placing on the market.\nThe application consists of one or more authorisation cases as described in Art. 14 of (EU)2018/545, and for authorisations before the Fourth Railway Package, a HistoricalAuthorisationCase must be used.\n\nThe outcome of the application process is a `era:VehicleAuthorisation` or `era:VehicleTypeAuthorisation`. Inherits attributes from era:Request (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eratv/models/VehicleTypeAuthorisationApplication/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-eratv/models/VehicleTypeAuthorisationApplication"
+      },
+      {
+        "name": "VehicleTypeAuthorisationCase",
+        "title": "Smart Data Models - ERA ERATV - VehicleTypeAuthorisationCase",
+        "description": "Vehicle Type Authorisation Case (era:VehicleTypeAuthorisationCase's own definition, verbatim, in the source ontology): The process, as selected by the Applicant in line with (EU)2018/545, allowing the vehicle type authorisation and/or the vehicle authorisation for placing on the market.\nThe type of authorisation cases are described in Art. 14 of (EU)2018/545, and for authorisations before the Fourth Railway Package, a HistoricalAuthorisationCase must be used.\n\nEach authorisation case supports a VehicleTypeAuthorisationApplication and is determined by exactly one VehicleType, and a set of Vehicles, which can be empty in some cases.\n\nFor authorisations before the (EU)2018/545 legislation, use `era:VehicleAuthorisationCase. Inherits attributes from era:Case (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eratv/models/VehicleTypeAuthorisationCase/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-eratv/models/VehicleTypeAuthorisationCase"
+      },
+      {
+        "name": "VehicleTypeAuthorisationCheck",
+        "title": "Smart Data Models - ERA ERATV - VehicleTypeAuthorisationCheck",
+        "description": "Vehicle Type Authorisation Compliance Check (era:VehicleTypeAuthorisationCheck's own definition, verbatim, in the source ontology): A verification result as executed by a competent body on a section of a legal reference. The check can be positive or negative, and in the latter case, a restriction is expected.\n\nThis Class is used to improve the link between verification outcomes and the verified scope of that process, and support its structured documentation. Inherits attributes from era:Compliance (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eratv/models/VehicleTypeAuthorisationCheck/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-eratv/models/VehicleTypeAuthorisationCheck"
+      },
+      {
+        "name": "VehicleTypeAuthorisationRestriction",
+        "title": "Smart Data Models - ERA ERATV - VehicleTypeAuthorisationRestriction",
+        "description": "Vehicle Type Authorisation Restriction (era:VehicleTypeAuthorisationRestriction's own definition, verbatim, in the source ontology): Restrictions, like coded and non-coded conditions for use, to be taken into account in the context of a Vehicle (Type) Authorisation.\n\nThe restrictions are recorded by the Authorising Entities, possibly deduced during underlying verification and certification processes by competent bodies, and if possible are documented with a link\nto the legal reference and sections therein.\n\nIn most cases, the Restriction will be dependent of a VehicleTypeConfiguration. Inherits attributes from era:Restriction (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eratv/models/VehicleTypeAuthorisationRestriction/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-eratv/models/VehicleTypeAuthorisationRestriction"
+      },
+      {
+        "name": "VehicleTypeConfigParameterSet",
+        "title": "Smart Data Models - ERA ERATV - VehicleTypeConfigParameterSet",
+        "description": "Vehicle type configuration parameter set (era:VehicleTypeConfigParameterSet's own definition, verbatim, in the source ontology): Stub class linking a VehicleTypeConfiguration (`era:forConfiguration`) with parameters of the VehicleType that depend on that configuration.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eratv/models/VehicleTypeConfigParameterSet/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-eratv/models/VehicleTypeConfigParameterSet"
+      },
+      {
+        "name": "VehicleTypeConfiguration",
+        "title": "Smart Data Models - ERA ERATV - VehicleTypeConfiguration",
+        "description": "Vehicle type configuration (era:VehicleTypeConfiguration's own definition, verbatim, in the source ontology): The combination of supported Gauge, Energy Systems and/or CCO Systems for a vehicle type",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-eratv/models/VehicleTypeConfiguration/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-eratv/models/VehicleTypeConfiguration"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-eratv"
+  },
+  {
+    "slug": "era-evr",
+    "title": "ERA EVR (European Vehicle Register)",
+    "description": "EVR is the last of the four registers (alongside RINF, ERATV, ERADIS) published under the single ERA Ontology v3.3.3 -- see era-rinf's standard-metadata.yaml for the shared ontology-wide context. EVR registers individual VEHICLES (as opposed to ERATV, which authorises vehicle TYPES): each vehicle's identity and technical data as manufactured (European Vehicle Number, keeper, owner, ECM, manufacturing details), its Vehicle Keeper Marking (VKM), national-level registration properties defined by individual member states, and the registration process itself (VehicleRegistration, its Application, Case, compliance Check, and Restriction) plus the closely related vehicle (not vehicle-type) authorisation-for-placing-in-service process (VehicleAuthorisation, Case, Notification).",
+    "publisher": "European Union Agency for Railways (ERA)",
+    "sourceUrl": "https://rinf.data.era.europa.eu/era-vocabulary/",
+    "license": "European Union Public Licence v1.2 (EUPL-1.2)",
+    "domains": [
+      "Transportation"
+    ],
+    "modelCount": 14,
+    "models": [
+      {
+        "name": "ERTMSErrorChangeRequest",
+        "title": "Smart Data Models - ERA EVR - ERTMSErrorChangeRequest",
+        "description": "ERTMS error change request (era:ERTMSErrorChangeRequest's own definition, verbatim, in the source ontology): SKOS concept representing a change request (CR) classified as an error in the ERTMS specifications and analysed by the Agency to identify whether it may prevent the system from providing normal service under Article 10 of the CCS TSI.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-evr/models/ERTMSErrorChangeRequest/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-evr/models/ERTMSErrorChangeRequest"
+      },
+      {
+        "name": "NationalRegistrationProperty",
+        "title": "Smart Data Models - ERA EVR - NationalRegistrationProperty",
+        "description": "National Registration Property (era:NationalRegistrationProperty's own definition, verbatim, in the source ontology): A property defined at national level by a member state for vehicle registration purposes. Each member state may define its own set of such properties, identified by a national property identifier string. This class avoids creating individual era: predicates for each member-state-specific registration field. The member state is determined by the registeringMemberState of the parent VehicleRegistrationCase.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-evr/models/NationalRegistrationProperty/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-evr/models/NationalRegistrationProperty"
+      },
+      {
+        "name": "Vehicle",
+        "title": "Smart Data Models - ERA EVR - Vehicle",
+        "description": "Vehicle (era:Vehicle's own definition, verbatim, in the source ontology): A specific vehicle or wagon able and allowed to operate over railway infrastructure.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-evr/models/Vehicle/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-evr/models/Vehicle"
+      },
+      {
+        "name": "VehicleAuthorisation",
+        "title": "Smart Data Models - ERA EVR - VehicleAuthorisation",
+        "description": "Vehicle Authorisation for Placing on the Market (era:VehicleAuthorisation's own definition, verbatim, in the source ontology): (15) the decision issued by the authorising entity based on a reasonable assurance that the applicant and the entities involved in the design,\nmanufacture, verification and validation of the vehicle have fulfilled their respective obligations and responsibilities in order to ensure conformity with essential\nrequirements of the applicable legislation or to ensure conformity with the authorised type enabling that the vehicle may be placed on the market and may be used safely in the\narea of use according to the conditions for use and other restrictions, when applicable, specified in the vehicle authorisation and in the vehicle type authorisation; Inherits attributes from era:Permission (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-evr/models/VehicleAuthorisation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-evr/models/VehicleAuthorisation"
+      },
+      {
+        "name": "VehicleAuthorisationCase",
+        "title": "Smart Data Models - ERA EVR - VehicleAuthorisationCase",
+        "description": "Vehicle APIS Case (era:VehicleAuthorisationCase's own definition, verbatim, in the source ontology): The process allowing the vehicle authorisation for placing in service (APIS).\n\nThis authorisation case supported a Vehicle Application for APIS and was determined by exactly one set of Vehicles and if available a VehicleType.\n\nFor the Authorisation as per EU 2018/545, use era:VehicleTypeAuthorisationCase, which covers all authorisations types under that legislation. Inherits attributes from era:Case (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-evr/models/VehicleAuthorisationCase/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-evr/models/VehicleAuthorisationCase"
+      },
+      {
+        "name": "VehicleAuthorisationNotification",
+        "title": "Smart Data Models - ERA EVR - VehicleAuthorisationNotification",
+        "description": "Vehicle Authorisation Notification (era:VehicleAuthorisationNotification's own definition, verbatim, in the source ontology): The notification, as submitted by the Applicant in line with (EU)2018/545, informs the authorising entity of the vehicle(s set) to be updated according to Article 16.\nThe notification consists of one case as described in Art. 16 of (EU)2018/545, containing the vehicle type and EVNs, and linking to the required Evidence.\n\nThe outcome of the notification process is an added comment in the  `era:VehicleAuthorisation`, if accepted by the Authorising Entity. Inherits attributes from era:Request (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-evr/models/VehicleAuthorisationNotification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-evr/models/VehicleAuthorisationNotification"
+      },
+      {
+        "name": "VehicleKeeperMarking",
+        "title": "Smart Data Models - ERA EVR - VehicleKeeperMarking",
+        "description": "Vehicle Keeper Marking (era:VehicleKeeperMarking's own definition, verbatim, in the source ontology): The class used to relate a Vehicle Keeper Marking (VKM) properties for the purpose of the VKM register. Inherits attributes from era:OrganisationRole (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-evr/models/VehicleKeeperMarking/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-evr/models/VehicleKeeperMarking"
+      },
+      {
+        "name": "VehicleRegistration",
+        "title": "Smart Data Models - ERA EVR - VehicleRegistration",
+        "description": "Vehicle Registration (era:VehicleRegistration's own definition, verbatim, in the source ontology): Vehicle Registration serves to ensure traceability of vehicles and their history: vehicles should be registered under a European vehicle number in a vehicle register. Each\nmember state designated a registration entity responsible for the registering of vehicles and the processing and update of information in relation to vehicles that entity has registered in the European Vehicle Register.\n\nA vehicle registration groups the information for a (set of) vehicle(s) as in Appendix 4 of Commission Implementing Decision (EU) 2018/1614 of 25 October 2018. Inherits attributes from era:Permission (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-evr/models/VehicleRegistration/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-evr/models/VehicleRegistration"
+      },
+      {
+        "name": "VehicleRegistrationApplication",
+        "title": "Smart Data Models - ERA EVR - VehicleRegistrationApplication",
+        "description": "Application for Vehicle Registration (era:VehicleRegistrationApplication's own definition, verbatim, in the source ontology): Keepers should fill in an application for registration with the required information (Appendix 4 of EVR Decision).  A keeper shall submit an application for registration through\nthe European Vehicle Register to a Member State of its choice within the area of use of the vehicle.\n\nA VehicleRegistrationApplication traces the state of this process, links to the RegistrationCase(s), and a registration entity independent of any railway undertaking which\nwill be responsible for the processing of the applications and updating of data in the European Vehicle Register. Inherits attributes from era:Request (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-evr/models/VehicleRegistrationApplication/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-evr/models/VehicleRegistrationApplication"
+      },
+      {
+        "name": "VehicleRegistrationCase",
+        "title": "Smart Data Models - ERA EVR - VehicleRegistrationCase",
+        "description": "Vehicle Registration Case (era:VehicleRegistrationCase's own definition, verbatim, in the source ontology): Vehicle Registrations can be created and modified using a specific Registration Case as listed in `3.2.2.   Registration cases` of the EVR Decision.\n\nEach registration case will have as its scope:\n- a set of vehicles of which the registration needs creating/updating.\n- if present, the authorisation delivered for these vehicles and/or vehicle type to which they belong. Inherits attributes from era:Case (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-evr/models/VehicleRegistrationCase/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-evr/models/VehicleRegistrationCase"
+      },
+      {
+        "name": "VehicleRegistrationCheck",
+        "title": "Smart Data Models - ERA EVR - VehicleRegistrationCheck",
+        "description": "Vehicle Registration Compliance Check (era:VehicleRegistrationCheck's own definition, verbatim, in the source ontology): A verification result as executed by a competent body on a section of a legal reference. The check can be optional, positive or negative, and in the latter case, a restriction is expected.\n\nThis Class is used to improve the link between verification outcomes and the verified scope of that process, and support its structured documentation.\n\nIt must be used in the context of the Vehicle Registration process. Inherits attributes from era:Compliance (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-evr/models/VehicleRegistrationCheck/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-evr/models/VehicleRegistrationCheck"
+      },
+      {
+        "name": "VehicleRegistrationRestriction",
+        "title": "Smart Data Models - ERA EVR - VehicleRegistrationRestriction",
+        "description": "Vehicle Registration Restriction (era:VehicleRegistrationRestriction's own definition, verbatim, in the source ontology): An `era:Restriction` which originates from a compliance check during the Vehicle's Registration. Inherits attributes from era:Restriction (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-evr/models/VehicleRegistrationRestriction/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-evr/models/VehicleRegistrationRestriction"
+      },
+      {
+        "name": "VehicleSeries",
+        "title": "Smart Data Models - ERA EVR - VehicleSeries",
+        "description": "Series of Vehicles (era:VehicleSeries's own definition, verbatim, in the source ontology): Collection of Vehicles belonging together, for instance in the scope of an Authorisation or Registration Case.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-evr/models/VehicleSeries/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-evr/models/VehicleSeries"
+      },
+      {
+        "name": "VehicleSet",
+        "title": "Smart Data Models - ERA EVR - VehicleSet",
+        "description": "Vehicle Set (era:VehicleSet's own definition, verbatim, in the source ontology): A set of vehicles together forming the Scope of a registration/authorisation case or involved as on whole in another process.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-evr/models/VehicleSet/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-evr/models/VehicleSet"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-evr"
+  },
+  {
+    "slug": "era-rinf",
+    "title": "ERA RINF (Register of Infrastructure)",
+    "description": "RINF is one of four registers (alongside ERATV, ERADIS, EVR) published under the single ERA Ontology v3.3.3. RINF itself covers the physical and topological railway infrastructure of the EU network: operational points, tracks (running tracks and sidings), sections of line, tunnels, bridges, platforms, level crossings, switches, signals, electrification (contact line systems, pantograph/phase-separation parameters), control-command and signalling (ETCS, Radio Block Centres, train detection systems, GSM-R), and the abstract network/topology graph model (NetElement, LinearElement, NetRelation, linear positioning systems) that ties physical assets to a navigable network representation. This candidate is the RINF sub-standard only; ERATV (authorised vehicle types), ERADIS (authorisation/certification documents), and EVR (vehicle register) are separate sub-standards of the same ontology, planned as later candidates under their own standards/ folders (era-eratv, era-eradis, era-evr) since they are distinct subject areas with their own entity graphs, sharing only a handful of admin classes (era:Body, era:OrganisationRole) with RINF.",
+    "publisher": "European Union Agency for Railways (ERA)",
+    "sourceUrl": "https://rinf.data.era.europa.eu/era-vocabulary/",
+    "license": "European Union Public Licence v1.2 (EUPL-1.2)",
+    "domains": [
+      "Transportation",
+      "SmartCities"
+    ],
+    "modelCount": 38,
+    "models": [
+      {
+        "name": "Body",
+        "title": "Smart Data Models - ERA RINF - Body",
+        "description": "Body (era:Body's own definition, verbatim, in the source ontology): Is an organisation or a physical person",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/Body/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/Body"
+      },
+      {
+        "name": "Bridge",
+        "title": "Smart Data Models - ERA RINF - Bridge",
+        "description": "Bridge (era:Bridge's own definition, verbatim, in the source ontology): It is a structure constructed for the exclusive purpose of carrying railroad traffic across an obstruction. It can be used for defining non-stopping areas, big metal mass, resistance to traffic load etc. Inherits attributes from era:InfrastructureElement/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/Bridge/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/Bridge"
+      },
+      {
+        "name": "ContactLineSystem",
+        "title": "Smart Data Models - ERA RINF - ContactLineSystem",
+        "description": "Contact Line System (era:ContactLineSystem's own definition, verbatim, in the source ontology): System that is used to transmit electrical energy to road or rail vehicles.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/ContactLineSystem/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/ContactLineSystem"
+      },
+      {
+        "name": "Document",
+        "title": "Smart Data Models - ERA RINF - Document",
+        "description": "ERA Document (era:Document's own definition, verbatim, in the source ontology): Document in any of the ERA systems, e.g. reference document in RINF.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/Document/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/Document"
+      },
+      {
+        "name": "ETCS",
+        "title": "Smart Data Models - ERA RINF - ETCS",
+        "description": "ETCS (era:ETCS's own definition, verbatim, in the source ontology): TSI compliant train protection system ERTMS / ETCS application level and baseline related to the track side equipment.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/ETCS/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/ETCS"
+      },
+      {
+        "name": "HABD",
+        "title": "Smart Data Models - ERA RINF - HABD",
+        "description": "Hot Axle Box Detector (era:HABD's own definition, verbatim, in the source ontology): A trackside Hot Axle Box Detector (HABD), necessary for the route compatibility check.\nSpecific for the French, Italian and Swedish networks Inherits attributes from era:InfrastructureElement/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/HABD/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/HABD"
+      },
+      {
+        "name": "KilometricPost",
+        "title": "Smart Data Models - ERA RINF - KilometricPost",
+        "description": "Kilometric Post (era:KilometricPost's own definition, verbatim, in the source ontology): Represents a kilometric post in the linear positioning system. Inherits attributes from era:InfrastructureElement/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/KilometricPost/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/KilometricPost"
+      },
+      {
+        "name": "LevelCrossing",
+        "title": "Smart Data Models - ERA RINF - LevelCrossing",
+        "description": "Level crossing (era:LevelCrossing's own definition, verbatim, in the source ontology): A level crossing is an intersection where a railway line crosses a road or a path at the same level. It can be used for the implementation of the ETCS trackside or to identify potential collision scenarios Inherits attributes from era:InfrastructureElement/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/LevelCrossing/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/LevelCrossing"
+      },
+      {
+        "name": "LinearElement",
+        "title": "Smart Data Models - ERA RINF - LinearElement",
+        "description": "Linear Element (era:LinearElement's own definition, verbatim, in the source ontology): Pieces of tracks composing the topology Inherits attributes from era:NetElement/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/LinearElement/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/LinearElement"
+      },
+      {
+        "name": "LinearElementSection",
+        "title": "Smart Data Models - ERA RINF - LinearElementSection",
+        "description": "Linear Element Section (era:LinearElementSection's own definition, verbatim, in the source ontology): Represents a section of a linear element. Inherits attributes from era:LinearElement/era:NetElement/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/LinearElementSection/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/LinearElementSection"
+      },
+      {
+        "name": "LinearPositioningSystem",
+        "title": "Smart Data Models - ERA RINF - LinearPositioningSystem",
+        "description": "Linear Positioning System (era:LinearPositioningSystem's own definition, verbatim, in the source ontology): Represents a linear positioning system used for referencing positions on the network.\nIt can also represent a sequence of one or more sections of line, used for regular railway operations.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/LinearPositioningSystem/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/LinearPositioningSystem"
+      },
+      {
+        "name": "LinearPositioningSystemCoordinate",
+        "title": "Smart Data Models - ERA RINF - LinearPositioningSystemCoordinate",
+        "description": "Linear Positioning System Coordinate (era:LinearPositioningSystemCoordinate's own definition, verbatim, in the source ontology): Represents coordinates in a linear positioning system.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/LinearPositioningSystemCoordinate/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/LinearPositioningSystemCoordinate"
+      },
+      {
+        "name": "LinesideDistanceIndication",
+        "title": "Smart Data Models - ERA RINF - LinesideDistanceIndication",
+        "description": "Lineside indications of distance (era:LinesideDistanceIndication's own definition, verbatim, in the source ontology): Frequency, appearance and positioning of a sign indicating distance as reference post. Two types of signs are normally available: kilometre post and hectometre post.\n- A kilometre post is a lineside sign indicating the distance from a specific point, usually being the starting point of the railway line.\n- A hectometre post is a lineside sign indicating a relative distance.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/LinesideDistanceIndication/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/LinesideDistanceIndication"
+      },
+      {
+        "name": "NetAreaReference",
+        "title": "Smart Data Models - ERA RINF - NetAreaReference",
+        "description": "Net Area Reference (era:NetAreaReference's own definition, verbatim, in the source ontology): Represents an area reference in the network. Inherits attributes from era:NetBasicReference/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/NetAreaReference/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/NetAreaReference"
+      },
+      {
+        "name": "NetLinearReference",
+        "title": "Smart Data Models - ERA RINF - NetLinearReference",
+        "description": "Net Linear Reference (era:NetLinearReference's own definition, verbatim, in the source ontology): Represents a linear reference in the network. Inherits attributes from era:NetBasicReference/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/NetLinearReference/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/NetLinearReference"
+      },
+      {
+        "name": "NetPointReference",
+        "title": "Smart Data Models - ERA RINF - NetPointReference",
+        "description": "Net Point Reference (era:NetPointReference's own definition, verbatim, in the source ontology): Represents a point reference in the network. Inherits attributes from era:NetBasicReference/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/NetPointReference/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/NetPointReference"
+      },
+      {
+        "name": "NetRelation",
+        "title": "Smart Data Models - ERA RINF - NetRelation",
+        "description": "Net Relation (era:NetRelation's own definition, verbatim, in the source ontology): Defines a relation between two elements. Inherits attributes from era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/NetRelation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/NetRelation"
+      },
+      {
+        "name": "NonLinearElement",
+        "title": "Smart Data Models - ERA RINF - NonLinearElement",
+        "description": "Non-Linear Element (era:NonLinearElement's own definition, verbatim, in the source ontology): Represents a non-linear element in the network. Inherits attributes from era:NetElement/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/NonLinearElement/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/NonLinearElement"
+      },
+      {
+        "name": "OperationalPoint",
+        "title": "Smart Data Models - ERA RINF - OperationalPoint",
+        "description": "Operational Point (era:OperationalPoint's own definition, verbatim, in the source ontology): An operational point (OP) means any location for train service operations, where train services may begin and end or change route, and where passenger or freight services may be provided; operational point also means any location at boundaries between Member States or infrastructure managers. Inherits attributes from era:InfrastructureElement/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/OperationalPoint/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/OperationalPoint"
+      },
+      {
+        "name": "OrganisationRole",
+        "title": "Smart Data Models - ERA RINF - OrganisationRole",
+        "description": "Organisation Role (era:OrganisationRole's own definition, verbatim, in the source ontology): Represents an n-ary relationship between a Body and a role",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/OrganisationRole/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/OrganisationRole"
+      },
+      {
+        "name": "Orientation",
+        "title": "Smart Data Models - ERA RINF - Orientation",
+        "description": "Orientation (era:Orientation's own definition, verbatim, in the source ontology): Represents the orientation of a railway object in relation to a carrier linear element. It can be described by direction, orientation and side.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/Orientation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/Orientation"
+      },
+      {
+        "name": "PlatformEdge",
+        "title": "Smart Data Models - ERA RINF - PlatformEdge",
+        "description": "Platform edge (era:PlatformEdge's own definition, verbatim, in the source ontology): Platform for the purpose of RINF is understood as a platform edge. A platform concerns only the part of the structure neighbouring to the track (interfaced with trains). Inherits attributes from era:InfrastructureElement/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/PlatformEdge/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/PlatformEdge"
+      },
+      {
+        "name": "PrimaryLocation",
+        "title": "Smart Data Models - ERA RINF - PrimaryLocation",
+        "description": "Primary Location (era:PrimaryLocation's own definition, verbatim, in the source ontology): Primary Location is a place used by IM to define a path for a train in TAF/TAP TSI framework/messages. This location is a rail point inside the rail network where train starts, ends, stops, or runs through or change line. This location must be managed by an Infrastructure Manager (IM) identified by company code.\n\nPrimary locations are identified by single and unique Primary Location codes. Primary location code is allocated based on processes defined by national entity. Primary location codes are used in any kind of TAF/TAP communication. Inherits attributes from era:InfrastructureElement/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/PrimaryLocation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/PrimaryLocation"
+      },
+      {
+        "name": "RadioBlockCenter",
+        "title": "Smart Data Models - ERA RINF - RadioBlockCenter",
+        "description": "Radio Block Center (era:RadioBlockCenter's own definition, verbatim, in the source ontology): ETCS trackside centralised unit controlling ETCS train movements in level 2.\n\nA centralised safety unit that receives train position information via radio and sends movement authorities via radio to trains. Inherits attributes from era:InfrastructureElement/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/RadioBlockCenter/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/RadioBlockCenter"
+      },
+      {
+        "name": "ReferenceBorderPoint",
+        "title": "Smart Data Models - ERA RINF - ReferenceBorderPoint",
+        "description": "Reference border point (era:ReferenceBorderPoint's own definition, verbatim, in the source ontology): List of reference border points that are specified in the RINF Application Guide. Inherits attributes from era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/ReferenceBorderPoint/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/ReferenceBorderPoint"
+      },
+      {
+        "name": "RunningTrack",
+        "title": "Smart Data Models - ERA RINF - RunningTrack",
+        "description": "Running track (era:RunningTrack's own definition, verbatim, in the source ontology): A running track means any track used for train service movements; passing loops and meeting loops on plain line or track connections only required for train operation are not published Inherits attributes from era:Track/era:InfrastructureElement/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/RunningTrack/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/RunningTrack"
+      },
+      {
+        "name": "SectionOfLine",
+        "title": "Smart Data Models - ERA RINF - SectionOfLine",
+        "description": "Section Of Line (era:SectionOfLine's own definition, verbatim, in the source ontology): A section of line means the part of line between adjacent operational points and may consist of several tracks. Inherits attributes from era:InfrastructureElement/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/SectionOfLine/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/SectionOfLine"
+      },
+      {
+        "name": "Siding",
+        "title": "Smart Data Models - ERA RINF - Siding",
+        "description": "Siding Inherits attributes from era:Track/era:InfrastructureElement/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/Siding/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/Siding"
+      },
+      {
+        "name": "Signal",
+        "title": "Smart Data Models - ERA RINF - Signal",
+        "description": "Signal (era:Signal's own definition, verbatim, in the source ontology): A railway signal is a visual display device (next to the tracks or via a DMI in the cabin) that conveys instructions or provides advance warning of instructions regarding the driver's authority to proceed. Inherits attributes from era:InfrastructureElement/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/Signal/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/Signal"
+      },
+      {
+        "name": "SpecialArea",
+        "title": "Smart Data Models - ERA RINF - SpecialArea",
+        "description": "Special area (era:SpecialArea's own definition, verbatim, in the source ontology): Non-stopping Area: Area defined by the Infrastructure Manager where it may not be safe or suitable to stop a train.\nSafe Area: Area defined by the Infrastructure Manager where it is safe or suitable to stop and evacuate a train.\nIndustrial Risk Area: locations where it is dangerous for the driver to step out. Inherits attributes from era:InfrastructureElement/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/SpecialArea/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/SpecialArea"
+      },
+      {
+        "name": "SpecialTunnelArea",
+        "title": "Smart Data Models - ERA RINF - SpecialTunnelArea",
+        "description": "Special tunnel area (era:SpecialTunnelArea's own definition, verbatim, in the source ontology): Area or location within a tunnel:\n- a safe area: a walkway, evacuation and rescue points, with the location value provided as Kilometric point of the start;\n- a restricted area (non-stopping area or industrial risk location in a tunnel);\n- an area with special passing protocols Inherits attributes from era:SpecialArea/era:InfrastructureElement/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/SpecialTunnelArea/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/SpecialTunnelArea"
+      },
+      {
+        "name": "SubsidiaryLocation",
+        "title": "Smart Data Models - ERA RINF - SubsidiaryLocation",
+        "description": "Subsidiary location (era:SubsidiaryLocation's own definition, verbatim, in the source ontology): Subsidiary location must be linked to a Primary Location and specifies in more detailed way part, attributes, or usage of Primary location. It may be also a non-rail point or a rail point that is not managed by an Infrastructure Manager (IM). It may be defined by entity having company code according to their needs. The Subsidiary location is optional and dependent upon business needs. Inherits attributes from era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/SubsidiaryLocation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/SubsidiaryLocation"
+      },
+      {
+        "name": "Switch",
+        "title": "Smart Data Models - ERA RINF - Switch",
+        "description": "Switch (era:Switch's own definition, verbatim, in the source ontology): A unit of track comprising two fixed rails (stock rails) and two movable rails (switch rails) used to direct vehicles from one track to another track. Inherits attributes from era:InfrastructureElement/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/Switch/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/Switch"
+      },
+      {
+        "name": "TENTCorridor",
+        "title": "Smart Data Models - ERA RINF - TENTCorridor",
+        "description": "TEN-T Corridor (era:TENTCorridor's own definition, verbatim, in the source ontology): Represents the TEN-T network classification of an element, including its network level, type of traffic, and associated European transport corridors.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/TENTCorridor/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/TENTCorridor"
+      },
+      {
+        "name": "TopologicalCoordinate",
+        "title": "Smart Data Models - ERA RINF - TopologicalCoordinate",
+        "description": "Topological Coordinate (era:TopologicalCoordinate's own definition, verbatim, in the source ontology): Represents a topological coordinate.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/TopologicalCoordinate/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/TopologicalCoordinate"
+      },
+      {
+        "name": "Track",
+        "title": "Smart Data Models - ERA RINF - Track",
+        "description": "Track (era:Track's own definition, verbatim, in the source ontology): A pair of rails over which rail borne vehicles can run. Inherits attributes from era:InfrastructureElement/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/Track/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/Track"
+      },
+      {
+        "name": "TrainDetectionSystem",
+        "title": "Smart Data Models - ERA RINF - TrainDetectionSystem",
+        "description": "Train Detection System (era:TrainDetectionSystem's own definition, verbatim, in the source ontology): Safety system used to detect the presence of vehicles on the railway track.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/TrainDetectionSystem/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/TrainDetectionSystem"
+      },
+      {
+        "name": "Tunnel",
+        "title": "Smart Data Models - ERA RINF - Tunnel",
+        "description": "Tunnel (era:Tunnel's own definition, verbatim, in the source ontology): A railway tunnel is an excavation or a construction around the track provided to allow the railway to pass for example higher land, buildings or water. Inherits attributes from era:InfrastructureElement/era:Feature (inlined here rather than via schema $ref, per this repo's convention).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/era-rinf/models/Tunnel/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf/models/Tunnel"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf"
+  },
+  {
     "slug": "madrid-accidentes-trafico",
     "title": "Accidentes de Tráfico de la Ciudad de Madrid (Traffic Accidents in the City of Madrid)",
     "description": "Traffic accidents in the City of Madrid with victims and/or municipal property damage, registered by Policía Municipal. Sourced from a PDF field specification (in Spanish) rather than a formal ontology -- this candidate was built directly from that specification and cross-checked against the real, published CSV dataset for the year 2023.",
