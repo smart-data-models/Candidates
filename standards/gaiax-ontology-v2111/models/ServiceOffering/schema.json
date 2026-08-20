@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/ServiceOffering/schema.json",
+  "modelTags": "GaiaX,Ontology,ServiceOffering",
+  "title": "Smart Data Models - Gaia-X Ontology - ServiceOffering",
+  "description": "https://w3id.org/gaia-x/2.1.11#class/ServiceOffering. A digital service available for order. Subclass of GaiaXEntity per the Gaia-X ontology; inherited properties are documented on the GaiaXEntity model and not repeated here.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ServiceOffering"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ServiceOffering'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "aggregationOfResources": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Resources related to the entity that can exist independently of it. Links to one or more Resource entities."
+    },
+    "providedBy": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The participant providing the service. Links to a LegalPerson entity."
+    },
+    "dependsOn": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Service offerings related to the service. Links to one or more ServiceOffering entities."
+    },
+    "serviceOfferingTermsAndConditions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. One or more Terms and Conditions applying to that service. Links to one or more TermsAndConditions entities."
+    },
+    "servicePolicy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. One or more policies expressed using a DSL (e.g., Rego or ODRL). Links to one or more AccessUsagePolicy entities."
+    },
+    "dataProtectionRegime": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. One or more data protection regimes applying to the service offering. Controlled-vocabulary value (PersonalDataProtectionRegime), enumeration not resolved in this pass."
+    },
+    "dataAccountExport": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. One or more methods to export data out of the service. Links to one or more DataAccountExport entities."
+    },
+    "keyword": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. Keywords that describe/tag the service."
+    },
+    "provisionType": {
+      "type": "string",
+      "description": "Property. Provision type of the service. Controlled-vocabulary value (ProvisionTypes), enumeration not resolved in this pass."
+    },
+    "endpoint": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Endpoint through which the Service Offering can be accessed. Links to an Endpoint entity."
+    },
+    "hostedOn": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Resource(s) where the service is hosted and instantiated. Links to one or more VirtualResource or PhysicalResource entities."
+    },
+    "serviceScope": {
+      "type": "string",
+      "description": "Property. Plain text describing the service scope."
+    },
+    "legalDocuments": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Legal documents in relation to the service or the customer. Links to one or more LegalDocument entities."
+    },
+    "subContractors": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Sub-contractors processing customer data. Links to one or more SubContractor entities."
+    },
+    "customerInstructions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Customer instructions describing customer data guidance. Links to one or more CustomerInstructions entities."
+    },
+    "dataPortability": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Data portability documents describing measures. Links to one or more DataPortability entities."
+    },
+    "possiblePersonalDataTransfers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Data transfer documents describing the extent of transfers. Links to one or more DataTransfer entities."
+    },
+    "requiredMeasures": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Technical and organizational measures. Links to one or more Measure entities."
+    },
+    "cryptographicSecurityStandards": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. Cryptographic security standards protecting data. Controlled-vocabulary value (CryptographicSecurityStandards), enumeration not resolved in this pass."
+    },
+    "providerContactInformation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Contact information for reaching the service provider. Links to a ContactInformation entity."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "providedBy",
+    "serviceOfferingTermsAndConditions"
+  ]
+}

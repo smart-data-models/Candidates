@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/PhysicalResource/schema.json",
+  "modelTags": "GaiaX,Ontology,Infrastructure",
+  "title": "Smart Data Models - Gaia-X Ontology - PhysicalResource",
+  "description": "https://w3id.org/gaia-x/2.1.11#class/PhysicalResource. A Physical resource is, but not limited to, a datacenter, a bare-metal service, a warehouse, a plant. Those are entities that have a weight and position in physical space. Subclass of Resource per the Gaia-X ontology; inherited properties are documented on the Resource model and not repeated here.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "PhysicalResource"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'PhysicalResource'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "maintainedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Participants maintaining the resource in operational condition and thus having physical access to it. Links to one or more LegalPerson entities."
+    },
+    "aggregationOfResources": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Resources related to the resource that can exist independently of it. Links to one or more Resource entities."
+    },
+    "ownedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Participant(s) owning the resource. Links to one or more LegalPerson entities."
+    },
+    "manufacturedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Participant(s) manufacturing the resource. Links to one or more LegalPerson entities."
+    },
+    "location": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Physical location(s) of the resource. Links to one or more Address entities."
+    },
+    "energyUsageEfficiency": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Information about energy usage efficiency including certifications and metrics. Links to an EnergyUsageEfficiency entity."
+    },
+    "waterUsageEffectiveness": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Information regarding water usage effectiveness including certifications. Links to a WaterUsageEffectiveness entity."
+    },
+    "energyMix": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Information on the composition of the energy mix used by the resource, including percentages of renewable and carbon-free energy. Links to one or more EnergyMix entities."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "maintainedBy",
+    "location"
+  ]
+}

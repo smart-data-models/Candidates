@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/GaiaXEntity/schema.json",
+  "modelTags": "GaiaX,Ontology,CrossCutting",
+  "title": "Smart Data Models - Gaia-X Ontology - GaiaXEntity",
+  "description": "https://w3id.org/gaia-x/2.1.11#class/GaiaXEntity. Root class for Gaia-X entities. The source ontology marks this as an abstract root class, parent to ServiceOffering, InstantiationRequirement, DigitalServiceOffering, Ecosystem, EcoTrustScope, EcoTSP, Participant and Resource; included here per the full-ontology translation scope.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "GaiaXEntity"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'GaiaXEntity'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. A human readable name of the entity."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. A human readable description of the entity."
+    },
+    "label": {
+      "type": "string",
+      "description": "Property. A human-readable label, automatically entailed via RDFS inference from schema:name in the source ontology."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

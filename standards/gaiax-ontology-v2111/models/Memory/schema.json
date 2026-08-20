@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/Memory/schema.json",
+  "modelTags": "GaiaX,Ontology,Infrastructure,Compute",
+  "title": "Smart Data Models - Gaia-X Ontology - Memory",
+  "description": "https://w3id.org/gaia-x/2.1.11#class/Memory. Details with respect to properties and capabilities of RAM. Subclass of Device per the Gaia-X ontology; inherited properties are documented on the Device model and not repeated here.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Memory"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Memory'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "memorySize": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Memory size of the RAM. Links to a MemorySize entity."
+    },
+    "memoryClass": {
+      "type": "string",
+      "description": "Property. DRAM technology name defined by JEDEC. Controlled-vocabulary value (MemoryClasses), enumeration not resolved in this pass."
+    },
+    "memoryRank": {
+      "type": "string",
+      "description": "Property. Rank defines the number of memory chip banks and buffering used to access them. Controlled-vocabulary value (MemoryRanks), enumeration not resolved in this pass."
+    },
+    "eccEnabled": {
+      "type": "boolean",
+      "description": "Property. Error connection code (ECC) allows detecting and correcting bit errors in data."
+    },
+    "hardwareEncryption": {
+      "type": "boolean",
+      "description": "Property. If true, encryption of memory at the hardware level is enabled."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "memorySize"
+  ]
+}

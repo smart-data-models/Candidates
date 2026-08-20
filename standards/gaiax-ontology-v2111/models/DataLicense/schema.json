@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/DataLicense/schema.json",
+  "modelTags": "GaiaX,Ontology,DataProduct,Policy",
+  "title": "Smart Data Models - Gaia-X Ontology - DataLicense",
+  "description": "https://w3id.org/gaia-x/2.1.11#class/DataLicense. The constraints that apply to the data consumers accessing and using the datasets in the Data Product.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "DataLicense"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'DataLicense'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "odrlProfile": {
+      "type": "string",
+      "description": "Property. The identifier(s) of an ODRL Profile that the Policy conforms to."
+    },
+    "genericLicense": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. States if one or more generic licenses apply, like Open Data (or other ecosystem-defined license)."
+    },
+    "dataAccessPrerequisites": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The conditions that the Data Consumer must fulfill to be given access to the data sets. Links to one or more DataAccessPrerequisite entities."
+    },
+    "dataUsageConstraints": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The constraints that the Data Consumer contractually commits to respect when using the data sets. Links to one or more DataUsageConstraint entities."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

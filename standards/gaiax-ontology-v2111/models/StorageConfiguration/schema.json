@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/StorageConfiguration/schema.json",
+  "modelTags": "GaiaX,Ontology,Storage",
+  "title": "Smart Data Models - Gaia-X Ontology - StorageConfiguration",
+  "description": "https://w3id.org/gaia-x/2.1.11#class/StorageConfiguration. Represents the attributes that are configurable at service instantiation for storage service offerings. Subclass of InstantiationRequirement per the Gaia-X ontology; inherited properties are documented on the InstantiationRequirement model and not repeated here.",
+  "type": "object",
+  "properties": {
+    "id": {"type": "string", "format": "uri", "description": "Property. Unique identifier of the entity"},
+    "type": {"type": "string", "enum": ["StorageConfiguration"], "description": "Property. NGSI-LD Entity type. It must be equal to 'StorageConfiguration'"},
+    "dateCreated": {"type": "string", "format": "date-time", "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."},
+    "dateModified": {"type": "string", "format": "date-time", "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."},
+    "source": {"type": "string", "description": "Property. A sequence of characters giving the source of the entity data."},
+    "dataProvider": {"type": "string", "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."},
+    "storageCompression": {
+      "type": "array", "items": {"type": "string"},
+      "description": "Property. Available compression features. Controlled-vocabulary value (CompressionAlgorithm), enumeration not resolved in this pass."
+    },
+    "storageDeduplication": {
+      "type": "array", "items": {"type": "string"},
+      "description": "Property. Deduplication features available for the storage service (e.g. inline or post-processing). Controlled-vocabulary value (DeduplicationMethod), enumeration not resolved in this pass."
+    },
+    "storageEncryption": {
+      "type": "array", "items": {"type": "string", "format": "uri"},
+      "description": "Relationship. Available encryption features. Links to one or more Encryption entities."
+    },
+    "storageRedundancyMechanism": {
+      "type": "array", "items": {"type": "string"},
+      "description": "Property. Underlying data protection mechanism (e.g. RAID levels or Erasure Codes). Controlled-vocabulary value (StorageRedundancyMechanism), enumeration not resolved in this pass."
+    },
+    "storageProtection": {
+      "type": "array", "items": {"type": "string", "format": "uri"},
+      "description": "Relationship. Available data protection features. Links to one or more DataProtectionPolicy entities."
+    },
+    "storageQoS": {
+      "type": "array", "items": {"type": "string", "format": "uri"},
+      "description": "Relationship. Available QoS class for the storage service. Links to one or more QoS entities."
+    },
+    "blockSize": {
+      "type": "array", "items": {"type": "string", "format": "uri"},
+      "description": "Relationship. Available block size(s) to be used. Links to one or more MemorySize entities."
+    }
+  },
+  "required": ["id", "type", "storageEncryption"]
+}

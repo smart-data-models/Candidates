@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/ComputeFunctionQuotas/schema.json",
+  "modelTags": "GaiaX,Ontology,Compute,FaaS",
+  "title": "Smart Data Models - Gaia-X Ontology - ComputeFunctionQuotas",
+  "description": "https://w3id.org/gaia-x/2.1.11#class/ComputeFunctionQuotas. Attributes describing quotas for compute functions.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ComputeFunctionQuotas"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ComputeFunctionQuotas'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "functionMaximumNumber": {
+      "type": "integer",
+      "description": "Property. Maximum number of functions that can be created."
+    },
+    "functionStorageLimit": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Storage limit for deployed functions. Links to a MemorySize entity."
+    },
+    "functionTimeLimit": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Maximum execution time for a function. Links to a Time entity."
+    },
+    "functionMemoryLimit": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Maximum amount of memory usable by a function. Links to a MemorySize entity."
+    },
+    "functionSizeLimit": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Maximum size of a deployed function. Links to a MemorySize entity."
+    },
+    "functionConcurrencyLimit": {
+      "type": "integer",
+      "description": "Property. Maximum number of concurrent executions of a function."
+    },
+    "functionRequestSizeLimit": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Maximum size for an incoming request (or triggering event) for a function. Links to a MemorySize entity."
+    },
+    "functionResponseSizeLimit": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Maximum size for a function response. Links to a MemorySize entity."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

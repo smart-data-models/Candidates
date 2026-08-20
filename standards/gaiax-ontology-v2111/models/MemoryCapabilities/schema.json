@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/MemoryCapabilities/schema.json",
+  "modelTags": "GaiaX,Ontology,Infrastructure,Compute",
+  "title": "Smart Data Models - Gaia-X Ontology - MemoryCapabilities",
+  "description": "https://w3id.org/gaia-x/2.1.11#class/MemoryCapabilities. Describes the memory (RAM) capabilities available in a given service flavor, including any overprovisioning ratio.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "MemoryCapabilities"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'MemoryCapabilities'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "memory": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Amount of virtual RAM available in the given flavor. Links to a Memory entity."
+    },
+    "overProvisioningRatio": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 3,
+      "description": "Property. Non-negative float (>=1) defining the overprovisioning amount. A value of 1 means no overprovisioning; >1 indicates virtual RAM exceeds physical RAM (e.g. factor 2 = 2x); maximum value is 3."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "memory"
+  ]
+}

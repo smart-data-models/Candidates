@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/DataAccountExport/schema.json",
+  "modelTags": "GaiaX,Ontology,DataProduct,DataPortability",
+  "title": "Smart Data Models - Gaia-X Ontology - DataAccountExport",
+  "description": "https://w3id.org/gaia-x/2.1.11#class/DataAccountExport. List of methods to export data from your account out of the service.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "DataAccountExport"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'DataAccountExport'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "requestType": {
+      "type": "string",
+      "enum": [
+        "API",
+        "email",
+        "webform",
+        "unregisteredLetter",
+        "registeredLetter",
+        "supportCenter"
+      ],
+      "description": "Property. The mean to request data retrieval."
+    },
+    "accessType": {
+      "type": "string",
+      "enum": [
+        "digital",
+        "physical"
+      ],
+      "description": "Property. Type of data support."
+    },
+    "formatType": {
+      "type": "string",
+      "description": "Property. Type of Media Types (formerly known as MIME types) as defined by IANA."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "requestType",
+    "accessType",
+    "formatType"
+  ]
+}

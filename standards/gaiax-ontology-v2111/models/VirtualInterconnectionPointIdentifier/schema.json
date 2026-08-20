@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/VirtualInterconnectionPointIdentifier/schema.json",
+  "modelTags": "GaiaX,Ontology,Network",
+  "title": "Smart Data Models - Gaia-X Ontology - VirtualInterconnectionPointIdentifier",
+  "description": "https://w3id.org/gaia-x/2.1.11#class/VirtualInterconnectionPointIdentifier. Definition marked 'TBD' (to be determined) in the source ontology. Subclass of VirtualResource per the Gaia-X ontology; inherited properties are documented on the VirtualResource model and not repeated here.",
+  "type": "object",
+  "properties": {
+    "id": {"type": "string", "format": "uri", "description": "Property. Unique identifier of the entity"},
+    "type": {"type": "string", "enum": ["VirtualInterconnectionPointIdentifier"], "description": "Property. NGSI-LD Entity type. It must be equal to 'VirtualInterconnectionPointIdentifier'"},
+    "dateCreated": {"type": "string", "format": "date-time", "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."},
+    "dateModified": {"type": "string", "format": "date-time", "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."},
+    "source": {"type": "string", "description": "Property. A sequence of characters giving the source of the entity data."},
+    "dataProvider": {"type": "string", "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."},
+    "interconnectedParticipants": {
+      "type": "array", "items": {"type": "string", "format": "uri"},
+      "description": "Relationship. Legal persons participating within this virtual interconnection. Links to one or more LegalPerson entities."
+    },
+    "interconnectionPointIdentifier": {
+      "type": "string", "format": "uri",
+      "description": "Relationship. Definition of the location where resources can interconnect. Links to an InterconnectionPointIdentifier entity."
+    }
+  },
+  "required": ["id", "type", "interconnectedParticipants", "interconnectionPointIdentifier"]
+}
