@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/ObjectStorageServiceOffering/schema.json",
+  "modelTags": "GaiaX,Ontology,Storage,ServiceOffering",
+  "title": "Smart Data Models - Gaia-X Ontology - ObjectStorageServiceOffering",
+  "description": "https://w3id.org/gaia-x/2.1.11#class/ObjectStorageServiceOffering. A digital service available for order and offering object storage capabilities. Subclass of StorageServiceOffering per the Gaia-X ontology; inherited properties are documented on the StorageServiceOffering model and not repeated here.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ObjectStorageServiceOffering"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ObjectStorageServiceOffering'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "accessAttributes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. Supported access attributes (i.e. how the data can be accessed: read-only, read-write, append-only, etc). Controlled-vocabulary value (AccessAttribute), enumeration not resolved in this pass."
+    },
+    "maximumObjectSize": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Maximum size for objects supported by the service. Links to a MemorySize entity."
+    },
+    "objectAPICompatibility": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. Compatibility for third party object storage APIs. Controlled-vocabulary value (StorageAPI), enumeration not resolved in this pass."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

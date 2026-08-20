@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/BandWidth/schema.json",
+  "modelTags": "GaiaX,Ontology,Network,QoS",
+  "title": "Smart Data Models - Gaia-X Ontology - BandWidth",
+  "description": "https://w3id.org/gaia-x/2.1.11#class/BandWidth. Contractual bandwidth defined in the service level agreement (SLA). Subclass of QoSMetric per the Gaia-X ontology; inherited properties are documented on the QoSMetric model and not repeated here.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "BandWidth"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'BandWidth'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "metric": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Data rate expressing bandwidth. Links to a DataRate entity."
+    },
+    "guaranteed": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Property. Minimum percentage of time where a performance-level is guaranteed to be met (FloatPercentage, 0-100)."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "metric"
+  ]
+}

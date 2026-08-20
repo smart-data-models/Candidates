@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/DigitalServiceOffering/schema.json",
+  "modelTags": "GaiaX,Ontology,ServiceOffering",
+  "title": "Smart Data Models - Gaia-X Ontology - DigitalServiceOffering",
+  "description": "https://w3id.org/gaia-x/2.1.11#class/DigitalServiceOffering. The virtual base class for any kind of digital service (for inheritance, not for instantiation). Subclass of GaiaXEntity per the Gaia-X ontology; inherited properties are documented on the GaiaXEntity model and not repeated here. Included here per the full-ontology translation scope even though the source ontology marks it as a base class not meant for direct instantiation.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "DigitalServiceOffering"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'DigitalServiceOffering'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "digitalServiceOfferingName": {
+      "type": "string",
+      "description": "Property. A human readable name of the service offering."
+    },
+    "digitalServiceOfferingShortDescription": {
+      "type": "string",
+      "description": "Property. A short textual description (not contractual)."
+    },
+    "digitalServiceOfferingProvider": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. A resolvable link to the Gaia-X Credential of the participant providing the service. Links to a LegalPerson entity."
+    },
+    "digitalServiceOfferingIdentifier": {
+      "type": "string",
+      "description": "Property. A unique UUID identifier for the service offering."
+    },
+    "keyword": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. Keywords that describe/tag the service."
+    },
+    "digitalServiceOfferingLaunchDate": {
+      "type": "string",
+      "description": "Property. Date and time when the service offering can be instantiated (xsd:string in the source ontology)."
+    },
+    "digitalServiceOfferingEndDate": {
+      "type": "string",
+      "description": "Property. Date and time when the service instances will be stopped (xsd:string in the source ontology)."
+    },
+    "digitalServiceOfferingTermsAndConditions": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The terms and conditions that apply to the provider (SLA, ...). Links to a ServiceTermsAndConditions entity."
+    },
+    "digitalServiceUsageTermsAndConditions": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The terms and conditions that apply to the consumer. Links to a UsageTermsAndConditions entity."
+    },
+    "digitalServiceUsageDataPolicy": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Defines how the supplier can use the data related to customer usage. Links to a TermsAndConditions entity."
+    },
+    "digitalServiceLegalDocuments": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. A list of legal documents governing the service offering delivery. Links to one or more LegalDocument entities."
+    },
+    "digitalServiceOfferingContactInformation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The contact information where prospects/customers can reach the provider. Links to a ContactInformation entity."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "digitalServiceOfferingName",
+    "digitalServiceOfferingShortDescription",
+    "digitalServiceOfferingProvider",
+    "digitalServiceOfferingIdentifier",
+    "digitalServiceOfferingLaunchDate",
+    "digitalServiceOfferingTermsAndConditions",
+    "digitalServiceUsageTermsAndConditions",
+    "digitalServiceUsageDataPolicy",
+    "digitalServiceLegalDocuments"
+  ]
+}

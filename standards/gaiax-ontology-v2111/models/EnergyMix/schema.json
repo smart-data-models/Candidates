@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/EnergyMix/schema.json",
+  "modelTags": "GaiaX,Ontology,Environmental",
+  "title": "Smart Data Models - Gaia-X Ontology - EnergyMix",
+  "description": "https://w3id.org/gaia-x/2.1.11#class/EnergyMix. Details the composition of energy sources in a given mix.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "EnergyMix"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'EnergyMix'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "attainmentDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Date for which this energy mix has been attained (if in the past) or is forecast to be attained (if in the future)."
+    },
+    "renewableEnergy": {
+      "type": "number",
+      "description": "Property. Percentage of renewable energy in the energy mix."
+    },
+    "hourlyCarbonFreeEnergy": {
+      "type": "number",
+      "description": "Property. Percentage of hourly carbon-free energy in the energy mix."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "attainmentDate",
+    "renewableEnergy",
+    "hourlyCarbonFreeEnergy"
+  ]
+}

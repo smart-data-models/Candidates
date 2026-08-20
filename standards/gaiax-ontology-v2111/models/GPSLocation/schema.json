@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/GPSLocation/schema.json",
+  "modelTags": "GaiaX,Ontology,Location",
+  "title": "Smart Data Models - Gaia-X Ontology - GPSLocation",
+  "description": "https://w3id.org/gaia-x/2.1.11#class/GPSLocation. Physical GPS coordinates in ISO 6709:2008/Cor 1:2009 format. Per the source ontology, if 'altitude' is present then 'crs' must also be specified (not enforced structurally in this JSON Schema).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "GPSLocation"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'GPSLocation'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "latitude": {
+      "type": "string",
+      "description": "Property. Coordinate representing x horizontal position (latitude). Range is String or GPSUnit in the source ontology; modeled here as a string (e.g. decimal-degrees or ISO 6709 string form)."
+    },
+    "longitude": {
+      "type": "string",
+      "description": "Property. Coordinate representing y horizontal position (longitude). Range is String or GPSUnit in the source ontology; modeled here as a string (e.g. decimal-degrees or ISO 6709 string form)."
+    },
+    "altitude": {
+      "type": "string",
+      "description": "Property. For three-dimensional point locations, a value representing vertical position through either height or depth."
+    },
+    "crs": {
+      "type": "string",
+      "description": "Property. Coordinate Reference System identifier."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "latitude",
+    "longitude"
+  ]
+}

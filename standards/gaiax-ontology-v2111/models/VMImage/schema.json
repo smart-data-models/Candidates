@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/VMImage/schema.json",
+  "modelTags": "GaiaX,Ontology,Compute,Software",
+  "title": "Smart Data Models - Gaia-X Ontology - VMImage",
+  "description": "https://w3id.org/gaia-x/2.1.11#class/VMImage. Image for virtual machines. Subclass of Image per the Gaia-X ontology; inherited properties are documented on the Image model and not repeated here.",
+  "type": "object",
+  "properties": {
+    "id": {"type": "string", "format": "uri", "description": "Property. Unique identifier of the entity"},
+    "type": {"type": "string", "enum": ["VMImage"], "description": "Property. NGSI-LD Entity type. It must be equal to 'VMImage'"},
+    "dateCreated": {"type": "string", "format": "date-time", "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."},
+    "dateModified": {"type": "string", "format": "date-time", "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."},
+    "source": {"type": "string", "description": "Property. A sequence of characters giving the source of the entity data."},
+    "dataProvider": {"type": "string", "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."},
+    "vmImageDiskFormat": {"type": "string", "description": "Property. Disk format of the VM image. Default 'RAW'. Controlled-vocabulary value (VMDiskType), enumeration not resolved in this pass."},
+    "hypervisorType": {"type": "string", "description": "Property. Hypervisor type required by the image. Controlled-vocabulary value (HypervisorType), enumeration not resolved in this pass."},
+    "firmwareType": {"type": "string", "description": "Property. Type of firmware with which guests are booted. Controlled-vocabulary value (FirmType), enumeration not resolved in this pass."},
+    "hwRngTypeOfImage": {"type": "string", "description": "Property. Type of physical phenomena the hardware random number generator (RNG) this image prefers is based on. Controlled-vocabulary value (RNGTypes), enumeration not resolved in this pass."},
+    "watchDogAction": {"type": "string", "description": "Property. The action to be performed if the server hangs. Controlled-vocabulary value (WatchDogActions), enumeration not resolved in this pass."}
+  },
+  "required": ["id", "type"]
+}

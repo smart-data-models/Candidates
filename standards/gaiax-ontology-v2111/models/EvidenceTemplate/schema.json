@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/EvidenceTemplate/schema.json",
+  "modelTags": "GaiaX,Ontology,DataProduct,Trust",
+  "title": "Smart Data Models - Gaia-X Ontology - EvidenceTemplate",
+  "description": "https://w3id.org/gaia-x/2.1.11#class/EvidenceTemplate. The template of an evidence that the Data Consumer must present to get access to the data product instance.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "EvidenceTemplate"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'EvidenceTemplate'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "verifiableClaimTemplate": {
+      "type": "string",
+      "description": "Property. A Verifiable Credential template that can be used to demonstrate compliance to a constraint."
+    },
+    "acceptedIssuers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. A list of trusted issuers for the above template. Links to one or more LegalPerson entities."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "acceptedIssuers"
+  ]
+}

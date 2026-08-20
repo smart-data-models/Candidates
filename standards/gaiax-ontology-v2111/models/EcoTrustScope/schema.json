@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/EcoTrustScope/schema.json",
+  "modelTags": "GaiaX,Ontology,Trust",
+  "title": "Smart Data Models - Gaia-X Ontology - EcoTrustScope",
+  "description": "https://w3id.org/gaia-x/2.1.11#class/EcoTrustScope. A particular trust scope for an ecosystem: the explicitly recognized and named trust scope of certain trust service providers and their verifiable credentials, representing the scope of trust that ecosystem participants accept for credential verification. Subclass of GaiaXEntity per the Gaia-X ontology; inherited properties are documented on the GaiaXEntity model and not repeated here.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "EcoTrustScope"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'EcoTrustScope'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "ecoTrustServiceProvider": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Trust Service Provider(s) recognized for this trust scope. Links to one or more EcoTSP entities."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "ecoTrustServiceProvider"
+  ]
+}

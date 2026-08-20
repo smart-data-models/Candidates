@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/CountryCompanyNumber/schema.json",
+  "modelTags": "GaiaX,Ontology,Legal,Identifier",
+  "title": "Smart Data Models - Gaia-X Ontology - CountryCompanyNumber",
+  "description": "https://w3id.org/gaia-x/2.1.11#class/CountryCompanyNumber. Defines an arbitrary country-specific company number based on (i) an (arbitrary) country-specific numbering scheme identifier and (ii) the corresponding (arbitrary) unique identifier. Subclass of RegistrationNumber per the Gaia-X ontology; inherited properties are documented on the RegistrationNumber model and not repeated here.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "CountryCompanyNumber"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'CountryCompanyNumber'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "countryCompanyNumber": {
+      "type": "string",
+      "description": "Property. The Company Number Identifier of a certain country schema."
+    },
+    "companyNumberQualifier": {
+      "type": "string",
+      "description": "Property. The Company Number Schema Qualifier. Within a single country, the Company Number Schema Qualifier has to be unique."
+    },
+    "countryCode": {
+      "type": "string",
+      "description": "Property. Unique code identifying a country (ISO 3166-1 alpha-2 or literal string)."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "countryCompanyNumber",
+    "countryCode"
+  ]
+}

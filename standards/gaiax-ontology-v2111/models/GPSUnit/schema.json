@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/GPSUnit/schema.json",
+  "modelTags": "GaiaX,Ontology,Location",
+  "title": "Smart Data Models - Gaia-X Ontology - GPSUnit",
+  "description": "https://w3id.org/gaia-x/2.1.11#class/GPSUnit. Definition of a geographical point (degrees/minutes/seconds representation).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "GPSUnit"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'GPSUnit'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "degrees": {
+      "type": "integer",
+      "minimum": -180,
+      "maximum": 180,
+      "description": "Property. Degrees component of the geographical point."
+    },
+    "minutes": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 60,
+      "description": "Property. Minutes component of the geographical point."
+    },
+    "seconds": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 60,
+      "description": "Property. Seconds component of the geographical point."
+    },
+    "decimals": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Property. Decimal fraction component of the geographical point."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "degrees"
+  ]
+}

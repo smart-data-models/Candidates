@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/DataProtectionPolicy/schema.json",
+  "modelTags": "GaiaX,Ontology,Storage,Security",
+  "title": "Smart Data Models - Gaia-X Ontology - DataProtectionPolicy",
+  "description": "https://w3id.org/gaia-x/2.1.11#class/DataProtectionPolicy. A container class for various data protection features, such as backup or replication. This is an abstract root class with three concrete subclasses in the Gaia-X ontology: BackupPolicy, SnapshotPolicy, and ReplicationPolicy, each modeled as its own entity.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "DataProtectionPolicy"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'DataProtectionPolicy'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "protectionFrequency": {
+      "type": "string",
+      "description": "Property. Frequency at which data are captured/protected. Controlled-vocabulary value (ProtectionFrequency), enumeration not resolved in this pass."
+    },
+    "protectionRetention": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. How long captured/protected data are kept available. Links to a RetentionDuration entity."
+    },
+    "protectionMethod": {
+      "type": "string",
+      "description": "Property. Method used to protect data, e.g. full copy, incremental. Controlled-vocabulary value (ProtectionMethod), enumeration not resolved in this pass."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "protectionFrequency",
+    "protectionRetention"
+  ]
+}

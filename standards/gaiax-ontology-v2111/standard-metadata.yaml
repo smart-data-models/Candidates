@@ -1,0 +1,76 @@
+title: "Gaia-X Ontology (Trust Framework / Self-Description Schema)"
+publisher: "Gaia-X European Association for Data and Cloud AISBL (Gaia-X AISBL)"
+sourceUrl: "https://docs.gaia-x.eu/ontology/v2111/classes/"
+sourceOntologyVersion: "v2111"
+domains:
+  - CrossSector
+  - CloudComputing
+  - DataSpaces
+description: >
+  The Gaia-X ontology defines the vocabulary used to write Self-Descriptions
+  (verifiable-credential-based claims) for participants, resources and
+  service offerings in a Gaia-X data space / federated cloud ecosystem. It
+  spans infrastructure and service-offering classes (compute, storage,
+  network, container/function-as-a-service, data products), physical and
+  virtual resource classes (CPU, GPU, Memory, Disk, Datacenter, Device,
+  ServerFlavor), connectivity and QoS metrics (Latency, Jitter, PacketLoss,
+  Throughput, BandWidth, RoundTripTime), and a large body of governance,
+  legal, compliance, security-policy and credential/trust-anchor classes
+  (LegalPerson, TermsAndConditions, DataUsageAgreement, InformationSecurity
+  Policies, LabelCredential, EvidenceTemplate, ...) that describe how a
+  participant or resource is governed and certified rather than what it
+  physically measures. This candidate translates the full v2111 class list
+  (165 classes) into one candidate per class under models/.
+license: "Creative Commons Attribution 4.0 International (CC BY 4.0)"
+licenseNote: >
+  Gaia-X publications (including the ontology/schema documents) are
+  generally published by Gaia-X AISBL under CC BY 4.0; verify against the
+  specific v2111 release notes before promoting this candidate out of
+  Candidates/.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-08-20 from the Gaia-X ontology v2111 class directory
+  index at https://docs.gaia-x.eu/ontology/v2111/classes/ (165 classes
+  listed). Each class has its own documentation page at
+  https://docs.gaia-x.eu/ontology/v2111/classes/<ClassName>/ describing its
+  own (non-inherited) properties, their expected value type/range,
+  cardinality, and a short natural-language definition; the OWL/SHACL
+  source files (ontology.ttl / shapes) referenced from the same site were
+  not machine-parsed in this pass (unlike the era-rinf candidate, which
+  parsed ontology.ttl directly with rdflib) -- properties here are
+  transcribed from each class's rendered documentation page, one page per
+  class, across 165 classes.
+
+  METHOD / SCALE: given the size of this ontology, translation was split
+  into parallel batches of ~15-20 classes each, dispatched to sub-agents
+  that fetched each class's own documentation page and authored
+  schema.json/context.jsonld/example.json per system_prompt.md's rules,
+  then ran tools/build_examples.py to derive the three remaining example
+  serializations. Batch-level assumptions (inheritance handling, enum vs.
+  open string for controlled vocabularies, relationship targets not yet
+  published as their own model) are recorded per-model in each schema's own
+  property descriptions where relevant; see individual model schema.json
+  files for specifics not repeated here.
+
+  NAMING: class and property names are preserved verbatim from the source
+  ontology (e.g. `BandWidth`, `IOPS`, `hasPoint`) per system_prompt.md's
+  naming rules -- no forced PascalCase/camelCase renaming of ontology-native
+  identifiers.
+
+  SCOPE CAVEAT: many classes in this ontology (legal documents, terms and
+  conditions, security policies, employee responsibilities, credentials)
+  describe governance/compliance claims attached to a Self-Description
+  rather than measurable real-world entities in the usual SDM sense (a
+  device, a building, a vehicle). They are included here per explicit
+  instruction to translate the full ontology; several will read as
+  thin/reference-heavy schemas (mostly free-text or relationship
+  properties) rather than rich measurable entities, which is a property of
+  the source ontology itself, not a translation gap.
+
+  DUPLICATION RISK, NOT CHECKED IN DETAIL: Smart Data Models already
+  publishes device/infrastructure models (e.g. dataModel.Device,
+  dataModel.S4BLDG) that may overlap conceptually with Device,
+  PhysicalResource, Datacenter here. Should be checked before promoting
+  this candidate out of Candidates/.

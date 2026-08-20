@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/InterconnectionPointIdentifier/schema.json",
+  "modelTags": "GaiaX,Ontology,Connectivity",
+  "title": "Smart Data Models - Gaia-X Ontology - InterconnectionPointIdentifier",
+  "description": "https://w3id.org/gaia-x/2.1.11#class/InterconnectionPointIdentifier. Interconnection Point Identifier is a unique Service Access Point that identifies the location where resources can interconnect.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "InterconnectionPointIdentifier"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'InterconnectionPointIdentifier'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "ipiType": {
+      "type": "string",
+      "description": "Property. Type of the interconnection point identifier. Controlled-vocabulary value: IPIType per the source ontology (enumeration not resolved in this pass)."
+    },
+    "ipiProvider": {
+      "type": "string",
+      "description": "Property. The Provider of the IPI."
+    },
+    "specificParameters": {
+      "type": "string",
+      "description": "Property. Type or Provider Specific Parameters, separated by colons."
+    },
+    "completeIPI": {
+      "type": "string",
+      "description": "Property. Unique label identifying structure of an IPI, serialized as '{ipiType}:{ipiProvider}:{specificParameters}'."
+    },
+    "datacenterAllocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Details regarding the specific datacenter location where service access occurs. Links to a DatacenterAllocation entity."
+    },
+    "macAddress": {
+      "type": "string",
+      "description": "Property. The MAC address required for L2 connectivity setup."
+    },
+    "ipAddress": {
+      "type": "string",
+      "format": "ipv4",
+      "description": "Property. The IP address required for L3 connectivity setup."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "completeIPI"
+  ]
+}

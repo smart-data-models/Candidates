@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/AccessUsagePolicy/schema.json",
+  "modelTags": "GaiaX,Ontology,Policy,DataUsage",
+  "title": "Smart Data Models - Gaia-X Ontology - AccessUsagePolicy",
+  "description": "https://w3id.org/gaia-x/2.1.11#class/AccessUsagePolicy. An access or usage policy expressed using a DSL (e.g., Rego or ODRL) (access control, throttling, usage, retention, ...).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "AccessUsagePolicy"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'AccessUsagePolicy'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "policyLanguage": {
+      "type": "string",
+      "description": "Property. The language in which the policy is expressed (e.g., ODRL, XACML, Rego, JSON-based policies). Controlled-vocabulary value (PolicyLanguageEnum), enumeration not resolved in this pass."
+    },
+    "policyDocument": {
+      "type": "string",
+      "description": "Property. A link to the actual policy or the content of the policy itself (xsd:anyURI or literal string)."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "policyLanguage",
+    "policyDocument"
+  ]
+}

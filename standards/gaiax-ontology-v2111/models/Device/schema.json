@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/Device/schema.json",
+  "modelTags": "GaiaX,Ontology,Infrastructure",
+  "title": "Smart Data Models - Gaia-X Ontology - Device",
+  "description": "https://w3id.org/gaia-x/2.1.11#class/Device. Details with respect to properties and capabilities of a hardware or virtualized device. The source ontology treats this as an abstract root class with subclasses CPU, Disk, GPU, and Memory; included here per the full-ontology translation scope.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Device"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Device'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "vendor": {
+      "type": "string",
+      "description": "Property. Vendor of the device."
+    },
+    "generation": {
+      "type": "string",
+      "description": "Property. Vendor-specific generation of the device."
+    },
+    "defaultOversubscriptionRatio": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Property. Default over-subscription ratio for virtual machines (1 = no over-subscription)."
+    },
+    "supportedOversubscriptionRatio": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Property. Supported over-subscription ratio for virtual machines (1 = no over-subscription)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

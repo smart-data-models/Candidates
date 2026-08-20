@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/QuantityKind/schema.json",
+  "modelTags": "GaiaX,Ontology,Measurement",
+  "title": "Smart Data Models - Gaia-X Ontology - QuantityKind",
+  "description": "http://qudt.org/schema/qudt/QuantityKind. A Quantity Kind is any observable property that can be measured and quantified numerically (e.g. length, mass, time, force, energy, power, electric charge). Abstract root class per the source ontology, imported from the QUDT vocabulary, with 7 documented subclasses (Frequency, MemorySize, Power, DataRate, Time, LostPackets, SLATargetPercentile); included here per the full-ontology translation scope. Note: like Frequency and Power, this class's own IRI is in the external QUDT namespace (qudt.org), not w3id.org/gaia-x.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "QuantityKind"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'QuantityKind'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "applicableUnit": {
+      "type": "string",
+      "description": "Property. Unit of the physical quantity of the class, per QUDT."
+    },
+    "quantityValue": {
+      "type": "number",
+      "description": "Property. Measurement of an observable property of a particular object, event, or physical system."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "applicableUnit",
+    "quantityValue"
+  ]
+}

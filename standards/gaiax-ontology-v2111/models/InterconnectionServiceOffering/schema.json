@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gaiax-ontology-v2111/models/InterconnectionServiceOffering/schema.json",
+  "modelTags": "GaiaX,Ontology,Network,ServiceOffering",
+  "title": "Smart Data Models - Gaia-X Ontology - InterconnectionServiceOffering",
+  "description": "https://w3id.org/gaia-x/2.1.11#class/InterconnectionServiceOffering. Definition marked 'TBD' (to be determined) in the source ontology. Subclass of NetworkConnectivityServiceOffering per the Gaia-X ontology; inherited properties are documented on the NetworkConnectivityServiceOffering model and not repeated here.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "InterconnectionServiceOffering"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'InterconnectionServiceOffering'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "connectedNetworkA": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "description": "Property. Autonomous system (AS) number (ASN) of the side A."
+    },
+    "connectedNetworkZ": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "description": "Property. Autonomous system (AS) number (ASN) of the side Z."
+    },
+    "prefixSetA": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. CIDR Provider Identifier of the network on the side A."
+    },
+    "prefixSetZ": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. CIDR Provider Identifier of the network on the side Z."
+    },
+    "vlanConfiguration": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. VLAN configuration. Links to a VLANConfiguration entity."
+    },
+    "connectionType": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. The supported types of connection, preferably specified as controlled vocabulary."
+    },
+    "interfaceType": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. A type of physical interface, e.g. Copper cable, 5G."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
