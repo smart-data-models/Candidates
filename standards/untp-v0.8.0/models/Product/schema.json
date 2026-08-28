@@ -8,10 +8,9 @@
   "type": "object",
   "properties": {
     "id": {
-      "example": "did:web:manufacturer.com:product:123456789",
       "type": "string",
       "format": "uri",
-      "description": "Globally unique identifier of this product. Typically represented as a URI identifierScheme/Identifier URI or, if self-issued, as a did."
+      "description": "Globally unique identifier of this product. Typically represented as a URI identifierScheme/Identifier URI or, if self-issued, as a did. Example: did:web:manufacturer.com:product:123456789."
     },
     "type": {
       "type": "string",
@@ -39,9 +38,8 @@
       "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
     },
     "name": {
-      "example": "600 Ah Lithium Battery",
       "type": "string",
-      "description": "Property. The product name as known to the market."
+      "description": "Property. The product name as known to the market. Example: 600 Ah Lithium Battery."
     },
     "description": {
       "type": "string",
@@ -61,9 +59,8 @@
           "description": "The URI of this identifier scheme"
         },
         "name": {
-          "example": "Global Identifier Scheme Name",
           "type": "string",
-          "description": "The name of the identifier scheme. "
+          "description": "The name of the identifier scheme. Example: Global Identifier Scheme Name."
         }
       }
     },
@@ -72,14 +69,12 @@
       "description": "Property. Where available, the model number (for manufactured products) or material identification (for bulk materials)"
     },
     "batchNumber": {
-      "example": 6789,
       "type": "string",
-      "description": "Property. Identifier of the specific production batch of the product.  Unique within the product class."
+      "description": "Property. Identifier of the specific production batch of the product.  Unique within the product class. Example: 6789."
     },
     "itemNumber": {
-      "example": 12345678,
       "type": "string",
-      "description": "Property. A number or code representing a specific serialised item of the product. Unique within product class."
+      "description": "Property. A number or code representing a specific serialised item of the product. Unique within product class. Example: 12345678."
     },
     "idGranularity": {
       "type": "string",
@@ -88,8 +83,7 @@
         "batch",
         "item"
       ],
-      "example": "model",
-      "description": "Property. The identification granularity for this product (item, batch, model)"
+      "description": "Property. The identification granularity for this product (item, batch, model). Example: model."
     },
     "productImage": {
       "type": "object",
@@ -100,29 +94,25 @@
       ],
       "properties": {
         "linkURL": {
-          "example": "https://files.example-certifier.com/1234567.json",
           "type": "string",
           "format": "uri",
-          "description": "The URL of the target resource.  "
+          "description": "The URL of the target resource. Example: https://files.example-certifier.com/1234567.json."
         },
         "linkName": {
           "type": "string",
           "description": "Display name for this link."
         },
         "digestMultibase": {
-          "example": "abc123-example-digest-invalid",
           "type": "string",
-          "description": "An optional multi-base encoded digest to ensure the content of the link has not changed. See https://www.w3.org/TR/vc-data-integrity/#resource-integrity for more information."
+          "description": "An optional multi-base encoded digest to ensure the content of the link has not changed. See https://www.w3.org/TR/vc-data-integrity/#resource-integrity for more information. Example: abc123-example-digest-invalid."
         },
         "mediaType": {
-          "example": "application/ld+json",
           "type": "string",
-          "description": "The media type of the target resource."
+          "description": "The media type of the target resource. Example: application/ld+json."
         },
         "linkType": {
-          "example": "https://test.uncefact.org/vocabulary/linkTypes/dcc",
           "type": "string",
-          "description": "The type of the target resource - drawn from a controlled vocabulary "
+          "description": "The type of the target resource - drawn from a controlled vocabulary. Example: https://test.uncefact.org/vocabulary/linkTypes/dcc."
         }
       }
     },
@@ -162,29 +152,25 @@
         ],
         "properties": {
           "code": {
-            "example": 46410,
             "type": "string",
-            "description": "classification code within the scheme"
+            "description": "classification code within the scheme. Example: 46410."
           },
           "name": {
-            "example": "Primary cells and primary batteries",
             "type": "string",
-            "description": "Name of the classification represented by the code"
+            "description": "Name of the classification represented by the code. Example: Primary cells and primary batteries."
           },
           "definition": {
             "type": "string",
             "description": "A rich definition of this classification code."
           },
           "schemeId": {
-            "example": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
             "type": "string",
             "format": "uri",
-            "description": "Classification scheme ID"
+            "description": "Classification scheme ID. Example: https://unstats.un.org/unsd/classifications/Econ/cpc/."
           },
           "schemeName": {
-            "example": "UN Central Product Classification (CPC)",
             "type": "string",
-            "description": "The name of the classification scheme"
+            "description": "The name of the classification scheme. Example: UN Central Product Classification (CPC)."
           }
         }
       },
@@ -201,29 +187,25 @@
         ],
         "properties": {
           "linkURL": {
-            "example": "https://files.example-certifier.com/1234567.json",
             "type": "string",
             "format": "uri",
-            "description": "The URL of the target resource.  "
+            "description": "The URL of the target resource. Example: https://files.example-certifier.com/1234567.json."
           },
           "linkName": {
             "type": "string",
             "description": "Display name for this link."
           },
           "digestMultibase": {
-            "example": "abc123-example-digest-invalid",
             "type": "string",
-            "description": "An optional multi-base encoded digest to ensure the content of the link has not changed. See https://www.w3.org/TR/vc-data-integrity/#resource-integrity for more information."
+            "description": "An optional multi-base encoded digest to ensure the content of the link has not changed. See https://www.w3.org/TR/vc-data-integrity/#resource-integrity for more information. Example: abc123-example-digest-invalid."
           },
           "mediaType": {
-            "example": "application/ld+json",
             "type": "string",
-            "description": "The media type of the target resource."
+            "description": "The media type of the target resource. Example: application/ld+json."
           },
           "linkType": {
-            "example": "https://test.uncefact.org/vocabulary/linkTypes/dcc",
             "type": "string",
-            "description": "The type of the target resource - drawn from a controlled vocabulary "
+            "description": "The type of the target resource - drawn from a controlled vocabulary. Example: https://test.uncefact.org/vocabulary/linkTypes/dcc."
           }
         }
       },
@@ -263,8 +245,7 @@
               "brandOwner",
               "regulator"
             ],
-            "example": "owner",
-            "description": "The role played by the party in this relationship"
+            "description": "The role played by the party in this relationship. Example: owner."
           },
           "party": {
             "type": "object",
@@ -275,24 +256,21 @@
             ],
             "properties": {
               "id": {
-                "example": "https://sample-business-register.gov/123456789",
                 "type": "string",
                 "format": "uri",
-                "description": "Globally unique identifier of this party. Typically represented as a URI identifierScheme/Identifier URI"
+                "description": "Globally unique identifier of this party. Typically represented as a URI identifierScheme/Identifier URI. Example: https://sample-business-register.gov/123456789."
               },
               "name": {
-                "example": "Sample Company Ltd",
                 "type": "string",
-                "description": "Legal registered name of this party."
+                "description": "Legal registered name of this party. Example: Sample Company Ltd."
               },
               "description": {
                 "type": "string",
                 "description": "Description of the party including function and other names."
               },
               "registeredId": {
-                "example": 90664869327,
                 "type": "string",
-                "description": "The registration number (alphanumeric) of the Party within the register. Unique within the register."
+                "description": "The registration number (alphanumeric) of the Party within the register. Unique within the register. Example: 90664869327."
               },
               "idScheme": {
                 "type": "object",
@@ -308,9 +286,8 @@
                     "description": "The URI of this identifier scheme"
                   },
                   "name": {
-                    "example": "Global Identifier Scheme Name",
                     "type": "string",
-                    "description": "The name of the identifier scheme. "
+                    "description": "The name of the identifier scheme. Example: Global Identifier Scheme Name."
                   }
                 }
               },
@@ -344,24 +321,20 @@
                 ],
                 "properties": {
                   "streetAddress": {
-                    "example": "level 11, 15 London Circuit",
                     "type": "string",
-                    "description": "the street address as an unstructured string."
+                    "description": "the street address as an unstructured string. Example: level 11, 15 London Circuit."
                   },
                   "postalCode": {
-                    "example": 2601,
                     "type": "string",
-                    "description": "The postal code or zip code for this address."
+                    "description": "The postal code or zip code for this address. Example: 2601."
                   },
                   "addressLocality": {
-                    "example": "Acton",
                     "type": "string",
-                    "description": "The city, suburb or township name."
+                    "description": "The city, suburb or township name. Example: Acton."
                   },
                   "addressRegion": {
-                    "example": "ACT",
                     "type": "string",
-                    "description": "The state or territory or province"
+                    "description": "The state or territory or province. Example: ACT."
                   },
                   "addressCountry": {
                     "type": "object",
@@ -384,10 +357,9 @@
                 }
               },
               "organisationWebsite": {
-                "example": "https://example-company.com",
                 "type": "string",
                 "format": "uri",
-                "description": "Website for this organisation"
+                "description": "Website for this organisation. Example: https://example-company.com."
               },
               "industryCategory": {
                 "type": "array",
@@ -402,29 +374,25 @@
                   ],
                   "properties": {
                     "code": {
-                      "example": 46410,
                       "type": "string",
-                      "description": "classification code within the scheme"
+                      "description": "classification code within the scheme. Example: 46410."
                     },
                     "name": {
-                      "example": "Primary cells and primary batteries",
                       "type": "string",
-                      "description": "Name of the classification represented by the code"
+                      "description": "Name of the classification represented by the code. Example: Primary cells and primary batteries."
                     },
                     "definition": {
                       "type": "string",
                       "description": "A rich definition of this classification code."
                     },
                     "schemeId": {
-                      "example": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
                       "type": "string",
                       "format": "uri",
-                      "description": "Classification scheme ID"
+                      "description": "Classification scheme ID. Example: https://unstats.un.org/unsd/classifications/Econ/cpc/."
                     },
                     "schemeName": {
-                      "example": "UN Central Product Classification (CPC)",
                       "type": "string",
-                      "description": "The name of the classification scheme"
+                      "description": "The name of the classification scheme. Example: UN Central Product Classification (CPC)."
                     }
                   }
                 },
@@ -440,20 +408,17 @@
                   ],
                   "properties": {
                     "id": {
-                      "example": "https://sample-business-register.gov/123456789",
                       "type": "string",
                       "format": "uri",
-                      "description": "Globally unique identifier of this party. Typically represented as a URI identifierScheme/Identifier URI"
+                      "description": "Globally unique identifier of this party. Typically represented as a URI identifierScheme/Identifier URI. Example: https://sample-business-register.gov/123456789."
                     },
                     "name": {
-                      "example": "Sample Company Ltd",
                       "type": "string",
-                      "description": "Legal registered name of this party."
+                      "description": "Legal registered name of this party. Example: Sample Company Ltd."
                     },
                     "registeredId": {
-                      "example": 90664869327,
                       "type": "string",
-                      "description": "The registration number (alphanumeric) of the Party within the register. Unique within the register."
+                      "description": "The registration number (alphanumeric) of the Party within the register. Unique within the register. Example: 90664869327."
                     }
                   }
                 },
@@ -474,34 +439,29 @@
       "description": "Property. The Facility where the product batch was produced / manufactured.",
       "properties": {
         "id": {
-          "example": "https://sample-location-register.com/987654321",
           "type": "string",
           "format": "uri",
-          "description": "Globally unique identifier of this facility. Typically represented as a URI identifierScheme/Identifier URI"
+          "description": "Globally unique identifier of this facility. Typically represented as a URI identifierScheme/Identifier URI. Example: https://sample-location-register.com/987654321."
         },
         "name": {
-          "example": "Sample Factory A",
           "type": "string",
-          "description": "Name of this facility as defined the location register."
+          "description": "Name of this facility as defined the location register. Example: Sample Factory A."
         },
         "registeredId": {
-          "example": 1234567,
           "type": "string",
-          "description": "The registration number (alphanumeric) of the facility within the identifier scheme. Unique within the register."
+          "description": "The registration number (alphanumeric) of the facility within the identifier scheme. Unique within the register. Example: 1234567."
         }
       }
     },
     "productionDate": {
-      "example": "2024-04-25",
       "type": "string",
       "format": "date",
-      "description": "Property. The ISO 8601 date on which the product batch or individual serialised item was manufactured."
+      "description": "Property. The ISO 8601 date on which the product batch or individual serialised item was manufactured. Example: 2024-04-25."
     },
     "expiryDate": {
-      "example": "2027-04-25",
       "type": "string",
       "format": "date",
-      "description": "Property. The date at which this product is no longer fit for use. Typically used for a food product use-by date but may also represent the usable life of any product."
+      "description": "Property. The date at which this product is no longer fit for use. Typically used for a food product use-by date but may also represent the usable life of any product. Example: 2027-04-25."
     },
     "countryOfProduction": {
       "type": "object",
@@ -534,9 +494,8 @@
           ],
           "properties": {
             "value": {
-              "example": 10,
               "type": "number",
-              "description": "The numeric value of the measure"
+              "description": "The numeric value of the measure. Example: 10."
             },
             "upperTolerance": {
               "type": "number",
@@ -562,9 +521,8 @@
           ],
           "properties": {
             "value": {
-              "example": 10,
               "type": "number",
-              "description": "The numeric value of the measure"
+              "description": "The numeric value of the measure. Example: 10."
             },
             "upperTolerance": {
               "type": "number",
@@ -590,9 +548,8 @@
           ],
           "properties": {
             "value": {
-              "example": 10,
               "type": "number",
-              "description": "The numeric value of the measure"
+              "description": "The numeric value of the measure. Example: 10."
             },
             "upperTolerance": {
               "type": "number",
@@ -618,9 +575,8 @@
           ],
           "properties": {
             "value": {
-              "example": 10,
               "type": "number",
-              "description": "The numeric value of the measure"
+              "description": "The numeric value of the measure. Example: 10."
             },
             "upperTolerance": {
               "type": "number",
@@ -646,9 +602,8 @@
           ],
           "properties": {
             "value": {
-              "example": 10,
               "type": "number",
-              "description": "The numeric value of the measure"
+              "description": "The numeric value of the measure. Example: 10."
             },
             "upperTolerance": {
               "type": "number",
@@ -680,9 +635,8 @@
         ],
         "properties": {
           "name": {
-            "example": "Lithium Spodumene",
             "type": "string",
-            "description": "Name of this material (eg \"Egyptian Cotton\")"
+            "description": "Name of this material (eg \"Egyptian Cotton\"). Example: Lithium Spodumene."
           },
           "originCountry": {
             "type": "object",
@@ -713,38 +667,33 @@
             ],
             "properties": {
               "code": {
-                "example": 46410,
                 "type": "string",
-                "description": "classification code within the scheme"
+                "description": "classification code within the scheme. Example: 46410."
               },
               "name": {
-                "example": "Primary cells and primary batteries",
                 "type": "string",
-                "description": "Name of the classification represented by the code"
+                "description": "Name of the classification represented by the code. Example: Primary cells and primary batteries."
               },
               "definition": {
                 "type": "string",
                 "description": "A rich definition of this classification code."
               },
               "schemeId": {
-                "example": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
                 "type": "string",
                 "format": "uri",
-                "description": "Classification scheme ID"
+                "description": "Classification scheme ID. Example: https://unstats.un.org/unsd/classifications/Econ/cpc/."
               },
               "schemeName": {
-                "example": "UN Central Product Classification (CPC)",
                 "type": "string",
-                "description": "The name of the classification scheme"
+                "description": "The name of the classification scheme. Example: UN Central Product Classification (CPC)."
               }
             }
           },
           "massFraction": {
             "maximum": 1,
             "minimum": 0,
-            "example": 0.2,
             "type": "number",
-            "description": "The mass fraction as a decimal of the product (or facility reporting period)  represented by this material. "
+            "description": "The mass fraction as a decimal of the product (or facility reporting period)  represented by this material. Example: 0.2."
           },
           "mass": {
             "type": "object",
@@ -755,9 +704,8 @@
             ],
             "properties": {
               "value": {
-                "example": 10,
                 "type": "number",
-                "description": "The numeric value of the measure"
+                "description": "The numeric value of the measure. Example: 10."
               },
               "upperTolerance": {
                 "type": "number",
@@ -777,9 +725,8 @@
           "recycledMassFraction": {
             "maximum": 1,
             "minimum": 0,
-            "example": 0.5,
             "type": "number",
-            "description": "Mass fraction of this material that is recycled (eg 50% recycled Lithium)"
+            "description": "Mass fraction of this material that is recycled (eg 50% recycled Lithium). Example: 0.5."
           },
           "hazardous": {
             "type": "boolean",
@@ -795,9 +742,8 @@
             ],
             "properties": {
               "name": {
-                "example": "certification trust mark",
                 "type": "string",
-                "description": "the display name for this image"
+                "description": "the display name for this image. Example: certification trust mark."
               },
               "description": {
                 "type": "string",
@@ -824,29 +770,25 @@
             ],
             "properties": {
               "linkURL": {
-                "example": "https://files.example-certifier.com/1234567.json",
                 "type": "string",
                 "format": "uri",
-                "description": "The URL of the target resource.  "
+                "description": "The URL of the target resource. Example: https://files.example-certifier.com/1234567.json."
               },
               "linkName": {
                 "type": "string",
                 "description": "Display name for this link."
               },
               "digestMultibase": {
-                "example": "abc123-example-digest-invalid",
                 "type": "string",
-                "description": "An optional multi-base encoded digest to ensure the content of the link has not changed. See https://www.w3.org/TR/vc-data-integrity/#resource-integrity for more information."
+                "description": "An optional multi-base encoded digest to ensure the content of the link has not changed. See https://www.w3.org/TR/vc-data-integrity/#resource-integrity for more information. Example: abc123-example-digest-invalid."
               },
               "mediaType": {
-                "example": "application/ld+json",
                 "type": "string",
-                "description": "The media type of the target resource."
+                "description": "The media type of the target resource. Example: application/ld+json."
               },
               "linkType": {
-                "example": "https://test.uncefact.org/vocabulary/linkTypes/dcc",
                 "type": "string",
-                "description": "The type of the target resource - drawn from a controlled vocabulary "
+                "description": "The type of the target resource - drawn from a controlled vocabulary. Example: https://test.uncefact.org/vocabulary/linkTypes/dcc."
               }
             }
           }
@@ -880,9 +822,8 @@
               ],
               "properties": {
                 "value": {
-                  "example": 10,
                   "type": "number",
-                  "description": "The numeric value of the measure"
+                  "description": "The numeric value of the measure. Example: 10."
                 },
                 "upperTolerance": {
                   "type": "number",
@@ -908,9 +849,8 @@
               ],
               "properties": {
                 "value": {
-                  "example": 10,
                   "type": "number",
-                  "description": "The numeric value of the measure"
+                  "description": "The numeric value of the measure. Example: 10."
                 },
                 "upperTolerance": {
                   "type": "number",
@@ -936,9 +876,8 @@
               ],
               "properties": {
                 "value": {
-                  "example": 10,
                   "type": "number",
-                  "description": "The numeric value of the measure"
+                  "description": "The numeric value of the measure. Example: 10."
                 },
                 "upperTolerance": {
                   "type": "number",
@@ -964,9 +903,8 @@
               ],
               "properties": {
                 "value": {
-                  "example": 10,
                   "type": "number",
-                  "description": "The numeric value of the measure"
+                  "description": "The numeric value of the measure. Example: 10."
                 },
                 "upperTolerance": {
                   "type": "number",
@@ -992,9 +930,8 @@
               ],
               "properties": {
                 "value": {
-                  "example": 10,
                   "type": "number",
-                  "description": "The numeric value of the measure"
+                  "description": "The numeric value of the measure. Example: 10."
                 },
                 "upperTolerance": {
                   "type": "number",
@@ -1026,9 +963,8 @@
             ],
             "properties": {
               "name": {
-                "example": "Lithium Spodumene",
                 "type": "string",
-                "description": "Name of this material (eg \"Egyptian Cotton\")"
+                "description": "Name of this material (eg \"Egyptian Cotton\"). Example: Lithium Spodumene."
               },
               "originCountry": {
                 "type": "object",
@@ -1059,38 +995,33 @@
                 ],
                 "properties": {
                   "code": {
-                    "example": 46410,
                     "type": "string",
-                    "description": "classification code within the scheme"
+                    "description": "classification code within the scheme. Example: 46410."
                   },
                   "name": {
-                    "example": "Primary cells and primary batteries",
                     "type": "string",
-                    "description": "Name of the classification represented by the code"
+                    "description": "Name of the classification represented by the code. Example: Primary cells and primary batteries."
                   },
                   "definition": {
                     "type": "string",
                     "description": "A rich definition of this classification code."
                   },
                   "schemeId": {
-                    "example": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
                     "type": "string",
                     "format": "uri",
-                    "description": "Classification scheme ID"
+                    "description": "Classification scheme ID. Example: https://unstats.un.org/unsd/classifications/Econ/cpc/."
                   },
                   "schemeName": {
-                    "example": "UN Central Product Classification (CPC)",
                     "type": "string",
-                    "description": "The name of the classification scheme"
+                    "description": "The name of the classification scheme. Example: UN Central Product Classification (CPC)."
                   }
                 }
               },
               "massFraction": {
                 "maximum": 1,
                 "minimum": 0,
-                "example": 0.2,
                 "type": "number",
-                "description": "The mass fraction as a decimal of the product (or facility reporting period)  represented by this material. "
+                "description": "The mass fraction as a decimal of the product (or facility reporting period)  represented by this material. Example: 0.2."
               },
               "mass": {
                 "type": "object",
@@ -1101,9 +1032,8 @@
                 ],
                 "properties": {
                   "value": {
-                    "example": 10,
                     "type": "number",
-                    "description": "The numeric value of the measure"
+                    "description": "The numeric value of the measure. Example: 10."
                   },
                   "upperTolerance": {
                     "type": "number",
@@ -1123,9 +1053,8 @@
               "recycledMassFraction": {
                 "maximum": 1,
                 "minimum": 0,
-                "example": 0.5,
                 "type": "number",
-                "description": "Mass fraction of this material that is recycled (eg 50% recycled Lithium)"
+                "description": "Mass fraction of this material that is recycled (eg 50% recycled Lithium). Example: 0.5."
               },
               "hazardous": {
                 "type": "boolean",
@@ -1141,9 +1070,8 @@
                 ],
                 "properties": {
                   "name": {
-                    "example": "certification trust mark",
                     "type": "string",
-                    "description": "the display name for this image"
+                    "description": "the display name for this image. Example: certification trust mark."
                   },
                   "description": {
                     "type": "string",
@@ -1170,29 +1098,25 @@
                 ],
                 "properties": {
                   "linkURL": {
-                    "example": "https://files.example-certifier.com/1234567.json",
                     "type": "string",
                     "format": "uri",
-                    "description": "The URL of the target resource.  "
+                    "description": "The URL of the target resource. Example: https://files.example-certifier.com/1234567.json."
                   },
                   "linkName": {
                     "type": "string",
                     "description": "Display name for this link."
                   },
                   "digestMultibase": {
-                    "example": "abc123-example-digest-invalid",
                     "type": "string",
-                    "description": "An optional multi-base encoded digest to ensure the content of the link has not changed. See https://www.w3.org/TR/vc-data-integrity/#resource-integrity for more information."
+                    "description": "An optional multi-base encoded digest to ensure the content of the link has not changed. See https://www.w3.org/TR/vc-data-integrity/#resource-integrity for more information. Example: abc123-example-digest-invalid."
                   },
                   "mediaType": {
-                    "example": "application/ld+json",
                     "type": "string",
-                    "description": "The media type of the target resource."
+                    "description": "The media type of the target resource. Example: application/ld+json."
                   },
                   "linkType": {
-                    "example": "https://test.uncefact.org/vocabulary/linkTypes/dcc",
                     "type": "string",
-                    "description": "The type of the target resource - drawn from a controlled vocabulary "
+                    "description": "The type of the target resource - drawn from a controlled vocabulary. Example: https://test.uncefact.org/vocabulary/linkTypes/dcc."
                   }
                 }
               }
@@ -1212,9 +1136,8 @@
             ],
             "properties": {
               "name": {
-                "example": "certification trust mark",
                 "type": "string",
-                "description": "the display name for this image"
+                "description": "the display name for this image. Example: certification trust mark."
               },
               "description": {
                 "type": "string",
@@ -1249,15 +1172,13 @@
             ],
             "properties": {
               "id": {
-                "example": "https://sample-company.com/claim/e78dab5d-b6f6-4bc4-a458-7feb039f6cb3",
                 "type": "string",
                 "format": "uri",
-                "description": "Globally unique identifier of this claim. Typically represented as a URI companyURL/claimID URI or a UUID"
+                "description": "Globally unique identifier of this claim. Typically represented as a URI companyURL/claimID URI or a UUID. Example: https://sample-company.com/claim/e78dab5d-b6f6-4bc4-a458-7feb039f6cb3."
               },
               "name": {
-                "example": "Sample company Forced Labour claim",
                 "type": "string",
-                "description": "Name of this claim - typically similar or the same as the referenced criterion name."
+                "description": "Name of this claim - typically similar or the same as the referenced criterion name. Example: Sample company Forced Labour claim."
               },
               "description": {
                 "type": "string",
@@ -1273,15 +1194,13 @@
                   ],
                   "properties": {
                     "id": {
-                      "example": "https://vocabulary.sample-scheme.org/criterion/lb/v1.0",
                       "type": "string",
                       "format": "uri",
-                      "description": "Globally unique identifier of this conformity criterion. Typically represented as a URI SchemeOwner/CriterionID URI"
+                      "description": "Globally unique identifier of this conformity criterion. Typically represented as a URI SchemeOwner/CriterionID URI. Example: https://vocabulary.sample-scheme.org/criterion/lb/v1.0."
                     },
                     "name": {
-                      "example": "Forced labour assessment criterion",
                       "type": "string",
-                      "description": "Name of this criterion as defined by the scheme owner."
+                      "description": "Name of this criterion as defined by the scheme owner. Example: Forced labour assessment criterion."
                     }
                   }
                 },
@@ -1297,15 +1216,13 @@
                   ],
                   "properties": {
                     "id": {
-                      "example": "https://regulations.country.gov/ABC-12345",
                       "type": "string",
                       "format": "uri",
-                      "description": "Globally unique identifier of this standard. Typically represented as a URI government/regulation URI"
+                      "description": "Globally unique identifier of this standard. Typically represented as a URI government/regulation URI. Example: https://regulations.country.gov/ABC-12345."
                     },
                     "name": {
-                      "example": "Due Diligence Directove",
                       "type": "string",
-                      "description": "Name of this regulation as defined by the regulator."
+                      "description": "Name of this regulation as defined by the regulator. Example: Due Diligence Directove."
                     }
                   }
                 },
@@ -1321,15 +1238,13 @@
                   ],
                   "properties": {
                     "id": {
-                      "example": "https://sample-standards.org/A1234",
                       "type": "string",
                       "format": "uri",
-                      "description": "Globally unique identifier of this standard. Typically represented as a URI issuer/standard URI"
+                      "description": "Globally unique identifier of this standard. Typically represented as a URI issuer/standard URI. Example: https://sample-standards.org/A1234."
                     },
                     "name": {
-                      "example": "Labour rights standard",
                       "type": "string",
-                      "description": "Name for this standard"
+                      "description": "Name for this standard. Example: Labour rights standard."
                     }
                   }
                 },
@@ -1384,15 +1299,13 @@
                       "description": "The metric (eg material emissions intensity CO2e/Kg or percentage of young workers) that is measured.",
                       "properties": {
                         "id": {
-                          "example": "https://authority.gov/schemeABC/123456789",
                           "type": "string",
                           "format": "uri",
-                          "description": "Globally unique identifier of this reporting metric. "
+                          "description": "Globally unique identifier of this reporting metric. Example: https://authority.gov/schemeABC/123456789."
                         },
                         "name": {
-                          "example": "emissions intensity",
                           "type": "string",
-                          "description": "A human readable name for this metric (for example \"water usage per Kg of material\")"
+                          "description": "A human readable name for this metric (for example \"water usage per Kg of material\"). Example: emissions intensity."
                         }
                       }
                     },
@@ -1405,9 +1318,8 @@
                       ],
                       "properties": {
                         "value": {
-                          "example": 10,
                           "type": "number",
-                          "description": "The numeric value of the measure"
+                          "description": "The numeric value of the measure. Example: 10."
                         },
                         "upperTolerance": {
                           "type": "number",
@@ -1460,29 +1372,25 @@
                   ],
                   "properties": {
                     "linkURL": {
-                      "example": "https://files.example-certifier.com/1234567.json",
                       "type": "string",
                       "format": "uri",
-                      "description": "The URL of the target resource.  "
+                      "description": "The URL of the target resource. Example: https://files.example-certifier.com/1234567.json."
                     },
                     "linkName": {
                       "type": "string",
                       "description": "Display name for this link."
                     },
                     "digestMultibase": {
-                      "example": "abc123-example-digest-invalid",
                       "type": "string",
-                      "description": "An optional multi-base encoded digest to ensure the content of the link has not changed. See https://www.w3.org/TR/vc-data-integrity/#resource-integrity for more information."
+                      "description": "An optional multi-base encoded digest to ensure the content of the link has not changed. See https://www.w3.org/TR/vc-data-integrity/#resource-integrity for more information. Example: abc123-example-digest-invalid."
                     },
                     "mediaType": {
-                      "example": "application/ld+json",
                       "type": "string",
-                      "description": "The media type of the target resource."
+                      "description": "The media type of the target resource. Example: application/ld+json."
                     },
                     "linkType": {
-                      "example": "https://test.uncefact.org/vocabulary/linkTypes/dcc",
                       "type": "string",
-                      "description": "The type of the target resource - drawn from a controlled vocabulary "
+                      "description": "The type of the target resource - drawn from a controlled vocabulary. Example: https://test.uncefact.org/vocabulary/linkTypes/dcc."
                     }
                   }
                 },
@@ -1504,9 +1412,8 @@
                       "description": "The unique identifier for this conformity topic"
                     },
                     "name": {
-                      "example": "forced-labour",
                       "type": "string",
-                      "description": "The human readable name for this conformity topic."
+                      "description": "The human readable name for this conformity topic. Example: forced-labour."
                     },
                     "definition": {
                       "type": "string",
@@ -1534,9 +1441,8 @@
         ],
         "properties": {
           "name": {
-            "example": "certification trust mark",
             "type": "string",
-            "description": "the display name for this image"
+            "description": "the display name for this image. Example: certification trust mark."
           },
           "description": {
             "type": "string",
@@ -1571,15 +1477,13 @@
         ],
         "properties": {
           "id": {
-            "example": "https://sample-company.com/claim/e78dab5d-b6f6-4bc4-a458-7feb039f6cb3",
             "type": "string",
             "format": "uri",
-            "description": "Globally unique identifier of this claim. Typically represented as a URI companyURL/claimID URI or a UUID"
+            "description": "Globally unique identifier of this claim. Typically represented as a URI companyURL/claimID URI or a UUID. Example: https://sample-company.com/claim/e78dab5d-b6f6-4bc4-a458-7feb039f6cb3."
           },
           "name": {
-            "example": "Sample company Forced Labour claim",
             "type": "string",
-            "description": "Name of this claim - typically similar or the same as the referenced criterion name."
+            "description": "Name of this claim - typically similar or the same as the referenced criterion name. Example: Sample company Forced Labour claim."
           },
           "description": {
             "type": "string",
@@ -1595,15 +1499,13 @@
               ],
               "properties": {
                 "id": {
-                  "example": "https://vocabulary.sample-scheme.org/criterion/lb/v1.0",
                   "type": "string",
                   "format": "uri",
-                  "description": "Globally unique identifier of this conformity criterion. Typically represented as a URI SchemeOwner/CriterionID URI"
+                  "description": "Globally unique identifier of this conformity criterion. Typically represented as a URI SchemeOwner/CriterionID URI. Example: https://vocabulary.sample-scheme.org/criterion/lb/v1.0."
                 },
                 "name": {
-                  "example": "Forced labour assessment criterion",
                   "type": "string",
-                  "description": "Name of this criterion as defined by the scheme owner."
+                  "description": "Name of this criterion as defined by the scheme owner. Example: Forced labour assessment criterion."
                 }
               }
             },
@@ -1619,15 +1521,13 @@
               ],
               "properties": {
                 "id": {
-                  "example": "https://regulations.country.gov/ABC-12345",
                   "type": "string",
                   "format": "uri",
-                  "description": "Globally unique identifier of this standard. Typically represented as a URI government/regulation URI"
+                  "description": "Globally unique identifier of this standard. Typically represented as a URI government/regulation URI. Example: https://regulations.country.gov/ABC-12345."
                 },
                 "name": {
-                  "example": "Due Diligence Directove",
                   "type": "string",
-                  "description": "Name of this regulation as defined by the regulator."
+                  "description": "Name of this regulation as defined by the regulator. Example: Due Diligence Directove."
                 }
               }
             },
@@ -1643,15 +1543,13 @@
               ],
               "properties": {
                 "id": {
-                  "example": "https://sample-standards.org/A1234",
                   "type": "string",
                   "format": "uri",
-                  "description": "Globally unique identifier of this standard. Typically represented as a URI issuer/standard URI"
+                  "description": "Globally unique identifier of this standard. Typically represented as a URI issuer/standard URI. Example: https://sample-standards.org/A1234."
                 },
                 "name": {
-                  "example": "Labour rights standard",
                   "type": "string",
-                  "description": "Name for this standard"
+                  "description": "Name for this standard. Example: Labour rights standard."
                 }
               }
             },
@@ -1706,15 +1604,13 @@
                   "description": "The metric (eg material emissions intensity CO2e/Kg or percentage of young workers) that is measured.",
                   "properties": {
                     "id": {
-                      "example": "https://authority.gov/schemeABC/123456789",
                       "type": "string",
                       "format": "uri",
-                      "description": "Globally unique identifier of this reporting metric. "
+                      "description": "Globally unique identifier of this reporting metric. Example: https://authority.gov/schemeABC/123456789."
                     },
                     "name": {
-                      "example": "emissions intensity",
                       "type": "string",
-                      "description": "A human readable name for this metric (for example \"water usage per Kg of material\")"
+                      "description": "A human readable name for this metric (for example \"water usage per Kg of material\"). Example: emissions intensity."
                     }
                   }
                 },
@@ -1727,9 +1623,8 @@
                   ],
                   "properties": {
                     "value": {
-                      "example": 10,
                       "type": "number",
-                      "description": "The numeric value of the measure"
+                      "description": "The numeric value of the measure. Example: 10."
                     },
                     "upperTolerance": {
                       "type": "number",
@@ -1782,29 +1677,25 @@
               ],
               "properties": {
                 "linkURL": {
-                  "example": "https://files.example-certifier.com/1234567.json",
                   "type": "string",
                   "format": "uri",
-                  "description": "The URL of the target resource.  "
+                  "description": "The URL of the target resource. Example: https://files.example-certifier.com/1234567.json."
                 },
                 "linkName": {
                   "type": "string",
                   "description": "Display name for this link."
                 },
                 "digestMultibase": {
-                  "example": "abc123-example-digest-invalid",
                   "type": "string",
-                  "description": "An optional multi-base encoded digest to ensure the content of the link has not changed. See https://www.w3.org/TR/vc-data-integrity/#resource-integrity for more information."
+                  "description": "An optional multi-base encoded digest to ensure the content of the link has not changed. See https://www.w3.org/TR/vc-data-integrity/#resource-integrity for more information. Example: abc123-example-digest-invalid."
                 },
                 "mediaType": {
-                  "example": "application/ld+json",
                   "type": "string",
-                  "description": "The media type of the target resource."
+                  "description": "The media type of the target resource. Example: application/ld+json."
                 },
                 "linkType": {
-                  "example": "https://test.uncefact.org/vocabulary/linkTypes/dcc",
                   "type": "string",
-                  "description": "The type of the target resource - drawn from a controlled vocabulary "
+                  "description": "The type of the target resource - drawn from a controlled vocabulary. Example: https://test.uncefact.org/vocabulary/linkTypes/dcc."
                 }
               }
             },
@@ -1826,9 +1717,8 @@
                   "description": "The unique identifier for this conformity topic"
                 },
                 "name": {
-                  "example": "forced-labour",
                   "type": "string",
-                  "description": "The human readable name for this conformity topic."
+                  "description": "The human readable name for this conformity topic. Example: forced-labour."
                 },
                 "definition": {
                   "type": "string",

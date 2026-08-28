@@ -8,10 +8,9 @@
   "type": "object",
   "properties": {
     "id": {
-      "example": "https://example-company.com/credentials/2a423366-a0d6-4855-ba65-2e0c926d09b0",
       "type": "string",
       "format": "uri",
-      "description": "A unique identifier (URI) assigned to this verifiable credential."
+      "description": "A unique identifier (URI) assigned to this verifiable credential. Example: https://example-company.com/credentials/2a423366-a0d6-4855-ba65-2e0c926d09b0."
     },
     "type": {
       "type": "string",
@@ -39,15 +38,11 @@
       "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
     },
     "vcContext": {
-      "example": [
-        "https://www.w3.org/ns/credentials/v2",
-        "https://vocabulary.uncefact.org/untp/0.8.0/context/"
-      ],
       "type": "array",
       "items": {
         "type": "string"
       },
-      "description": "Property. The W3C Verifiable Credential JSON-LD context array for this credential (e.g. [\"https://www.w3.org/ns/credentials/v2\", \"https://vocabulary.uncefact.org/untp/0.8.0/context/\"]). Named `vcContext` here (instead of the source's own `@context`) to avoid colliding with NGSI-LD's own reserved top-level `@context` mechanism -- this property holds the W3C VC context array as plain data, it is not this NGSI-LD entity's own linked-data context.",
+      "description": "Property. The W3C Verifiable Credential JSON-LD context array for this credential (e.g. [\"https://www.w3.org/ns/credentials/v2\", \"https://vocabulary.uncefact.org/untp/0.8.0/context/\"]). Named `vcContext` here (instead of the source's own `@context`) to avoid colliding with NGSI-LD's own reserved top-level `@context` mechanism -- this property holds the W3C VC context array as plain data, it is not this NGSI-LD entity's own linked-data context. Example: [\"https://www.w3.org/ns/credentials/v2\", \"https://vocabulary.uncefact.org/untp/0.8.0/context/\"].",
       "readOnly": true,
       "prefixItems": [
         {
@@ -75,15 +70,13 @@
       ],
       "properties": {
         "id": {
-          "example": "did:web:identifiers.example-company.com:12345",
           "type": "string",
           "format": "uri",
-          "description": "The W3C DID of the issuer - should be a did:web or did:webvh"
+          "description": "The W3C DID of the issuer - should be a did:web or did:webvh. Example: did:web:identifiers.example-company.com:12345."
         },
         "name": {
-          "example": "Example Company Pty Ltd",
           "type": "string",
-          "description": "The name of the issuer person or organisation"
+          "description": "The name of the issuer person or organisation. Example: Example Company Pty Ltd."
         },
         "issuerAlsoKnownAs": {
           "type": "array",
@@ -95,20 +88,17 @@
             ],
             "properties": {
               "id": {
-                "example": "https://sample-business-register.gov/123456789",
                 "type": "string",
                 "format": "uri",
-                "description": "Globally unique identifier of this party. Typically represented as a URI identifierScheme/Identifier URI"
+                "description": "Globally unique identifier of this party. Typically represented as a URI identifierScheme/Identifier URI. Example: https://sample-business-register.gov/123456789."
               },
               "name": {
-                "example": "Sample Company Ltd",
                 "type": "string",
-                "description": "Legal registered name of this party."
+                "description": "Legal registered name of this party. Example: Sample Company Ltd."
               },
               "registeredId": {
-                "example": 90664869327,
                 "type": "string",
-                "description": "The registration number (alphanumeric) of the Party within the register. Unique within the register."
+                "description": "The registration number (alphanumeric) of the Party within the register. Unique within the register. Example: 90664869327."
               }
             }
           },
@@ -117,21 +107,18 @@
       }
     },
     "validFrom": {
-      "example": "2024-03-15T12:00:00Z",
       "type": "string",
       "format": "date-time",
-      "description": "Property. The date and time from which the credential is valid."
+      "description": "Property. The date and time from which the credential is valid. Example: 2024-03-15T12:00:00Z."
     },
     "validUntil": {
-      "example": "2034-03-15T12:00:00Z",
       "type": "string",
       "format": "date-time",
-      "description": "Property. The expiry date (if applicable) of this verifiable credential."
+      "description": "Property. The expiry date (if applicable) of this verifiable credential. Example: 2034-03-15T12:00:00Z."
     },
     "name": {
-      "example": "Some name",
       "type": "string",
-      "description": "Property. Name of this verifiable credential instance (eg the title of a digital product passport, facility record, lifecycle event, or conformity credential)"
+      "description": "Property. Name of this verifiable credential instance (eg the title of a digital product passport, facility record, lifecycle event, or conformity credential). Example: Some name."
     },
     "credentialStatus": {
       "type": "object",
@@ -148,14 +135,12 @@
           "enum": [
             "BitstringStatusListEntry"
           ],
-          "example": "BitstringStatusListEntry",
-          "description": "The type of status list - must be set to \"The type property MUST be BitstringStatusListEntry.\""
+          "description": "The type of status list - must be set to \"The type property MUST be BitstringStatusListEntry.\". Example: BitstringStatusListEntry."
         },
         "id": {
-          "example": "https://example-cab.com/credentials/status/3#94567\"",
           "type": "string",
           "format": "uri",
-          "description": "optional identifier of this status list entry."
+          "description": "optional identifier of this status list entry. Example: https://example-cab.com/credentials/status/3#94567\"."
         },
         "statusPurpose": {
           "type": "string",
@@ -165,20 +150,17 @@
             "suspension",
             "message"
           ],
-          "example": "refresh",
-          "description": "Status purpose drawn from a standard list but extensible as per w3c bitstring status list specification."
+          "description": "Status purpose drawn from a standard list but extensible as per w3c bitstring status list specification. Example: refresh."
         },
         "statusListIndex": {
           "minimum": 0,
-          "example": 94567,
           "type": "integer",
-          "description": "\tThe statusListIndex property MUST be an arbitrary size integer greater than or equal to 0, expressed as a string in base 10. The value identifies the position of the status of the verifiable credential."
+          "description": "\tThe statusListIndex property MUST be an arbitrary size integer greater than or equal to 0, expressed as a string in base 10. The value identifies the position of the status of the verifiable credential. Example: 94567."
         },
         "statusListCredential": {
-          "example": "https://example-cab.com/credentials/status/4",
           "type": "string",
           "format": "uri",
-          "description": "The statusListCredential property MUST be a URL to a verifiable credential. When the URL is dereferenced, the resulting verifiable credential MUST have type property that includes the BitstringStatusListCredential value."
+          "description": "The statusListCredential property MUST be a URL to a verifiable credential. When the URL is dereferenced, the resulting verifiable credential MUST have type property that includes the BitstringStatusListCredential value. Example: https://example-cab.com/credentials/status/4."
         }
       }
     },
@@ -228,20 +210,17 @@
       "description": "Property. Optional metadata identifying the software product (and its vendor) that issued this credential. Useful for vendor traceability and conformity testing. Issuers MAY omit this property.",
       "properties": {
         "id": {
-          "example": "https://example.com/.well-known/untp/software/yourproduct/2026.04.1",
           "type": "string",
           "format": "uri",
-          "description": "A resolvable identifier for the specific version of the software product that issued this credential."
+          "description": "A resolvable identifier for the specific version of the software product that issued this credential. Example: https://example.com/.well-known/untp/software/yourproduct/2026.04.1."
         },
         "name": {
-          "example": "Your Product Name",
           "type": "string",
-          "description": "The name of the software product that issued this credential."
+          "description": "The name of the software product that issued this credential. Example: Your Product Name."
         },
         "version": {
-          "example": "2026.04.1",
           "type": "string",
-          "description": "The version of the software product that issued this credential."
+          "description": "The version of the software product that issued this credential. Example: 2026.04.1."
         },
         "vendor": {
           "type": "object",
@@ -252,15 +231,13 @@
           "description": "The vendor of the software product that issued this credential.",
           "properties": {
             "id": {
-              "example": "did:web:example.com",
               "type": "string",
               "format": "uri",
-              "description": "The decentralised identifier (DID) or other resolvable identifier of the software vendor."
+              "description": "The decentralised identifier (DID) or other resolvable identifier of the software vendor. Example: did:web:example.com."
             },
             "name": {
-              "example": "Your Vendor Name",
               "type": "string",
-              "description": "The name of the software vendor."
+              "description": "The name of the software vendor. Example: Your Vendor Name."
             }
           }
         }

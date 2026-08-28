@@ -140,6 +140,18 @@ notes: |
   pointing at not-yet-modeled entity types, since the source itself doesn't
   treat them as bare object references either.
 
+  `example` KEYWORD REMOVED FROM SCHEMAS (2026-09-04 update): the source
+  JSON Schema decorates the large majority of its properties with a JSON
+  Schema `example` keyword. Per explicit user instruction (the official SDM
+  publication script does not expect this keyword and would need changing
+  to accommodate it), every `example` key was stripped from both
+  schema.json files; the value is not lost -- it is folded into that same
+  property's own `description` text instead (e.g. "... Example:
+  did:web:manufacturer.com:product:123456789."). This is a schema.json-only
+  change; the example.json/*.jsonld instance files (real data drawn from
+  UNTP's own sample, per the note above) are unaffected, since they are
+  data files, not JSON Schema, and never carried this keyword.
+
   DUPLICATION RISK, NOT CHECKED IN DETAIL: Smart Data Models may already
   publish product/traceability-related vocabularies in other domains
   (Agrifood, DCAT-AP-derived catalogue models) that could overlap
