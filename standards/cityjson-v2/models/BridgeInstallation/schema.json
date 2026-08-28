@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/cityjson-v2/models/BridgeInstallation/schema.json",
+  "modelTags": "CityJSON,Bridge",
+  "title": "Smart Data Models - CityJSON v2.0 - BridgeInstallation",
+  "description": "https://www.cityjson.org/schemas/2.0.2/cityobjects.schema.json#BridgeInstallation. A construction attached to a Bridge that is too small/detailed to be a BridgePart, e.g. a railing or lamp post. Part of the Bridge family of City Objects. Typed attributes cross-referenced from the CityGML 3.0 Bridge module (schemas.opengis.net/citygml/), the data model CityJSON's own attributes are informally derived from.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "BridgeInstallation"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'BridgeInstallation'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "class": {
+      "type": "string",
+      "description": "Property. Indicates the specific type of the BridgeInstallation. Coded value, typically drawn from an OGC CityGML code list (not resolved to a closed enum in this pass)."
+    },
+    "function": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. Specifies the intended purposes of the BridgeInstallation. Coded value, typically drawn from an OGC CityGML code list (not resolved to a closed enum in this pass)."
+    },
+    "usage": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. Specifies the actual uses of the BridgeInstallation. Coded value, typically drawn from an OGC CityGML code list (not resolved to a closed enum in this pass)."
+    },
+    "genericAttributes": {
+      "type": "object",
+      "description": "Property. Open StructuredValue for additional name/value attributes beyond the typed properties above, per CityGML 3.0's own formal generic-attribute extension mechanism (generics.xsd: CodeAttribute, StringAttribute, DoubleAttribute, IntAttribute, DateAttribute, UriAttribute, MeasureAttribute, GenericAttributeSet). Not schema-validated by this candidate; use the typed properties above where one exists."
+    },
+    "geographicalExtent": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 6,
+      "maxItems": 6,
+      "description": "Property. Bounding box of the City Object as [minx, miny, minz, maxx, maxy, maxz], per the source CityJSON schema's shared _AbstractCityObject.geographicalExtent."
+    },
+    "parents": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. IDs of the parent City Object(s) in the same dataset, per the source CityJSON schema's shared _AbstractCityObject.parents."
+    },
+    "children": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. IDs of the child City Object(s) in the same dataset, per the source CityJSON schema's shared _AbstractCityObject.children."
+    },
+    "geometryLoD0": {
+      "type": "object",
+      "description": "GeoProperty. Dereferenced GeoJSON geometry (MultiPoint, MultiLineString, MultiPolygon) for this BridgeInstallation at major Level of Detail 0 (covers source `lod` values \"0\" and \"0.0\"-\"0.3\"), flattened from CityJSON's native shared-vertex-array + boundary-index representation. Optional; present only if the source CityJSON file provides a Geometry entry at this LoD for this object. Surface `semantics`, `material`, and `texture` are not carried into this GeoProperty -- only boundary coordinates. Note: this type also allows GeometryInstance (reused geometry templates) in the source schema; template-referenced geometry is not flattened into these GeoProperties in this pass.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "MultiPoint",
+            "MultiLineString",
+            "MultiPolygon"
+          ]
+        },
+        "coordinates": {
+          "type": "array"
+        }
+      }
+    },
+    "geometryLoD1": {
+      "type": "object",
+      "description": "GeoProperty. Dereferenced GeoJSON geometry (MultiPoint, MultiLineString, MultiPolygon) for this BridgeInstallation at major Level of Detail 1 (covers source `lod` values \"1\" and \"1.0\"-\"1.3\"), flattened from CityJSON's native shared-vertex-array + boundary-index representation. Optional; present only if the source CityJSON file provides a Geometry entry at this LoD for this object. Surface `semantics`, `material`, and `texture` are not carried into this GeoProperty -- only boundary coordinates.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "MultiPoint",
+            "MultiLineString",
+            "MultiPolygon"
+          ]
+        },
+        "coordinates": {
+          "type": "array"
+        }
+      }
+    },
+    "geometryLoD2": {
+      "type": "object",
+      "description": "GeoProperty. Dereferenced GeoJSON geometry (MultiPoint, MultiLineString, MultiPolygon) for this BridgeInstallation at major Level of Detail 2 (covers source `lod` values \"2\" and \"2.0\"-\"2.3\"), flattened from CityJSON's native shared-vertex-array + boundary-index representation. Optional; present only if the source CityJSON file provides a Geometry entry at this LoD for this object. Surface `semantics`, `material`, and `texture` are not carried into this GeoProperty -- only boundary coordinates.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "MultiPoint",
+            "MultiLineString",
+            "MultiPolygon"
+          ]
+        },
+        "coordinates": {
+          "type": "array"
+        }
+      }
+    },
+    "geometryLoD3": {
+      "type": "object",
+      "description": "GeoProperty. Dereferenced GeoJSON geometry (MultiPoint, MultiLineString, MultiPolygon) for this BridgeInstallation at major Level of Detail 3 (covers source `lod` values \"3\" and \"3.0\"-\"3.3\"), flattened from CityJSON's native shared-vertex-array + boundary-index representation. Optional; present only if the source CityJSON file provides a Geometry entry at this LoD for this object. Surface `semantics`, `material`, and `texture` are not carried into this GeoProperty -- only boundary coordinates.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "MultiPoint",
+            "MultiLineString",
+            "MultiPolygon"
+          ]
+        },
+        "coordinates": {
+          "type": "array"
+        }
+      }
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "parents"
+  ]
+}

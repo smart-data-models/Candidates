@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/cityjson-v2/models/TunnelPart/schema.json",
+  "modelTags": "CityJSON,Tunnel",
+  "title": "Smart Data Models - CityJSON v2.0 - TunnelPart",
+  "description": "https://www.cityjson.org/schemas/2.0.2/cityobjects.schema.json#TunnelPart. A self-contained part of a Tunnel with its own geometry and attributes. Must reference its parent Tunnel via `parents`. Part of the Tunnel family of City Objects. Typed attributes cross-referenced from the CityGML 3.0 Tunnel module (schemas.opengis.net/citygml/), the data model CityJSON's own attributes are informally derived from.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "TunnelPart"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'TunnelPart'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "conditionOfConstruction": {
+      "type": "string",
+      "enum": [
+        "declined",
+        "demolished",
+        "functional",
+        "projected",
+        "ruin",
+        "underConstruction"
+      ],
+      "description": "Property. Indicates the life-cycle status of the construction. [cf. INSPIRE]"
+    },
+    "dateOfConstruction": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Indicates the date at which the construction was completed."
+    },
+    "dateOfDemolition": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Indicates the date at which the construction was demolished."
+    },
+    "class": {
+      "type": "string",
+      "description": "Property. Indicates the specific type of the Tunnel or TunnelPart. Coded value, typically drawn from an OGC CityGML code list (not resolved to a closed enum in this pass)."
+    },
+    "function": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. Specifies the intended purposes of the Tunnel or TunnelPart. Coded value, typically drawn from an OGC CityGML code list (not resolved to a closed enum in this pass)."
+    },
+    "usage": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. Specifies the actual uses of the Tunnel or TunnelPart. Coded value, typically drawn from an OGC CityGML code list (not resolved to a closed enum in this pass)."
+    },
+    "height": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "highReference": {
+            "type": "string",
+            "description": "gml:CodeType. The high point used to calculate this height value. [cf. INSPIRE]"
+          },
+          "lowReference": {
+            "type": "string",
+            "description": "gml:CodeType. The low point used to calculate this height value. [cf. INSPIRE]"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "estimated",
+              "measured"
+            ],
+            "description": "How this height was captured. [cf. INSPIRE]"
+          },
+          "value": {
+            "type": "number",
+            "description": "The height value, in metres, above or below ground."
+          }
+        }
+      },
+      "description": "Property. Specifies qualified heights of the construction above or below ground -- CityGML 3.0's structured replacement for the classic flat 'measuredHeight' attribute. Each entry has highReference/lowReference (gml:CodeType, the reference points the height was measured between), status (estimated/measured/calculated), and value (the height, in metres). [cf. INSPIRE]"
+    },
+    "genericAttributes": {
+      "type": "object",
+      "description": "Property. Open StructuredValue for additional name/value attributes beyond the typed properties above, per CityGML 3.0's own formal generic-attribute extension mechanism (generics.xsd: CodeAttribute, StringAttribute, DoubleAttribute, IntAttribute, DateAttribute, UriAttribute, MeasureAttribute, GenericAttributeSet). Not schema-validated by this candidate; use the typed properties above where one exists."
+    },
+    "geographicalExtent": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 6,
+      "maxItems": 6,
+      "description": "Property. Bounding box of the City Object as [minx, miny, minz, maxx, maxy, maxz], per the source CityJSON schema's shared _AbstractCityObject.geographicalExtent."
+    },
+    "parents": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. IDs of the parent City Object(s) in the same dataset, per the source CityJSON schema's shared _AbstractCityObject.parents."
+    },
+    "children": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. IDs of the child City Object(s) in the same dataset, per the source CityJSON schema's shared _AbstractCityObject.children."
+    },
+    "geometryLoD0": {
+      "type": "object",
+      "description": "GeoProperty. Dereferenced GeoJSON geometry (MultiPolygon) for this TunnelPart at major Level of Detail 0 (covers source `lod` values \"0\" and \"0.0\"-\"0.3\"), flattened from CityJSON's native shared-vertex-array + boundary-index representation. Optional; present only if the source CityJSON file provides a Geometry entry at this LoD for this object. Surface `semantics`, `material`, and `texture` are not carried into this GeoProperty -- only boundary coordinates.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "MultiPolygon"
+          ]
+        },
+        "coordinates": {
+          "type": "array"
+        }
+      }
+    },
+    "geometryLoD1": {
+      "type": "object",
+      "description": "GeoProperty. Dereferenced GeoJSON geometry (MultiPolygon) for this TunnelPart at major Level of Detail 1 (covers source `lod` values \"1\" and \"1.0\"-\"1.3\"), flattened from CityJSON's native shared-vertex-array + boundary-index representation. Optional; present only if the source CityJSON file provides a Geometry entry at this LoD for this object. Surface `semantics`, `material`, and `texture` are not carried into this GeoProperty -- only boundary coordinates.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "MultiPolygon"
+          ]
+        },
+        "coordinates": {
+          "type": "array"
+        }
+      }
+    },
+    "geometryLoD2": {
+      "type": "object",
+      "description": "GeoProperty. Dereferenced GeoJSON geometry (MultiPolygon) for this TunnelPart at major Level of Detail 2 (covers source `lod` values \"2\" and \"2.0\"-\"2.3\"), flattened from CityJSON's native shared-vertex-array + boundary-index representation. Optional; present only if the source CityJSON file provides a Geometry entry at this LoD for this object. Surface `semantics`, `material`, and `texture` are not carried into this GeoProperty -- only boundary coordinates.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "MultiPolygon"
+          ]
+        },
+        "coordinates": {
+          "type": "array"
+        }
+      }
+    },
+    "geometryLoD3": {
+      "type": "object",
+      "description": "GeoProperty. Dereferenced GeoJSON geometry (MultiPolygon) for this TunnelPart at major Level of Detail 3 (covers source `lod` values \"3\" and \"3.0\"-\"3.3\"), flattened from CityJSON's native shared-vertex-array + boundary-index representation. Optional; present only if the source CityJSON file provides a Geometry entry at this LoD for this object. Surface `semantics`, `material`, and `texture` are not carried into this GeoProperty -- only boundary coordinates.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "MultiPolygon"
+          ]
+        },
+        "coordinates": {
+          "type": "array"
+        }
+      }
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "parents"
+  ]
+}

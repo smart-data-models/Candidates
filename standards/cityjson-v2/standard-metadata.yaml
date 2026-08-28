@@ -1,0 +1,180 @@
+title: "CityJSON v2.0"
+publisher: "3D geoinformation research group, TU Delft / the CityJSON community (cityjson.org)"
+sourceUrl: "https://github.com/cityjson/specs"
+sourceOntologyVersion: "CityJSON v2.0.2 (2026-03-27), schemas at https://www.cityjson.org/schemas/2.0.2/"
+domains:
+  - SmartCities
+  - Building
+  - CrossSector
+description: >
+  CityJSON is a JSON encoding of a subset of the OGC CityGML data model for
+  3D city models (buildings, bridges, tunnels, transportation, vegetation,
+  water bodies, land use, city furniture, and generic/grouped city objects).
+  This candidate translates all 33 core City Object types defined in
+  schemas/cityobjects.schema.json (v2.0.2) into NGSI-LD/NGSI-v2 entities.
+license: "CC0-1.0 (public domain, per the specs repository's own LICENSE file)"
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source JSON Schema to SDM candidate artifacts"
+notes: |
+  Translated on 2026-08-28 from the CityJSON v2.0.2 JSON Schema files
+  (schemas/cityjson.schema.json, cityobjects.schema.json, geomprimitives.schema.json,
+  geomtemplates.schema.json, appearance.schema.json, metadata.schema.json),
+  downloaded directly from
+  https://raw.githubusercontent.com/cityjson/specs/master/schemas/ and parsed
+  programmatically -- unlike some other Candidates translations, this one had
+  real machine-readable JSON Schema to work from throughout, not prose
+  documentation pages, so class/property structure below is read directly off
+  the schema rather than transcribed from guide text.
+
+  SCOPE: the user explicitly asked for "CityGML" but linked the CityJSON specs
+  repo. CityJSON is documented as "a subset of the OGC CityGML data model"
+  encoded in JSON -- it is NOT the full CityGML standard (a separate OGC
+  XML/GML/UML spec with its own ADE extension mechanism and modules not
+  present in CityJSON). Per explicit user confirmation, this candidate covers
+  CityJSON v2.0.2 as linked, not full CityGML.
+
+  ENTITY SET (33 City Object types, all of schemas/cityobjects.schema.json):
+  Building family -- Building, BuildingPart, BuildingInstallation,
+  BuildingConstructiveElement, BuildingFurniture, BuildingRoom, BuildingUnit,
+  BuildingStorey; Bridge family -- Bridge, BridgePart, BridgeInstallation,
+  BridgeConstructiveElement, BridgeRoom, BridgeFurniture; Tunnel family --
+  Tunnel, TunnelPart, TunnelInstallation, TunnelConstructiveElement,
+  TunnelHollowSpace, TunnelFurniture; Transportation -- Road, Railway,
+  TransportSquare, Waterway; Vegetation/land -- PlantCover,
+  SolitaryVegetationObject, LandUse; Water -- WaterBody; Terrain -- TINRelief;
+  Furniture/generic -- CityFurniture, GenericCityObject, OtherConstruction;
+  Grouping -- CityObjectGroup. (The schema's `ExtensionObject` wildcard type,
+  used for user-defined Extension city objects, is not modeled here -- it has
+  no fixed structure of its own by design.)
+
+  ATTRIBUTES: UPGRADED FROM AN OPEN BAG TO REAL CITYGML-TYPED PROPERTIES
+  (2026-08-28 update). The CityJSON JSON Schema itself does NOT declare a
+  fixed attribute list per City Object type -- every type's schema only
+  says `"attributes": {"type": "object"}`, an open bag -- because CityJSON
+  deliberately leaves attribute content to convention. That convention is
+  CityGML's own data model, so this candidate now cross-references the
+  actual OGC CityGML 3.0 XML Schema (schemas.opengis.net/citygml/, official
+  bundle citygml-3_0_0.zip) to promote real, typed, documented attributes
+  onto each of the 33 models, in place of the earlier generic bag:
+    - Parsed every relevant module (building, bridge, tunnel, construction,
+      transportation, vegetation, landuse, waterbody, cityfurniture, relief,
+      cityobjectgroup, generics) with a small XSD walker that, per
+      complexType, resolves the full `<extension base="...">` inheritance
+      chain and collects only "leaf" data elements (gml:CodeType, simple
+      measures, booleans, integers, dates, *ValueType enumerations) --
+      deliberately excluding containment/association elements (e.g.
+      `buildingPart`, `buildingInstallation`) since those relationships are
+      already covered by CityJSON's own flat `parents`/`children` model, to
+      avoid representing the same relationship twice.
+    - Three real closed enumerations were resolved directly from the XSD
+      (not left open): `conditionOfConstruction` (declined / demolished /
+      functional / projected / ruin / underConstruction, on the
+      Building/Bridge/Tunnel/OtherConstruction family), `height[].status`
+      (estimated / measured), and `trafficDirection` (forwards / backwards
+      / both, on Road/Railway/TransportSquare/Waterway).
+    - `gml:CodeType` attributes (`class`, `function`, `usage`, `roofType`,
+      `species`, ...) are modeled as open strings with a description noting
+      they are coded values normally drawn from an OGC CityGML code list;
+      those code lists (schemas.opengis.net/citygml/codelists/) were NOT
+      resolved to closed enums in this pass -- a documented follow-up, not
+      a silent gap.
+    - CityGML 3.0's structured replacement for the classic flat
+      "measuredHeight" -- a `height` array of qualified
+      `{highReference, lowReference, status, value}` measurements -- was
+      manually added to the Building/Bridge/Tunnel/OtherConstruction family
+      (declared via a `HeightPropertyType` association in the XSD that the
+      generic leaf/containment heuristic correctly does not treat as a
+      plain scalar, so it needed explicit handling rather than generic
+      extraction).
+    - One attribute, CityObjectGroup's `parent` (`gml:ReferenceType`,
+      pointing to another City Object the group belongs to), was
+      recognized as a genuine object reference and modeled as an NGSI-LD
+      Relationship, not a Property -- consistent with how `parents`/
+      `children` are already handled.
+    - `TINRelief` legitimately ends up with zero promoted attributes --
+      its own CityGML type (`TINReliefType` / `AbstractReliefComponentType`)
+      declares only `lod` (redundant with the geometryLoDn GeoProperties)
+      and `extent` (a supplementary bounding surface, not carried over) at
+      this level; this is a fact about the source, not missing work.
+    - Every model keeps a residual `genericAttributes` open StructuredValue
+      Property, representing CityGML 3.0's OWN formal generic-attribute
+      extension mechanism (generics.xsd: CodeAttribute, StringAttribute,
+      DoubleAttribute, IntAttribute, DateAttribute, UriAttribute,
+      MeasureAttribute, GenericAttributeSet) -- the correct, spec-native
+      escape hatch for attributes beyond what's typed above, replacing the
+      earlier ad-hoc "attributes" bag with something CityGML itself defines.
+    - Attribute IRIs in each model's context.jsonld are minted under that
+      model's own CityGML 3.0 module XML namespace (e.g.
+      http://www.opengis.net/citygml/building/3.0#roofType), a simplification:
+      an attribute's context IRI always uses the leaf model's own module
+      namespace even when the XSD element is formally declared on a shared
+      base type in a different module (e.g. Building's `height`/
+      `conditionOfConstruction` are declared in construction.xsd, not
+      building.xsd, but are exposed under the building/3.0 namespace for a
+      single consistent per-model context) -- documented here, not a claim
+      of exact XSD provenance per property.
+  Each model's example.json populates every typed attribute with a
+  realistic value.
+
+  GEOMETRY -- FLATTENED PER USER DECISION: CityJSON's native geometry
+  representation stores vertices once in a document-level shared array and
+  each Geometry object's `boundaries` holds integer indices into it, nested
+  1-5 levels deep by primitive type (Point/MultiPoint through
+  MultiSolid/CompositeSolid), with an independent `lod` (Level of Detail)
+  string per Geometry object drawn from a 20-value enum
+  (0,1,2,3,0.0,0.1,...,3.3) -- one City Object can carry several Geometry
+  entries at different LoDs simultaneously. Per explicit user decision, this
+  is flattened to up to four separate optional GeoProperties per model --
+  geometryLoD0, geometryLoD1, geometryLoD2, geometryLoD3 -- one per major
+  LoD level (an LoD value's integer part before any decimal point), each
+  holding a standard dereferenced GeoJSON geometry (real coordinates, not
+  vertex indices) for whichever CityJSON Geometry entry at that level is
+  present. geometry `semantics` (surface-type tagging, e.g. RoofSurface vs
+  WallSurface), `material`, and `texture` sub-objects -- all rendering/
+  appearance metadata layered on top of the boundary geometry, not part of
+  the entity's own identity -- are NOT carried into the GeoProperty; only
+  the boundary coordinates are. This is a deliberate fidelity trade-off
+  (documented here, not silently dropped) in favor of standard NGSI-LD
+  GeoProperty usage; a consumer needing full appearance/semantics fidelity
+  should go to the source CityJSON file via a future `sourceFile`
+  Relationship, not this candidate's GeoProperties.
+
+  SOLID/MULTISOLID -> MULTIPOLYGON SIMPLIFICATION: GeoJSON has no native 3D
+  "Solid" geometry type. Solid/CompositeSolid/MultiSolid primitives are
+  flattened to a GeoJSON MultiPolygon of their constituent boundary
+  surfaces (the solid/void topology -- which surfaces close which volume --
+  is not preserved, only the surface set). MultiSurface/CompositeSurface
+  map directly to MultiPolygon (each surface's outer ring + any inner rings
+  as holes). MultiLineString and MultiPoint map to their GeoJSON namesakes
+  unchanged.
+
+  NO NATIVE RDF/JSON-LD CONTEXT IN THE SOURCE: unlike Gaia-X (an OWL
+  ontology with real w3id.org IRIs per class/property), CityJSON is a plain
+  JSON Schema with no published RDF vocabulary or JSON-LD context. This
+  candidate's context.jsonld files mint IRIs under the CityJSON schema's own
+  published $id namespace (https://www.cityjson.org/schemas/2.0.2/
+  cityobjects.schema.json#<Type> and #<property>) as a reasonable, stable,
+  attributable convention -- these are NOT IRIs CityJSON itself dereferences
+  or declares as RDF terms, which is a meaningful difference from the
+  Gaia-X candidate's context.jsonld and worth flagging before promotion.
+
+  STRUCTURAL FIELDS PRESERVED VERBATIM FROM THE SCHEMA: `parents` and
+  `children` (IDs of other CityObjects in the same dataset -- modeled as
+  NGSI-LD Relationships, arrays of URI) are required on whichever specific
+  subtypes the schema itself marks required (e.g. `parents` required on
+  BuildingPart, BuildingInstallation, ... but not on top-level Building
+  itself; `children` required on CityObjectGroup). `address` (an array of
+  objects each carrying a `location` MultiPoint, per the schema) appears
+  only on Building, BuildingUnit, Bridge, and BridgePart, matching the
+  source schema exactly. `children_roles` appears only on CityObjectGroup.
+  `geographicalExtent` (a required-shape 6-number bounding box when
+  present) is common to every type via the schema's shared
+  `_AbstractCityObject` base and is optional on all of them, matching the
+  source (never listed in any subtype's own `required` array).
+
+  DUPLICATION RISK, NOT CHECKED IN DETAIL: Smart Data Models already
+  publishes building-related vocabularies (e.g. dataModel.Building /
+  S4BLDG-derived models referenced from other FIWARE work) that may overlap
+  conceptually with Building/BuildingPart/BuildingUnit here. Should be
+  checked before promoting this candidate out of Candidates/.
