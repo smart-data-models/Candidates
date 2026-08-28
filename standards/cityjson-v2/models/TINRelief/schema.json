@@ -37,9 +37,9 @@
       "type": "string",
       "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
     },
-    "attributes": {
+    "genericAttributes": {
       "type": "object",
-      "description": "Property. Open attribute bag (StructuredValue), per the source schema (`\"attributes\": {\"type\": \"object\"}` on every City Object type -- CityJSON does not declare a fixed attribute list per type). Populated here with commonly-used, convention-based attribute names for illustration; not schema-enforced by the source."
+      "description": "Property. Open StructuredValue for additional name/value attributes beyond the typed properties above, per CityGML 3.0's own formal generic-attribute extension mechanism (generics.xsd: CodeAttribute, StringAttribute, DoubleAttribute, IntAttribute, DateAttribute, UriAttribute, MeasureAttribute, GenericAttributeSet). Not schema-validated by this candidate; use the typed properties above where one exists."
     },
     "geographicalExtent": {
       "type": "array",
@@ -48,7 +48,7 @@
       },
       "minItems": 6,
       "maxItems": 6,
-      "description": "Property. Bounding box of the City Object as [minx, miny, minz, maxx, maxy, maxz], per the source schema's shared _AbstractCityObject.geographicalExtent."
+      "description": "Property. Bounding box of the City Object as [minx, miny, minz, maxx, maxy, maxz], per the source CityJSON schema's shared _AbstractCityObject.geographicalExtent."
     },
     "parents": {
       "type": "array",
@@ -56,7 +56,7 @@
         "type": "string",
         "format": "uri"
       },
-      "description": "Relationship. IDs of the parent City Object(s) in the same dataset, per the source schema's shared _AbstractCityObject.parents."
+      "description": "Relationship. IDs of the parent City Object(s) in the same dataset, per the source CityJSON schema's shared _AbstractCityObject.parents."
     },
     "children": {
       "type": "array",
@@ -64,7 +64,7 @@
         "type": "string",
         "format": "uri"
       },
-      "description": "Relationship. IDs of the child City Object(s) in the same dataset, per the source schema's shared _AbstractCityObject.children."
+      "description": "Relationship. IDs of the child City Object(s) in the same dataset, per the source CityJSON schema's shared _AbstractCityObject.children."
     },
     "geometryLoD0": {
       "type": "object",

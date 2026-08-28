@@ -4,7 +4,7 @@
   "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/cityjson-v2/models/Waterway/schema.json",
   "modelTags": "CityJSON,Transportation",
   "title": "Smart Data Models - CityJSON v2.0 - Waterway",
-  "description": "https://www.cityjson.org/schemas/2.0.2/cityobjects.schema.json#Waterway. A waterway used for transportation (navigable water route). Part of the Transportation family of City Objects (subclass of the schema's shared _AbstractTransportationComplex).",
+  "description": "https://www.cityjson.org/schemas/2.0.2/cityobjects.schema.json#Waterway. A waterway used for transportation (navigable water route). Part of the Transportation family of City Objects (subclass of the schema's shared _AbstractTransportationComplex). Typed attributes cross-referenced from the CityGML 3.0 Transportation module (schemas.opengis.net/citygml/), the data model CityJSON's own attributes are informally derived from.",
   "type": "object",
   "properties": {
     "id": {
@@ -37,9 +37,36 @@
       "type": "string",
       "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
     },
-    "attributes": {
+    "trafficDirection": {
+      "type": "string",
+      "enum": [
+        "forwards",
+        "backwards",
+        "both"
+      ],
+      "description": "Property. Indicates the direction of traffic flow relative to the corresponding linear geometry representation."
+    },
+    "class": {
+      "type": "string",
+      "description": "Property. Indicates the specific type of the Waterway. Coded value, typically drawn from an OGC CityGML code list (not resolved to a closed enum in this pass)."
+    },
+    "function": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. Specifies the intended purposes of the Waterway. Coded value, typically drawn from an OGC CityGML code list (not resolved to a closed enum in this pass)."
+    },
+    "usage": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. Specifies the actual uses of the Waterway. Coded value, typically drawn from an OGC CityGML code list (not resolved to a closed enum in this pass)."
+    },
+    "genericAttributes": {
       "type": "object",
-      "description": "Property. Open attribute bag (StructuredValue), per the source schema (`\"attributes\": {\"type\": \"object\"}` on every City Object type -- CityJSON does not declare a fixed attribute list per type). Populated here with commonly-used, convention-based attribute names for illustration; not schema-enforced by the source."
+      "description": "Property. Open StructuredValue for additional name/value attributes beyond the typed properties above, per CityGML 3.0's own formal generic-attribute extension mechanism (generics.xsd: CodeAttribute, StringAttribute, DoubleAttribute, IntAttribute, DateAttribute, UriAttribute, MeasureAttribute, GenericAttributeSet). Not schema-validated by this candidate; use the typed properties above where one exists."
     },
     "geographicalExtent": {
       "type": "array",
@@ -48,7 +75,7 @@
       },
       "minItems": 6,
       "maxItems": 6,
-      "description": "Property. Bounding box of the City Object as [minx, miny, minz, maxx, maxy, maxz], per the source schema's shared _AbstractCityObject.geographicalExtent."
+      "description": "Property. Bounding box of the City Object as [minx, miny, minz, maxx, maxy, maxz], per the source CityJSON schema's shared _AbstractCityObject.geographicalExtent."
     },
     "parents": {
       "type": "array",
@@ -56,7 +83,7 @@
         "type": "string",
         "format": "uri"
       },
-      "description": "Relationship. IDs of the parent City Object(s) in the same dataset, per the source schema's shared _AbstractCityObject.parents."
+      "description": "Relationship. IDs of the parent City Object(s) in the same dataset, per the source CityJSON schema's shared _AbstractCityObject.parents."
     },
     "children": {
       "type": "array",
@@ -64,7 +91,7 @@
         "type": "string",
         "format": "uri"
       },
-      "description": "Relationship. IDs of the child City Object(s) in the same dataset, per the source schema's shared _AbstractCityObject.children."
+      "description": "Relationship. IDs of the child City Object(s) in the same dataset, per the source CityJSON schema's shared _AbstractCityObject.children."
     },
     "geometryLoD0": {
       "type": "object",
