@@ -1,0 +1,1856 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/untp-v0.8.0/models/Product/schema.json",
+  "modelTags": "UNTP,DigitalProductPassport,Product",
+  "title": "Smart Data Models - UNTP - Product",
+  "description": "https://test.uncefact.org/vocabulary/Product . The ProductInformation class encapsulates detailed information regarding a specific product, including its identification details, manufacturer, and other pertinent details. Published standalone in the UNTP specification (artefacts/schema/v0.8.0/dpp/Product.json) independent of any specific credential wrapper; also used as the credentialSubject of a DigitalProductPassport (see the DigitalProductPassport model's `product` Relationship).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "example": "did:web:manufacturer.com:product:123456789",
+      "type": "string",
+      "format": "uri",
+      "description": "Globally unique identifier of this product. Typically represented as a URI identifierScheme/Identifier URI or, if self-issued, as a did."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Product"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Product'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "name": {
+      "example": "600 Ah Lithium Battery",
+      "type": "string",
+      "description": "Property. The product name as known to the market."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Description of the product."
+    },
+    "idScheme": {
+      "type": "object",
+      "required": [
+        "id",
+        "name"
+      ],
+      "description": "Property. The identifier scheme for this product.  Eg a GS1 GTIN or an AU Livestock NLIS, or similar. If self issued then use the party ID of the issuer.  ",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uri",
+          "description": "The URI of this identifier scheme"
+        },
+        "name": {
+          "example": "Global Identifier Scheme Name",
+          "type": "string",
+          "description": "The name of the identifier scheme. "
+        }
+      }
+    },
+    "modelNumber": {
+      "type": "string",
+      "description": "Property. Where available, the model number (for manufactured products) or material identification (for bulk materials)"
+    },
+    "batchNumber": {
+      "example": 6789,
+      "type": "string",
+      "description": "Property. Identifier of the specific production batch of the product.  Unique within the product class."
+    },
+    "itemNumber": {
+      "example": 12345678,
+      "type": "string",
+      "description": "Property. A number or code representing a specific serialised item of the product. Unique within product class."
+    },
+    "idGranularity": {
+      "type": "string",
+      "enum": [
+        "model",
+        "batch",
+        "item"
+      ],
+      "example": "model",
+      "description": "Property. The identification granularity for this product (item, batch, model)"
+    },
+    "productImage": {
+      "type": "object",
+      "description": "Property. Reference information (location, type, name) of an image of the product.",
+      "required": [
+        "linkURL",
+        "linkName"
+      ],
+      "properties": {
+        "linkURL": {
+          "example": "https://files.example-certifier.com/1234567.json",
+          "type": "string",
+          "format": "uri",
+          "description": "The URL of the target resource.  "
+        },
+        "linkName": {
+          "type": "string",
+          "description": "Display name for this link."
+        },
+        "digestMultibase": {
+          "example": "abc123-example-digest-invalid",
+          "type": "string",
+          "description": "An optional multi-base encoded digest to ensure the content of the link has not changed. See https://www.w3.org/TR/vc-data-integrity/#resource-integrity for more information."
+        },
+        "mediaType": {
+          "example": "application/ld+json",
+          "type": "string",
+          "description": "The media type of the target resource."
+        },
+        "linkType": {
+          "example": "https://test.uncefact.org/vocabulary/linkTypes/dcc",
+          "type": "string",
+          "description": "The type of the target resource - drawn from a controlled vocabulary "
+        }
+      }
+    },
+    "characteristics": {
+      "type": "object",
+      "description": "Property. A set of industry specific product information. ",
+      "properties": {
+        "@context": {
+          "description": "Optional JSON-LD scoped context used to declare vocabulary prefixes for extension properties. Most commonly a single-entry object that binds a prefix to an industry or vendor namespace (for example { \"battery\": \"https://example-industry.org/battery/v1/\" }), allowing extension keys in this characteristics object to be written as \"battery:batteryChemistry\" and expanded to IRIs in that namespace. When omitted, extension keys default to the UNTP characteristics namespace defined in the UNTP JSON-LD context.",
+          "oneOf": [
+            {
+              "type": "object"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": [
+                  "string",
+                  "object"
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "productCategory": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "A classification scheme and code / name representing a category value for a product, entity, or facility.",
+        "required": [
+          "code",
+          "name",
+          "schemeId",
+          "schemeName"
+        ],
+        "properties": {
+          "code": {
+            "example": 46410,
+            "type": "string",
+            "description": "classification code within the scheme"
+          },
+          "name": {
+            "example": "Primary cells and primary batteries",
+            "type": "string",
+            "description": "Name of the classification represented by the code"
+          },
+          "definition": {
+            "type": "string",
+            "description": "A rich definition of this classification code."
+          },
+          "schemeId": {
+            "example": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+            "type": "string",
+            "format": "uri",
+            "description": "Classification scheme ID"
+          },
+          "schemeName": {
+            "example": "UN Central Product Classification (CPC)",
+            "type": "string",
+            "description": "The name of the classification scheme"
+          }
+        }
+      },
+      "description": "Property. A code representing the product's class, typically using the UN CPC (United Nations Central Product Classification) https://unstats.un.org/unsd/classifications/Econ/cpc"
+    },
+    "relatedDocument": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "A structure to provide a URL link plus metadata associated with the link.",
+        "required": [
+          "linkURL",
+          "linkName"
+        ],
+        "properties": {
+          "linkURL": {
+            "example": "https://files.example-certifier.com/1234567.json",
+            "type": "string",
+            "format": "uri",
+            "description": "The URL of the target resource.  "
+          },
+          "linkName": {
+            "type": "string",
+            "description": "Display name for this link."
+          },
+          "digestMultibase": {
+            "example": "abc123-example-digest-invalid",
+            "type": "string",
+            "description": "An optional multi-base encoded digest to ensure the content of the link has not changed. See https://www.w3.org/TR/vc-data-integrity/#resource-integrity for more information."
+          },
+          "mediaType": {
+            "example": "application/ld+json",
+            "type": "string",
+            "description": "The media type of the target resource."
+          },
+          "linkType": {
+            "example": "https://test.uncefact.org/vocabulary/linkTypes/dcc",
+            "type": "string",
+            "description": "The type of the target resource - drawn from a controlled vocabulary "
+          }
+        }
+      },
+      "description": "Property. A list of links to documents providing additional product information. Documents that support a conformity claim (e.g. permits or certificates) SHOULD be referenced as claim evidence rather than here."
+    },
+    "relatedParty": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "A party with a defined relationship to the referencing entity",
+        "required": [
+          "role",
+          "party"
+        ],
+        "properties": {
+          "role": {
+            "type": "string",
+            "enum": [
+              "owner",
+              "producer",
+              "manufacturer",
+              "processor",
+              "remanufacturer",
+              "recycler",
+              "operator",
+              "serviceProvider",
+              "inspector",
+              "certifier",
+              "logisticsProvider",
+              "carrier",
+              "consignor",
+              "consignee",
+              "importer",
+              "exporter",
+              "distributor",
+              "retailer",
+              "brandOwner",
+              "regulator"
+            ],
+            "example": "owner",
+            "description": "The role played by the party in this relationship"
+          },
+          "party": {
+            "type": "object",
+            "description": "The party that has the specified role.",
+            "required": [
+              "id",
+              "name"
+            ],
+            "properties": {
+              "id": {
+                "example": "https://sample-business-register.gov/123456789",
+                "type": "string",
+                "format": "uri",
+                "description": "Globally unique identifier of this party. Typically represented as a URI identifierScheme/Identifier URI"
+              },
+              "name": {
+                "example": "Sample Company Ltd",
+                "type": "string",
+                "description": "Legal registered name of this party."
+              },
+              "description": {
+                "type": "string",
+                "description": "Description of the party including function and other names."
+              },
+              "registeredId": {
+                "example": 90664869327,
+                "type": "string",
+                "description": "The registration number (alphanumeric) of the Party within the register. Unique within the register."
+              },
+              "idScheme": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "name"
+                ],
+                "description": "The identifier scheme of the party.  Typically a national business register or a global scheme such as GLEIF. ",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "The URI of this identifier scheme"
+                  },
+                  "name": {
+                    "example": "Global Identifier Scheme Name",
+                    "type": "string",
+                    "description": "The name of the identifier scheme. "
+                  }
+                }
+              },
+              "registrationCountry": {
+                "type": "object",
+                "description": "the country in which this organisation is registered - using ISO-3166 code and name.",
+                "required": [
+                  "countryCode"
+                ],
+                "properties": {
+                  "countryCode": {
+                    "type": "string",
+                    "x-external-enumeration": "https://vocabulary.uncefact.org/CountryId#",
+                    "description": "ISO 3166 country code\n\n    This is an enumerated value, but the list of valid values are too big, or change too often to include here. You can access the list of allowable values at this URL:  https://vocabulary.uncefact.org/CountryId#\n    "
+                  },
+                  "countryName": {
+                    "type": "string",
+                    "description": "Country Name as defined in ISO 3166"
+                  }
+                }
+              },
+              "partyAddress": {
+                "type": "object",
+                "description": "The address of the party",
+                "required": [
+                  "streetAddress",
+                  "postalCode",
+                  "addressLocality",
+                  "addressRegion",
+                  "addressCountry"
+                ],
+                "properties": {
+                  "streetAddress": {
+                    "example": "level 11, 15 London Circuit",
+                    "type": "string",
+                    "description": "the street address as an unstructured string."
+                  },
+                  "postalCode": {
+                    "example": 2601,
+                    "type": "string",
+                    "description": "The postal code or zip code for this address."
+                  },
+                  "addressLocality": {
+                    "example": "Acton",
+                    "type": "string",
+                    "description": "The city, suburb or township name."
+                  },
+                  "addressRegion": {
+                    "example": "ACT",
+                    "type": "string",
+                    "description": "The state or territory or province"
+                  },
+                  "addressCountry": {
+                    "type": "object",
+                    "description": "The address country as an ISO-3166 two letter country code and name.",
+                    "required": [
+                      "countryCode"
+                    ],
+                    "properties": {
+                      "countryCode": {
+                        "type": "string",
+                        "x-external-enumeration": "https://vocabulary.uncefact.org/CountryId#",
+                        "description": "ISO 3166 country code\n\n    This is an enumerated value, but the list of valid values are too big, or change too often to include here. You can access the list of allowable values at this URL:  https://vocabulary.uncefact.org/CountryId#\n    "
+                      },
+                      "countryName": {
+                        "type": "string",
+                        "description": "Country Name as defined in ISO 3166"
+                      }
+                    }
+                  }
+                }
+              },
+              "organisationWebsite": {
+                "example": "https://example-company.com",
+                "type": "string",
+                "format": "uri",
+                "description": "Website for this organisation"
+              },
+              "industryCategory": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "description": "A classification scheme and code / name representing a category value for a product, entity, or facility.",
+                  "required": [
+                    "code",
+                    "name",
+                    "schemeId",
+                    "schemeName"
+                  ],
+                  "properties": {
+                    "code": {
+                      "example": 46410,
+                      "type": "string",
+                      "description": "classification code within the scheme"
+                    },
+                    "name": {
+                      "example": "Primary cells and primary batteries",
+                      "type": "string",
+                      "description": "Name of the classification represented by the code"
+                    },
+                    "definition": {
+                      "type": "string",
+                      "description": "A rich definition of this classification code."
+                    },
+                    "schemeId": {
+                      "example": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+                      "type": "string",
+                      "format": "uri",
+                      "description": "Classification scheme ID"
+                    },
+                    "schemeName": {
+                      "example": "UN Central Product Classification (CPC)",
+                      "type": "string",
+                      "description": "The name of the classification scheme"
+                    }
+                  }
+                },
+                "description": "The industry categories for this organisation.  Recommend use of UNCPC as the category scheme. for example - unstats.un.org/isic/1030"
+              },
+              "partyAlsoKnownAs": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "name"
+                  ],
+                  "properties": {
+                    "id": {
+                      "example": "https://sample-business-register.gov/123456789",
+                      "type": "string",
+                      "format": "uri",
+                      "description": "Globally unique identifier of this party. Typically represented as a URI identifierScheme/Identifier URI"
+                    },
+                    "name": {
+                      "example": "Sample Company Ltd",
+                      "type": "string",
+                      "description": "Legal registered name of this party."
+                    },
+                    "registeredId": {
+                      "example": 90664869327,
+                      "type": "string",
+                      "description": "The registration number (alphanumeric) of the Party within the register. Unique within the register."
+                    }
+                  }
+                },
+                "description": "An optional list of other registered identifiers for this organisation. For example DUNS, GLN, LEI, etc"
+              }
+            }
+          }
+        }
+      },
+      "description": "Property. A list of parties with a defined relationship to this product"
+    },
+    "producedAtFacility": {
+      "type": "object",
+      "required": [
+        "id",
+        "name"
+      ],
+      "description": "Property. The Facility where the product batch was produced / manufactured.",
+      "properties": {
+        "id": {
+          "example": "https://sample-location-register.com/987654321",
+          "type": "string",
+          "format": "uri",
+          "description": "Globally unique identifier of this facility. Typically represented as a URI identifierScheme/Identifier URI"
+        },
+        "name": {
+          "example": "Sample Factory A",
+          "type": "string",
+          "description": "Name of this facility as defined the location register."
+        },
+        "registeredId": {
+          "example": 1234567,
+          "type": "string",
+          "description": "The registration number (alphanumeric) of the facility within the identifier scheme. Unique within the register."
+        }
+      }
+    },
+    "productionDate": {
+      "example": "2024-04-25",
+      "type": "string",
+      "format": "date",
+      "description": "Property. The ISO 8601 date on which the product batch or individual serialised item was manufactured."
+    },
+    "expiryDate": {
+      "example": "2027-04-25",
+      "type": "string",
+      "format": "date",
+      "description": "Property. The date at which this product is no longer fit for use. Typically used for a food product use-by date but may also represent the usable life of any product."
+    },
+    "countryOfProduction": {
+      "type": "object",
+      "description": "Property. The country in which this item was produced / manufactured.using ISO-3166 code and name.",
+      "required": [
+        "countryCode"
+      ],
+      "properties": {
+        "countryCode": {
+          "type": "string",
+          "x-external-enumeration": "https://vocabulary.uncefact.org/CountryId#",
+          "description": "ISO 3166 country code\n\n    This is an enumerated value, but the list of valid values are too big, or change too often to include here. You can access the list of allowable values at this URL:  https://vocabulary.uncefact.org/CountryId#\n    "
+        },
+        "countryName": {
+          "type": "string",
+          "description": "Country Name as defined in ISO 3166"
+        }
+      }
+    },
+    "dimensions": {
+      "type": "object",
+      "description": "Property. The physical dimensions of the product. Not every dimension is relevant to every products.  For example bulk materials may have weight and volume but not length, width, or height.\"weight\":{\"value\":10, \"unit\":\"KGM\"}",
+      "properties": {
+        "weight": {
+          "type": "object",
+          "description": "the weight of the product. EG {\"value\":10, \"unit\":\"KGM\"}",
+          "required": [
+            "value",
+            "unit"
+          ],
+          "properties": {
+            "value": {
+              "example": 10,
+              "type": "number",
+              "description": "The numeric value of the measure"
+            },
+            "upperTolerance": {
+              "type": "number",
+              "description": "The upper tolerance associated with this measure expressed in the same units as the measure.  For example value=10, upperTolerance=0.1, unit=KGM would mean that this measure is 10kg + 0.1kg"
+            },
+            "lowerTolerance": {
+              "type": "number",
+              "description": "The lower tolerance associated with this measure expressed in the same units as the measure.  For example value=10, lowerTolerance=0.1, unit=KGM would mean that this measure is 10kg - 0.1kg"
+            },
+            "unit": {
+              "type": "string",
+              "x-external-enumeration": "https://vocabulary.uncefact.org/UnitMeasureCode#",
+              "description": "Unit of measure drawn from the UNECE Rec20 measure code list.\n\n    This is an enumerated value, but the list of valid values are too big, or change too often to include here. You can access the list of allowable values at this URL:  https://vocabulary.uncefact.org/UnitMeasureCode#\n    "
+            }
+          }
+        },
+        "length": {
+          "type": "object",
+          "description": "The length of the product or packaging eg {\"value\":840, \"unit\":\"MMT\"}",
+          "required": [
+            "value",
+            "unit"
+          ],
+          "properties": {
+            "value": {
+              "example": 10,
+              "type": "number",
+              "description": "The numeric value of the measure"
+            },
+            "upperTolerance": {
+              "type": "number",
+              "description": "The upper tolerance associated with this measure expressed in the same units as the measure.  For example value=10, upperTolerance=0.1, unit=KGM would mean that this measure is 10kg + 0.1kg"
+            },
+            "lowerTolerance": {
+              "type": "number",
+              "description": "The lower tolerance associated with this measure expressed in the same units as the measure.  For example value=10, lowerTolerance=0.1, unit=KGM would mean that this measure is 10kg - 0.1kg"
+            },
+            "unit": {
+              "type": "string",
+              "x-external-enumeration": "https://vocabulary.uncefact.org/UnitMeasureCode#",
+              "description": "Unit of measure drawn from the UNECE Rec20 measure code list.\n\n    This is an enumerated value, but the list of valid values are too big, or change too often to include here. You can access the list of allowable values at this URL:  https://vocabulary.uncefact.org/UnitMeasureCode#\n    "
+            }
+          }
+        },
+        "width": {
+          "type": "object",
+          "description": "The width of the product or packaging. eg {\"value\":150, \"unit\":\"MMT\"}",
+          "required": [
+            "value",
+            "unit"
+          ],
+          "properties": {
+            "value": {
+              "example": 10,
+              "type": "number",
+              "description": "The numeric value of the measure"
+            },
+            "upperTolerance": {
+              "type": "number",
+              "description": "The upper tolerance associated with this measure expressed in the same units as the measure.  For example value=10, upperTolerance=0.1, unit=KGM would mean that this measure is 10kg + 0.1kg"
+            },
+            "lowerTolerance": {
+              "type": "number",
+              "description": "The lower tolerance associated with this measure expressed in the same units as the measure.  For example value=10, lowerTolerance=0.1, unit=KGM would mean that this measure is 10kg - 0.1kg"
+            },
+            "unit": {
+              "type": "string",
+              "x-external-enumeration": "https://vocabulary.uncefact.org/UnitMeasureCode#",
+              "description": "Unit of measure drawn from the UNECE Rec20 measure code list.\n\n    This is an enumerated value, but the list of valid values are too big, or change too often to include here. You can access the list of allowable values at this URL:  https://vocabulary.uncefact.org/UnitMeasureCode#\n    "
+            }
+          }
+        },
+        "height": {
+          "type": "object",
+          "description": "The height of the product or packaging. eg {\"value\":220, \"unit\":\"MMT\"}",
+          "required": [
+            "value",
+            "unit"
+          ],
+          "properties": {
+            "value": {
+              "example": 10,
+              "type": "number",
+              "description": "The numeric value of the measure"
+            },
+            "upperTolerance": {
+              "type": "number",
+              "description": "The upper tolerance associated with this measure expressed in the same units as the measure.  For example value=10, upperTolerance=0.1, unit=KGM would mean that this measure is 10kg + 0.1kg"
+            },
+            "lowerTolerance": {
+              "type": "number",
+              "description": "The lower tolerance associated with this measure expressed in the same units as the measure.  For example value=10, lowerTolerance=0.1, unit=KGM would mean that this measure is 10kg - 0.1kg"
+            },
+            "unit": {
+              "type": "string",
+              "x-external-enumeration": "https://vocabulary.uncefact.org/UnitMeasureCode#",
+              "description": "Unit of measure drawn from the UNECE Rec20 measure code list.\n\n    This is an enumerated value, but the list of valid values are too big, or change too often to include here. You can access the list of allowable values at this URL:  https://vocabulary.uncefact.org/UnitMeasureCode#\n    "
+            }
+          }
+        },
+        "volume": {
+          "type": "object",
+          "description": "The displacement volume of the product. eg {\"value\":7.5, \"unit\":\"LTR\"}",
+          "required": [
+            "value",
+            "unit"
+          ],
+          "properties": {
+            "value": {
+              "example": 10,
+              "type": "number",
+              "description": "The numeric value of the measure"
+            },
+            "upperTolerance": {
+              "type": "number",
+              "description": "The upper tolerance associated with this measure expressed in the same units as the measure.  For example value=10, upperTolerance=0.1, unit=KGM would mean that this measure is 10kg + 0.1kg"
+            },
+            "lowerTolerance": {
+              "type": "number",
+              "description": "The lower tolerance associated with this measure expressed in the same units as the measure.  For example value=10, lowerTolerance=0.1, unit=KGM would mean that this measure is 10kg - 0.1kg"
+            },
+            "unit": {
+              "type": "string",
+              "x-external-enumeration": "https://vocabulary.uncefact.org/UnitMeasureCode#",
+              "description": "Unit of measure drawn from the UNECE Rec20 measure code list.\n\n    This is an enumerated value, but the list of valid values are too big, or change too often to include here. You can access the list of allowable values at this URL:  https://vocabulary.uncefact.org/UnitMeasureCode#\n    "
+            }
+          }
+        }
+      }
+    },
+    "materialProvenance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "The material class encapsulates details about the origin or source of raw materials in a product, including the country of origin and the mass fraction.",
+        "required": [
+          "name",
+          "originCountry",
+          "materialType",
+          "massFraction"
+        ],
+        "properties": {
+          "name": {
+            "example": "Lithium Spodumene",
+            "type": "string",
+            "description": "Name of this material (eg \"Egyptian Cotton\")"
+          },
+          "originCountry": {
+            "type": "object",
+            "description": "A ISO 3166-1 code representing the country of origin of the component or ingredient.",
+            "required": [
+              "countryCode"
+            ],
+            "properties": {
+              "countryCode": {
+                "type": "string",
+                "x-external-enumeration": "https://vocabulary.uncefact.org/CountryId#",
+                "description": "ISO 3166 country code\n\n    This is an enumerated value, but the list of valid values are too big, or change too often to include here. You can access the list of allowable values at this URL:  https://vocabulary.uncefact.org/CountryId#\n    "
+              },
+              "countryName": {
+                "type": "string",
+                "description": "Country Name as defined in ISO 3166"
+              }
+            }
+          },
+          "materialType": {
+            "type": "object",
+            "description": "The type of this material - as a value drawn from a controlled vocabulary eg from UN Framework Classification for Resources (UNFC).",
+            "required": [
+              "code",
+              "name",
+              "schemeId",
+              "schemeName"
+            ],
+            "properties": {
+              "code": {
+                "example": 46410,
+                "type": "string",
+                "description": "classification code within the scheme"
+              },
+              "name": {
+                "example": "Primary cells and primary batteries",
+                "type": "string",
+                "description": "Name of the classification represented by the code"
+              },
+              "definition": {
+                "type": "string",
+                "description": "A rich definition of this classification code."
+              },
+              "schemeId": {
+                "example": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+                "type": "string",
+                "format": "uri",
+                "description": "Classification scheme ID"
+              },
+              "schemeName": {
+                "example": "UN Central Product Classification (CPC)",
+                "type": "string",
+                "description": "The name of the classification scheme"
+              }
+            }
+          },
+          "massFraction": {
+            "maximum": 1,
+            "minimum": 0,
+            "example": 0.2,
+            "type": "number",
+            "description": "The mass fraction as a decimal of the product (or facility reporting period)  represented by this material. "
+          },
+          "mass": {
+            "type": "object",
+            "description": "The mass of the material component.",
+            "required": [
+              "value",
+              "unit"
+            ],
+            "properties": {
+              "value": {
+                "example": 10,
+                "type": "number",
+                "description": "The numeric value of the measure"
+              },
+              "upperTolerance": {
+                "type": "number",
+                "description": "The upper tolerance associated with this measure expressed in the same units as the measure.  For example value=10, upperTolerance=0.1, unit=KGM would mean that this measure is 10kg + 0.1kg"
+              },
+              "lowerTolerance": {
+                "type": "number",
+                "description": "The lower tolerance associated with this measure expressed in the same units as the measure.  For example value=10, lowerTolerance=0.1, unit=KGM would mean that this measure is 10kg - 0.1kg"
+              },
+              "unit": {
+                "type": "string",
+                "x-external-enumeration": "https://vocabulary.uncefact.org/UnitMeasureCode#",
+                "description": "Unit of measure drawn from the UNECE Rec20 measure code list.\n\n    This is an enumerated value, but the list of valid values are too big, or change too often to include here. You can access the list of allowable values at this URL:  https://vocabulary.uncefact.org/UnitMeasureCode#\n    "
+              }
+            }
+          },
+          "recycledMassFraction": {
+            "maximum": 1,
+            "minimum": 0,
+            "example": 0.5,
+            "type": "number",
+            "description": "Mass fraction of this material that is recycled (eg 50% recycled Lithium)"
+          },
+          "hazardous": {
+            "type": "boolean",
+            "description": "Indicates whether this material is hazardous. If true then the materialSafetyInformation property must be present"
+          },
+          "symbol": {
+            "type": "object",
+            "description": "Based 64 encoded binary used to represent a visual symbol for a given material. ",
+            "required": [
+              "name",
+              "imageData",
+              "mediaType"
+            ],
+            "properties": {
+              "name": {
+                "example": "certification trust mark",
+                "type": "string",
+                "description": "the display name for this image"
+              },
+              "description": {
+                "type": "string",
+                "description": "The detailed description / supporting information for this image."
+              },
+              "imageData": {
+                "type": "string",
+                "format": "byte",
+                "description": "The image data encoded as a base64 string."
+              },
+              "mediaType": {
+                "type": "string",
+                "x-external-enumeration": "https://mimetype.io/",
+                "description": "The media type of this image (eg image/png)\n\n    This is an enumerated value, but the list of valid values are too big, or change too often to include here. You can access the list of allowable values at this URL:  https://mimetype.io/\n    "
+              }
+            }
+          },
+          "materialSafetyInformation": {
+            "type": "object",
+            "description": "Reference to further information about safe handling of this hazardous material (for example a link to a material safety data sheet)",
+            "required": [
+              "linkURL",
+              "linkName"
+            ],
+            "properties": {
+              "linkURL": {
+                "example": "https://files.example-certifier.com/1234567.json",
+                "type": "string",
+                "format": "uri",
+                "description": "The URL of the target resource.  "
+              },
+              "linkName": {
+                "type": "string",
+                "description": "Display name for this link."
+              },
+              "digestMultibase": {
+                "example": "abc123-example-digest-invalid",
+                "type": "string",
+                "description": "An optional multi-base encoded digest to ensure the content of the link has not changed. See https://www.w3.org/TR/vc-data-integrity/#resource-integrity for more information."
+              },
+              "mediaType": {
+                "example": "application/ld+json",
+                "type": "string",
+                "description": "The media type of the target resource."
+              },
+              "linkType": {
+                "example": "https://test.uncefact.org/vocabulary/linkTypes/dcc",
+                "type": "string",
+                "description": "The type of the target resource - drawn from a controlled vocabulary "
+              }
+            }
+          }
+        }
+      },
+      "description": "Property. A list of materials provenance objects providing details on the origin and mass fraction of materials of the product or batch."
+    },
+    "packaging": {
+      "type": "object",
+      "description": "Property. The packaging for this product.",
+      "required": [
+        "description",
+        "dimensions",
+        "materialUsed"
+      ],
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "Description of the packaging."
+        },
+        "dimensions": {
+          "type": "object",
+          "description": "dimensions of the packaging",
+          "properties": {
+            "weight": {
+              "type": "object",
+              "description": "the weight of the product. EG {\"value\":10, \"unit\":\"KGM\"}",
+              "required": [
+                "value",
+                "unit"
+              ],
+              "properties": {
+                "value": {
+                  "example": 10,
+                  "type": "number",
+                  "description": "The numeric value of the measure"
+                },
+                "upperTolerance": {
+                  "type": "number",
+                  "description": "The upper tolerance associated with this measure expressed in the same units as the measure.  For example value=10, upperTolerance=0.1, unit=KGM would mean that this measure is 10kg + 0.1kg"
+                },
+                "lowerTolerance": {
+                  "type": "number",
+                  "description": "The lower tolerance associated with this measure expressed in the same units as the measure.  For example value=10, lowerTolerance=0.1, unit=KGM would mean that this measure is 10kg - 0.1kg"
+                },
+                "unit": {
+                  "type": "string",
+                  "x-external-enumeration": "https://vocabulary.uncefact.org/UnitMeasureCode#",
+                  "description": "Unit of measure drawn from the UNECE Rec20 measure code list.\n\n    This is an enumerated value, but the list of valid values are too big, or change too often to include here. You can access the list of allowable values at this URL:  https://vocabulary.uncefact.org/UnitMeasureCode#\n    "
+                }
+              }
+            },
+            "length": {
+              "type": "object",
+              "description": "The length of the product or packaging eg {\"value\":840, \"unit\":\"MMT\"}",
+              "required": [
+                "value",
+                "unit"
+              ],
+              "properties": {
+                "value": {
+                  "example": 10,
+                  "type": "number",
+                  "description": "The numeric value of the measure"
+                },
+                "upperTolerance": {
+                  "type": "number",
+                  "description": "The upper tolerance associated with this measure expressed in the same units as the measure.  For example value=10, upperTolerance=0.1, unit=KGM would mean that this measure is 10kg + 0.1kg"
+                },
+                "lowerTolerance": {
+                  "type": "number",
+                  "description": "The lower tolerance associated with this measure expressed in the same units as the measure.  For example value=10, lowerTolerance=0.1, unit=KGM would mean that this measure is 10kg - 0.1kg"
+                },
+                "unit": {
+                  "type": "string",
+                  "x-external-enumeration": "https://vocabulary.uncefact.org/UnitMeasureCode#",
+                  "description": "Unit of measure drawn from the UNECE Rec20 measure code list.\n\n    This is an enumerated value, but the list of valid values are too big, or change too often to include here. You can access the list of allowable values at this URL:  https://vocabulary.uncefact.org/UnitMeasureCode#\n    "
+                }
+              }
+            },
+            "width": {
+              "type": "object",
+              "description": "The width of the product or packaging. eg {\"value\":150, \"unit\":\"MMT\"}",
+              "required": [
+                "value",
+                "unit"
+              ],
+              "properties": {
+                "value": {
+                  "example": 10,
+                  "type": "number",
+                  "description": "The numeric value of the measure"
+                },
+                "upperTolerance": {
+                  "type": "number",
+                  "description": "The upper tolerance associated with this measure expressed in the same units as the measure.  For example value=10, upperTolerance=0.1, unit=KGM would mean that this measure is 10kg + 0.1kg"
+                },
+                "lowerTolerance": {
+                  "type": "number",
+                  "description": "The lower tolerance associated with this measure expressed in the same units as the measure.  For example value=10, lowerTolerance=0.1, unit=KGM would mean that this measure is 10kg - 0.1kg"
+                },
+                "unit": {
+                  "type": "string",
+                  "x-external-enumeration": "https://vocabulary.uncefact.org/UnitMeasureCode#",
+                  "description": "Unit of measure drawn from the UNECE Rec20 measure code list.\n\n    This is an enumerated value, but the list of valid values are too big, or change too often to include here. You can access the list of allowable values at this URL:  https://vocabulary.uncefact.org/UnitMeasureCode#\n    "
+                }
+              }
+            },
+            "height": {
+              "type": "object",
+              "description": "The height of the product or packaging. eg {\"value\":220, \"unit\":\"MMT\"}",
+              "required": [
+                "value",
+                "unit"
+              ],
+              "properties": {
+                "value": {
+                  "example": 10,
+                  "type": "number",
+                  "description": "The numeric value of the measure"
+                },
+                "upperTolerance": {
+                  "type": "number",
+                  "description": "The upper tolerance associated with this measure expressed in the same units as the measure.  For example value=10, upperTolerance=0.1, unit=KGM would mean that this measure is 10kg + 0.1kg"
+                },
+                "lowerTolerance": {
+                  "type": "number",
+                  "description": "The lower tolerance associated with this measure expressed in the same units as the measure.  For example value=10, lowerTolerance=0.1, unit=KGM would mean that this measure is 10kg - 0.1kg"
+                },
+                "unit": {
+                  "type": "string",
+                  "x-external-enumeration": "https://vocabulary.uncefact.org/UnitMeasureCode#",
+                  "description": "Unit of measure drawn from the UNECE Rec20 measure code list.\n\n    This is an enumerated value, but the list of valid values are too big, or change too often to include here. You can access the list of allowable values at this URL:  https://vocabulary.uncefact.org/UnitMeasureCode#\n    "
+                }
+              }
+            },
+            "volume": {
+              "type": "object",
+              "description": "The displacement volume of the product. eg {\"value\":7.5, \"unit\":\"LTR\"}",
+              "required": [
+                "value",
+                "unit"
+              ],
+              "properties": {
+                "value": {
+                  "example": 10,
+                  "type": "number",
+                  "description": "The numeric value of the measure"
+                },
+                "upperTolerance": {
+                  "type": "number",
+                  "description": "The upper tolerance associated with this measure expressed in the same units as the measure.  For example value=10, upperTolerance=0.1, unit=KGM would mean that this measure is 10kg + 0.1kg"
+                },
+                "lowerTolerance": {
+                  "type": "number",
+                  "description": "The lower tolerance associated with this measure expressed in the same units as the measure.  For example value=10, lowerTolerance=0.1, unit=KGM would mean that this measure is 10kg - 0.1kg"
+                },
+                "unit": {
+                  "type": "string",
+                  "x-external-enumeration": "https://vocabulary.uncefact.org/UnitMeasureCode#",
+                  "description": "Unit of measure drawn from the UNECE Rec20 measure code list.\n\n    This is an enumerated value, but the list of valid values are too big, or change too often to include here. You can access the list of allowable values at this URL:  https://vocabulary.uncefact.org/UnitMeasureCode#\n    "
+                }
+              }
+            }
+          }
+        },
+        "materialUsed": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "description": "The material class encapsulates details about the origin or source of raw materials in a product, including the country of origin and the mass fraction.",
+            "required": [
+              "name",
+              "originCountry",
+              "materialType",
+              "massFraction"
+            ],
+            "properties": {
+              "name": {
+                "example": "Lithium Spodumene",
+                "type": "string",
+                "description": "Name of this material (eg \"Egyptian Cotton\")"
+              },
+              "originCountry": {
+                "type": "object",
+                "description": "A ISO 3166-1 code representing the country of origin of the component or ingredient.",
+                "required": [
+                  "countryCode"
+                ],
+                "properties": {
+                  "countryCode": {
+                    "type": "string",
+                    "x-external-enumeration": "https://vocabulary.uncefact.org/CountryId#",
+                    "description": "ISO 3166 country code\n\n    This is an enumerated value, but the list of valid values are too big, or change too often to include here. You can access the list of allowable values at this URL:  https://vocabulary.uncefact.org/CountryId#\n    "
+                  },
+                  "countryName": {
+                    "type": "string",
+                    "description": "Country Name as defined in ISO 3166"
+                  }
+                }
+              },
+              "materialType": {
+                "type": "object",
+                "description": "The type of this material - as a value drawn from a controlled vocabulary eg from UN Framework Classification for Resources (UNFC).",
+                "required": [
+                  "code",
+                  "name",
+                  "schemeId",
+                  "schemeName"
+                ],
+                "properties": {
+                  "code": {
+                    "example": 46410,
+                    "type": "string",
+                    "description": "classification code within the scheme"
+                  },
+                  "name": {
+                    "example": "Primary cells and primary batteries",
+                    "type": "string",
+                    "description": "Name of the classification represented by the code"
+                  },
+                  "definition": {
+                    "type": "string",
+                    "description": "A rich definition of this classification code."
+                  },
+                  "schemeId": {
+                    "example": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Classification scheme ID"
+                  },
+                  "schemeName": {
+                    "example": "UN Central Product Classification (CPC)",
+                    "type": "string",
+                    "description": "The name of the classification scheme"
+                  }
+                }
+              },
+              "massFraction": {
+                "maximum": 1,
+                "minimum": 0,
+                "example": 0.2,
+                "type": "number",
+                "description": "The mass fraction as a decimal of the product (or facility reporting period)  represented by this material. "
+              },
+              "mass": {
+                "type": "object",
+                "description": "The mass of the material component.",
+                "required": [
+                  "value",
+                  "unit"
+                ],
+                "properties": {
+                  "value": {
+                    "example": 10,
+                    "type": "number",
+                    "description": "The numeric value of the measure"
+                  },
+                  "upperTolerance": {
+                    "type": "number",
+                    "description": "The upper tolerance associated with this measure expressed in the same units as the measure.  For example value=10, upperTolerance=0.1, unit=KGM would mean that this measure is 10kg + 0.1kg"
+                  },
+                  "lowerTolerance": {
+                    "type": "number",
+                    "description": "The lower tolerance associated with this measure expressed in the same units as the measure.  For example value=10, lowerTolerance=0.1, unit=KGM would mean that this measure is 10kg - 0.1kg"
+                  },
+                  "unit": {
+                    "type": "string",
+                    "x-external-enumeration": "https://vocabulary.uncefact.org/UnitMeasureCode#",
+                    "description": "Unit of measure drawn from the UNECE Rec20 measure code list.\n\n    This is an enumerated value, but the list of valid values are too big, or change too often to include here. You can access the list of allowable values at this URL:  https://vocabulary.uncefact.org/UnitMeasureCode#\n    "
+                  }
+                }
+              },
+              "recycledMassFraction": {
+                "maximum": 1,
+                "minimum": 0,
+                "example": 0.5,
+                "type": "number",
+                "description": "Mass fraction of this material that is recycled (eg 50% recycled Lithium)"
+              },
+              "hazardous": {
+                "type": "boolean",
+                "description": "Indicates whether this material is hazardous. If true then the materialSafetyInformation property must be present"
+              },
+              "symbol": {
+                "type": "object",
+                "description": "Based 64 encoded binary used to represent a visual symbol for a given material. ",
+                "required": [
+                  "name",
+                  "imageData",
+                  "mediaType"
+                ],
+                "properties": {
+                  "name": {
+                    "example": "certification trust mark",
+                    "type": "string",
+                    "description": "the display name for this image"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "The detailed description / supporting information for this image."
+                  },
+                  "imageData": {
+                    "type": "string",
+                    "format": "byte",
+                    "description": "The image data encoded as a base64 string."
+                  },
+                  "mediaType": {
+                    "type": "string",
+                    "x-external-enumeration": "https://mimetype.io/",
+                    "description": "The media type of this image (eg image/png)\n\n    This is an enumerated value, but the list of valid values are too big, or change too often to include here. You can access the list of allowable values at this URL:  https://mimetype.io/\n    "
+                  }
+                }
+              },
+              "materialSafetyInformation": {
+                "type": "object",
+                "description": "Reference to further information about safe handling of this hazardous material (for example a link to a material safety data sheet)",
+                "required": [
+                  "linkURL",
+                  "linkName"
+                ],
+                "properties": {
+                  "linkURL": {
+                    "example": "https://files.example-certifier.com/1234567.json",
+                    "type": "string",
+                    "format": "uri",
+                    "description": "The URL of the target resource.  "
+                  },
+                  "linkName": {
+                    "type": "string",
+                    "description": "Display name for this link."
+                  },
+                  "digestMultibase": {
+                    "example": "abc123-example-digest-invalid",
+                    "type": "string",
+                    "description": "An optional multi-base encoded digest to ensure the content of the link has not changed. See https://www.w3.org/TR/vc-data-integrity/#resource-integrity for more information."
+                  },
+                  "mediaType": {
+                    "example": "application/ld+json",
+                    "type": "string",
+                    "description": "The media type of the target resource."
+                  },
+                  "linkType": {
+                    "example": "https://test.uncefact.org/vocabulary/linkTypes/dcc",
+                    "type": "string",
+                    "description": "The type of the target resource - drawn from a controlled vocabulary "
+                  }
+                }
+              }
+            }
+          },
+          "description": "materials used for the packaging."
+        },
+        "packageLabel": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "description": "A binary image encoded as base64 text and embedded into the data.  Use this for small images like certification trust marks or regulated labels.  Large images should be external links.",
+            "required": [
+              "name",
+              "imageData",
+              "mediaType"
+            ],
+            "properties": {
+              "name": {
+                "example": "certification trust mark",
+                "type": "string",
+                "description": "the display name for this image"
+              },
+              "description": {
+                "type": "string",
+                "description": "The detailed description / supporting information for this image."
+              },
+              "imageData": {
+                "type": "string",
+                "format": "byte",
+                "description": "The image data encoded as a base64 string."
+              },
+              "mediaType": {
+                "type": "string",
+                "x-external-enumeration": "https://mimetype.io/",
+                "description": "The media type of this image (eg image/png)\n\n    This is an enumerated value, but the list of valid values are too big, or change too often to include here. You can access the list of allowable values at this URL:  https://mimetype.io/\n    "
+              }
+            }
+          },
+          "description": "An array of package labels that may appear on the packaging together with their meaning. Use for small images that represent certification marks or regulatory requirements. Large images should be linked as evidence to claims."
+        },
+        "performanceClaim": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "description": "A performance claim about a product, facility, or organisation that is made against a well defined criterion.",
+            "required": [
+              "id",
+              "name",
+              "referenceCriteria",
+              "claimDate",
+              "claimedPerformance",
+              "conformityTopic"
+            ],
+            "properties": {
+              "id": {
+                "example": "https://sample-company.com/claim/e78dab5d-b6f6-4bc4-a458-7feb039f6cb3",
+                "type": "string",
+                "format": "uri",
+                "description": "Globally unique identifier of this claim. Typically represented as a URI companyURL/claimID URI or a UUID"
+              },
+              "name": {
+                "example": "Sample company Forced Labour claim",
+                "type": "string",
+                "description": "Name of this claim - typically similar or the same as the referenced criterion name."
+              },
+              "description": {
+                "type": "string",
+                "description": "Description of this conformity claim"
+              },
+              "referenceCriteria": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "name"
+                  ],
+                  "properties": {
+                    "id": {
+                      "example": "https://vocabulary.sample-scheme.org/criterion/lb/v1.0",
+                      "type": "string",
+                      "format": "uri",
+                      "description": "Globally unique identifier of this conformity criterion. Typically represented as a URI SchemeOwner/CriterionID URI"
+                    },
+                    "name": {
+                      "example": "Forced labour assessment criterion",
+                      "type": "string",
+                      "description": "Name of this criterion as defined by the scheme owner."
+                    }
+                  }
+                },
+                "description": "The criterion against which the claim is made."
+              },
+              "referenceRegulation": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "name"
+                  ],
+                  "properties": {
+                    "id": {
+                      "example": "https://regulations.country.gov/ABC-12345",
+                      "type": "string",
+                      "format": "uri",
+                      "description": "Globally unique identifier of this standard. Typically represented as a URI government/regulation URI"
+                    },
+                    "name": {
+                      "example": "Due Diligence Directove",
+                      "type": "string",
+                      "description": "Name of this regulation as defined by the regulator."
+                    }
+                  }
+                },
+                "description": "List of references to regulation to which conformity is claimed claimed for this product"
+              },
+              "referenceStandard": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "name"
+                  ],
+                  "properties": {
+                    "id": {
+                      "example": "https://sample-standards.org/A1234",
+                      "type": "string",
+                      "format": "uri",
+                      "description": "Globally unique identifier of this standard. Typically represented as a URI issuer/standard URI"
+                    },
+                    "name": {
+                      "example": "Labour rights standard",
+                      "type": "string",
+                      "description": "Name for this standard"
+                    }
+                  }
+                },
+                "description": "List of references to standards to which conformity is claimed claimed for this product"
+              },
+              "claimDate": {
+                "type": "string",
+                "format": "date",
+                "description": "That date on which the claimed performance is applicable."
+              },
+              "applicablePeriod": {
+                "type": "object",
+                "description": "The applicable reporting period for this facility record.",
+                "required": [
+                  "startDate",
+                  "endDate"
+                ],
+                "properties": {
+                  "startDate": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "The period start date"
+                  },
+                  "endDate": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "The period end date"
+                  },
+                  "periodInformation": {
+                    "type": "string",
+                    "description": "Additional information relevant to this reporting period"
+                  }
+                }
+              },
+              "claimedPerformance": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "description": "A claimed, assessed, or required performance level defined either by a scoring system or a numeric measure. When a numeric measure is provided, the metric classifying the measurement is required. When only a score is provided, the scoring framework is discoverable via the conformity scheme or criterion.",
+                  "dependentRequired": {
+                    "measure": [
+                      "metric"
+                    ]
+                  },
+                  "properties": {
+                    "metric": {
+                      "type": "object",
+                      "required": [
+                        "id",
+                        "name"
+                      ],
+                      "description": "The metric (eg material emissions intensity CO2e/Kg or percentage of young workers) that is measured.",
+                      "properties": {
+                        "id": {
+                          "example": "https://authority.gov/schemeABC/123456789",
+                          "type": "string",
+                          "format": "uri",
+                          "description": "Globally unique identifier of this reporting metric. "
+                        },
+                        "name": {
+                          "example": "emissions intensity",
+                          "type": "string",
+                          "description": "A human readable name for this metric (for example \"water usage per Kg of material\")"
+                        }
+                      }
+                    },
+                    "measure": {
+                      "type": "object",
+                      "description": "The measured performance value",
+                      "required": [
+                        "value",
+                        "unit"
+                      ],
+                      "properties": {
+                        "value": {
+                          "example": 10,
+                          "type": "number",
+                          "description": "The numeric value of the measure"
+                        },
+                        "upperTolerance": {
+                          "type": "number",
+                          "description": "The upper tolerance associated with this measure expressed in the same units as the measure.  For example value=10, upperTolerance=0.1, unit=KGM would mean that this measure is 10kg + 0.1kg"
+                        },
+                        "lowerTolerance": {
+                          "type": "number",
+                          "description": "The lower tolerance associated with this measure expressed in the same units as the measure.  For example value=10, lowerTolerance=0.1, unit=KGM would mean that this measure is 10kg - 0.1kg"
+                        },
+                        "unit": {
+                          "type": "string",
+                          "x-external-enumeration": "https://vocabulary.uncefact.org/UnitMeasureCode#",
+                          "description": "Unit of measure drawn from the UNECE Rec20 measure code list.\n\n    This is an enumerated value, but the list of valid values are too big, or change too often to include here. You can access the list of allowable values at this URL:  https://vocabulary.uncefact.org/UnitMeasureCode#\n    "
+                        }
+                      }
+                    },
+                    "score": {
+                      "type": "object",
+                      "description": "A performance score (eg \"AA\") drawn from a scoring framework defined by the scheme or criterion.",
+                      "required": [
+                        "code"
+                      ],
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "description": "The coded value for this score (eg \"AAA\")"
+                        },
+                        "rank": {
+                          "type": "integer",
+                          "description": "The ranking of this score within the scoring framework - using an integer where \"1\" is the highest rank."
+                        },
+                        "definition": {
+                          "type": "string",
+                          "description": "A description of the meaning of this score."
+                        }
+                      }
+                    }
+                  }
+                },
+                "description": "The claimed performance level "
+              },
+              "evidence": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "description": "A structure to provide a URL link plus metadata associated with the link.",
+                  "required": [
+                    "linkURL",
+                    "linkName"
+                  ],
+                  "properties": {
+                    "linkURL": {
+                      "example": "https://files.example-certifier.com/1234567.json",
+                      "type": "string",
+                      "format": "uri",
+                      "description": "The URL of the target resource.  "
+                    },
+                    "linkName": {
+                      "type": "string",
+                      "description": "Display name for this link."
+                    },
+                    "digestMultibase": {
+                      "example": "abc123-example-digest-invalid",
+                      "type": "string",
+                      "description": "An optional multi-base encoded digest to ensure the content of the link has not changed. See https://www.w3.org/TR/vc-data-integrity/#resource-integrity for more information."
+                    },
+                    "mediaType": {
+                      "example": "application/ld+json",
+                      "type": "string",
+                      "description": "The media type of the target resource."
+                    },
+                    "linkType": {
+                      "example": "https://test.uncefact.org/vocabulary/linkTypes/dcc",
+                      "type": "string",
+                      "description": "The type of the target resource - drawn from a controlled vocabulary "
+                    }
+                  }
+                },
+                "description": "A URI pointing to the evidence supporting the claim. SHOULD be a URL to a UNTP Digital Conformity Credential (DCC)"
+              },
+              "conformityTopic": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "description": "The UNTP standard classification scheme for conformity topic.  see http://vocabulary.uncefact.org/ConformityTopic",
+                  "required": [
+                    "id",
+                    "name"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "The unique identifier for this conformity topic"
+                    },
+                    "name": {
+                      "example": "forced-labour",
+                      "type": "string",
+                      "description": "The human readable name for this conformity topic."
+                    },
+                    "definition": {
+                      "type": "string",
+                      "description": "The rich definition of this conformity topic."
+                    }
+                  }
+                },
+                "description": "The conformity topic category for this assessment"
+              }
+            }
+          },
+          "description": "conformity claims made about the packaging."
+        }
+      }
+    },
+    "productLabel": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "A binary image encoded as base64 text and embedded into the data.  Use this for small images like certification trust marks or regulated labels.  Large images should be external links.",
+        "required": [
+          "name",
+          "imageData",
+          "mediaType"
+        ],
+        "properties": {
+          "name": {
+            "example": "certification trust mark",
+            "type": "string",
+            "description": "the display name for this image"
+          },
+          "description": {
+            "type": "string",
+            "description": "The detailed description / supporting information for this image."
+          },
+          "imageData": {
+            "type": "string",
+            "format": "byte",
+            "description": "The image data encoded as a base64 string."
+          },
+          "mediaType": {
+            "type": "string",
+            "x-external-enumeration": "https://mimetype.io/",
+            "description": "The media type of this image (eg image/png)\n\n    This is an enumerated value, but the list of valid values are too big, or change too often to include here. You can access the list of allowable values at this URL:  https://mimetype.io/\n    "
+          }
+        }
+      },
+      "description": "Property. An array of labels that may appear on the product such as certification marks or regulatory labels."
+    },
+    "performanceClaim": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "A performance claim about a product, facility, or organisation that is made against a well defined criterion.",
+        "required": [
+          "id",
+          "name",
+          "referenceCriteria",
+          "claimDate",
+          "claimedPerformance",
+          "conformityTopic"
+        ],
+        "properties": {
+          "id": {
+            "example": "https://sample-company.com/claim/e78dab5d-b6f6-4bc4-a458-7feb039f6cb3",
+            "type": "string",
+            "format": "uri",
+            "description": "Globally unique identifier of this claim. Typically represented as a URI companyURL/claimID URI or a UUID"
+          },
+          "name": {
+            "example": "Sample company Forced Labour claim",
+            "type": "string",
+            "description": "Name of this claim - typically similar or the same as the referenced criterion name."
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of this conformity claim"
+          },
+          "referenceCriteria": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "name"
+              ],
+              "properties": {
+                "id": {
+                  "example": "https://vocabulary.sample-scheme.org/criterion/lb/v1.0",
+                  "type": "string",
+                  "format": "uri",
+                  "description": "Globally unique identifier of this conformity criterion. Typically represented as a URI SchemeOwner/CriterionID URI"
+                },
+                "name": {
+                  "example": "Forced labour assessment criterion",
+                  "type": "string",
+                  "description": "Name of this criterion as defined by the scheme owner."
+                }
+              }
+            },
+            "description": "The criterion against which the claim is made."
+          },
+          "referenceRegulation": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "name"
+              ],
+              "properties": {
+                "id": {
+                  "example": "https://regulations.country.gov/ABC-12345",
+                  "type": "string",
+                  "format": "uri",
+                  "description": "Globally unique identifier of this standard. Typically represented as a URI government/regulation URI"
+                },
+                "name": {
+                  "example": "Due Diligence Directove",
+                  "type": "string",
+                  "description": "Name of this regulation as defined by the regulator."
+                }
+              }
+            },
+            "description": "List of references to regulation to which conformity is claimed claimed for this product"
+          },
+          "referenceStandard": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "name"
+              ],
+              "properties": {
+                "id": {
+                  "example": "https://sample-standards.org/A1234",
+                  "type": "string",
+                  "format": "uri",
+                  "description": "Globally unique identifier of this standard. Typically represented as a URI issuer/standard URI"
+                },
+                "name": {
+                  "example": "Labour rights standard",
+                  "type": "string",
+                  "description": "Name for this standard"
+                }
+              }
+            },
+            "description": "List of references to standards to which conformity is claimed claimed for this product"
+          },
+          "claimDate": {
+            "type": "string",
+            "format": "date",
+            "description": "That date on which the claimed performance is applicable."
+          },
+          "applicablePeriod": {
+            "type": "object",
+            "description": "The applicable reporting period for this facility record.",
+            "required": [
+              "startDate",
+              "endDate"
+            ],
+            "properties": {
+              "startDate": {
+                "type": "string",
+                "format": "date",
+                "description": "The period start date"
+              },
+              "endDate": {
+                "type": "string",
+                "format": "date",
+                "description": "The period end date"
+              },
+              "periodInformation": {
+                "type": "string",
+                "description": "Additional information relevant to this reporting period"
+              }
+            }
+          },
+          "claimedPerformance": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "description": "A claimed, assessed, or required performance level defined either by a scoring system or a numeric measure. When a numeric measure is provided, the metric classifying the measurement is required. When only a score is provided, the scoring framework is discoverable via the conformity scheme or criterion.",
+              "dependentRequired": {
+                "measure": [
+                  "metric"
+                ]
+              },
+              "properties": {
+                "metric": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "name"
+                  ],
+                  "description": "The metric (eg material emissions intensity CO2e/Kg or percentage of young workers) that is measured.",
+                  "properties": {
+                    "id": {
+                      "example": "https://authority.gov/schemeABC/123456789",
+                      "type": "string",
+                      "format": "uri",
+                      "description": "Globally unique identifier of this reporting metric. "
+                    },
+                    "name": {
+                      "example": "emissions intensity",
+                      "type": "string",
+                      "description": "A human readable name for this metric (for example \"water usage per Kg of material\")"
+                    }
+                  }
+                },
+                "measure": {
+                  "type": "object",
+                  "description": "The measured performance value",
+                  "required": [
+                    "value",
+                    "unit"
+                  ],
+                  "properties": {
+                    "value": {
+                      "example": 10,
+                      "type": "number",
+                      "description": "The numeric value of the measure"
+                    },
+                    "upperTolerance": {
+                      "type": "number",
+                      "description": "The upper tolerance associated with this measure expressed in the same units as the measure.  For example value=10, upperTolerance=0.1, unit=KGM would mean that this measure is 10kg + 0.1kg"
+                    },
+                    "lowerTolerance": {
+                      "type": "number",
+                      "description": "The lower tolerance associated with this measure expressed in the same units as the measure.  For example value=10, lowerTolerance=0.1, unit=KGM would mean that this measure is 10kg - 0.1kg"
+                    },
+                    "unit": {
+                      "type": "string",
+                      "x-external-enumeration": "https://vocabulary.uncefact.org/UnitMeasureCode#",
+                      "description": "Unit of measure drawn from the UNECE Rec20 measure code list.\n\n    This is an enumerated value, but the list of valid values are too big, or change too often to include here. You can access the list of allowable values at this URL:  https://vocabulary.uncefact.org/UnitMeasureCode#\n    "
+                    }
+                  }
+                },
+                "score": {
+                  "type": "object",
+                  "description": "A performance score (eg \"AA\") drawn from a scoring framework defined by the scheme or criterion.",
+                  "required": [
+                    "code"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "description": "The coded value for this score (eg \"AAA\")"
+                    },
+                    "rank": {
+                      "type": "integer",
+                      "description": "The ranking of this score within the scoring framework - using an integer where \"1\" is the highest rank."
+                    },
+                    "definition": {
+                      "type": "string",
+                      "description": "A description of the meaning of this score."
+                    }
+                  }
+                }
+              }
+            },
+            "description": "The claimed performance level "
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "description": "A structure to provide a URL link plus metadata associated with the link.",
+              "required": [
+                "linkURL",
+                "linkName"
+              ],
+              "properties": {
+                "linkURL": {
+                  "example": "https://files.example-certifier.com/1234567.json",
+                  "type": "string",
+                  "format": "uri",
+                  "description": "The URL of the target resource.  "
+                },
+                "linkName": {
+                  "type": "string",
+                  "description": "Display name for this link."
+                },
+                "digestMultibase": {
+                  "example": "abc123-example-digest-invalid",
+                  "type": "string",
+                  "description": "An optional multi-base encoded digest to ensure the content of the link has not changed. See https://www.w3.org/TR/vc-data-integrity/#resource-integrity for more information."
+                },
+                "mediaType": {
+                  "example": "application/ld+json",
+                  "type": "string",
+                  "description": "The media type of the target resource."
+                },
+                "linkType": {
+                  "example": "https://test.uncefact.org/vocabulary/linkTypes/dcc",
+                  "type": "string",
+                  "description": "The type of the target resource - drawn from a controlled vocabulary "
+                }
+              }
+            },
+            "description": "A URI pointing to the evidence supporting the claim. SHOULD be a URL to a UNTP Digital Conformity Credential (DCC)"
+          },
+          "conformityTopic": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "description": "The UNTP standard classification scheme for conformity topic.  see http://vocabulary.uncefact.org/ConformityTopic",
+              "required": [
+                "id",
+                "name"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "The unique identifier for this conformity topic"
+                },
+                "name": {
+                  "example": "forced-labour",
+                  "type": "string",
+                  "description": "The human readable name for this conformity topic."
+                },
+                "definition": {
+                  "type": "string",
+                  "description": "The rich definition of this conformity topic."
+                }
+              }
+            },
+            "description": "The conformity topic category for this assessment"
+          }
+        }
+      },
+      "description": "Property. A list of performance claims (eg emissions intensity) for this product."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "name",
+    "idScheme",
+    "idGranularity",
+    "productCategory",
+    "producedAtFacility",
+    "countryOfProduction"
+  ]
+}

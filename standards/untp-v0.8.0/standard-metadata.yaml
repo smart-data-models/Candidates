@@ -1,0 +1,147 @@
+title: "UN Transparency Protocol (UNTP) - Digital Product Passport & Product"
+publisher: "UN/CEFACT (United Nations Centre for Trade Facilitation and Electronic Business)"
+sourceUrl: "https://untp.unece.org/docs/specification/DigitalProductPassport/"
+sourceOntologyVersion: "UNTP v0.8.0 (current main, spec-untp repository), schemas at artefacts/schema/v0.8.0/dpp/"
+domains:
+  - CrossSector
+  - Manufacturing
+  - Environment
+description: >
+  The UN Transparency Protocol (UNTP) Digital Product Passport (DPP) is a
+  B2B data standard for carrying product and sustainability information
+  through supply chains, issued as a W3C Verifiable Credential. This
+  candidate translates two of its published entities -- DigitalProductPassport
+  (the credential envelope) and Product (the credentialSubject / core
+  product data model) -- into NGSI-LD/NGSI-v2 entities. Per explicit scope
+  instruction, only these two entities are covered; other UNTP credential
+  types (Digital Conformity Credential, Digital Facility Record, Digital
+  Traceability Event, Digital Identity Anchor) are out of scope.
+license: "Not confirmed in this pass -- check the spec-untp repository's own LICENSE file before promoting this candidate out of Candidates/."
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source JSON Schema to SDM candidate artifacts"
+notes: |
+  Translated on 2026-09-04 from real, machine-readable JSON Schema files
+  fetched directly from the UNTP specification's actual source repository
+  (a GitLab instance, not the docs.untp.unece.org site itself, which is
+  generated from it): artefacts/schema/v0.8.0/dpp/DigitalProductPassport.json
+  and artefacts/schema/v0.8.0/dpp/Product.json, at
+  https://opensource.unicc.org/un/unece/uncefact/spec-untp . Repository tags
+  only go up to v0.7.0 (released); v0.8.0 exists on `main` but is not yet
+  tagged. Diffed both files against v0.7.0: content is byte-identical except
+  the embedded JSON-LD context version URL -- per explicit user decision,
+  v0.8.0 was used.
+
+  TWO-ENTITY ARCHITECTURE (per explicit user decision): DigitalProductPassport.json
+  is a W3C Verifiable Credential (VCDM 2.0) envelope whose `credentialSubject`
+  is literally `$ref: "#/$defs/Product"` -- a 1:1 inline embedding in the
+  source. Product.json is ALSO published standalone, with its own complete
+  identity (`id`, `idScheme`, `required` fields) independent of any credential
+  wrapper. This candidate models them as two separate NGSI-LD entities:
+  DigitalProductPassport carries only the envelope fields (issuer, validFrom,
+  validUntil, name, credentialStatus, renderMethod, issuingSoftware) plus a
+  new `product` Relationship (string, format uri) that replaces the source's
+  inline `credentialSubject`; Product is the standalone, separately-
+  addressable entity with the full ~20-property product data model. This
+  avoids duplicating Product's schema inside DigitalProductPassport's own
+  schema and matches how the source itself chose to publish two independent
+  files, not just one.
+
+  VC ENVELOPE FIELDS MODELED FAITHFULLY (per explicit user decision):
+  `issuer` (CredentialIssuer: DID id, name, issuerAlsoKnownAs[]),
+  `credentialStatus` (BitstringStatusListEntry, per the W3C Bitstring Status
+  List spec), `renderMethod` (array of RenderTemplate2024), `issuingSoftware`
+  (id/name/version/vendor) are all translated as real typed nested
+  StructuredValue properties rather than simplified away, even though they
+  are strictly artifacts of the VC transport/verification layer rather than
+  product-passport content per se.
+
+  `@context` NAME COLLISION, RESOLVED: DigitalProductPassport's own `@context`
+  property (the W3C VC JSON-LD context array, e.g.
+  ["https://www.w3.org/ns/credentials/v2", ".../untp/0.8.0/context/"]) would
+  collide with NGSI-LD's own reserved top-level `@context` mechanism if kept
+  under that name. Renamed to `vcContext` here, holding the same array as
+  plain data -- documented in the property's own description, the same
+  pattern used for the Gaia-X candidate's `dataProvider`/`gxDataProvider`
+  collision.
+
+  REAL PUBLISHED JSON-LD CONTEXT USED (unlike the CityJSON candidate, which
+  had no native RDF vocabulary to draw on): UNTP publishes a genuine,
+  complete JSON-LD context file at
+  artefacts/contexts/v0.8.0/untp-context.jsonld (~106KB, using JSON-LD
+  type-scoped contexts -- most property IRIs are nested inside each class's
+  own `@context` block rather than declared flatly at the top level). This
+  candidate's context.jsonld files use REAL IRIs recursively extracted from
+  that file (prefixes resolved: `unece:` -> https://test.uncefact.org/vocabulary/
+  [note: this is the source's own currently-published prefix target, a
+  "test." subdomain, not something this candidate invented -- worth
+  reconfirming before promotion in case it is a placeholder that later
+  moves to a production domain]; `schema:` -> https://schema.org/;
+  `xsd:` -> the standard XML Schema namespace). Two collisions were found
+  and manually corrected rather than trusted from the raw flattened merge:
+  the DigitalProductPassport envelope's `issuer`/`validFrom`/`validUntil`/
+  `credentialStatus`/`renderMethod` are standard W3C VCDM 2.0 terms that
+  UNTP's own context does NOT redefine (its DigitalProductPassport-scoped
+  context is just an empty `@vocab` fallback) -- mapped instead to the real
+  base VC vocabulary (https://www.w3.org/2018/credentials#...) and the
+  render-method spec's own prefix; and this candidate's own `product`
+  Relationship (replacing `credentialSubject`) is not a term UNTP's
+  vocabulary defines at all (a naive flatten of the 106KB context file
+  coincidentally matched an unrelated `product` term scoped to Digital
+  Traceability Event's MakeEvent/MoveEvent/ModifyEvent), so it was minted
+  under the DigitalProductPassport module's own namespace instead, with a
+  note that the source's own equivalent concept (`credentialSubject`) maps
+  to https://www.w3.org/2018/credentials#credentialSubject.
+
+  EXAMPLE DATA IS REAL, NOT INVENTED: both example.json files are derived
+  from UNTP's own published sample instance,
+  artefacts/samples/v0.8.0/dpp/DigitalProductPassport_battery_instance.json
+  (a 75 kWh Li-ion EV battery pack DPP) -- split across the two entities per
+  the architecture above, with the same JSON-LD type-discriminator arrays
+  stripped that the schema generator also drops from nested objects. Every
+  material provenance entry, performance claim, party, and facility
+  reference in the examples is that real sample's own data, not fabricated.
+
+  JSON-LD TYPE-DISCRIMINATOR ARRAYS DROPPED FROM NESTED OBJECTS: the source
+  schema decorates almost every nested object type (Party, Claim,
+  Classification, PerformanceMetric, Criterion, Regulation, Standard, ...)
+  with a `"type": {"type": "array", "readOnly": true, "default": [...],
+  "allOf": [...]}` JSON-LD type-discriminator pattern. This is dropped from
+  every nested StructuredValue in this candidate (kept only at the two
+  top-level entities, as the standard NGSI-LD `type` enum) since it is a
+  JSON-LD/VC serialization artifact, not meaningful data, once flattened
+  into a nested object -- consistent with how the CityJSON candidate
+  handled the same pattern.
+
+  OPEN / EXTERNALLY-ENUMERATED FIELDS LEFT OPEN, NOT INVENTED AS CLOSED
+  ENUMS: the source schema itself marks several fields as open-ended via
+  `x-external-enumeration` (too large or too volatile to enumerate in the
+  schema) -- `countryCode` (ISO 3166, https://vocabulary.uncefact.org/CountryId#),
+  `unit` (UNECE Rec20 measure codes, https://vocabulary.uncefact.org/UnitMeasureCode#),
+  `mediaType` (https://mimetype.io/). These stay open strings with the
+  external-list URL noted in the description, exactly as the source
+  declares them -- not resolved to closed enums in this pass, matching the
+  same fidelity-first choice made for CityGML's `gml:CodeType` fields.
+  `characteristics` (on Product) is a genuinely open, undeclared extension
+  point per the source's own schema (`additionalProperties: true`, no fixed
+  sub-schema) -- industry-specific fields like `batteryChemistry` in the
+  real sample -- modeled as an open StructuredValue, matching the source
+  exactly.
+
+  RELATIONSHIP TARGETS OUTSIDE THIS CANDIDATE'S SCOPE: several fields
+  reference other UNTP credential types not modeled here per the "only
+  these two" instruction -- `producedAtFacility` (references a Facility,
+  properly defined in UNTP's separate Digital Facility Record spec),
+  `performanceClaim[].evidence[]` (SHOULD point to a Digital Conformity
+  Credential), `relatedDocument[].linkType` values like ".../linkTypes/dcc"
+  (Digital Conformity Credential links). These stay embedded/typed as the
+  source itself declares them (mostly Link objects with a URL, or inline
+  id/name pairs) rather than being promoted to formal NGSI-LD Relationships
+  pointing at not-yet-modeled entity types, since the source itself doesn't
+  treat them as bare object references either.
+
+  DUPLICATION RISK, NOT CHECKED IN DETAIL: Smart Data Models may already
+  publish product/traceability-related vocabularies in other domains
+  (Agrifood, DCAT-AP-derived catalogue models) that could overlap
+  conceptually with Product here. Should be checked before promoting this
+  candidate out of Candidates/.
