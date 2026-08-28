@@ -2292,5 +2292,36 @@
       }
     ],
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/madrid-accidentes-trafico"
+  },
+  {
+    "slug": "untp-v0.8.0",
+    "title": "UN Transparency Protocol (UNTP) - Digital Product Passport & Product",
+    "description": "The UN Transparency Protocol (UNTP) Digital Product Passport (DPP) is a B2B data standard for carrying product and sustainability information through supply chains, issued as a W3C Verifiable Credential. This candidate translates two of its published entities -- DigitalProductPassport (the credential envelope) and Product (the credentialSubject / core product data model) -- into NGSI-LD/NGSI-v2 entities. Per explicit scope instruction, only these two entities are covered; other UNTP credential types (Digital Conformity Credential, Digital Facility Record, Digital Traceability Event, Digital Identity Anchor) are out of scope.",
+    "publisher": "UN/CEFACT (United Nations Centre for Trade Facilitation and Electronic Business)",
+    "sourceUrl": "https://untp.unece.org/docs/specification/DigitalProductPassport/",
+    "license": "Not confirmed in this pass -- check the spec-untp repository's own LICENSE file before promoting this candidate out of Candidates/.",
+    "domains": [
+      "CrossSector",
+      "Manufacturing",
+      "Environment"
+    ],
+    "modelCount": 2,
+    "models": [
+      {
+        "name": "DigitalProductPassport",
+        "title": "Smart Data Models - UNTP - DigitalProductPassport",
+        "description": "https://vocabulary.uncefact.org/untp/DigitalProductPassport . A digital Product Passport (DPP) credential. A W3C Verifiable Credential (VCDM 2.0) envelope whose credentialSubject is a Product (https://untp.unece.org/docs/specification/DigitalProductPassport/). In this candidate, the envelope (issuer, validity, credential status, render/issuing-software metadata) is kept as its own entity with a `product` Relationship to a separately-addressable Product entity, rather than inlining the full Product schema -- see standard-metadata.yaml.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/untp-v0.8.0/models/DigitalProductPassport/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/untp-v0.8.0/models/DigitalProductPassport"
+      },
+      {
+        "name": "Product",
+        "title": "Smart Data Models - UNTP - Product",
+        "description": "https://test.uncefact.org/vocabulary/Product . The ProductInformation class encapsulates detailed information regarding a specific product, including its identification details, manufacturer, and other pertinent details. Published standalone in the UNTP specification (artefacts/schema/v0.8.0/dpp/Product.json) independent of any specific credential wrapper; also used as the credentialSubject of a DigitalProductPassport (see the DigitalProductPassport model's `product` Relationship).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/untp-v0.8.0/models/Product/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/untp-v0.8.0/models/Product"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/untp-v0.8.0"
   }
 ]
