@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/cityjson-v2/models/CityObjectGroup/schema.json",
+  "modelTags": "CityJSON,Grouping",
+  "title": "Smart Data Models - CityJSON v2.0 - CityObjectGroup",
+  "description": "https://www.cityjson.org/schemas/2.0.2/cityobjects.schema.json#CityObjectGroup. A group of City Objects referenced as `children` (with optional `children_roles` describing each member's role in the group), e.g. a building complex or an aggregation for a specific study. Grouping City Object (references other City Objects as members, not a physical object itself).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "CityObjectGroup"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'CityObjectGroup'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Property. Open attribute bag (StructuredValue), per the source schema (`\"attributes\": {\"type\": \"object\"}` on every City Object type -- CityJSON does not declare a fixed attribute list per type). Populated here with commonly-used, convention-based attribute names for illustration; not schema-enforced by the source."
+    },
+    "geographicalExtent": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 6,
+      "maxItems": 6,
+      "description": "Property. Bounding box of the City Object as [minx, miny, minz, maxx, maxy, maxz], per the source schema's shared _AbstractCityObject.geographicalExtent."
+    },
+    "parents": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. IDs of the parent City Object(s) in the same dataset, per the source schema's shared _AbstractCityObject.parents."
+    },
+    "children": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. IDs of the child City Object(s) in the same dataset, per the source schema's shared _AbstractCityObject.children."
+    },
+    "children_roles": {
+      "type": "array",
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "description": "Property. The role of each of the CityObjectGroup's members (positionally aligned with `children`), per the source schema. A null entry means no role is given for that member."
+    },
+    "geometryLoD0": {
+      "type": "object",
+      "description": "GeoProperty. Dereferenced GeoJSON geometry (MultiPoint, MultiLineString, MultiPolygon) for this CityObjectGroup at major Level of Detail 0 (covers source `lod` values \"0\" and \"0.0\"-\"0.3\"), flattened from CityJSON's native shared-vertex-array + boundary-index representation. Optional; present only if the source CityJSON file provides a Geometry entry at this LoD for this object. Surface `semantics`, `material`, and `texture` are not carried into this GeoProperty -- only boundary coordinates.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "MultiPoint",
+            "MultiLineString",
+            "MultiPolygon"
+          ]
+        },
+        "coordinates": {
+          "type": "array"
+        }
+      }
+    },
+    "geometryLoD1": {
+      "type": "object",
+      "description": "GeoProperty. Dereferenced GeoJSON geometry (MultiPoint, MultiLineString, MultiPolygon) for this CityObjectGroup at major Level of Detail 1 (covers source `lod` values \"1\" and \"1.0\"-\"1.3\"), flattened from CityJSON's native shared-vertex-array + boundary-index representation. Optional; present only if the source CityJSON file provides a Geometry entry at this LoD for this object. Surface `semantics`, `material`, and `texture` are not carried into this GeoProperty -- only boundary coordinates.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "MultiPoint",
+            "MultiLineString",
+            "MultiPolygon"
+          ]
+        },
+        "coordinates": {
+          "type": "array"
+        }
+      }
+    },
+    "geometryLoD2": {
+      "type": "object",
+      "description": "GeoProperty. Dereferenced GeoJSON geometry (MultiPoint, MultiLineString, MultiPolygon) for this CityObjectGroup at major Level of Detail 2 (covers source `lod` values \"2\" and \"2.0\"-\"2.3\"), flattened from CityJSON's native shared-vertex-array + boundary-index representation. Optional; present only if the source CityJSON file provides a Geometry entry at this LoD for this object. Surface `semantics`, `material`, and `texture` are not carried into this GeoProperty -- only boundary coordinates.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "MultiPoint",
+            "MultiLineString",
+            "MultiPolygon"
+          ]
+        },
+        "coordinates": {
+          "type": "array"
+        }
+      }
+    },
+    "geometryLoD3": {
+      "type": "object",
+      "description": "GeoProperty. Dereferenced GeoJSON geometry (MultiPoint, MultiLineString, MultiPolygon) for this CityObjectGroup at major Level of Detail 3 (covers source `lod` values \"3\" and \"3.0\"-\"3.3\"), flattened from CityJSON's native shared-vertex-array + boundary-index representation. Optional; present only if the source CityJSON file provides a Geometry entry at this LoD for this object. Surface `semantics`, `material`, and `texture` are not carried into this GeoProperty -- only boundary coordinates.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "MultiPoint",
+            "MultiLineString",
+            "MultiPolygon"
+          ]
+        },
+        "coordinates": {
+          "type": "array"
+        }
+      }
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "children"
+  ]
+}
