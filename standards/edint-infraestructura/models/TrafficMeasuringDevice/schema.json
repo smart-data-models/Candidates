@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-infraestructura/models/TrafficMeasuringDevice/schema.json",
+  "modelTags": "EDINT,UrbanInfrastructure,Traffic",
+  "title": "Smart Data Models - EDINT Infrastructure - TrafficMeasuringDevice",
+  "description": "Traffic measuring device, a type of traffic equipment which performs measurements, e.g. a speed radar or an Automatic Number Plate Recognition (ANPR) system (edinttrafico:TrafficMeasuringDevice, subclass of sosa:Sensor, edinttrafico:TrafficEquipment and geosparql:Feature). Combines TrafficEquipment's own properties (monitors, trafficEquipmentType, numDirections, urban) with Sensor's (observableProperty) and its own (manufacturer, inService, measurementFrequency). Formerly excluded as part of an external-ontology traffic branch; now natively defined as of source ontology v0.2.1.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "TrafficMeasuringDevice"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'TrafficMeasuringDevice'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. Point providing the geographical position of the entity.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "number"
+          },
+          "description": "Property. Coordinates of the Point, in WGS84 [longitude, latitude] order."
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    },
+    "monitors": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The StreetSection(s) this equipment monitors (edinttrafico:monitors)."
+    },
+    "trafficEquipmentType": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Type of traffic equipment (control equipment or measuring device). The source ontology does not publish a controlled vocabulary for this yet; kept as a generic Relationship."
+    },
+    "numDirections": {
+      "type": "integer",
+      "description": "Property. Number of directions of traffic (edinttrafico:numDirections)."
+    },
+    "urban": {
+      "type": "boolean",
+      "description": "Property. Whether the equipment is in an urban setting or not (edinttrafico:urban)."
+    },
+    "observableProperty": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The property this device is capable of detecting (SOSA sosa:observes, inherited via edinttrafico:TrafficMeasuringDevice's Sensor parent). The source ontology does not enumerate specific TrafficProperty instances; kept as a generic Relationship."
+    },
+    "manufacturer": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://schema.org/manufacturer'. The Organization that manufactured the device."
+    },
+    "inService": {
+      "type": "boolean",
+      "description": "Property. Whether the device is currently working/in service or not (edinttrafico:inService)."
+    },
+    "measurementFrequency": {
+      "type": "string",
+      "description": "Property. The measurement frequency of the device (edinttrafico:measurementFrequency). The source ontology does not constrain the format (e.g. an ISO 8601 duration or free text)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

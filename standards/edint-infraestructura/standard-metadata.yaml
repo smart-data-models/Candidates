@@ -1,18 +1,21 @@
 title: "EDINT Infrastructure Ontology (Ontología de Infraestructura)"
 publisher: "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM) as technical developer"
 sourceUrl: "https://github.com/EDINT-Ontologia/edint-ontologia-infraestructura/tree/main"
-sourceOntologyIRI: "http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/infraestructura"
-sourceOntologyVersion: "0.2.0"
+sourceOntologyIRI: "https://edint.es/def/infraestructura"
+sourceOntologyVersion: "0.2.1"
 domains:
   - SmartCities
   - UrbanInfrastructure
+  - Transportation
 description: >
   Vocabulary for representing a municipality's public and private infrastructure
   facilities (educational, cultural, social, sports and health centers, on-street
   and off-street parking, shared-bicycle stations) together with the sensors,
   observations, violations, management roles and organizations involved in
-  operating and monitoring them. Reuses SOSA/SSN (sensors and observations),
-  GeoSPARQL (geometry), schema.org and Dublin Core.
+  operating and monitoring them, plus (as of this update) street sections,
+  traffic incidences, traffic control/measuring equipment and observations, and
+  regulated zones. Reuses SOSA/SSN (sensors and observations), GeoSPARQL
+  (geometry), W3C Time, QUDT, schema.org and Dublin Core.
 license: "CC-BY-SA-4.0"
 licenseNote: >
   The source ontology is published under CC-BY-SA-4.0 (ShareAlike), while Smart
@@ -57,3 +60,93 @@ notes: |
     - The InfrastructureType controlled vocabulary (234 concepts) is too
       large for a JSON Schema enum; infrastructureType is kept as a
       Relationship to the concept URI rather than an enumerated Property.
+
+  UPDATE 2026-09-04 (source ontology 0.2.0 -> 0.2.1): re-checked against the
+  live main branch (commit a36364a) after being told the source had been
+  updated. Two kinds of change:
+
+  1) NAMESPACE MIGRATION (applies to all 11 originally-translated models).
+     The ontology's base IRI moved from
+     http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/infraestructura#
+     to https://edint.es/def/infraestructura# (confirmed via the ontology's own
+     owl:Ontology declaration). All context.jsonld IRIs updated accordingly.
+     The InfrastructureType KOS concept namespace also moved, from
+     .../datosabiertos/kos/edint/InfrastructureType/ to
+     https://edint.es/kos/InfrastructureType/ (per the new
+     documentation/kos/skos-InfrastructureType.ttl's own prefix declaration).
+     KOS NOTATION INCONSISTENCY, NOT RESOLVED: the formal SKOS vocabulary file
+     now uses lowercase-hyphenated notations (e.g. "centro-de-atencion-primaria"
+     -- this was already true in v0.2.0 too, so not itself a v0.2.1 change),
+     but the real sample instance data (examples/example.ttl, 335 Facility
+     records, unchanged since v0.2.0) still uses CamelCase notations under the
+     OLD vocab.linkeddata.es namespace (e.g. "CentrosDiaMayores") and has not
+     been regenerated to match either the new class namespace or the SKOS
+     notation convention. Facility's example.json keeps the real, verified
+     value "CentrosDiaMayores" (confirmed still present in current
+     examples/example.ttl) moved only to the new kos base IRI --
+     https://edint.es/kos/InfrastructureType/CentrosDiaMayores -- since
+     inventing a mapping to one of the 433 hyphenated-slug concepts in the
+     reorganized SKOS file would be a guess. Check with EDINT maintainers
+     before relying on this exact concept IRI. Parking/BikeSharingStation's
+     infrastructureType example values were already synthetic pre-v0.2.1 (no
+     parking/bike instances exist in the real sample data either version) and
+     only had their namespace prefix mechanically updated.
+
+  2) FACILITY GAINED 3 PROPERTIES: accessibility (string), isCadastralProperty
+     (Relationship -> new CadastralProperty entity), locatedInZone
+     (Relationship -> new RegulatedZone entity). All 10 other originally-
+     translated entities were re-checked and have no attribute-level changes.
+
+  3) TRAFFIC/MOBILITY BRANCH BROUGHT INTO SCOPE (8 new entities): the original
+     translation deliberately excluded Tramo, Incidencia, EquipoTrafico,
+     ObservacionTrafico, PropiedadMedicionTrafico because they reused an
+     ontology (ciudadesabiertas.es/def/transporte/trafico#) not included in
+     the source repository. As of v0.2.1 these are renamed to English and
+     natively defined in the source repo's own trafico#/zone#/catastro#
+     sub-vocabularies (bundled into the same ontology.ttl), so the original
+     exclusion reason no longer applies. Per explicit user decision, this
+     branch is now translated:
+       - StreetSection (was Tramo)
+       - PlannedIncidence, UnplannedIncidence (was IncidenciaPlanificada /
+         IncidenciaNoPlanificada). Bare "Incidence" (was Incidencia) is
+         deliberately NOT materialized as its own entity -- same precedent as
+         this candidate's existing Sensor/AccessSensor/CountingSensor
+         relationship, where the shared abstract base isn't materialized,
+         only its concrete subclasses are. Each of the two entities carries
+         Incidence's own base properties (incidenceInSection, incidenceType,
+         startDate, endDate, incidenceAttachment, numDirections) directly.
+       - TrafficEquipment (was EquipoTrafico) and TrafficMeasuringDevice (was
+         DispositivoMedicionTrafico) -- both materialized, since the ontology
+         itself treats TrafficEquipment as directly instantiable for control
+         equipment that isn't a measuring device (no separate
+         "control-equipment" subclass exists).
+       - TrafficObservation (was ObservacionTrafico), following the same SOSA
+         Observation pattern already used by CountingObservation.
+       - RegulatedZone and CadastralProperty: new supporting entities (targets
+         of Facility's new locatedInZone / isCadastralProperty relationships),
+         modeled as thin entities since the ontology defines no properties of
+         their own for either -- same treatment as this candidate's existing
+         ObservationPoint.
+     TrafficProperty (was PropiedadMedicionTrafico, a generalization of
+     observable properties) was deliberately NOT materialized, matching the
+     existing precedent of keeping "observableProperty" a generic Relationship
+     rather than its own entity (CountingSensor/AccessSensor already do this).
+     Quantifiable/QuantityValue/Unit (QUDT) and Instant/Interval/TemporalEntity
+     (W3C Time), referenced by the traffic branch for typed measurements and
+     time periods, are genuinely external well-known vocabularies (not defined
+     in this repository) and were not materialized as entities either --
+     consistent with how this candidate does not create entities for reused
+     external building blocks.
+     None of the new entities have real instance data available in the
+     source's examples/example.ttl (that sample is scoped entirely to social-
+     services Facility records); all 8 example.json files are synthetic,
+     built from the ontology's class/property definitions and comments, using
+     illustrative Madrid locations along the existing StreetSection example.
+
+  4) SOURCE STABILITY CAVEAT: owl:versionInfo reads "0.2.1", but the only tag
+     at that version is v0.2.1-test, whose own GitHub release notes say "no
+     additions, since this is a test release" (translated from Spanish). The
+     main branch has moved further since that tag (through commit a36364a,
+     2026-08-05) without a further version bump. This translation was made
+     against current main HEAD per explicit user decision, not a stable
+     tagged release -- re-check before promoting these candidates further.
