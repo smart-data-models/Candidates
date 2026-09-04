@@ -336,15 +336,16 @@
   {
     "slug": "edint-infraestructura",
     "title": "EDINT Infrastructure Ontology (Ontología de Infraestructura)",
-    "description": "Vocabulary for representing a municipality's public and private infrastructure facilities (educational, cultural, social, sports and health centers, on-street and off-street parking, shared-bicycle stations) together with the sensors, observations, violations, management roles and organizations involved in operating and monitoring them. Reuses SOSA/SSN (sensors and observations), GeoSPARQL (geometry), schema.org and Dublin Core.",
+    "description": "Vocabulary for representing a municipality's public and private infrastructure facilities (educational, cultural, social, sports and health centers, on-street and off-street parking, shared-bicycle stations) together with the sensors, observations, violations, management roles and organizations involved in operating and monitoring them, plus (as of this update) street sections, traffic incidences, traffic control/measuring equipment and observations, and regulated zones. Reuses SOSA/SSN (sensors and observations), GeoSPARQL (geometry), W3C Time, QUDT, schema.org and Dublin Core.",
     "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM) as technical developer",
     "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-infraestructura/tree/main",
     "license": "CC-BY-SA-4.0",
     "domains": [
       "SmartCities",
-      "UrbanInfrastructure"
+      "UrbanInfrastructure",
+      "Transportation"
     ],
-    "modelCount": 11,
+    "modelCount": 19,
     "models": [
       {
         "name": "AccessObservation",
@@ -366,6 +367,13 @@
         "description": "A Facility specialization for shared-bicycle stations (edintinf:EstacionBicicleta). Like Parking, the source ontology defines no attributes of its own beyond those inherited from Facility. Check for overlap with any existing bike-sharing SDM model before promoting this candidate.",
         "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-infraestructura/models/BikeSharingStation/schema.json",
         "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura/models/BikeSharingStation"
+      },
+      {
+        "name": "CadastralProperty",
+        "title": "Smart Data Models - EDINT Infrastructure - CadastralProperty",
+        "description": "Real estate property registered in the Cadastre (catastro:CadastralProperty). Can be a premises, dwelling, or any independent use unit within a parcel; a cadastral property may have one or more constructions associated. The source ontology defines no attributes of its own; it is the target of the Facility.isCadastralProperty relationship, added in ontology v0.2.1.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-infraestructura/models/CadastralProperty/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura/models/CadastralProperty"
       },
       {
         "name": "CountingObservation",
@@ -415,6 +423,55 @@
         "description": "A Facility specialization for on-street and off-street parking areas. The source ontology (edintinf:Parking) defines no attributes beyond those inherited from Facility; it is distinguished only by its NGSI-LD type and, typically, its infrastructureType value. NOTE: this concept is likely to overlap with the already-existing official Smart Data Models 'dataModel.Parking' subject (e.g. OffStreetParking/OnStreetParking) — check for duplication before promoting this candidate.",
         "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-infraestructura/models/Parking/schema.json",
         "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura/models/Parking"
+      },
+      {
+        "name": "PlannedIncidence",
+        "title": "Smart Data Models - EDINT Infrastructure - PlannedIncidence",
+        "description": "Planned traffic incidence, can be recurrent or not (edinttrafico:PlannedIncidence, subclass of edinttrafico:Incidence and geosparql:Feature). Carries Incidence's own base properties (incidenceInSection, incidenceType, startDate, endDate, incidenceAttachment, numDirections) plus its own (expectedEndDate, isRecurrent, recurrence). Formerly excluded as part of an external-ontology traffic branch; now natively defined as of source ontology v0.2.1.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-infraestructura/models/PlannedIncidence/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura/models/PlannedIncidence"
+      },
+      {
+        "name": "RegulatedZone",
+        "title": "Smart Data Models - EDINT Infrastructure - RegulatedZone",
+        "description": "Area to which a particular regulation or policy applies (zone:RegulatedZone), e.g. a low-emissions zone or a residents-only parking area. The source ontology defines no attributes of its own; it is the target of the Facility.locatedInZone relationship, added in ontology v0.2.1.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-infraestructura/models/RegulatedZone/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura/models/RegulatedZone"
+      },
+      {
+        "name": "StreetSection",
+        "title": "Smart Data Models - EDINT Infrastructure - StreetSection",
+        "description": "Section defined by a starting and an ending point that can belong to one or more street (edinttrafico:StreetSection, subclass of geosparql:Feature). Formerly modeled in an external ontology (ciudadesabiertas.es) and excluded from this candidate's first translation pass; now natively defined in the source repository's own trafico# sub-vocabulary as of ontology v0.2.1, so brought into scope.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-infraestructura/models/StreetSection/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura/models/StreetSection"
+      },
+      {
+        "name": "TrafficEquipment",
+        "title": "Smart Data Models - EDINT Infrastructure - TrafficEquipment",
+        "description": "A traffic equipment monitors or controls the traffic of a city, e.g. a traffic light or control equipment that is not a measuring device (edinttrafico:TrafficEquipment, subclass of geosparql:Feature). TrafficMeasuringDevice is a concrete subclass for equipment that also performs measurements; this entity covers equipment that does not. Formerly excluded as part of an external-ontology traffic branch; now natively defined as of source ontology v0.2.1.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-infraestructura/models/TrafficEquipment/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura/models/TrafficEquipment"
+      },
+      {
+        "name": "TrafficMeasuringDevice",
+        "title": "Smart Data Models - EDINT Infrastructure - TrafficMeasuringDevice",
+        "description": "Traffic measuring device, a type of traffic equipment which performs measurements, e.g. a speed radar or an Automatic Number Plate Recognition (ANPR) system (edinttrafico:TrafficMeasuringDevice, subclass of sosa:Sensor, edinttrafico:TrafficEquipment and geosparql:Feature). Combines TrafficEquipment's own properties (monitors, trafficEquipmentType, numDirections, urban) with Sensor's (observableProperty) and its own (manufacturer, inService, measurementFrequency). Formerly excluded as part of an external-ontology traffic branch; now natively defined as of source ontology v0.2.1.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-infraestructura/models/TrafficMeasuringDevice/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura/models/TrafficMeasuringDevice"
+      },
+      {
+        "name": "TrafficObservation",
+        "title": "Smart Data Models - EDINT Infrastructure - TrafficObservation",
+        "description": "Observation by a traffic measuring device or a control equipment such as speed cameras or Automatic Number Plate Recognition (ANPR) systems (edinttrafico:TrafficObservation, subclass of sosa:Observation). Follows the same SOSA Observation pattern already used by this candidate's CountingObservation/AccessObservation, plus its own 'validated' property. Formerly excluded as part of an external-ontology traffic branch; now natively defined as of source ontology v0.2.1.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-infraestructura/models/TrafficObservation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura/models/TrafficObservation"
+      },
+      {
+        "name": "UnplannedIncidence",
+        "title": "Smart Data Models - EDINT Infrastructure - UnplannedIncidence",
+        "description": "Unplanned traffic incidence in a city (edinttrafico:UnplannedIncidence, subclass of edinttrafico:Incidence and geosparql:Feature). The source ontology defines no properties of its own beyond those inherited from Incidence (incidenceInSection, incidenceType, startDate, endDate, incidenceAttachment, numDirections). Formerly excluded as part of an external-ontology traffic branch; now natively defined as of source ontology v0.2.1.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-infraestructura/models/UnplannedIncidence/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura/models/UnplannedIncidence"
       },
       {
         "name": "Violation",
