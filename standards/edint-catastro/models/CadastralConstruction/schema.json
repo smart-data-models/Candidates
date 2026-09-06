@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-catastro/models/CadastralConstruction/schema.json",
+  "modelTags": "EDINT,UrbanInfrastructure",
+  "title": "Smart Data Models - EDINT Catastro - CadastralConstruction",
+  "description": "Building or construction registered on a cadastral property: area, use, construction characteristics, and renovations (edintcat:CadastralConstruction, subclass of geosparql:Feature). Located on exactly one cadastral property.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "CadastralConstruction"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'CadastralConstruction'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "onCadastralProperty": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The CadastralProperty this construction is located on (edintcat:onCadastralProperty)."
+    },
+    "hasUse": {
+      "type": "string",
+      "enum": [
+        "Residential",
+        "Industrial",
+        "Offices",
+        "Commercial",
+        "Sports",
+        "Entertainment",
+        "LeisureHospitality",
+        "Healthcare",
+        "Cultural",
+        "Religious",
+        "Educational",
+        "Singular",
+        "StorageParking",
+        "GreenSpace",
+        "Agricultural"
+      ],
+      "description": "Property. Primary use of the construction, from the Uso controlled vocabulary (edintcat:hasUse)."
+    },
+    "hasRenovation": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Renovation event(s) this construction has undergone (edintcat:hasRenovation)."
+    },
+    "constructionYear": {
+      "type": "string",
+      "description": "Property. Year the building was constructed (edintcat:constructionYear), xsd:gYear, e.g. '2012'."
+    },
+    "staircase": {
+      "type": "string",
+      "description": "Property. Staircase identifier for the construction unit within a building (edintcat:staircase)."
+    },
+    "floor": {
+      "type": "string",
+      "description": "Property. Floor level identifier, can include basement levels like '-1', '-2' (edintcat:floor)."
+    },
+    "door": {
+      "type": "string",
+      "description": "Property. Door or unit identifier within a floor and staircase (edintcat:door)."
+    },
+    "supportPercentage": {
+      "type": "number",
+      "description": "Property. Percentage of the construction area considered support area / common elements (edintcat:supportPercentage)."
+    },
+    "hasGeometry": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Reference to the construction's geometry, typically carrying its area (geosparql:hasGeometry); see CadastralParcel.hasGeometry for the modeling rationale."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

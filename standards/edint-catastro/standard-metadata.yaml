@@ -1,0 +1,74 @@
+title: "EDINT Spanish Cadastre Ontology (Ontología del Catastro Inmobiliario Español)"
+publisher: "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer"
+sourceUrl: "https://github.com/EDINT-Ontologia/edint-ontologia-catastro/tree/main"
+sourceOntologyIRI: "http://vocab.linkeddata.es/datosabiertos/def/catastro/"
+sourceOntologyVersion: "0.1.0"
+domains:
+  - SmartCities
+  - UrbanInfrastructure
+description: >
+  Vocabulary for the Spanish Real Estate Cadastre (Catastro Inmobiliario):
+  cadastral parcels, properties, constructions, their references, and
+  renovation events. Scope explicitly excludes ownership, valuation,
+  transmission data and administrative processes (per the source's own
+  stated scope).
+license: "CC-BY-4.0"
+licenseNote: >
+  Same as edint-censo-vehiculos, edint-aparcamiento, edint-fotovoltaica and
+  edint-organizaciones, this source ontology is CC-BY-4.0 -- the same
+  license Smart Data Models conventionally uses.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-09-06 from documentation/ontology.ttl (version 0.1.0) at
+  https://github.com/EDINT-Ontologia/edint-ontologia-catastro.
+
+  SIX ENTITIES MODELED: CadastralParcel, CadastralProperty,
+  CadastralConstruction, ParcelReference, PropertyReference, Renovation.
+
+  KNOWN TYPE COLLISION, NOT RESOLVED (same pattern as RegulatedZone/Vehicle/
+  Parking/Organization): edint-infraestructura already has its own thin
+  "CadastralProperty" entity, added in its v0.2.1 update as the target of
+  Facility.isCadastralProperty (id/type/boilerplate only, explicitly noted
+  there as a stub). This candidate's CadastralProperty is the real,
+  authoritative, much fuller definition (property reference, parcel
+  relationship, constructions, class, use, address, participation,
+  horizontal division, geometry). Same reconciliation need as previously
+  flagged, left unresolved here for the same reasons.
+
+  hasGeometry MODELED AS AN OPAQUE RELATIONSHIP, NOT INLINE GeoJSON: the
+  source's own real example (a genuine Spanish Sede Catastro record,
+  parcel 8942103VK2793) represents geometry indirectly -- a separate
+  geo:Geometry resource carrying WKT and a QUDT-typed area measure -- for
+  the parcel, the property, and each of its 98 individual constructions.
+  Same treatment already used for edint-zona-regulatoria's
+  RegulatedZone.hasGeometry: an opaque Relationship rather than an inlined
+  GeoProperty, since these are areas/polygons (not points) and the source
+  itself avoids embedding coordinates directly.
+
+  parcelReference'S DOMAIN VS. REAL USAGE MISMATCH, RESOLVED PRAGMATICALLY:
+  the source ontology declares parcelReference's rdfs:domain as
+  ParcelReference only, but its own real example data also uses
+  catastro:parcelReference directly on a PropertyReference resource
+  (alongside catastro:propertyReference) -- since a full property reference
+  is composed of the parcel reference plus a property-specific suffix.
+  Included on both ParcelReference and PropertyReference here, following the
+  real, demonstrated usage rather than the narrower domain declaration.
+
+  hasClass/hasUse REFERENCE EXTERNAL SKOS SCHEMES THAT ARE ACTUALLY PUBLISHED
+  IN THIS REPO'S OWN kos/ DIRECTORY (unlike some siblings' KOS-naming
+  mismatches): Clase (7 concepts: Urban, Rural, plus 4 BICES/"special
+  characteristics" subtypes) and Uso (14 concepts: Residential, Industrial,
+  Commercial, Educational, ...) -- both small enough to enumerate directly
+  as JSON Schema enums, matching this candidate family's established
+  convention.
+
+  REAL EXAMPLE DATA USED: grounded in examples/example1/
+  cadastral-parcel-complete-example.ttl, a genuine record for Spanish
+  cadastral parcel 8942103VK2793 (sourced from a real Sede Catastro PDF
+  bundled in the same example folder) -- 98 individual constructions in the
+  full record; only 1-2 representative constructions are used per example
+  here rather than reproducing all 98. Renovation has no real instance in
+  this example (the source record doesn't happen to include one); its
+  example.json is synthetic.
