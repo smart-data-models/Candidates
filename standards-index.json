@@ -334,6 +334,64 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/cityjson-v2"
   },
   {
+    "slug": "edint-catastro",
+    "title": "EDINT Spanish Cadastre Ontology (Ontología del Catastro Inmobiliario Español)",
+    "description": "Vocabulary for the Spanish Real Estate Cadastre (Catastro Inmobiliario): cadastral parcels, properties, constructions, their references, and renovation events. Scope explicitly excludes ownership, valuation, transmission data and administrative processes (per the source's own stated scope).",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-catastro/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "UrbanInfrastructure"
+    ],
+    "modelCount": 6,
+    "models": [
+      {
+        "name": "CadastralConstruction",
+        "title": "Smart Data Models - EDINT Catastro - CadastralConstruction",
+        "description": "Building or construction registered on a cadastral property: area, use, construction characteristics, and renovations (edintcat:CadastralConstruction, subclass of geosparql:Feature). Located on exactly one cadastral property.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-catastro/models/CadastralConstruction/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-catastro/models/CadastralConstruction"
+      },
+      {
+        "name": "CadastralParcel",
+        "title": "Smart Data Models - EDINT Catastro - CadastralParcel",
+        "description": "Basic unit of territorial division in the Spanish Cadastre: a plot of land delimited geographically, which may contain one or more cadastral properties (edintcat:CadastralParcel, subclass of geosparql:Feature).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-catastro/models/CadastralParcel/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-catastro/models/CadastralParcel"
+      },
+      {
+        "name": "CadastralProperty",
+        "title": "Smart Data Models - EDINT Catastro - CadastralProperty",
+        "description": "Real estate property registered in the Cadastre: a premises, dwelling, or any independent use unit within a parcel (edintcat:CadastralProperty, subclass of geosparql:Feature). A cadastral property may have one or more constructions associated.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-catastro/models/CadastralProperty/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-catastro/models/CadastralProperty"
+      },
+      {
+        "name": "ParcelReference",
+        "title": "Smart Data Models - EDINT Catastro - ParcelReference",
+        "description": "Reference identifying a cadastral parcel: a 7-character alphanumeric code (edintcat:ParcelReference, subclass of the abstract edintcat:CadastralReference).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-catastro/models/ParcelReference/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-catastro/models/ParcelReference"
+      },
+      {
+        "name": "PropertyReference",
+        "title": "Smart Data Models - EDINT Catastro - PropertyReference",
+        "description": "Reference identifying a cadastral property: the parcel reference plus the property reference with check digit, e.g. TF8006N0001HZ (edintcat:PropertyReference, subclass of the abstract edintcat:CadastralReference).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-catastro/models/PropertyReference/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-catastro/models/PropertyReference"
+      },
+      {
+        "name": "Renovation",
+        "title": "Smart Data Models - EDINT Catastro - Renovation",
+        "description": "Event or process of renovating a construction: when it occurred and what type of renovation was performed (edintcat:Renovation).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-catastro/models/Renovation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-catastro/models/Renovation"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-catastro"
+  },
+  {
     "slug": "edint-infraestructura",
     "title": "EDINT Infrastructure Ontology (Ontología de Infraestructura)",
     "description": "Vocabulary for representing a municipality's public and private infrastructure facilities (educational, cultural, social, sports and health centers, on-street and off-street parking, shared-bicycle stations) together with the sensors, observations, violations, management roles and organizations involved in operating and monitoring them, plus (as of this update) street sections, traffic incidences, traffic control/measuring equipment and observations, and regulated zones. Reuses SOSA/SSN (sensors and observations), GeoSPARQL (geometry), W3C Time, QUDT, schema.org and Dublin Core.",
