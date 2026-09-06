@@ -334,6 +334,107 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/cityjson-v2"
   },
   {
+    "slug": "edint-alumbrado-publico",
+    "title": "EDINT Public Lighting Ontology (Ontología de Alumbrado Público)",
+    "description": "Vocabulary for public street lighting inventory in the context of FEMP (Spanish Federation of Municipalities and Provinces): modular streetlight composition (post, luminaire, lamp, junction box), electrical infrastructure (control center), energy consumption as a SOSA observation with QUDT results, luminaire model catalog, manufacturer, photometric and light-pollution parameters, and conservation status.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-alumbrado-publico/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "UrbanInfrastructure",
+      "Energy"
+    ],
+    "modelCount": 12,
+    "models": [
+      {
+        "name": "Brazo",
+        "title": "Smart Data Models - EDINT Public Lighting - Brazo",
+        "description": "Arm of the post that supports a luminaire. A post can have multiple arms, each with its own height (edintalu:Brazo).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-alumbrado-publico/models/Brazo/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-alumbrado-publico/models/Brazo"
+      },
+      {
+        "name": "Caja",
+        "title": "Smart Data Models - EDINT Public Lighting - Caja",
+        "description": "Junction box or access point for the streetlight's electrical cables. Optional -- not all streetlights have an accessible box (edintalu:Caja).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-alumbrado-publico/models/Caja/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-alumbrado-publico/models/Caja"
+      },
+      {
+        "name": "CentroDeMando",
+        "title": "Smart Data Models - EDINT Public Lighting - CentroDeMando",
+        "description": "Electrical panel or control center on which one or more streetlights depend (edintalu:CentroDeMando, subclass of edint-suministro's UtilitySupplyPoint) -- the point where electricity reaches the lighting installation.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-alumbrado-publico/models/CentroDeMando/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-alumbrado-publico/models/CentroDeMando"
+      },
+      {
+        "name": "ConsumoEnergetico",
+        "title": "Smart Data Models - EDINT Public Lighting - ConsumoEnergetico",
+        "description": "Observation of electricity consumption in a specific tariff period (edintalu:ConsumoEnergetico, subclass of edint-suministro's UtilityConsumption, itself a sosa:Observation). Each instance represents ONE tariff period; the total for a fiscal year is obtained by summing instances of the same period.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-alumbrado-publico/models/ConsumoEnergetico/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-alumbrado-publico/models/ConsumoEnergetico"
+      },
+      {
+        "name": "Fabricante",
+        "title": "Smart Data Models - EDINT Public Lighting - Fabricante",
+        "description": "Entity that manufactures street lighting components: posts, luminaires, lamps, boxes or models (edintalu:Fabricante). NOTE: no other class in this ontology version declares a relationship pointing at Fabricante -- it is not referenced by Poste, Luminaria, Lampara, Caja or ModeloLuminaria despite the ontology's own prose describing it as linked to all of them. See standard-metadata.yaml.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-alumbrado-publico/models/Fabricante/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-alumbrado-publico/models/Fabricante"
+      },
+      {
+        "name": "Farola",
+        "title": "Smart Data Models - EDINT Public Lighting - Farola",
+        "description": "A complete point of light, composed of a post, one or more luminaires (which in turn contain lamps) and optionally a junction box (edintalu:Farola, subclass of edint-infraestructura's UrbanElement).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-alumbrado-publico/models/Farola/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-alumbrado-publico/models/Farola"
+      },
+      {
+        "name": "Lampara",
+        "title": "Smart Data Models - EDINT Public Lighting - Lampara",
+        "description": "Light source: bulb, LED module or converter of electrical energy into light. Each luminaire houses exactly one lamp (edintalu:Lampara). Includes photometric properties and rated life.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-alumbrado-publico/models/Lampara/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-alumbrado-publico/models/Lampara"
+      },
+      {
+        "name": "Luminaria",
+        "title": "Smart Data Models - EDINT Public Lighting - Luminaria",
+        "description": "Lighting apparatus that houses, directs and filters the light from the lamp. A streetlight can have multiple luminaires, e.g. LED+DISCHARGE (edintalu:Luminaria).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-alumbrado-publico/models/Luminaria/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-alumbrado-publico/models/Luminaria"
+      },
+      {
+        "name": "ModeloLuminaria",
+        "title": "Smart Data Models - EDINT Public Lighting - ModeloLuminaria",
+        "description": "Entry in the luminaire model catalog (edintalu:ModeloLuminaria). NOTE: the source ontology's own prose says this 'allows linking manufacturer, nominal power, technology and photometric specifications', but no such properties are actually declared for this class in this ontology version -- only a generic 'name' applies. See standard-metadata.yaml.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-alumbrado-publico/models/ModeloLuminaria/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-alumbrado-publico/models/ModeloLuminaria"
+      },
+      {
+        "name": "Poste",
+        "title": "Smart Data Models - EDINT Public Lighting - Poste",
+        "description": "Physical support of the streetlight: column, bracket, wall, short post, etc. (edintalu:Poste). The specific type is indicated via tipoSoporte.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-alumbrado-publico/models/Poste/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-alumbrado-publico/models/Poste"
+      },
+      {
+        "name": "ReductorFlujo",
+        "title": "Smart Data Models - EDINT Public Lighting - ReductorFlujo",
+        "description": "Energy saving system that reduces luminous flux, located either in the luminaire (lamp regulator) or at the start of the installation (head-end regulator) (edintalu:ReductorFlujo). NOTE: like Fabricante, no other class declares a relationship pointing at ReductorFlujo in this ontology version -- see standard-metadata.yaml.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-alumbrado-publico/models/ReductorFlujo/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-alumbrado-publico/models/ReductorFlujo"
+      },
+      {
+        "name": "SuministroElectrico",
+        "title": "Smart Data Models - EDINT Public Lighting - SuministroElectrico",
+        "description": "Electricity supply contract associated with a control center, including tariff, voltage, and consumption by tariff periods (edintalu:SuministroElectrico, subclass of edint-suministro's UtilityContract).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-alumbrado-publico/models/SuministroElectrico/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-alumbrado-publico/models/SuministroElectrico"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-alumbrado-publico"
+  },
+  {
     "slug": "edint-infraestructura",
     "title": "EDINT Infrastructure Ontology (Ontología de Infraestructura)",
     "description": "Vocabulary for representing a municipality's public and private infrastructure facilities (educational, cultural, social, sports and health centers, on-street and off-street parking, shared-bicycle stations) together with the sensors, observations, violations, management roles and organizations involved in operating and monitoring them, plus (as of this update) street sections, traffic incidences, traffic control/measuring equipment and observations, and regulated zones. Reuses SOSA/SSN (sensors and observations), GeoSPARQL (geometry), W3C Time, QUDT, schema.org and Dublin Core.",

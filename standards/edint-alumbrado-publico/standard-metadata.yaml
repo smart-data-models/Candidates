@@ -1,0 +1,85 @@
+title: "EDINT Public Lighting Ontology (Ontología de Alumbrado Público)"
+publisher: "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer"
+sourceUrl: "https://github.com/EDINT-Ontologia/edint-ontologia-alumbrado-publico/tree/main"
+sourceOntologyIRI: "http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/alumbrado-publico#"
+sourceOntologyVersion: "0.1.0"
+domains:
+  - SmartCities
+  - UrbanInfrastructure
+  - Energy
+description: >
+  Vocabulary for public street lighting inventory in the context of FEMP
+  (Spanish Federation of Municipalities and Provinces): modular streetlight
+  composition (post, luminaire, lamp, junction box), electrical
+  infrastructure (control center), energy consumption as a SOSA
+  observation with QUDT results, luminaire model catalog, manufacturer,
+  photometric and light-pollution parameters, and conservation status.
+license: "CC-BY-4.0"
+licenseNote: >
+  Same as its sibling EDINT ontologies (edint-censo-vehiculos,
+  edint-aparcamiento, edint-fotovoltaica, edint-organizaciones,
+  edint-catastro, edint-medio-ambiente, edint-contaminacion-acustica,
+  edint-suministro, edint-trafico, edint-vehiculos-compartidos), this
+  source ontology is CC-BY-4.0.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-09-06 from documentation/ontology.ttl (version 0.1.0;
+  owl:priorVersion points at an earlier opencitydata-hosted revision) at
+  https://github.com/EDINT-Ontologia/edint-ontologia-alumbrado-publico.
+
+  TWELVE ENTITIES MODELED: Farola, Poste, Brazo, Caja, Luminaria, Lampara,
+  ModeloLuminaria, Fabricante, ReductorFlujo, CentroDeMando (subclass of
+  edint-suministro's UtilitySupplyPoint), SuministroElectrico (subclass of
+  UtilityContract), ConsumoEnergetico (subclass of UtilityConsumption).
+  Reuses three ontologies already translated in this candidate family:
+  edint-infraestructura (Farola subClassOf UrbanElement) and edint-suministro
+  (the three CentroDeMando/SuministroElectrico/ConsumoEnergetico subclasses).
+
+  ModeloLuminaria AND Fabricante HAVE NO SUBSTANTIVE PROPERTIES DESPITE THE
+  ONTOLOGY'S OWN PROSE PROMISING THEM: the source's summary description and
+  ModeloLuminaria's own comment both describe linking manufacturer, nominal
+  power, technology and photometric specifications through these two
+  classes -- but no such properties are actually declared for either class
+  in this ontology version, only the generic 'name' (edintalu:nombre, which
+  applies to CentroDeMando/Fabricante/ModeloLuminaria per its own comment).
+  Modeled as thin entities here rather than inventing the missing links;
+  flagged for the EDINT maintainers.
+
+  Fabricante AND ReductorFlujo ARE ALSO ORPHANED: no other class in this
+  ontology version declares a relationship pointing at either of them (no
+  "fabricante" property exists anywhere despite the class being described
+  as linked from Poste/Luminaria/Lampara/Caja/ModeloLuminaria; no
+  "tieneReductor"-style property exists for ReductorFlujo either). Both are
+  still modeled here, for completeness, using only their own declared
+  properties.
+
+  QUDT QuantityValue PROPERTIES SIMPLIFIED TO PLAIN NUMBERS: the source
+  expresses several measurements (flujoHemisfericoSuperior, potenciaNominal,
+  flujoLuminoso, intensidadLuminica, temperaturaColor, vidaUtilL70/L80,
+  tension, kwhRenovables) as qudt:QuantityValue objects (numericValue +
+  hasUnit), each with one clearly implied, fixed unit stated in the
+  ontology's own comments (percent, W, lumens, candelas, kelvin, hours,
+  volts, kWh respectively). Modeled here as plain number properties, with
+  the implied unit noted in each description, rather than introducing a
+  QUDT Unit Relationship pattern used nowhere else in this candidate family
+  -- unlike edint-medio-ambiente's EnvironmentalObservation.result, these
+  don't vary in unit per instance, so a separate unitCode field would be
+  redundant.
+
+  ENUM VALUES KEPT AS THE SOURCE'S OWN OFFICIAL REGULATORY CODES, NOT
+  TRANSLATED TO ENGLISH GLOSSES: unlike this candidate family's usual
+  PascalCase-English-label convention, tipoAlumbrado/tipoSoporte/tipoLampara/
+  etc. use the source's own lowercase-hyphenated codes verbatim (e.g. "me3a",
+  "ce2", "columna-triconica") since these are official UNE-EN 13201 and
+  REEAE (RD 1890/2008) codes where exact notation matters for real-world
+  compliance use -- translating them would reduce practical value for
+  professionals already familiar with these standards.
+
+  REAL EXAMPLE DATA USED: Farola/Poste/Luminaria/Lampara/ModeloLuminaria
+  examples are grounded in examples/madrid/farola-led-calle-alcala.ttl (a
+  real Madrid Ayuntamiento "Unidades Luminosas" open-data record). The
+  remaining entities (Brazo, Caja, Fabricante, ReductorFlujo, CentroDeMando,
+  SuministroElectrico, ConsumoEnergetico) are synthetic, since that specific
+  real example doesn't happen to include them.
