@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-fotovoltaica/models/PhotovoltaicSystem/schema.json",
+  "modelTags": "EDINT,UrbanInfrastructure,Energy",
+  "title": "Smart Data Models - EDINT Photovoltaic - PhotovoltaicSystem",
+  "description": "A photovoltaic (PV) system that converts sunlight into electricity, installed on a municipal infrastructure element (edintfotov:PhotovoltaicSystem, subclass of geosparql:Feature and sosa:FeatureOfInterest). Ranges from residential rooftops to utility-scale plants.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "PhotovoltaicSystem"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'PhotovoltaicSystem'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. Point providing the geographical position of the entity.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "number"
+          },
+          "description": "Property. Coordinates of the Point, in WGS84 [longitude, latitude] order."
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    },
+    "hasStatus": {
+      "type": "string",
+      "enum": [
+        "OutOfService",
+        "Operative",
+        "Partial"
+      ],
+      "description": "Property. Current operational status of the system, from the PhotovoltaicSystemStatus controlled vocabulary (edintfotov:hasStatus)."
+    },
+    "hasUsageType": {
+      "type": "string",
+      "enum": [
+        "Grid",
+        "StandAlone",
+        "Hybrid"
+      ],
+      "description": "Property. How the system connects to the utility grid -- Grid-Connected (net metering/selling excess power, no batteries), Stand-Alone (battery storage, no grid), or Hybrid (grid connection plus battery/other storage) -- from the PhotovoltaicSystemUsageType controlled vocabulary (edintfotov:hasUsageType)."
+    },
+    "installationOrganization": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The Organization that installed the system (edintfotov:installationOrganization)."
+    },
+    "inServiceDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. The date the system was put into service (edintfotov:inServiceDate). xsd:date, no time component."
+    },
+    "installedPhotovoltaicPower": {
+      "type": "number",
+      "description": "Property. Total rated capacity of the mounted and connected solar panels, in kW or MW (edintfotov:installedPhotovoltaicPower)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
