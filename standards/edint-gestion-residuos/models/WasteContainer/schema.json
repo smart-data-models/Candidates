@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-gestion-residuos/models/WasteContainer/schema.json",
+  "modelTags": "EDINT,UrbanInfrastructure,Environment",
+  "title": "Smart Data Models - EDINT Waste Management - WasteContainer",
+  "description": "A street waste container, e.g. for glass, plastics/metals/cartons, or general waste (edintwaste:WasteContainer, subclass of edintwaste:WasteFacility, edint-infraestructura's Facility).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "WasteContainer"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'WasteContainer'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. Point providing the geographical position of the entity.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "number"
+          },
+          "description": "Property. Coordinates of the Point, in WGS84 [longitude, latitude] order."
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    },
+    "address": {
+      "type": "object",
+      "description": "Property. Model:'https://schema.org/address'. The mailing address (reusing esdir:DireccionPostal). Inherited from WasteFacility.",
+      "properties": {
+        "streetAddress": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/streetAddress'."
+        },
+        "addressLocality": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/addressLocality'."
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/postalCode'."
+        },
+        "addressRegion": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/addressRegion'."
+        },
+        "addressCountry": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/addressCountry'."
+        }
+      }
+    },
+    "belongsTo": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Territorial unit(s) (Barrio, Distrito or Municipio) this facility belongs to (edintwaste:belongsTo). Modeled as an array since the source's own real example data shows a WasteContainer belonging to both a Barrio and a Distrito simultaneously. Inherited from WasteFacility."
+    },
+    "acceptsWasteType": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "ResiduosVoluminosos",
+          "ComponentesPeligrososRetiradosDeEquiposDesechados",
+          "ResiduosNoEspecificadosEnOtraCategoria",
+          "PlasticosMetalesYBriks",
+          "Vidrio",
+          "Restos"
+        ]
+      },
+      "description": "Property. Waste type(s) accepted by this container, from the WasteType controlled vocabulary (edintwaste:acceptsWasteType)."
+    },
+    "model": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/model'. The container's model, e.g. 'E 3100 CS'."
+    },
+    "containerBatch": {
+      "type": "integer",
+      "description": "Property. Batch number of the container (edintwaste:containerBatch)."
+    },
+    "containerLocationCode": {
+      "type": "string",
+      "description": "Property. Internal code identifying the container's location (edintwaste:containerLocationCode)."
+    },
+    "containerType": {
+      "type": "string",
+      "description": "Property. Type of container (edintwaste:containerType). The source ontology does not constrain this to a controlled vocabulary."
+    },
+    "loadingType": {
+      "type": "string",
+      "description": "Property. How the container is loaded, e.g. 'Carga superior' (top-loading) (edintwaste:loadingType). The source ontology does not constrain this to a controlled vocabulary."
+    },
+    "order": {
+      "type": "integer",
+      "description": "Property. Ordinal/reference number of the container (edintwaste:order)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

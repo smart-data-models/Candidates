@@ -334,6 +334,51 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/cityjson-v2"
   },
   {
+    "slug": "edint-gestion-residuos",
+    "title": "EDINT Waste Management Ontology (Ontología de Gestión de Residuos)",
+    "description": "Vocabulary for municipal waste management infrastructure: mobile and permanent collection points (\"puntos limpios\"), street waste containers, and authorized waste management/treatment facilities.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-gestion-residuos/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "UrbanInfrastructure",
+      "Environment"
+    ],
+    "modelCount": 4,
+    "models": [
+      {
+        "name": "MobileCollectionPoint",
+        "title": "Smart Data Models - EDINT Waste Management - MobileCollectionPoint",
+        "description": "A temporary, mobile waste collection point, e.g. a scheduled collection van visiting a street on a set day/time (edintwaste:MobileCollectionPoint, subclass of edintwaste:CollectionPoint, edintwaste:WasteFacility, edint-infraestructura's Facility). Bare CollectionPoint/WasteFacility are not materialized as their own entities, matching this candidate family's precedent for abstract bases.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-gestion-residuos/models/MobileCollectionPoint/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-gestion-residuos/models/MobileCollectionPoint"
+      },
+      {
+        "name": "PermanentCollectionPoint",
+        "title": "Smart Data Models - EDINT Waste Management - PermanentCollectionPoint",
+        "description": "A permanent, fixed waste collection point, e.g. a 'punto limpio' civic amenity site (edintwaste:PermanentCollectionPoint, subclass of edintwaste:CollectionPoint, edintwaste:WasteFacility, edint-infraestructura's Facility). No properties of its own beyond those inherited from CollectionPoint.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-gestion-residuos/models/PermanentCollectionPoint/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-gestion-residuos/models/PermanentCollectionPoint"
+      },
+      {
+        "name": "WasteContainer",
+        "title": "Smart Data Models - EDINT Waste Management - WasteContainer",
+        "description": "A street waste container, e.g. for glass, plastics/metals/cartons, or general waste (edintwaste:WasteContainer, subclass of edintwaste:WasteFacility, edint-infraestructura's Facility).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-gestion-residuos/models/WasteContainer/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-gestion-residuos/models/WasteContainer"
+      },
+      {
+        "name": "WasteManagementFacility",
+        "title": "Smart Data Models - EDINT Waste Management - WasteManagementFacility",
+        "description": "A facility authorized to manage/treat waste, e.g. a classification or treatment plant (edintwaste:WasteManagementFacility, subclass of edintwaste:WasteFacility, edint-infraestructura's Facility).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-gestion-residuos/models/WasteManagementFacility/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-gestion-residuos/models/WasteManagementFacility"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-gestion-residuos"
+  },
+  {
     "slug": "edint-infraestructura",
     "title": "EDINT Infrastructure Ontology (Ontología de Infraestructura)",
     "description": "Vocabulary for representing a municipality's public and private infrastructure facilities (educational, cultural, social, sports and health centers, on-street and off-street parking, shared-bicycle stations) together with the sensors, observations, violations, management roles and organizations involved in operating and monitoring them, plus (as of this update) street sections, traffic incidences, traffic control/measuring equipment and observations, and regulated zones. Reuses SOSA/SSN (sensors and observations), GeoSPARQL (geometry), W3C Time, QUDT, schema.org and Dublin Core.",

@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-gestion-residuos/models/PermanentCollectionPoint/schema.json",
+  "modelTags": "EDINT,UrbanInfrastructure,Environment",
+  "title": "Smart Data Models - EDINT Waste Management - PermanentCollectionPoint",
+  "description": "A permanent, fixed waste collection point, e.g. a 'punto limpio' civic amenity site (edintwaste:PermanentCollectionPoint, subclass of edintwaste:CollectionPoint, edintwaste:WasteFacility, edint-infraestructura's Facility). No properties of its own beyond those inherited from CollectionPoint.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "PermanentCollectionPoint"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'PermanentCollectionPoint'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. Point providing the geographical position of the entity.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "number"
+          },
+          "description": "Property. Coordinates of the Point, in WGS84 [longitude, latitude] order."
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    },
+    "address": {
+      "type": "object",
+      "description": "Property. Model:'https://schema.org/address'. The mailing address (reusing esdir:DireccionPostal). Inherited from WasteFacility.",
+      "properties": {
+        "streetAddress": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/streetAddress'."
+        },
+        "addressLocality": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/addressLocality'."
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/postalCode'."
+        },
+        "addressRegion": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/addressRegion'."
+        },
+        "addressCountry": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/addressCountry'."
+        }
+      }
+    },
+    "belongsTo": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Territorial unit(s) (Barrio, Distrito or Municipio) this facility belongs to (edintwaste:belongsTo). Modeled as an array since the source's own real example data shows a WasteContainer belonging to both a Barrio and a Distrito simultaneously. Inherited from WasteFacility."
+    },
+    "openingHours": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/openingHours'. Inherited from CollectionPoint."
+    },
+    "contactPoint": {
+      "type": "object",
+      "description": "Property. Model:'https://schema.org/ContactPoint'. Contact point for this facility.",
+      "properties": {
+        "telephone": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/telephone'."
+        },
+        "faxNumber": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/faxNumber'."
+        }
+      }
+    },
+    "acceptsWasteType": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "ResiduosVoluminosos",
+          "ComponentesPeligrososRetiradosDeEquiposDesechados",
+          "ResiduosNoEspecificadosEnOtraCategoria",
+          "PlasticosMetalesYBriks",
+          "Vidrio",
+          "Restos"
+        ]
+      },
+      "description": "Property. Waste type(s) accepted at this point, from the WasteType controlled vocabulary (edintwaste:acceptsWasteType). Inherited from CollectionPoint."
+    },
+    "isPubliclyOwned": {
+      "type": "boolean",
+      "description": "Property. Whether the point is publicly owned (edintwaste:isPubliclyOwned). Inherited from CollectionPoint."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
