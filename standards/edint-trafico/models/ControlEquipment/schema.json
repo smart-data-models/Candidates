@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-trafico/models/ControlEquipment/schema.json",
+  "modelTags": "EDINT,Transportation",
+  "title": "Smart Data Models - EDINT Traffic - ControlEquipment",
+  "description": "Equipment that monitors or controls properties of a specific vehicle, such as its speed or access to certain city areas -- e.g. a traffic light or speed/access control camera (edinttrafico:ControlEquipment, subclass of edinttrafico:TrafficEquipment). This is a NEW concrete subclass introduced in this standalone ontology (v0.1.1) that did not exist when edint-infraestructura's own v0.2.1 update bundled an earlier copy of this pattern -- that earlier copy materialized bare 'TrafficEquipment' directly for this same purpose. See standard-metadata.yaml.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ControlEquipment"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ControlEquipment'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. Point providing the geographical position of the entity.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "number"
+          },
+          "description": "Property. Coordinates of the Point, in WGS84 [longitude, latitude] order."
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    },
+    "monitors": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The StreetSection(s) this equipment monitors (edinttrafico:monitors)."
+    },
+    "trafficEquipmentType": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Type of traffic equipment. The source ontology does not publish a controlled vocabulary for this yet; kept as a generic Relationship."
+    },
+    "numDirections": {
+      "type": "integer",
+      "description": "Property. Number of directions of traffic (edinttrafico:numDirections)."
+    },
+    "numLanes": {
+      "type": "integer",
+      "description": "Property. Number of lanes of traffic (edinttrafico:numLanes)."
+    },
+    "urban": {
+      "type": "boolean",
+      "description": "Property. Whether the equipment is in an urban setting or not (edinttrafico:urban)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
