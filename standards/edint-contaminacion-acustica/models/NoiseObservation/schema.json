@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-contaminacion-acustica/models/NoiseObservation/schema.json",
+  "modelTags": "EDINT,Environment",
+  "title": "Smart Data Models - EDINT Noise Pollution - NoiseObservation",
+  "description": "An observation of a noise property made by a noise sensor (edintacus:NoiseObservation, subclass of edint-medio-ambiente's EnvironmentalObservation). Small domain extension adding acoustic-measurement-specific properties on top of the base EnvironmentalObservation pattern.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["NoiseObservation"],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'NoiseObservation'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {"type": "string", "format": "uri"},
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "identifier": {
+      "type": "string",
+      "description": "Property. A human-readable code shared by all values calculated for the same measurement session (dct:identifier)."
+    },
+    "madeBySensor": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The EnvironmentalSensor (noise sensor) that made this observation (sosa:madeBySensor). Inherited from EnvironmentalObservation."
+    },
+    "featureOfInterest": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The environmental medium observed, e.g. the acoustic environment (sosa:hasFeatureOfInterest). Inherited from EnvironmentalObservation."
+    },
+    "result": {
+      "type": "number",
+      "description": "Property. The simple value of the observation, typically a sound pressure level (sosa:hasSimpleResult). Inherited from EnvironmentalObservation."
+    },
+    "unitCode": {
+      "type": "string",
+      "description": "Property. The unit the result is expressed in, e.g. 'DeciB'. Inherited from EnvironmentalObservation."
+    },
+    "resultTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Instant when the observation result was generated (sosa:resultTime). Inherited from EnvironmentalObservation."
+    },
+    "phenomenonTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Instant or interval when the observed situation occurred (sosa:phenomenonTime). Inherited from EnvironmentalObservation."
+    },
+    "noiseReferenceInterval": {
+      "type": "string",
+      "enum": ["EquivalentLevel", "Day_evening_night", "Day", "Evening", "Night", "PeakLevel"],
+      "description": "Property. The measurement period this noise observation refers to (edintacus:noiseReferenceInterval)."
+    },
+    "noisePonderation": {
+      "type": "string",
+      "enum": ["A", "C"],
+      "description": "Property. The frequency weighting applied to the noise measurement, per ISO 1996 (edintacus:noisePonderation)."
+    },
+    "noiseEmitterPredominantType": {
+      "type": "string",
+      "enum": ["motorvehicle", "train", "aircraft", "transportationindustry", "railwayindustry", "airportinfrastructure", "machineryandequipment", "constructionsite", "industrialactivity", "commercialactivity", "sportandleisureactivity", "portinfrastructure"],
+      "description": "Property. The predominant type of noise emitter for this observation (edintacus:noiseEmitterPredominantType)."
+    },
+    "noiseRateType": {
+      "type": "string",
+      "enum": ["Max", "Min", "P01", "P10", "P50", "P90", "P99"],
+      "description": "Property. The type of level statistic for the noise pressure level -- maximum, minimum, or a percentile (P01/P10/P50/P90/P99), from the source's own numeric concept notations '01'/'10'/'50'/'90'/'99' (edintacus:noiseRateType)."
+    },
+    "noiseTimeConstantType": {
+      "type": "string",
+      "enum": ["Slow", "Fast", "Impulse"],
+      "description": "Property. The time constant used for the noise measurement, per IEC 61672 (edintacus:noiseTimeConstantType)."
+    }
+  },
+  "required": ["id", "type"]
+}
