@@ -1,0 +1,247 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-alumbrado-publico/models/Farola/schema.json",
+  "modelTags": "EDINT,UrbanInfrastructure,Energy",
+  "title": "Smart Data Models - EDINT Public Lighting - Farola",
+  "description": "A complete point of light, composed of a post, one or more luminaires (which in turn contain lamps) and optionally a junction box (edintalu:Farola, subclass of edint-infraestructura's UrbanElement).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Farola"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Farola'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. Point providing the geographical position of the entity.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "number"
+          },
+          "description": "Property. Coordinates of the Point, in WGS84 [longitude, latitude] order."
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    },
+    "address": {
+      "type": "object",
+      "description": "Property. Model:'https://schema.org/address'. The mailing address (edintalu:direccion, reusing esdir:DireccionPostal).",
+      "properties": {
+        "streetAddress": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/streetAddress'."
+        },
+        "addressLocality": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/addressLocality'."
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/postalCode'."
+        },
+        "addressRegion": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/addressRegion'."
+        },
+        "addressCountry": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/addressCountry'."
+        }
+      }
+    },
+    "infrastructureType": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Reference to a concept of edint-infraestructura's InfrastructureType controlled vocabulary, e.g. StreeLamp. Inherited from UrbanElement/Facility."
+    },
+    "poste": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The Poste (physical support) of this streetlight -- exactly one (edintalu:poste)."
+    },
+    "luminaria": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The Luminaria(s) of this streetlight, one or more, e.g. LED+DISCHARGE (edintalu:luminaria)."
+    },
+    "caja": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The Caja (junction box) of this streetlight, if it has an accessible one (edintalu:caja)."
+    },
+    "centroDeMando": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The CentroDeMando (control center) this streetlight depends on (edintalu:centroDeMando)."
+    },
+    "claseLuminotecnica": {
+      "type": "string",
+      "enum": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ],
+      "description": "Property. Lighting class per UNE-EN 13201 (edintalu:claseLuminotecnica): a=motorways, b=arterial, c=collector, d=residential, e=pedestrian."
+    },
+    "estadoConservacion": {
+      "type": "string",
+      "enum": [
+        "excelente",
+        "bueno",
+        "regular",
+        "malo",
+        "en-ejecucion"
+      ],
+      "description": "Property. Conservation status (edintalu:estadoConservacion)."
+    },
+    "tipoAlimentacion": {
+      "type": "string",
+      "enum": [
+        "subterranea",
+        "aerea",
+        "fachada",
+        "grapada",
+        "bateria"
+      ],
+      "description": "Property. Type of electrical supply (edintalu:tipoAlimentacion)."
+    },
+    "tipoAlumbrado": {
+      "type": "string",
+      "enum": [
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "m5",
+        "m6",
+        "c0",
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6",
+        "me1",
+        "me2",
+        "me3a",
+        "me3b",
+        "me3c",
+        "me4",
+        "me5",
+        "me6",
+        "ce1",
+        "ce2",
+        "ce3",
+        "ce4",
+        "ce5"
+      ],
+      "description": "Property. Lighting class per EN 13201 (edintalu:tipoAlumbrado): S/C/ME/CE series codes."
+    },
+    "tipoIluminacion": {
+      "type": "string",
+      "enum": [
+        "nocturna",
+        "permanente"
+      ],
+      "description": "Property. Type of illumination regime (edintalu:tipoIluminacion): nighttime or permanent."
+    },
+    "zonaAlumbrado": {
+      "type": "string",
+      "enum": [
+        "e1",
+        "e2",
+        "e3",
+        "e4"
+      ],
+      "description": "Property. Light-pollution protection zone per REEAE RD 1890/2008 (edintalu:zonaAlumbrado): e1=maximum protection to e4=low protection."
+    },
+    "calidadDato": {
+      "type": "string",
+      "description": "Property. Data quality code: B (good), R (regular), M (poor), E (under construction) (edintalu:calidadDato)."
+    },
+    "horasDeFuncionamiento": {
+      "type": "string",
+      "description": "Property. Schedule when the lighting is on, e.g. '22:00-07:00' (edintalu:horasDeFuncionamiento)."
+    },
+    "metodoDeControl": {
+      "type": "string",
+      "description": "Property. Method for switching the lighting on/off, e.g. astronomical clock, photocell, remote management (edintalu:metodoDeControl). The source ontology does not constrain this to a controlled vocabulary."
+    },
+    "numeroDeLuminarias": {
+      "type": "integer",
+      "description": "Property. Number of luminaires in the streetlight (edintalu:numeroDeLuminarias)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

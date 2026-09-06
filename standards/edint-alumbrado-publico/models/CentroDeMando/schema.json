@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-alumbrado-publico/models/CentroDeMando/schema.json",
+  "modelTags": "EDINT,UrbanInfrastructure,Energy",
+  "title": "Smart Data Models - EDINT Public Lighting - CentroDeMando",
+  "description": "Electrical panel or control center on which one or more streetlights depend (edintalu:CentroDeMando, subclass of edint-suministro's UtilitySupplyPoint) -- the point where electricity reaches the lighting installation.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "CentroDeMando"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'CentroDeMando'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. Point providing the geographical position of the entity.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "number"
+          },
+          "description": "Property. Coordinates of the Point, in WGS84 [longitude, latitude] order."
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    },
+    "hasUtilityType": {
+      "type": "string",
+      "enum": [
+        "energy",
+        "activeenergy",
+        "gas"
+      ],
+      "description": "Property. Type of utility supplied. Inherited from UtilitySupplyPoint (edint-suministro)."
+    },
+    "tieneSuministro": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The electricity supply contract (SuministroElectrico) associated with this control center, optional (edintalu:tieneSuministro)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
