@@ -577,6 +577,71 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-turismo"
   },
   {
+    "slug": "edint-vehiculos-compartidos",
+    "title": "EDINT Shared Vehicles Ontology (Ontología de Vehículos Compartidos)",
+    "description": "Vocabulary for shared-mobility vehicles (bikes, e-scooters, cars), their stations and docks, routes and waypoints -- a specialization of edint-censo-vehiculos's Vehicle and edint-infraestructura's Facility.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-vehiculos-compartidos/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "Transportation"
+    ],
+    "modelCount": 7,
+    "models": [
+      {
+        "name": "Dock",
+        "title": "Smart Data Models - EDINT Shared Vehicles - Dock",
+        "description": "Place in the station where the vehicles are secured (edintvc:Dock, subclass of sosa:FeatureOfInterest).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-vehiculos-compartidos/models/Dock/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-vehiculos-compartidos/models/Dock"
+      },
+      {
+        "name": "DockObservation",
+        "title": "Smart Data Models - EDINT Shared Vehicles - DockObservation",
+        "description": "Observation by a dock sensor that detects the dock's availability -- free to park a vehicle, or occupied (edintvc:DockObservation, subclass of sosa:Observation).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-vehiculos-compartidos/models/DockObservation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-vehiculos-compartidos/models/DockObservation"
+      },
+      {
+        "name": "DockSensor",
+        "title": "Smart Data Models - EDINT Shared Vehicles - DockSensor",
+        "description": "Equipment that allows detecting if a dock is free or occupied (edintvc:DockSensor, subclass of sosa:Sensor).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-vehiculos-compartidos/models/DockSensor/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-vehiculos-compartidos/models/DockSensor"
+      },
+      {
+        "name": "Route",
+        "title": "Smart Data Models - EDINT Shared Vehicles - Route",
+        "description": "The path traveled to get from an origin to a destination, for a shared vehicle trip (edintvc:Route).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-vehiculos-compartidos/models/Route/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-vehiculos-compartidos/models/Route"
+      },
+      {
+        "name": "SharedVehicle",
+        "title": "Smart Data Models - EDINT Shared Vehicles - SharedVehicle",
+        "description": "A transport mode -- car, bike, or e-scooter -- that allows multiple users short-term, on-demand access (edintvc:SharedVehicle, subclass of edint-censo-vehiculos's Vehicle). Inherits Vehicle's full property set (licensePlateNumber, registeredOwner, vehicleType, propulsionType, environmentalBadge) plus its own vehicleState and propulsionSystemType.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-vehiculos-compartidos/models/SharedVehicle/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-vehiculos-compartidos/models/SharedVehicle"
+      },
+      {
+        "name": "SharedVehicleStation",
+        "title": "Smart Data Models - EDINT Shared Vehicles - SharedVehicleStation",
+        "description": "Place where you can both leave and pick up shared vehicles, composed of docks (edintvc:SharedVehicleStation, subclass of sosa:Platform, sosa:FeatureOfInterest and edint-infraestructura's Facility). Not the same entity as this candidate family's existing BikeSharingStation (edint-infraestructura) -- see standard-metadata.yaml.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-vehiculos-compartidos/models/SharedVehicleStation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-vehiculos-compartidos/models/SharedVehicleStation"
+      },
+      {
+        "name": "Waypoint",
+        "title": "Smart Data Models - EDINT Shared Vehicles - Waypoint",
+        "description": "Part of a route defined by coordinates and a date and time (edintvc:Waypoint, subclass of geosparql:Feature).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-vehiculos-compartidos/models/Waypoint/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-vehiculos-compartidos/models/Waypoint"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-vehiculos-compartidos"
+  },
+  {
     "slug": "era-eradis",
     "title": "ERA ERADIS (documents/certification register)",
     "description": "ERADIS is one of four registers (alongside RINF, ERATV, EVR) published under the single ERA Ontology v3.3.3 -- see era-rinf's standard-metadata.yaml for the shared ontology-wide context. ERADIS covers the certification and compliance-documentation side of the railway authorisation processes: Certificates (safety certificates for railway undertakings), Conformity Assessment Body (CAB) evidence, assessment/audit checks and restrictions, Certification Level Documents, EC Declarations of Verification/Conformity, document sets, validity constraints on certificates/decisions, and references to the Technical Specifications for Interoperability (TSIs) those checks are performed against.",

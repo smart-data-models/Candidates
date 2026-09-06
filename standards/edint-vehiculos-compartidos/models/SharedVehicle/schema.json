@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-vehiculos-compartidos/models/SharedVehicle/schema.json",
+  "modelTags": "EDINT,Transportation",
+  "title": "Smart Data Models - EDINT Shared Vehicles - SharedVehicle",
+  "description": "A transport mode -- car, bike, or e-scooter -- that allows multiple users short-term, on-demand access (edintvc:SharedVehicle, subclass of edint-censo-vehiculos's Vehicle). Inherits Vehicle's full property set (licensePlateNumber, registeredOwner, vehicleType, propulsionType, environmentalBadge) plus its own vehicleState and propulsionSystemType.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "SharedVehicle"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'SharedVehicle'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "licensePlateNumber": {
+      "type": "string",
+      "description": "Property. Alphanumeric identifier assigned to the vehicle for registration purposes. Inherited from Vehicle (edint-censo-vehiculos)."
+    },
+    "registeredOwner": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The person or organisation who owns the vehicle. Inherited from Vehicle (edint-censo-vehiculos)."
+    },
+    "vehicleType": {
+      "type": "string",
+      "enum": [
+        "Ambulance",
+        "Bus",
+        "Truck",
+        "Van",
+        "Quadricycle",
+        "OffRoad",
+        "Car",
+        "ArticulatedVehicle",
+        "PRMAdaptedVehicle",
+        "AdaptableMixedVehicle",
+        "HousingVehicle"
+      ],
+      "description": "Property. Type of vehicle, from the VehicleType controlled vocabulary. Inherited from Vehicle (edint-censo-vehiculos)."
+    },
+    "propulsionType": {
+      "type": "string",
+      "enum": [
+        "ButaneGas",
+        "Diesel",
+        "UnleadedGasoline",
+        "Electric",
+        "LPG",
+        "CompressedNaturalGas",
+        "LiquefiedNaturalGas",
+        "PluginHybrid",
+        "NonPluginHybrid",
+        "Other"
+      ],
+      "description": "Property. Propulsion type of the vehicle, from the VehiclePropulsionType controlled vocabulary. Inherited from Vehicle (edint-censo-vehiculos)."
+    },
+    "environmentalBadge": {
+      "type": "string",
+      "enum": [
+        "Eco",
+        "B",
+        "C",
+        "ZeroEmissions",
+        "NoBadge"
+      ],
+      "description": "Property. Environmental badge assigned to the vehicle. Inherited from Vehicle (edint-censo-vehiculos)."
+    },
+    "vehicleState": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "Inactive",
+        "UnderRepair",
+        "Abandoned"
+      ],
+      "description": "Property. The shared vehicle's current state, from the VehicleState controlled vocabulary (edintvc:vehicleState)."
+    },
+    "propulsionSystemType": {
+      "type": "string",
+      "enum": [
+        "Electric",
+        "Diesel",
+        "Gasoline",
+        "Hybrid"
+      ],
+      "description": "Property. Propulsion system type, from this ontology's own PropulsionSystemType controlled vocabulary (edintvc:propulsionSystemType). NOTE: this overlaps conceptually with the inherited propulsionType above (a separate, coarser 4-value scheme vs. propulsionType's 10-value one) -- a genuine redundancy between the two EDINT ontologies, not resolved here; both are kept since the source ontology declares both independently."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
