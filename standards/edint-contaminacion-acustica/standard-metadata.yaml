@@ -1,0 +1,63 @@
+title: "EDINT Noise Pollution Ontology (Ontología de Contaminación Acústica)"
+publisher: "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer"
+sourceUrl: "https://github.com/EDINT-Ontologia/edint-ontologia-contaminacion-acustica/tree/main"
+sourceOntologyIRI: "http://vocab.linkeddata.es/datosabiertos/def/contaminacionacustica/"
+sourceOntologyVersion: "0.2.0"
+domains:
+  - SmartCities
+  - Environment
+description: >
+  Small domain extension of the EDINT Environmental Sensors Ontology
+  (edint-medio-ambiente) for noise pollution observations, adding
+  acoustic-measurement-specific properties (frequency weighting, time
+  constant, reference interval, level statistic, predominant emitter type).
+license: "CC-BY-4.0"
+licenseNote: >
+  Same as its sibling EDINT ontologies (edint-censo-vehiculos,
+  edint-aparcamiento, edint-fotovoltaica, edint-organizaciones,
+  edint-catastro, edint-medio-ambiente), this source ontology is CC-BY-4.0.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-09-06 from documentation/ontology.ttl (version 0.2.0) at
+  https://github.com/EDINT-Ontologia/edint-ontologia-contaminacion-acustica.
+  Unlike edint-ontologia-calidad-aire and edint-ontologia-climatologia (both
+  folded into edint-medio-ambiente rather than translated separately, since
+  they have no ontology.ttl of their own), this repository genuinely does
+  define its own class -- NoiseObservation -- so it is translated as its own
+  standard.
+
+  ONE ENTITY: NoiseObservation, subclass of edint-medio-ambiente's
+  EnvironmentalObservation. Carries the full inherited EnvironmentalObservation
+  property set (madeBySensor, featureOfInterest, result, unitCode,
+  resultTime, phenomenonTime) plus 5 of its own.
+
+  UNLIKE edint-medio-ambiente's OWN OPEN VOCABULARIES, THIS ONTOLOGY'S 5 NEW
+  PROPERTIES ARE MODELED AS CLOSED ENUMS: noiseReferenceInterval,
+  noisePonderation, noiseEmitterPredominantType, noiseRateType and
+  noiseTimeConstantType are all small (2-12 concepts) and represent
+  standard, stable acoustic-engineering categories (ISO 1996 frequency
+  weightings A/C, IEC 61672 time constants Slow/Fast/Impulse) rather than
+  an open-ended, cross-domain-extensible taxonomy like edint-medio-ambiente's
+  EnvironmentalProperty/SensorVariables scheme -- so the usual
+  enum-when-small convention applies here, unlike in the base ontology.
+
+  noiseRateType ENUM VALUES RELABELED FROM NUMERIC NOTATIONS: the source's
+  own concept notations are literally '01', '10', '50', '90', '99'
+  (percentiles) plus 'max'/'min'. Relabeled as P01/P10/P50/P90/P99/Max/Min
+  for JSON Schema enum readability (bare numeric strings as enum values
+  would be easy to confuse with an actual numeric percentile value).
+
+  SOURCE EXAMPLE HAS A LIKELY TYPO, NOT REPRODUCED: examples/example.ttl
+  includes two bare triples -- "edintnoisetimecon:Slow ;" and
+  "edintnoiseratetype:10 ;" -- with no property name before the value,
+  where "edintacus:noiseTimeConstantType" / "edintacus:noiseRateType" was
+  evidently intended. This candidate's own example uses only the
+  observation the source's typo-free triples support (noiseReferenceInterval,
+  noisePonderation, noiseEmitterPredominantType), and does not reproduce the
+  broken pair.
+
+  REAL EXAMPLE DATA USED: grounded in this repository's own examples/example.ttl
+  (a real Madrid Plaza Mayor acoustic monitoring station and its
+  A-weighted equivalent noise level observations).
