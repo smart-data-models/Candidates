@@ -334,6 +334,58 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/cityjson-v2"
   },
   {
+    "slug": "edint-fotovoltaica",
+    "title": "EDINT Photovoltaic System Ontology (Ontología de Instalación Fotovoltaica)",
+    "description": "Vocabulary for representing photovoltaic (solar) installations found on a municipality's infrastructure elements, and the measurement of electricity generation, consumption, accumulation and grid export from those installations. Reuses SOSA/SSN (sensors and observations), SAREF (Meter), GeoSPARQL (geometry) and schema.org (Organization).",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-fotovoltaica/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "UrbanInfrastructure",
+      "Energy"
+    ],
+    "modelCount": 5,
+    "models": [
+      {
+        "name": "PhotovoltaicGeneration",
+        "title": "Smart Data Models - EDINT Photovoltaic - PhotovoltaicGeneration",
+        "description": "Amount of electricity generated, consumed, stored or exported by a photovoltaic system during a certain period of time (edintfotov:PhotovoltaicGeneration, subclass of sosa:Observation). Which of generation/consumption/storage/export a given observation represents is expected to be conveyed via observedProperty's target concept -- the source ontology does not declare a dedicated categorization property or controlled vocabulary for this distinction.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-fotovoltaica/models/PhotovoltaicGeneration/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-fotovoltaica/models/PhotovoltaicGeneration"
+      },
+      {
+        "name": "PhotovoltaicMeter",
+        "title": "Smart Data Models - EDINT Photovoltaic - PhotovoltaicMeter",
+        "description": "Device that measures and records the total electricity produced, consumed, stored and exported by a photovoltaic system, in real-time and cumulatively (edintfotov:PhotovoltaicMeter, subclass of sosa:Sensor and saref:Meter).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-fotovoltaica/models/PhotovoltaicMeter/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-fotovoltaica/models/PhotovoltaicMeter"
+      },
+      {
+        "name": "PhotovoltaicSystem",
+        "title": "Smart Data Models - EDINT Photovoltaic - PhotovoltaicSystem",
+        "description": "A photovoltaic (PV) system that converts sunlight into electricity, installed on a municipal infrastructure element (edintfotov:PhotovoltaicSystem, subclass of geosparql:Feature and sosa:FeatureOfInterest). Ranges from residential rooftops to utility-scale plants.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-fotovoltaica/models/PhotovoltaicSystem/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-fotovoltaica/models/PhotovoltaicSystem"
+      },
+      {
+        "name": "PhotovoltaicSystemContract",
+        "title": "Smart Data Models - EDINT Photovoltaic - PhotovoltaicSystemContract",
+        "description": "Legally binding document outlining the sale, lease, or power purchase agreement for solar panels (edintfotov:PhotovoltaicSystemContract).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-fotovoltaica/models/PhotovoltaicSystemContract/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-fotovoltaica/models/PhotovoltaicSystemContract"
+      },
+      {
+        "name": "PhotovoltaicSystemRate",
+        "title": "Smart Data Models - EDINT Photovoltaic - PhotovoltaicSystemRate",
+        "description": "Policy mechanism that pays solar system owners for the surplus electricity they generate and feed back into the national grid (edintfotov:PhotovoltaicSystemRate). The source ontology defines no properties of its own; it is the target of PhotovoltaicSystemContract.hasRate.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-fotovoltaica/models/PhotovoltaicSystemRate/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-fotovoltaica/models/PhotovoltaicSystemRate"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-fotovoltaica"
+  },
+  {
     "slug": "edint-infraestructura",
     "title": "EDINT Infrastructure Ontology (Ontología de Infraestructura)",
     "description": "Vocabulary for representing a municipality's public and private infrastructure facilities (educational, cultural, social, sports and health centers, on-street and off-street parking, shared-bicycle stations) together with the sensors, observations, violations, management roles and organizations involved in operating and monitoring them, plus (as of this update) street sections, traffic incidences, traffic control/measuring equipment and observations, and regulated zones. Reuses SOSA/SSN (sensors and observations), GeoSPARQL (geometry), W3C Time, QUDT, schema.org and Dublin Core.",
