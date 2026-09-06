@@ -334,6 +334,58 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/cityjson-v2"
   },
   {
+    "slug": "edint-aparcamiento",
+    "title": "EDINT Parking Ontology (Ontología de Aparcamiento)",
+    "description": "Vocabulary for representing a municipality's public and private parking -- on-street and off-street -- including access points (linked to edint-infraestructura's sensor representation), fees, individual spots, and spot groupings by permit type or vehicle type. The source ontology explicitly states that Parking is a specialization of edint-infraestructura's Facility.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-aparcamiento/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "UrbanInfrastructure",
+      "Transportation"
+    ],
+    "modelCount": 5,
+    "models": [
+      {
+        "name": "Parking",
+        "title": "Smart Data Models - EDINT Parking - Parking",
+        "description": "Parking for different types of vehicles, on-street or off-street, public or private (edintapar:Parking, subclass of edintinf:Facility). Collapses the source ontology's two concrete subclasses (OnStreetParking, OffStreetParking) into a single entity with a parkingType discriminator, since the source's own real example data never instantiates bare Parking directly and OnStreetParking's only distinguishing property (isPartOfZone) is small enough to keep as an always-optional field rather than a second entity type.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-aparcamiento/models/Parking/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-aparcamiento/models/Parking"
+      },
+      {
+        "name": "ParkingFee",
+        "title": "Smart Data Models - EDINT Parking - ParkingFee",
+        "description": "Parking fee that covers the right to park a vehicle in an authorized space for a certain time period (edintapar:ParkingFee). The source ontology defines no properties of its own; it is the target of Parking.hasParkingFee.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-aparcamiento/models/ParkingFee/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-aparcamiento/models/ParkingFee"
+      },
+      {
+        "name": "ParkingSpot",
+        "title": "Smart Data Models - EDINT Parking - ParkingSpot",
+        "description": "Individual parking spot in an on-street or off-street parking (edintapar:ParkingSpot). The source ontology defines no properties of its own; it is the target of Parking/ParkingSpotsByPermitType/ParkingSpotsByVehicleType's hasParkingSpot relationship.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-aparcamiento/models/ParkingSpot/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-aparcamiento/models/ParkingSpot"
+      },
+      {
+        "name": "ParkingSpotsByPermitType",
+        "title": "Smart Data Models - EDINT Parking - ParkingSpotsByPermitType",
+        "description": "Group of parking spots for each type of permit, e.g. resident, rotation (edintapar:ParkingSpotsByPermitType). Indicates the number of slots for that permit type. NOTE: the source ontology's own 'permitType' property declares rdfs:domain :ParkingSpotsByVehicleType (not ParkingSpotsByPermitType) -- almost certainly a copy-paste error in the source, given the property's own name and comment ('Relationship between the group of places by TYPE OF PERMIT and the taxonomy of types of permit'). Assigned to this entity instead, per the property's evident intent; see standard-metadata.yaml.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-aparcamiento/models/ParkingSpotsByPermitType/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-aparcamiento/models/ParkingSpotsByPermitType"
+      },
+      {
+        "name": "ParkingSpotsByVehicleType",
+        "title": "Smart Data Models - EDINT Parking - ParkingSpotsByVehicleType",
+        "description": "Group of parking spots for each type of vehicle: cars, motorcycles, bicycles, among others (edintapar:ParkingSpotsByVehicleType). Indicates the number of slots per vehicle type. NOTE: the source ontology declares no rdfs:domain at all for its 'vehicleType' property; assigned to this entity per the property's own name/comment (mirroring the equally-evident, but differently-broken, permitType situation on ParkingSpotsByPermitType); see standard-metadata.yaml.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-aparcamiento/models/ParkingSpotsByVehicleType/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-aparcamiento/models/ParkingSpotsByVehicleType"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-aparcamiento"
+  },
+  {
     "slug": "edint-infraestructura",
     "title": "EDINT Infrastructure Ontology (Ontología de Infraestructura)",
     "description": "Vocabulary for representing a municipality's public and private infrastructure facilities (educational, cultural, social, sports and health centers, on-street and off-street parking, shared-bicycle stations) together with the sensors, observations, violations, management roles and organizations involved in operating and monitoring them, plus (as of this update) street sections, traffic incidences, traffic control/measuring equipment and observations, and regulated zones. Reuses SOSA/SSN (sensors and observations), GeoSPARQL (geometry), W3C Time, QUDT, schema.org and Dublin Core.",
