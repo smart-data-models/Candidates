@@ -1,0 +1,112 @@
+title: "EDINT Parking Ontology (Ontología de Aparcamiento)"
+publisher: "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer"
+sourceUrl: "https://github.com/EDINT-Ontologia/edint-ontologia-aparcamiento/tree/main"
+sourceOntologyIRI: "http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/aparcamiento"
+sourceOntologyVersion: "0.1.0"
+domains:
+  - SmartCities
+  - UrbanInfrastructure
+  - Transportation
+description: >
+  Vocabulary for representing a municipality's public and private parking --
+  on-street and off-street -- including access points (linked to
+  edint-infraestructura's sensor representation), fees, individual spots, and
+  spot groupings by permit type or vehicle type. The source ontology
+  explicitly states that Parking is a specialization of edint-infraestructura's
+  Facility.
+license: "CC-BY-4.0"
+licenseNote: >
+  Same as edint-censo-vehiculos, this source ontology is CC-BY-4.0 -- the same
+  license Smart Data Models conventionally uses. No discrepancy to resolve for
+  this one (unlike edint-infraestructura/edint-turismo/edint-zona-regulatoria,
+  all CC-BY-SA-4.0).
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-09-06 from documentation/ontology.ttl (version 0.1.0) at
+  https://github.com/EDINT-Ontologia/edint-ontologia-aparcamiento. Closely
+  related to edint-infraestructura (Parking subClassOf Facility; the source
+  ontology's own description says "Parking facilities are part of the city's
+  infrastructure... their access points are represented as a relationship to
+  the infrastructure's sensor representation") and to edint-zona-regulatoria
+  (RegulatedParkingZone is one of its 22 RegulatedZone subtypes) and
+  edint-censo-vehiculos (reuses its VehicleType concept scheme, and almost
+  certainly its VehiclePermitType one too, see below).
+
+  FIVE ENTITIES MODELED: Parking, ParkingFee, ParkingSpot,
+  ParkingSpotsByPermitType, ParkingSpotsByVehicleType.
+
+  PARKING COLLAPSES ITS TWO SUBCLASSES, LIKE RegulatedZone DID FOR ITS 22:
+  the source ontology defines OnStreetParking and OffStreetParking as
+  Parking's only two concrete subclasses. Real example data
+  (examples/example.ttl) never instantiates bare Parking directly -- always
+  one of the two subclasses. OnStreetParking has exactly one distinguishing
+  property (isPartOfZone); OffStreetParking has none. Rather than create two
+  near-identical entity types for a single extra optional field, this
+  candidate models a single Parking entity with a parkingType enum
+  ("OnStreet"/"OffStreet") and keeps isPartOfZone as an always-optional
+  property, documented as only meaningful when parkingType is "OnStreet".
+
+  NO TYPE COLLISION THIS TIME, BUT A RELATED SUPERSESSION ISSUE:
+  edint-infraestructura already has its own thin "Parking" entity (added in
+  its first translation pass, "modeled as a thin Facility specialization...
+  the source ontology defines no attributes of its own"). Since this
+  candidate also uses the name "Parking" for its own, much fuller entity,
+  THIS IS the same kind of type collision already flagged for RegulatedZone
+  and Vehicle -- same property-name reuse ("Parking"), different property
+  sets. Not resolved here, per the same reasoning already applied to those
+  two: left as a separate standard, to be reconciled (most likely: replace
+  edint-infraestructura's thin Parking stub with this one) before either
+  candidate is promoted further.
+
+  PARKING INHERITS ALL OF edint-infraestructura's Facility PROPERTIES,
+  INCLUDING THE 3 ADDED IN ITS v0.2.1 UPDATE (accessibility,
+  isCadastralProperty, locatedInZone): the source ontology's own real
+  example.ttl directly demonstrates Parking instances using several
+  Facility-inherited properties (belongsTo, containsFacility,
+  hasInfrastructureType, hasObservationPoint, hasRegisteredOwner, address,
+  openingHours) confirming the subclass relationship is substantively used,
+  not just nominal. The 3 newer properties aren't demonstrated in this
+  ontology's own examples (which predate edint-infraestructura's v0.2.1
+  update) but are included for consistency, since there's no ontological
+  reason a parking facility wouldn't have them -- flagged here as a
+  deliberate, not strictly source-evidenced, inheritance decision.
+
+  TWO SOURCE ONTOLOGY BUGS FOUND, WORKED AROUND RATHER THAN COPIED LITERALLY:
+    - permitType's rdfs:domain is declared as :ParkingSpotsByVehicleType, not
+      :ParkingSpotsByPermitType -- almost certainly a copy-paste error, given
+      the property's own name and comment ("Relationship between the group
+      of places by TYPE OF PERMIT and the taxonomy of types of permit").
+      Assigned to ParkingSpotsByPermitType instead, per evident intent.
+    - vehicleType has no rdfs:domain declared at all in this file. Assigned
+      to ParkingSpotsByVehicleType, per its own name/comment (mirroring what
+      permitType's domain axiom should probably have said).
+    Copying either literally would have produced a nonsensical schema
+    (ParkingSpotsByVehicleType with a "permitType" property and no
+    "vehicleType" anywhere); this deviation is flagged for the EDINT
+    maintainers' awareness, not something a translation should paper over
+    silently.
+
+  permitType's CONCEPT SCHEME NAME MISMATCH, ASSUMED EQUIVALENT: this
+  ontology references a "PermitType" concept scheme
+  (http://vocab.linkeddata.es/datosabiertos/kos/edint/PermitType) that isn't
+  published anywhere in this repository (kos/ only contains a placeholder
+  Readme). Assumed to be the same controlled vocabulary as
+  edint-censo-vehiculos's published VehiclePermitType (identical purpose,
+  same domain), reused here with the same 6 values (Resident,
+  CommercialIndustrial, Temporal, Garage, MedicalServices, EssentialServices)
+  -- worth confirming with the EDINT maintainers before promotion.
+  vehicleType, by contrast, references the SAME concept scheme URI
+  (kos/edint/VehicleType) already used and published by
+  edint-censo-vehiculos -- no naming mismatch there, reused directly.
+
+  ParkingFee AND ParkingSpot MODELED AS THIN ENTITIES: the source ontology
+  declares no properties of their own for either -- same treatment as
+  edint-infraestructura's ObservationPoint and edint-zona-regulatoria's
+  RegulatedZone/CadastralProperty precedent.
+
+  REAL EXAMPLE DATA USED: all 5 example.json files are grounded in the
+  source repository's own examples/example.ttl (5 real Madrid/Zaragoza
+  parking instances with real addresses, opening hours, fee/zone/spot-group
+  references).
