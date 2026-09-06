@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-censo-vehiculos/models/Permit/schema.json",
+  "modelTags": "EDINT,Transportation",
+  "title": "Smart Data Models - EDINT Vehicle Census - Permit",
+  "description": "Official permit, usually issued by the city council or the traffic authority, that allows a particular vehicle to access, drive through, or park in an area where entry is restricted or regulated (edintveh:Permit).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Permit"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Permit'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "authorisesVehicle": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The Vehicle for which the permit is issued (edintveh:authorisesVehicle)."
+    },
+    "authorisesInSegment": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The street section where the permit authorises the vehicle to go through or park (edintveh:authorisesInSegment). The source ontology's range is an external 'Tramo' class from a different, older external ontology (ciudadesabiertas.es) that this candidate family's edint-infraestructura StreetSection entity has already superseded internally as of its v0.2.1 update -- kept pointing at StreetSection here rather than an unmodeled external class. This vehicle-census ontology has not itself been updated to reference that internal migration; see standard-metadata.yaml."
+    },
+    "permitOwner": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The person or organisation for which the permit has been issued (edintveh:permitOwner). Same 'Owner' union-type handling as Vehicle.registeredOwner -- kept as an opaque Relationship."
+    },
+    "permitPeriodicity": {
+      "type": "string",
+      "enum": [
+        "Annual",
+        "Monthly"
+      ],
+      "description": "Property. Periodicity of the permit, from the VehiclePermitPeriodicity controlled vocabulary (edintveh:permitPeriodicity)."
+    },
+    "permitStatus": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "Inactive",
+        "Rejected",
+        "InProcess"
+      ],
+      "description": "Property. Status of the permit, from the VehiclePermitStatus controlled vocabulary (edintveh:permitStatus)."
+    },
+    "permitType": {
+      "type": "string",
+      "enum": [
+        "Resident",
+        "CommercialIndustrial",
+        "Temporal",
+        "Garage",
+        "MedicalServices",
+        "EssentialServices"
+      ],
+      "description": "Property. Type of permit, from the VehiclePermitType controlled vocabulary (edintveh:permitType)."
+    },
+    "activationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. The date on which the authorization is activated (edintveh:activationDate). xsd:date, no time component."
+    },
+    "beginningDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Starting date of the authorization period (edintveh:beginningDate). xsd:date, no time component."
+    },
+    "endingDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Permit expiration date (edintveh:endingDate). xsd:date, no time component."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

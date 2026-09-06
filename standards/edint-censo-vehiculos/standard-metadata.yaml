@@ -1,0 +1,94 @@
+title: "EDINT Vehicle Census Ontology (Ontología de Censo/Registro de Vehículos)"
+publisher: "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer"
+sourceUrl: "https://github.com/EDINT-Ontologia/edint-ontologia-censo-vehiculos/tree/main"
+sourceOntologyIRI: "http://vocab.linkeddata.es/datosabiertos/def/transporte/censovehiculos"
+sourceOntologyVersion: "0.1.0"
+domains:
+  - SmartCities
+  - Transportation
+description: >
+  Vocabulary for representing the vehicle census/registry that local entities
+  manage for purposes such as vehicle tax collection (IVTM in Spain) and
+  mobility management (parking permits, zone access permits). Scope is
+  limited to data usable for those two purposes; driving-licence, technical
+  inspection and similar vehicle data are explicitly out of scope per the
+  source ontology's own stated purpose. Reuses SAREF4AUTO (vehicle), schema.org
+  (Person/Organization) and SKOS (controlled vocabularies).
+license: "CC-BY-4.0"
+licenseNote: >
+  Unlike its sibling candidates (edint-infraestructura, edint-turismo,
+  edint-zona-regulatoria, all CC-BY-SA-4.0), this source ontology is
+  published under CC-BY-4.0 -- the same license Smart Data Models
+  conventionally uses. No discrepancy to resolve for this one.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-09-06 from documentation/ontology.ttl (version 0.1.0) at
+  https://github.com/EDINT-Ontologia/edint-ontologia-censo-vehiculos. Closely
+  related to edint-infraestructura: that candidate's Violation.vehicle
+  relationship (edintinf:includesVehicle) already referenced a "Vehicle"
+  class as "referenced but not defined by the source ontology" -- this
+  ontology is that class's real, authoritative source.
+
+  TWO ENTITIES MODELED: Vehicle and Permit, the only two classes in the
+  source ontology with real properties of their own.
+
+  OWNER NOT MATERIALIZED AS ITS OWN ENTITY: the source ontology's "Owner"
+  class is a union of Person and Organization (both external, generic
+  schema.org classes, not locally defined). registeredOwner (on Vehicle) and
+  permitOwner (on Permit) are kept as opaque Relationships rather than typed
+  against a dedicated Owner entity, consistent with how this candidate family
+  avoids materializing generic externally-defined classes (e.g. Municipio in
+  edint-infraestructura). A Relationship value may point at this candidate
+  family's existing Organization entity (edint-infraestructura) when the
+  owner is one, or at an unmodeled Person otherwise -- a full Person entity
+  was deliberately not created, both as out of scope for this pass and
+  because a generic person registry entity is privacy-sensitive.
+
+  6 CONTROLLED VOCABULARIES KEPT AS ENUMS, NOT RELATIONSHIPS: unlike
+  edint-infraestructura's InfrastructureType (234 concepts, too large for an
+  enum, kept as a Relationship to a KOS concept URI), all 6 controlled
+  vocabularies here (VehicleType: 11 concepts, VehiclePropulsionType: 10,
+  VehicleEnvironmentalBadge: 5, VehiclePermitType: 6, VehiclePermitStatus: 4,
+  VehiclePermitPeriodicity: 2) are small enough to enumerate directly as
+  JSON Schema enums, matching the roleType/violationType/publicService
+  pattern already used in edint-infraestructura. Enum values use each
+  concept's own local URI segment (PascalCase), e.g. "ZeroEmissions",
+  "CommercialIndustrial" -- same convention already established.
+
+  MINOR SOURCE DATA QUIRK, NOT FIXED (out of scope, harmless): the
+  VehiclePropulsionType SKOS file (documentation/kos/skos-VehiclePropulsionType.ttl)
+  declares the "Diesel" concept twice, with byte-identical content both
+  times. Semantically inert (duplicate RDF triples collapse), so the
+  Diesel enum value is listed once here; flagged for the EDINT maintainers'
+  awareness, not something this translation needed to work around.
+
+  ANOTHER CROSS-ONTOLOGY NAMESPACE MISMATCH, NOT RESOLVED: Permit's
+  authorisesInSegment relationship has range
+  http://vocab.ciudadesabiertas.es/def/transporte/trafico#Tramo -- the OLD,
+  fully external ontology that edint-infraestructura's own traffic branch
+  (added in its v0.2.1 update) has already superseded with a natively-defined
+  StreetSection entity (edint.es/def/trafico#StreetSection). This
+  vehicle-census ontology has not itself been updated to point at that
+  internal migration. This candidate's authorisesInSegment points at
+  edint-infraestructura's StreetSection (the real, current, semantically
+  equivalent entity) rather than an unmodeled reference to the stale external
+  class -- same kind of judgment call already made for RegulatedZone's
+  cross-ontology mismatch in edint-zona-regulatoria.
+
+  A "RegulatedZone" class is also declared in this ontology's own
+  documentation/ontology.ttl (imported, presumably for a planned future
+  relationship) but is not actually the range or domain of any property
+  declared here -- not referenced in this candidate's models.
+
+  REAL EXAMPLE DATA NOT PRACTICALLY USABLE: the source repository's real
+  instance data (mappings/output/output_owner.ttl, ~23.7MB; mappings/data/
+  dataset_enriquecento.csv, ~54.6MB) is far too large to process for this
+  pass, and what was sampled from output_owner.ttl consists only of bare
+  "a edintveh:Owner" stub declarations keyed by what appear to be real,
+  partially-visible Spanish national ID (DNI/NIE)-shaped identifiers --
+  deliberately not reused here even as inspiration, out of caution around
+  personal-data-adjacent identifiers in what is nominally open data. Both
+  example.json files are therefore synthetic, built from the ontology's own
+  class/property definitions and comments, not derived from real records.
