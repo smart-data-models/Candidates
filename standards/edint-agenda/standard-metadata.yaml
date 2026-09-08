@@ -1,0 +1,63 @@
+title: "EDINT City Agenda Ontology (Ontología de Agenda Ciudadana)"
+publisher: "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer"
+sourceUrl: "https://github.com/EDINT-Ontologia/edint-ontologia-agenda/tree/main"
+sourceOntologyIRI: "https://edint.es/def/agenda"
+sourceOntologyVersion: "0.1.1"
+domains:
+  - SmartCities
+description: >
+  Vocabulary for city events published in municipal public agendas --
+  cultural, sports and social activities, fairs, exhibitions, concerts --
+  reusing schema.org's Event for scheduling and GeoSPARQL for location.
+license: "CC-BY-4.0"
+licenseNote: >
+  Same as its sibling EDINT ontologies (edint-censo-vehiculos,
+  edint-aparcamiento, edint-fotovoltaica, edint-organizaciones,
+  edint-catastro, edint-medio-ambiente, edint-contaminacion-acustica,
+  edint-suministro, edint-trafico, edint-vehiculos-compartidos,
+  edint-alumbrado-publico, edint-gestion-residuos, edint-censo-locales,
+  edint-promocion-comercial, edint-oferta-inmobiliaria,
+  edint-servicios-publicos), this source ontology is CC-BY-4.0.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-09-06 from documentation/ontology.ttl (version 0.1.1;
+  owl:priorVersion points at the tagged v0.1.0 release) at
+  https://github.com/EDINT-Ontologia/edint-ontologia-agenda. This is the
+  16th and final EDINT ontology translated in this batch (the user's
+  requested calidad-aire and climatologia were folded into
+  edint-medio-ambiente instead of translated separately, since neither has
+  an ontology.ttl of its own).
+
+  ONE ENTITY MODELED: CityEvent -- the only class in this ontology.
+
+  eventStatus: SOURCE ONTOLOGY DECLARES ITS OWN PROPERTY, BUT REAL EXAMPLE
+  DATA REUSES THE GENUINE SCHEMA.ORG TERM INSTEAD: ontology.ttl formally
+  declares edintagenda:eventStatus (domain CityEvent), but the source's own
+  real example data instead writes schema:eventStatus directly (schema.org's
+  own, pre-existing EventStatusType property) -- not the locally-declared
+  one. Modeled here under schema:eventStatus, matching the real,
+  demonstrated usage rather than the formally declared but apparently
+  unused local property. Flagged for the EDINT maintainers.
+
+  isAccessibleForFree AND address ARE NOT FORMALLY DECLARED PROPERTIES OF
+  CityEvent IN ontology.ttl AT ALL, BUT BOTH ARE USED IN REAL EXAMPLE DATA
+  (reusing genuine, pre-existing schema.org terms directly). Included per
+  that real, demonstrated usage.
+
+  eventType ENUM INCLUDES BOTH BROAD AND NARROW KOS CONCEPTS: the source's
+  own EventType concept scheme mixes 3 top-level categories (Cultural,
+  Sports, Social) with 5 narrower skos:broader-linked concepts (e.g.
+  Concierto/Concert, narrower than Cultural) in the same flat scheme, and
+  the real example data directly instantiates one of the narrower concepts
+  (Ferias) rather than only ever using a top-level category. All 8 are
+  included in the enum as a result, rather than only the 3 top-level ones.
+
+  REAL EXAMPLE DATA USED: the CityEvent example is grounded in this
+  repository's own examples/agenda-eventos-culturales-madrid.ttl (a real
+  Madrid book fair event, "10.ª Feria del libro en Puente de Vallecas",
+  sourced from datos.madrid.es). Two other real example files exist in the
+  same repository (agenda-actividades-deportes-madrid.ttl,
+  agenda-cultural-gijon.ttl) but were not needed since a single
+  representative example was sufficient for this one-entity standard.

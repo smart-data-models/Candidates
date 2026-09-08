@@ -1,0 +1,75 @@
+title: "EDINT Public Services Ontology (Ontología de Servicios Públicos)"
+publisher: "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer"
+sourceUrl: "https://github.com/EDINT-Ontologia/edint-ontologia-servicios-publicos/tree/main"
+sourceOntologyIRI: "http://vocab.linkeddata.es/datosabiertos/def/sector-publico/servicios-publicos"
+sourceOntologyVersion: "0.1.0"
+domains:
+  - SmartCities
+description: >
+  Vocabulary for municipal public services and the administrative
+  procedures through which they are managed and resolved, reusing the EU's
+  Core Public Service Vocabulary (CPSV-AP) for competent authorities,
+  contact points and channels.
+license: "CC-BY-4.0"
+licenseNote: >
+  Same as its sibling EDINT ontologies (edint-censo-vehiculos,
+  edint-aparcamiento, edint-fotovoltaica, edint-organizaciones,
+  edint-catastro, edint-medio-ambiente, edint-contaminacion-acustica,
+  edint-suministro, edint-trafico, edint-vehiculos-compartidos,
+  edint-alumbrado-publico, edint-gestion-residuos, edint-censo-locales,
+  edint-promocion-comercial, edint-oferta-inmobiliaria), this source
+  ontology is CC-BY-4.0.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-09-06 from documentation/ontology.ttl (version 0.1.0) at
+  https://github.com/EDINT-Ontologia/edint-ontologia-servicios-publicos.
+
+  TWO ENTITIES MODELED: PublicService, AdministrativeProcedure.
+
+  MULTIPLE OWL-API TOOLING ARTIFACTS FOUND IN THIS SOURCE FILE, ALL IGNORED:
+  same class of issue as edint-oferta-inmobiliaria's "Error1" class, but
+  more extensive here. Both PublicService's and AdministrativeProcedure's
+  own class declarations use a malformed IRI namespace
+  (http://www.semanticweb.org/owl/owlapi/turtle#) instead of this
+  ontology's real servicios-publicos# namespace -- and PublicService is
+  additionally declared rdfs:subClassOf ITSELF (a tautology). The same
+  malformed owlapi/turtle# namespace also affects 3 of this ontology's own
+  properties (hasCompetentAuthority, hasContactPoint, typeProcedure,
+  typePublicService) -- their declarations exist, with correct
+  rdfs:domain/range using the ontology's own real local `:` prefix, but
+  their own subject IRIs are broken the same way. None of this is modeled
+  as real inheritance or used verbatim; this candidate uses the real,
+  working servicios-publicos# namespace throughout, confirmed correct by
+  cross-checking the properties' own rdfs:domain declarations and the
+  source's own real example data (which consistently uses the correct
+  edintserpub: prefix). Flagged for the EDINT maintainers as a likely
+  authoring-tool export bug worth fixing at the source.
+
+  typePublicService KEPT AS AN OPEN RELATIONSHIP, NOT AN ENUM: the
+  PublicServicesType KOS scheme has ~48 concepts -- large enough to follow
+  this candidate family's precedent for InfrastructureType-scale open
+  taxonomies (kept as a Relationship to the concept URI) rather than a
+  fixed enum. typeProcedure (AdministrativeProcedureType, 8 concepts) is
+  small enough to enumerate directly.
+
+  hasCompetentAuthority AND hasContactPoint ARE ACTUALLY REUSED CPSV-AP
+  (EU Core Public Service Vocabulary) TERMS, NOT DECLARED WITH A FORMAL
+  rdfs:domain: both carry rdfs:isDefinedBy pointing at
+  http://data.europa.eu/m8g (the real CPSV-AP namespace) rather than a
+  domain axiom. hasCompetentAuthority is included on PublicService here,
+  confirmed by the source's own real example data using it there.
+  hasContactPoint is NOT included -- the real example instead uses the
+  genuine external CPSV-AP property cv:contactPoint directly (a different,
+  correctly-namespaced property this ontology doesn't itself redeclare),
+  which is out of scope for this candidate to model as its own property.
+
+  REAL EXAMPLE DATA USED: both examples are grounded in this repository's
+  own examples/"Servicio público de licencia de obra menor.ttl" (a real
+  Spanish municipal "minor works license" public service and its
+  associated administrative procedure). The example's own richer CPSV-AP
+  graph (contact points, channels, competent authority as a full
+  cv:PublicOrganisation, an applicable cpsv:Rule) is not otherwise modeled,
+  since only PublicService and AdministrativeProcedure were in scope for
+  this pass.
