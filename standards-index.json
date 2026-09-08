@@ -506,6 +506,43 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura"
   },
   {
+    "slug": "edint-medio-ambiente",
+    "title": "EDINT Environmental Sensors Ontology (Ontología de Sensores Medioambientales)",
+    "description": "Generic vocabulary for environmental sensor platforms, sensors and observations -- a lightweight, modular extension of SOSA (Sensor, Observation, Sample, and Actuator) and GeoSPARQL, restricting its measurements to EDINT's own controlled vocabularies. Designed to be specialized per environmental domain (air quality, climatology, noise pollution) purely through those vocabularies, without new subclasses.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-medio-ambiente/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "Environment"
+    ],
+    "modelCount": 3,
+    "models": [
+      {
+        "name": "EnvironmentalObservation",
+        "title": "Smart Data Models - EDINT Environmental Sensors - EnvironmentalObservation",
+        "description": "An observation of an environmental property made by an environmental sensor (edintmed:EnvironmentalObservation, subclass of sosa:Observation).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-medio-ambiente/models/EnvironmentalObservation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-medio-ambiente/models/EnvironmentalObservation"
+      },
+      {
+        "name": "EnvironmentalSensor",
+        "title": "Smart Data Models - EDINT Environmental Sensors - EnvironmentalSensor",
+        "description": "Device designed to observe and measure physical, chemical, or acoustic properties of the environment (edintmed:EnvironmentalSensor, subclass of sosa:Sensor). This ontology is deliberately generic: domain specializations (air quality, climatology, noise pollution) reuse it as-is, specializing only through the open controlled-vocabulary Relationships below rather than through new subclasses.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-medio-ambiente/models/EnvironmentalSensor/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-medio-ambiente/models/EnvironmentalSensor"
+      },
+      {
+        "name": "SensorPlatform",
+        "title": "Smart Data Models - EDINT Environmental Sensors - SensorPlatform",
+        "description": "Physical platform or facility that hosts environmental sensors for monitoring, e.g. an air-quality cabin, a water buoy, or a weather tower (edintmed:SensorPlatform, subclass of geosparql:Feature and sosa:Platform).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-medio-ambiente/models/SensorPlatform/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-medio-ambiente/models/SensorPlatform"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-medio-ambiente"
+  },
+  {
     "slug": "edint-turismo",
     "title": "SEGITTUR Core Tourism Ontology, as demonstrated by the EDINT Tourism repository",
     "description": "Vocabulary for representing tourism accommodation establishments (hotels, guest houses, aparthotels) and historical/cultural resources (fortified palaces, amphitheatres, aqueducts, and 40+ related types), together with their location, contact points, booking channels, ratings and descriptions. Drawn from SEGITTUR's Core Tourism Ontology (estur:), a large (388-class) reference model for a Network of Tourism Sector Ontologies serving Spain's future Intelligent Destination Platform (PID).",

@@ -1,0 +1,39 @@
+{
+  "id": "urn:ngsi-ld:EnvironmentalSensor:AQS-001",
+  "type": "EnvironmentalSensor",
+  "name": {
+    "type": "Property",
+    "value": "Air quality sensor 1"
+  },
+  "source": {
+    "type": "Relationship",
+    "object": "https://github.com/EDINT-Ontologia/edint-ontologia-calidad-aire"
+  },
+  "identifier": {
+    "type": "Property",
+    "value": "AQS-001"
+  },
+  "isHostedBy": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:SensorPlatform:AQ-001"
+  },
+  "manufacturer": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:Organization:AirTech"
+  },
+  "hasSensorType": {
+    "type": "Relationship",
+    "object": "http://vocab.linkeddata.es/datosabiertos/kos/edint/sensortypes/AirQualitySensor"
+  },
+  "observableProperty": {
+    "type": "Relationship",
+    "object": [
+      "http://vocab.linkeddata.es/datosabiertos/kos/edint/variables/NO2Concentration",
+      "http://vocab.linkeddata.es/datosabiertos/kos/edint/variables/NOConcentration",
+      "http://vocab.linkeddata.es/datosabiertos/kos/edint/variables/NOxConcentration"
+    ]
+  },
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-medio-ambiente/models/EnvironmentalSensor/context.jsonld"
+  ]
+}
