@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-organizaciones/models/Organization/schema.json",
+  "modelTags": "EDINT,SmartCities",
+  "title": "Smart Data Models - EDINT Organizations - Organization",
+  "description": "A public administration organization in Spain, and its place in an organization chart (edintorg:Organization, subclass of W3C org:Organization). Collapses the source ontology's two subclasses (OrganicUnit, PublicLawEntity), which declare no properties of their own, into this single entity -- the hasOrganizationType enum below already captures similar distinctions in practice.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Organization"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Organization'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "hasOrganizationType": {
+      "type": "string",
+      "enum": ["AE", "AG", "AI", "AM", "AP", "AT", "AY", "BE", "CA", "CI", "CM", "CN", "CO", "CP", "CS", "DP", "EE", "EG", "EM", "EP", "FN", "FR", "FS", "FU", "MC", "MN", "MU", "OA", "OC", "OD", "OV", "SM", "UN", "ZZ"],
+      "description": "Property. The organization's type, from the official Spanish public-sector OrganizationType taxonomy's own 2-letter codes (edintorg:hasOrganizationType) -- e.g. AY=Town Council, MN=Ministry, CA=Autonomous Community, UN=University, FN=Foundation, ZZ=Unclassified. Codes used rather than English glosses because two codes (AE, OC) share the same English label ('State Agency') in the source's own SKOS vocabulary despite being distinct concepts."
+    },
+    "hasAdministrationLevel": {
+      "type": "string",
+      "enum": ["GeneralStateAdministration", "RegionalAdministration", "LocalAdministration", "Universities", "OtherInstitutions"],
+      "description": "Property. The administration level the organization belongs to (edintorg:hasAdministrationLevel). NOTE: the source ontology's own AdministrationLevel SKOS concept scheme has a data bug -- all 5 concepts are declared under the identical URI 'edintkosadmlev:1' (copy-paste error, notation '1' through '5' never updated in the identifier itself); rebuilt as 5 distinct enum values here from each concept's own skos:notation and prefLabel rather than reproducing the broken shared URI."
+    },
+    "hasOrganizationStatus": {
+      "type": "string",
+      "enum": ["InForce", "Extinct", "Cancelled", "Transitory"],
+      "description": "Property. The organization's legal/functional status (edintorg:hasOrganizationStatus)."
+    },
+    "dependsOnRoot": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The organization at the highest level of hierarchy this organization depends on (edintorg:dependsOnRoot, self-referential to another Organization)."
+    },
+    "hasCompeteceRegion": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The administrative region where the organization exercises its powers (edintorg:hasCompeteceRegion) -- a Municipio, Provincia, Autonomia, Comarca or Distrito. These territorial classes are external to this ontology and not modeled as entities here; kept as an opaque Relationship, same treatment as Facility.belongsTo in edint-infraestructura. (Property name 'hasCompeteceRegion' is copied verbatim from the source, including its apparent typo for 'hasCompetenceRegion'.)"
+    },
+    "hierarchicalLevel": {
+      "type": "integer",
+      "description": "Property. The organization's relative hierarchical level within the entity it belongs to; 0 for the root of an administrative level (edintorg:hierarchicalLevel)."
+    },
+    "externalIdentifier": {
+      "type": "string",
+      "description": "Property. External code designating the organization according to the coding system of the data source it came from (edintorg:externalIdentifier)."
+    },
+    "legalProvision": {
+      "type": "string",
+      "description": "Property. Identification of the legal provision that regulates the organization's powers, e.g. a Royal Decree reference (edintorg:legalProvision)."
+    },
+    "deregistrationNote": {
+      "type": "string",
+      "description": "Property. Notes related to the organization's deregistration, if applicable (edintorg:deregistrationNote)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
