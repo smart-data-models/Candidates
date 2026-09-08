@@ -334,6 +334,28 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/cityjson-v2"
   },
   {
+    "slug": "edint-agenda",
+    "title": "EDINT City Agenda Ontology (Ontología de Agenda Ciudadana)",
+    "description": "Vocabulary for city events published in municipal public agendas -- cultural, sports and social activities, fairs, exhibitions, concerts -- reusing schema.org's Event for scheduling and GeoSPARQL for location.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-agenda/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities"
+    ],
+    "modelCount": 1,
+    "models": [
+      {
+        "name": "CityEvent",
+        "title": "Smart Data Models - EDINT City Agenda - CityEvent",
+        "description": "An event that will take place in a city, e.g. a cultural, sports or social activity published in a municipal public agenda (edintagenda:CityEvent, subclass of geosparql:Feature and schema:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-agenda/models/CityEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-agenda/models/CityEvent"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-agenda"
+  },
+  {
     "slug": "edint-infraestructura",
     "title": "EDINT Infrastructure Ontology (Ontología de Infraestructura)",
     "description": "Vocabulary for representing a municipality's public and private infrastructure facilities (educational, cultural, social, sports and health centers, on-street and off-street parking, shared-bicycle stations) together with the sensors, observations, violations, management roles and organizations involved in operating and monitoring them, plus (as of this update) street sections, traffic incidences, traffic control/measuring equipment and observations, and regulated zones. Reuses SOSA/SSN (sensors and observations), GeoSPARQL (geometry), W3C Time, QUDT, schema.org and Dublin Core.",
@@ -493,6 +515,14 @@
     "domains": [
       "SmartCities",
       "UrbanInfrastructure"
+    "slug": "edint-servicios-publicos",
+    "title": "EDINT Public Services Ontology (Ontología de Servicios Públicos)",
+    "description": "Vocabulary for municipal public services and the administrative procedures through which they are managed and resolved, reusing the EU's Core Public Service Vocabulary (CPSV-AP) for competent authorities, contact points and channels.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-servicios-publicos/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities"
     ],
     "modelCount": 2,
     "models": [
@@ -512,6 +542,21 @@
       }
     ],
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-promocion-comercial"
+        "name": "AdministrativeProcedure",
+        "title": "Smart Data Models - EDINT Public Services - AdministrativeProcedure",
+        "description": "Formal process followed by a public administration to manage, evaluate, and resolve a request, case, or administrative action (edintserpub:AdministrativeProcedure). NOTE: same tooling artifact as PublicService -- the source ontology's own class declaration uses a malformed IRI (owlapi/turtle# namespace); this entity uses the real servicios-publicos# IRI confirmed by the property domains and the source's own real example data.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-servicios-publicos/models/AdministrativeProcedure/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-servicios-publicos/models/AdministrativeProcedure"
+      },
+      {
+        "name": "PublicService",
+        "title": "Smart Data Models - EDINT Public Services - PublicService",
+        "description": "A municipal public service offered by a public administration or by an entity on its behalf (edintserpub:PublicService). NOTE: the source ontology's own generated ontology.ttl has two tooling artifacts affecting this class: its own class IRI is malformed (declared under 'http://www.semanticweb.org/owl/owlapi/turtle#' instead of this ontology's real servicios-publicos# namespace), and it is declared rdfs:subClassOf itself (a tautology). Both ignored here; this entity uses the real servicios-publicos# IRI confirmed by the property domains and the source's own real example data.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-servicios-publicos/models/PublicService/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-servicios-publicos/models/PublicService"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-servicios-publicos"
   },
   {
     "slug": "edint-turismo",
