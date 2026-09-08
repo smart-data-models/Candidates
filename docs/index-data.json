@@ -506,6 +506,58 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura"
   },
   {
+    "slug": "edint-suministro",
+    "title": "EDINT Utility Supply Ontology (Ontología de Suministro)",
+    "description": "Vocabulary for utilities (electricity, gas, water, ...) supplied to a municipality's infrastructure elements, and the measurement of their consumption. Structurally near-identical to edint-fotovoltaica (System/Meter/Generation/Contract/Rate), applied to utility supply generally rather than photovoltaic generation specifically.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-suministro/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "UrbanInfrastructure",
+      "Energy"
+    ],
+    "modelCount": 5,
+    "models": [
+      {
+        "name": "UtilityConsumption",
+        "title": "Smart Data Models - EDINT Utility Supply - UtilityConsumption",
+        "description": "Amount of a utility (electricity, gas, water, ...) consumed over a specific period (edintsum:UtilityConsumption, subclass of sosa:Observation).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-suministro/models/UtilityConsumption/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-suministro/models/UtilityConsumption"
+      },
+      {
+        "name": "UtilityContract",
+        "title": "Smart Data Models - EDINT Utility Supply - UtilityContract",
+        "description": "Agreement between a utility provider and a consumer defining the terms, rates, service quality, and responsibilities for providing a utility like electricity, water, or gas (edintsum:UtilityContract).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-suministro/models/UtilityContract/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-suministro/models/UtilityContract"
+      },
+      {
+        "name": "UtilityMeter",
+        "title": "Smart Data Models - EDINT Utility Supply - UtilityMeter",
+        "description": "Device that measures the consumption of a utility, e.g. electricity, gas, water, or heating (edintsum:UtilityMeter, subclass of sosa:Sensor and saref:Meter).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-suministro/models/UtilityMeter/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-suministro/models/UtilityMeter"
+      },
+      {
+        "name": "UtilityRate",
+        "title": "Smart Data Models - EDINT Utility Supply - UtilityRate",
+        "description": "The rate/tariff applied in a utility contract (edintsum:UtilityRate). The source ontology defines no properties of its own; it is the target of UtilityContract.hasRate.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-suministro/models/UtilityRate/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-suministro/models/UtilityRate"
+      },
+      {
+        "name": "UtilitySupplyPoint",
+        "title": "Smart Data Models - EDINT Utility Supply - UtilitySupplyPoint",
+        "description": "Point of a municipal infrastructure element where a utility (electricity, gas, water, ...) is supplied, generally associated with a UtilityMeter (edintsum:UtilitySupplyPoint, subclass of geosparql:Feature and sosa:FeatureOfInterest).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-suministro/models/UtilitySupplyPoint/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-suministro/models/UtilitySupplyPoint"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-suministro"
+  },
+  {
     "slug": "edint-turismo",
     "title": "SEGITTUR Core Tourism Ontology, as demonstrated by the EDINT Tourism repository",
     "description": "Vocabulary for representing tourism accommodation establishments (hotels, guest houses, aparthotels) and historical/cultural resources (fortified palaces, amphitheatres, aqueducts, and 40+ related types), together with their location, contact points, booking channels, ratings and descriptions. Drawn from SEGITTUR's Core Tourism Ontology (estur:), a large (388-class) reference model for a Network of Tourism Sector Ontologies serving Spain's future Intelligent Destination Platform (PID).",

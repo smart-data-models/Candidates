@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-suministro/models/UtilityMeter/schema.json",
+  "modelTags": "EDINT,UrbanInfrastructure,Energy",
+  "title": "Smart Data Models - EDINT Utility Supply - UtilityMeter",
+  "description": "Device that measures the consumption of a utility, e.g. electricity, gas, water, or heating (edintsum:UtilityMeter, subclass of sosa:Sensor and saref:Meter).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "UtilityMeter"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'UtilityMeter'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "hasMeterType": {
+      "type": "string",
+      "enum": [
+        "external",
+        "processed",
+        "telemetry"
+      ],
+      "description": "Property. Type of meter, from the MeterType controlled vocabulary (edintsum:hasMeterType, declared on saref:Meter -- inherited here), e.g. external, processed, telemetry."
+    },
+    "observableProperty": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The property this meter is capable of measuring (SOSA sosa:observes). The source ontology does not enumerate specific ObservableProperty instances; kept as a generic Relationship, same treatment as this candidate family's other Sensor entities."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
