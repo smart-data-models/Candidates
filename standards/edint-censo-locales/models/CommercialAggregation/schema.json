@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-censo-locales/models/CommercialAggregation/schema.json",
+  "modelTags": "EDINT,UrbanInfrastructure",
+  "title": "Smart Data Models - EDINT Commercial Census - CommercialAggregation",
+  "description": "The integration of several establishments or points of sale in the same physical space, such as a shopping center or a traditional market (edintcom:CommercialAggregation, subclass of edint-infraestructura's Facility). NOTE: the source ontology's own ontology.ttl redeclares 'Facility' (and InfrastructureElement/UrbanElement) under this ontology's OWN censo-locales# namespace, rather than importing/reusing edint-infraestructura's real classes -- almost certainly an artifact of copying a template ontology, not an intentional new class; this candidate treats these subclass relationships as targeting edint-infraestructura's real Facility, not the namespace-duplicate one. See standard-metadata.yaml.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "CommercialAggregation"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'CommercialAggregation'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "identifier": {
+      "type": "string",
+      "description": "Property. A human-readable code identifying the aggregation in the source data (dct:identifier), e.g. 'AGR-0001'."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

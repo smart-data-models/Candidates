@@ -1,0 +1,91 @@
+title: "EDINT Commercial Premises Census Ontology (Ontología de Censo de Locales Comerciales)"
+publisher: "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer"
+sourceUrl: "https://github.com/EDINT-Ontologia/edint-ontologia-censo-locales/tree/main"
+sourceOntologyIRI: "http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales"
+sourceOntologyVersion: "0.1.0"
+domains:
+  - SmartCities
+  - UrbanInfrastructure
+description: >
+  Vocabulary for a municipality's commercial premises census: commercial
+  spaces (shops, offices), the entities/organizations that operate in them,
+  their operating permits, associated terraces, and commercial aggregations
+  such as shopping centers or traditional markets.
+license: "CC-BY-4.0"
+licenseNote: >
+  Same as its sibling EDINT ontologies (edint-censo-vehiculos,
+  edint-aparcamiento, edint-fotovoltaica, edint-organizaciones,
+  edint-catastro, edint-medio-ambiente, edint-contaminacion-acustica,
+  edint-suministro, edint-trafico, edint-vehiculos-compartidos,
+  edint-alumbrado-publico, edint-gestion-residuos), this source ontology is
+  CC-BY-4.0.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-09-06 from documentation/ontology.ttl (version 0.1.0) at
+  https://github.com/EDINT-Ontologia/edint-ontologia-censo-locales.
+
+  FIVE ENTITIES MODELED: CommercialAggregation, CommercialSpace,
+  CommercialEntity, Permit, Terrace.
+
+  Facility/InfrastructureElement/UrbanElement ARE REDECLARED UNDER THIS
+  ONTOLOGY'S OWN NAMESPACE, NOT MATERIALIZED: this ontology's own
+  ontology.ttl declares three classes named Facility, InfrastructureElement
+  and UrbanElement under its OWN censo-locales# namespace, with
+  byte-identical rdfs:comment text to edint-infraestructura's real classes
+  of the same names -- almost certainly an artifact of copying a template
+  ontology rather than an intentional new definition. CommercialAggregation,
+  CommercialSpace and Terrace are declared as subClassOf this ontology's own
+  local (duplicate) Facility. This candidate treats those subclass
+  relationships as targeting edint-infraestructura's REAL Facility instead
+  (confirmed correct by the source's own real example data: Terrace
+  instances use edintinf:belongsTo and edintinf:hasInfrastructureType --
+  properties that only exist on the real edint-infraestructura Facility,
+  under the edint.es namespace, not on this ontology's own namespace-
+  duplicate declaration). None of the three duplicate classes are
+  materialized as separate entities. Flagged for the EDINT maintainers.
+
+  NEW TYPE COLLISION: Permit vs. edint-censo-vehiculos's Permit. Unlike
+  the previous type collisions in this candidate family (RegulatedZone,
+  Vehicle, Parking, Organization, CadastralProperty -- all cases of a thin
+  stub vs. a fuller real definition of the SAME concept), this one is
+  different in kind: edint-censo-vehiculos's Permit (vehicle circulation/
+  parking authorizations) and this ontology's Permit (commercial activity
+  licenses) are genuinely UNRELATED concepts that simply happen to share
+  the generic English word "Permit" as their class name. Not resolved here;
+  flagged since both are now real, non-trivial NGSI-LD entity type
+  definitions under the same name.
+
+  hasAccessType USED DESPITE NOT BEING A FORMALLY DECLARED PROPERTY: the
+  source ontology's own real example data uses edintcom:hasAccessType on
+  CommercialSpace (value: Indoor), and its KOS concept scheme
+  (kos/skos-AccessType.ttl, 3 concepts: StreetDoor, Indoor, Floor) is
+  published -- but no owl:ObjectProperty declaration for hasAccessType
+  exists anywhere in ontology.ttl itself. Included in this candidate per the
+  real, demonstrated usage rather than omitted for lack of a formal
+  declaration.
+
+  numberOfPermitedTables/numberOfPermitedChairs: SOURCE ONTOLOGY VS. SOURCE
+  EXAMPLE DATA USE DIFFERENT PROPERTY NAMES FOR THE SAME CONCEPT: the
+  formally declared properties in ontology.ttl are the English
+  numberOfPermitedTables/numberOfPermitedChairs (with a doubled-typo
+  "Permited"), but the source's own real example data instead uses Spanish
+  names -- numeroMesasAutorizadas/numeroSillasAutorizadas -- for what is
+  evidently the same data. This candidate follows the formally declared
+  English names (matching this ontology's own stated public vocabulary),
+  with the discrepancy noted in each property's own description. Similarly,
+  hasTerracePeriod's KOS concepts (yearly, seasonal) don't match the
+  example's own value ("anual", Spanish for "annual") -- kept as the
+  published KOS's own English values, per the same reasoning.
+
+  installationDate/maintenanceDate (declared with domain :UrbanElement, the
+  namespace-duplicate class) ARE NOT MODELED: since UrbanElement is treated
+  as a copy-paste artifact and none of this candidate's 5 real entities are
+  UrbanElement subclasses, these two properties have no real target here.
+
+  REAL EXAMPLE DATA USED THROUGHOUT: all 5 examples are grounded in this
+  repository's own examples/edint-ontologia-censo-locales.ttl (a real
+  Madrid "Mercado de Chamberí" market scenario, with a real café tenant,
+  its terrace, and both an activity-opening permit and a separate terrace
+  permit).
