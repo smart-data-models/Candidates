@@ -1,0 +1,76 @@
+title: "EDINT Commercial Promotion Ontology (Ontología de Promoción Comercial)"
+publisher: "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer"
+sourceUrl: "https://github.com/EDINT-Ontologia/edint-ontologia-promocion-comercial/tree/main"
+sourceOntologyIRI: "http://vocab.linkeddata.es/datosabiertos/def/comercio/promocion"
+sourceOntologyVersion: "0.1.0"
+domains:
+  - SmartCities
+  - UrbanInfrastructure
+description: >
+  Vocabulary for commercial promotion: campaigns (vouchers, discounts,
+  revitalization drives) and events (fairs, thematic markets, local
+  events) run to promote commercial activity in a zone.
+license: "CC-BY-4.0"
+licenseNote: >
+  Same as its sibling EDINT ontologies (edint-censo-vehiculos,
+  edint-aparcamiento, edint-fotovoltaica, edint-organizaciones,
+  edint-catastro, edint-medio-ambiente, edint-contaminacion-acustica,
+  edint-suministro, edint-trafico, edint-vehiculos-compartidos,
+  edint-alumbrado-publico, edint-gestion-residuos, edint-censo-locales),
+  this source ontology is CC-BY-4.0.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-09-06 from documentation/ontology.ttl (version 0.1.0) at
+  https://github.com/EDINT-Ontologia/edint-ontologia-promocion-comercial.
+
+  TWO ENTITIES MODELED: CommercialCampaign, CommercialEvent.
+
+  CommercialSpace IS NOT A THIRD ENTITY, DESPITE BEING DECLARED HERE: this
+  ontology's own ontology.ttl declares a "CommercialSpace" class under its
+  own promocion# namespace, but with an explicit
+  rdfs:isDefinedBy pointing at edint-censo-locales's namespace -- unlike the
+  Facility/InfrastructureElement/UrbanElement situation in edint-censo-
+  locales (which was a copy-paste duplication with no such pointer), this
+  is a proper cross-reference: "this class is really defined over there."
+  Correctly treated as edint-censo-locales's real CommercialSpace, not a
+  separate entity.
+
+  hasCommercialCampaignType/hasCommercialEventType KOS FILES HAVE MORE
+  CONCEPTS THAN A FIRST GREP SUGGESTED: both KOS files list their extra
+  concepts (Revitalization; LocalEvent) with irregular leading whitespace
+  that a naive line-anchored search missed on a first pass -- caught by
+  cross-checking against skos:hasTopConcept/skos:inScheme declarations and
+  the real example data (which uses exactly these two concepts). Enums
+  include all 3 CommercialCampaignType concepts (Voucher, Discount,
+  Revitalization) and all 3 CommercialEventType concepts (Fair,
+  ThematicMarket, LocalEvent).
+
+  includesCommercialSpace: SOURCE EXAMPLE USES A DIFFERENT, UNDECLARED
+  PROPERTY NAME: the ontology formally declares
+  edintpro:includesCommercialSpace on CommercialCampaign, but the source's
+  own real example data instead writes a bare "edintcom:includes" (under
+  the censo-locales prefix, not promocion) -- neither the property name nor
+  the namespace prefix matches the formal declaration. Modeled here under
+  the formally declared name/namespace, per this candidate family's general
+  preference for the ontology's own public vocabulary over ad hoc example
+  quirks (same reasoning as edint-censo-locales's numberOfPermitedTables/
+  Chairs situation).
+
+  hasCommercialEventType: SOURCE EXAMPLE USES THE WRONG NAMESPACE PREFIX:
+  the example writes "edintcom:hasCommercialEventType" (censo-locales
+  prefix) even though this property is declared under promocion#. Modeled
+  under the correct, formally declared promocion# namespace.
+
+  budget/numberOfCommercialSpaces HAVE NO FORMAL rdfs:domain, ASSIGNED PER
+  THEIR OWN COMMENT TEXT: budget's comment says "for an event or something
+  alike" (assigned to both CommercialCampaign and CommercialEvent);
+  numberOfCommercialSpaces's comment says "joined to a campaign or
+  something alike" (assigned to CommercialCampaign only).
+
+  REAL EXAMPLE DATA USED: both examples are grounded in this repository's
+  own examples/edint-ontologia-promocion-comercial.ttl (a real "Semana
+  Gastronómica Mercado de Chamberí 2025" commercial revitalization
+  campaign/event, continuing the same Mercado de Chamberí scenario already
+  used for edint-censo-locales's real example).
