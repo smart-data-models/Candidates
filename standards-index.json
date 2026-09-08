@@ -506,6 +506,15 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura"
   },
   {
+    "slug": "edint-promocion-comercial",
+    "title": "EDINT Commercial Promotion Ontology (Ontología de Promoción Comercial)",
+    "description": "Vocabulary for commercial promotion: campaigns (vouchers, discounts, revitalization drives) and events (fairs, thematic markets, local events) run to promote commercial activity in a zone.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-promocion-comercial/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "UrbanInfrastructure"
     "slug": "edint-servicios-publicos",
     "title": "EDINT Public Services Ontology (Ontología de Servicios Públicos)",
     "description": "Vocabulary for municipal public services and the administrative procedures through which they are managed and resolved, reusing the EU's Core Public Service Vocabulary (CPSV-AP) for competent authorities, contact points and channels.",
@@ -518,6 +527,21 @@
     "modelCount": 2,
     "models": [
       {
+        "name": "CommercialCampaign",
+        "title": "Smart Data Models - EDINT Commercial Promotion - CommercialCampaign",
+        "description": "A commercial promotion campaign, e.g. a voucher or discount campaign run across several commercial spaces (edintpro:CommercialCampaign). This ontology's own CommercialSpace declaration is a pointer (rdfs:isDefinedBy) to edint-censo-locales's real CommercialSpace, not a separate definition; not re-modeled here.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-promocion-comercial/models/CommercialCampaign/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-promocion-comercial/models/CommercialCampaign"
+      },
+      {
+        "name": "CommercialEvent",
+        "title": "Smart Data Models - EDINT Commercial Promotion - CommercialEvent",
+        "description": "A commercial promotion event, e.g. a fair or thematic market (edintpro:CommercialEvent, subclass of schema:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-promocion-comercial/models/CommercialEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-promocion-comercial/models/CommercialEvent"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-promocion-comercial"
         "name": "AdministrativeProcedure",
         "title": "Smart Data Models - EDINT Public Services - AdministrativeProcedure",
         "description": "Formal process followed by a public administration to manage, evaluate, and resolve a request, case, or administrative action (edintserpub:AdministrativeProcedure). NOTE: same tooling artifact as PublicService -- the source ontology's own class declaration uses a malformed IRI (owlapi/turtle# namespace); this entity uses the real servicios-publicos# IRI confirmed by the property domains and the source's own real example data.",
