@@ -1,0 +1,78 @@
+title: "EDINT Traffic Ontology (Ontología de Tráfico)"
+publisher: "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer"
+sourceUrl: "https://github.com/EDINT-Ontologia/edint-ontologia-trafico/tree/main"
+sourceOntologyIRI: "https://edint.es/def/trafico"
+sourceOntologyVersion: "0.1.1"
+domains:
+  - SmartCities
+  - Transportation
+description: >
+  Vocabulary for street sections, traffic incidents (planned and
+  unplanned), traffic control and measuring equipment, traffic
+  observations, and traffic observation points.
+license: "CC-BY-4.0"
+licenseNote: >
+  Same as its sibling EDINT ontologies (edint-censo-vehiculos,
+  edint-aparcamiento, edint-fotovoltaica, edint-organizaciones,
+  edint-catastro, edint-medio-ambiente, edint-contaminacion-acustica,
+  edint-suministro), this source ontology is CC-BY-4.0.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-09-06 from documentation/ontology.ttl (version 0.1.1;
+  owl:priorVersion points at the tagged v0.1.0 release) at
+  https://github.com/EDINT-Ontologia/edint-ontologia-trafico.
+
+  THIS IS A MORE CURRENT, DEDICATED VERSION OF A PATTERN ALREADY PARTIALLY
+  BUNDLED INTO edint-infraestructura's v0.2.1 UPDATE. That earlier update
+  translated a "trafico#" module bundled inline inside
+  edint-infraestructura's own ontology.ttl, at a point when this standalone
+  edint-ontologia-trafico repository either didn't exist yet or wasn't
+  checked. Several real differences between the two:
+    - Naming: "Incidence"/"PlannedIncidence"/"UnplannedIncidence" (bundled
+      copy) vs. "Incident"/"PlannedIncident"/"UnplannedIncident" (this
+      standalone, more current repository). "TrafficMeasuringDevice" vs.
+      "TrafficMeasurementDevice", same relationship.
+    - This repository has a genuine NEW class, ControlEquipment (subclass
+      of TrafficEquipment), that the bundled copy did not have -- the
+      bundled copy instead directly materialized bare "TrafficEquipment"
+      itself for the same purpose (traffic lights, access control cameras),
+      since no dedicated subclass existed there yet. Here, bare
+      TrafficEquipment is properly split into two concrete subclasses
+      (ControlEquipment and TrafficMeasurementDevice), so -- matching this
+      candidate family's Sensor/AccessSensor/CountingSensor precedent --
+      bare TrafficEquipment is NOT materialized, only its two concrete
+      subclasses are.
+    - numDirections/urban moved: in the bundled copy these were declared on
+      TrafficEquipment (shared by both its instantiations). Here they are
+      declared on ControlEquipment specifically (plus numDirections also on
+      Incident), and NOT on TrafficMeasurementDevice -- reflected in this
+      translation: ControlEquipment carries numDirections/numLanes/urban,
+      TrafficMeasurementDevice does not.
+    - A genuinely new class, TrafficObservationPoint (subclass of
+      sosa:FeatureOfInterest), parallels edint-infraestructura's
+      ObservationPoint but is specific to the traffic domain -- did not
+      exist in the bundled copy either.
+  edint-infraestructura's own v0.2.1 PR is NOT modified by this pass (out of
+  scope, would mean reopening an already-merged candidate); this
+  discrepancy between the bundled and standalone versions is simply
+  documented here for whoever reconciles the EDINT candidate family later.
+
+  SEVEN ENTITIES MODELED: StreetSection, PlannedIncident, UnplannedIncident,
+  ControlEquipment, TrafficMeasurementDevice, TrafficObservation,
+  TrafficObservationPoint. Bare Incident and TrafficProperty are
+  deliberately not materialized, same reasoning as their bundled-copy
+  equivalents (Sensor-style abstract bases; generic-Relationship-only
+  ObservableProperty pattern).
+
+  startDate/endDate ON Incident HAVE NO FORMAL rdfs:domain IN THE SOURCE
+  (schema:startDate/endDate are declared with only a comment saying "of an
+  incident", no domain triple) -- included on PlannedIncident/
+  UnplannedIncident per that comment's clear intent, same treatment already
+  given to the bundled copy's equivalent gap.
+
+  NO REAL EXAMPLE DATA FOUND: this repository has no examples/ or mappings/
+  directory. All 7 example.json files are synthetic, reusing the same
+  illustrative Madrid locations as the bundled copy's examples for
+  continuity.

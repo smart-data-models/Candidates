@@ -506,6 +506,71 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura"
   },
   {
+    "slug": "edint-trafico",
+    "title": "EDINT Traffic Ontology (Ontología de Tráfico)",
+    "description": "Vocabulary for street sections, traffic incidents (planned and unplanned), traffic control and measuring equipment, traffic observations, and traffic observation points.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-trafico/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "Transportation"
+    ],
+    "modelCount": 7,
+    "models": [
+      {
+        "name": "ControlEquipment",
+        "title": "Smart Data Models - EDINT Traffic - ControlEquipment",
+        "description": "Equipment that monitors or controls properties of a specific vehicle, such as its speed or access to certain city areas -- e.g. a traffic light or speed/access control camera (edinttrafico:ControlEquipment, subclass of edinttrafico:TrafficEquipment). This is a NEW concrete subclass introduced in this standalone ontology (v0.1.1) that did not exist when edint-infraestructura's own v0.2.1 update bundled an earlier copy of this pattern -- that earlier copy materialized bare 'TrafficEquipment' directly for this same purpose. See standard-metadata.yaml.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-trafico/models/ControlEquipment/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-trafico/models/ControlEquipment"
+      },
+      {
+        "name": "PlannedIncident",
+        "title": "Smart Data Models - EDINT Traffic - PlannedIncident",
+        "description": "Planned traffic incident, can be recurrent or not (edinttrafico:PlannedIncident, subclass of edinttrafico:Incident and geosparql:Feature). Bare 'Incident' is deliberately not materialized as its own entity, matching this candidate family's precedent for abstract SOSA-style bases (e.g. Sensor). Renamed from 'Incidence'/'PlannedIncidence' used in edint-infraestructura's own bundled v0.2.1 copy of this pattern -- see standard-metadata.yaml.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-trafico/models/PlannedIncident/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-trafico/models/PlannedIncident"
+      },
+      {
+        "name": "StreetSection",
+        "title": "Smart Data Models - EDINT Traffic - StreetSection",
+        "description": "Section defined by a starting and an ending point that can belong to one or more street (edinttrafico:StreetSection, subclass of geosparql:Feature). Translated from the dedicated, standalone edint-ontologia-trafico repository (v0.1.1) -- more current than, and using slightly different naming from, the same-purpose entities bundled inline into edint-infraestructura's own v0.2.1 update; see standard-metadata.yaml.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-trafico/models/StreetSection/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-trafico/models/StreetSection"
+      },
+      {
+        "name": "TrafficMeasurementDevice",
+        "title": "Smart Data Models - EDINT Traffic - TrafficMeasurementDevice",
+        "description": "Traffic measurement device, a type of traffic equipment which performs measurements of properties such as service level, traffic intensity and traffic load (edinttrafico:TrafficMeasurementDevice, subclass of sosa:Sensor and edinttrafico:TrafficEquipment). Renamed from 'TrafficMeasuringDevice' used in edint-infraestructura's own bundled v0.2.1 copy; NOTE this newer version no longer carries numDirections/urban (moved exclusively to the new ControlEquipment sibling) -- see standard-metadata.yaml.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-trafico/models/TrafficMeasurementDevice/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-trafico/models/TrafficMeasurementDevice"
+      },
+      {
+        "name": "TrafficObservation",
+        "title": "Smart Data Models - EDINT Traffic - TrafficObservation",
+        "description": "Observation by a traffic measurement device or a control equipment such as speed cameras or Automatic Number Plate Recognition (ANPR) systems (edinttrafico:TrafficObservation, subclass of sosa:Observation).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-trafico/models/TrafficObservation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-trafico/models/TrafficObservation"
+      },
+      {
+        "name": "TrafficObservationPoint",
+        "title": "Smart Data Models - EDINT Traffic - TrafficObservationPoint",
+        "description": "Point where traffic or specific-vehicle observations can be made using sensors (edinttrafico:TrafficObservationPoint, subclass of sosa:FeatureOfInterest). No properties of its own beyond location; parallels edint-infraestructura's ObservationPoint, but specific to the traffic domain -- a new class not present in the earlier copy of this pattern bundled into edint-infraestructura's v0.2.1 update.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-trafico/models/TrafficObservationPoint/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-trafico/models/TrafficObservationPoint"
+      },
+      {
+        "name": "UnplannedIncident",
+        "title": "Smart Data Models - EDINT Traffic - UnplannedIncident",
+        "description": "Unplanned traffic incident in a city (edinttrafico:UnplannedIncident, subclass of edinttrafico:Incident and geosparql:Feature). No properties of its own beyond those inherited from Incident.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-trafico/models/UnplannedIncident/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-trafico/models/UnplannedIncident"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-trafico"
+  },
+  {
     "slug": "edint-turismo",
     "title": "SEGITTUR Core Tourism Ontology, as demonstrated by the EDINT Tourism repository",
     "description": "Vocabulary for representing tourism accommodation establishments (hotels, guest houses, aparthotels) and historical/cultural resources (fortified palaces, amphitheatres, aqueducts, and 40+ related types), together with their location, contact points, booking channels, ratings and descriptions. Drawn from SEGITTUR's Core Tourism Ontology (estur:), a large (388-class) reference model for a Network of Tourism Sector Ontologies serving Spain's future Intelligent Destination Platform (PID).",
