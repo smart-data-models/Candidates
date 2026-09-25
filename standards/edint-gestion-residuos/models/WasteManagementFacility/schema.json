@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-gestion-residuos/models/WasteManagementFacility/schema.json",
+  "modelTags": "EDINT,UrbanInfrastructure,Environment",
+  "title": "Smart Data Models - EDINT Waste Management - WasteManagementFacility",
+  "description": "A facility authorized to manage/treat waste, e.g. a classification or treatment plant (edintwaste:WasteManagementFacility, subclass of edintwaste:WasteFacility, edint-infraestructura's Facility).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "WasteManagementFacility"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'WasteManagementFacility'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "address": {
+      "type": "object",
+      "description": "Property. Model:'https://schema.org/address'. The mailing address (reusing esdir:DireccionPostal). Inherited from WasteFacility.",
+      "properties": {
+        "streetAddress": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/streetAddress'."
+        },
+        "addressLocality": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/addressLocality'."
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/postalCode'."
+        },
+        "addressRegion": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/addressRegion'."
+        },
+        "addressCountry": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/addressCountry'."
+        }
+      }
+    },
+    "belongsTo": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Territorial unit(s) (Barrio, Distrito or Municipio) this facility belongs to (edintwaste:belongsTo). Modeled as an array since the source's own real example data shows a WasteContainer belonging to both a Barrio and a Distrito simultaneously. Inherited from WasteFacility."
+    },
+    "contactPoint": {
+      "type": "object",
+      "description": "Property. Model:'https://schema.org/ContactPoint'. Contact point for this facility.",
+      "properties": {
+        "telephone": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/telephone'."
+        },
+        "faxNumber": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/faxNumber'."
+        }
+      }
+    },
+    "legalName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/legalName'. The facility's legal (company) name."
+    },
+    "hasManagementScope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. Scope(s) of waste management authorized for this facility, from the ManagementScope controlled vocabulary (edintwaste:hasManagementScope). Kept as an open string rather than a fixed enum -- the source's own example data uses a notation ('ClasificacionResiduosNoPeligrososTrituracionMadera') that doesn't exactly match any concept published in this repository's own kos/skos-ManagementScope.ttl ('ClasificacionDeResiduosNoPeligrososYTrituracionDeMadera'); see standard-metadata.yaml."
+    },
+    "hasTreatmentProcess": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. Treatment process(es) performed at this facility, from the TreatmentProcess controlled vocabulary (edintwaste:hasTreatmentProcess). Same open-string treatment as hasManagementScope, for the same reason."
+    },
+    "managesWasteType": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "ResiduosVoluminosos",
+          "ComponentesPeligrososRetiradosDeEquiposDesechados",
+          "ResiduosNoEspecificadosEnOtraCategoria",
+          "PlasticosMetalesYBriks",
+          "Vidrio",
+          "Restos"
+        ]
+      },
+      "description": "Property. Waste type(s) managed by this facility, from the WasteType controlled vocabulary (edintwaste:managesWasteType)."
+    },
+    "isConstructionDemolitionWasteManager": {
+      "type": "boolean",
+      "description": "Property. Whether this facility manages construction/demolition waste (edintwaste:isConstructionDemolitionWasteManager)."
+    },
+    "nif": {
+      "type": "string",
+      "description": "Property. Spanish tax identification number (NIF) of the managing organization (edintwaste:nif)."
+    },
+    "nima": {
+      "type": "string",
+      "description": "Property. Spanish environmental register identifier (NIMA) of the facility (edintwaste:nima)."
+    },
+    "registrationNumber": {
+      "type": "string",
+      "description": "Property. The facility's waste-management authorization/registration number (edintwaste:registrationNumber)."
+    },
+    "registrationType": {
+      "type": "string",
+      "description": "Property. Type of authorization/registration held, e.g. 'Autorización de gestión de residuos no peligrosos' (edintwaste:registrationType). The source ontology does not constrain this to a controlled vocabulary."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

@@ -1,0 +1,64 @@
+title: "EDINT Waste Management Ontology (Ontología de Gestión de Residuos)"
+publisher: "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer"
+sourceUrl: "https://github.com/EDINT-Ontologia/edint-ontologia-gestion-residuos/tree/main"
+sourceOntologyIRI: "https://w3id.org/def/medioambiente/residuos"
+sourceOntologyVersion: "0.1.0"
+domains:
+  - SmartCities
+  - UrbanInfrastructure
+  - Environment
+description: >
+  Vocabulary for municipal waste management infrastructure: mobile and
+  permanent collection points ("puntos limpios"), street waste containers,
+  and authorized waste management/treatment facilities.
+license: "CC-BY-4.0"
+licenseNote: >
+  Same as its sibling EDINT ontologies (edint-censo-vehiculos,
+  edint-aparcamiento, edint-fotovoltaica, edint-organizaciones,
+  edint-catastro, edint-medio-ambiente, edint-contaminacion-acustica,
+  edint-suministro, edint-trafico, edint-vehiculos-compartidos,
+  edint-alumbrado-publico), this source ontology is CC-BY-4.0.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-09-06 from documentation/ontology.ttl (version 0.1.0) at
+  https://github.com/EDINT-Ontologia/edint-ontologia-gestion-residuos. Note
+  the source ontology's own namespace is on w3id.org (not
+  vocab.linkeddata.es or edint.es like most other EDINT ontologies) -- a
+  namespace choice, not a migration in progress.
+
+  FOUR ENTITIES MODELED: MobileCollectionPoint, PermanentCollectionPoint,
+  WasteContainer, WasteManagementFacility. Bare CollectionPoint and
+  WasteFacility (both pure abstract bases with no properties of their own,
+  used only for subClassOf) are not materialized as entities, matching this
+  candidate family's precedent (e.g. Sensor, Incident).
+
+  belongsTo MODELED AS AN ARRAY, NOT A SINGLE VALUE: the source ontology's
+  own real example data shows a WasteContainer instance with TWO belongsTo
+  triples simultaneously (to both a Barrio and a Distrito) -- confirming
+  the property is used multi-valued in practice even though nothing in the
+  ontology itself states a cardinality. Modeled as an array on all 4
+  entities for consistency.
+
+  hasManagementScope/hasTreatmentProcess KEPT AS OPEN STRINGS, NOT ENUMS,
+  DUE TO A NOTATION MISMATCH BETWEEN THE PUBLISHED KOS FILES AND THE REAL
+  EXAMPLE DATA: the source's own examples/ontology-examples.ttl uses concept
+  notations like "ClasificacionResiduosNoPeligrososTrituracionMadera" and
+  "ClasificacionResiduosNoPeligrosos", but the actually published KOS files
+  (kos/skos-ManagementScope.ttl, kos/skos-TreatmentProcess.ttl) declare
+  differently-worded notations for what appear to be the same concepts
+  (e.g. "ClasificacionDeResiduosNoPeligrososYTrituracionDeMadera" -- extra
+  "De"/"Y" words). Rather than guess at reconciling the mismatch or silently
+  picking one spelling, both properties are left as open strings; enumerating
+  the real KOS-published concepts would have produced a schema that
+  couldn't validate the source's own genuine example data. Flagged for the
+  EDINT maintainers. managesWasteType/acceptsWasteType (the WasteType
+  scheme) had no such mismatch and are enumerated normally (7 concepts).
+
+  REAL EXAMPLE DATA USED THROUGHOUT: all 4 examples are grounded in this
+  repository's own examples/ontology-examples.ttl (real Madrid/Fuenlabrada
+  waste facility records: a mobile collection point on Calle del Cobre, a
+  permanent "punto limpio" in El Rabal, a street container in the Cortes/
+  Centro area, and a real waste-management company's authorization record
+  including its actual NIF/NIMA registration numbers).
