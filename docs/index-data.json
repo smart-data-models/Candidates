@@ -339,6 +339,16 @@
     "description": "Vocabulary for public street lighting inventory in the context of FEMP (Spanish Federation of Municipalities and Provinces): modular streetlight composition (post, luminaire, lamp, junction box), electrical infrastructure (control center), energy consumption as a SOSA observation with QUDT results, luminaire model catalog, manufacturer, photometric and light-pollution parameters, and conservation status.",
     "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
     "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-alumbrado-publico/tree/main",
+    "slug": "edint-fotovoltaica",
+    "title": "EDINT Photovoltaic System Ontology (Ontología de Instalación Fotovoltaica)",
+    "description": "Vocabulary for representing photovoltaic (solar) installations found on a municipality's infrastructure elements, and the measurement of electricity generation, consumption, accumulation and grid export from those installations. Reuses SOSA/SSN (sensors and observations), SAREF (Meter), GeoSPARQL (geometry) and schema.org (Organization).",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-fotovoltaica/tree/main",
+    "slug": "edint-aparcamiento",
+    "title": "EDINT Parking Ontology (Ontología de Aparcamiento)",
+    "description": "Vocabulary for representing a municipality's public and private parking -- on-street and off-street -- including access points (linked to edint-infraestructura's sensor representation), fees, individual spots, and spot groupings by permit type or vehicle type. The source ontology explicitly states that Parking is a specialization of edint-infraestructura's Facility.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-aparcamiento/tree/main",
     "license": "CC-BY-4.0",
     "domains": [
       "SmartCities",
@@ -433,6 +443,75 @@
       }
     ],
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-alumbrado-publico"
+      "Transportation"
+    ],
+    "modelCount": 5,
+    "models": [
+      {
+        "name": "Parking",
+        "title": "Smart Data Models - EDINT Parking - Parking",
+        "description": "Parking for different types of vehicles, on-street or off-street, public or private (edintapar:Parking, subclass of edintinf:Facility). Collapses the source ontology's two concrete subclasses (OnStreetParking, OffStreetParking) into a single entity with a parkingType discriminator, since the source's own real example data never instantiates bare Parking directly and OnStreetParking's only distinguishing property (isPartOfZone) is small enough to keep as an always-optional field rather than a second entity type.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-aparcamiento/models/Parking/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-aparcamiento/models/Parking"
+      },
+      {
+        "name": "ParkingFee",
+        "title": "Smart Data Models - EDINT Parking - ParkingFee",
+        "description": "Parking fee that covers the right to park a vehicle in an authorized space for a certain time period (edintapar:ParkingFee). The source ontology defines no properties of its own; it is the target of Parking.hasParkingFee.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-aparcamiento/models/ParkingFee/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-aparcamiento/models/ParkingFee"
+      },
+      {
+        "name": "ParkingSpot",
+        "title": "Smart Data Models - EDINT Parking - ParkingSpot",
+        "description": "Individual parking spot in an on-street or off-street parking (edintapar:ParkingSpot). The source ontology defines no properties of its own; it is the target of Parking/ParkingSpotsByPermitType/ParkingSpotsByVehicleType's hasParkingSpot relationship.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-aparcamiento/models/ParkingSpot/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-aparcamiento/models/ParkingSpot"
+      },
+      {
+        "name": "ParkingSpotsByPermitType",
+        "title": "Smart Data Models - EDINT Parking - ParkingSpotsByPermitType",
+        "description": "Group of parking spots for each type of permit, e.g. resident, rotation (edintapar:ParkingSpotsByPermitType). Indicates the number of slots for that permit type. NOTE: the source ontology's own 'permitType' property declares rdfs:domain :ParkingSpotsByVehicleType (not ParkingSpotsByPermitType) -- almost certainly a copy-paste error in the source, given the property's own name and comment ('Relationship between the group of places by TYPE OF PERMIT and the taxonomy of types of permit'). Assigned to this entity instead, per the property's evident intent; see standard-metadata.yaml.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-aparcamiento/models/ParkingSpotsByPermitType/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-aparcamiento/models/ParkingSpotsByPermitType"
+      },
+      {
+        "name": "ParkingSpotsByVehicleType",
+        "title": "Smart Data Models - EDINT Parking - ParkingSpotsByVehicleType",
+        "description": "Group of parking spots for each type of vehicle: cars, motorcycles, bicycles, among others (edintapar:ParkingSpotsByVehicleType). Indicates the number of slots per vehicle type. NOTE: the source ontology declares no rdfs:domain at all for its 'vehicleType' property; assigned to this entity per the property's own name/comment (mirroring the equally-evident, but differently-broken, permitType situation on ParkingSpotsByPermitType); see standard-metadata.yaml.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-aparcamiento/models/ParkingSpotsByVehicleType/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-aparcamiento/models/ParkingSpotsByVehicleType"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-aparcamiento"
+    "slug": "edint-censo-vehiculos",
+    "title": "EDINT Vehicle Census Ontology (Ontología de Censo/Registro de Vehículos)",
+    "description": "Vocabulary for representing the vehicle census/registry that local entities manage for purposes such as vehicle tax collection (IVTM in Spain) and mobility management (parking permits, zone access permits). Scope is limited to data usable for those two purposes; driving-licence, technical inspection and similar vehicle data are explicitly out of scope per the source ontology's own stated purpose. Reuses SAREF4AUTO (vehicle), schema.org (Person/Organization) and SKOS (controlled vocabularies).",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-censo-vehiculos/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "Transportation"
+    ],
+    "modelCount": 2,
+    "models": [
+      {
+        "name": "Permit",
+        "title": "Smart Data Models - EDINT Vehicle Census - Permit",
+        "description": "Official permit, usually issued by the city council or the traffic authority, that allows a particular vehicle to access, drive through, or park in an area where entry is restricted or regulated (edintveh:Permit).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-censo-vehiculos/models/Permit/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-censo-vehiculos/models/Permit"
+      },
+      {
+        "name": "Vehicle",
+        "title": "Smart Data Models - EDINT Vehicle Census - Vehicle",
+        "description": "A vehicle registered in a local entity's vehicle census/registry, used for purposes such as vehicle tax collection or mobility management (edintveh:Vehicle, reusing SAREF4AUTO's saref4auto:Vehicle).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-censo-vehiculos/models/Vehicle/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-censo-vehiculos/models/Vehicle"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-censo-vehiculos"
     "slug": "edint-censo-locales",
     "title": "EDINT Commercial Premises Census Ontology (Ontología de Censo de Locales Comerciales)",
     "description": "Vocabulary for a municipality's commercial premises census: commercial spaces (shops, offices), the entities/organizations that operate in them, their operating permits, associated terraces, and commercial aggregations such as shopping centers or traditional markets.",
@@ -446,6 +525,42 @@
     "modelCount": 5,
     "models": [
       {
+        "name": "PhotovoltaicGeneration",
+        "title": "Smart Data Models - EDINT Photovoltaic - PhotovoltaicGeneration",
+        "description": "Amount of electricity generated, consumed, stored or exported by a photovoltaic system during a certain period of time (edintfotov:PhotovoltaicGeneration, subclass of sosa:Observation). Which of generation/consumption/storage/export a given observation represents is expected to be conveyed via observedProperty's target concept -- the source ontology does not declare a dedicated categorization property or controlled vocabulary for this distinction.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-fotovoltaica/models/PhotovoltaicGeneration/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-fotovoltaica/models/PhotovoltaicGeneration"
+      },
+      {
+        "name": "PhotovoltaicMeter",
+        "title": "Smart Data Models - EDINT Photovoltaic - PhotovoltaicMeter",
+        "description": "Device that measures and records the total electricity produced, consumed, stored and exported by a photovoltaic system, in real-time and cumulatively (edintfotov:PhotovoltaicMeter, subclass of sosa:Sensor and saref:Meter).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-fotovoltaica/models/PhotovoltaicMeter/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-fotovoltaica/models/PhotovoltaicMeter"
+      },
+      {
+        "name": "PhotovoltaicSystem",
+        "title": "Smart Data Models - EDINT Photovoltaic - PhotovoltaicSystem",
+        "description": "A photovoltaic (PV) system that converts sunlight into electricity, installed on a municipal infrastructure element (edintfotov:PhotovoltaicSystem, subclass of geosparql:Feature and sosa:FeatureOfInterest). Ranges from residential rooftops to utility-scale plants.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-fotovoltaica/models/PhotovoltaicSystem/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-fotovoltaica/models/PhotovoltaicSystem"
+      },
+      {
+        "name": "PhotovoltaicSystemContract",
+        "title": "Smart Data Models - EDINT Photovoltaic - PhotovoltaicSystemContract",
+        "description": "Legally binding document outlining the sale, lease, or power purchase agreement for solar panels (edintfotov:PhotovoltaicSystemContract).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-fotovoltaica/models/PhotovoltaicSystemContract/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-fotovoltaica/models/PhotovoltaicSystemContract"
+      },
+      {
+        "name": "PhotovoltaicSystemRate",
+        "title": "Smart Data Models - EDINT Photovoltaic - PhotovoltaicSystemRate",
+        "description": "Policy mechanism that pays solar system owners for the surplus electricity they generate and feed back into the national grid (edintfotov:PhotovoltaicSystemRate). The source ontology defines no properties of its own; it is the target of PhotovoltaicSystemContract.hasRate.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-fotovoltaica/models/PhotovoltaicSystemRate/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-fotovoltaica/models/PhotovoltaicSystemRate"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-fotovoltaica"
         "name": "CommercialAggregation",
         "title": "Smart Data Models - EDINT Commercial Census - CommercialAggregation",
         "description": "The integration of several establishments or points of sale in the same physical space, such as a shopping center or a traditional market (edintcom:CommercialAggregation, subclass of edint-infraestructura's Facility). NOTE: the source ontology's own ontology.ttl redeclares 'Facility' (and InfrastructureElement/UrbanElement) under this ontology's OWN censo-locales# namespace, rather than importing/reusing edint-infraestructura's real classes -- almost certainly an artifact of copying a template ontology, not an intentional new class; this candidate treats these subclass relationships as targeting edint-infraestructura's real Facility, not the namespace-duplicate one. See standard-metadata.yaml.",
@@ -2627,6 +2742,11 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/madrid-accidentes-trafico"
   },
   {
+    "slug": "simple-federated-logisticroles",
+    "title": "Logistic Roles extensions to the Federated ontology for SIMPLE",
+    "description": "Extensions to the FEDeRATED project's Logistic Roles ontology, created for the SIMPLE project. Unlike the sibling simple-federated-businessservice candidate (which owl:imports its FEDeRATED base ontology externally), this document is fully self-contained: it republishes the entire base FEDeRATED LogisticRoles taxonomy inline, under the base ontology's own ontology.tno.nl namespace, and adds exactly one new class of its own (simple-lr:Driver) plus two property redeclarations (:involves, :isAbout). The taxonomy covers two distinct role hierarchies: ActorRoles (roles a legal person can play in a business transaction -- Carrier, Consignee, Forwarder, etc.) and LocationRoles (roles a physical location can play in the context of a specific transport means and event -- PortOfLoading, PlaceOfDelivery, GateInLocation, etc.).",
+    "publisher": "Ontology Engineering Group (OEG), Universidad Politécnica de Madrid -- ontology created in the context of the EU SIMPLE project; extends the FEDeRATED project's Logistic Roles ontology (TNO)",
+    "sourceUrl": "https://vocab.plataformasimple.es/def/logistics/federated/LogisticRoles",
     "slug": "simple-federated-event",
     "title": "Event extensions to the Federated ontology for SIMPLE",
     "description": "Extensions to the FEDeRATED project's Event ontology, created for the SIMPLE project to represent logistics events in road and rail transport not already covered by the upstream FEDeRATED taxonomy. Adds Gate-In and Gate-Out terminal events, generic vehicle arrival/departure events, a driver clock-in/clock-out confirmation pair, an Issue event for logistics chain incidents, a Passing event, and the full eCMR (electronic Consignment Note) document lifecycle (creation, sender/carrier/consignee signatures and comment modifications, destination/loads modifications, cancellation, signature invalidation).",
@@ -2642,6 +2762,24 @@
       "Transportation",
       "SmartCities"
     ],
+    "modelCount": 2,
+    "models": [
+      {
+        "name": "Driver",
+        "title": "Smart Data Models - SIMPLE Federated Logistic Roles - Driver",
+        "description": "Someone who drives a vehicle (simple-lr:Driver, SIMPLE extension to the FEDeRATED Logistic Roles ontology, subclass of LogisticServiceProvider). Referenced as the range of simple-bs:involvedDriver in the sibling simple-federated-businessservice candidate's TransportService entity.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-logisticroles/models/Driver/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-logisticroles/models/Driver"
+      },
+      {
+        "name": "LocationRole",
+        "title": "Smart Data Models - SIMPLE Federated Logistic Roles - LocationRole",
+        "description": "A location such as a hub or port can have different roles depending on the context (LogisticRoles:LocationRoles, FEDeRATED Logistic Roles ontology, republished inline in the SIMPLE LogisticRoles document). Modeled generically -- see the roleType property -- rather than as 17 separate entity types, since every concrete subclass (PlaceOfLoading, PortOfCall, PlaceOfDelivery, etc.) shares the exact same three required relationships and adds no property of its own beyond a differentiating label/comment.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-logisticroles/models/LocationRole/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-logisticroles/models/LocationRole"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-logisticroles"
     "modelCount": 20,
     "models": [
       {

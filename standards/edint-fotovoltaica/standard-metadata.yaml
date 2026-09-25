@@ -1,0 +1,87 @@
+title: "EDINT Photovoltaic System Ontology (Ontología de Instalación Fotovoltaica)"
+publisher: "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer"
+sourceUrl: "https://github.com/EDINT-Ontologia/edint-ontologia-fotovoltaica/tree/main"
+sourceOntologyIRI: "https://edint.es/def/fotovoltaica"
+sourceOntologyVersion: "0.2.1"
+domains:
+  - SmartCities
+  - UrbanInfrastructure
+  - Energy
+description: >
+  Vocabulary for representing photovoltaic (solar) installations found on a
+  municipality's infrastructure elements, and the measurement of electricity
+  generation, consumption, accumulation and grid export from those
+  installations. Reuses SOSA/SSN (sensors and observations), SAREF (Meter),
+  GeoSPARQL (geometry) and schema.org (Organization).
+license: "CC-BY-4.0"
+licenseNote: >
+  Same as edint-censo-vehiculos and edint-aparcamiento, this source ontology
+  is CC-BY-4.0 -- the same license Smart Data Models conventionally uses. No
+  discrepancy to resolve for this one.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-09-06 from documentation/ontology.ttl (version 0.2.1;
+  owl:priorVersion points at the tagged v0.2.0 release, but 0.2.1 itself has
+  no formal GitHub Release yet, unlike this being flagged as a "test"
+  release -- just an untagged, in-progress bump) at
+  https://github.com/EDINT-Ontologia/edint-ontologia-fotovoltaica.
+
+  UNLIKE ITS SIBLINGS, THIS ONTOLOGY ALREADY USES THE edint.es NAMESPACE
+  (https://edint.es/def/fotovoltaica#) -- no vocab.linkeddata.es-style
+  namespace migration pending here, unlike edint-zona-regulatoria,
+  edint-censo-vehiculos and edint-aparcamiento (all still on their old
+  namespaces as of translation time).
+
+  ONLY 5 OF ~35 REFERENCED CLASSES ARE NATIVE TO THIS ONTOLOGY: the source
+  file bundles a very large number of imported/referenced external classes
+  for context -- edint-infraestructura's own Facility/InfrastructureElement/
+  UrbanElement, edint-aparcamiento's Parking (interestingly referenced here
+  under ITS new https://edint.es/def/aparcamiento# namespace -- suggesting
+  edint-aparcamiento may have a newer, not-yet-checked version too; out of
+  scope for this pass), the same stale external EstacionBicicleta/Tramo
+  references already flagged in edint-censo-vehiculos, SOSA/SAREF
+  (Sensor/Observation/ObservableProperty/FeatureOfInterest/Device/Meter),
+  QUDT (Quantifiable/QuantityValue/Unit), W3C Time (Instant/Interval/
+  ProperInterval/TemporalEntity), and Spain's territorial hierarchy
+  (Autonomia/Provincia/Municipio/Ciudad/Distrito/Barrio). None of these are
+  modeled here, consistent with this candidate family's established
+  practice of not materializing already-modeled or generic external classes.
+  Only PhotovoltaicSystem, PhotovoltaicMeter, PhotovoltaicGeneration,
+  PhotovoltaicSystemContract and PhotovoltaicSystemRate are this ontology's
+  own, and are the 5 entities modeled here.
+
+  hasPhotovoltaicSystem NOT ADDED TO Facility, A KNOWN GAP: the source
+  ontology declares hasPhotovoltaicSystem with
+  rdfs:domain edint-infraestructura's InfrastructureElement (range:
+  PhotovoltaicSystem) -- the forward relationship from an infrastructure
+  element to the photovoltaic system installed on it. Mirroring how
+  Facility gained accessibility/isCadastralProperty/locatedInZone in its own
+  v0.2.1 update, Facility should ideally also gain a hasPhotovoltaicSystem
+  Relationship to complete this link. Not added here, to keep this PR
+  scoped to the fotovoltaica ontology itself rather than re-opening
+  edint-infraestructura again; a follow-up PR to that candidate would
+  complete the connection.
+
+  PhotovoltaicGeneration's generation/consumption/storage/export
+  DISTINCTION IS NOT A DEDICATED PROPERTY: the class comment covers all four
+  ("generated, consumed, stored and exported"), but the source ontology
+  declares no categorization property or controlled vocabulary to
+  distinguish between them -- follows the same generic SOSA Observation
+  pattern already used for CountingObservation/TrafficObservation
+  (madeBySensor, featureOfInterest, observedProperty, result, resultTime,
+  phenomenonTime), with the expectation that which of the four applies is
+  conveyed via observedProperty's target concept (not enumerated in this
+  ontology).
+
+  PhotovoltaicSystemRate MODELED AS A THIN ENTITY: the source ontology
+  defines no properties of its own for it beyond being the target of
+  PhotovoltaicSystemContract.hasRate -- same treatment as this candidate
+  family's other rate/fee/thin-target entities (edint-aparcamiento's
+  ParkingFee, edint-infraestructura's ObservationPoint).
+
+  NO REAL EXAMPLE DATA AVAILABLE: unlike its siblings, this repository has
+  no examples/ or mappings/ directory at all. All 5 example.json files are
+  synthetic, built from the ontology's own class/property definitions and
+  comments.
