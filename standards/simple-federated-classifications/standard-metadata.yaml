@@ -1,0 +1,124 @@
+title: "Classifications extensions to the Federated ontology for SIMPLE"
+publisher: "Ontology Engineering Group (OEG), Universidad Politécnica de Madrid -- ontology created in the context of the EU SIMPLE project; extends the FEDeRATED project's Classifications ontology (TNO)"
+sourceUrl: "https://vocab.plataformasimple.es/def/logistics/federated/Classifications"
+sourceOntologyVersion: "v0.3.0 (issued 2022-07-03); base ontology https://ontology.tno.nl/logistics/federated/Classifications as last published before its removal in the FEDeRATED-Semantic-Model repository's 2026-05-04 'Cleanup of old files' commit"
+sourceOntologyDownload: "https://vocab.plataformasimple.es/def/logistics/federated/Classifications/ontology.ttl"
+sourceExampleUrl: "https://vocab.plataformasimple.es/def/logistics/federated/Classifications"
+domains:
+  - Transportation
+  - SmartCities
+description: >
+  Extensions to the FEDeRATED project's Classifications ontology, created
+  for the SIMPLE project. The Classifications ontology itself is a
+  controlled-vocabulary / codelist module reused across the other FEDeRATED
+  ontologies (LegalPerson, DigitalTwin, Location): a root Classifications
+  class with subclasses for document types, cargo/container/package/
+  equipment types, dangerous goods and nature-of-cargo codes, transport
+  modality and movement types, seal condition codes and TEN-T core network
+  corridor names -- each populated with a small set of named-individual
+  code values. SIMPLE's own extension document adds exactly one new code
+  value: CMR (the international road consignment note) as a DocumentType.
+license: "Creative Commons Attribution 4.0 (CC BY 4.0), per the ontology's own dcterms:license"
+licenseNote: >
+  The SIMPLE extension document states CC BY 4.0 explicitly (dcterms:license
+  on the ontology resource). The imported base FEDeRATED Classifications
+  ontology (TNO, ontology.tno.nl) states no license in its own ontology
+  metadata; its parent repository is public but its LICENSE file was not
+  checked here.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-09-25 from two ontology documents:
+
+  1. https://vocab.plataformasimple.es/def/logistics/federated/Classifications
+     (fetched as .ttl via the doc's own ontology.ttl download link), v0.3.0
+     -- the document the user pointed at. It defines NO new classes and NO
+     new properties: its entire asserted content is one owl:NamedIndividual,
+     :CMR, typed as the base ontology's Classifications:DocumentType (CMR =
+     the international road consignment note, "Convention relative au
+     contrat de transport international de Marchandises par Route" -- this
+     expansion is common domain knowledge, not present in the source
+     document itself, which gives :CMR no rdfs:label or rdfs:comment of its
+     own; flagged as an assumption).
+
+  2. https://ontology.tno.nl/logistics/federated/Classifications (the base
+     ontology SIMPLE imports and extends). Investigated per instruction
+     before assuming it was reachable: the current
+     federatedplatforms/FEDeRATED-Semantic-Model repository has no
+     Classifications.ttl file. Checked DCAT-Specification.ttl directly (the
+     other candidate location for a folded-in classification/codelist
+     pattern, since DCAT often models exactly this) -- it contains no
+     classification-related classes or terms at all (no match for
+     "classification", "documenttype", "goodstype", "transportmodality" or
+     "transportmovementtype" anywhere in the file), ruling that out.
+     Checked commit history instead
+     (api.github.com/repos/federatedplatforms/FEDeRATED-Semantic-Model/commits?path=Classifications.ttl):
+     the file existed and was actively maintained through at least 2022,
+     and was deleted in commit 6e6069c ("Cleanup of old files",
+     2026-05-04 -- notably recent, only weeks before this translation, and
+     a different, later removal event than the one found for BusinessService
+     in this repository's earlier simple-federated-businessservice
+     candidate, which was removed in a 2023 "ontology revamp"). Used the
+     parent commit (8f27a726, raw URL:
+     https://raw.githubusercontent.com/federatedplatforms/FEDeRATED-Semantic-Model/8f27a7269ff0ba1ad52c61eac8ca54f076f58326/Classifications.ttl),
+     the last version before deletion.
+
+  ENTITY-VS-CODELIST MODELING JUDGMENT CALL: the base ontology defines a
+  root class Classifications ("Various classifications of different types
+  of e.g. cargo or container, or codelists for standards such as dangerous
+  goods codes or nature of cargo") with 14 direct subclasses -- CargoType,
+  ContainerType, CorridorName, DangerousGoodsRegulationCode, DocumentType,
+  EquipmentTypeCode, GoodsTypeCode, LogisticsTransactionDocument,
+  NatureOfCargo, PackageType, SealConditionCode, SealingPartyRoleCode,
+  TransportModality, TransportMovementType -- populated with ~30
+  owl:NamedIndividual code values total (e.g. BILL_OF_LADING, SEA_WAYBILL
+  and now CMR under DocumentType; bulk, containers, generalCargo, pallets
+  under CargoType; the nine TEN-T corridor names under CorridorName). Only
+  one subclass, TransportMovementType, carries its own declared datatype
+  properties (transportMovementCode, transportMovementID) beyond
+  rdfs:label/rdfs:comment; every other subclass and every individual is
+  pure taxonomy with no independent attribute structure. This is a
+  controlled-vocabulary pattern, not ~14 separate rich entity types --
+  exploding it into 14 (or 30, per-individual) NGSI-LD entity types would
+  misrepresent codelist membership as if it were independent entity
+  identity. Per the same reasoning this repository's brick-schema candidate
+  used for Brick's ~1,500-class taxonomy (collapsed to 2 generic types,
+  Point/Equipment, with the specific subclass captured as a Relationship
+  attribute) and simple-federated-businessservice used for Order/
+  LogisticsService (flattened into leaf entities rather than modeled
+  standalone), this candidate models exactly ONE generic entity type,
+  Classifications (name preserved verbatim from the base ontology's own
+  root class -- yes, plural, matching rdfs:label "Classifications" exactly;
+  not renamed to a singular "Classification" or "ClassificationTerm").
+  The specific subclass (e.g. DocumentType, CargoType) is captured via a
+  `classificationScheme` Relationship attribute pointing at the subclass's
+  IRI, mapped to rdf:type in context.jsonld -- the same technique Brick's
+  candidate used for `brickClass`. TransportMovementType's two own
+  properties (transportMovementCode, transportMovementID) are included as
+  optional fields on the single generic schema rather than justifying a
+  second dedicated leaf entity, since (unlike Brick's six dedicated sensor
+  leaf schemas, which each had multiple const-able definitional fields
+  such as hasQuantity/hasSubstance) two plain optional string fields don't
+  carry enough distinct shape to earn a separate type for a source this
+  small.
+
+  CODE VALUE MODELING: the base ontology represents each code value purely
+  as the fragment identifier of a NamedIndividual (e.g. :CMR, :BILL_OF_LADING,
+  :bulk) with no declared literal "code" property. This candidate adds a
+  `code` Property, mapped in context.jsonld to skos:notation
+  (http://www.w3.org/2004/02/skos/core#notation) -- the standard SKOS
+  property for exactly this purpose (a coded identifier of a concept within
+  a scheme) -- as a deliberate, documented modeling choice, not an asserted
+  source-ontology term. `name` (schema:name) is reserved for a
+  human-readable label where the ontology provides one (rdfs:label; several
+  individuals, including :CMR itself, have none).
+
+  EXAMPLE DATA: the one real individual asserted anywhere across both
+  source documents is :CMR (DocumentType). This candidate's example.json
+  instantiates that real individual. No richer real example existed for
+  TransportMovementType's transportMovementCode/transportMovementID fields
+  (FCL-FCL and LCL-LCL, the two TransportMovementType individuals in the
+  base ontology, declare no values for either property), so those two
+  fields are left absent from the example (not populated with invented
+  values) rather than fabricated.

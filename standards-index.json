@@ -3042,6 +3042,11 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/madrid-accidentes-trafico"
   },
   {
+    "slug": "simple-federated-classifications",
+    "title": "Classifications extensions to the Federated ontology for SIMPLE",
+    "description": "Extensions to the FEDeRATED project's Classifications ontology, created for the SIMPLE project. The Classifications ontology itself is a controlled-vocabulary / codelist module reused across the other FEDeRATED ontologies (LegalPerson, DigitalTwin, Location): a root Classifications class with subclasses for document types, cargo/container/package/ equipment types, dangerous goods and nature-of-cargo codes, transport modality and movement types, seal condition codes and TEN-T core network corridor names -- each populated with a small set of named-individual code values. SIMPLE's own extension document adds exactly one new code value: CMR (the international road consignment note) as a DocumentType.",
+    "publisher": "Ontology Engineering Group (OEG), Universidad Politécnica de Madrid -- ontology created in the context of the EU SIMPLE project; extends the FEDeRATED project's Classifications ontology (TNO)",
+    "sourceUrl": "https://vocab.plataformasimple.es/def/logistics/federated/Classifications",
     "slug": "simple-federated-digitaltwin",
     "title": "Digital Twin extensions to the Federated ontology for SIMPLE",
     "description": "Extensions to the FEDeRATED project's DigitalTwin ontology, created for the SIMPLE project. Adds a single new class, CMR (the international road freight consignment note / \"carta de porte\"), as a subclass of the base ontology's Document class, and a relatedDocumentation property linking a BusinessTransaction to a Document.",
@@ -3243,70 +3248,14 @@
     "modelCount": 9,
     "models": [
       {
-        "name": "CargoHandlingOrder",
-        "title": "Smart Data Models - SIMPLE Federated Business Service - CargoHandlingOrder",
-        "description": "Business transaction where an organisation is responsible for managing some cargo, e.g. inside a rail terminal (simple-bs:CargoHandlingOrder, SIMPLE extension to the FEDeRATED Business Service ontology, subclass of Order, itself a subclass of BusinessTransaction).",
-        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/CargoHandlingOrder/schema.json",
-        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/CargoHandlingOrder"
-      },
-      {
-        "name": "CargoHandlingService",
-        "title": "Smart Data Models - SIMPLE Federated Business Service - CargoHandlingService",
-        "description": "A service for the handling of cargo, e.g. moving cargo from a truck to a train, or from a truck to a deposit in a freight terminal (simple-bs:CargoHandlingService, SIMPLE extension to the FEDeRATED Business Service ontology, subclass of LogisticsService).",
-        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/CargoHandlingService/schema.json",
-        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/CargoHandlingService"
-      },
-      {
-        "name": "Consignment",
-        "title": "Smart Data Models - SIMPLE Federated Business Service - Consignment",
-        "description": "A business transaction of a shipper as customer with a service provider (e.g. a carrier or forwarder) for the transport of goods or containers from one location to another, where all goods and containers have to arrive in a given time period (businessService:Consignment, FEDeRATED Business Service ontology, subclass of BusinessTransaction), extended by the SIMPLE project with delivery time windows, a booking list and arrival/departure location relationships.",
-        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/Consignment/schema.json",
-        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/Consignment"
-      },
-      {
-        "name": "DischargeOrder",
-        "title": "Smart Data Models - SIMPLE Federated Business Service - DischargeOrder",
-        "description": "Order in which an organisation is made responsible of / agrees to discharge some cargo, e.g. inside a rail terminal (simple-bs:DischargeOrder, SIMPLE extension to the FEDeRATED Business Service ontology, subclass of Order, itself a subclass of BusinessTransaction).",
-        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/DischargeOrder/schema.json",
-        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/DischargeOrder"
-      },
-      {
-        "name": "GateInOrder",
-        "title": "Smart Data Models - SIMPLE Federated Business Service - GateInOrder",
-        "description": "Order that allows a transport means to go into a cargo terminal, e.g. a rail terminal (simple-bs:GateInOrder, SIMPLE extension to the FEDeRATED Business Service ontology, subclass of Order, itself a subclass of BusinessTransaction). Although this may be considered an event, the source ontology represents it as a business transaction.",
-        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/GateInOrder/schema.json",
-        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/GateInOrder"
-      },
-      {
-        "name": "GateOutOrder",
-        "title": "Smart Data Models - SIMPLE Federated Business Service - GateOutOrder",
-        "description": "Order that allows a transport means to go out from a cargo terminal, e.g. a rail terminal (simple-bs:GateOutOrder, SIMPLE extension to the FEDeRATED Business Service ontology, subclass of Order, itself a subclass of BusinessTransaction). Although this may be considered an event, the source ontology represents it as a business transaction.",
-        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/GateOutOrder/schema.json",
-        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/GateOutOrder"
-      },
-      {
-        "name": "Shipment",
-        "title": "Smart Data Models - SIMPLE Federated Business Service - Shipment",
-        "description": "A business transaction with a carrier for the transport of goods or containers from one location to another, where all goods and containers have to arrive in a given time period (businessService:Shipment, FEDeRATED Business Service ontology). Similar to a Consignment, but always with a carrier acting as service provider. Extended by the SIMPLE project with delivery time windows, arrival/departure location, a relationship to its constituent Consignments, and an eFTI UID for EU-Gate interoperability. NOTE: unlike Consignment, the base ontology asserts Shipment as a direct subclass of owl:Thing, not of BusinessTransaction -- it therefore carries none of BusinessTransaction's properties.",
-        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/Shipment/schema.json",
-        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/Shipment"
-      },
-      {
-        "name": "ShuntingOrder",
-        "title": "Smart Data Models - SIMPLE Federated Business Service - ShuntingOrder",
-        "description": "Business transaction associated with the process of sorting items of rolling stock into complete trains, or the reverse -- known as switching in the United States (simple-bs:ShuntingOrder, SIMPLE extension to the FEDeRATED Business Service ontology, subclass of Order, itself a subclass of BusinessTransaction). An order established between two organisations to carry out the shunting/marshalling process.",
-        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/ShuntingOrder/schema.json",
-        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/ShuntingOrder"
-      },
-      {
-        "name": "TransportService",
-        "title": "Smart Data Models - SIMPLE Federated Business Service - TransportService",
-        "description": "A service provided by a logistics or transport service provider for the transport of cargo (businessService:TransportService, FEDeRATED Business Service ontology, subclass of LogisticsService), extended by the SIMPLE project with arrival/departure location and driver relationships.",
-        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/TransportService/schema.json",
-        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/TransportService"
+        "name": "Classifications",
+        "title": "Smart Data Models - SIMPLE Federated Classifications - Classifications",
+        "description": "A single code value within one of the FEDeRATED Classifications ontology's controlled vocabularies -- document types, cargo/container/package/equipment types, dangerous goods and nature-of-cargo codes, transport modality and movement types, seal condition codes, TEN-T core network corridor names, etc. (classifications:Classifications and its ~14 subclasses). Modeled generically -- see the classificationScheme property -- rather than as one entity type per subclass, since the source ontology is a codelist/taxonomy, not a set of independently-structured entity types.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-classifications/models/Classifications/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-classifications/models/Classifications"
       }
     ],
-    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice"
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-classifications"
   },
   {
     "slug": "untp-v0.8.0",
