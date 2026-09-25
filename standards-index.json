@@ -334,6 +334,76 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/cityjson-v2"
   },
   {
+    "slug": "edint-contaminacion-acustica",
+    "title": "EDINT Noise Pollution Ontology (Ontología de Contaminación Acústica)",
+    "description": "Small domain extension of the EDINT Environmental Sensors Ontology (edint-medio-ambiente) for noise pollution observations, adding acoustic-measurement-specific properties (frequency weighting, time constant, reference interval, level statistic, predominant emitter type).",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-contaminacion-acustica/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "Environment"
+    "slug": "edint-catastro",
+    "title": "EDINT Spanish Cadastre Ontology (Ontología del Catastro Inmobiliario Español)",
+    "description": "Vocabulary for the Spanish Real Estate Cadastre (Catastro Inmobiliario): cadastral parcels, properties, constructions, their references, and renovation events. Scope explicitly excludes ownership, valuation, transmission data and administrative processes (per the source's own stated scope).",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-catastro/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "UrbanInfrastructure"
+    ],
+    "modelCount": 6,
+    "models": [
+      {
+        "name": "CadastralConstruction",
+        "title": "Smart Data Models - EDINT Catastro - CadastralConstruction",
+        "description": "Building or construction registered on a cadastral property: area, use, construction characteristics, and renovations (edintcat:CadastralConstruction, subclass of geosparql:Feature). Located on exactly one cadastral property.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-catastro/models/CadastralConstruction/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-catastro/models/CadastralConstruction"
+      },
+      {
+        "name": "CadastralParcel",
+        "title": "Smart Data Models - EDINT Catastro - CadastralParcel",
+        "description": "Basic unit of territorial division in the Spanish Cadastre: a plot of land delimited geographically, which may contain one or more cadastral properties (edintcat:CadastralParcel, subclass of geosparql:Feature).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-catastro/models/CadastralParcel/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-catastro/models/CadastralParcel"
+      },
+      {
+        "name": "CadastralProperty",
+        "title": "Smart Data Models - EDINT Catastro - CadastralProperty",
+        "description": "Real estate property registered in the Cadastre: a premises, dwelling, or any independent use unit within a parcel (edintcat:CadastralProperty, subclass of geosparql:Feature). A cadastral property may have one or more constructions associated.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-catastro/models/CadastralProperty/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-catastro/models/CadastralProperty"
+      },
+      {
+        "name": "ParcelReference",
+        "title": "Smart Data Models - EDINT Catastro - ParcelReference",
+        "description": "Reference identifying a cadastral parcel: a 7-character alphanumeric code (edintcat:ParcelReference, subclass of the abstract edintcat:CadastralReference).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-catastro/models/ParcelReference/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-catastro/models/ParcelReference"
+      },
+      {
+        "name": "PropertyReference",
+        "title": "Smart Data Models - EDINT Catastro - PropertyReference",
+        "description": "Reference identifying a cadastral property: the parcel reference plus the property reference with check digit, e.g. TF8006N0001HZ (edintcat:PropertyReference, subclass of the abstract edintcat:CadastralReference).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-catastro/models/PropertyReference/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-catastro/models/PropertyReference"
+      },
+      {
+        "name": "Renovation",
+        "title": "Smart Data Models - EDINT Catastro - Renovation",
+        "description": "Event or process of renovating a construction: when it occurred and what type of renovation was performed (edintcat:Renovation).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-catastro/models/Renovation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-catastro/models/Renovation"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-catastro"
+    "slug": "edint-fotovoltaica",
+    "title": "EDINT Photovoltaic System Ontology (Ontología de Instalación Fotovoltaica)",
+    "description": "Vocabulary for representing photovoltaic (solar) installations found on a municipality's infrastructure elements, and the measurement of electricity generation, consumption, accumulation and grid export from those installations. Reuses SOSA/SSN (sensors and observations), SAREF (Meter), GeoSPARQL (geometry) and schema.org (Organization).",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-fotovoltaica/tree/main",
     "slug": "edint-aparcamiento",
     "title": "EDINT Parking Ontology (Ontología de Aparcamiento)",
     "description": "Vocabulary for representing a municipality's public and private parking -- on-street and off-street -- including access points (linked to edint-infraestructura's sensor representation), fees, individual spots, and spot groupings by permit type or vehicle type. The source ontology explicitly states that Parking is a specialization of edint-infraestructura's Facility.",
@@ -343,6 +413,7 @@
     "domains": [
       "SmartCities",
       "UrbanInfrastructure",
+      "Energy"
       "Transportation"
     ],
     "modelCount": 5,
@@ -425,6 +496,42 @@
     "modelCount": 5,
     "models": [
       {
+        "name": "PhotovoltaicGeneration",
+        "title": "Smart Data Models - EDINT Photovoltaic - PhotovoltaicGeneration",
+        "description": "Amount of electricity generated, consumed, stored or exported by a photovoltaic system during a certain period of time (edintfotov:PhotovoltaicGeneration, subclass of sosa:Observation). Which of generation/consumption/storage/export a given observation represents is expected to be conveyed via observedProperty's target concept -- the source ontology does not declare a dedicated categorization property or controlled vocabulary for this distinction.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-fotovoltaica/models/PhotovoltaicGeneration/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-fotovoltaica/models/PhotovoltaicGeneration"
+      },
+      {
+        "name": "PhotovoltaicMeter",
+        "title": "Smart Data Models - EDINT Photovoltaic - PhotovoltaicMeter",
+        "description": "Device that measures and records the total electricity produced, consumed, stored and exported by a photovoltaic system, in real-time and cumulatively (edintfotov:PhotovoltaicMeter, subclass of sosa:Sensor and saref:Meter).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-fotovoltaica/models/PhotovoltaicMeter/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-fotovoltaica/models/PhotovoltaicMeter"
+      },
+      {
+        "name": "PhotovoltaicSystem",
+        "title": "Smart Data Models - EDINT Photovoltaic - PhotovoltaicSystem",
+        "description": "A photovoltaic (PV) system that converts sunlight into electricity, installed on a municipal infrastructure element (edintfotov:PhotovoltaicSystem, subclass of geosparql:Feature and sosa:FeatureOfInterest). Ranges from residential rooftops to utility-scale plants.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-fotovoltaica/models/PhotovoltaicSystem/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-fotovoltaica/models/PhotovoltaicSystem"
+      },
+      {
+        "name": "PhotovoltaicSystemContract",
+        "title": "Smart Data Models - EDINT Photovoltaic - PhotovoltaicSystemContract",
+        "description": "Legally binding document outlining the sale, lease, or power purchase agreement for solar panels (edintfotov:PhotovoltaicSystemContract).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-fotovoltaica/models/PhotovoltaicSystemContract/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-fotovoltaica/models/PhotovoltaicSystemContract"
+      },
+      {
+        "name": "PhotovoltaicSystemRate",
+        "title": "Smart Data Models - EDINT Photovoltaic - PhotovoltaicSystemRate",
+        "description": "Policy mechanism that pays solar system owners for the surplus electricity they generate and feed back into the national grid (edintfotov:PhotovoltaicSystemRate). The source ontology defines no properties of its own; it is the target of PhotovoltaicSystemContract.hasRate.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-fotovoltaica/models/PhotovoltaicSystemRate/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-fotovoltaica/models/PhotovoltaicSystemRate"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-fotovoltaica"
         "name": "CommercialAggregation",
         "title": "Smart Data Models - EDINT Commercial Census - CommercialAggregation",
         "description": "The integration of several establishments or points of sale in the same physical space, such as a shopping center or a traditional market (edintcom:CommercialAggregation, subclass of edint-infraestructura's Facility). NOTE: the source ontology's own ontology.ttl redeclares 'Facility' (and InfrastructureElement/UrbanElement) under this ontology's OWN censo-locales# namespace, rather than importing/reusing edint-infraestructura's real classes -- almost certainly an artifact of copying a template ontology, not an intentional new class; this candidate treats these subclass relationships as targeting edint-infraestructura's real Facility, not the namespace-duplicate one. See standard-metadata.yaml.",
@@ -473,6 +580,14 @@
     "modelCount": 1,
     "models": [
       {
+        "name": "NoiseObservation",
+        "title": "Smart Data Models - EDINT Noise Pollution - NoiseObservation",
+        "description": "An observation of a noise property made by a noise sensor (edintacus:NoiseObservation, subclass of edint-medio-ambiente's EnvironmentalObservation). Small domain extension adding acoustic-measurement-specific properties on top of the base EnvironmentalObservation pattern.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-contaminacion-acustica/models/NoiseObservation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-contaminacion-acustica/models/NoiseObservation"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-contaminacion-acustica"
         "name": "CityEvent",
         "title": "Smart Data Models - EDINT City Agenda - CityEvent",
         "description": "An event that will take place in a city, e.g. a cultural, sports or social activity published in a municipal public agenda (edintagenda:CityEvent, subclass of geosparql:Feature and schema:Event).",
@@ -696,6 +811,99 @@
       }
     ],
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-trafico"
+    "slug": "edint-suministro",
+    "title": "EDINT Utility Supply Ontology (Ontología de Suministro)",
+    "description": "Vocabulary for utilities (electricity, gas, water, ...) supplied to a municipality's infrastructure elements, and the measurement of their consumption. Structurally near-identical to edint-fotovoltaica (System/Meter/Generation/Contract/Rate), applied to utility supply generally rather than photovoltaic generation specifically.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-suministro/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "UrbanInfrastructure",
+      "Energy"
+    ],
+    "modelCount": 5,
+    "models": [
+      {
+        "name": "UtilityConsumption",
+        "title": "Smart Data Models - EDINT Utility Supply - UtilityConsumption",
+        "description": "Amount of a utility (electricity, gas, water, ...) consumed over a specific period (edintsum:UtilityConsumption, subclass of sosa:Observation).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-suministro/models/UtilityConsumption/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-suministro/models/UtilityConsumption"
+      },
+      {
+        "name": "UtilityContract",
+        "title": "Smart Data Models - EDINT Utility Supply - UtilityContract",
+        "description": "Agreement between a utility provider and a consumer defining the terms, rates, service quality, and responsibilities for providing a utility like electricity, water, or gas (edintsum:UtilityContract).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-suministro/models/UtilityContract/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-suministro/models/UtilityContract"
+      },
+      {
+        "name": "UtilityMeter",
+        "title": "Smart Data Models - EDINT Utility Supply - UtilityMeter",
+        "description": "Device that measures the consumption of a utility, e.g. electricity, gas, water, or heating (edintsum:UtilityMeter, subclass of sosa:Sensor and saref:Meter).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-suministro/models/UtilityMeter/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-suministro/models/UtilityMeter"
+      },
+      {
+        "name": "UtilityRate",
+        "title": "Smart Data Models - EDINT Utility Supply - UtilityRate",
+        "description": "The rate/tariff applied in a utility contract (edintsum:UtilityRate). The source ontology defines no properties of its own; it is the target of UtilityContract.hasRate.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-suministro/models/UtilityRate/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-suministro/models/UtilityRate"
+      },
+      {
+        "name": "UtilitySupplyPoint",
+        "title": "Smart Data Models - EDINT Utility Supply - UtilitySupplyPoint",
+        "description": "Point of a municipal infrastructure element where a utility (electricity, gas, water, ...) is supplied, generally associated with a UtilityMeter (edintsum:UtilitySupplyPoint, subclass of geosparql:Feature and sosa:FeatureOfInterest).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-suministro/models/UtilitySupplyPoint/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-suministro/models/UtilitySupplyPoint"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-suministro"
+    "slug": "edint-medio-ambiente",
+    "title": "EDINT Environmental Sensors Ontology (Ontología de Sensores Medioambientales)",
+    "description": "Generic vocabulary for environmental sensor platforms, sensors and observations -- a lightweight, modular extension of SOSA (Sensor, Observation, Sample, and Actuator) and GeoSPARQL, restricting its measurements to EDINT's own controlled vocabularies. Designed to be specialized per environmental domain (air quality, climatology, noise pollution) purely through those vocabularies, without new subclasses.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-medio-ambiente/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "Environment"
+    ],
+    "modelCount": 3,
+    "models": [
+      {
+        "name": "EnvironmentalObservation",
+        "title": "Smart Data Models - EDINT Environmental Sensors - EnvironmentalObservation",
+        "description": "An observation of an environmental property made by an environmental sensor (edintmed:EnvironmentalObservation, subclass of sosa:Observation).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-medio-ambiente/models/EnvironmentalObservation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-medio-ambiente/models/EnvironmentalObservation"
+      },
+      {
+        "name": "EnvironmentalSensor",
+        "title": "Smart Data Models - EDINT Environmental Sensors - EnvironmentalSensor",
+        "description": "Device designed to observe and measure physical, chemical, or acoustic properties of the environment (edintmed:EnvironmentalSensor, subclass of sosa:Sensor). This ontology is deliberately generic: domain specializations (air quality, climatology, noise pollution) reuse it as-is, specializing only through the open controlled-vocabulary Relationships below rather than through new subclasses.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-medio-ambiente/models/EnvironmentalSensor/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-medio-ambiente/models/EnvironmentalSensor"
+      },
+      {
+        "name": "SensorPlatform",
+        "title": "Smart Data Models - EDINT Environmental Sensors - SensorPlatform",
+        "description": "Physical platform or facility that hosts environmental sensors for monitoring, e.g. an air-quality cabin, a water buoy, or a weather tower (edintmed:SensorPlatform, subclass of geosparql:Feature and sosa:Platform).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-medio-ambiente/models/SensorPlatform/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-medio-ambiente/models/SensorPlatform"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-medio-ambiente"
+    "slug": "edint-organizaciones",
+    "title": "EDINT Public Organizations Ontology (Ontología de Organizaciones Públicas)",
+    "description": "Vocabulary for representing Spanish public administration organizations and their place in an organization chart. An adaptation of the W3C Organization Ontology for EDINT's requirements.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-organizaciones/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities"
     "slug": "edint-oferta-inmobiliaria",
     "title": "EDINT Real Estate Offer Ontology (Ontología de Oferta Inmobiliaria)",
     "description": "Vocabulary for real estate listings/offers -- sale, rent, or transfer of a property -- referencing the corresponding cadastral parcel or property.",
@@ -709,6 +917,14 @@
     "modelCount": 1,
     "models": [
       {
+        "name": "Organization",
+        "title": "Smart Data Models - EDINT Organizations - Organization",
+        "description": "A public administration organization in Spain, and its place in an organization chart (edintorg:Organization, subclass of W3C org:Organization). Collapses the source ontology's two subclasses (OrganicUnit, PublicLawEntity), which declare no properties of their own, into this single entity -- the hasOrganizationType enum below already captures similar distinctions in practice.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-organizaciones/models/Organization/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-organizaciones/models/Organization"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-organizaciones"
         "name": "RealEstateListing",
         "title": "Smart Data Models - EDINT Real Estate Offer - RealEstateListing",
         "description": "A real estate listing representing an offer for a property -- sale, rent, or transfer (edintinm:RealEstateListing). NOTE: the source ontology's own generated ontology.ttl declares this class as subClassOf a class named 'Error1' in an 'org.semanticweb.owlapi/error#' namespace -- an OWL-API tooling artifact from a malformed-axiom placeholder, not a real superclass. Ignored here; not modeled as any kind of inheritance.",
