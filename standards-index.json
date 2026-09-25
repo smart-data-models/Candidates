@@ -506,6 +506,29 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura"
   },
   {
+    "slug": "edint-oferta-inmobiliaria",
+    "title": "EDINT Real Estate Offer Ontology (Ontología de Oferta Inmobiliaria)",
+    "description": "Vocabulary for real estate listings/offers -- sale, rent, or transfer of a property -- referencing the corresponding cadastral parcel or property.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-oferta-inmobiliaria/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "UrbanInfrastructure"
+    ],
+    "modelCount": 1,
+    "models": [
+      {
+        "name": "RealEstateListing",
+        "title": "Smart Data Models - EDINT Real Estate Offer - RealEstateListing",
+        "description": "A real estate listing representing an offer for a property -- sale, rent, or transfer (edintinm:RealEstateListing). NOTE: the source ontology's own generated ontology.ttl declares this class as subClassOf a class named 'Error1' in an 'org.semanticweb.owlapi/error#' namespace -- an OWL-API tooling artifact from a malformed-axiom placeholder, not a real superclass. Ignored here; not modeled as any kind of inheritance.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-oferta-inmobiliaria/models/RealEstateListing/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-oferta-inmobiliaria/models/RealEstateListing"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-oferta-inmobiliaria"
+  },
+  {
     "slug": "edint-promocion-comercial",
     "title": "EDINT Commercial Promotion Ontology (Ontología de Promoción Comercial)",
     "description": "Vocabulary for commercial promotion: campaigns (vouchers, discounts, revitalization drives) and events (fairs, thematic markets, local events) run to promote commercial activity in a zone.",
@@ -515,14 +538,6 @@
     "domains": [
       "SmartCities",
       "UrbanInfrastructure"
-    "slug": "edint-servicios-publicos",
-    "title": "EDINT Public Services Ontology (Ontología de Servicios Públicos)",
-    "description": "Vocabulary for municipal public services and the administrative procedures through which they are managed and resolved, reusing the EU's Core Public Service Vocabulary (CPSV-AP) for competent authorities, contact points and channels.",
-    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
-    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-servicios-publicos/tree/main",
-    "license": "CC-BY-4.0",
-    "domains": [
-      "SmartCities"
     ],
     "modelCount": 2,
     "models": [
@@ -542,6 +557,20 @@
       }
     ],
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-promocion-comercial"
+  },
+  {
+    "slug": "edint-servicios-publicos",
+    "title": "EDINT Public Services Ontology (Ontología de Servicios Públicos)",
+    "description": "Vocabulary for municipal public services and the administrative procedures through which they are managed and resolved, reusing the EU's Core Public Service Vocabulary (CPSV-AP) for competent authorities, contact points and channels.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-servicios-publicos/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities"
+    ],
+    "modelCount": 2,
+    "models": [
+      {
         "name": "AdministrativeProcedure",
         "title": "Smart Data Models - EDINT Public Services - AdministrativeProcedure",
         "description": "Formal process followed by a public administration to manage, evaluate, and resolve a request, case, or administrative action (edintserpub:AdministrativeProcedure). NOTE: same tooling artifact as PublicService -- the source ontology's own class declaration uses a malformed IRI (owlapi/turtle# namespace); this entity uses the real servicios-publicos# IRI confirmed by the property domains and the source's own real example data.",
@@ -2424,6 +2453,29 @@
       }
     ],
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/madrid-accidentes-trafico"
+  },
+  {
+    "slug": "simple-federated-digitaltwin",
+    "title": "Digital Twin extensions to the Federated ontology for SIMPLE",
+    "description": "Extensions to the FEDeRATED project's DigitalTwin ontology, created for the SIMPLE project. Adds a single new class, CMR (the international road freight consignment note / \"carta de porte\"), as a subclass of the base ontology's Document class, and a relatedDocumentation property linking a BusinessTransaction to a Document.",
+    "publisher": "Ontology Engineering Group (OEG), Universidad Politécnica de Madrid -- ontology created in the context of the EU SIMPLE project; extends the FEDeRATED project's DigitalTwin ontology (TNO)",
+    "sourceUrl": "https://vocab.plataformasimple.es/def/logistics/federated/DigitalTwin",
+    "license": "Creative Commons Attribution 4.0 (CC BY 4.0), per the ontology's own dcterms:license",
+    "domains": [
+      "Transportation",
+      "SmartCities"
+    ],
+    "modelCount": 1,
+    "models": [
+      {
+        "name": "CMR",
+        "title": "Smart Data Models - SIMPLE Federated Digital Twin - CMR",
+        "description": "The CMR consignment note ('carta de porte'), a document used for the regulation of road freight transport and adopted by most European states as an international agreement regulating legal issues in road freight transportation (simple-dt:CMR, SIMPLE extension to the FEDeRATED DigitalTwin ontology, subclass of Document).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-digitaltwin/models/CMR/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-digitaltwin/models/CMR"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-digitaltwin"
   },
   {
     "slug": "untp-v0.8.0",
