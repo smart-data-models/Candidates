@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-servicios-publicos/models/AdministrativeProcedure/schema.json",
+  "modelTags": "EDINT,SmartCities",
+  "title": "Smart Data Models - EDINT Public Services - AdministrativeProcedure",
+  "description": "Formal process followed by a public administration to manage, evaluate, and resolve a request, case, or administrative action (edintserpub:AdministrativeProcedure). NOTE: same tooling artifact as PublicService -- the source ontology's own class declaration uses a malformed IRI (owlapi/turtle# namespace); this entity uses the real servicios-publicos# IRI confirmed by the property domains and the source's own real example data.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["AdministrativeProcedure"],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'AdministrativeProcedure'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {"type": "string", "format": "uri"},
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "typeProcedure": {
+      "type": "string",
+      "enum": ["solicitud", "comunicacion", "declaracionResponsable", "autorizacionLicencia", "inscripcionRegistro", "pagoTributo", "quejaReclamacion", "recursoAlegacion", "certificado"],
+      "description": "Property. The type or category that classifies the procedure according to its processing characteristics, from the AdministrativeProcedureType controlled vocabulary (edintserpub:typeProcedure)."
+    },
+    "resolutionPeriod": {
+      "type": "string",
+      "description": "Property. The expected or established period of time required to resolve the procedure, as an ISO 8601 duration, e.g. 'P3M' (edintserpub:resolutionPeriod)."
+    },
+    "stateProcedure": {
+      "type": "string",
+      "description": "Property. The current state of the resolution process -- e.g. not started, in progress, resolved, closed (edintserpub:stateProcedure). The source ontology does not constrain this to a controlled vocabulary; kept as an open string, matching the real example's own free-text value ('Abierto')."
+    }
+  },
+  "required": ["id", "type"]
+}
