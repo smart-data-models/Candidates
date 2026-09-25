@@ -2528,6 +2528,11 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/madrid-accidentes-trafico"
   },
   {
+    "slug": "simple-federated-logisticroles",
+    "title": "Logistic Roles extensions to the Federated ontology for SIMPLE",
+    "description": "Extensions to the FEDeRATED project's Logistic Roles ontology, created for the SIMPLE project. Unlike the sibling simple-federated-businessservice candidate (which owl:imports its FEDeRATED base ontology externally), this document is fully self-contained: it republishes the entire base FEDeRATED LogisticRoles taxonomy inline, under the base ontology's own ontology.tno.nl namespace, and adds exactly one new class of its own (simple-lr:Driver) plus two property redeclarations (:involves, :isAbout). The taxonomy covers two distinct role hierarchies: ActorRoles (roles a legal person can play in a business transaction -- Carrier, Consignee, Forwarder, etc.) and LocationRoles (roles a physical location can play in the context of a specific transport means and event -- PortOfLoading, PlaceOfDelivery, GateInLocation, etc.).",
+    "publisher": "Ontology Engineering Group (OEG), Universidad Politécnica de Madrid -- ontology created in the context of the EU SIMPLE project; extends the FEDeRATED project's Logistic Roles ontology (TNO)",
+    "sourceUrl": "https://vocab.plataformasimple.es/def/logistics/federated/LogisticRoles",
     "slug": "simple-federated-event",
     "title": "Event extensions to the Federated ontology for SIMPLE",
     "description": "Extensions to the FEDeRATED project's Event ontology, created for the SIMPLE project to represent logistics events in road and rail transport not already covered by the upstream FEDeRATED taxonomy. Adds Gate-In and Gate-Out terminal events, generic vehicle arrival/departure events, a driver clock-in/clock-out confirmation pair, an Issue event for logistics chain incidents, a Passing event, and the full eCMR (electronic Consignment Note) document lifecycle (creation, sender/carrier/consignee signatures and comment modifications, destination/loads modifications, cancellation, signature invalidation).",
@@ -2543,6 +2548,24 @@
       "Transportation",
       "SmartCities"
     ],
+    "modelCount": 2,
+    "models": [
+      {
+        "name": "Driver",
+        "title": "Smart Data Models - SIMPLE Federated Logistic Roles - Driver",
+        "description": "Someone who drives a vehicle (simple-lr:Driver, SIMPLE extension to the FEDeRATED Logistic Roles ontology, subclass of LogisticServiceProvider). Referenced as the range of simple-bs:involvedDriver in the sibling simple-federated-businessservice candidate's TransportService entity.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-logisticroles/models/Driver/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-logisticroles/models/Driver"
+      },
+      {
+        "name": "LocationRole",
+        "title": "Smart Data Models - SIMPLE Federated Logistic Roles - LocationRole",
+        "description": "A location such as a hub or port can have different roles depending on the context (LogisticRoles:LocationRoles, FEDeRATED Logistic Roles ontology, republished inline in the SIMPLE LogisticRoles document). Modeled generically -- see the roleType property -- rather than as 17 separate entity types, since every concrete subclass (PlaceOfLoading, PortOfCall, PlaceOfDelivery, etc.) shares the exact same three required relationships and adds no property of its own beyond a differentiating label/comment.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-logisticroles/models/LocationRole/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-logisticroles/models/LocationRole"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-logisticroles"
     "modelCount": 20,
     "models": [
       {
