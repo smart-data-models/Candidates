@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-digitaltwin/models/CMR/schema.json",
+  "modelTags": "FEDeRATED,SIMPLE,Logistics,DigitalTwin",
+  "title": "Smart Data Models - SIMPLE Federated Digital Twin - CMR",
+  "description": "The CMR consignment note ('carta de porte'), a document used for the regulation of road freight transport and adopted by most European states as an international agreement regulating legal issues in road freight transportation (simple-dt:CMR, SIMPLE extension to the FEDeRATED DigitalTwin ontology, subclass of Document).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "CMR"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'CMR'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. DigitalTwin:name (inherited from LogisticsObject). Human-readable label for this document."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "UUID": {
+      "type": "string",
+      "description": "Property. DigitalTwin:UUID (inherited from LogisticsObject). Unique identifier of this document as a logistics object, distinct from the NGSI-LD entity id."
+    },
+    "country": {
+      "type": "string",
+      "description": "Property. DigitalTwin:country (inherited from LogisticsObject). Country associated with this document (e.g. country of issuance)."
+    },
+    "documentID": {
+      "type": "string",
+      "description": "Property. DigitalTwin:documentID (inherited from Document). Identifier of this CMR document."
+    },
+    "documentVersion": {
+      "type": "string",
+      "description": "Property. DigitalTwin:documentVersion (inherited from Document). Version of this CMR document."
+    },
+    "hasDocumentType": {
+      "type": "string",
+      "description": "Property. DigitalTwin:hasDocumentType (inherited from Document). The type of this document."
+    },
+    "hasMRN_Number": {
+      "type": "string",
+      "description": "Property. DigitalTwin:hasMRN_Number (inherited from Document). Movement Reference Number associated with this document."
+    },
+    "hasExternalIdentifier": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. DigitalTwin:hasExternalIdentifier (inherited from LogisticsObject). External identifier(s) of this document in other systems. Range: DigitalTwin:ExternalIdentifier (out of scope of this candidate)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
