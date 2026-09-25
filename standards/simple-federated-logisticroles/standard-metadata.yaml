@@ -1,0 +1,166 @@
+title: "Logistic Roles extensions to the Federated ontology for SIMPLE"
+publisher: "Ontology Engineering Group (OEG), Universidad Politécnica de Madrid -- ontology created in the context of the EU SIMPLE project; extends the FEDeRATED project's Logistic Roles ontology (TNO)"
+sourceUrl: "https://vocab.plataformasimple.es/def/logistics/federated/LogisticRoles"
+sourceOntologyVersion: "v0.3.0 (issued 2022-07-03)"
+sourceOntologyDownload: "https://vocab.plataformasimple.es/def/logistics/federated/LogisticRoles/ontology.ttl"
+sourceExampleUrl: "https://vocab.plataformasimple.es/def/logistics/federated/LogisticRoles"
+domains:
+  - Transportation
+  - SmartCities
+description: >
+  Extensions to the FEDeRATED project's Logistic Roles ontology, created for
+  the SIMPLE project. Unlike the sibling simple-federated-businessservice
+  candidate (which owl:imports its FEDeRATED base ontology externally), this
+  document is fully self-contained: it republishes the entire base FEDeRATED
+  LogisticRoles taxonomy inline, under the base ontology's own
+  ontology.tno.nl namespace, and adds exactly one new class of its own
+  (simple-lr:Driver) plus two property redeclarations (:involves, :isAbout).
+  The taxonomy covers two distinct role hierarchies: ActorRoles (roles a
+  legal person can play in a business transaction -- Carrier, Consignee,
+  Forwarder, etc.) and LocationRoles (roles a physical location can play in
+  the context of a specific transport means and event -- PortOfLoading,
+  PlaceOfDelivery, GateInLocation, etc.).
+license: "Creative Commons Attribution 4.0 (CC BY 4.0), per the ontology's own dcterms:license"
+licenseNote: >
+  Stated explicitly and unambiguously in the ontology's own metadata
+  (dcterms:license on the ontology resource). No separate base-ontology
+  license concern here, unlike simple-federated-businessservice, since this
+  document does not import an external base ontology -- it republishes the
+  relevant base content inline under its own CC BY 4.0 statement.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-09-25 from
+  https://vocab.plataformasimple.es/def/logistics/federated/LogisticRoles
+  (fetched directly as ontology.ttl -- unlike the BusinessService and Event
+  SIMPLE documents, this one returned raw Turtle straight away, no HTML
+  landing page redirect to work around).
+
+  STRUCTURE OF THE SOURCE, AND WHY IT NEEDED NO SEPARATE BASE-ONTOLOGY FETCH:
+  this document declares NO owl:imports statement at all. Instead of
+  importing an external FEDeRATED LogisticRoles module by reference (the
+  pattern used in simple-federated-businessservice), it republishes the
+  ENTIRE base ontology's classes, properties, individuals and comments
+  inline, verbatim, under the base ontology's own namespace
+  (https://ontology.tno.nl/logistics/federated/LogisticRoles#), and adds
+  its own tiny extension (simple-lr:Driver, plus redeclarations of
+  :involves and :isAbout with the same domains as the base properties) under
+  its own https://vocab.plataformasimple.es/.../LogisticRoles# namespace.
+  So "the semantic defined here" is genuinely self-contained in this one
+  document -- no base-ontology enrichment fetch was needed the way
+  BusinessService's Order/LogisticsService were enriched from a separately
+  fetched historical BusinessService.ttl.
+
+  BASE-MODULE INVESTIGATION (done anyway, per instruction, to check whether
+  a live/current FEDeRATED module corresponds to this content): the current
+  federatedplatforms/FEDeRATED-Semantic-Model repository has NO file named
+  LogisticRoles.ttl or LogisticsRoles.ttl. Checked GitHub commit history for
+  both exact filenames (api.github.com/repos/.../commits?path=...) -- no
+  commits exist for either path in this repository's history at all (unlike
+  BusinessService.ttl, which had real commit history before its 2023
+  removal). Direct content comparison instead shows the base ontology was
+  SPLIT into two separate, still-live, current files: ActorRoles.ttl
+  (baseURI https://ontology.tno.nl/logistics/federated/ActorRoles, confirmed
+  by exact class-name match: ActorRoles, BusinessRoles, CommercialRoles,
+  Carrier, Consignee, Forwarder, etc., all present verbatim) and
+  LocationRoles.ttl (baseURI .../LocationRoles, same PlaceOfCall/
+  PlaceOfLoading/PortOfDischarge/etc. class names, PLUS additional concrete
+  infrastructure classes not present in SIMPLE's copy at all: Airport,
+  Anchorage, BargeTerminal, Bridge, Gate, Hub, Platform, Quay,
+  RailwayStation, RailwayTerminal, Warehouse, Transshipment, and new
+  properties hasGateNumber/hasManager/hasOperator/securityMeasure). This
+  candidate deliberately does NOT pull in that newer content: it translates
+  SIMPLE's LogisticRoles document exactly as published (v0.3.0, 2022), not
+  a hypothetical updated version SIMPLE has not itself adopted. Also noted:
+  the live ActorRoles.ttl includes one individual, SealingParty, that
+  SIMPLE's inline copy does not carry -- SIMPLE's snapshot is evidently
+  pinned slightly behind the base ontology's own later edits, consistent
+  with SIMPLE's document being a point-in-time republication rather than a
+  live reference.
+
+  ENTITIES MODELED (2), AND WHY NOT MORE:
+
+  1. Driver (simple-lr:Driver) -- the one genuinely new class SIMPLE itself
+     adds. rdfs:subClassOf LogisticServiceProvider. NOTE: in this document,
+     LogisticServiceProvider is declared as a bare owl:Class with no
+     asserted rdfs:subClassOf of its own (it is SEPARATELY punned as an
+     owl:NamedIndividual of LogisticsRoles a few lines later, an
+     individuals-axis fact that does not give the CLASS a superclass) --
+     so Driver formally inherits no restriction-derived attributes from
+     ActorRoles/LogisticsRoles (e.g. no isAbout/logisticsRoleName), and
+     none are modeled. This is grounded in reading the axioms literally
+     (matches how Shipment, in the sibling BusinessService candidate, was
+     NOT given BusinessTransaction's inherited attributes because it is
+     only asserted subClassOf owl:Thing, not BusinessTransaction, in that
+     source).
+
+  2. LocationRole -- a single GENERIC entity representing the base
+     ontology's LocationRoles class and its 17 concrete subclasses
+     (PlaceOfAcceptance, PlaceOfArrival, PlaceOfBorderCrossing, PlaceOfCall,
+     PlaceOfDelivery, PlaceOfDeparture, PlaceOfDischarge [equivalentClass
+     PlaceOfUnloading], PlaceOfLoading, PlaceOfReceipt, PlaceOfStripping,
+     PlaceOfStuffing, DropOffLocation, PickupLocation, PortOfCall,
+     PortOfDischarge, PortOfLoading), modeled generically with a `roleType`
+     enum property naming the specific subclass -- the same modeling
+     choice this repository's brick-schema candidate used for Brick's
+     Point/Equipment (one generic entity + a classifying property, rather
+     than 17+ near-identical schemas). Justified here specifically because
+     every one of these 17 classes shares the exact same real data shape:
+     LocationRoles carries three real owl:Restriction axioms
+     (minQualifiedCardinality 1 on :involves, for
+     PhysicalInfrastructure:Location, DigitalTwin:TransportMeans and
+     Event:Event respectively) that every subclass inherits unchanged --
+     none of the 17 subclasses adds its own extra property or restriction
+     beyond a differentiating rdfs:comment/rdfs:label. The single shared
+     `:involves` predicate (used three times per instance, once per
+     target type, per the source's own restrictions) is split in this
+     schema into three separately-named Relationship properties
+     (involvesLocation, involvesTransportMeans, involvesEvent) for
+     validability -- NGSI-LD has no notion of "the same property name used
+     three times with different object types on one entity", so this is a
+     translation necessity, not an invented attribute; documented on each
+     property.
+
+  NOT MODELED AS AN ENTITY, DELIBERATELY: the ActorRoles hierarchy
+  (ActorRoles, BusinessRoles, CommercialRoles, FinancialRoles,
+  LogisticsRoles, SupplyChainRoles) and its 30 owl:NamedIndividual role
+  values (Authority, Bank, Carrier, Consignee, Consignor, Consumer,
+  ContactPerson, Customer, CustomsAuthority, Declarant, DeliveryParty,
+  DispatchParty, Exporter, Forwarder, Importer, Insurer, Issuer,
+  LogisticServiceProvider, NotifyParty, OperatorRoles, Payee, Payer,
+  PortAuthority, Producer, Retailer, Sender, ServiceProvider, ShuntingYard,
+  TerminalOperator, WarehouseOperator). Checked the OWL punning carefully:
+  these 30 concrete role values are declared as owl:NamedIndividual (single
+  shared global concepts, e.g. LogisticRoles:Carrier), NOT owl:Class --
+  structurally the opposite of LocationRoles' concrete subclasses, which
+  ARE owl:Class (freshly instantiable per real-world occurrence). A real
+  business transaction does not create a new "Carrier" instance; it points
+  a hasRole-type relationship (declared in the sibling BusinessService
+  ontology, out of scope of this document) at the single, already-existing
+  LogisticRoles:Carrier individual. This is a fixed controlled vocabulary,
+  not per-record data -- the same treatment already given to
+  Classifications-domain relationship targets in the
+  simple-federated-businessservice candidate. Listed here for reference,
+  in case a future candidate for SIMPLE's Classifications-adjacent
+  vocabularies wants to model it as an enumerated code list:
+  Authority > (broader/narrower: CustomsAuthority, PortAuthority);
+  OperatorRoles > (broader/narrower: TerminalOperator, WarehouseOperator);
+  all 30 individuals belong to exactly one of BusinessRoles (Declarant,
+  Exporter, Importer, Issuer, Sender), CommercialRoles (Authority,
+  ContactPerson, Customer, CustomsAuthority, PortAuthority,
+  ServiceProvider), FinancialRoles (Bank, Insurer, Payee, Payer),
+  LogisticsRoles (Carrier, Consignee, Consignor, DeliveryParty,
+  DispatchParty, Forwarder, LogisticServiceProvider, NotifyParty,
+  OperatorRoles, ShuntingYard, TerminalOperator, WarehouseOperator), or
+  SupplyChainRoles (Consumer, Producer, Retailer).
+
+  EXAMPLE DATA: no real instance data was published alongside the source
+  document (a SKOS-style role taxonomy has no example individuals of its
+  own instantiable classes to draw from). example.json values are
+  therefore synthetic, built from the real class/property definitions and
+  comments, consistent with the road/rail transport scenario used in the
+  sibling simple-federated-businessservice candidate's examples (same
+  driver, same Madrid rail terminal location, for cross-candidate
+  consistency -- not asserted as shared real data, just a deliberately
+  consistent synthetic scenario).

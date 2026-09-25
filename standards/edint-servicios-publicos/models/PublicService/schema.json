@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-servicios-publicos/models/PublicService/schema.json",
+  "modelTags": "EDINT,SmartCities",
+  "title": "Smart Data Models - EDINT Public Services - PublicService",
+  "description": "A municipal public service offered by a public administration or by an entity on its behalf (edintserpub:PublicService). NOTE: the source ontology's own generated ontology.ttl has two tooling artifacts affecting this class: its own class IRI is malformed (declared under 'http://www.semanticweb.org/owl/owlapi/turtle#' instead of this ontology's real servicios-publicos# namespace), and it is declared rdfs:subClassOf itself (a tautology). Both ignored here; this entity uses the real servicios-publicos# IRI confirmed by the property domains and the source's own real example data.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["PublicService"],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'PublicService'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {"type": "string", "format": "uri"},
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "identifier": {
+      "type": "string",
+      "description": "Property. A unique code assigned to the service to enable identification across systems (edintserpub:identifier), e.g. 'SP-URB-001'."
+    },
+    "availability": {
+      "type": "string",
+      "description": "Property. The current or declared availability of the public service (edintserpub:availability), e.g. channels and periods when it can be accessed. The source ontology does not constrain this to a structured format."
+    },
+    "typePublicService": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The category of public service, from the PublicServicesType controlled vocabulary (edintserpub:typePublicService, subproperty of DCAT-AP/CPSV's data.europa.eu/m8g/isClassifiedBy). Kept as a Relationship to the concept URI rather than an enum -- the source's own KOS scheme has ~48 concepts, similar in scale to edint-infraestructura's InfrastructureType."
+    },
+    "hasAdministrativeProcedure": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The AdministrativeProcedure through which this service is managed, processed, or resolved (edintserpub:hasAdministrativeProcedure)."
+    },
+    "hasCompetentAuthority": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The public organization ultimately responsible for managing and providing the service (edintserpub:hasCompetentAuthority, reusing the EU Core Public Service Vocabulary's cv:PublicOrganisation concept per its definition). Not formally declared with an rdfs:domain in the source ontology, but used on PublicService in the source's own real example data."
+    }
+  },
+  "required": ["id", "type"]
+}
