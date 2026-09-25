@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/TransportService/schema.json",
+  "modelTags": "FEDeRATED,SIMPLE,Logistics,BusinessService",
+  "title": "Smart Data Models - SIMPLE Federated Business Service - TransportService",
+  "description": "A service provided by a logistics or transport service provider for the transport of cargo (businessService:TransportService, FEDeRATED Business Service ontology, subclass of LogisticsService), extended by the SIMPLE project with arrival/departure location and driver relationships.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "TransportService"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'TransportService'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Human-readable label (rdfs:label in the source)."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "serviceName": {
+      "type": "string",
+      "description": "Property. businessService:serviceName (inherited from LogisticsService). Each type of logistics service can be described using a name."
+    },
+    "deviationDuration": {
+      "type": "number",
+      "description": "Property. businessService:deviationDuration. Deviation on the duration of the transport service."
+    },
+    "transportServiceDurationAverage": {
+      "type": "number",
+      "description": "Property. businessService:transportServiceDurationAverage. Average duration of completion for this transport service."
+    },
+    "hasLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. businessService:hasLocation (inherited from LogisticsService). Location of the logistics service. Range: schema:Place (out of scope of this candidate)."
+    },
+    "usedTransportMeans": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. businessService:usedTransportMeans (inherited from LogisticsService). Transport means involved with the logistics service. Range: DigitalTwin:TransportMeans (out of scope of this candidate)."
+    },
+    "usedPackagedProducts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. businessService:usedPackagedProducts (inherited from LogisticsService). Packaged products that are part of the logistics service. Range unspecified in the source ontology; modeled generically as a URI relationship."
+    },
+    "usedTransportModality": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. businessService:usedTransportModality. Describes the transport modality of this transport service. Range: Classifications:TransportModality (out of scope of this candidate)."
+    },
+    "hasArrivalLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. simple-bs:hasArrivalLocation (SIMPLE extension, subPropertyOf businessService:hasLocation). Arrival location of this transport service. Range: DigitalTwin:PhysicalObject, per the SIMPLE ontology's own asserted range (out of scope of this candidate)."
+    },
+    "hasDepartureLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. simple-bs:hasDepartureLocation (SIMPLE extension, subPropertyOf businessService:hasLocation). Departure location of this transport service. Range: DigitalTwin:PhysicalObject (out of scope of this candidate)."
+    },
+    "involvedDriver": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. simple-bs:involvedDriver (SIMPLE extension, subPropertyOf businessService:involvedLogisticsActor). The driver involved in this transport service. Range: LogisticRoles:Driver (out of scope of this candidate)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
