@@ -675,6 +675,14 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura"
   },
   {
+    "slug": "edint-organizaciones",
+    "title": "EDINT Public Organizations Ontology (Ontología de Organizaciones Públicas)",
+    "description": "Vocabulary for representing Spanish public administration organizations and their place in an organization chart. An adaptation of the W3C Organization Ontology for EDINT's requirements.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-organizaciones/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities"
     "slug": "edint-oferta-inmobiliaria",
     "title": "EDINT Real Estate Offer Ontology (Ontología de Oferta Inmobiliaria)",
     "description": "Vocabulary for real estate listings/offers -- sale, rent, or transfer of a property -- referencing the corresponding cadastral parcel or property.",
@@ -688,6 +696,14 @@
     "modelCount": 1,
     "models": [
       {
+        "name": "Organization",
+        "title": "Smart Data Models - EDINT Organizations - Organization",
+        "description": "A public administration organization in Spain, and its place in an organization chart (edintorg:Organization, subclass of W3C org:Organization). Collapses the source ontology's two subclasses (OrganicUnit, PublicLawEntity), which declare no properties of their own, into this single entity -- the hasOrganizationType enum below already captures similar distinctions in practice.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-organizaciones/models/Organization/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-organizaciones/models/Organization"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-organizaciones"
         "name": "RealEstateListing",
         "title": "Smart Data Models - EDINT Real Estate Offer - RealEstateListing",
         "description": "A real estate listing representing an offer for a property -- sale, rent, or transfer (edintinm:RealEstateListing). NOTE: the source ontology's own generated ontology.ttl declares this class as subClassOf a class named 'Error1' in an 'org.semanticweb.owlapi/error#' namespace -- an OWL-API tooling artifact from a malformed-axiom placeholder, not a real superclass. Ignored here; not modeled as any kind of inheritance.",
