@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-catastro/models/CadastralProperty/schema.json",
+  "modelTags": "EDINT,UrbanInfrastructure",
+  "title": "Smart Data Models - EDINT Catastro - CadastralProperty",
+  "description": "Real estate property registered in the Cadastre: a premises, dwelling, or any independent use unit within a parcel (edintcat:CadastralProperty, subclass of geosparql:Feature). A cadastral property may have one or more constructions associated.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "CadastralProperty"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'CadastralProperty'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "hasPropertyReference": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. This property's PropertyReference (edintcat:hasPropertyReference)."
+    },
+    "onCadastralParcel": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The CadastralParcel this property is located on -- exactly one (edintcat:onCadastralParcel)."
+    },
+    "hasCadastralConstruction": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The constructive unit(s) that make up this property (edintcat:hasCadastralConstruction)."
+    },
+    "hasClass": {
+      "type": "string",
+      "enum": [
+        "Urban",
+        "Rural",
+        "BICES",
+        "BICES-A",
+        "BICES-B",
+        "BICES-C",
+        "BICES-D"
+      ],
+      "description": "Property. Classification of the property, from the Clase controlled vocabulary (edintcat:hasClass)."
+    },
+    "hasUse": {
+      "type": "string",
+      "enum": [
+        "Residential",
+        "Industrial",
+        "Offices",
+        "Commercial",
+        "Sports",
+        "Entertainment",
+        "LeisureHospitality",
+        "Healthcare",
+        "Cultural",
+        "Religious",
+        "Educational",
+        "Singular",
+        "StorageParking",
+        "GreenSpace",
+        "Agricultural"
+      ],
+      "description": "Property. Primary use of the property, from the Uso controlled vocabulary (edintcat:hasUse)."
+    },
+    "hasAddress": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The property's address (edintcat:hasAddress), in the external callejero:Portal vocabulary (not modeled by this candidate)."
+    },
+    "participation": {
+      "type": "number",
+      "description": "Property. Percentage of participation in common elements of the property (edintcat:participation)."
+    },
+    "hasHorizontalDivision": {
+      "type": "boolean",
+      "description": "Property. Whether the property is subject to horizontal division regime (edintcat:hasHorizontalDivision)."
+    },
+    "hasGeometry": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Reference to the property's geometry (geosparql:hasGeometry); see CadastralParcel.hasGeometry for the modeling rationale."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
