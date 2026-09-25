@@ -1,0 +1,76 @@
+title: "EDINT Shared Vehicles Ontology (Ontología de Vehículos Compartidos)"
+publisher: "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer"
+sourceUrl: "https://github.com/EDINT-Ontologia/edint-ontologia-vehiculos-compartidos/tree/main"
+sourceOntologyIRI: "https://edint.es/def/vehiculos-compartidos"
+sourceOntologyVersion: "0.1.1"
+domains:
+  - SmartCities
+  - Transportation
+description: >
+  Vocabulary for shared-mobility vehicles (bikes, e-scooters, cars),
+  their stations and docks, routes and waypoints -- a specialization of
+  edint-censo-vehiculos's Vehicle and edint-infraestructura's Facility.
+license: "CC-BY-4.0"
+licenseNote: >
+  Same as its sibling EDINT ontologies (edint-censo-vehiculos,
+  edint-aparcamiento, edint-fotovoltaica, edint-organizaciones,
+  edint-catastro, edint-medio-ambiente, edint-contaminacion-acustica,
+  edint-suministro, edint-trafico), this source ontology is CC-BY-4.0.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-09-06 from documentation/ontology.ttl (version 0.1.1;
+  owl:priorVersion points at the tagged v0.1.0 release) at
+  https://github.com/EDINT-Ontologia/edint-ontologia-vehiculos-compartidos.
+
+  SEVEN ENTITIES MODELED: SharedVehicleStation, Dock, DockSensor,
+  DockObservation, SharedVehicle, Route, Waypoint. DockProperty (a pure
+  ObservableProperty classification, no properties of its own) is not
+  materialized, matching this candidate family's precedent for e.g.
+  TrafficProperty.
+
+  NOT A TYPE COLLISION WITH edint-infraestructura's EXISTING
+  BikeSharingStation, THOUGH RELATED: this candidate family's very first
+  EDINT translation pass modeled BikeSharingStation as a thin Facility
+  specialization (the source ontology available at the time defined no
+  attributes for it), and the user explicitly declined to rename or replace
+  it with this ontology's SharedVehicleStation in a later pass. This
+  candidate's SharedVehicleStation is a different, real, much fuller entity
+  (docks, operator, state, commissioning/closure dates) -- since the two
+  entity type NAMES differ, this is not a type collision like
+  RegulatedZone/Vehicle/Parking/Organization/CadastralProperty, just a
+  conceptual overlap worth being aware of. SharedVehicleStation also
+  inherits edint-infraestructura's full Facility property set, same
+  treatment as edint-aparcamiento's Parking.
+
+  SharedVehicle IS A REAL SUBCLASS OF edint-censo-vehiculos's Vehicle
+  (confirmed via its own rdfs:subClassOf declaration to
+  https://edint.es/def/censovehiculos#Vehicle): inherits Vehicle's full
+  property set (licensePlateNumber, registeredOwner, vehicleType,
+  propulsionType, environmentalBadge) and adds vehicleState and
+  propulsionSystemType.
+
+  propulsionSystemType OVERLAPS WITH THE INHERITED propulsionType, NOT
+  RECONCILED: this ontology's own PropulsionSystemType concept scheme (4
+  values: Electric, Diesel, Gasoline, Hybrid) covers essentially the same
+  concept as Vehicle's own propulsionType (VehiclePropulsionType, 10
+  values, from edint-censo-vehiculos), just coarser-grained. A genuine
+  redundancy between two independently-maintained EDINT ontologies, not
+  something this translation should silently merge away -- both properties
+  are kept on SharedVehicle since the source declares both independently.
+
+  comissioningDate PROPERTY NAME COPIED VERBATIM, INCLUDING ITS LIKELY
+  TYPO: almost certainly meant "commissioningDate". Kept as-is to match the
+  real, currently-published property name.
+
+  destinationSpot/originSpot POINT AT edint-aparcamiento's ParkingSpot:
+  confirmed via their real declared range
+  (https://edint.es/def/aparcamiento#ParkingSpot) -- another cross-ontology
+  link within this same EDINT family, consistent with this ontology's own
+  stated purpose.
+
+  NO REAL EXAMPLE DATA FOUND: this repository has no examples/ or mappings/
+  directory. All 7 example.json files are synthetic, using Madrid's BiciMAD
+  bike-share system as an illustrative, real-world-plausible scenario (not
+  sourced from any BiciMAD dataset).

@@ -1,0 +1,181 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-vehiculos-compartidos/models/SharedVehicleStation/schema.json",
+  "modelTags": "EDINT,Transportation",
+  "title": "Smart Data Models - EDINT Shared Vehicles - SharedVehicleStation",
+  "description": "Place where you can both leave and pick up shared vehicles, composed of docks (edintvc:SharedVehicleStation, subclass of sosa:Platform, sosa:FeatureOfInterest and edint-infraestructura's Facility). Not the same entity as this candidate family's existing BikeSharingStation (edint-infraestructura) -- see standard-metadata.yaml.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "SharedVehicleStation"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'SharedVehicleStation'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. Point providing the geographical position of the entity.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "number"
+          },
+          "description": "Property. Coordinates of the Point, in WGS84 [longitude, latitude] order."
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    },
+    "address": {
+      "type": "object",
+      "description": "Property. Model:'https://schema.org/address'. The mailing address.",
+      "properties": {
+        "streetAddress": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/streetAddress'."
+        },
+        "addressLocality": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/addressLocality'."
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/postalCode'."
+        },
+        "addressRegion": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/addressRegion'."
+        },
+        "addressCountry": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/addressCountry'."
+        }
+      }
+    },
+    "infrastructureType": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Reference to a concept of edint-infraestructura's InfrastructureType controlled vocabulary. Inherited from Facility."
+    },
+    "belongsTo": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Territorial unit the station belongs to. Inherited from Facility."
+    },
+    "containsFacility": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Other Facility entities physically contained within this one. Inherited from Facility."
+    },
+    "hasObservationPoint": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The ObservationPoint(s) associated with this station. Inherited from Facility."
+    },
+    "hasRegisteredOwner": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The Organization that is the registered owner of this station. Inherited from Facility."
+    },
+    "openingHours": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/openingHours'. Inherited from Facility."
+    },
+    "hasDock": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The Dock(s) that belong to this station (edintvc:hasDock)."
+    },
+    "operatedBy": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The Organization that operates this station (edintvc:operatedBy)."
+    },
+    "stationState": {
+      "type": "string",
+      "enum": [
+        "Operative",
+        "NotOperative"
+      ],
+      "description": "Property. The station's operational state, from the StationState controlled vocabulary (edintvc:stationState)."
+    },
+    "closureDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Date when the station ceases operation (edintvc:closureDate)."
+    },
+    "comissioningDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Date the station was certified and officially put into service (edintvc:comissioningDate -- property name copied verbatim from the source, including its apparent typo for 'commissioningDate')."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
