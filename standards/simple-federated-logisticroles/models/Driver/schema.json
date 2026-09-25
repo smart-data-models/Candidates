@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-logisticroles/models/Driver/schema.json",
+  "modelTags": "FEDeRATED,SIMPLE,Logistics,LogisticRoles",
+  "title": "Smart Data Models - SIMPLE Federated Logistic Roles - Driver",
+  "description": "Someone who drives a vehicle (simple-lr:Driver, SIMPLE extension to the FEDeRATED Logistic Roles ontology, subclass of LogisticServiceProvider). Referenced as the range of simple-bs:involvedDriver in the sibling simple-federated-businessservice candidate's TransportService entity.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Driver"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Driver'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Human-readable label (rdfs:label in the source: 'Driver' / 'Conductor')."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
