@@ -3042,6 +3042,11 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/madrid-accidentes-trafico"
   },
   {
+    "slug": "simple-federated-physicalinfrastructure",
+    "title": "Physical Infrastructure extensions to the Federated ontology for SIMPLE",
+    "description": "Extension to the FEDeRATED project's Physical Infrastructure ontology, created for the SIMPLE project, adding a Location class with the contact attributes (address, email, telephone) SIMPLE requires beyond the base ontology's own physical-infrastructure classes.",
+    "publisher": "Ontology Engineering Group (OEG), Universidad Politécnica de Madrid -- ontology created in the context of the EU SIMPLE project; extends the FEDeRATED project's Physical Infrastructure ontology (TNO)",
+    "sourceUrl": "https://vocab.plataformasimple.es/def/logistics/federated/PhysicalInfrastructure",
     "slug": "simple-federated-digitaltwin",
     "title": "Digital Twin extensions to the Federated ontology for SIMPLE",
     "description": "Extensions to the FEDeRATED project's DigitalTwin ontology, created for the SIMPLE project. Adds a single new class, CMR (the international road freight consignment note / \"carta de porte\"), as a subclass of the base ontology's Document class, and a relatedDocumentation property linking a BusinessTransaction to a Document.",
@@ -3070,6 +3075,14 @@
     "modelCount": 1,
     "models": [
       {
+        "name": "Location",
+        "title": "Smart Data Models - SIMPLE Federated Physical Infrastructure - Location",
+        "description": "A location with additional contact attributes as requested in the context of the Plataforma SIMPLE (simple-pi:Location, SIMPLE extension to the FEDeRATED Physical Infrastructure ontology). NOTE: the SIMPLE ontology declares this class as rdfs:subClassOf the base ontology's pi:Location, but no class of that name exists anywhere in the base FEDeRATED PhysicalInfrastructure ontology (checked directly, including its last version before removal from the source repository) -- a dangling reference in the source document, not resolved by guesswork here. A handful of schema:Place-domain properties from the base ontology are still included below as optional, clearly-flagged additions, since SIMPLE's own Location is explicitly location-typed and the base ontology's own location-role/identifier properties target schema:Place -- but this is this candidate's own inference, not something the source document itself asserts.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-physicalinfrastructure/models/Location/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-physicalinfrastructure/models/Location"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-physicalinfrastructure"
         "name": "CMR",
         "title": "Smart Data Models - SIMPLE Federated Digital Twin - CMR",
         "description": "The CMR consignment note ('carta de porte'), a document used for the regulation of road freight transport and adopted by most European states as an international agreement regulating legal issues in road freight transportation (simple-dt:CMR, SIMPLE extension to the FEDeRATED DigitalTwin ontology, subclass of Document).",
