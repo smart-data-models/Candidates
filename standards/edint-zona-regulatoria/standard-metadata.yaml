@@ -1,0 +1,110 @@
+title: "EDINT Regulated Zone Ontology (Ontología de Zonas Regulatorias)"
+publisher: "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer"
+sourceUrl: "https://github.com/EDINT-Ontologia/edint-ontologia-zona-regulatoria/tree/main"
+sourceOntologyIRI: "http://vocab.linkeddata.es/datosabiertos/def/common/zone"
+sourceOntologyVersion: "0.1.0"
+domains:
+  - SmartCities
+  - UrbanInfrastructure
+  - Transportation
+description: >
+  Vocabulary for representing regulated zones in smart mobility and urban
+  management -- functional areas that overlay the urban grid (low emission
+  zones, regulated parking, pedestrian zones, historical centers, economic
+  interest zones, etc.) without necessarily following fixed administrative
+  boundaries. Designed as a modular extension of the Spanish Public Sector
+  ontology (esadm), reusing GeoSPARQL for geometry and W3C org for the
+  managing organization.
+license: "CC-BY-SA-4.0"
+licenseNote: >
+  The source ontology is published under CC-BY-SA-4.0 (ShareAlike), while Smart
+  Data Models contributions are conventionally published under CC-BY-4.0. This
+  discrepancy has not been resolved and should be checked with the EDINT
+  maintainers and/or the Smart Data Models review board before promoting this
+  candidate beyond this repository. Same open discrepancy already noted for
+  the edint-infraestructura and edint-turismo candidates.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-09-04 from documentation/ontology.ttl (version 0.1.0) at
+  https://github.com/EDINT-Ontologia/edint-ontologia-zona-regulatoria. This
+  ontology is closely related to edint-infraestructura: the infraestructura
+  ontology's Facility.locatedInZone relationship (added in its own v0.2.1
+  update) points at a "RegulatedZone" class, and this dedicated ontology is
+  the real, authoritative source of that class -- confirmed by an identical
+  rdfs:comment ("Area to which a particular regulation or policy applies") on
+  both. Per explicit user decision, this is nonetheless translated as its own
+  separate standard rather than folded into edint-infraestructura.
+
+  KNOWN TYPE COLLISION, NOT RESOLVED (per explicit user decision): both this
+  standard and edint-infraestructura (as of its 2026-09-04 v0.2.1 update)
+  define an NGSI-LD entity type named "RegulatedZone", with different
+  property sets -- edint-infraestructura's version is a thin stub (id/type/
+  name/description only, no source-defined attributes), this standard's
+  version is the full, real definition (zoneType, composedOf, locatedIn,
+  managedBy, startDate, endDate, legalReference, scheduleDescription,
+  hasGeometry). NGSI-LD entity types are not namespaced by standard, so
+  publishing both as-is would be inconsistent. MUST be reconciled (most
+  likely: edint-infraestructura's stub should be replaced by this candidate's
+  RegulatedZone) before either candidate is promoted out of Candidates/.
+
+  NAMESPACE MISMATCH, NOT RESOLVED: edint-infraestructura's
+  Facility.locatedInZone (added in its v0.2.1 update) has range
+  https://edint.es/def/zone#RegulatedZone (the new edint.es-style namespace
+  that ontology has already migrated to). This ontology's own, currently
+  real, declared namespace is still
+  http://vocab.linkeddata.es/datosabiertos/def/common/zone# (old-style,
+  version 0.1.0, not yet migrated). Per explicit user decision, this
+  candidate's context.jsonld uses THIS ontology's actual current namespace
+  (vocab.linkeddata.es), not the edint.es one infraestructura assumed. Check
+  whether this ontology migrates to edint.es/def/zone# in a future version
+  before promoting.
+
+  22 CONCRETE SUBTYPES COLLAPSED INTO ONE ENTITY (per explicit user
+  decision): the ontology defines RegulatedZone plus 22 subclasses
+  (EconomicInterestZone and its 8 further subclasses -- CommercialZone,
+  FreeTradeZone, HighTourismInfluxZone, IndustrialZone, LogisticsActivityZone,
+  RegulatorySandbox, ScienceTechnologyPark, StreetVendingZone --,
+  GreenSpaceZone, HistoricalCenter, LeisureZone, LowEmissionZone,
+  LowNoiseEmissionZone, PedestrianZone, RegulatedParkingZone and its 5 further
+  subclasses -- LoadingUnloadingZone, ParkAndRideZone,
+  ReducedMobilityParkingZone, ResidentialParkingZone, ShortTermParkingZone --,
+  and RestrictedAccessZone). None of the 22 declare any property of their
+  own; every real property (composedOf, locatedIn, managedBy, startDate,
+  endDate, legalReference, scheduleDescription) is declared directly on the
+  base RegulatedZone class. Modeled as a single RegulatedZone entity with a
+  zoneType enum covering all 22 (including the two intermediate classes
+  EconomicInterestZone and RegulatedParkingZone, since the real Madrid
+  example instantiates RegulatedParkingZone directly, confirming intermediate
+  classes are used as concrete types in practice, not just as groupings) --
+  same pattern already used for infrastructureType/roleType/violationType in
+  edint-infraestructura.
+
+  GEOMETRY MODELED AS AN INDIRECT RELATIONSHIP, NOT INLINE GeoJSON: the real
+  Madrid example represents a zone's geometry as
+  `geo:hasGeometry -> a sf:Geometry resource -> geo:asWKT <external WKT URL>`,
+  not inline coordinates -- the actual WKT files referenced are very large
+  (one is 3.3MB). This candidate's hasGeometry property mirrors that same
+  indirection (a Relationship/URI to an external geometry resource) rather
+  than inlining a NGSI-LD GeoProperty, since RegulatedZone instances are
+  areas/polygons (not points), no inline polygon coordinate data was readily
+  available to ground an example, and reprojecting/parsing the large WKT
+  files was out of scope for this pass.
+
+  REAL EXAMPLE DATA USED: the example is grounded in
+  examples/zaragoza/example_zona1.ttl (two real regulated parking zones in
+  Zaragoza, 1-ESRO "Zona Azul"/rotation and 1-ESRE "Zona Naranja"/residents,
+  with real street names, schedule and legal reference) rather than the
+  Madrid example, since Zaragoza's is small, complete, and self-contained
+  (Madrid's real examples embed or reference the very large WKT geometry
+  files noted above).
+
+  Municipio, Organization, Feature and Geometry are NOT modeled as their own
+  entities: Municipio and Organization are external classes (esadm and W3C
+  org respectively, not defined in this repository) used only as
+  Relationship targets (locatedIn, managedBy) -- Organization also already
+  exists as its own entity in edint-infraestructura. Feature and Geometry are
+  generic GeoSPARQL ancestor classes with no distinguishing properties of
+  their own, consistent with how this candidate's sibling
+  (edint-infraestructura) already treats Feature-derived location handling.
