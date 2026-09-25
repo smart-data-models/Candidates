@@ -506,6 +506,29 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura"
   },
   {
+    "slug": "edint-oferta-inmobiliaria",
+    "title": "EDINT Real Estate Offer Ontology (Ontología de Oferta Inmobiliaria)",
+    "description": "Vocabulary for real estate listings/offers -- sale, rent, or transfer of a property -- referencing the corresponding cadastral parcel or property.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-oferta-inmobiliaria/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "UrbanInfrastructure"
+    ],
+    "modelCount": 1,
+    "models": [
+      {
+        "name": "RealEstateListing",
+        "title": "Smart Data Models - EDINT Real Estate Offer - RealEstateListing",
+        "description": "A real estate listing representing an offer for a property -- sale, rent, or transfer (edintinm:RealEstateListing). NOTE: the source ontology's own generated ontology.ttl declares this class as subClassOf a class named 'Error1' in an 'org.semanticweb.owlapi/error#' namespace -- an OWL-API tooling artifact from a malformed-axiom placeholder, not a real superclass. Ignored here; not modeled as any kind of inheritance.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-oferta-inmobiliaria/models/RealEstateListing/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-oferta-inmobiliaria/models/RealEstateListing"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-oferta-inmobiliaria"
+  },
+  {
     "slug": "edint-promocion-comercial",
     "title": "EDINT Commercial Promotion Ontology (Ontología de Promoción Comercial)",
     "description": "Vocabulary for commercial promotion: campaigns (vouchers, discounts, revitalization drives) and events (fairs, thematic markets, local events) run to promote commercial activity in a zone.",
@@ -515,14 +538,6 @@
     "domains": [
       "SmartCities",
       "UrbanInfrastructure"
-    "slug": "edint-servicios-publicos",
-    "title": "EDINT Public Services Ontology (Ontología de Servicios Públicos)",
-    "description": "Vocabulary for municipal public services and the administrative procedures through which they are managed and resolved, reusing the EU's Core Public Service Vocabulary (CPSV-AP) for competent authorities, contact points and channels.",
-    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
-    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-servicios-publicos/tree/main",
-    "license": "CC-BY-4.0",
-    "domains": [
-      "SmartCities"
     ],
     "modelCount": 2,
     "models": [
@@ -542,6 +557,20 @@
       }
     ],
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-promocion-comercial"
+  },
+  {
+    "slug": "edint-servicios-publicos",
+    "title": "EDINT Public Services Ontology (Ontología de Servicios Públicos)",
+    "description": "Vocabulary for municipal public services and the administrative procedures through which they are managed and resolved, reusing the EU's Core Public Service Vocabulary (CPSV-AP) for competent authorities, contact points and channels.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-servicios-publicos/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities"
+    ],
+    "modelCount": 2,
+    "models": [
+      {
         "name": "AdministrativeProcedure",
         "title": "Smart Data Models - EDINT Public Services - AdministrativeProcedure",
         "description": "Formal process followed by a public administration to manage, evaluate, and resolve a request, case, or administrative action (edintserpub:AdministrativeProcedure). NOTE: same tooling artifact as PublicService -- the source ontology's own class declaration uses a malformed IRI (owlapi/turtle# namespace); this entity uses the real servicios-publicos# IRI confirmed by the property domains and the source's own real example data.",
@@ -2424,6 +2453,85 @@
       }
     ],
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/madrid-accidentes-trafico"
+  },
+  {
+    "slug": "simple-federated-businessservice",
+    "title": "Business Service extensions to the Federated ontology for SIMPLE",
+    "description": "Extensions to the FEDeRATED project's Business Service ontology, created for the SIMPLE project to represent entities associated with business transactions, logistics services and legal persons in road and rail transport. Adds order types for Cargo Handling, Discharge, Gate-In, Gate-Out and Shunting, plus a Cargo Handling logistics service; specialises the location property of a logistics service into arrival/departure variants; relates Shipments to their constituent Consignments; and adds the eftiUid property for eFTI (electronic Freight Transport Information) / EU-Gate interoperability.",
+    "publisher": "Ontology Engineering Group (OEG), Universidad Politécnica de Madrid -- ontology created in the context of the EU SIMPLE project; extends the FEDeRATED project's Business Service ontology (TNO)",
+    "sourceUrl": "https://vocab.plataformasimple.es/def/logistics/federated/BusinessService",
+    "license": "Creative Commons Attribution 4.0 (CC BY 4.0), per the ontology's own dcterms:license",
+    "domains": [
+      "Transportation",
+      "SmartCities"
+    ],
+    "modelCount": 9,
+    "models": [
+      {
+        "name": "CargoHandlingOrder",
+        "title": "Smart Data Models - SIMPLE Federated Business Service - CargoHandlingOrder",
+        "description": "Business transaction where an organisation is responsible for managing some cargo, e.g. inside a rail terminal (simple-bs:CargoHandlingOrder, SIMPLE extension to the FEDeRATED Business Service ontology, subclass of Order, itself a subclass of BusinessTransaction).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/CargoHandlingOrder/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/CargoHandlingOrder"
+      },
+      {
+        "name": "CargoHandlingService",
+        "title": "Smart Data Models - SIMPLE Federated Business Service - CargoHandlingService",
+        "description": "A service for the handling of cargo, e.g. moving cargo from a truck to a train, or from a truck to a deposit in a freight terminal (simple-bs:CargoHandlingService, SIMPLE extension to the FEDeRATED Business Service ontology, subclass of LogisticsService).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/CargoHandlingService/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/CargoHandlingService"
+      },
+      {
+        "name": "Consignment",
+        "title": "Smart Data Models - SIMPLE Federated Business Service - Consignment",
+        "description": "A business transaction of a shipper as customer with a service provider (e.g. a carrier or forwarder) for the transport of goods or containers from one location to another, where all goods and containers have to arrive in a given time period (businessService:Consignment, FEDeRATED Business Service ontology, subclass of BusinessTransaction), extended by the SIMPLE project with delivery time windows, a booking list and arrival/departure location relationships.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/Consignment/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/Consignment"
+      },
+      {
+        "name": "DischargeOrder",
+        "title": "Smart Data Models - SIMPLE Federated Business Service - DischargeOrder",
+        "description": "Order in which an organisation is made responsible of / agrees to discharge some cargo, e.g. inside a rail terminal (simple-bs:DischargeOrder, SIMPLE extension to the FEDeRATED Business Service ontology, subclass of Order, itself a subclass of BusinessTransaction).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/DischargeOrder/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/DischargeOrder"
+      },
+      {
+        "name": "GateInOrder",
+        "title": "Smart Data Models - SIMPLE Federated Business Service - GateInOrder",
+        "description": "Order that allows a transport means to go into a cargo terminal, e.g. a rail terminal (simple-bs:GateInOrder, SIMPLE extension to the FEDeRATED Business Service ontology, subclass of Order, itself a subclass of BusinessTransaction). Although this may be considered an event, the source ontology represents it as a business transaction.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/GateInOrder/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/GateInOrder"
+      },
+      {
+        "name": "GateOutOrder",
+        "title": "Smart Data Models - SIMPLE Federated Business Service - GateOutOrder",
+        "description": "Order that allows a transport means to go out from a cargo terminal, e.g. a rail terminal (simple-bs:GateOutOrder, SIMPLE extension to the FEDeRATED Business Service ontology, subclass of Order, itself a subclass of BusinessTransaction). Although this may be considered an event, the source ontology represents it as a business transaction.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/GateOutOrder/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/GateOutOrder"
+      },
+      {
+        "name": "Shipment",
+        "title": "Smart Data Models - SIMPLE Federated Business Service - Shipment",
+        "description": "A business transaction with a carrier for the transport of goods or containers from one location to another, where all goods and containers have to arrive in a given time period (businessService:Shipment, FEDeRATED Business Service ontology). Similar to a Consignment, but always with a carrier acting as service provider. Extended by the SIMPLE project with delivery time windows, arrival/departure location, a relationship to its constituent Consignments, and an eFTI UID for EU-Gate interoperability. NOTE: unlike Consignment, the base ontology asserts Shipment as a direct subclass of owl:Thing, not of BusinessTransaction -- it therefore carries none of BusinessTransaction's properties.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/Shipment/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/Shipment"
+      },
+      {
+        "name": "ShuntingOrder",
+        "title": "Smart Data Models - SIMPLE Federated Business Service - ShuntingOrder",
+        "description": "Business transaction associated with the process of sorting items of rolling stock into complete trains, or the reverse -- known as switching in the United States (simple-bs:ShuntingOrder, SIMPLE extension to the FEDeRATED Business Service ontology, subclass of Order, itself a subclass of BusinessTransaction). An order established between two organisations to carry out the shunting/marshalling process.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/ShuntingOrder/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/ShuntingOrder"
+      },
+      {
+        "name": "TransportService",
+        "title": "Smart Data Models - SIMPLE Federated Business Service - TransportService",
+        "description": "A service provided by a logistics or transport service provider for the transport of cargo (businessService:TransportService, FEDeRATED Business Service ontology, subclass of LogisticsService), extended by the SIMPLE project with arrival/departure location and driver relationships.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/TransportService/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/TransportService"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice"
   },
   {
     "slug": "untp-v0.8.0",
