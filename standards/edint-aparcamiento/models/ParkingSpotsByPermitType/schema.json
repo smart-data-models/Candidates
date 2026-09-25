@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-aparcamiento/models/ParkingSpotsByPermitType/schema.json",
+  "modelTags": "EDINT,UrbanInfrastructure,Transportation",
+  "title": "Smart Data Models - EDINT Parking - ParkingSpotsByPermitType",
+  "description": "Group of parking spots for each type of permit, e.g. resident, rotation (edintapar:ParkingSpotsByPermitType). Indicates the number of slots for that permit type. NOTE: the source ontology's own 'permitType' property declares rdfs:domain :ParkingSpotsByVehicleType (not ParkingSpotsByPermitType) -- almost certainly a copy-paste error in the source, given the property's own name and comment ('Relationship between the group of places by TYPE OF PERMIT and the taxonomy of types of permit'). Assigned to this entity instead, per the property's evident intent; see standard-metadata.yaml.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ParkingSpotsByPermitType"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ParkingSpotsByPermitType'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "hasParkingSpot": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The individual ParkingSpot(s) in this group (edintapar:hasParkingSpot)."
+    },
+    "numberOfParkingSpots": {
+      "type": "integer",
+      "description": "Property. Number of parking spots for this permit type (edintapar:numberOfParkingSpots)."
+    },
+    "permitType": {
+      "type": "string",
+      "enum": [
+        "Resident",
+        "CommercialIndustrial",
+        "Temporal",
+        "Garage",
+        "MedicalServices",
+        "EssentialServices"
+      ],
+      "description": "Property. The permit type this group of spots is reserved for. The source ontology references a 'PermitType' concept scheme (http://vocab.linkeddata.es/datosabiertos/kos/edint/PermitType) that isn't itself published in this repository's kos/ directory; assumed to be the same controlled vocabulary as edint-censo-vehiculos's VehiclePermitType (identical purpose and domain overlap), reused here with the same 6 values."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
