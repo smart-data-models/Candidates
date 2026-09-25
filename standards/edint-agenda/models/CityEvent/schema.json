@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-agenda/models/CityEvent/schema.json",
+  "modelTags": "EDINT,SmartCities",
+  "title": "Smart Data Models - EDINT City Agenda - CityEvent",
+  "description": "An event that will take place in a city, e.g. a cultural, sports or social activity published in a municipal public agenda (edintagenda:CityEvent, subclass of geosparql:Feature and schema:Event).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["CityEvent"],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'CityEvent'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {"type": "string", "format": "uri"},
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "identifier": {
+      "type": "string",
+      "description": "Property. A human-readable code identifying the event in the source data (dct:identifier), e.g. '50280843'."
+    },
+    "startDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. The date and time the event starts (schema:startDate). Inherited from Event."
+    },
+    "endDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. The date and time the event ends (schema:endDate). Inherited from Event."
+    },
+    "address": {
+      "type": "object",
+      "description": "Property. Model:'https://schema.org/address'. The mailing address of the event venue.",
+      "properties": {
+        "streetAddress": {"type": "string", "description": "Property. Model:'https://schema.org/streetAddress'."},
+        "addressLocality": {"type": "string", "description": "Property. Model:'https://schema.org/addressLocality'."},
+        "postalCode": {"type": "string", "description": "Property. Model:'https://schema.org/postalCode'."},
+        "addressRegion": {"type": "string", "description": "Property. Model:'https://schema.org/addressRegion'."},
+        "addressCountry": {"type": "string", "description": "Property. Model:'https://schema.org/addressCountry'."}
+      }
+    },
+    "isAccessibleForFree": {
+      "type": "boolean",
+      "description": "Property. Model:'https://schema.org/isAccessibleForFree'. Whether attending the event is free of charge. Not formally declared as a property in this ontology's own ontology.ttl, but used in the source's own real example data (reusing the genuine schema.org term directly); included per that real usage."
+    },
+    "eventStatus": {
+      "type": "string",
+      "enum": ["Scheduled", "Cancelled", "Postponed", "Rescheduled"],
+      "description": "Property. Model:'https://schema.org/eventStatus'. Current status of the event, from the EventStatus controlled vocabulary. NOTE: this ontology's own ontology.ttl formally declares an 'eventStatus' property under its own agenda# namespace, but the source's own real example data instead uses the genuine schema.org 'eventStatus' term directly. Modeled here under schema:eventStatus, per the real, demonstrated usage; see standard-metadata.yaml."
+    },
+    "attendanceMode": {
+      "type": "string",
+      "enum": ["InPerson", "Online", "Mixed"],
+      "description": "Property. Attendance mode -- in person, online, or mixed -- from the AttendanceMode controlled vocabulary (edintagenda:attendanceMode)."
+    },
+    "eventType": {
+      "type": "string",
+      "enum": ["Cultural", "Sports", "Social", "Concierto", "Ferias", "Exposicion", "ActividadesDeportivas", "ArtesEscenicasSocial"],
+      "description": "Property. Type of event, from the EventType controlled vocabulary (edintagenda:eventType). Includes both the 3 top-level categories (Cultural, Sports, Social) and 5 narrower concepts (e.g. Concierto/Concert, a narrower term under Cultural) -- the source's own KOS scheme mixes both levels without excluding the broader ones from direct use, and the real example data instantiates a narrower concept (Ferias) directly."
+    },
+    "schedule": {
+      "type": "string",
+      "description": "Property. The schedule of the event specifying the hours each day (edintagenda:schedule). The source ontology does not constrain this to a structured format; the real example uses a comma-separated day-of-week abbreviation list."
+    },
+    "documentation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://schema.org/DigitalDocument'. A document with more information about the event (edintagenda:documentation)."
+    },
+    "takesPlaceIn": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The venue (edint-infraestructura's Facility) where the event takes place (edintagenda:takesPlaceIn)."
+    },
+    "organizedBy": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The Organization that manages the event (edintagenda:organizedBy)."
+    },
+    "isHeldIn": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The administrative entity (e.g. Barrio, Distrito, Municipio) where the event is held (edintagenda:isHeldIn). These territorial classes are external and not modeled by this candidate family; kept as an opaque Relationship."
+    },
+    "interior": {
+      "type": "boolean",
+      "description": "Property. Whether the event takes place in an enclosed location (edintagenda:interior)."
+    },
+    "price": {
+      "type": "string",
+      "description": "Property. The price of the event (edintagenda:price). The source ontology does not constrain this to a structured currency format."
+    }
+  },
+  "required": ["id", "type"]
+}
