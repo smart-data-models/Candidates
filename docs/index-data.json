@@ -506,6 +506,29 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura"
   },
   {
+    "slug": "edint-oferta-inmobiliaria",
+    "title": "EDINT Real Estate Offer Ontology (Ontología de Oferta Inmobiliaria)",
+    "description": "Vocabulary for real estate listings/offers -- sale, rent, or transfer of a property -- referencing the corresponding cadastral parcel or property.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-oferta-inmobiliaria/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "UrbanInfrastructure"
+    ],
+    "modelCount": 1,
+    "models": [
+      {
+        "name": "RealEstateListing",
+        "title": "Smart Data Models - EDINT Real Estate Offer - RealEstateListing",
+        "description": "A real estate listing representing an offer for a property -- sale, rent, or transfer (edintinm:RealEstateListing). NOTE: the source ontology's own generated ontology.ttl declares this class as subClassOf a class named 'Error1' in an 'org.semanticweb.owlapi/error#' namespace -- an OWL-API tooling artifact from a malformed-axiom placeholder, not a real superclass. Ignored here; not modeled as any kind of inheritance.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-oferta-inmobiliaria/models/RealEstateListing/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-oferta-inmobiliaria/models/RealEstateListing"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-oferta-inmobiliaria"
+  },
+  {
     "slug": "edint-promocion-comercial",
     "title": "EDINT Commercial Promotion Ontology (Ontología de Promoción Comercial)",
     "description": "Vocabulary for commercial promotion: campaigns (vouchers, discounts, revitalization drives) and events (fairs, thematic markets, local events) run to promote commercial activity in a zone.",
@@ -515,14 +538,6 @@
     "domains": [
       "SmartCities",
       "UrbanInfrastructure"
-    "slug": "edint-servicios-publicos",
-    "title": "EDINT Public Services Ontology (Ontología de Servicios Públicos)",
-    "description": "Vocabulary for municipal public services and the administrative procedures through which they are managed and resolved, reusing the EU's Core Public Service Vocabulary (CPSV-AP) for competent authorities, contact points and channels.",
-    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
-    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-servicios-publicos/tree/main",
-    "license": "CC-BY-4.0",
-    "domains": [
-      "SmartCities"
     ],
     "modelCount": 2,
     "models": [
@@ -542,6 +557,20 @@
       }
     ],
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-promocion-comercial"
+  },
+  {
+    "slug": "edint-servicios-publicos",
+    "title": "EDINT Public Services Ontology (Ontología de Servicios Públicos)",
+    "description": "Vocabulary for municipal public services and the administrative procedures through which they are managed and resolved, reusing the EU's Core Public Service Vocabulary (CPSV-AP) for competent authorities, contact points and channels.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-servicios-publicos/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities"
+    ],
+    "modelCount": 2,
+    "models": [
+      {
         "name": "AdministrativeProcedure",
         "title": "Smart Data Models - EDINT Public Services - AdministrativeProcedure",
         "description": "Formal process followed by a public administration to manage, evaluate, and resolve a request, case, or administrative action (edintserpub:AdministrativeProcedure). NOTE: same tooling artifact as PublicService -- the source ontology's own class declaration uses a malformed IRI (owlapi/turtle# namespace); this entity uses the real servicios-publicos# IRI confirmed by the property domains and the source's own real example data.",
@@ -2424,6 +2453,29 @@
       }
     ],
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/madrid-accidentes-trafico"
+  },
+  {
+    "slug": "simple-federated-classifications",
+    "title": "Classifications extensions to the Federated ontology for SIMPLE",
+    "description": "Extensions to the FEDeRATED project's Classifications ontology, created for the SIMPLE project. The Classifications ontology itself is a controlled-vocabulary / codelist module reused across the other FEDeRATED ontologies (LegalPerson, DigitalTwin, Location): a root Classifications class with subclasses for document types, cargo/container/package/ equipment types, dangerous goods and nature-of-cargo codes, transport modality and movement types, seal condition codes and TEN-T core network corridor names -- each populated with a small set of named-individual code values. SIMPLE's own extension document adds exactly one new code value: CMR (the international road consignment note) as a DocumentType.",
+    "publisher": "Ontology Engineering Group (OEG), Universidad Politécnica de Madrid -- ontology created in the context of the EU SIMPLE project; extends the FEDeRATED project's Classifications ontology (TNO)",
+    "sourceUrl": "https://vocab.plataformasimple.es/def/logistics/federated/Classifications",
+    "license": "Creative Commons Attribution 4.0 (CC BY 4.0), per the ontology's own dcterms:license",
+    "domains": [
+      "Transportation",
+      "SmartCities"
+    ],
+    "modelCount": 1,
+    "models": [
+      {
+        "name": "Classifications",
+        "title": "Smart Data Models - SIMPLE Federated Classifications - Classifications",
+        "description": "A single code value within one of the FEDeRATED Classifications ontology's controlled vocabularies -- document types, cargo/container/package/equipment types, dangerous goods and nature-of-cargo codes, transport modality and movement types, seal condition codes, TEN-T core network corridor names, etc. (classifications:Classifications and its ~14 subclasses). Modeled generically -- see the classificationScheme property -- rather than as one entity type per subclass, since the source ontology is a codelist/taxonomy, not a set of independently-structured entity types.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-classifications/models/Classifications/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-classifications/models/Classifications"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-classifications"
   },
   {
     "slug": "untp-v0.8.0",
