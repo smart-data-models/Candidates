@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-oferta-inmobiliaria/models/RealEstateListing/schema.json",
+  "modelTags": "EDINT,UrbanInfrastructure",
+  "title": "Smart Data Models - EDINT Real Estate Offer - RealEstateListing",
+  "description": "A real estate listing representing an offer for a property -- sale, rent, or transfer (edintinm:RealEstateListing). NOTE: the source ontology's own generated ontology.ttl declares this class as subClassOf a class named 'Error1' in an 'org.semanticweb.owlapi/error#' namespace -- an OWL-API tooling artifact from a malformed-axiom placeholder, not a real superclass. Ignored here; not modeled as any kind of inheritance.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["RealEstateListing"],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'RealEstateListing'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item, derived from the listing's own title (dct:title)."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {"type": "string", "format": "uri"},
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "identifier": {
+      "type": "string",
+      "description": "Property. A human-readable code identifying the listing in the source data (dct:identifier), e.g. 'LIST-003'."
+    },
+    "propertyType": {
+      "type": "string",
+      "enum": ["vivienda", "local-comercial", "oficina", "nave-industrial", "solar"],
+      "description": "Property. The type of real estate property in the listing, from this ontology's own Uso controlled vocabulary (edintinm:propertyType). NOTE: the property's own comment claims it 'reuses the Spanish Cadastre use vocabulary', but the source ontology actually ships its own separate KOS file (kos/inmobiliaria-uso.ttl) with different, Spanish, lowercase-hyphenated values (vivienda, local-comercial, oficina, nave-industrial, solar) -- not the same value set as edint-catastro's own published Uso vocabulary (Residential, Industrial, Offices, ...). Modeled here using this ontology's own actually-published KOS values, not the ones its comment claims to reuse; see standard-metadata.yaml."
+    },
+    "transactionType": {
+      "type": "string",
+      "enum": ["Venta", "Alquiler", "Traspaso"],
+      "description": "Property. Type of real estate transaction -- sale, rent, or transfer -- from the TransactionType controlled vocabulary (edintinm:transactionType). Values kept in the source's own Spanish notation (Venta/Alquiler/Traspaso) rather than translated, since that's the actual published vocabulary."
+    },
+    "isActive": {
+      "type": "boolean",
+      "description": "Property. Whether the listing is currently active (edintinm:isActive)."
+    },
+    "refersToCadastralEntity": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The cadastral entity (edint-catastro's CadastralParcel for land-only sales, or CadastralProperty for built properties) this listing corresponds to (edintinm:refersToCadastralEntity). NOTE: the source ontology's own real example data models the target cadastral entity with an entirely different, informal property shape (a fictional 'catastro:' vocabulary with properties like referenceCatastral/hasAddress/roadName) that does not match edint-catastro's own real, already-translated schema (hasPropertyReference/hasAddress->callejero:Portal/etc.) -- the example's cadastral-entity shape is not reused here; this Relationship is expected to point at the real edint-catastro CadastralParcel/CadastralProperty entities instead."
+    }
+  },
+  "required": ["id", "type"]
+}

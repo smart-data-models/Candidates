@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-logisticroles/models/LocationRole/schema.json",
+  "modelTags": "FEDeRATED,SIMPLE,Logistics,LogisticRoles",
+  "title": "Smart Data Models - SIMPLE Federated Logistic Roles - LocationRole",
+  "description": "A location such as a hub or port can have different roles depending on the context (LogisticRoles:LocationRoles, FEDeRATED Logistic Roles ontology, republished inline in the SIMPLE LogisticRoles document). Modeled generically -- see the roleType property -- rather than as 17 separate entity types, since every concrete subclass (PlaceOfLoading, PortOfCall, PlaceOfDelivery, etc.) shares the exact same three required relationships and adds no property of its own beyond a differentiating label/comment.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "LocationRole"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'LocationRole'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Human-readable label."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "roleType": {
+      "type": "string",
+      "format": "uri",
+      "enum": [
+        "https://ontology.tno.nl/logistics/federated/LogisticRoles#LocationRoles",
+        "https://ontology.tno.nl/logistics/federated/LogisticRoles#PlaceOfAcceptance",
+        "https://ontology.tno.nl/logistics/federated/LogisticRoles#PlaceOfArrival",
+        "https://ontology.tno.nl/logistics/federated/LogisticRoles#PlaceOfBorderCrossing",
+        "https://ontology.tno.nl/logistics/federated/LogisticRoles#PlaceOfCall",
+        "https://ontology.tno.nl/logistics/federated/LogisticRoles#PlaceOfDelivery",
+        "https://ontology.tno.nl/logistics/federated/LogisticRoles#PlaceOfDeparture",
+        "https://ontology.tno.nl/logistics/federated/LogisticRoles#PlaceOfDischarge",
+        "https://ontology.tno.nl/logistics/federated/LogisticRoles#PlaceOfLoading",
+        "https://ontology.tno.nl/logistics/federated/LogisticRoles#PlaceOfReceipt",
+        "https://ontology.tno.nl/logistics/federated/LogisticRoles#PlaceOfStripping",
+        "https://ontology.tno.nl/logistics/federated/LogisticRoles#PlaceOfStuffing",
+        "https://ontology.tno.nl/logistics/federated/LogisticRoles#PlaceOfUnloading",
+        "https://ontology.tno.nl/logistics/federated/LogisticRoles#DropOffLocation",
+        "https://ontology.tno.nl/logistics/federated/LogisticRoles#PickupLocation",
+        "https://ontology.tno.nl/logistics/federated/LogisticRoles#PortOfCall",
+        "https://ontology.tno.nl/logistics/federated/LogisticRoles#PortOfDischarge",
+        "https://ontology.tno.nl/logistics/federated/LogisticRoles#PortOfLoading"
+      ],
+      "description": "Relationship. The specific LocationRoles subclass this location plays in this context (rdf:type in the source ontology, same treatment as brickClass in this repository's brick-schema candidate). PlaceOfDischarge is owl:equivalentClass to PlaceOfUnloading in the source -- both kept as distinct enum values since the source asserts both names. LocationRoles itself is included as the generic/unspecified role."
+    },
+    "involvesLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. LogisticRoles:involves / simple-lr:involves (source uses one shared 'involves' predicate for all three related object types; split here into three separately-named relationships for validability). The physical location playing this role. Range: PhysicalInfrastructure:Location (out of scope of this candidate). Required: the source ontology asserts a minimum-cardinality-1 restriction on 'involves' targeting PhysicalInfrastructure:Location for LocationRoles."
+    },
+    "involvesTransportMeans": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. LogisticRoles:involves / simple-lr:involves (see involvesLocation note on the shared source predicate). The transport means this location-role occurrence relates to. Range: DigitalTwin:TransportMeans (out of scope of this candidate). Required: the source ontology asserts a minimum-cardinality-1 restriction on 'involves' targeting DigitalTwin:TransportMeans for LocationRoles."
+    },
+    "involvesEvent": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. LogisticRoles:involves / simple-lr:involves (see involvesLocation note on the shared source predicate). The logistics event this location-role occurrence relates to. Range: Event:Event (out of scope of this candidate). Required: the source ontology asserts a minimum-cardinality-1 restriction on 'involves' targeting Event:Event for LocationRoles."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "roleType",
+    "involvesLocation",
+    "involvesTransportMeans",
+    "involvesEvent"
+  ]
+}
