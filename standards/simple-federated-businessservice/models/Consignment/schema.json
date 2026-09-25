@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/Consignment/schema.json",
+  "modelTags": "FEDeRATED,SIMPLE,Logistics,BusinessService",
+  "title": "Smart Data Models - SIMPLE Federated Business Service - Consignment",
+  "description": "A business transaction of a shipper as customer with a service provider (e.g. a carrier or forwarder) for the transport of goods or containers from one location to another, where all goods and containers have to arrive in a given time period (businessService:Consignment, FEDeRATED Business Service ontology, subclass of BusinessTransaction), extended by the SIMPLE project with delivery time windows, a booking list and arrival/departure location relationships.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Consignment"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Consignment'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Human-readable label."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "createdBy": {
+      "type": "string",
+      "description": "Property. businessService:createdBy (inherited from BusinessTransaction). Creator of the business transaction."
+    },
+    "hasSequenceNumber": {
+      "type": "string",
+      "description": "Property. businessService:hasSequenceNumber (inherited from BusinessTransaction). The business transaction's sequence number. Required: base ontology asserts a minimum-cardinality-1 restriction on this property for Consignment specifically."
+    },
+    "transportPlanIssuanceTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. businessService:transportPlanIssuanceTime (inherited from BusinessTransaction). Date that the transport plan is issued."
+    },
+    "transportPlanSequenceNumber": {
+      "type": "string",
+      "description": "Property. businessService:transportPlanSequenceNumber (inherited from BusinessTransaction)."
+    },
+    "transportPlanTotalNumber": {
+      "type": "string",
+      "description": "Property. businessService:transportPlanTotalNumber (inherited from BusinessTransaction)."
+    },
+    "dischargePortOfCall": {
+      "type": "string",
+      "description": "Property. simple-bs:dischargePortOfCall (SIMPLE extension, domain BusinessTransaction, inherited via Consignment rdfs:subClassOf BusinessTransaction). Port attended within a voyage to discharge the cargo; a technical term used in official shipping documents."
+    },
+    "loadPortOfCall": {
+      "type": "string",
+      "description": "Property. simple-bs:loadPortOfCall (SIMPLE extension, domain BusinessTransaction, inherited via Consignment rdfs:subClassOf BusinessTransaction). Port attended within a voyage to load the cargo."
+    },
+    "consignmentCreationTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. businessService:consignmentCreationTime. Time that the Consignment is created."
+    },
+    "consignmentUpdateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. businessService:consignmentUpdateTime. Time that the Consignment is updated."
+    },
+    "numberofPackages": {
+      "type": "integer",
+      "description": "Property. DigitalTwin:numberofPackages. Number of packages in this consignment. Name preserved verbatim from the source ontology (not renamed to 'numberOfPackages'). Required: base ontology asserts a minimum-cardinality-1 restriction on this property for Consignment."
+    },
+    "bookingList": {
+      "type": "string",
+      "description": "Property. simple-bs:bookingList (SIMPLE extension). List of numbers associated to a Consignment, relevant in the maritime leg of a business transaction; normally reflected in a booking confirmation."
+    },
+    "earliestDeliveryTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. simple-bs:earliestDeliveryTime (SIMPLE extension). Earliest time at which this consignment can be delivered to the final destination."
+    },
+    "expectedDeliveryTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. simple-bs:expectedDeliveryTime (SIMPLE extension). Expected delivery time for this consignment."
+    },
+    "latestDeliveryTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. simple-bs:latestDeliveryTime (SIMPLE extension). Latest time by which this consignment should be delivered to the final destination."
+    },
+    "hasService": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. businessService:hasService (inherited from BusinessTransaction). The logistics service this business transaction is part of. Range: LogisticsService (this candidate's TransportService or CargoHandlingService, or an out-of-scope LogisticsService subtype)."
+    },
+    "involvedActor": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. businessService:involvedActor (inherited from BusinessTransaction). Legal persons (enterprises, organizations, natural persons) playing a role in this consignment. Range: LegalPerson (out of scope of this candidate). Required: base ontology asserts a minimum-cardinality-1 restriction on this property for Consignment."
+    },
+    "involvedEvent": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. businessService:involvedEvent (inherited from BusinessTransaction). Logistics events involved with this consignment. Range: Event (FEDeRATED Event module, out of scope of this candidate)."
+    },
+    "partOfTransportMovementType": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. businessService:partOfTransportMovementType (inherited from BusinessTransaction). Whether this consignment is part of main-, on- or pre-carriage. Range: Classifications:TransportMovementType (out of scope of this candidate). Required: base ontology asserts a minimum-cardinality-1 restriction on this property for Consignment."
+    },
+    "goodsTypeCode": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. DigitalTwin:goodsTypeCode. Type code(s) of the goods in this consignment. Range: Classifications:GoodsTypeCode (out of scope of this candidate). Required: base ontology asserts a minimum-cardinality-1 restriction on this property for Consignment."
+    },
+    "usedGoods": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. businessService:usedGoods. Goods that are part of this consignment. Range: DigitalTwin:Goods (out of scope of this candidate). Required: base ontology asserts a minimum-cardinality-1 restriction on this property for Consignment."
+    },
+    "usedPackage": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. businessService:usedPackage. Packages that are part of this consignment. Range: DigitalTwin:Package (out of scope of this candidate). Required: base ontology asserts a minimum-cardinality-1 restriction on this property for Consignment."
+    },
+    "usedTransportEquipment": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. businessService:usedTransportEquipment. Transport equipment used for this consignment. Range: DigitalTwin:Equipment (out of scope of this candidate). Required: base ontology asserts a minimum-cardinality-1 restriction on this property for Consignment."
+    },
+    "hasArrivalLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. simple-bs:hasArrivalLocation (SIMPLE extension, subPropertyOf businessService:hasLocation). Arrival location of this consignment. Range: DigitalTwin:PhysicalObject, per the SIMPLE ontology's own asserted range (out of scope of this candidate)."
+    },
+    "hasDepartureLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. simple-bs:hasDepartureLocation (SIMPLE extension, subPropertyOf businessService:hasLocation). Departure location of this consignment. Range: DigitalTwin:PhysicalObject (out of scope of this candidate)."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "hasSequenceNumber",
+    "numberofPackages",
+    "involvedActor",
+    "partOfTransportMovementType",
+    "goodsTypeCode",
+    "usedGoods",
+    "usedPackage",
+    "usedTransportEquipment"
+  ]
+}
