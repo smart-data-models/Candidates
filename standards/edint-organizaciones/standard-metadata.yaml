@@ -1,0 +1,72 @@
+title: "EDINT Public Organizations Ontology (Ontología de Organizaciones Públicas)"
+publisher: "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer"
+sourceUrl: "https://github.com/EDINT-Ontologia/edint-ontologia-organizaciones/tree/main"
+sourceOntologyIRI: "http://vocab.linkeddata.es/datosabiertos/def/sector-publico/organizacion"
+sourceOntologyVersion: "0.2.0"
+domains:
+  - SmartCities
+description: >
+  Vocabulary for representing Spanish public administration organizations and
+  their place in an organization chart. An adaptation of the W3C Organization
+  Ontology for EDINT's requirements.
+license: "CC-BY-4.0"
+licenseNote: >
+  Same as edint-censo-vehiculos, edint-aparcamiento and edint-fotovoltaica,
+  this source ontology is CC-BY-4.0 -- the same license Smart Data Models
+  conventionally uses.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-09-06 from documentation/ontology.ttl (version 0.2.0) at
+  https://github.com/EDINT-Ontologia/edint-ontologia-organizaciones.
+
+  KNOWN TYPE COLLISION, NOT RESOLVED (same pattern as RegulatedZone/Vehicle/
+  Parking): edint-infraestructura already has its own thin "Organization"
+  entity from its first translation pass (id/type/boilerplate plus a single
+  isPublic boolean, with its own note already flagging "check for overlap
+  with the existing official Smart Data Models dataModel.Organization
+  subject"). This candidate's Organization is the real, authoritative,
+  much fuller definition (organization type, administration level, status,
+  hierarchy, competence region, legal provision). Same reconciliation need
+  as previously flagged for RegulatedZone/Vehicle/Parking, left unresolved
+  here for the same reasons.
+
+  OrganicUnit AND PublicLawEntity NOT MATERIALIZED: both are subclasses of
+  Organization declaring no properties of their own. Not modeled as separate
+  entities or even as an extra discriminator field, since
+  hasOrganizationType's 35-value taxonomy already captures similar
+  distinctions in practice (e.g. EP="Public law entity" overlaps
+  conceptually with the PublicLawEntity subclass).
+
+  hasOrganizationType USES OFFICIAL 2-LETTER CODES, NOT ENGLISH LABELS: the
+  source SKOS vocabulary's own English glosses have a real duplicate (AE and
+  OC both translate to "State Agency" despite being distinct concepts in the
+  official Spanish public-sector registry this taxonomy is based on), so
+  codes (AY, MN, CA, UN, FN, ZZ, ...) are used as enum values instead, with
+  the English gloss folded into the property description for reference.
+
+  hasAdministrationLevel SOURCE DATA BUG, WORKED AROUND: the source's own
+  AdministrationLevel SKOS concept scheme declares all 5 concepts under the
+  literal, identical URI "edintkosadmlev:1" (a copy-paste error -- the
+  notation suffix "1" through "5" was never updated per concept). Rebuilt as
+  5 distinct enum values from each concept's own skos:notation/prefLabel
+  pair instead of reproducing the broken shared URI. Flagged for the EDINT
+  maintainers' awareness.
+
+  hasCompeteceRegion PROPERTY NAME COPIED VERBATIM, INCLUDING ITS LIKELY
+  TYPO: the source property is literally named "hasCompeteceRegion" (missing
+  an "n" -- almost certainly meant "hasCompetenceRegion"). Kept as-is to
+  match the real, currently-published property name rather than silently
+  "fixing" what might still be the term other systems already integrate
+  against.
+
+  hasCompeteceRegion, dependsOnRoot KEPT AS OPAQUE RELATIONSHIPS: the
+  region types involved (Municipio, Provincia, Autonomia, Comarca, Distrito)
+  are external territorial classes not modeled by this candidate family,
+  same treatment as Facility.belongsTo in edint-infraestructura.
+
+  NO REAL EXAMPLE DATA FOUND: this repository has no examples/ or mappings/
+  directory. The example.json is synthetic (Ayuntamiento de Madrid, a
+  plausible, publicly-known real organization used only for its name/type,
+  not sourced from any dataset in this repository).

@@ -334,6 +334,270 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/cityjson-v2"
   },
   {
+    "slug": "edint-contaminacion-acustica",
+    "title": "EDINT Noise Pollution Ontology (Ontología de Contaminación Acústica)",
+    "description": "Small domain extension of the EDINT Environmental Sensors Ontology (edint-medio-ambiente) for noise pollution observations, adding acoustic-measurement-specific properties (frequency weighting, time constant, reference interval, level statistic, predominant emitter type).",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-contaminacion-acustica/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "Environment"
+    "slug": "edint-catastro",
+    "title": "EDINT Spanish Cadastre Ontology (Ontología del Catastro Inmobiliario Español)",
+    "description": "Vocabulary for the Spanish Real Estate Cadastre (Catastro Inmobiliario): cadastral parcels, properties, constructions, their references, and renovation events. Scope explicitly excludes ownership, valuation, transmission data and administrative processes (per the source's own stated scope).",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-catastro/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "UrbanInfrastructure"
+    ],
+    "modelCount": 6,
+    "models": [
+      {
+        "name": "CadastralConstruction",
+        "title": "Smart Data Models - EDINT Catastro - CadastralConstruction",
+        "description": "Building or construction registered on a cadastral property: area, use, construction characteristics, and renovations (edintcat:CadastralConstruction, subclass of geosparql:Feature). Located on exactly one cadastral property.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-catastro/models/CadastralConstruction/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-catastro/models/CadastralConstruction"
+      },
+      {
+        "name": "CadastralParcel",
+        "title": "Smart Data Models - EDINT Catastro - CadastralParcel",
+        "description": "Basic unit of territorial division in the Spanish Cadastre: a plot of land delimited geographically, which may contain one or more cadastral properties (edintcat:CadastralParcel, subclass of geosparql:Feature).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-catastro/models/CadastralParcel/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-catastro/models/CadastralParcel"
+      },
+      {
+        "name": "CadastralProperty",
+        "title": "Smart Data Models - EDINT Catastro - CadastralProperty",
+        "description": "Real estate property registered in the Cadastre: a premises, dwelling, or any independent use unit within a parcel (edintcat:CadastralProperty, subclass of geosparql:Feature). A cadastral property may have one or more constructions associated.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-catastro/models/CadastralProperty/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-catastro/models/CadastralProperty"
+      },
+      {
+        "name": "ParcelReference",
+        "title": "Smart Data Models - EDINT Catastro - ParcelReference",
+        "description": "Reference identifying a cadastral parcel: a 7-character alphanumeric code (edintcat:ParcelReference, subclass of the abstract edintcat:CadastralReference).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-catastro/models/ParcelReference/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-catastro/models/ParcelReference"
+      },
+      {
+        "name": "PropertyReference",
+        "title": "Smart Data Models - EDINT Catastro - PropertyReference",
+        "description": "Reference identifying a cadastral property: the parcel reference plus the property reference with check digit, e.g. TF8006N0001HZ (edintcat:PropertyReference, subclass of the abstract edintcat:CadastralReference).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-catastro/models/PropertyReference/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-catastro/models/PropertyReference"
+      },
+      {
+        "name": "Renovation",
+        "title": "Smart Data Models - EDINT Catastro - Renovation",
+        "description": "Event or process of renovating a construction: when it occurred and what type of renovation was performed (edintcat:Renovation).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-catastro/models/Renovation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-catastro/models/Renovation"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-catastro"
+    "slug": "edint-fotovoltaica",
+    "title": "EDINT Photovoltaic System Ontology (Ontología de Instalación Fotovoltaica)",
+    "description": "Vocabulary for representing photovoltaic (solar) installations found on a municipality's infrastructure elements, and the measurement of electricity generation, consumption, accumulation and grid export from those installations. Reuses SOSA/SSN (sensors and observations), SAREF (Meter), GeoSPARQL (geometry) and schema.org (Organization).",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-fotovoltaica/tree/main",
+    "slug": "edint-aparcamiento",
+    "title": "EDINT Parking Ontology (Ontología de Aparcamiento)",
+    "description": "Vocabulary for representing a municipality's public and private parking -- on-street and off-street -- including access points (linked to edint-infraestructura's sensor representation), fees, individual spots, and spot groupings by permit type or vehicle type. The source ontology explicitly states that Parking is a specialization of edint-infraestructura's Facility.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-aparcamiento/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "UrbanInfrastructure",
+      "Energy"
+      "Transportation"
+    ],
+    "modelCount": 5,
+    "models": [
+      {
+        "name": "Parking",
+        "title": "Smart Data Models - EDINT Parking - Parking",
+        "description": "Parking for different types of vehicles, on-street or off-street, public or private (edintapar:Parking, subclass of edintinf:Facility). Collapses the source ontology's two concrete subclasses (OnStreetParking, OffStreetParking) into a single entity with a parkingType discriminator, since the source's own real example data never instantiates bare Parking directly and OnStreetParking's only distinguishing property (isPartOfZone) is small enough to keep as an always-optional field rather than a second entity type.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-aparcamiento/models/Parking/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-aparcamiento/models/Parking"
+      },
+      {
+        "name": "ParkingFee",
+        "title": "Smart Data Models - EDINT Parking - ParkingFee",
+        "description": "Parking fee that covers the right to park a vehicle in an authorized space for a certain time period (edintapar:ParkingFee). The source ontology defines no properties of its own; it is the target of Parking.hasParkingFee.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-aparcamiento/models/ParkingFee/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-aparcamiento/models/ParkingFee"
+      },
+      {
+        "name": "ParkingSpot",
+        "title": "Smart Data Models - EDINT Parking - ParkingSpot",
+        "description": "Individual parking spot in an on-street or off-street parking (edintapar:ParkingSpot). The source ontology defines no properties of its own; it is the target of Parking/ParkingSpotsByPermitType/ParkingSpotsByVehicleType's hasParkingSpot relationship.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-aparcamiento/models/ParkingSpot/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-aparcamiento/models/ParkingSpot"
+      },
+      {
+        "name": "ParkingSpotsByPermitType",
+        "title": "Smart Data Models - EDINT Parking - ParkingSpotsByPermitType",
+        "description": "Group of parking spots for each type of permit, e.g. resident, rotation (edintapar:ParkingSpotsByPermitType). Indicates the number of slots for that permit type. NOTE: the source ontology's own 'permitType' property declares rdfs:domain :ParkingSpotsByVehicleType (not ParkingSpotsByPermitType) -- almost certainly a copy-paste error in the source, given the property's own name and comment ('Relationship between the group of places by TYPE OF PERMIT and the taxonomy of types of permit'). Assigned to this entity instead, per the property's evident intent; see standard-metadata.yaml.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-aparcamiento/models/ParkingSpotsByPermitType/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-aparcamiento/models/ParkingSpotsByPermitType"
+      },
+      {
+        "name": "ParkingSpotsByVehicleType",
+        "title": "Smart Data Models - EDINT Parking - ParkingSpotsByVehicleType",
+        "description": "Group of parking spots for each type of vehicle: cars, motorcycles, bicycles, among others (edintapar:ParkingSpotsByVehicleType). Indicates the number of slots per vehicle type. NOTE: the source ontology declares no rdfs:domain at all for its 'vehicleType' property; assigned to this entity per the property's own name/comment (mirroring the equally-evident, but differently-broken, permitType situation on ParkingSpotsByPermitType); see standard-metadata.yaml.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-aparcamiento/models/ParkingSpotsByVehicleType/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-aparcamiento/models/ParkingSpotsByVehicleType"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-aparcamiento"
+    "slug": "edint-censo-vehiculos",
+    "title": "EDINT Vehicle Census Ontology (Ontología de Censo/Registro de Vehículos)",
+    "description": "Vocabulary for representing the vehicle census/registry that local entities manage for purposes such as vehicle tax collection (IVTM in Spain) and mobility management (parking permits, zone access permits). Scope is limited to data usable for those two purposes; driving-licence, technical inspection and similar vehicle data are explicitly out of scope per the source ontology's own stated purpose. Reuses SAREF4AUTO (vehicle), schema.org (Person/Organization) and SKOS (controlled vocabularies).",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-censo-vehiculos/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "Transportation"
+    ],
+    "modelCount": 2,
+    "models": [
+      {
+        "name": "Permit",
+        "title": "Smart Data Models - EDINT Vehicle Census - Permit",
+        "description": "Official permit, usually issued by the city council or the traffic authority, that allows a particular vehicle to access, drive through, or park in an area where entry is restricted or regulated (edintveh:Permit).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-censo-vehiculos/models/Permit/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-censo-vehiculos/models/Permit"
+      },
+      {
+        "name": "Vehicle",
+        "title": "Smart Data Models - EDINT Vehicle Census - Vehicle",
+        "description": "A vehicle registered in a local entity's vehicle census/registry, used for purposes such as vehicle tax collection or mobility management (edintveh:Vehicle, reusing SAREF4AUTO's saref4auto:Vehicle).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-censo-vehiculos/models/Vehicle/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-censo-vehiculos/models/Vehicle"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-censo-vehiculos"
+    "slug": "edint-censo-locales",
+    "title": "EDINT Commercial Premises Census Ontology (Ontología de Censo de Locales Comerciales)",
+    "description": "Vocabulary for a municipality's commercial premises census: commercial spaces (shops, offices), the entities/organizations that operate in them, their operating permits, associated terraces, and commercial aggregations such as shopping centers or traditional markets.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-censo-locales/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "UrbanInfrastructure"
+    ],
+    "modelCount": 5,
+    "models": [
+      {
+        "name": "PhotovoltaicGeneration",
+        "title": "Smart Data Models - EDINT Photovoltaic - PhotovoltaicGeneration",
+        "description": "Amount of electricity generated, consumed, stored or exported by a photovoltaic system during a certain period of time (edintfotov:PhotovoltaicGeneration, subclass of sosa:Observation). Which of generation/consumption/storage/export a given observation represents is expected to be conveyed via observedProperty's target concept -- the source ontology does not declare a dedicated categorization property or controlled vocabulary for this distinction.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-fotovoltaica/models/PhotovoltaicGeneration/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-fotovoltaica/models/PhotovoltaicGeneration"
+      },
+      {
+        "name": "PhotovoltaicMeter",
+        "title": "Smart Data Models - EDINT Photovoltaic - PhotovoltaicMeter",
+        "description": "Device that measures and records the total electricity produced, consumed, stored and exported by a photovoltaic system, in real-time and cumulatively (edintfotov:PhotovoltaicMeter, subclass of sosa:Sensor and saref:Meter).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-fotovoltaica/models/PhotovoltaicMeter/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-fotovoltaica/models/PhotovoltaicMeter"
+      },
+      {
+        "name": "PhotovoltaicSystem",
+        "title": "Smart Data Models - EDINT Photovoltaic - PhotovoltaicSystem",
+        "description": "A photovoltaic (PV) system that converts sunlight into electricity, installed on a municipal infrastructure element (edintfotov:PhotovoltaicSystem, subclass of geosparql:Feature and sosa:FeatureOfInterest). Ranges from residential rooftops to utility-scale plants.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-fotovoltaica/models/PhotovoltaicSystem/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-fotovoltaica/models/PhotovoltaicSystem"
+      },
+      {
+        "name": "PhotovoltaicSystemContract",
+        "title": "Smart Data Models - EDINT Photovoltaic - PhotovoltaicSystemContract",
+        "description": "Legally binding document outlining the sale, lease, or power purchase agreement for solar panels (edintfotov:PhotovoltaicSystemContract).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-fotovoltaica/models/PhotovoltaicSystemContract/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-fotovoltaica/models/PhotovoltaicSystemContract"
+      },
+      {
+        "name": "PhotovoltaicSystemRate",
+        "title": "Smart Data Models - EDINT Photovoltaic - PhotovoltaicSystemRate",
+        "description": "Policy mechanism that pays solar system owners for the surplus electricity they generate and feed back into the national grid (edintfotov:PhotovoltaicSystemRate). The source ontology defines no properties of its own; it is the target of PhotovoltaicSystemContract.hasRate.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-fotovoltaica/models/PhotovoltaicSystemRate/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-fotovoltaica/models/PhotovoltaicSystemRate"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-fotovoltaica"
+        "name": "CommercialAggregation",
+        "title": "Smart Data Models - EDINT Commercial Census - CommercialAggregation",
+        "description": "The integration of several establishments or points of sale in the same physical space, such as a shopping center or a traditional market (edintcom:CommercialAggregation, subclass of edint-infraestructura's Facility). NOTE: the source ontology's own ontology.ttl redeclares 'Facility' (and InfrastructureElement/UrbanElement) under this ontology's OWN censo-locales# namespace, rather than importing/reusing edint-infraestructura's real classes -- almost certainly an artifact of copying a template ontology, not an intentional new class; this candidate treats these subclass relationships as targeting edint-infraestructura's real Facility, not the namespace-duplicate one. See standard-metadata.yaml.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-censo-locales/models/CommercialAggregation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-censo-locales/models/CommercialAggregation"
+      },
+      {
+        "name": "CommercialEntity",
+        "title": "Smart Data Models - EDINT Commercial Census - CommercialEntity",
+        "description": "A person and/or organization that carries out an economic activity and is assigned the permit of a commercial space (edintcom:CommercialEntity).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-censo-locales/models/CommercialEntity/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-censo-locales/models/CommercialEntity"
+      },
+      {
+        "name": "CommercialSpace",
+        "title": "Smart Data Models - EDINT Commercial Census - CommercialSpace",
+        "description": "A physical place prepared for selling products, providing services, or serving customers, such as a shop, premises or office (edintcom:CommercialSpace, subclass of edint-infraestructura's Facility).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-censo-locales/models/CommercialSpace/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-censo-locales/models/CommercialSpace"
+      },
+      {
+        "name": "Permit",
+        "title": "Smart Data Models - EDINT Commercial Census - Permit",
+        "description": "The license/authorization of a commercial space, terrace or economic activity (edintcom:Permit). NOTE: unrelated to, and a distinct concept from, edint-censo-vehiculos's own 'Permit' entity (vehicle circulation/parking permits) -- same entity type NAME, entirely different meaning; a genuine type collision, not resolved here. See standard-metadata.yaml.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-censo-locales/models/Permit/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-censo-locales/models/Permit"
+      },
+      {
+        "name": "Terrace",
+        "title": "Smart Data Models - EDINT Commercial Census - Terrace",
+        "description": "An open area connected to a bar, restaurant, etc., serving as an outdoor sitting area for clients (edintcom:Terrace, subclass of edint-infraestructura's Facility).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-censo-locales/models/Terrace/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-censo-locales/models/Terrace"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-censo-locales"
+    "slug": "edint-agenda",
+    "title": "EDINT City Agenda Ontology (Ontología de Agenda Ciudadana)",
+    "description": "Vocabulary for city events published in municipal public agendas -- cultural, sports and social activities, fairs, exhibitions, concerts -- reusing schema.org's Event for scheduling and GeoSPARQL for location.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-agenda/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities"
+    ],
+    "modelCount": 1,
+    "models": [
+      {
+        "name": "NoiseObservation",
+        "title": "Smart Data Models - EDINT Noise Pollution - NoiseObservation",
+        "description": "An observation of a noise property made by a noise sensor (edintacus:NoiseObservation, subclass of edint-medio-ambiente's EnvironmentalObservation). Small domain extension adding acoustic-measurement-specific properties on top of the base EnvironmentalObservation pattern.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-contaminacion-acustica/models/NoiseObservation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-contaminacion-acustica/models/NoiseObservation"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-contaminacion-acustica"
+        "name": "CityEvent",
+        "title": "Smart Data Models - EDINT City Agenda - CityEvent",
+        "description": "An event that will take place in a city, e.g. a cultural, sports or social activity published in a municipal public agenda (edintagenda:CityEvent, subclass of geosparql:Feature and schema:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-agenda/models/CityEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-agenda/models/CityEvent"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-agenda"
+  },
+  {
     "slug": "edint-infraestructura",
     "title": "EDINT Infrastructure Ontology (Ontología de Infraestructura)",
     "description": "Vocabulary for representing a municipality's public and private infrastructure facilities (educational, cultural, social, sports and health centers, on-street and off-street parking, shared-bicycle stations) together with the sensors, observations, violations, management roles and organizations involved in operating and monitoring them, plus (as of this update) street sections, traffic incidences, traffic control/measuring equipment and observations, and regulated zones. Reuses SOSA/SSN (sensors and observations), GeoSPARQL (geometry), W3C Time, QUDT, schema.org and Dublin Core.",
@@ -482,6 +746,252 @@
       }
     ],
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura"
+  },
+  {
+    "slug": "edint-trafico",
+    "title": "EDINT Traffic Ontology (Ontología de Tráfico)",
+    "description": "Vocabulary for street sections, traffic incidents (planned and unplanned), traffic control and measuring equipment, traffic observations, and traffic observation points.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-trafico/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "Transportation"
+    ],
+    "modelCount": 7,
+    "models": [
+      {
+        "name": "ControlEquipment",
+        "title": "Smart Data Models - EDINT Traffic - ControlEquipment",
+        "description": "Equipment that monitors or controls properties of a specific vehicle, such as its speed or access to certain city areas -- e.g. a traffic light or speed/access control camera (edinttrafico:ControlEquipment, subclass of edinttrafico:TrafficEquipment). This is a NEW concrete subclass introduced in this standalone ontology (v0.1.1) that did not exist when edint-infraestructura's own v0.2.1 update bundled an earlier copy of this pattern -- that earlier copy materialized bare 'TrafficEquipment' directly for this same purpose. See standard-metadata.yaml.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-trafico/models/ControlEquipment/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-trafico/models/ControlEquipment"
+      },
+      {
+        "name": "PlannedIncident",
+        "title": "Smart Data Models - EDINT Traffic - PlannedIncident",
+        "description": "Planned traffic incident, can be recurrent or not (edinttrafico:PlannedIncident, subclass of edinttrafico:Incident and geosparql:Feature). Bare 'Incident' is deliberately not materialized as its own entity, matching this candidate family's precedent for abstract SOSA-style bases (e.g. Sensor). Renamed from 'Incidence'/'PlannedIncidence' used in edint-infraestructura's own bundled v0.2.1 copy of this pattern -- see standard-metadata.yaml.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-trafico/models/PlannedIncident/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-trafico/models/PlannedIncident"
+      },
+      {
+        "name": "StreetSection",
+        "title": "Smart Data Models - EDINT Traffic - StreetSection",
+        "description": "Section defined by a starting and an ending point that can belong to one or more street (edinttrafico:StreetSection, subclass of geosparql:Feature). Translated from the dedicated, standalone edint-ontologia-trafico repository (v0.1.1) -- more current than, and using slightly different naming from, the same-purpose entities bundled inline into edint-infraestructura's own v0.2.1 update; see standard-metadata.yaml.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-trafico/models/StreetSection/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-trafico/models/StreetSection"
+      },
+      {
+        "name": "TrafficMeasurementDevice",
+        "title": "Smart Data Models - EDINT Traffic - TrafficMeasurementDevice",
+        "description": "Traffic measurement device, a type of traffic equipment which performs measurements of properties such as service level, traffic intensity and traffic load (edinttrafico:TrafficMeasurementDevice, subclass of sosa:Sensor and edinttrafico:TrafficEquipment). Renamed from 'TrafficMeasuringDevice' used in edint-infraestructura's own bundled v0.2.1 copy; NOTE this newer version no longer carries numDirections/urban (moved exclusively to the new ControlEquipment sibling) -- see standard-metadata.yaml.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-trafico/models/TrafficMeasurementDevice/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-trafico/models/TrafficMeasurementDevice"
+      },
+      {
+        "name": "TrafficObservation",
+        "title": "Smart Data Models - EDINT Traffic - TrafficObservation",
+        "description": "Observation by a traffic measurement device or a control equipment such as speed cameras or Automatic Number Plate Recognition (ANPR) systems (edinttrafico:TrafficObservation, subclass of sosa:Observation).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-trafico/models/TrafficObservation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-trafico/models/TrafficObservation"
+      },
+      {
+        "name": "TrafficObservationPoint",
+        "title": "Smart Data Models - EDINT Traffic - TrafficObservationPoint",
+        "description": "Point where traffic or specific-vehicle observations can be made using sensors (edinttrafico:TrafficObservationPoint, subclass of sosa:FeatureOfInterest). No properties of its own beyond location; parallels edint-infraestructura's ObservationPoint, but specific to the traffic domain -- a new class not present in the earlier copy of this pattern bundled into edint-infraestructura's v0.2.1 update.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-trafico/models/TrafficObservationPoint/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-trafico/models/TrafficObservationPoint"
+      },
+      {
+        "name": "UnplannedIncident",
+        "title": "Smart Data Models - EDINT Traffic - UnplannedIncident",
+        "description": "Unplanned traffic incident in a city (edinttrafico:UnplannedIncident, subclass of edinttrafico:Incident and geosparql:Feature). No properties of its own beyond those inherited from Incident.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-trafico/models/UnplannedIncident/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-trafico/models/UnplannedIncident"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-trafico"
+    "slug": "edint-suministro",
+    "title": "EDINT Utility Supply Ontology (Ontología de Suministro)",
+    "description": "Vocabulary for utilities (electricity, gas, water, ...) supplied to a municipality's infrastructure elements, and the measurement of their consumption. Structurally near-identical to edint-fotovoltaica (System/Meter/Generation/Contract/Rate), applied to utility supply generally rather than photovoltaic generation specifically.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-suministro/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "UrbanInfrastructure",
+      "Energy"
+    ],
+    "modelCount": 5,
+    "models": [
+      {
+        "name": "UtilityConsumption",
+        "title": "Smart Data Models - EDINT Utility Supply - UtilityConsumption",
+        "description": "Amount of a utility (electricity, gas, water, ...) consumed over a specific period (edintsum:UtilityConsumption, subclass of sosa:Observation).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-suministro/models/UtilityConsumption/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-suministro/models/UtilityConsumption"
+      },
+      {
+        "name": "UtilityContract",
+        "title": "Smart Data Models - EDINT Utility Supply - UtilityContract",
+        "description": "Agreement between a utility provider and a consumer defining the terms, rates, service quality, and responsibilities for providing a utility like electricity, water, or gas (edintsum:UtilityContract).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-suministro/models/UtilityContract/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-suministro/models/UtilityContract"
+      },
+      {
+        "name": "UtilityMeter",
+        "title": "Smart Data Models - EDINT Utility Supply - UtilityMeter",
+        "description": "Device that measures the consumption of a utility, e.g. electricity, gas, water, or heating (edintsum:UtilityMeter, subclass of sosa:Sensor and saref:Meter).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-suministro/models/UtilityMeter/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-suministro/models/UtilityMeter"
+      },
+      {
+        "name": "UtilityRate",
+        "title": "Smart Data Models - EDINT Utility Supply - UtilityRate",
+        "description": "The rate/tariff applied in a utility contract (edintsum:UtilityRate). The source ontology defines no properties of its own; it is the target of UtilityContract.hasRate.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-suministro/models/UtilityRate/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-suministro/models/UtilityRate"
+      },
+      {
+        "name": "UtilitySupplyPoint",
+        "title": "Smart Data Models - EDINT Utility Supply - UtilitySupplyPoint",
+        "description": "Point of a municipal infrastructure element where a utility (electricity, gas, water, ...) is supplied, generally associated with a UtilityMeter (edintsum:UtilitySupplyPoint, subclass of geosparql:Feature and sosa:FeatureOfInterest).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-suministro/models/UtilitySupplyPoint/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-suministro/models/UtilitySupplyPoint"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-suministro"
+    "slug": "edint-medio-ambiente",
+    "title": "EDINT Environmental Sensors Ontology (Ontología de Sensores Medioambientales)",
+    "description": "Generic vocabulary for environmental sensor platforms, sensors and observations -- a lightweight, modular extension of SOSA (Sensor, Observation, Sample, and Actuator) and GeoSPARQL, restricting its measurements to EDINT's own controlled vocabularies. Designed to be specialized per environmental domain (air quality, climatology, noise pollution) purely through those vocabularies, without new subclasses.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-medio-ambiente/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "Environment"
+    ],
+    "modelCount": 3,
+    "models": [
+      {
+        "name": "EnvironmentalObservation",
+        "title": "Smart Data Models - EDINT Environmental Sensors - EnvironmentalObservation",
+        "description": "An observation of an environmental property made by an environmental sensor (edintmed:EnvironmentalObservation, subclass of sosa:Observation).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-medio-ambiente/models/EnvironmentalObservation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-medio-ambiente/models/EnvironmentalObservation"
+      },
+      {
+        "name": "EnvironmentalSensor",
+        "title": "Smart Data Models - EDINT Environmental Sensors - EnvironmentalSensor",
+        "description": "Device designed to observe and measure physical, chemical, or acoustic properties of the environment (edintmed:EnvironmentalSensor, subclass of sosa:Sensor). This ontology is deliberately generic: domain specializations (air quality, climatology, noise pollution) reuse it as-is, specializing only through the open controlled-vocabulary Relationships below rather than through new subclasses.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-medio-ambiente/models/EnvironmentalSensor/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-medio-ambiente/models/EnvironmentalSensor"
+      },
+      {
+        "name": "SensorPlatform",
+        "title": "Smart Data Models - EDINT Environmental Sensors - SensorPlatform",
+        "description": "Physical platform or facility that hosts environmental sensors for monitoring, e.g. an air-quality cabin, a water buoy, or a weather tower (edintmed:SensorPlatform, subclass of geosparql:Feature and sosa:Platform).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-medio-ambiente/models/SensorPlatform/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-medio-ambiente/models/SensorPlatform"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-medio-ambiente"
+    "slug": "edint-organizaciones",
+    "title": "EDINT Public Organizations Ontology (Ontología de Organizaciones Públicas)",
+    "description": "Vocabulary for representing Spanish public administration organizations and their place in an organization chart. An adaptation of the W3C Organization Ontology for EDINT's requirements.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-organizaciones/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities"
+    "slug": "edint-oferta-inmobiliaria",
+    "title": "EDINT Real Estate Offer Ontology (Ontología de Oferta Inmobiliaria)",
+    "description": "Vocabulary for real estate listings/offers -- sale, rent, or transfer of a property -- referencing the corresponding cadastral parcel or property.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-oferta-inmobiliaria/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "UrbanInfrastructure"
+    ],
+    "modelCount": 1,
+    "models": [
+      {
+        "name": "Organization",
+        "title": "Smart Data Models - EDINT Organizations - Organization",
+        "description": "A public administration organization in Spain, and its place in an organization chart (edintorg:Organization, subclass of W3C org:Organization). Collapses the source ontology's two subclasses (OrganicUnit, PublicLawEntity), which declare no properties of their own, into this single entity -- the hasOrganizationType enum below already captures similar distinctions in practice.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-organizaciones/models/Organization/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-organizaciones/models/Organization"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-organizaciones"
+        "name": "RealEstateListing",
+        "title": "Smart Data Models - EDINT Real Estate Offer - RealEstateListing",
+        "description": "A real estate listing representing an offer for a property -- sale, rent, or transfer (edintinm:RealEstateListing). NOTE: the source ontology's own generated ontology.ttl declares this class as subClassOf a class named 'Error1' in an 'org.semanticweb.owlapi/error#' namespace -- an OWL-API tooling artifact from a malformed-axiom placeholder, not a real superclass. Ignored here; not modeled as any kind of inheritance.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-oferta-inmobiliaria/models/RealEstateListing/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-oferta-inmobiliaria/models/RealEstateListing"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-oferta-inmobiliaria"
+  },
+  {
+    "slug": "edint-promocion-comercial",
+    "title": "EDINT Commercial Promotion Ontology (Ontología de Promoción Comercial)",
+    "description": "Vocabulary for commercial promotion: campaigns (vouchers, discounts, revitalization drives) and events (fairs, thematic markets, local events) run to promote commercial activity in a zone.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-promocion-comercial/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "UrbanInfrastructure"
+    ],
+    "modelCount": 2,
+    "models": [
+      {
+        "name": "CommercialCampaign",
+        "title": "Smart Data Models - EDINT Commercial Promotion - CommercialCampaign",
+        "description": "A commercial promotion campaign, e.g. a voucher or discount campaign run across several commercial spaces (edintpro:CommercialCampaign). This ontology's own CommercialSpace declaration is a pointer (rdfs:isDefinedBy) to edint-censo-locales's real CommercialSpace, not a separate definition; not re-modeled here.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-promocion-comercial/models/CommercialCampaign/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-promocion-comercial/models/CommercialCampaign"
+      },
+      {
+        "name": "CommercialEvent",
+        "title": "Smart Data Models - EDINT Commercial Promotion - CommercialEvent",
+        "description": "A commercial promotion event, e.g. a fair or thematic market (edintpro:CommercialEvent, subclass of schema:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-promocion-comercial/models/CommercialEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-promocion-comercial/models/CommercialEvent"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-promocion-comercial"
+  },
+  {
+    "slug": "edint-servicios-publicos",
+    "title": "EDINT Public Services Ontology (Ontología de Servicios Públicos)",
+    "description": "Vocabulary for municipal public services and the administrative procedures through which they are managed and resolved, reusing the EU's Core Public Service Vocabulary (CPSV-AP) for competent authorities, contact points and channels.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-servicios-publicos/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities"
+    ],
+    "modelCount": 2,
+    "models": [
+      {
+        "name": "AdministrativeProcedure",
+        "title": "Smart Data Models - EDINT Public Services - AdministrativeProcedure",
+        "description": "Formal process followed by a public administration to manage, evaluate, and resolve a request, case, or administrative action (edintserpub:AdministrativeProcedure). NOTE: same tooling artifact as PublicService -- the source ontology's own class declaration uses a malformed IRI (owlapi/turtle# namespace); this entity uses the real servicios-publicos# IRI confirmed by the property domains and the source's own real example data.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-servicios-publicos/models/AdministrativeProcedure/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-servicios-publicos/models/AdministrativeProcedure"
+      },
+      {
+        "name": "PublicService",
+        "title": "Smart Data Models - EDINT Public Services - PublicService",
+        "description": "A municipal public service offered by a public administration or by an entity on its behalf (edintserpub:PublicService). NOTE: the source ontology's own generated ontology.ttl has two tooling artifacts affecting this class: its own class IRI is malformed (declared under 'http://www.semanticweb.org/owl/owlapi/turtle#' instead of this ontology's real servicios-publicos# namespace), and it is declared rdfs:subClassOf itself (a tautology). Both ignored here; this entity uses the real servicios-publicos# IRI confirmed by the property domains and the source's own real example data.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-servicios-publicos/models/PublicService/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-servicios-publicos/models/PublicService"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-servicios-publicos"
   },
   {
     "slug": "edint-turismo",
@@ -640,6 +1150,28 @@
       }
     ],
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-vehiculos-compartidos"
+    "slug": "edint-zona-regulatoria",
+    "title": "EDINT Regulated Zone Ontology (Ontología de Zonas Regulatorias)",
+    "description": "Vocabulary for representing regulated zones in smart mobility and urban management -- functional areas that overlay the urban grid (low emission zones, regulated parking, pedestrian zones, historical centers, economic interest zones, etc.) without necessarily following fixed administrative boundaries. Designed as a modular extension of the Spanish Public Sector ontology (esadm), reusing GeoSPARQL for geometry and W3C org for the managing organization.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-zona-regulatoria/tree/main",
+    "license": "CC-BY-SA-4.0",
+    "domains": [
+      "SmartCities",
+      "UrbanInfrastructure",
+      "Transportation"
+    ],
+    "modelCount": 1,
+    "models": [
+      {
+        "name": "RegulatedZone",
+        "title": "Smart Data Models - EDINT Regulated Zone - RegulatedZone",
+        "description": "Area to which a particular regulation or policy applies, e.g. a low emission zone, a regulated parking zone, a pedestrian zone or a historical center (edintzone:RegulatedZone). This entity collapses the source ontology's 22 subclasses of RegulatedZone into a single entity with a zoneType classification, since none of those subclasses declare any property of their own.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-zona-regulatoria/models/RegulatedZone/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-zona-regulatoria/models/RegulatedZone"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-zona-regulatoria"
   },
   {
     "slug": "era-eradis",
@@ -2414,6 +2946,257 @@
       }
     ],
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/madrid-accidentes-trafico"
+  },
+  {
+    "slug": "simple-federated-logisticroles",
+    "title": "Logistic Roles extensions to the Federated ontology for SIMPLE",
+    "description": "Extensions to the FEDeRATED project's Logistic Roles ontology, created for the SIMPLE project. Unlike the sibling simple-federated-businessservice candidate (which owl:imports its FEDeRATED base ontology externally), this document is fully self-contained: it republishes the entire base FEDeRATED LogisticRoles taxonomy inline, under the base ontology's own ontology.tno.nl namespace, and adds exactly one new class of its own (simple-lr:Driver) plus two property redeclarations (:involves, :isAbout). The taxonomy covers two distinct role hierarchies: ActorRoles (roles a legal person can play in a business transaction -- Carrier, Consignee, Forwarder, etc.) and LocationRoles (roles a physical location can play in the context of a specific transport means and event -- PortOfLoading, PlaceOfDelivery, GateInLocation, etc.).",
+    "publisher": "Ontology Engineering Group (OEG), Universidad Politécnica de Madrid -- ontology created in the context of the EU SIMPLE project; extends the FEDeRATED project's Logistic Roles ontology (TNO)",
+    "sourceUrl": "https://vocab.plataformasimple.es/def/logistics/federated/LogisticRoles",
+    "slug": "simple-federated-event",
+    "title": "Event extensions to the Federated ontology for SIMPLE",
+    "description": "Extensions to the FEDeRATED project's Event ontology, created for the SIMPLE project to represent logistics events in road and rail transport not already covered by the upstream FEDeRATED taxonomy. Adds Gate-In and Gate-Out terminal events, generic vehicle arrival/departure events, a driver clock-in/clock-out confirmation pair, an Issue event for logistics chain incidents, a Passing event, and the full eCMR (electronic Consignment Note) document lifecycle (creation, sender/carrier/consignee signatures and comment modifications, destination/loads modifications, cancellation, signature invalidation).",
+    "publisher": "Ontology Engineering Group (OEG), Universidad Politécnica de Madrid -- ontology created in the context of the EU SIMPLE project; extends the FEDeRATED project's Event ontology (TNO)",
+    "sourceUrl": "https://vocab.plataformasimple.es/def/logistics/federated/Event",
+    "slug": "simple-federated-businessservice",
+    "title": "Business Service extensions to the Federated ontology for SIMPLE",
+    "description": "Extensions to the FEDeRATED project's Business Service ontology, created for the SIMPLE project to represent entities associated with business transactions, logistics services and legal persons in road and rail transport. Adds order types for Cargo Handling, Discharge, Gate-In, Gate-Out and Shunting, plus a Cargo Handling logistics service; specialises the location property of a logistics service into arrival/departure variants; relates Shipments to their constituent Consignments; and adds the eftiUid property for eFTI (electronic Freight Transport Information) / EU-Gate interoperability.",
+    "publisher": "Ontology Engineering Group (OEG), Universidad Politécnica de Madrid -- ontology created in the context of the EU SIMPLE project; extends the FEDeRATED project's Business Service ontology (TNO)",
+    "sourceUrl": "https://vocab.plataformasimple.es/def/logistics/federated/BusinessService",
+    "license": "Creative Commons Attribution 4.0 (CC BY 4.0), per the ontology's own dcterms:license",
+    "domains": [
+      "Transportation",
+      "SmartCities"
+    ],
+    "modelCount": 2,
+    "models": [
+      {
+        "name": "Driver",
+        "title": "Smart Data Models - SIMPLE Federated Logistic Roles - Driver",
+        "description": "Someone who drives a vehicle (simple-lr:Driver, SIMPLE extension to the FEDeRATED Logistic Roles ontology, subclass of LogisticServiceProvider). Referenced as the range of simple-bs:involvedDriver in the sibling simple-federated-businessservice candidate's TransportService entity.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-logisticroles/models/Driver/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-logisticroles/models/Driver"
+      },
+      {
+        "name": "LocationRole",
+        "title": "Smart Data Models - SIMPLE Federated Logistic Roles - LocationRole",
+        "description": "A location such as a hub or port can have different roles depending on the context (LogisticRoles:LocationRoles, FEDeRATED Logistic Roles ontology, republished inline in the SIMPLE LogisticRoles document). Modeled generically -- see the roleType property -- rather than as 17 separate entity types, since every concrete subclass (PlaceOfLoading, PortOfCall, PlaceOfDelivery, etc.) shares the exact same three required relationships and adds no property of its own beyond a differentiating label/comment.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-logisticroles/models/LocationRole/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-logisticroles/models/LocationRole"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-logisticroles"
+    "modelCount": 20,
+    "models": [
+      {
+        "name": "ClockInConfirmationEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ClockInConfirmationEvent",
+        "description": "An event that confirms the clock-in (start of the working time or shift) of a driver or operator in the logistics process. (simple-ev:ClockInConfirmationEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ClockInConfirmationEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ClockInConfirmationEvent"
+      },
+      {
+        "name": "ClockOutConfirmationEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ClockOutConfirmationEvent",
+        "description": "An event that confirms the clock-out (end of the working time or shift) of a driver or operator in the logistics process. (simple-ev:ClockOutConfirmationEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ClockOutConfirmationEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ClockOutConfirmationEvent"
+      },
+      {
+        "name": "ECMRCancelledEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ECMRCancelledEvent",
+        "description": "An event in the eCMR document lifecycle recording that the document was cancelled. (simple-ev:ECMRCancelledEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ECMRCancelledEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ECMRCancelledEvent"
+      },
+      {
+        "name": "ECMRCarrierCommentModifiedEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ECMRCarrierCommentModifiedEvent",
+        "description": "An event in the eCMR document lifecycle recording that the carrier comment was modified. (simple-ev:ECMRCarrierCommentModifiedEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ECMRCarrierCommentModifiedEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ECMRCarrierCommentModifiedEvent"
+      },
+      {
+        "name": "ECMRCarrierModifiedEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ECMRCarrierModifiedEvent",
+        "description": "An event in the eCMR document lifecycle recording that the carrier modified the document. (simple-ev:ECMRCarrierModifiedEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ECMRCarrierModifiedEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ECMRCarrierModifiedEvent"
+      },
+      {
+        "name": "ECMRCarrierSignedEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ECMRCarrierSignedEvent",
+        "description": "An event in the eCMR document lifecycle recording that the carrier signed the document. (simple-ev:ECMRCarrierSignedEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ECMRCarrierSignedEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ECMRCarrierSignedEvent"
+      },
+      {
+        "name": "ECMRConsigneeCommentModifiedEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ECMRConsigneeCommentModifiedEvent",
+        "description": "An event in the eCMR document lifecycle recording that the consignee comment was modified. (simple-ev:ECMRConsigneeCommentModifiedEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ECMRConsigneeCommentModifiedEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ECMRConsigneeCommentModifiedEvent"
+      },
+      {
+        "name": "ECMRConsigneeSignedEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ECMRConsigneeSignedEvent",
+        "description": "An event in the eCMR document lifecycle recording that the consignee signed the document. (simple-ev:ECMRConsigneeSignedEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ECMRConsigneeSignedEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ECMRConsigneeSignedEvent"
+      },
+      {
+        "name": "ECMRCreationEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ECMRCreationEvent",
+        "description": "An event in the eCMR document lifecycle recording that the document was created. (simple-ev:ECMRCreationEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ECMRCreationEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ECMRCreationEvent"
+      },
+      {
+        "name": "ECMRDestinationModifiedEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ECMRDestinationModifiedEvent",
+        "description": "An event in the eCMR document lifecycle recording that the destination was modified. (simple-ev:ECMRDestinationModifiedEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ECMRDestinationModifiedEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ECMRDestinationModifiedEvent"
+      },
+      {
+        "name": "ECMRLoadsModifiedEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ECMRLoadsModifiedEvent",
+        "description": "An event in the eCMR document lifecycle recording that the loads were modified. (simple-ev:ECMRLoadsModifiedEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ECMRLoadsModifiedEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ECMRLoadsModifiedEvent"
+      },
+      {
+        "name": "ECMRSenderCommentModifiedEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ECMRSenderCommentModifiedEvent",
+        "description": "An event in the eCMR document lifecycle recording that the sender comment was modified. (simple-ev:ECMRSenderCommentModifiedEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ECMRSenderCommentModifiedEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ECMRSenderCommentModifiedEvent"
+      },
+      {
+        "name": "ECMRSenderSignedEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ECMRSenderSignedEvent",
+        "description": "An event in the eCMR document lifecycle recording that the sender signed the document. (simple-ev:ECMRSenderSignedEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ECMRSenderSignedEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ECMRSenderSignedEvent"
+      },
+      {
+        "name": "ECMRSignaturesInvalidatedEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ECMRSignaturesInvalidatedEvent",
+        "description": "An event recording that the signatures of an eCMR document have been invalidated (e.g., after a modification that requires the document to be signed again). (simple-ev:ECMRSignaturesInvalidatedEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ECMRSignaturesInvalidatedEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ECMRSignaturesInvalidatedEvent"
+      },
+      {
+        "name": "GateInEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - GateInEvent",
+        "description": "A Gate-In Event is used to record the entry of a TransportMeans in a terminal (e.g., a truck enters into a train terminal to deliver a container). (simple-ev:GateInEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:ArrivalEvent (\"an association between a TransportMeans and a location, milestone Start\"), itself a subclass of Event:AtomicEvent and Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/GateInEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/GateInEvent"
+      },
+      {
+        "name": "GateOutEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - GateOutEvent",
+        "description": "A Gate-Out Event is used to record the departure of a TransportMeans from a terminal (e.g., a truck goes out of a train terminal where it has delivered or has loaded a container). (simple-ev:GateOutEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:DepartureEvent (\"an association between a TransportMeans and a location, milestone End\"), itself a subclass of Event:AtomicEvent and Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/GateOutEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/GateOutEvent"
+      },
+      {
+        "name": "IssueEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - IssueEvent",
+        "description": "An Issue Event is used to describe any type of incidence that may happen during the logistics chain process. (simple-ev:IssueEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/IssueEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/IssueEvent"
+      },
+      {
+        "name": "PassingEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - PassingEvent",
+        "description": "A Passing Event describes the passing of a TransportMeans by a location. (simple-ev:PassingEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/PassingEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/PassingEvent"
+      },
+      {
+        "name": "VehicleArrivalEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - VehicleArrivalEvent",
+        "description": "An event recording the arrival of a vehicle at a location. (simple-ev:VehicleArrivalEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:ArrivalEvent (\"an association between a TransportMeans and a location, milestone Start\"), itself a subclass of Event:AtomicEvent and Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/VehicleArrivalEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/VehicleArrivalEvent"
+      },
+      {
+        "name": "VehicleDepartureEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - VehicleDepartureEvent",
+        "description": "An event recording the departure of a vehicle from a location. (simple-ev:VehicleDepartureEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:DepartureEvent (\"an association between a TransportMeans and a location, milestone End\"), itself a subclass of Event:AtomicEvent and Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/VehicleDepartureEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/VehicleDepartureEvent"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event"
+    "modelCount": 9,
+    "models": [
+      {
+        "name": "CargoHandlingOrder",
+        "title": "Smart Data Models - SIMPLE Federated Business Service - CargoHandlingOrder",
+        "description": "Business transaction where an organisation is responsible for managing some cargo, e.g. inside a rail terminal (simple-bs:CargoHandlingOrder, SIMPLE extension to the FEDeRATED Business Service ontology, subclass of Order, itself a subclass of BusinessTransaction).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/CargoHandlingOrder/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/CargoHandlingOrder"
+      },
+      {
+        "name": "CargoHandlingService",
+        "title": "Smart Data Models - SIMPLE Federated Business Service - CargoHandlingService",
+        "description": "A service for the handling of cargo, e.g. moving cargo from a truck to a train, or from a truck to a deposit in a freight terminal (simple-bs:CargoHandlingService, SIMPLE extension to the FEDeRATED Business Service ontology, subclass of LogisticsService).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/CargoHandlingService/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/CargoHandlingService"
+      },
+      {
+        "name": "Consignment",
+        "title": "Smart Data Models - SIMPLE Federated Business Service - Consignment",
+        "description": "A business transaction of a shipper as customer with a service provider (e.g. a carrier or forwarder) for the transport of goods or containers from one location to another, where all goods and containers have to arrive in a given time period (businessService:Consignment, FEDeRATED Business Service ontology, subclass of BusinessTransaction), extended by the SIMPLE project with delivery time windows, a booking list and arrival/departure location relationships.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/Consignment/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/Consignment"
+      },
+      {
+        "name": "DischargeOrder",
+        "title": "Smart Data Models - SIMPLE Federated Business Service - DischargeOrder",
+        "description": "Order in which an organisation is made responsible of / agrees to discharge some cargo, e.g. inside a rail terminal (simple-bs:DischargeOrder, SIMPLE extension to the FEDeRATED Business Service ontology, subclass of Order, itself a subclass of BusinessTransaction).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/DischargeOrder/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/DischargeOrder"
+      },
+      {
+        "name": "GateInOrder",
+        "title": "Smart Data Models - SIMPLE Federated Business Service - GateInOrder",
+        "description": "Order that allows a transport means to go into a cargo terminal, e.g. a rail terminal (simple-bs:GateInOrder, SIMPLE extension to the FEDeRATED Business Service ontology, subclass of Order, itself a subclass of BusinessTransaction). Although this may be considered an event, the source ontology represents it as a business transaction.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/GateInOrder/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/GateInOrder"
+      },
+      {
+        "name": "GateOutOrder",
+        "title": "Smart Data Models - SIMPLE Federated Business Service - GateOutOrder",
+        "description": "Order that allows a transport means to go out from a cargo terminal, e.g. a rail terminal (simple-bs:GateOutOrder, SIMPLE extension to the FEDeRATED Business Service ontology, subclass of Order, itself a subclass of BusinessTransaction). Although this may be considered an event, the source ontology represents it as a business transaction.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/GateOutOrder/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/GateOutOrder"
+      },
+      {
+        "name": "Shipment",
+        "title": "Smart Data Models - SIMPLE Federated Business Service - Shipment",
+        "description": "A business transaction with a carrier for the transport of goods or containers from one location to another, where all goods and containers have to arrive in a given time period (businessService:Shipment, FEDeRATED Business Service ontology). Similar to a Consignment, but always with a carrier acting as service provider. Extended by the SIMPLE project with delivery time windows, arrival/departure location, a relationship to its constituent Consignments, and an eFTI UID for EU-Gate interoperability. NOTE: unlike Consignment, the base ontology asserts Shipment as a direct subclass of owl:Thing, not of BusinessTransaction -- it therefore carries none of BusinessTransaction's properties.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/Shipment/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/Shipment"
+      },
+      {
+        "name": "ShuntingOrder",
+        "title": "Smart Data Models - SIMPLE Federated Business Service - ShuntingOrder",
+        "description": "Business transaction associated with the process of sorting items of rolling stock into complete trains, or the reverse -- known as switching in the United States (simple-bs:ShuntingOrder, SIMPLE extension to the FEDeRATED Business Service ontology, subclass of Order, itself a subclass of BusinessTransaction). An order established between two organisations to carry out the shunting/marshalling process.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/ShuntingOrder/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/ShuntingOrder"
+      },
+      {
+        "name": "TransportService",
+        "title": "Smart Data Models - SIMPLE Federated Business Service - TransportService",
+        "description": "A service provided by a logistics or transport service provider for the transport of cargo (businessService:TransportService, FEDeRATED Business Service ontology, subclass of LogisticsService), extended by the SIMPLE project with arrival/departure location and driver relationships.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/TransportService/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice/models/TransportService"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-businessservice"
   },
   {
     "slug": "untp-v0.8.0",

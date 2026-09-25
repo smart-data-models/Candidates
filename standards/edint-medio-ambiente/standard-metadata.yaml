@@ -1,0 +1,78 @@
+title: "EDINT Environmental Sensors Ontology (Ontología de Sensores Medioambientales)"
+publisher: "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer"
+sourceUrl: "https://github.com/EDINT-Ontologia/edint-ontologia-medio-ambiente/tree/main"
+sourceOntologyIRI: "http://vocab.linkeddata.es/datosabiertos/def/medioambiente/"
+sourceOntologyVersion: "0.1.0"
+domains:
+  - SmartCities
+  - Environment
+description: >
+  Generic vocabulary for environmental sensor platforms, sensors and
+  observations -- a lightweight, modular extension of SOSA (Sensor,
+  Observation, Sample, and Actuator) and GeoSPARQL, restricting its
+  measurements to EDINT's own controlled vocabularies. Designed to be
+  specialized per environmental domain (air quality, climatology, noise
+  pollution) purely through those vocabularies, without new subclasses.
+license: "CC-BY-4.0"
+licenseNote: >
+  Same as edint-censo-vehiculos, edint-aparcamiento, edint-fotovoltaica,
+  edint-organizaciones and edint-catastro, this source ontology is
+  CC-BY-4.0 -- the same license Smart Data Models conventionally uses.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-09-06 from documentation/doc/ontology.ttl (path
+  differs from this candidate family's usual documentation/ontology.ttl --
+  worth flagging in case it's a repo-layout inconsistency rather than
+  deliberate) at
+  https://github.com/EDINT-Ontologia/edint-ontologia-medio-ambiente.
+
+  THREE REQUESTED REPOSITORIES COLLAPSE INTO THIS ONE STANDARD: the user
+  asked to also translate edint-ontologia-calidad-aire and
+  edint-ontologia-climatologia as separate ontologies. Both turned out to
+  have no ontology.ttl of their own at all -- their own READMEs explicitly
+  say they just reuse this ontology's pattern (SensorPlatform,
+  EnvironmentalSensor, EnvironmentalObservation), specializing only through
+  SKOS concept values (e.g. calidad-aire's sensors use the SensorTypes
+  concept "AirQualitySensor", which doesn't even exist in this base
+  ontology's own kos/sensor-types.ttl -- it's added by the specialization).
+  Neither repository is modeled as its own standard; instead, calidad-aire's
+  real example data was used to ground this standard's own examples.
+
+  THREE ENTITIES MODELED: SensorPlatform, EnvironmentalSensor,
+  EnvironmentalObservation. EnvironmentalProperty and
+  EnvironmentalFeatureOfInterest (the source's other two native classes) are
+  NOT materialized as entities -- both are pure vocabulary/classification
+  classes (subclasses of QuantityKind/ObservableProperty and
+  FeatureOfInterest respectively), not real-world things with independent
+  identity, consistent with this candidate family's precedent of not
+  materializing e.g. ObservableProperty or TrafficProperty.
+
+  hasSensorType, observableProperty AND featureOfInterest ARE DELIBERATELY
+  KEPT AS OPEN RELATIONSHIPS, NOT ENUMS, EVEN WHERE THE BASE SCHEME IS
+  SMALL: this is a deliberate deviation from this candidate family's usual
+  enum-when-small convention (e.g. edint-infraestructura's roleType/
+  violationType). The whole point of this ontology is to be specialized by
+  other repositories adding their own concepts to these same schemes (the
+  base SensorTypes scheme has only 4 concepts, but calidad-aire alone adds
+  more; the EnvironmentalProperty/SensorVariables scheme already has 150+
+  concepts across specializations). Baking a closed enum into this base
+  standard would break as soon as any domain specialization needs a new
+  concept -- kept as open Relationships to concept URIs throughout instead,
+  the same treatment already used for edint-infraestructura's
+  infrastructureType (234 concepts, also open-ended).
+
+  unitCode SIMPLIFIES A QUDT UNIT RELATIONSHIP TO A PLAIN STRING: the source
+  models a result's unit via qudt:unit, a Relationship to a qudt:Unit
+  resource (e.g. unit:MicroGM-PER-M3). Modeled here as a single unitCode
+  string property holding that unit's own code/local name, matching this
+  candidate family's simpler numeric-result-plus-unit convention rather than
+  introducing a QUDT Unit Relationship pattern used nowhere else in this
+  family.
+
+  REAL EXAMPLE DATA USED: SensorPlatform, EnvironmentalSensor and
+  EnvironmentalObservation's examples are all grounded in
+  edint-ontologia-calidad-aire's examples/example1.ttl (a real air-quality
+  station/sensor/NO2-NO-NOx observation set) -- the actual repository this
+  user asked about, even though it isn't modeled as its own standard.
