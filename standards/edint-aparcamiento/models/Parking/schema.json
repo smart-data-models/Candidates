@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-aparcamiento/models/Parking/schema.json",
+  "modelTags": "EDINT,UrbanInfrastructure,Transportation",
+  "title": "Smart Data Models - EDINT Parking - Parking",
+  "description": "Parking for different types of vehicles, on-street or off-street, public or private (edintapar:Parking, subclass of edintinf:Facility). Collapses the source ontology's two concrete subclasses (OnStreetParking, OffStreetParking) into a single entity with a parkingType discriminator, since the source's own real example data never instantiates bare Parking directly and OnStreetParking's only distinguishing property (isPartOfZone) is small enough to keep as an always-optional field rather than a second entity type.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Parking"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Parking'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. Point providing the geographical position of the entity.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "number"
+          },
+          "description": "Property. Coordinates of the Point, in WGS84 [longitude, latitude] order."
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    },
+    "address": {
+      "type": "object",
+      "description": "Property. Model:'https://schema.org/address'. The mailing address.",
+      "properties": {
+        "streetAddress": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/streetAddress'."
+        },
+        "addressLocality": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/addressLocality'."
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/postalCode'."
+        },
+        "addressRegion": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/addressRegion'."
+        },
+        "addressCountry": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/addressCountry'."
+        }
+      }
+    },
+    "infrastructureType": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Reference to a concept of edint-infraestructura's InfrastructureType controlled vocabulary. Inherited from Facility."
+    },
+    "belongsTo": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Territorial unit (e.g. city district / 'Barrio') the parking belongs to. Inherited from Facility."
+    },
+    "containsFacility": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Other Facility entities physically contained within this one. Inherited from Facility."
+    },
+    "hasObservationPoint": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The ObservationPoint(s) associated with this parking, where access sensors are deployed (edint-infraestructura's ObservationPoint). Inherited from Facility; this is the ontology's own stated link between Parking and the Infrastructure ontology's sensor representation."
+    },
+    "hasRegisteredOwner": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The Organization that is the registered owner of this parking (edint-infraestructura's Organization). Inherited from Facility."
+    },
+    "openingHours": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/openingHours'. The general opening hours, e.g. 'Mo-Fr 09:00-21:00; Sa 09:00-15:00'. Inherited from Facility."
+    },
+    "accessibility": {
+      "type": "string",
+      "description": "Property. Accessibility of the parking. Inherited from Facility (added there in source ontology v0.2.1)."
+    },
+    "isCadastralProperty": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Reference to the corresponding CadastralProperty entity in the city registry. Inherited from Facility (added there in source ontology v0.2.1)."
+    },
+    "locatedInZone": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Reference to the RegulatedZone the parking is located in (edint-zona-regulatoria's RegulatedZone). Inherited from Facility (added there in source ontology v0.2.1)."
+    },
+    "parkingType": {
+      "type": "string",
+      "enum": [
+        "OnStreet",
+        "OffStreet"
+      ],
+      "description": "Property. Whether this is on-street parking (edintapar:OnStreetParking) or off-street parking (edintapar:OffStreetParking) -- the source ontology's only two concrete subclasses of Parking, collapsed into a single entity since bare 'Parking' is never directly instantiated in the source's own real example data. 'isPartOfZone' below only applies when this is 'OnStreet'."
+    },
+    "isPartOfZone": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The RegulatedParkingZone this (on-street) parking belongs to (edintapar:isPartOfZone, edint-zona-regulatoria's RegulatedZone with zoneType=RegulatedParkingZone). Only declared on OnStreetParking in the source ontology; only meaningful when parkingType is 'OnStreet'."
+    },
+    "hasParkingFee": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The ParkingFee that applies to this parking (edintapar:hasParkingFee)."
+    },
+    "hasParkingSpot": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The individual ParkingSpot(s) this parking contains (edintapar:hasParkingSpot)."
+    },
+    "hasSpotsByParkingPermitType": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Group(s) of parking spots by permit type, e.g. resident, rotation (edintapar:hasSpotsByParkingPermitType, ParkingSpotsByPermitType)."
+    },
+    "hasSpotsByVehicleType": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Group(s) of parking spots by vehicle type, e.g. cars, motorcycles (edintapar:hasSpotsByVehicleType, ParkingSpotsByVehicleType)."
+    },
+    "numberOfParkingSpots": {
+      "type": "integer",
+      "description": "Property. Total number of parking spots in this parking (edintapar:numberOfParkingSpots)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
