@@ -1,0 +1,179 @@
+title: "Business Service extensions to the Federated ontology for SIMPLE"
+publisher: "Ontology Engineering Group (OEG), Universidad Politécnica de Madrid -- ontology created in the context of the EU SIMPLE project; extends the FEDeRATED project's Business Service ontology (TNO)"
+sourceUrl: "https://vocab.plataformasimple.es/def/logistics/federated/BusinessService"
+sourceOntologyVersion: "v0.3.1 (released 2022-07-03, modified 2026-06-29); base ontology https://ontology.tno.nl/logistics/federated/BusinessService as last published before its 2023-11-10 removal in the FEDeRATED-Semantic-Model 'ontology revamp'"
+sourceOntologyDownload: "https://vocab.plataformasimple.es/def/logistics/federated/BusinessService/ontology.ttl"
+sourceExampleUrl: "https://vocab.plataformasimple.es/def/logistics/federated/BusinessService"
+domains:
+  - Transportation
+  - SmartCities
+description: >
+  Extensions to the FEDeRATED project's Business Service ontology, created for
+  the SIMPLE project to represent entities associated with business
+  transactions, logistics services and legal persons in road and rail
+  transport. Adds order types for Cargo Handling, Discharge, Gate-In,
+  Gate-Out and Shunting, plus a Cargo Handling logistics service; specialises
+  the location property of a logistics service into arrival/departure
+  variants; relates Shipments to their constituent Consignments; and adds the
+  eftiUid property for eFTI (electronic Freight Transport Information) /
+  EU-Gate interoperability.
+license: "Creative Commons Attribution 4.0 (CC BY 4.0), per the ontology's own dcterms:license"
+licenseNote: >
+  The SIMPLE extension document states CC BY 4.0 explicitly (dcterms:license
+  on the ontology resource, and the same license badge/link on its HTML
+  documentation page). The imported base FEDeRATED BusinessService ontology
+  (TNO, ontology.tno.nl) states no license in its own ontology metadata;
+  its parent repository (github.com/federatedplatforms/FEDeRATED-Semantic-Model)
+  is public but its LICENSE file was not checked here -- flag before
+  redistributing base-ontology-derived attribute descriptions verbatim
+  outside this candidate.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-09-25 from two ontology documents, per explicit
+  instruction to fetch both rather than the SIMPLE extension alone:
+
+  1. https://vocab.plataformasimple.es/def/logistics/federated/BusinessService
+     (fetched as .ttl via content negotiation: ontology.ttl on the doc's own
+     host) -- the SIMPLE project's extension, v0.3.1. This is the document
+     the user pointed at. It owl:imports the FEDeRATED base BusinessService
+     ontology (below) plus SIMPLE's own Classifications and LogisticRoles
+     vocabularies (neither of the latter two fetched -- out of scope, see
+     below), and defines 6 new classes as subclasses of the base ontology's
+     Order/LogisticsService, plus a handful of new properties whose domain
+     is a base-ontology class (Shipment, Consignment, TransportService,
+     BusinessTransaction) rather than a class the SIMPLE document itself
+     defines.
+
+  2. https://ontology.tno.nl/logistics/federated/BusinessService (the base
+     FEDeRATED ontology SIMPLE imports and extends) -- this redirects today
+     to a GitHub repo/branch, federatedplatforms/FEDeRATED-Semantic-Model,
+     that no longer contains a BusinessService.ttl file at all: it was
+     removed in commit 85c9da5 ("Revamp of FEDeRATED ontology",
+     2023-11-10), and none of its classes (Order, BusinessTransaction,
+     Shipment, Consignment, LogisticsService, TransportService, ...)
+     reappear under those names in the surviving files (ActorRoles,
+     DigitalTwin, Event, LegalPerson, Location, LocationRoles,
+     DCAT-Specification). The SIMPLE ontology's own owl:imports statement is
+     therefore a dead reference against the *current* FEDeRATED repository.
+     Rather than fetch nothing, this candidate uses the LAST version of
+     BusinessService.ttl that existed before removal (commit 780fc00, the
+     parent of the removal commit -- raw URL:
+     https://raw.githubusercontent.com/federatedplatforms/FEDeRATED-Semantic-Model/780fc000ddab26a889dfe688e5aeeb4955feef2e/BusinessService.ttl),
+     which is what SIMPLE v0.3.1 (dated 2022-07-03/2026-06-29, i.e.
+     predating the 2023 revamp) was actually written against. This is
+     flagged here as an assumption worth re-checking: it is plausible the
+     FEDeRATED project intends BusinessService's concepts to be considered
+     superseded/merged elsewhere post-revamp, in which case SIMPLE's own
+     import is stale and this candidate is modeling a historical, not
+     current, upstream base ontology.
+
+  SCOPE: 9 entities modeled, all real classes from one of the two documents
+  above that are directly instantiable (i.e. excluding pure taxonomic roots
+  with no independent instances of their own):
+    - TransportService, CargoHandlingService (a LogisticsService subclass
+      SIMPLE adds)
+    - Consignment, Shipment
+    - CargoHandlingOrder, DischargeOrder, GateInOrder, GateOutOrder,
+      ShuntingOrder (5 Order subclasses SIMPLE adds)
+
+  NOT modeled as separate entities, deliberately: Order and LogisticsService
+  themselves (each is a pure taxonomic parent in this ontology pair --
+  neither has any own property whose domain names it directly, and neither
+  is used standalone as an NGSI-LD `type` value anywhere in the source --
+  their properties are instead flattened directly into each concrete leaf
+  entity above, the same modeling choice made for Brick's class hierarchy
+  in this repository's brick-schema candidate); BusinessTransaction itself
+  (same reasoning -- its own properties, PLUS the two SIMPLE extensions
+  that target it directly, dischargePortOfCall and loadPortOfCall, are
+  flattened into each of the 5 Order subclasses and into Consignment, all
+  of which the base ontology asserts as rdfs:subClassOf BusinessTransaction
+  -- Shipment is NOT asserted as a BusinessTransaction subclass in the base
+  ontology, so it does NOT inherit these two); Booking, FrameworkContract,
+  Itinerary, Route, Enterprise, JuridicialPerson, NaturalPerson,
+  GovernmentalOrganization, NGO, LegalPerson (all real base-ontology
+  classes, untouched by the SIMPLE extension document -- out of scope,
+  since this translation follows what the pointed-at document actually
+  extends, not the full base ontology it happens to import).
+
+  INHERITANCE FLATTENING: NGSI-LD/JSON Schema has no native class
+  inheritance, so each leaf entity's schema.json repeats (flattens) every
+  attribute it inherits by rdfs:subClassOf chain from the base ontology,
+  rather than only listing attributes declared directly on that class. E.g.
+  CargoHandlingOrder's schema includes hasSequenceNumber, involvedActor,
+  dischargePortOfCall, etc. (all declared with domain BusinessTransaction
+  in the base ontology, inherited via Order rdfs:subClassOf BusinessTransaction)
+  alongside its own cargoManifest (declared with domain CargoHandlingOrder
+  directly in the SIMPLE document).
+
+  REQUIRED PROPERTIES FROM OWL CARDINALITY RESTRICTIONS: Consignment carries
+  eight owl:Restriction (minQualifiedCardinality 1) axioms in the base
+  ontology -- on involvedActor, goodsTypeCode, partOfTransportMovementType,
+  usedGoods, usedPackage, usedTransportEquipment, numberofPackages and
+  hasSequenceNumber. These are translated into JSON Schema `required`
+  entries on Consignment specifically (beyond the universal id/type) --
+  not on the 5 Order subclasses or Shipment/TransportService/
+  CargoHandlingService, since the base ontology states these restrictions
+  as anonymous rdfs:subClassOf axioms scoped to Consignment alone, not to
+  BusinessTransaction generally.
+
+  RELATIONSHIP TARGETS OUTSIDE THIS CANDIDATE'S SCOPE: several
+  Relationship-typed attributes point at classes this candidate does not
+  model, because they come from ontologies not fetched here (SIMPLE's own
+  Classifications and LogisticRoles vocabularies; the base ontology's
+  required DigitalTwin and Event modules; schema.org). These are still
+  included as Relationship attributes (string/uri or array of string/uri),
+  with the target class named in the description, exactly as this
+  repository's brick-schema candidate did for out-of-scope Brick
+  relationship targets:
+    - involvedActor -> a LegalPerson (base ontology's own LegalPerson class,
+      out of scope here)
+    - involvedEvent -> an Event (FEDeRATED Event module, out of scope)
+    - partOfTransportMovementType, goodsTypeCode, usedTransportModality ->
+      SIMPLE's/FEDeRATED's Classifications vocabulary (out of scope)
+    - hasArrivalLocation, hasDepartureLocation -> a DigitalTwin:PhysicalObject,
+      per the SIMPLE ontology's own asserted range. NOTE: this exact class
+      name does not exist in the *current* FEDeRATED DigitalTwin.ttl either
+      (checked directly -- no PhysicalObject class there; it has
+      LogisticsObject, TransportMeans and similar instead), consistent with
+      the same base-ontology drift noted above. Kept as-is (not silently
+      substituted with a current-looking name), since this is what the
+      SIMPLE ontology itself literally asserts.
+    - usedGoods, usedPackage, usedTransportEquipment, usedTransportMeans ->
+      DigitalTwin:Goods/Package/Equipment/TransportMeans, all of which DO
+      exist, verbatim, in the current FEDeRATED DigitalTwin.ttl -- checked
+      directly.
+    - involvedDriver -> LogisticRoles:Driver, per the SIMPLE ontology's own
+      namespace (note: SIMPLE's own import list separately names a
+      "LogisticRoles" vocabulary at vocab.plataformasimple.es, distinct in
+      spelling from the base ontology's own "LogisticsRoles" -- neither
+      fetched here; out of scope)
+    - hasService -> LogisticsService; hasLocation -> schema:Place;
+      containsBusinessTransaction -> Consignment (this candidate's own
+      Consignment entity, so this one *is* in scope both ends)
+
+  CARDINALITY ASSUMPTIONS (not stated explicitly as OWL cardinality in
+  either source document, so judged from each property's real-world
+  semantics): hasArrivalLocation, hasDepartureLocation, hasLocation,
+  usedTransportModality, partOfTransportMovementType, involvedDriver and
+  hasService are modeled as single-valued Relationships (a transport leg
+  has one arrival location, one modality, etc.); involvedActor,
+  involvedEvent, usedGoods, usedPackage, usedTransportEquipment,
+  usedTransportMeans, usedPackagedProducts, goodsTypeCode and
+  containsBusinessTransaction are modeled as arrays, since a single
+  business transaction realistically involves several actors/events/
+  goods items/equipment/consignments.
+
+  EXAMPLE DATA: no real instance data was published alongside either source
+  ontology document (no Examples/ directory content specific to
+  BusinessService was found in the FEDeRATED-Semantic-Model repository, and
+  the SIMPLE documentation page includes no sample individuals). All
+  example.json values are therefore synthetic, built from the real class
+  and property definitions, comments and datatype ranges in the two source
+  documents -- not copied from a real dataset. Road/rail transport
+  scenario values (port codes, eFTI UID as a UUID, ISO 8601 timestamps, an
+  intermodal terminal Gate-In/Gate-Out locator) were chosen for realism
+  consistent with the ontology's own stated road/rail transport use case
+  (v0.3.1's own revision note: "containing entities required for the
+  representation of road and train transport").

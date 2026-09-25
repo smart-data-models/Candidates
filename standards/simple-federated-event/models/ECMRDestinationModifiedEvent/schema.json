@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ECMRDestinationModifiedEvent/schema.json",
+  "modelTags": "FEDeRATED,SIMPLE,Logistics,Event",
+  "title": "Smart Data Models - SIMPLE Federated Event - ECMRDestinationModifiedEvent",
+  "description": "An event in the eCMR document lifecycle recording that the destination was modified. (simple-ev:ECMRDestinationModifiedEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ECMRDestinationModifiedEvent"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ECMRDestinationModifiedEvent'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Human-readable label."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasTimestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Event:hasTimestamp (inherited from Event). The timestamp associated with this event. A timestamp modifier is given via hasDateTimeType."
+    },
+    "hasDateTimeType": {
+      "type": "string",
+      "enum": [
+        "Actual",
+        "Estimated",
+        "Expected",
+        "Planned",
+        "Requested"
+      ],
+      "description": "Property. Event:hasDateTimeType (inherited from Event). Whether hasTimestamp is an actual, estimated, expected, planned or requested date-time. Modeled as an enum: the base ontology declares exactly these five named individuals of Event:DateTimeType."
+    },
+    "hasMilestone": {
+      "type": "string",
+      "enum": [
+        "Start",
+        "End"
+      ],
+      "description": "Property. Event:hasMilestone (inherited from Event). Whether this event marks the Start or End of the activity it represents. Modeled as an enum: the base ontology declares exactly these two named individuals of Event:Milestone."
+    },
+    "hasSubmissionTimestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Event:hasSubmissionTimestamp (inherited from Event). The date-time at which this event was submitted."
+    },
+    "involves": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Event:involves (inherited from Event). Generic association between this event and a digital twin, business transaction, location or logistics actor; the source ontology's own subproperties (involvesBusinessTransaction, involvesDigitalTwin, involvesPhysicalInfrastructure, below) give the specific meaning -- this generic property is documented for completeness but not expected to be used directly. Range: owl:Thing."
+    },
+    "involvesBusinessTransaction": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Event:involvesBusinessTransaction (inherited from Event, subPropertyOf involves). The business transaction this event is associated with. Range: businessService:BusinessTransaction -- modeled as CargoHandlingOrder / DischargeOrder / GateInOrder / GateOutOrder / ShuntingOrder / Consignment / Shipment / TransportService / CargoHandlingService in the sibling simple-federated-businessservice candidate (out of scope of this candidate)."
+    },
+    "involvesDigitalTwin": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Event:involvesDigitalTwin (inherited from Event, subPropertyOf involves). The digital twin (e.g. a TransportMeans, Equipment or Goods instance) this event is associated with. Range: DigitalTwin:PhysicalObject -- out of scope of this candidate, see the sibling simple-federated-digitaltwin candidate."
+    },
+    "involvesPhysicalInfrastructure": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Event:involvesPhysicalInfrastructure (inherited from Event, subPropertyOf involves). The location/physical infrastructure this event is associated with. Range: geo:SpatialThing -- out of scope of this candidate, see the sibling simple-federated-physicalinfrastructure candidate."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

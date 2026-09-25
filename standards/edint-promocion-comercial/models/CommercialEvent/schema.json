@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-promocion-comercial/models/CommercialEvent/schema.json",
+  "modelTags": "EDINT,UrbanInfrastructure",
+  "title": "Smart Data Models - EDINT Commercial Promotion - CommercialEvent",
+  "description": "A commercial promotion event, e.g. a fair or thematic market (edintpro:CommercialEvent, subclass of schema:Event).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["CommercialEvent"],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'CommercialEvent'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {"type": "string", "format": "uri"},
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "identifier": {
+      "type": "string",
+      "description": "Property. A human-readable code identifying the event in the source data (dct:identifier), e.g. 'EV-2025-CH-001'."
+    },
+    "startDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. The date and time the event starts (schema:startDate). Inherited from Event."
+    },
+    "endDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. The date and time the event ends (schema:endDate). Inherited from Event."
+    },
+    "hasCommercialEventType": {
+      "type": "string",
+      "enum": ["Fair", "ThematicMarket", "LocalEvent"],
+      "description": "Property. Type of commercial event, from the CommercialEventType controlled vocabulary (edintpro:hasCommercialEventType)."
+    },
+    "locatedInZone": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The zone (e.g. edint-zona-regulatoria's RegulatedZone with zoneType=EconomicInterestZone) this event is located in (edintpro:locatedInZone)."
+    },
+    "budget": {
+      "type": "number",
+      "description": "Property. An estimate of expenditure for the event (edintpro:budget). The source ontology does not constrain the currency/unit."
+    }
+  },
+  "required": ["id", "type"]
+}

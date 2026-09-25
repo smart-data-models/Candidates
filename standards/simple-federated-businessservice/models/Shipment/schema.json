@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-businessservice/models/Shipment/schema.json",
+  "modelTags": "FEDeRATED,SIMPLE,Logistics,BusinessService",
+  "title": "Smart Data Models - SIMPLE Federated Business Service - Shipment",
+  "description": "A business transaction with a carrier for the transport of goods or containers from one location to another, where all goods and containers have to arrive in a given time period (businessService:Shipment, FEDeRATED Business Service ontology). Similar to a Consignment, but always with a carrier acting as service provider. Extended by the SIMPLE project with delivery time windows, arrival/departure location, a relationship to its constituent Consignments, and an eFTI UID for EU-Gate interoperability. NOTE: unlike Consignment, the base ontology asserts Shipment as a direct subclass of owl:Thing, not of BusinessTransaction -- it therefore carries none of BusinessTransaction's properties.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Shipment"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Shipment'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Human-readable label."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "eftiUid": {
+      "type": "string",
+      "description": "Property. simple-bs:eftiUid (SIMPLE extension, added in v0.3.1). Unique identifier (UUID) of the eFTI (electronic Freight Transport Information) dataset associated to this Shipment, used for interoperability with the EU eFTI platform / EU-Gate."
+    },
+    "earliestDeliveryTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. simple-bs:earliestDeliveryTime (SIMPLE extension). Earliest time at which this shipment can be delivered to the final destination."
+    },
+    "expectedDeliveryTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. simple-bs:expectedDeliveryTime (SIMPLE extension). Expected delivery time for this shipment."
+    },
+    "latestDeliveryTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. simple-bs:latestDeliveryTime (SIMPLE extension). Latest time by which this shipment should be delivered to the final destination."
+    },
+    "containsBusinessTransaction": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. simple-bs:containsBusinessTransaction (SIMPLE extension). Relates this Shipment to the one or several Consignments it is divided into. Range: this candidate's own Consignment entity."
+    },
+    "hasArrivalLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. simple-bs:hasArrivalLocation (SIMPLE extension, subPropertyOf businessService:hasLocation). Arrival location of this shipment. Range: DigitalTwin:PhysicalObject, per the SIMPLE ontology's own asserted range (out of scope of this candidate)."
+    },
+    "hasDepartureLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. simple-bs:hasDepartureLocation (SIMPLE extension, subPropertyOf businessService:hasLocation). Departure location of this shipment. Range: DigitalTwin:PhysicalObject (out of scope of this candidate)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
