@@ -1,0 +1,71 @@
+{
+  "id": "urn:ngsi-ld:Parking:parking-mad-101",
+  "type": "Parking",
+  "name": {
+    "type": "Property",
+    "value": "Parking Calle Serrano"
+  },
+  "description": {
+    "type": "Property",
+    "value": "SER Madrid - Zona Azul de rotación en Distrito Salamanca."
+  },
+  "source": {
+    "type": "Relationship",
+    "object": "https://github.com/EDINT-Ontologia/edint-ontologia-aparcamiento"
+  },
+  "address": {
+    "type": "Property",
+    "value": {
+      "streetAddress": "Calle de Serrano",
+      "addressLocality": "Madrid",
+      "postalCode": "28001",
+      "addressRegion": "Madrid",
+      "addressCountry": "ES"
+    }
+  },
+  "openingHours": {
+    "type": "Property",
+    "value": "Mo-Fr 09:00-21:00; Sa 09:00-15:00"
+  },
+  "belongsTo": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:Barrio:SALAMANCA"
+  },
+  "hasObservationPoint": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:ObservationPoint:obs-mad-99"
+    ]
+  },
+  "hasRegisteredOwner": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:Organization:parking-mad-101"
+  },
+  "parkingType": {
+    "type": "Property",
+    "value": "OnStreet"
+  },
+  "isPartOfZone": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:RegulatedZone:ser-salamanca"
+  },
+  "hasParkingFee": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:ParkingFee:ser-azul-distrito4"
+  },
+  "hasSpotsByParkingPermitType": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:ParkingSpotsByPermitType:plaza-azul"
+    ]
+  },
+  "hasSpotsByVehicleType": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:ParkingSpotsByVehicleType:count-m-101"
+    ]
+  },
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-aparcamiento/models/Parking/context.jsonld"
+  ]
+}
