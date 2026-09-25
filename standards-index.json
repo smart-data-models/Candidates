@@ -334,6 +334,55 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/cityjson-v2"
   },
   {
+    "slug": "edint-censo-locales",
+    "title": "EDINT Commercial Premises Census Ontology (Ontología de Censo de Locales Comerciales)",
+    "description": "Vocabulary for a municipality's commercial premises census: commercial spaces (shops, offices), the entities/organizations that operate in them, their operating permits, associated terraces, and commercial aggregations such as shopping centers or traditional markets.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-censo-locales/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "UrbanInfrastructure"
+    ],
+    "modelCount": 5,
+    "models": [
+      {
+        "name": "CommercialAggregation",
+        "title": "Smart Data Models - EDINT Commercial Census - CommercialAggregation",
+        "description": "The integration of several establishments or points of sale in the same physical space, such as a shopping center or a traditional market (edintcom:CommercialAggregation, subclass of edint-infraestructura's Facility). NOTE: the source ontology's own ontology.ttl redeclares 'Facility' (and InfrastructureElement/UrbanElement) under this ontology's OWN censo-locales# namespace, rather than importing/reusing edint-infraestructura's real classes -- almost certainly an artifact of copying a template ontology, not an intentional new class; this candidate treats these subclass relationships as targeting edint-infraestructura's real Facility, not the namespace-duplicate one. See standard-metadata.yaml.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-censo-locales/models/CommercialAggregation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-censo-locales/models/CommercialAggregation"
+      },
+      {
+        "name": "CommercialEntity",
+        "title": "Smart Data Models - EDINT Commercial Census - CommercialEntity",
+        "description": "A person and/or organization that carries out an economic activity and is assigned the permit of a commercial space (edintcom:CommercialEntity).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-censo-locales/models/CommercialEntity/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-censo-locales/models/CommercialEntity"
+      },
+      {
+        "name": "CommercialSpace",
+        "title": "Smart Data Models - EDINT Commercial Census - CommercialSpace",
+        "description": "A physical place prepared for selling products, providing services, or serving customers, such as a shop, premises or office (edintcom:CommercialSpace, subclass of edint-infraestructura's Facility).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-censo-locales/models/CommercialSpace/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-censo-locales/models/CommercialSpace"
+      },
+      {
+        "name": "Permit",
+        "title": "Smart Data Models - EDINT Commercial Census - Permit",
+        "description": "The license/authorization of a commercial space, terrace or economic activity (edintcom:Permit). NOTE: unrelated to, and a distinct concept from, edint-censo-vehiculos's own 'Permit' entity (vehicle circulation/parking permits) -- same entity type NAME, entirely different meaning; a genuine type collision, not resolved here. See standard-metadata.yaml.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-censo-locales/models/Permit/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-censo-locales/models/Permit"
+      },
+      {
+        "name": "Terrace",
+        "title": "Smart Data Models - EDINT Commercial Census - Terrace",
+        "description": "An open area connected to a bar, restaurant, etc., serving as an outdoor sitting area for clients (edintcom:Terrace, subclass of edint-infraestructura's Facility).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-censo-locales/models/Terrace/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-censo-locales/models/Terrace"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-censo-locales"
     "slug": "edint-agenda",
     "title": "EDINT City Agenda Ontology (Ontología de Agenda Ciudadana)",
     "description": "Vocabulary for city events published in municipal public agendas -- cultural, sports and social activities, fairs, exhibitions, concerts -- reusing schema.org's Event for scheduling and GeoSPARQL for location.",
