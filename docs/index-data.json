@@ -506,6 +506,29 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-infraestructura"
   },
   {
+    "slug": "edint-oferta-inmobiliaria",
+    "title": "EDINT Real Estate Offer Ontology (Ontología de Oferta Inmobiliaria)",
+    "description": "Vocabulary for real estate listings/offers -- sale, rent, or transfer of a property -- referencing the corresponding cadastral parcel or property.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-oferta-inmobiliaria/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities",
+      "UrbanInfrastructure"
+    ],
+    "modelCount": 1,
+    "models": [
+      {
+        "name": "RealEstateListing",
+        "title": "Smart Data Models - EDINT Real Estate Offer - RealEstateListing",
+        "description": "A real estate listing representing an offer for a property -- sale, rent, or transfer (edintinm:RealEstateListing). NOTE: the source ontology's own generated ontology.ttl declares this class as subClassOf a class named 'Error1' in an 'org.semanticweb.owlapi/error#' namespace -- an OWL-API tooling artifact from a malformed-axiom placeholder, not a real superclass. Ignored here; not modeled as any kind of inheritance.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/edint-oferta-inmobiliaria/models/RealEstateListing/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-oferta-inmobiliaria/models/RealEstateListing"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-oferta-inmobiliaria"
+  },
+  {
     "slug": "edint-promocion-comercial",
     "title": "EDINT Commercial Promotion Ontology (Ontología de Promoción Comercial)",
     "description": "Vocabulary for commercial promotion: campaigns (vouchers, discounts, revitalization drives) and events (fairs, thematic markets, local events) run to promote commercial activity in a zone.",
@@ -515,14 +538,6 @@
     "domains": [
       "SmartCities",
       "UrbanInfrastructure"
-    "slug": "edint-servicios-publicos",
-    "title": "EDINT Public Services Ontology (Ontología de Servicios Públicos)",
-    "description": "Vocabulary for municipal public services and the administrative procedures through which they are managed and resolved, reusing the EU's Core Public Service Vocabulary (CPSV-AP) for competent authorities, contact points and channels.",
-    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
-    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-servicios-publicos/tree/main",
-    "license": "CC-BY-4.0",
-    "domains": [
-      "SmartCities"
     ],
     "modelCount": 2,
     "models": [
@@ -542,6 +557,20 @@
       }
     ],
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/edint-promocion-comercial"
+  },
+  {
+    "slug": "edint-servicios-publicos",
+    "title": "EDINT Public Services Ontology (Ontología de Servicios Públicos)",
+    "description": "Vocabulary for municipal public services and the administrative procedures through which they are managed and resolved, reusing the EU's Core Public Service Vocabulary (CPSV-AP) for competent authorities, contact points and channels.",
+    "publisher": "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer",
+    "sourceUrl": "https://github.com/EDINT-Ontologia/edint-ontologia-servicios-publicos/tree/main",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "SmartCities"
+    ],
+    "modelCount": 2,
+    "models": [
+      {
         "name": "AdministrativeProcedure",
         "title": "Smart Data Models - EDINT Public Services - AdministrativeProcedure",
         "description": "Formal process followed by a public administration to manage, evaluate, and resolve a request, case, or administrative action (edintserpub:AdministrativeProcedure). NOTE: same tooling artifact as PublicService -- the source ontology's own class declaration uses a malformed IRI (owlapi/turtle# namespace); this entity uses the real servicios-publicos# IRI confirmed by the property domains and the source's own real example data.",
@@ -2424,6 +2453,162 @@
       }
     ],
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/madrid-accidentes-trafico"
+  },
+  {
+    "slug": "simple-federated-event",
+    "title": "Event extensions to the Federated ontology for SIMPLE",
+    "description": "Extensions to the FEDeRATED project's Event ontology, created for the SIMPLE project to represent logistics events in road and rail transport not already covered by the upstream FEDeRATED taxonomy. Adds Gate-In and Gate-Out terminal events, generic vehicle arrival/departure events, a driver clock-in/clock-out confirmation pair, an Issue event for logistics chain incidents, a Passing event, and the full eCMR (electronic Consignment Note) document lifecycle (creation, sender/carrier/consignee signatures and comment modifications, destination/loads modifications, cancellation, signature invalidation).",
+    "publisher": "Ontology Engineering Group (OEG), Universidad Politécnica de Madrid -- ontology created in the context of the EU SIMPLE project; extends the FEDeRATED project's Event ontology (TNO)",
+    "sourceUrl": "https://vocab.plataformasimple.es/def/logistics/federated/Event",
+    "license": "Creative Commons Attribution 4.0 (CC BY 4.0), per the ontology's own dcterms:license",
+    "domains": [
+      "Transportation",
+      "SmartCities"
+    ],
+    "modelCount": 20,
+    "models": [
+      {
+        "name": "ClockInConfirmationEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ClockInConfirmationEvent",
+        "description": "An event that confirms the clock-in (start of the working time or shift) of a driver or operator in the logistics process. (simple-ev:ClockInConfirmationEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ClockInConfirmationEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ClockInConfirmationEvent"
+      },
+      {
+        "name": "ClockOutConfirmationEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ClockOutConfirmationEvent",
+        "description": "An event that confirms the clock-out (end of the working time or shift) of a driver or operator in the logistics process. (simple-ev:ClockOutConfirmationEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ClockOutConfirmationEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ClockOutConfirmationEvent"
+      },
+      {
+        "name": "ECMRCancelledEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ECMRCancelledEvent",
+        "description": "An event in the eCMR document lifecycle recording that the document was cancelled. (simple-ev:ECMRCancelledEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ECMRCancelledEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ECMRCancelledEvent"
+      },
+      {
+        "name": "ECMRCarrierCommentModifiedEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ECMRCarrierCommentModifiedEvent",
+        "description": "An event in the eCMR document lifecycle recording that the carrier comment was modified. (simple-ev:ECMRCarrierCommentModifiedEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ECMRCarrierCommentModifiedEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ECMRCarrierCommentModifiedEvent"
+      },
+      {
+        "name": "ECMRCarrierModifiedEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ECMRCarrierModifiedEvent",
+        "description": "An event in the eCMR document lifecycle recording that the carrier modified the document. (simple-ev:ECMRCarrierModifiedEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ECMRCarrierModifiedEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ECMRCarrierModifiedEvent"
+      },
+      {
+        "name": "ECMRCarrierSignedEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ECMRCarrierSignedEvent",
+        "description": "An event in the eCMR document lifecycle recording that the carrier signed the document. (simple-ev:ECMRCarrierSignedEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ECMRCarrierSignedEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ECMRCarrierSignedEvent"
+      },
+      {
+        "name": "ECMRConsigneeCommentModifiedEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ECMRConsigneeCommentModifiedEvent",
+        "description": "An event in the eCMR document lifecycle recording that the consignee comment was modified. (simple-ev:ECMRConsigneeCommentModifiedEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ECMRConsigneeCommentModifiedEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ECMRConsigneeCommentModifiedEvent"
+      },
+      {
+        "name": "ECMRConsigneeSignedEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ECMRConsigneeSignedEvent",
+        "description": "An event in the eCMR document lifecycle recording that the consignee signed the document. (simple-ev:ECMRConsigneeSignedEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ECMRConsigneeSignedEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ECMRConsigneeSignedEvent"
+      },
+      {
+        "name": "ECMRCreationEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ECMRCreationEvent",
+        "description": "An event in the eCMR document lifecycle recording that the document was created. (simple-ev:ECMRCreationEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ECMRCreationEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ECMRCreationEvent"
+      },
+      {
+        "name": "ECMRDestinationModifiedEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ECMRDestinationModifiedEvent",
+        "description": "An event in the eCMR document lifecycle recording that the destination was modified. (simple-ev:ECMRDestinationModifiedEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ECMRDestinationModifiedEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ECMRDestinationModifiedEvent"
+      },
+      {
+        "name": "ECMRLoadsModifiedEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ECMRLoadsModifiedEvent",
+        "description": "An event in the eCMR document lifecycle recording that the loads were modified. (simple-ev:ECMRLoadsModifiedEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ECMRLoadsModifiedEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ECMRLoadsModifiedEvent"
+      },
+      {
+        "name": "ECMRSenderCommentModifiedEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ECMRSenderCommentModifiedEvent",
+        "description": "An event in the eCMR document lifecycle recording that the sender comment was modified. (simple-ev:ECMRSenderCommentModifiedEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ECMRSenderCommentModifiedEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ECMRSenderCommentModifiedEvent"
+      },
+      {
+        "name": "ECMRSenderSignedEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ECMRSenderSignedEvent",
+        "description": "An event in the eCMR document lifecycle recording that the sender signed the document. (simple-ev:ECMRSenderSignedEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ECMRSenderSignedEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ECMRSenderSignedEvent"
+      },
+      {
+        "name": "ECMRSignaturesInvalidatedEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - ECMRSignaturesInvalidatedEvent",
+        "description": "An event recording that the signatures of an eCMR document have been invalidated (e.g., after a modification that requires the document to be signed again). (simple-ev:ECMRSignaturesInvalidatedEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/ECMRSignaturesInvalidatedEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/ECMRSignaturesInvalidatedEvent"
+      },
+      {
+        "name": "GateInEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - GateInEvent",
+        "description": "A Gate-In Event is used to record the entry of a TransportMeans in a terminal (e.g., a truck enters into a train terminal to deliver a container). (simple-ev:GateInEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:ArrivalEvent (\"an association between a TransportMeans and a location, milestone Start\"), itself a subclass of Event:AtomicEvent and Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/GateInEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/GateInEvent"
+      },
+      {
+        "name": "GateOutEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - GateOutEvent",
+        "description": "A Gate-Out Event is used to record the departure of a TransportMeans from a terminal (e.g., a truck goes out of a train terminal where it has delivered or has loaded a container). (simple-ev:GateOutEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:DepartureEvent (\"an association between a TransportMeans and a location, milestone End\"), itself a subclass of Event:AtomicEvent and Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/GateOutEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/GateOutEvent"
+      },
+      {
+        "name": "IssueEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - IssueEvent",
+        "description": "An Issue Event is used to describe any type of incidence that may happen during the logistics chain process. (simple-ev:IssueEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/IssueEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/IssueEvent"
+      },
+      {
+        "name": "PassingEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - PassingEvent",
+        "description": "A Passing Event describes the passing of a TransportMeans by a location. (simple-ev:PassingEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:AtomicEvent, itself a subclass of Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/PassingEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/PassingEvent"
+      },
+      {
+        "name": "VehicleArrivalEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - VehicleArrivalEvent",
+        "description": "An event recording the arrival of a vehicle at a location. (simple-ev:VehicleArrivalEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:ArrivalEvent (\"an association between a TransportMeans and a location, milestone Start\"), itself a subclass of Event:AtomicEvent and Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/VehicleArrivalEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/VehicleArrivalEvent"
+      },
+      {
+        "name": "VehicleDepartureEvent",
+        "title": "Smart Data Models - SIMPLE Federated Event - VehicleDepartureEvent",
+        "description": "An event recording the departure of a vehicle from a location. (simple-ev:VehicleDepartureEvent, SIMPLE extension to the FEDeRATED Event ontology, subclass of Event:DepartureEvent (\"an association between a TransportMeans and a location, milestone End\"), itself a subclass of Event:AtomicEvent and Event:Event).",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-event/models/VehicleDepartureEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event/models/VehicleDepartureEvent"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-event"
   },
   {
     "slug": "untp-v0.8.0",
