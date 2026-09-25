@@ -1,0 +1,145 @@
+title: "Event extensions to the Federated ontology for SIMPLE"
+publisher: "Ontology Engineering Group (OEG), Universidad Politécnica de Madrid -- ontology created in the context of the EU SIMPLE project; extends the FEDeRATED project's Event ontology (TNO)"
+sourceUrl: "https://vocab.plataformasimple.es/def/logistics/federated/Event"
+sourceOntologyVersion: "v0.4.1 (released 2022-03-07, modified 2026-06-29); base ontology https://ontology.tno.nl/logistics/federated/Event as last published before its 2023-11-10 removal/simplification in the FEDeRATED-Semantic-Model 'ontology revamp'"
+sourceOntologyDownload: "https://vocab.plataformasimple.es/def/logistics/federated/Event/ontology.ttl"
+sourceExampleUrl: "https://vocab.plataformasimple.es/def/logistics/federated/Event"
+domains:
+  - Transportation
+  - SmartCities
+description: >
+  Extensions to the FEDeRATED project's Event ontology, created for the
+  SIMPLE project to represent logistics events in road and rail transport
+  not already covered by the upstream FEDeRATED taxonomy. Adds Gate-In and
+  Gate-Out terminal events, generic vehicle arrival/departure events, a
+  driver clock-in/clock-out confirmation pair, an Issue event for logistics
+  chain incidents, a Passing event, and the full eCMR (electronic
+  Consignment Note) document lifecycle (creation, sender/carrier/consignee
+  signatures and comment modifications, destination/loads modifications,
+  cancellation, signature invalidation).
+license: "Creative Commons Attribution 4.0 (CC BY 4.0), per the ontology's own dcterms:license"
+licenseNote: >
+  The SIMPLE extension document states CC BY 4.0 explicitly. The imported
+  base FEDeRATED Event ontology (TNO, ontology.tno.nl) states no license in
+  its own ontology metadata; its parent repository
+  (github.com/federatedplatforms/FEDeRATED-Semantic-Model) is public but its
+  LICENSE file was not checked here.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-09-25 from two ontology documents, mirroring the
+  approach used for the sibling simple-federated-businessservice candidate:
+
+  1. https://vocab.plataformasimple.es/def/logistics/federated/Event
+     (fetched as .ttl via the doc's own ontology.ttl download link) -- the
+     SIMPLE project's extension, v0.4.1. It owl:imports the FEDeRATED base
+     Event ontology and defines 20 new classes, all subclasses of three
+     base-ontology taxonomy classes (AtomicEvent, ArrivalEvent,
+     DepartureEvent). None of the 20 declare any own property (no
+     rdfs:domain in the SIMPLE document names any of them directly) -- they
+     are purely taxonomic leaf types, each inheriting the full attribute set
+     declared on the base ontology's root Event class. The SIMPLE document's
+     own owl:versionInfo states this explicitly: "Event types already
+     defined upstream in FEDeRATED (cargo, goods-structuring, pickup,
+     drop-off, ETA, arrival/departure) are reused via the ev: namespace and
+     no longer redefined here. SIMPLE keeps only its genuinely added events:
+     gate-in/out, issue, passing, vehicle arrival/departure, clock-in/out and
+     the eCMR document lifecycle events" -- confirming this candidate's scope
+     (the 20 classes actually defined here) is deliberate and complete
+     against the source document, not a partial extraction.
+
+  2. https://ontology.tno.nl/logistics/federated/Event (the base FEDeRATED
+     ontology SIMPLE imports and extends). CRITICAL VERSIONING NOTE, found
+     while investigating: this base ontology has TWO very different states
+     in its own GitHub history, and the CURRENT live version on `master`
+     (fetched fresh: raw.githubusercontent.com/federatedplatforms/
+     FEDeRATED-Semantic-Model/master/Event.ttl, modified date 2023-07-18,
+     revised further as recently as 2026-08) is a heavily simplified
+     rewrite -- it has ONLY 3 classes (Event, BusinessIdentifier, Timestamp)
+     and 9 properties (UUID, involvesTimestamp, involvesTimeClassification,
+     involvesTimestampDateTime, involves, involvesBusinessIdentifier,
+     involvesCargo, involvesEvent, involvesLocation, involvesActor,
+     involvesTransportMeans) -- and does NOT define AtomicEvent,
+     ArrivalEvent or DepartureEvent at all, the very three classes the
+     SIMPLE v0.4.1 document (dated 2022-03-07/2026-06-29) subclasses. Per
+     the same reasoning applied to simple-federated-businessservice, this
+     candidate instead uses the LAST version of Event.ttl published before
+     the 2023-11-10 "Revamp of FEDeRATED ontology" commit (commit 780fc000,
+     the parent of the removal commit -- raw URL:
+     https://raw.githubusercontent.com/federatedplatforms/FEDeRATED-Semantic-Model/780fc000ddab26a889dfe688e5aeeb4955feef2e/Event.ttl),
+     since that pre-revamp version is the one that actually HAS
+     AtomicEvent/ArrivalEvent/DepartureEvent and is what SIMPLE v0.4.1 was
+     written against (its own versionInfo referring to "the FEDeRATED 2022
+     reference" confirms this directly). This is flagged as worth
+     re-checking with the FEDeRATED maintainers before promoting: the live
+     ontology's property names (e.g. involvesActor, involvesTransportMeans,
+     involvesLocation) are more specific and arguably better modeling than
+     the pre-revamp generic involves/involvesDigitalTwin/
+     involvesPhysicalInfrastructure this candidate uses, but SIMPLE's own
+     class hierarchy (AtomicEvent/ArrivalEvent/DepartureEvent) has no
+     equivalent in the live ontology at all, so there is no way to model
+     SIMPLE's actual class taxonomy against the live base ontology without
+     inventing subclass relationships the live ontology itself does not
+     assert.
+
+  SCOPE: all 20 classes SIMPLE actually defines are modeled as individual
+  entities (not consolidated into a generic "Event" catalog type), since
+  each is a real, independently instantiable event type
+  (ClockInConfirmationEvent, ClockOutConfirmationEvent, ECMRCancelledEvent,
+  ECMRCarrierCommentModifiedEvent, ECMRCarrierModifiedEvent,
+  ECMRCarrierSignedEvent, ECMRConsigneeCommentModifiedEvent,
+  ECMRConsigneeSignedEvent, ECMRCreationEvent, ECMRDestinationModifiedEvent,
+  ECMRLoadsModifiedEvent, ECMRSenderCommentModifiedEvent,
+  ECMRSenderSignedEvent, ECMRSignaturesInvalidatedEvent, GateInEvent,
+  GateOutEvent, IssueEvent, PassingEvent, VehicleArrivalEvent,
+  VehicleDepartureEvent), and the base ontology's own AtomicEvent,
+  ArrivalEvent, DepartureEvent, Event, ComplexEvent and every other upstream
+  FEDeRATED event type SIMPLE's versionInfo explicitly says it is NOT
+  redefining (cargo/goods-structuring/pickup/drop-off/ETA/ATA/ETD/ATD/
+  arrival/departure events, Milestone, DateTimeType) are correctly left out
+  of this candidate -- they belong to a hypothetical separate
+  "FEDeRATED Event" (not "SIMPLE Event") candidate, out of scope here since
+  this translation follows what the pointed-at SIMPLE document actually
+  adds, not the base ontology it imports wholesale.
+
+  INHERITANCE FLATTENING: every one of the 20 entities carries the same 8
+  properties inherited from the base ontology's Event class (hasTimestamp,
+  hasDateTimeType, hasMilestone, hasSubmissionTimestamp, involves,
+  involvesBusinessTransaction, involvesDigitalTwin,
+  involvesPhysicalInfrastructure) -- none of the 20 add or override
+  anything. This produces genuinely identical property shapes across all 20
+  schemas, distinguished only by `type`, title/description and the intended
+  real-world use of the event; this is a faithful reflection of the source
+  ontology, not a translation artifact -- confirmed by re-checking that no
+  rdfs:domain statement anywhere in the SIMPLE document names any of the 20
+  classes directly.
+
+  ENUM PROPERTIES: hasDateTimeType and hasMilestone are modeled as JSON
+  Schema string enums (["Actual","Estimated","Expected","Planned",
+  "Requested"] and ["Start","End"] respectively) rather than open
+  Relationships, because the base ontology itself declares these as closed
+  sets of named individuals (Event:DateTimeType has exactly 5 instances;
+  Event:Milestone has exactly 2, Start and End -- a third "Event:end"
+  individual in the source file is an evident typo/duplicate of "Event:End"
+  with a class-name typo "Event:MileStone", not a third real value, and was
+  not carried into this candidate).
+
+  RELATIONSHIP TARGETS OUTSIDE THIS CANDIDATE'S SCOPE: involvesBusinessTransaction,
+  involvesDigitalTwin and involvesPhysicalInfrastructure point at classes
+  modeled in the three sibling candidates translated in the same session
+  (simple-federated-businessservice, simple-federated-digitaltwin,
+  simple-federated-physicalinfrastructure respectively) -- named in each
+  attribute's own description, consistent with how
+  simple-federated-businessservice referenced this candidate's own Event
+  class before it existed.
+
+  EXAMPLE DATA: no real instance data was published alongside either source
+  ontology document. All example.json values are synthetic, built from the
+  real class/property definitions and comments in the two source documents.
+  Several examples deliberately reference urn:ngsi-ld ids from the sibling
+  simple-federated-businessservice candidate's own examples (e.g.
+  urn:ngsi-ld:Consignment:cons-2026-004471, urn:ngsi-ld:GateInOrder:gatein-2026-01123)
+  to show a coherent, cross-referenced road/rail freight scenario spanning
+  both candidates, consistent with the real relationship these ontologies
+  assert (Event:involvesBusinessTransaction -> businessService:BusinessTransaction).

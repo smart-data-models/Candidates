@@ -1,0 +1,67 @@
+title: "EDINT Real Estate Offer Ontology (Ontología de Oferta Inmobiliaria)"
+publisher: "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer"
+sourceUrl: "https://github.com/EDINT-Ontologia/edint-ontologia-oferta-inmobiliaria/tree/main"
+sourceOntologyIRI: "http://vocab.linkeddata.es/datosabiertos/def/oferta-inmobiliaria"
+sourceOntologyVersion: "0.1.0"
+domains:
+  - SmartCities
+  - UrbanInfrastructure
+description: >
+  Vocabulary for real estate listings/offers -- sale, rent, or transfer of
+  a property -- referencing the corresponding cadastral parcel or property.
+license: "CC-BY-4.0"
+licenseNote: >
+  Same as its sibling EDINT ontologies (edint-censo-vehiculos,
+  edint-aparcamiento, edint-fotovoltaica, edint-organizaciones,
+  edint-catastro, edint-medio-ambiente, edint-contaminacion-acustica,
+  edint-suministro, edint-trafico, edint-vehiculos-compartidos,
+  edint-alumbrado-publico, edint-gestion-residuos, edint-censo-locales,
+  edint-promocion-comercial), this source ontology is CC-BY-4.0.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-09-06 from documentation/ontology.ttl (version 0.1.0) at
+  https://github.com/EDINT-Ontologia/edint-ontologia-oferta-inmobiliaria.
+
+  ONE ENTITY MODELED: RealEstateListing -- the only real class in this
+  ontology.
+
+  SOURCE ONTOLOGY HAS AN OWL-API TOOLING ARTIFACT, IGNORED: ontology.ttl
+  declares RealEstateListing as rdfs:subClassOf a class named "Error1" in
+  namespace "http://org.semanticweb.owlapi/error#" -- this is a
+  malformed-axiom placeholder that some OWL tooling (Protégé/OWL API)
+  inserts when it can't parse part of an ontology file correctly, not a
+  real, intentional superclass. Not modeled as any kind of inheritance.
+  Flagged for the EDINT maintainers, since it suggests something in this
+  ontology's authoring pipeline produced an invalid axiom that should be
+  investigated and fixed at the source.
+
+  propertyType'S OWN COMMENT CLAIMS TO REUSE edint-catastro'S Uso
+  VOCABULARY, BUT ACTUALLY SHIPS A DIFFERENT ONE: the property's rdfs:comment
+  says it "reuses the Spanish Cadastre use vocabulary", but this repository's
+  own kos/inmobiliaria-uso.ttl defines a SEPARATE 5-concept scheme with
+  different, Spanish, lowercase-hyphenated notations (vivienda,
+  local-comercial, oficina, nave-industrial, solar) -- not the same value
+  set as edint-catastro's own already-published, English PascalCase Uso
+  concepts (Residential, Industrial, Offices, Commercial, ...). Modeled
+  here using this ontology's own actually-published KOS values (matching
+  its own real example data), not the ones the property's comment claims
+  to reuse. Flagged for the EDINT maintainers.
+
+  refersToCadastralEntity'S REAL EXAMPLE DATA USES A FICTIONAL,
+  INCOMPATIBLE CADASTRAL SCHEMA, NOT REUSED: the source's own real example
+  (examples/listing-complete-example.ttl) models the target cadastral
+  entities using an invented "catastro:" vocabulary (properties like
+  referenceCatastral, hasAddress, roadName, roadNumber, zipCode) that does
+  not match edint-catastro's own real, already-translated schema in this
+  candidate family (hasPropertyReference -> PropertyReference, hasAddress
+  -> callejero:Portal, etc.). This candidate's own schema documents that
+  refersToCadastralEntity is expected to point at edint-catastro's real
+  CadastralParcel/CadastralProperty entities, not the example's own
+  informal, incompatible shape -- the example data itself was not used to
+  ground a cross-referenced cadastral entity in this pass.
+
+  REAL EXAMPLE DATA USED FOR RealEstateListing ITSELF: the example is
+  grounded in this repository's own examples/listing-complete-example.ttl
+  (a real Valencia family-dwelling sale listing, LIST-003).
