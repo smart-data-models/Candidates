@@ -1,0 +1,54 @@
+title: "EDINT Utility Supply Ontology (Ontología de Suministro)"
+publisher: "EDINT - Espacio de Datos para las Infraestructuras Urbanas Inteligentes (EU-funded), with Universidad Politécnica de Madrid (UPM/OEG) as technical developer"
+sourceUrl: "https://github.com/EDINT-Ontologia/edint-ontologia-suministro/tree/main"
+sourceOntologyIRI: "https://edint.es/def/suministro"
+sourceOntologyVersion: "0.2.1"
+domains:
+  - SmartCities
+  - UrbanInfrastructure
+  - Energy
+description: >
+  Vocabulary for utilities (electricity, gas, water, ...) supplied to a
+  municipality's infrastructure elements, and the measurement of their
+  consumption. Structurally near-identical to edint-fotovoltaica
+  (System/Meter/Generation/Contract/Rate), applied to utility supply
+  generally rather than photovoltaic generation specifically.
+license: "CC-BY-4.0"
+licenseNote: >
+  Same as its sibling EDINT ontologies (edint-censo-vehiculos,
+  edint-aparcamiento, edint-fotovoltaica, edint-organizaciones,
+  edint-catastro, edint-medio-ambiente, edint-contaminacion-acustica), this
+  source ontology is CC-BY-4.0.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-09-06 from documentation/ontology.ttl (version 0.2.1;
+  already on the edint.es namespace, like edint-fotovoltaica, unlike most
+  of its other EDINT siblings) at
+  https://github.com/EDINT-Ontologia/edint-ontologia-suministro.
+
+  FIVE ENTITIES MODELED, MIRRORING edint-fotovoltaica'S STRUCTURE:
+  UtilitySupplyPoint, UtilityMeter, UtilityConsumption, UtilityContract,
+  UtilityRate (thin entity, no source-declared properties).
+
+  hasMeterType'S DOMAIN IS DECLARED ON THE EXTERNAL saref:Meter CLASS, NOT
+  UtilityMeter DIRECTLY: since UtilityMeter is itself a subclass of
+  saref:Meter, this property is inherited and included on UtilityMeter here
+  -- a straightforward inheritance case, unlike the genuine domain-swap bugs
+  found in edint-aparcamiento (permitType/vehicleType).
+
+  hasUtilitySupplyPoint NOT ADDED TO Facility, A KNOWN GAP (same pattern as
+  edint-fotovoltaica's hasPhotovoltaicSystem): the source declares
+  hasUtilitySupplyPoint with domain edint-infraestructura's
+  InfrastructureElement (range: UtilitySupplyPoint) -- the forward
+  relationship from an infrastructure element to its utility supply
+  point(s). Not added to Facility here, to keep this PR scoped to the
+  suministro ontology itself; recorded as a follow-up opportunity, same as
+  already noted for edint-fotovoltaica.
+
+  NO REAL EXAMPLE DATA FOUND: this repository's mappings/ directory contains
+  only an RML mapping definition and its CSV source data (not generated RDF
+  instances) -- unlike several siblings that also ship a materialized .ttl
+  output. All 5 example.json files are synthetic, built from the ontology's
+  own class/property definitions and comments.
