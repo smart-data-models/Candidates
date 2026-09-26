@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/simple-federated-physicalinfrastructure/models/Location/schema.json",
+  "modelTags": "FEDeRATED,SIMPLE,Logistics,PhysicalInfrastructure",
+  "title": "Smart Data Models - SIMPLE Federated Physical Infrastructure - Location",
+  "description": "A location with additional contact attributes as requested in the context of the Plataforma SIMPLE (simple-pi:Location, SIMPLE extension to the FEDeRATED Physical Infrastructure ontology). NOTE: the SIMPLE ontology declares this class as rdfs:subClassOf the base ontology's pi:Location, but no class of that name exists anywhere in the base FEDeRATED PhysicalInfrastructure ontology (checked directly, including its last version before removal from the source repository) -- a dangling reference in the source document, not resolved by guesswork here. A handful of schema:Place-domain properties from the base ontology are still included below as optional, clearly-flagged additions, since SIMPLE's own Location is explicitly location-typed and the base ontology's own location-role/identifier properties target schema:Place -- but this is this candidate's own inference, not something the source document itself asserts.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Location"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Location'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Human-readable label."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "address": {
+      "type": "string",
+      "description": "Property. schema:address. Physical address of this location. Required: the SIMPLE ontology asserts a minimum-cardinality-1 restriction on this property for Location."
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Property. schema:email. Contact email address for this location. Required: the SIMPLE ontology asserts a minimum-cardinality-1 restriction on this property for Location."
+    },
+    "telephone": {
+      "type": "string",
+      "description": "Property. schema:telephone. Contact telephone number for this location. Required: the SIMPLE ontology asserts a minimum-cardinality-1 restriction on this property for Location."
+    },
+    "locode": {
+      "type": "string",
+      "description": "Property. pi:locode (base ontology, domain schema:Place, subPropertyOf schema:identifier -- see the class-level note on the unconfirmed schema:Place lineage). The UN/LOCODE of this location, when it corresponds to a schema:City or schema:Country."
+    },
+    "hasLocationRole": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. pi:hasLocationRole (base ontology, domain schema:Place -- see the class-level note). The role(s) this location plays in the context of a logistics event. Range: LogisticRoles:LocationRoles, modeled in this repository's separate simple-federated-logisticroles candidate."
+    },
+    "geonamesReference": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. pi:geonamesReference (base ontology, domain schema:Place -- see the class-level note). Reference to a GeoNames feature corresponding to this location. Range: geonames:Feature (out of scope of this candidate)."
+    },
+    "containedInPlace": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. schema:containedInPlace (base ontology, domain schema:Place -- see the class-level note). The basic containment relation between this location and another place that contains it."
+    },
+    "containsPlace": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. schema:containsPlace (base ontology, domain schema:Place -- see the class-level note; inverse of containedInPlace). The basic containment relation between this location and other places it contains."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "address",
+    "email",
+    "telephone"
+  ]
+}

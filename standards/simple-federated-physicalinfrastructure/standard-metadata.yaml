@@ -1,0 +1,101 @@
+title: "Physical Infrastructure extensions to the Federated ontology for SIMPLE"
+publisher: "Ontology Engineering Group (OEG), Universidad Politécnica de Madrid -- ontology created in the context of the EU SIMPLE project; extends the FEDeRATED project's Physical Infrastructure ontology (TNO)"
+sourceUrl: "https://vocab.plataformasimple.es/def/logistics/federated/PhysicalInfrastructure"
+sourceOntologyVersion: "v0.3.0 (issued 2022-07-03); base ontology https://ontology.tno.nl/logistics/federated/PhysicalInfrastructure as last published before its 2023-11-10 removal in the FEDeRATED-Semantic-Model 'ontology revamp'"
+sourceOntologyDownload: "https://vocab.plataformasimple.es/def/logistics/federated/PhysicalInfrastructure/ontology.ttl"
+sourceExampleUrl: "https://vocab.plataformasimple.es/def/logistics/federated/PhysicalInfrastructure"
+domains:
+  - Transportation
+  - SmartCities
+description: >
+  Extension to the FEDeRATED project's Physical Infrastructure ontology,
+  created for the SIMPLE project, adding a Location class with the contact
+  attributes (address, email, telephone) SIMPLE requires beyond the base
+  ontology's own physical-infrastructure classes.
+license: "Creative Commons Attribution 4.0 (CC BY 4.0), per the ontology's own dcterms:license"
+licenseNote: >
+  The SIMPLE extension document states CC BY 4.0 explicitly (dcterms:license
+  on the ontology resource). The imported base FEDeRATED PhysicalInfrastructure
+  ontology (TNO, ontology.tno.nl) states no license in its own ontology
+  metadata; its parent repository is public but its LICENSE file was not
+  checked here.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-09-25 from https://vocab.plataformasimple.es/def/logistics/federated/PhysicalInfrastructure
+  (v0.3.0, fetched as ontology.ttl), a small document defining exactly ONE
+  class: simple-pi:Location, with three required schema.org contact
+  properties (address, email, telephone) added via OWL minQualifiedCardinality
+  restrictions.
+
+  BASE-MODULE INVESTIGATION (this candidate's sibling for BusinessService,
+  translated earlier in the same session, established the technique this
+  reuses): the SIMPLE document's own owl:imports names
+  https://ontology.tno.nl/logistics/federated/PhysicalInfrastructure. That
+  URL redirects today to
+  federatedplatforms/FEDeRATED-Semantic-Model/raw/master/PhysicalInfrastructure.ttl,
+  which 404s -- the file was removed from the repository's master branch in
+  the same commit (85c9da5, "Revamp of FEDeRATED ontology", 2023-11-10) that
+  removed BusinessService.ttl. Fetched instead from the parent commit
+  (780fc000ddab26a889dfe688e5aeeb4955feef2e), the last version that existed
+  before removal -- a real, confirmed base module (not a guessed successor;
+  Location.ttl, the current repository's plausible-looking candidate named
+  in this fork's instructions, was checked and contains unrelated content --
+  BusinessLocation, Port, Terminal as used by the *Event* module, not a
+  match for pi:LogisticalFunction/pi:InfrastructuralFunction).
+
+  DANGLING REFERENCE FOUND: the SIMPLE document asserts `simple-pi:Location
+  rdfs:subClassOf pi:Location` (i.e. a class named Location in the base
+  ontology's own https://ontology.tno.nl/logistics/federated/PhysicalInfrastructure#
+  namespace). No class of that name exists anywhere in the base ontology
+  file fetched above -- checked directly by grep, and confirmed the base
+  file's actual class list is Airport, Anchorage, BargeTerminal, Bridge,
+  Corridor, Gate, Hub, InfrastructuralFunction, InfrastructuralObject,
+  InlandTerminal, LogisticalFunction, LogisticalInterface, Platform, Port,
+  Quay, RailwayLine, RailwayStation, RailwayTerminal, Road, Terminal,
+  Trajectory, Transshipment, Warehouse -- no Location among them. This
+  mirrors the same category of issue found in the BusinessService candidate
+  (simple-bs:hasArrivalLocation asserting a range of DigitalTwin:PhysicalObject,
+  a class likewise absent from the current DigitalTwin ontology): the SIMPLE
+  extension documents reference base-ontology terms that do not (or no
+  longer) resolve, even against the last pre-revamp version of the base
+  files. Kept as-is here rather than silently substituted with a
+  same-sounding real class, since this is what the SIMPLE ontology itself
+  literally asserts. NOT resolved by treating it as equivalent to
+  pi:LogisticalFunction (the closest real "any location where a logistical
+  activity is performed" concept) or to schema:Place, because neither
+  equivalence is asserted anywhere in either source document -- doing so
+  would be this candidate inventing ontology alignment the sources don't
+  make.
+
+  SCOPE, GIVEN THE ABOVE: only the one entity SIMPLE itself defines --
+  Location -- is modeled. The base ontology's own rich set of ~20 physical
+  infrastructure classes (Airport, Port, Terminal, Warehouse, Hub,
+  RailwayStation, RailwayTerminal, InlandTerminal, BargeTerminal, Anchorage,
+  Transshipment, Gate, Platform, Quay, Bridge, Corridor, RailwayLine, Road)
+  are NOT modeled as separate entities: the SIMPLE document does not extend,
+  subclass, or add properties to any of them (unlike BusinessService, where
+  SIMPLE both added new subclasses of Order/LogisticsService AND added new
+  properties to existing base classes Shipment/Consignment/TransportService/
+  BusinessTransaction, giving concrete, well-justified flattening targets).
+  Translating that base module's own ~20 classes in their own right would be
+  a different, considerably larger task -- full translation of the FEDeRATED
+  Physical Infrastructure ontology itself -- not requested here and not
+  something the pointed-at SIMPLE document's own scope covers.
+
+  OPTIONAL PROPERTIES ADDED WITH AN EXPLICIT CAVEAT: locode, hasLocationRole,
+  geonamesReference, containedInPlace and containsPlace are all real
+  properties from the base ontology whose rdfs:domain is schema:Place (not
+  pi:Location, which per above does not exist). Included as optional
+  attributes on Location because the class is explicitly a "location," and
+  because there is no other real class in the base module more clearly
+  suited to inherit from -- but this is this candidate's own inference,
+  flagged both here and in schema.json's class-level description, not an
+  equivalence the source ontology itself asserts. hasLocationRole's range
+  (LogisticRoles:LocationRoles) is modeled by this repository's separate
+  simple-federated-logisticroles candidate, translated in the same batch as
+  this one.
+
+  EXAMPLE DATA: synthetic, built from the real class/property definitions;
+  no real instance data was published alongside either source document.
