@@ -1,0 +1,90 @@
+# Generated from the MyDataSpace EDINT-SDM table (equivalences.json 1.0.0). Contributed under CC-BY-4.0.
+title: Alignment of the edint-medio-ambiente candidate with official Smart Data Models
+description: Correspondences between the EDINT classes behind this candidate and the official Smart Data Models,
+  typed with SKOS mapping relations (exactMatch, closeMatch, broadMatch, narrowMatch), with a note on the structural
+  difference, plus the gaps on each side. Generated from the MyDataSpace EDINT-SDM table 1.0.0.
+contributor:
+  name: MyDataSpace
+  url: https://www.mydataspace.es
+  github: nekosphera
+license: CC-BY-4.0
+source:
+  table: https://www.mydataspace.es/vocabularies/semantic-models/edint-sdm/1.0.0/equivalences.ttl
+  tableVersion: 1.0.0
+  created: '2026-10-11'
+  sdmOfficialList: https://github.com/smart-data-models/data-models/blob/master/specs/AllSubjects/official_list_data_models.json
+  sdmOfficialListUpdated: '2026-07-19'
+edintVersions:
+  candidateTranslatedFrom:
+    iri: http://vocab.linkeddata.es/datosabiertos/def/medioambiente/
+    version: 0.1.0
+  alignedWith:
+    iri: https://edint.es/def/medio-ambiente
+    version: 0.2.1
+  note: This candidate was translated from EDINT 0.1.0 (http://vocab.linkeddata.es/datosabiertos/def/medioambiente/).
+    The current EDINT release (0.2.1) publishes its classes under https://edint.es/def/medio-ambiente#, which is
+    the namespace used for edintClass below.
+matchTypes:
+  skos:exactMatch: Same thing; interchangeable.
+  skos:closeMatch: Same thing with a different structure; needs a transformation.
+  skos:broadMatch: The SDM model is broader than the EDINT class.
+  skos:narrowMatch: The SDM model is narrower than the EDINT class.
+  none: 'No equivalent on the other side: a gap.'
+mappings:
+- id: calidad-aire
+  label: Air quality observation
+  edintClass: https://edint.es/def/medio-ambiente#EnvironmentalObservation
+  edintSensorType: https://edint.es/kos/SensorTypes/AirQualitySensor
+  candidateEntity: EnvironmentalObservation
+  sdmModel: AirQualityObserved
+  sdmSubject: dataModel.Environment
+  sdmSchema: https://github.com/smart-data-models/dataModel.Environment/tree/master/AirQualityObserved
+  match: skos:closeMatch
+  note: EDINT has a single observation class and distinguishes by sensor type; SDM has one model per topic with
+    all pollutants in the same entity.
+- id: ruido
+  label: Noise observation
+  edintClass: https://edint.es/def/medio-ambiente#EnvironmentalObservation
+  edintSensorType: https://edint.es/kos/SensorTypes/NoiseSensor
+  candidateEntity: EnvironmentalObservation
+  sdmModel: NoiseLevelObserved
+  sdmSubject: dataModel.Environment
+  sdmSchema: https://github.com/smart-data-models/dataModel.Environment/tree/master/NoiseLevelObserved
+  match: skos:closeMatch
+  note: Same structural difference as for air quality.
+- id: meteorologia-observada
+  label: Observed weather
+  edintClass: https://edint.es/def/medio-ambiente#EnvironmentalObservation
+  edintSensorType: https://edint.es/kos/SensorTypes/ClimaticSensor
+  candidateEntity: EnvironmentalObservation
+  sdmModel: WeatherObserved
+  sdmSubject: dataModel.Weather
+  sdmSchema: https://github.com/smart-data-models/dataModel.Weather/tree/master/WeatherObserved
+  match: skos:closeMatch
+  note: 'EDINT''s climatology case adds no classes: it applies the environmental observation with a climatic sensor.
+    SDM models it as WeatherObserved.'
+- id: meteorologia-historica
+  label: Historical weather series
+  edintClass: https://edint.es/def/medio-ambiente#EnvironmentalObservation
+  edintSensorType: https://edint.es/kos/SensorTypes/ClimaticSensor
+  candidateEntity: EnvironmentalObservation
+  sdmModel: WeatherObserved
+  sdmSubject: dataModel.Weather
+  sdmSchema: https://github.com/smart-data-models/dataModel.Weather/tree/master/WeatherObserved
+  match: skos:closeMatch
+  note: 'A historical series is past observations: the same model on both sides.'
+gaps:
+- id: prediccion-meteorologica
+  label: Weather forecast
+  sdmModel: WeatherForecast
+  sdmSubject: dataModel.Weather
+  sdmSchema: https://github.com/smart-data-models/dataModel.Weather/tree/master/WeatherForecast
+  match: none
+  note: 'Gap in EDINT: the environment ontology models observations (SOSA), not forecasts.'
+- id: aviso-meteorologico
+  label: Weather warning
+  sdmModel: WeatherAlert
+  sdmSubject: dataModel.Weather
+  sdmSchema: https://github.com/smart-data-models/dataModel.Weather/tree/master/WeatherAlert
+  match: none
+  note: 'Gap in EDINT: no class for weather warnings (e.g. AEMET CAP alerts).'
