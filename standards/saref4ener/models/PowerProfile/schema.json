@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ener/models/PowerProfile/schema.json",
+  "modelTags": "SAREF4ENER,FlexibilityProfile",
+  "title": "Smart Data Models - SAREF4ENER - PowerProfile",
+  "description": "https://saref.etsi.org/saref4ener/PowerProfile. A way to model curves of power and energy over time, which also provides definitions for the modelling of power scheduling including alternative plans. With a PowerProfile, a device (or power sequences server) exposes the power sequences that are potentially relevant for the CEM (or power sequences client). Subclass of Profile (https://saref.etsi.org/core/Profile, not itself translated in this candidate).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "PowerProfile"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'PowerProfile'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "consistsOf": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Relationship to AlternativesGroup."
+    },
+    "belongsTo": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. A relationship identifying the ownership of an entity. In particular, a slot belongs to a power sequence, a power sequence belongs to an alternative, an alternative belongs to a power profile, a power profile belongs to a device. Relationship to Device."
+    },
+    "nodeRemoteControllable": {
+      "type": "boolean",
+      "description": "Property. Indicates whether the power profile of a device is configured for remote control (e.g., by an energy management system).This refers to the selection chosen by the user on the remote control feature of the device. If nodeRemoteControllable is equal to FALSE, all the supported power sequences shall set the sequenceRemoteControllable property to FALSE. If nodeRemoteControllable is equal to TRUE, at least one power sequence shall be remotely controllable by setting the sequenceRemoteControllable property to TRUE."
+    },
+    "supportsReselection": {
+      "type": "boolean",
+      "description": "Property. If set toTRUE, the power profile of a device does not restrict the number of power sequence re-selections by the CEM, i.e. within a given alternative the CEM may first choose one power sequence, alter the selection by configuring another sequence later on, then alter the selection again, etc. (provided the process rules and data still permit configuration). If supportsReselection is set to FALSE, the device permits the CEM to select a power sequence of an alternative only once."
+    },
+    "supportsSingleSlotSchedulingOnly": {
+      "type": "boolean",
+      "description": "Property. If set toTRUE, the power profile of a device does NOT permit the modification of more than one slot per configuration command."
+    },
+    "totalSequencesCountMax": {
+      "type": "integer",
+      "description": "Property. Represents the total number of power sequences supported by the power profile of a device"
+    },
+    "hasPowerSequenceContainer": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The various power sequence containers contained within an S2 Power Profile. The containers have to executed one after the other. Each container contains various Power Sequence anong which the EMS can choose the appropriate Power Sequence for the current energy demands. Relationship to PowerSequenceContainer."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "nodeRemoteControllable",
+    "supportsReselection",
+    "supportsSingleSlotSchedulingOnly",
+    "totalSequencesCountMax"
+  ]
+}

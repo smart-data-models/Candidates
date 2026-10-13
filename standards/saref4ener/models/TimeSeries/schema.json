@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ener/models/TimeSeries/schema.json",
+  "modelTags": "SAREF4ENER,DataPointsTimeSeries",
+  "title": "Smart Data Models - SAREF4ENER - TimeSeries",
+  "description": "https://saref.etsi.org/saref4ener/TimeSeries. An ordered sequence of data points of a quantity observed at spaced time intervals is referred to as a time series. Time series can be a result of prediction algorithm.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "TimeSeries"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'TimeSeries'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasEffectivePeriod": {
+      "type": "string",
+      "description": "Property. This connects to the temporal entity which describes when (time interval) the quantity of this data point was, is, or will be in effect. This is the time interval which is covered by the forecast. This should be equivalent to the time interval covered by the time-series that express the forecast. ISO 8601 time interval (start/end)."
+    },
+    "hasUsage": {
+      "type": "string",
+      "enum": [
+        "Average",
+        "BaseLine",
+        "Consumption",
+        "Downflex",
+        "LowerLimit",
+        "Maximum",
+        "Minimum",
+        "Production",
+        "SetPoint",
+        "Skewness",
+        "Upflex",
+        "UpperLimit"
+      ],
+      "description": "Property. This property provides the possibility to add some additional information about the usage of a data-point or time-series. For example, a data point or time series can be used as an upper limit, a lower limit, a baseline, a maximum versus minimum value, or a consumption versus a production value. Controlled vocabulary (Usage)."
+    },
+    "hasCreationTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. The time instant that defines the creation time of a data point or quantity or forecast or similar entities. This is not the same as the time at which the quantity is in effect. For example, if a temperature is forecasted today at 12:30 (creation time of the forecast) for the following day at 14:45 (time when the temperature is expected to be in effect), the this instant should be 12:30 of today. A creation time (instant). This is the point in time when the data point was created, which is not necessarily the time for which it is valid. In the case of soft-sensors or forecasters, a data point might have been created ahead of time, in the case of a direct observation a data point might created at its time of validity (or at the end of its validity time interval) and in the case of an archived value the data point might have been created after the fact."
+    },
+    "hasTemporalResolution": {
+      "type": "string",
+      "description": "Property. The resolution is the distance between two observation timestamps. This only makes sense if the observations are equidistant. ISO 8601 duration (e.g. 'PT30M')."
+    },
+    "hasUpdateRate": {
+      "type": "string",
+      "description": "Property. The rate at which a data point or time-series or forecast or other data entity is being updated. If the time series gets regularly updated, then the time between two updates can be recorded here. ISO 8601 duration (e.g. 'PT30M')."
+    },
+    "hasDataPoint": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. This relationship connects a time series to data point. Relationship to DataPoint."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

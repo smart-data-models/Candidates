@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ener/models/FailsafeState/schema.json",
+  "modelTags": "SAREF4ENER,PowerLimitation",
+  "title": "Smart Data Models - SAREF4ENER - FailsafeState",
+  "description": "https://saref.etsi.org/saref4ener/FailsafeState. State that indicates that the device currently is in its Fail-safe state. This means that it has lost its connection to a central energy manager. This may result in the device following stricter power limits.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "FailsafeState"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'FailsafeState'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasFailsafeDuration": {
+      "type": "string",
+      "description": "Property. The relationship between the failsafe power limit and its duration. This property indicates the minimum duration the fail safe state will take once a device has entered that state. ISO 8601 duration (e.g. 'PT30M')."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

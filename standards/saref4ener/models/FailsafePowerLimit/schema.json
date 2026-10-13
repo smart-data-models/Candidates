@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ener/models/FailsafePowerLimit/schema.json",
+  "modelTags": "SAREF4ENER,PowerLimitation",
+  "title": "Smart Data Models - SAREF4ENER - FailsafePowerLimit",
+  "description": "https://saref.etsi.org/saref4ener/FailsafePowerLimit. In case the communication between a device and the energy manager is interrupted, fail-safe values apply and the device enters fail-safe state until the communication is re-established. Subclass of PowerLimit per the SAREF4ENER ontology; inherited properties are documented on the PowerLimit model and not repeated here.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "FailsafePowerLimit"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'FailsafePowerLimit'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasFailsafeConsumptionMax": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "description": "Numeric value."
+        },
+        "unitCode": {
+          "type": "string",
+          "description": "Unit of measure code (UN/CEFACT common code where applicable)."
+        }
+      },
+      "description": "Property. The relationship between the failsafe power limit and the value indicating its consumption. Models saref:PropertyValue (core SAREF, not itself translated in this candidate): a value with its unit of measure."
+    },
+    "hasFailsafeProductionMax": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "description": "Numeric value."
+        },
+        "unitCode": {
+          "type": "string",
+          "description": "Unit of measure code (UN/CEFACT common code where applicable)."
+        }
+      },
+      "description": "Property. The relationship between the failsafe power limit and the value indicating its production. Models saref:PropertyValue (core SAREF, not itself translated in this candidate): a value with its unit of measure."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

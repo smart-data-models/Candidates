@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ener/models/Storage/schema.json",
+  "modelTags": "SAREF4ENER,OperationModeFillRate",
+  "title": "Smart Data Models - SAREF4ENER - Storage",
+  "description": "https://saref.etsi.org/saref4ener/Storage. storage device which is the main component of Fill Rate Based Control type.). In the context of flexibility control and instructuons, a device shall be able to inform the CEM about its fill level, a measure of how full the storage is, and the lower and upper boundaries that the fill level should remain within. Subclass of Thing (http://www.w3.org/2002/07/owl#Thing, not itself translated in this candidate). Subclass of Device per the SAREF4ENER ontology; inherited properties are documented on the Device model and not repeated here.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Storage"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Storage'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "fillRate": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Indicates the change in fill_level per second. The lower_boundary of the NumberRange is associated with an operation_mode_factor of 0, the upper_boundary is associated with an operation_mode_factor of 1. Relationship to NumberRange."
+    },
+    "hasFillLevelRange": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The range of the fill level for which this FRBC.OperationModeElement applies. If this concept is applied on a Storage it indicated the range in which a storage should remain. Relationship to NumberRange."
+    },
+    "hasFillLevelTargetProfile": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The Fill Level Target Profile of the storage that the current Fill Rate Profile tries to accomodate for. NB. This cannot be modelled as a TimeSeries, since the x-axis is not time. Relationship to FillLevelTargetProfile."
+    },
+    "hasLeakageBehaviour": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The Leakage Behaviour associated with this storage. Relationship to LeakageBehaviour."
+    },
+    "presentFillLevel": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "description": "Numeric value."
+        },
+        "unitCode": {
+          "type": "string",
+          "description": "Unit of measure code (UN/CEFACT common code where applicable)."
+        }
+      },
+      "description": "Property. A saref:PropertyValue with a percentage value indicating the fill level of the storage. Models saref:PropertyValue (core SAREF, not itself translated in this candidate): a value with its unit of measure."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

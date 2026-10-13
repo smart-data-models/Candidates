@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ener/models/IncentiveTableTier/schema.json",
+  "modelTags": "SAREF4ENER,IncentiveTable",
+  "title": "Smart Data Models - SAREF4ENER - IncentiveTableTier",
+  "description": "https://saref.etsi.org/saref4ener/IncentiveTableTier. This concept specifies a Tier that an Incentive Table consists of. Each Tier indicates through a series of Boundaries the price per kilowatthour this incentive costs. For example, a tier may describe grid power, solar panel power, or surplus power. Subclass of TimeSeries per the SAREF4ENER ontology; inherited properties are documented on the TimeSeries model and not repeated here.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "IncentiveTableTier"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'IncentiveTableTier'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasIncentive": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. This property relates an IncentiveTable element, such as an IncentiveTableSlot or an IncentiveTableTier to the boundaries that it consists of. Relationship to Incentive."
+    },
+    "hasIncentiveType": {
+      "type": "string",
+      "enum": [
+        "AbsoluteCost",
+        "CO2Emission",
+        "RelativeCost",
+        "RenewableEnergyPercentage"
+      ],
+      "description": "Property. The relationship between the tier and its incentive type Controlled vocabulary (IncentiveType)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

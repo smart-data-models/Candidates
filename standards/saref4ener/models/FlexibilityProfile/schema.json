@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ener/models/FlexibilityProfile/schema.json",
+  "modelTags": "SAREF4ENER,FlexibilityProfile",
+  "title": "Smart Data Models - SAREF4ENER - FlexibilityProfile",
+  "description": "https://saref.etsi.org/saref4ener/FlexibilityProfile. Different control types to describe the energy flexibility that a device has to offer. Charging of an EV for instance, may be controlled by power profile-based control or fill-rate -based control. It is not allowed to mix different control types at the same time, but different control types may be used sequentially. Control Types dictates flexibility instructions. Control Type provides Flexibility options. Subclass of Profile (https://saref.etsi.org/core/Profile, not itself translated in this candidate).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "FlexibilityProfile"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'FlexibilityProfile'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ener/models/PowerLimit/schema.json",
+  "modelTags": "SAREF4ENER,PowerLimitation",
+  "title": "Smart Data Models - SAREF4ENER - PowerLimit",
+  "description": "https://saref.etsi.org/saref4ener/PowerLimit. A power limit is defined as the maximum value for power consumption and/or production that must not be exceeded by e.g. a (group of) device(s), a building, or also a district. Subclass of AllowedLimitRange per the SAREF4ENER ontology; inherited properties are documented on the AllowedLimitRange model and not repeated here.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "PowerLimit"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'PowerLimit'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "isChangeable": {
+      "type": "boolean",
+      "description": "Property. A relationship indicating that this element can be changed by its operator. The boolean value indicates whether it is indeed changeable. In the SAREF4ENER extension this property is intended for PowerLimits and IncentiveTable elements, such as the IncentiveTableProfile, IncentiveTableSlot, and the IncentiveTableTier."
+    },
+    "isObligatory": {
+      "type": "boolean",
+      "description": "Property. A relationship between the power limit and the boolean value indicating whether the power limit is obligatory"
+    },
+    "hasPowerLimitConsumptionMax": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "description": "Numeric value."
+        },
+        "unitCode": {
+          "type": "string",
+          "description": "Unit of measure code (UN/CEFACT common code where applicable)."
+        }
+      },
+      "description": "Property. The relationship between the power limit and the value indicating the max limit consumption. Models saref:PropertyValue (core SAREF, not itself translated in this candidate): a value with its unit of measure."
+    },
+    "hasPowerLimitProductionMax": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "description": "Numeric value."
+        },
+        "unitCode": {
+          "type": "string",
+          "description": "Unit of measure code (UN/CEFACT common code where applicable)."
+        }
+      },
+      "description": "Property. The relationship between the power limit and the value indicating the max limit production. Models saref:PropertyValue (core SAREF, not itself translated in this candidate): a value with its unit of measure."
+    },
+    "hasPowerLimitState": {
+      "type": "string",
+      "description": "Property. The relationship between the power limit state and its state (active/ inactive)."
+    },
+    "hasPowerLimitDuration": {
+      "type": "string",
+      "description": "Property. The relationship between the power limit and its duration. Power limit may come with a time period of validity based on duration ISO 8601 duration (e.g. 'PT30M')."
+    },
+    "isActive": {
+      "type": "boolean",
+      "description": "Property. Indicates whether the power limit is currently active"
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

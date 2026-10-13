@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ener/models/LeakageBehaviourElement/schema.json",
+  "modelTags": "SAREF4ENER,OperationModeFillRate",
+  "title": "Smart Data Models - SAREF4ENER - LeakageBehaviourElement",
+  "description": "https://saref.etsi.org/saref4ener/LeakageBehaviourElement. An element detailing the leakage behaviour of a storage. Subclass of Thing (http://www.w3.org/2002/07/owl#Thing, not itself translated in this candidate).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "LeakageBehaviourElement"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'LeakageBehaviourElement'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasFillLevelRange": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The range of the fill level for which this FRBC.OperationModeElement applies. If this concept is applied on a Storage it indicated the range in which a storage should remain. Relationship to NumberRange."
+    },
+    "leakageRate": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "description": "Numeric value."
+        },
+        "unitCode": {
+          "type": "string",
+          "description": "Unit of measure code (UN/CEFACT common code where applicable)."
+        }
+      },
+      "description": "Property. Indicates how fast the momentary fill level will decrease per second due to leakage within the given range of the fill level. Models saref:PropertyValue (core SAREF, not itself translated in this candidate): a value with its unit of measure."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

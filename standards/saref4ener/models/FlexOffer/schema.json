@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ener/models/FlexOffer/schema.json",
+  "modelTags": "SAREF4ENER,FlexibilityCommunication",
+  "title": "Smart Data Models - SAREF4ENER - FlexOffer",
+  "description": "https://saref.etsi.org/saref4ener/FlexOffer. It allows to represent a flexibility offer (or schedule) as a combination of multiple time-series, data-points and forecasts. For example, we can create a flexibility offer that includes a time-series ex:T-power of power values, combined with a time-series ex:T-costs of associated costs.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "FlexOffer"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'FlexOffer'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasRecipient": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. This property can be used to connect a flexibility offer or/and flexibility request to a foaf:agent or saref:Device. Relationship to Device."
+    },
+    "producedBy": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. A relation between an entity (datapoint, message, timeseries, instruction) that has been produced by a device or other agent. In the context of SAREF4ENER this property is intended for s4ener:DataPoint, s4ener:TimeSeries, and the various types of flexibility instructions, FlexOffers and FlexRequests. Relationship to Device."
+    },
+    "includes": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. This property can be used to connect the flexibility offer and/or flexibility request to the flexibility profile. Additionally, it can be used to specify the s4ener:datapoint, s4ener:timeseries and ic-fc:forecast included in the flexibility offer and/or flexibility request. Relationship to DataPoint/TimeSeries/FlexibilityProfile."
+    },
+    "hasCreationTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. The time instant that defines the creation time of a data point or quantity or forecast or similar entities. This is not the same as the time at which the quantity is in effect. For example, if a temperature is forecasted today at 12:30 (creation time of the forecast) for the following day at 14:45 (time when the temperature is expected to be in effect), the this instant should be 12:30 of today. A creation time (instant). This is the point in time when the data point was created, which is not necessarily the time for which it is valid. In the case of soft-sensors or forecasters, a data point might have been created ahead of time, in the case of a direct observation a data point might created at its time of validity (or at the end of its validity time interval) and in the case of an archived value the data point might have been created after the fact."
+    },
+    "hasEffectivePeriod": {
+      "type": "string",
+      "description": "Property. This connects to the temporal entity which describes when (time interval) the quantity of this data point was, is, or will be in effect. This is the time interval which is covered by the forecast. This should be equivalent to the time interval covered by the time-series that express the forecast. ISO 8601 time interval (start/end)."
+    },
+    "relatesToRequest": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The relationship between the flexibility offer and flexibility request Relationship to FlexRequest."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

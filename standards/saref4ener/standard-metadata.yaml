@@ -1,0 +1,136 @@
+title: "SAREF4ENER"
+publisher: "ETSI (SmartM2M Technical Committee)"
+sourceUrl: "https://saref.etsi.org/saref4ener/v2.1.1/"
+sourceOntologyVersion: "v2.1.1"
+sourceNormativeDocument: "ETSI TS 103 410-1 V2.1.1 (2024-10), SmartM2M; Extension to SAREF; Part 1: Energy Domain"
+domains:
+  - Energy
+  - SmartGrid
+  - EnergyFlexibility
+  - DemandResponse
+  - SmartAppliances
+description: >
+  SAREF4ENER is the SAREF (Smart Applications REFerence) ontology extension
+  for the energy domain, standardized by ETSI as TS 103 410-1. It models the
+  energy-flexibility capabilities that a smart device (an appliance, EV
+  charger, heat pump, battery, PV inverter, etc.) can expose to a Customer
+  Energy Manager (CEM), so that energy consumption/production can be
+  (re-)scheduled without materially affecting user comfort. It harmonizes
+  two previously separate industry data models -- EEBus/SPINE and the
+  CENELEC EN 50491-12-2 "S2" standard -- into a single set of seven
+  Flexibility Profile types (Power Profile, Power Limit, Demand Driven,
+  Operation Mode, Fill Rate Based, Incentive Table Based, and Power
+  Envelope), plus a Flexibility Communication layer (FlexRequest, FlexOffer,
+  FlexibilityInstruction), a Load Control event/state model, and generic
+  Data Point / Time Series constructs used throughout. This candidate
+  translates every class defined in the SAREF4ENER v2.1.1 OWL ontology (77
+  classes) into one candidate model per class under models/, except for 16
+  pure controlled-vocabulary classes (e.g. Usage, IncentiveType, RoleType,
+  InstructionStatus, EventActionConsume/Produce, EventStateConsume/Produce,
+  PowerEnvelopeLimitType, PowerEnvelopeConsequenceType, PowerSequenceState,
+  PowerSequenceStatus, PowerSource, ScopeType, ValueSource, ValueTendency)
+  whose named-individual members are instead embedded as closed JSON Schema
+  `enum` arrays on the referencing entity's own property, which is the
+  standard Smart Data Models convention for OWL codelists that have no
+  independent identity of their own.
+license: "BSD-3-Clause"
+licenseNote: >
+  The ontology's own `dcterms:license` annotation points to
+  https://forge.etsi.org/etsi-software-license, which states that, unless
+  otherwise specified, content in the ETSI Forge (which hosts the
+  SAREF4ENER OWL/TTL/JSON-LD/RDF-XML source files) is licensed under the
+  BSD-3-Clause license (https://opensource.org/licenses/BSD-3-Clause) with
+  ETSI as copyright holder. The normative text itself (ETSI TS 103 410-1) is
+  published under ETSI's standard deliverable terms and is subject to the
+  ETSI IPR Policy for any essential IPR; verify both before promoting this
+  candidate out of Candidates/.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-10-14 directly from the SAREF4ENER v2.1.1 OWL/Turtle
+  file (https://saref.etsi.org/saref4ener/v2.1.1/saref4ener.ttl, 3056 lines),
+  parsed with rdflib to extract every owl:Class, its rdfs:subClassOf
+  restrictions (allValuesFrom/someValuesFrom/cardinality/onClass), every
+  owl:ObjectProperty/owl:DatatypeProperty (including rdfs:domain, where
+  declared, and owl:unionOf domains/ranges), and every named-individual
+  codelist member. The normative ETSI TS 103 410-1 V2.1.1 PDF (38 pages,
+  read in full) was used to fill the small number of gaps where the
+  published OWL declares a property but omits its formal rdfs:domain (the
+  property's own rdfs:comment states its "intended" owning class/classes
+  instead) -- concretely: FlexibilityInstruction.hasInstructionStatus,
+  Timer.hasDuration, OperationMode/Transition/PowerSequence/AllowedLimit
+  Range.abnormalConditionOnly, and PowerConstraint/EnergyConstraint.
+  hasStartTime/hasEndTime. The PDF was also used for the Table 1 unit list,
+  the Figure 1-16 overview diagrams, and the Annex A/B/D version-history
+  narrative drawn on for this description.
+
+  SCALE: 77 owl:Class declarations were found (76 declared `a owl:Class`,
+  plus `s4ener:AllowedLimitRange`, declared `a rdfs:Class` -- an apparent
+  authoring inconsistency in the source file, included here like any other
+  class). 16 of the 77 are pure controlled-vocabulary/codelist classes
+  (their only members are named individuals, e.g. s4ener:Usage ->
+  {Average, BaseLine, Consumption, ...}); per standard SDM practice these do
+  NOT get their own candidate model (they would have no independent
+  identity/lifecycle as an NGSI-LD entity) and are instead inlined as a
+  closed JSON Schema `enum` on whichever entity's property actually
+  references them (e.g. DataPoint.hasUsage, Device.hasPowerSource,
+  IncentiveTableTier.hasIncentiveType). One codelist, s4ener:ValueTendency
+  (Rising/Stable/Falling), together with its property s4ener:valueTendency,
+  is declared in the ontology but has no rdfs:domain anywhere and is not
+  used as the range of any other class's restriction in the published OWL,
+  so it is not surfaced on any model in this candidate -- this is a gap in
+  the published ontology itself, not a translation omission. The remaining
+  61 classes are translated as one model each under models/.
+
+  THIN / PURE-SUBCLASS MODELS: 11 of the 61 models have no own properties
+  beyond those common to every SDM entity (id, type, dateCreated,
+  dateModified, source, dataProvider): ActuatorLevel, ActuatorSwitch,
+  EndInterruptionInstruction, EndTimeDurationDescription, FlexibilityProfile,
+  LoadControlEventAction, LoadControlEventState, OMBCInstruction,
+  PowerSequenceElement, ScheduleInstruction, StartInterruptionInstruction.
+  Each still gets its own schema.json/context.jsonld/examples per the
+  explicit instruction to translate the full ontology exhaustively; its
+  description documents which class it specializes and points there for
+  inherited properties, following the precedent already established by this
+  repository's gaiax-ontology-v2111 candidate (see e.g. its BandWidth,
+  CPU and AvailabilityZone models) for flattened-inheritance-without-
+  duplication.
+
+  NAMING: class and property names are preserved verbatim from the source
+  ontology (e.g. `PowerProfile`, `hasEffectivePeriod`, `nodeRemoteControllable`)
+  per system_prompt.md's naming rules -- no forced renaming of
+  ontology-native identifiers. One naming divergence worth flagging: the
+  normative PDF's prose and figures use `PowerEnvelopeBasedProfile`,
+  `FillRateBasedProfile` and `IncentiveTableBasedProfile` as the flexibility
+  profile names, while the *published* OWL/TTL file (the authoritative
+  machine-readable source per this translation's instructions) actually
+  declares the classes as `PowerEnvelopeProfile`, `FillRateProfile` and
+  `IncentiveTableProfile` (no "Based"). This candidate follows the OWL file
+  verbatim, since it is the artifact that NGSI-LD `type` values must
+  interoperate with, and records the discrepancy here rather than silently
+  picking one name.
+
+  RELATIONSHIPS: object properties whose range is one of this candidate's
+  own 61 entity classes are modelled as NGSI-LD Relationships (JSON Schema
+  `{"type":"string","format":"uri"}`, description prefixed "Relationship.").
+  A handful of properties range over `saref:PropertyValue` (the core SAREF
+  {value, unitOfMeasure} pair, not itself part of SAREF4ENER and not
+  translated here) -- these are modelled as a small inline StructuredValue
+  object `{value: number, unitCode: string}` rather than a Relationship,
+  since PropertyValue has no independent identity. A few properties
+  (Role.hasCommodity -> saref:Commodity, Device.hasManufacturer ->
+  saref:Manufacturer) reference other core-SAREF classes that are likewise
+  out of scope for this candidate; these remain Relationship-typed (a URI
+  string) with a description note that the target is an external/core-SAREF
+  concept not modelled here, rather than being silently dropped.
+
+  DUPLICATION RISK, NOT CHECKED IN DETAIL: Smart Data Models already
+  publishes energy/device models (e.g. dataModel.Device, dataModel.Energy)
+  that may overlap conceptually with Device and Storage here; and other
+  SAREF-family candidates in this repository may already cover shared
+  saref:core concepts (Profile, State, Observation, Actuator) that
+  SAREF4ENER classes subclass but that were intentionally left untranslated
+  in this candidate (out of scope: this candidate covers only SAREF4ENER's
+  own namespace, https://saref.etsi.org/saref4ener/). Both should be
+  checked before promoting this candidate out of Candidates/.

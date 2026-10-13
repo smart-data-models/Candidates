@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ener/models/OperationMode/schema.json",
+  "modelTags": "SAREF4ENER,OperationModeFillRate",
+  "title": "Smart Data Models - SAREF4ENER - OperationMode",
+  "description": "https://saref.etsi.org/saref4ener/OperationMode. A resource manager can declare multiple operation modes for a device. An operation mode is a mode/state that a device can find itself in, that is associated with a specific power value. Subclass of State (https://saref.etsi.org/core/State, not itself translated in this candidate).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "OperationMode"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'OperationMode'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasActiveOperationMode": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. A reference to the OperationMode that is presently active Relationship to OperationMode."
+    },
+    "hasCost": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Additional costs per second (e.g. wear, services) associated with this operation mode in the currency defined by the ResourceManagerDetails , excluding the commodity cost. The range is expressing uncertainty and is not linked to the operation_mode_factor. Relationship to DataPoint."
+    },
+    "hasOperationModeElement": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. List of OperationModeElements, which describe the properties of this FRBC.OperationMode depending on the fill_level. The fill_level_ranges of the items in the Array must be contiguous. Relationship to OperationModeElement."
+    },
+    "hasPowerRange": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The power produced or consumed by this operation mode. The start of each PowerRange is associated with an operation_mode_factor of 0, the end is associated with an operation_mode_factor of 1. In the array there must be at least one PowerRange, and at most one PowerRange per Commodity. Relationship to PowerRange."
+    },
+    "hasPreviousOperationMode": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The previous operation mode this device was in Relationship to OperationMode."
+    },
+    "hasSupplyRange": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The SupplyRange this OperationMode of a Demand Driven Profile can deliver for the CEM to match the DemandRate. The start of the NumberRange is associated with an operation_mode_factor of 0, the end is associated with an operation_mode_factor of 1. Relationship to NumberRange."
+    },
+    "hasTransitionTimestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Time at which the transition from the previous Operation Mode was initiated. This value shall always be provided, unless the active OperationMode is the first OperationMode the Resource Manager is aware of."
+    },
+    "abnormalConditionOnly": {
+      "type": "boolean",
+      "description": "Property. Indicates if this element can only be used during an abnormal condition."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

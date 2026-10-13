@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ener/models/Timer/schema.json",
+  "modelTags": "SAREF4ENER,OperationModeFillRate",
+  "title": "Smart Data Models - SAREF4ENER - Timer",
+  "description": "https://saref.etsi.org/saref4ener/Timer. A timer for time-based operation mode and transition constraints. Subclass of Thing (http://www.w3.org/2002/07/owl#Thing, not itself translated in this candidate).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Timer"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Timer'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "isFinishedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Indicates when the Timer will be finished. If the DateTimeStamp is in the future, the timer is not yet finished. If the DateTimeStamp is in the past, the timer is finished. When the timer was never started, the value can be an arbitrary DateTimeStamp in the past."
+    },
+    "hasDuration": {
+      "type": "string",
+      "description": "Property. The time it takes for the timer to finish after it has been started. ISO 8601 duration (e.g. 'PT30M')."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
