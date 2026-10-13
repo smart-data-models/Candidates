@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4watr/models/WaterFlowProperty/schema.json",
+  "modelTags": "SAREF4WATR,Water,Device",
+  "title": "Smart Data Models - SAREF4WATR - WaterFlowProperty",
+  "description": "https://saref.etsi.org/saref4watr/WaterFlowProperty. Class to group those properties related to water flow. Subclass of saref:Property (an imported SAREF core class, not separately modeled in this repository), with no properties of its own. Named individuals of this class defined in the ontology (used elsewhere as controlled-vocabulary values, e.g. as enum items of WaterMeter.observes): FlowPressure, FlowRate, FlowTemperature, FlowVolume.",
+  "type": "object",
+  "properties": {
+    "id": {"type": "string", "format": "uri", "description": "Property. Unique identifier of the entity"},
+    "type": {"type": "string", "enum": ["WaterFlowProperty"], "description": "Property. NGSI-LD Entity type. It must be equal to 'WaterFlowProperty'"},
+    "dateCreated": {"type": "string", "format": "date-time", "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."},
+    "dateModified": {"type": "string", "format": "date-time", "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."},
+    "source": {"type": "string", "description": "Property. A sequence of characters giving the source of the entity data."},
+    "dataProvider": {"type": "string", "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."}
+  },
+  "required": ["id", "type"]
+}

@@ -1,0 +1,126 @@
+title: "SAREF4WATR"
+publisher: "ETSI"
+sourceUrl: "https://saref.etsi.org/saref4watr/v2.1.1/"
+sourceOntologyVersion: "v2.1.1"
+normativeReference: "ETSI TS 103 410-10 V2.1.1, https://www.etsi.org/deliver/etsi_ts/103400_103499/10341010/02.01.01_60/ts_10341010v020101p.pdf"
+domains:
+  - WaterManagement
+  - SmartMetering
+  - Infrastructure
+  - Environment
+description: >
+  SAREF4WATR is the SAREF (Smart Applications REFerence ontology) extension
+  for the water domain, developed by ETSI Specialist Task Force (STF) 566 and
+  published as ETSI TS 103 410-10. It extends SAREF core (and reuses
+  SAREF4SYST and SAREF4CITY) with a taxonomy of natural water bodies (Aquifer,
+  Estuary, Glacier, Lagoon, Lake, Ocean, River, Sea), the generic Water
+  feature-of-interest, water infrastructure (WaterInfrastructure and its
+  subclasses DistributionSystem, StorageInfrastructure, MonitoringInfrastructure,
+  GaugingStation, TreatmentPlant, HydroelectricPowerPlant), physical water
+  assets (WaterAsset and its SinkAsset/SourceAsset/StorageAsset/TransportAsset/
+  WaterDevice branches: Channel, FireHydrant, Intake, Main, Manhole, Pipe, Pit,
+  Pump, Reservoir, Tank, Valve, Vent), a water meter and tariff model
+  (WaterMeter, Tariff, ConsumptionBasedTariff, ThresholdBasedTariff,
+  TimeBasedTariff), and a set of property-grouping/controlled-vocabulary
+  classes for water-quality, meter and flow measurements (AcceptabilityProperty,
+  BacterialProperty, ChemicalProperty, EnvironmentalProperty, MicrobialProperty,
+  WaterFlowProperty, WaterMeterProperty, WaterProperty, WaterKind, WaterUse).
+  This candidate translates the full v2.1.1 class list (49 OWL classes) into
+  one candidate model per class under models/.
+license: "ETSI Software License (https://forge.etsi.org/etsi-software-license)"
+licenseNote: >
+  Recorded exactly as found in the ontology header: the SAREF4WATR ontology
+  (https://saref.etsi.org/saref4watr/v2.1.1/) carries
+  dcterms:license <https://forge.etsi.org/etsi-software-license>. Its
+  accompanying normative text derives from ETSI TS 103 410-10 and is
+  therefore additionally subject to the ETSI IPR Policy; verify both before
+  promoting this candidate out of Candidates/.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-10-14 from the SAREF4WATR v2.1.1 Turtle source
+  (https://saref.etsi.org/saref4watr/v2.1.1/saref4watr.ttl), parsed directly
+  for its exhaustive class list (49 owl:Class declarations under the
+  s4watr: namespace), its 19 own OWL object/datatype properties (appliesTo,
+  forAbsoluteTimeAtDay, forDayInMonth, forFinancialConsumption,
+  forVolumeConsumption, forVolumeFlow, forWeekDay, hasBillingDate,
+  hasBillingPeriod, hasDuration, hasFabricationNumber, hasFirmwareVersion,
+  hasHardwareVersion, hasPeriod, hasStartTimestamp, isDesignedFor,
+  isIntendedFor, operatesAtRadioFrequency, requiresPower), and its ~70 named
+  individuals (controlled-vocabulary instances of the property/kind/use
+  grouping classes).
+
+  METHOD / SCALE: translation was split into 5 parallel batches of ~9-10
+  classes each, dispatched to sub-agents that wrote schema.json/
+  context.jsonld/example.json per entity following a shared spec, then ran
+  tools/build_examples.py to derive the three remaining example
+  serializations per model.
+
+  KEY TRANSLATION DECISION -- flattening SAREF's reified Property pattern:
+  SAREF4WATR models measured water-quality/meter/flow parameters and
+  kind/use classifications as OWL named individuals of small grouping
+  classes (WaterProperty -> AcceptabilityProperty/ChemicalProperty/
+  MicrobialProperty->BacterialProperty, 54 individuals total; WaterMeterProperty,
+  5 individuals; WaterFlowProperty, 4 individuals; WaterKind, 4 individuals;
+  WaterUse, 5 individuals), meant to type a SAREF Property/Measurement
+  instance attached via saref:hasProperty / saref:observes /
+  s4watr:isDesignedFor / s4watr:isIntendedFor. Rather than modeling each
+  individual as its own SDM entity (individuals are not OWL classes -- the
+  brief was to translate the 49 classes) or leaving the ten grouping classes
+  as orphaned stubs with no visible use, the owning entity (Water, WaterMeter,
+  WaterInfrastructure) was given a direct array-of-enum-string attribute
+  named after the real OWL object property (hasProperty, observes,
+  isDesignedFor, isIntendedFor) whose items.enum is the full list of that
+  grouping class's individual names. The ten grouping classes themselves
+  (AcceptabilityProperty, BacterialProperty, ChemicalProperty,
+  EnvironmentalProperty, MicrobialProperty, WaterFlowProperty,
+  WaterMeterProperty, WaterProperty, WaterKind, WaterUse) still each get
+  their own candidate model documenting their taxonomic role and listing
+  their individuals, per the Gaia-X ontology candidate's inheritance-
+  flattening precedent (standards/gaiax-ontology-v2111/).
+
+  TAXONOMY-STUB PATTERN: of the 49 classes, 40 are pure taxonomy/grouping
+  classes with 0 own OWL properties (deep subclass hierarchies of
+  WaterAsset/WaterInfrastructure/WaterProperty meant to be used directly as
+  an NGSI-LD `type`, or as a controlled-vocabulary value); each still gets
+  its own schema.json/context.jsonld/examples set, with a description
+  documenting its place in the hierarchy and a note that inherited
+  properties are documented on the parent model and not repeated -- mirroring
+  the AvailabilityZone/TargetPercentile precedent in
+  standards/gaiax-ontology-v2111/. The remaining 9 classes (WaterAsset,
+  WaterDevice, WaterMeter, WaterInfrastructure, Water, Tariff,
+  ConsumptionBasedTariff, ThresholdBasedTariff, TimeBasedTariff) carry real
+  own properties and get full schemas.
+
+  GEO:FEATURE -> location: WaterAsset and WaterInfrastructure (and therefore
+  every subclass of either) are declared geo:Feature in the ontology (via
+  geo:hasGeometry); every such model therefore carries a `location`
+  GeoProperty mapped to geo:hasGeometry. Water and the property-grouping/
+  kind/use/tariff classes are not geo:Feature and do not carry `location`
+  (Water optionally may, as a practical convenience, noted per-model).
+
+  NAMING: every class and OWL property name is preserved verbatim from the
+  source ontology (PascalCase classes, camelCase properties already match
+  SAREF4WATR's own conventions) -- no forced renaming.
+
+  COLLISION CHECK: the smart-data-models GitHub org does not publish a single
+  dataModel.Water repo; instead it publishes dataModel.WaterQuality
+  (WaterQualityObserved, WaterQualityPredicted, SludgeQualityObserved),
+  dataModel.WaterDistribution (WaterDistributionNetwork),
+  dataModel.WaterConsumption (WaterConsumptionObserved), dataModel.WasteWater
+  (Blower, OffGasStack, WasteWaterJunction, WasteWaterPlant,
+  WasteWaterSimulationResult, WasteWaterTank, WaterProcess), and
+  dataModel.WaterDistributionManagementEPANET, aggregated under the SmartWater
+  repository, plus dataModel.Environment (AirQualityObserved,
+  EnvironmentObserved, FloodMonitoring, PhreaticObserved, etc.). None of these
+  share an exact entity name with any of the 49 SAREF4WATR classes here, so no
+  renames were needed. There is a conceptual overlap worth flagging rather
+  than resolving here: SAREF4WATR's Water (hasProperty -> WaterProperty, the
+  ~54-item chemical/bacterial/acceptability determinand vocabulary) covers
+  much the same ground as the existing dataModel.WaterQuality's
+  WaterQualityObserved model, which already has its own flat list of named
+  water-quality Number attributes. Reconciling the two (e.g. aligning
+  WaterQualityObserved's attribute names with SAREF4WATR's controlled-
+  vocabulary individual names) should happen at promotion-review time, not in
+  this Candidates-stage translation.

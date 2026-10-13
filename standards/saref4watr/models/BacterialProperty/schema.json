@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4watr/models/BacterialProperty/schema.json",
+  "modelTags": "SAREF4WATR,Water,WaterQuality",
+  "title": "Smart Data Models - SAREF4WATR - BacterialProperty",
+  "description": "https://saref.etsi.org/saref4watr/BacterialProperty. A bacterial property is a property of water that is related to bacteria. Subclass of MicrobialProperty per the SAREF4WATR ontology, with no properties of its own; inherited properties are documented on the MicrobialProperty model and not repeated here. Named individuals of this class defined in the ontology (used elsewhere as controlled-vocabulary values, e.g. as enum items of Water.hasProperty): ClostridiumPerfringens, ColiformBacteria, ColonyCount22C (label 'Colony count at 22°C'), ColonyCount37C (label 'Colony count at 37°C'), Enterococci, EscherichiaColi (label 'E. coli'), PseudomonasAeruginosa.",
+  "type": "object",
+  "properties": {
+    "id": {"type": "string", "format": "uri", "description": "Property. Unique identifier of the entity"},
+    "type": {"type": "string", "enum": ["BacterialProperty"], "description": "Property. NGSI-LD Entity type. It must be equal to 'BacterialProperty'"},
+    "dateCreated": {"type": "string", "format": "date-time", "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."},
+    "dateModified": {"type": "string", "format": "date-time", "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."},
+    "source": {"type": "string", "description": "Property. A sequence of characters giving the source of the entity data."},
+    "dataProvider": {"type": "string", "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."}
+  },
+  "required": ["id", "type"]
+}
