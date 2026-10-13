@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4wear/models/Policy/schema.json",
+  "modelTags": "SAREF4WEAR,Wearables,Governance",
+  "title": "Smart Data Models - SAREF4WEAR - Policy",
+  "description": "https://saref.etsi.org/saref4wear/Policy. A set of guidelines adopted during the wearable building process and defining how a wearable operates (ETSI TS 103 410-9 clause 4.2.3). The ontology declares no own datatype property for this class beyond the classification itself; name/policyDescription are added for a usable candidate model.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Policy"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Policy'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Short name of the policy."
+    },
+    "policyDescription": {
+      "type": "string",
+      "description": "Property. Free-text description of the guideline(s) the policy sets out."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

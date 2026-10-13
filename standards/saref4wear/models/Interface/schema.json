@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4wear/models/Interface/schema.json",
+  "modelTags": "SAREF4WEAR,Wearables,Hardware",
+  "title": "Smart Data Models - SAREF4WEAR - Interface",
+  "description": "https://saref.etsi.org/saref4wear/Interface. The mechanism with which a device can receive or transmit data to another device (ETSI TS 103 410-9 clause 4.2.7). The SAREF4WEAR ontology defines this class only as the range of an object property (it declares no own datatype property); the attributes below are reasonable, minimal descriptive fields added for a usable candidate model and are not themselves drawn from explicit ontology axioms.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Interface"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Interface'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "interfaceType": {
+      "type": "string",
+      "description": "Property. Open-vocabulary kind of interface, e.g. 'BLE', 'WiFi', 'NFC', 'USB-C'."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

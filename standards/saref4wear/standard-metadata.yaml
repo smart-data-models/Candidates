@@ -1,0 +1,113 @@
+title: "SAREF4WEAR"
+publisher: "ETSI"
+sourceUrl: "https://saref.etsi.org/saref4wear/v2.1.1/"
+sourceOntologyVersion: "v2.1.1"
+normativeReference: "ETSI TS 103 410-9 V2.1.1 (2024-07): SmartM2M; Extension to SAREF; Part 9: Wearables Domain"
+domains:
+  - Wearables
+  - eHealth
+  - SmartTextiles
+description: >
+  SAREF4WEAR is the ETSI SAREF extension for the Wearables domain (ETSI TS 103 410-9), built on top of SAREF
+  core, SAREF4SYST and SAREF4CITY. It models wearable devices (WearableDevice and its InBodyWearable /
+  OnBodyWearable / NearBodyWearable / TextileBasedWearable / FabricWearable specializations, classified by their
+  physical relationship to the body), the organisms and actors around them (LivingOrganism, Wearer, User,
+  Software), detectable occurrences (Occurrence), the hardware components a wearable can be built from
+  (Interface, PowerSupply, MemoryStorage, TextileBasedSensor), the policies a wearable follows (Policy), the
+  functions a wearable can perform (CommunicatingFunction, ControllingFunction, NavigatingFunction,
+  NotifyingFunction), and a classification of the kinds of properties relevant to the domain (wearable,
+  wearer/biometric, electrical/electrical-safety, emission, environmental and crowd properties). This candidate
+  translates the full v2.1.1 class list (29 classes) into one candidate per class under models/, except where
+  explicitly consolidated -- see METHOD below.
+license: "ETSI Software License (https://forge.etsi.org/etsi-software-license)"
+licenseNote: >
+  This is the exact dcterms:license value declared in the ontology's own OWL header
+  (saref4wear.ttl's <https://saref.etsi.org/saref4wear/> owl:Ontology individual). The ETSI TS 103 410-9 document
+  itself carries ETSI's standard copyright notice ("No part may be reproduced or utilized in any form or by any
+  means... except as authorized by written permission of ETSI", (c) ETSI 2024, all rights reserved); verify both
+  against ETSI's terms before promoting this candidate out of Candidates/.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-10-14 from:
+    - the SAREF4WEAR v2.1.1 Turtle file (https://saref.etsi.org/saref4wear/v2.1.1/saref4wear.ttl), used as the
+      exhaustive authoritative class/property/individual list; and
+    - the full normative ETSI TS 103 410-9 V2.1.1 PDF (19 pages), used for prose definitions, the worked
+      healthcare / open-air-event / closed-environment-event examples (clause 4.3) that inspired this
+      candidate's example instance data, and Tables 2/3 (the complete object/datatype property lists).
+
+  CLASS COUNT: SAREF4WEAR v2.1.1 defines 29 classes. 20 are translated as standalone top-level entities; 9
+  "property-grouping" classes are deliberately NOT given their own top-level model (see CONSOLIDATION DECISION
+  below). Occurrence, although grouped with the property classes in the initial task scope, was kept as its own
+  standalone entity (see its own schema.json description for the reasoning): it has real relational structure
+  (a detecting device, a place) rather than being the domain of a single named measurement-kind individual.
+
+  STANDALONE ENTITIES (20): WearableDevice, InBodyWearable, OnBodyWearable, NearBodyWearable,
+  TextileBasedWearable, FabricWearable, Wearer, User, LivingOrganism, Software, Occurrence, Interface,
+  PowerSupply, MemoryStorage, TextileBasedSensor, Policy, CommunicatingFunction, ControllingFunction,
+  NavigatingFunction, NotifyingFunction.
+
+  CONSOLIDATION DECISION -- property-grouping classes flattened into attributes (9 classes, 0 standalone
+  models): WearableProperty, WearerProperty, BiometricProperty, ElectricalProperty, ElectricalSafetyProperty,
+  EmissionProperty, EnvironmentProperty, EnvironmentalProperty, CrowdProperty. In the source ontology these
+  classes exist only to classify saref:Property named individuals (e.g. s4wear:HeartRate rdf:type
+  s4wear:BiometricProperty) that are the implicit "kind of measurement" a WearableDevice/Wearer carries via
+  saref:hasProperty; they have no data/object properties of their own and no standalone identity worth a
+  top-level NGSI entity. Per explicit translation instruction, each concrete named-individual measurement kind
+  becomes a directly-named Number/Integer attribute on its owning entity instead:
+    - WearableDevice gets: batteryRemainingTime (ElectricalProperty/BatteryRemainingTime), acousticEmission,
+      heatEmission, radioFrequencyEmission (EmissionProperty), airQuality, soundLevel, temperature
+      (EnvironmentalProperty -- see NAMING DISCREPANCY below), crowdSize, queueSize (CrowdProperty).
+      EnvironmentalProperty/CrowdProperty have no declared rdfs:domain in the ontology, but TS 103 410-9's own
+      worked examples (Figure 9: a crowd-control WearableDevice observing QueueSize; open-air event wearables
+      carrying sound sensors) show them being measured by a WearableDevice, so that is where they are attached.
+    - Wearer gets: heartRate, wearerTemperature (BiometricProperty).
+    - ElectricalSafetyProperty defines no named individual anywhere in SAREF4WEAR v2.1.1 and therefore produces
+      no attribute; it is noted here as a documented-but-unpopulated extension point.
+  This mirrors the "open vocabulary" philosophy the ontology itself states explicitly (TS 103 410-9 clause
+  4.2.6): "The extension defines different individuals for each type of [...] property; however, this list of
+  individuals does not aim to be exhaustive but to reflect the potential use of the ontology" -- confirmed by
+  Figure 8, which instantiates an ad hoc ex:OxygenSaturation BiometricProperty never declared as a named
+  individual. A future revision of this candidate could add further attributes (e.g. oxygenSaturation,
+  bloodPressure) the same way without needing a schema-breaking change, which is the whole point of treating
+  these as an open, flattened vocabulary rather than a closed top-level entity hierarchy.
+
+  NAMING DISCREPANCIES BETWEEN THE PUBLISHED TTL AND THE NORMATIVE PDF TEXT (both v2.1.1, both dated 2024-07/
+  2025-05): (1) TS 103 410-9 clause 4.2.6 / Figure 6 and Table 3 call the environmental grouping class/property
+  "EnvironmentProperty", but the only class with actual named individuals (AirQuality, SoundLevel, Temperature)
+  in saref4wear.ttl is "EnvironmentalProperty"; a separate, individual-less "EnvironmentProperty" class also
+  exists in the ttl. Treated as the same intent; attributes are grounded in EnvironmentalProperty's real
+  individuals. (2) TS 103 410-9 Table 3 names the wearer age-range datatype property "wearerRangeAge", but
+  saref4wear.ttl defines it as "s4wear:wearerAgeRange". The ttl's name is used as authoritative (per the task's
+  own instruction to treat the ttl as the exhaustive authoritative property list); both names are recorded in
+  the Wearer model's schema description.
+
+  PROPERTIES IN TS 103 410-9 TABLE 2 NOT YET IN THE PUBLISHED saref4wear.ttl v2.1.1: hasSensor, isActedBy,
+  isSensedBy, measuresFeature, controlsFeature (and the inverse featureIsMeasuredByDevice/
+  featureIsControlledByDevice mentioned only in prose). These are included in this candidate (WearableDevice.
+  hasSensor/measuresFeature/controlsFeature, Wearer.isSensedBy/isActedBy) under the s4wear namespace per the
+  normative document, with each occurrence flagged in its schema.json description.
+
+  OUT OF SCOPE (belong to SAREF4CITY, not SAREF4WEAR, and not among the ~29 classes in scope): s4city:Facility
+  and its s4wear:hasCapacity / s4wear:installs / s4city:takesPlaceAtFacility properties; saref:Actuator and the
+  s4wear:isActuatedBy / s4wear:isTriggeredBy properties that target it (core SAREF, not redefined by this
+  extension). None of these produced a model or attribute here.
+
+  HARDWARE/FUNCTION/POLICY CLASSES WITH NO ONTOLOGY-OWN DATA PROPERTIES: Interface, PowerSupply, MemoryStorage,
+  TextileBasedSensor, Policy, CommunicatingFunction, NavigatingFunction and NotifyingFunction are declared in
+  the ontology purely as classes (relationship targets / functional classifiers) with no datatype property of
+  their own. Each was still given one or two minimal, clearly-flagged descriptive attributes (e.g.
+  Interface.interfaceType, PowerSupply.powerSupplyType, Policy.policyDescription) for a usable candidate model;
+  every such schema.json description states explicitly that these are added for usability and are not drawn
+  from explicit ontology axioms, and their context.jsonld IRIs are minted under this candidate's own schema
+  namespace rather than falsely attributed to the s4wear: namespace.
+
+  NAMING: class and property names are preserved verbatim from the source ontology (e.g. `hasDataTransmissionRate`,
+  `isLocatedIn`) per system_prompt.md's naming rules -- no forced PascalCase/camelCase renaming of
+  ontology-native identifiers.
+
+  EXAMPLES: example.json instance data (Garmin745XT heart-rate-monitor wearable worn by Runner1, AccuMed500-style
+  implantable monitor worn by Patient1, ToiletsQueue occurrence detected by a crowd-control wearable, etc.) is
+  modelled directly on the worked examples in TS 103 410-9 clause 4.3 (Figures 8-10), substituting illustrative
+  URNs for the ontology's own `ex:` individuals.

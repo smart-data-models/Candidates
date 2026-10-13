@@ -1,0 +1,222 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4wear/models/WearableDevice/schema.json",
+  "modelTags": "SAREF4WEAR,Wearables,Device,eHealth",
+  "title": "Smart Data Models - SAREF4WEAR - WearableDevice",
+  "description": "https://saref.etsi.org/saref4wear/WearableDevice. A device that is intended to be located near, on or in an organism (its Wearer). Abstract parent of InBodyWearable, OnBodyWearable, NearBodyWearable, TextileBasedWearable and FabricWearable. Subclass of geo:Feature and saref:Device per the SAREF4WEAR ontology (ETSI TS 103 410-9 clause 4.2.3). The ontology's WearableProperty/ElectricalProperty/ElectricalSafetyProperty/EmissionProperty grouping classes, plus EnvironmentalProperty/CrowdProperty (measured by a wearable's environmental/crowd sensors per TS 103 410-9 Figures 6 and 9), are not modelled as separate top-level entities: per explicit translation instruction, each of their named-individual measurement kinds (BatteryRemainingTime, AcousticEmission, HeatEmission, RadioFrequencyEmission, AirQuality, SoundLevel, Temperature, CrowdSize, QueueSize) becomes a directly-named open-vocabulary attribute on this entity instead -- see standard-metadata.yaml for the full rationale. ElectricalSafetyProperty defines no named individual in SAREF4WEAR v2.1.1 and therefore yields no attribute here. hasSensor, measuresFeature and controlsFeature are declared in TS 103 410-9 Table 2 but not yet present in the published saref4wear.ttl v2.1.1 serialization; they are included here under the same s4wear namespace per the normative text.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "WearableDevice"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'WearableDevice'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+      "description": "GeoProperty. Model:'https://purl.org/geojson/vocab#Point'. Current geolocation of the wearable device (it is a subclass of geo:Feature)."
+    },
+    "hasInterface": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Interface(s) with which this device transmits/receives data. Links to one or more Interface entities."
+    },
+    "hasPowerSupply": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Power supply equipping this device. Links to one or more PowerSupply entities."
+    },
+    "hasSensor": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Textile-based sensor(s) used by this device to acquire information from the wearer or the surrounding environment. Links to one or more TextileBasedSensor entities. (Declared in TS 103 410-9 Table 2; not yet in the published ttl.)"
+    },
+    "consistsOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Memory storage component(s) installed within this device. Links to one or more MemoryStorage entities."
+    },
+    "followsPolicy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Policy/policies followed by this wearable device. Links to one or more Policy entities."
+    },
+    "hasFunction": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Function(s) this device is capable of. Links to one or more CommunicatingFunction, ControllingFunction, NavigatingFunction or NotifyingFunction entities."
+    },
+    "isLocated": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. General geographical association between this wearable device and its Wearer. Links to a Wearer entity. (More specific subclasses use isLocatedIn/isLocatedOn/isLocatedNear.)"
+    },
+    "sendsInformationTo": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Other wearable device(s) this device sends information to. Links to one or more WearableDevice entities."
+    },
+    "sendsNotificationsTo": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Wearer(s) this device sends notifications to. Links to one or more Wearer entities."
+    },
+    "monitors": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Other device(s) this device monitors. Links to one or more WearableDevice entities."
+    },
+    "measuresFeature": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Feature(s) of interest measured by this device, independently of any inferable measurement relationship. Links to one or more Wearer, User, LivingOrganism or Software entities. (Declared in TS 103 410-9 Table 2 narrative; not yet in the published ttl.)"
+    },
+    "controlsFeature": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Feature(s) of interest controlled by this device. Links to one or more Wearer, User, LivingOrganism or Software entities. (Declared in TS 103 410-9 Table 2 narrative; not yet in the published ttl.)"
+    },
+    "height": {
+      "type": "number",
+      "description": "Property. Height dimension of the wearable device, in centimetres (s4wear:hasHeight)."
+    },
+    "length": {
+      "type": "number",
+      "description": "Property. Length dimension of the wearable device, in centimetres (s4wear:hasLength)."
+    },
+    "width": {
+      "type": "number",
+      "description": "Property. Width dimension of the wearable device, in centimetres (s4wear:hasWidth)."
+    },
+    "weight": {
+      "type": "number",
+      "description": "Property. Weight of the wearable device, in grams (s4wear:hasWeight)."
+    },
+    "operatingTemperature": {
+      "type": "number",
+      "description": "Property. Optimal operating temperature of the wearable device, in degrees Celsius (s4wear:hasOperatingTemperature)."
+    },
+    "dataTransmissionRate": {
+      "type": "number",
+      "description": "Property. Data transmission rate of the wearable device, in Mbps (s4wear:hasDataTransmissionRate)."
+    },
+    "storage": {
+      "type": "number",
+      "description": "Property. Memory storage capacity of the wearable device, in MB (s4wear:hasStorage)."
+    },
+    "batteryRemainingTime": {
+      "type": "number",
+      "description": "Property. Time until the device's battery is discharged, in minutes. Open-vocabulary value standing in for the s4wear:BatteryRemainingTime (ElectricalProperty) named individual."
+    },
+    "acousticEmission": {
+      "type": "number",
+      "description": "Property. Acoustic emission of the wearable, in dB. Open-vocabulary value standing in for the s4wear:AcousticEmission (EmissionProperty) named individual."
+    },
+    "heatEmission": {
+      "type": "number",
+      "description": "Property. Heat emission of the wearable, in degrees Celsius. Open-vocabulary value standing in for the s4wear:HeatEmission (EmissionProperty) named individual."
+    },
+    "radioFrequencyEmission": {
+      "type": "number",
+      "description": "Property. Radio frequency emission of the wearable, in dBm. Open-vocabulary value standing in for the s4wear:RadioFrequencyEmission (EmissionProperty) named individual."
+    },
+    "airQuality": {
+      "type": "number",
+      "description": "Property. Air quality index measured by the wearable's environmental sensor. Open-vocabulary value standing in for the s4wear:AirQuality (EnvironmentalProperty) named individual."
+    },
+    "soundLevel": {
+      "type": "number",
+      "description": "Property. Ambient sound level measured by the wearable, in dB. Open-vocabulary value standing in for the s4wear:SoundLevel (EnvironmentalProperty) named individual."
+    },
+    "temperature": {
+      "type": "number",
+      "description": "Property. Ambient temperature measured by the wearable, in degrees Celsius. Open-vocabulary value standing in for the s4wear:Temperature (EnvironmentalProperty) named individual."
+    },
+    "crowdSize": {
+      "type": "integer",
+      "description": "Property. Size of a crowd detected by the wearable (e.g. a crowd-control device). Open-vocabulary value standing in for the s4wear:CrowdSize (CrowdProperty) named individual."
+    },
+    "queueSize": {
+      "type": "integer",
+      "description": "Property. Size of a queue detected by the wearable. Open-vocabulary value standing in for the s4wear:QueueSize (CrowdProperty) named individual."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

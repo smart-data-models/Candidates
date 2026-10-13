@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4wear/models/CommunicatingFunction/schema.json",
+  "modelTags": "SAREF4WEAR,Wearables,Function",
+  "title": "Smart Data Models - SAREF4WEAR - CommunicatingFunction",
+  "description": "https://saref.etsi.org/saref4wear/CommunicatingFunction. A function that allows a device to communicate with another device. Subclass of NotifyingFunction (itself a subclass of saref:EventFunction), per the SAREF4WEAR ontology (ETSI TS 103 410-9 clause 4.2.4). The ontology declares no own property for this class beyond the classification itself; communicationProtocol is added for a usable candidate model.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "CommunicatingFunction"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'CommunicatingFunction'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "communicationProtocol": {
+      "type": "string",
+      "description": "Property. Open-vocabulary protocol used by this communicating function, e.g. 'BLE', 'WiFi', 'LoRaWAN'."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

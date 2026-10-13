@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4wear/models/OnBodyWearable/schema.json",
+  "modelTags": "SAREF4WEAR,Wearables,Device,eHealth",
+  "title": "Smart Data Models - SAREF4WEAR - OnBodyWearable",
+  "description": "https://saref.etsi.org/saref4wear/OnBodyWearable. A wearable device having direct contact with the physical body of its Wearer (e.g. a wristband). Subclass of WearableDevice per the SAREF4WEAR ontology; inherited properties are documented on the WearableDevice model and not repeated here. Its own defining axiom is the isLocatedOn relationship (a sub-property of WearableDevice.isLocated) to a Wearer. Parent of TextileBasedWearable.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "OnBodyWearable"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'OnBodyWearable'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "isLocatedOn": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The Wearer on whose body this wearable is located, i.e. the distance between the wearable and the wearer is zero or close to zero (s4wear:isLocatedOn, sub-property of isLocated). Links to a Wearer entity."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "isLocatedOn"
+  ]
+}
