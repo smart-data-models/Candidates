@@ -1,0 +1,128 @@
+title: "SAREF4AUTO: an extension of SAREF for the automotive domain"
+publisher: "ETSI (European Telecommunications Standards Institute)"
+sourceUrl: "https://saref.etsi.org/saref4auto/v2.1.1/"
+sourceOntologyIRI: "https://saref.etsi.org/saref4auto/"
+sourceOntologyVersion: "v2.1.1"
+normativeReference: "ETSI TS 103 410-7 V2.1.1 (2025-04), https://www.etsi.org/deliver/etsi_ts/103400_103499/10341007/02.01.01_60/ts_10341007v020101p.pdf"
+domains:
+  - Transportation
+  - ConnectedAndAutomatedVehicles
+  - IntelligentTransportSystems
+  - RoadSafety
+  - SmartCities
+description: >
+  SAREF4AUTO extends the SAREF (Smart Applications REFerence) core ontology
+  for the connected and automated vehicles (C-ITS) domain. It models
+  automotive entities (vehicles, trailers, dangerous goods, platoons,
+  vulnerable road users and their clusters, parking spots), roadside
+  infrastructure (road side units, actuators, sensors, traffic light
+  controllers, traffic management centres), a broad catalogue of roadside/
+  vehicle sensor kinds, and a large controlled vocabulary of traffic event
+  causes -- largely adapted from ETSI TS 102 894-2 (ITS Common Data
+  Dictionary, CDD) and the Collective Perception / VRU Awareness / Platooning
+  work of ETSI TC ITS and the C-ROADS / ENSEMBLE projects.
+license: "ETSI Software License (forge.etsi.org/etsi-software-license)"
+licenseNote: >
+  The ontology file's dcterms:license points at
+  https://forge.etsi.org/etsi-software-license, ETSI's own software license,
+  not the CC-BY-4.0 Smart Data Models conventionally uses for other sources.
+  Recorded verbatim here as found in the ontology header; not reinterpreted
+  or substituted.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-10-14 from the SAREF4AUTO v2.1.1 Turtle file
+  (https://saref.etsi.org/saref4auto/v2.1.1/saref4auto.ttl, 4495 lines) and
+  cross-checked against the ontology's own class/property/individual
+  declarations. The normative ETSI TS 103 410-7 PDF was identified via the
+  ontology's rdfs:seeAlso but the Turtle file's rdfs:comment/skos:note
+  annotations already carry the same definitions, units and enumerations
+  used throughout, so it was used as the primary source of truth.
+
+  37 entities modeled, out of ~46 primary classes in the ontology's
+  AutomotiveEntity/roadside/sensor branches:
+
+  VALUE-WRAPPER / UTILITY CLASSES CONSOLIDATED, NOT MODELED AS STANDALONE
+  ENTITIES (8 classes): s4auto:BooleanProperty, s4auto:DecimalProperty,
+  s4auto:IntegerProperty, s4auto:StringProperty, s4auto:IndexedProperty,
+  s4auto:IndexedPropertyValue, s4auto:ConfidenceValue and
+  s4auto:ConfidenceValueAt95 are generic OWL value-typing/confidence-wrapper
+  classes with no domain semantics of their own (e.g. "the class of
+  properties whose value is typically expressed as an xsd:string literal").
+  Every concrete property in the ontology that uses them (VDS, WMInumber,
+  NumberOfOccupants, PlatoonMaxSize, the various *Property individuals,
+  etc.) is instead represented directly as a plain JSON Schema
+  string/integer/number/boolean attribute on its owning entity, which is
+  the natural NGSI-LD equivalent -- no information is lost, and 8 content-
+  free "data models" are avoided.
+
+  SMALL FIXED ENUMS/REASON VOCABULARIES EMBEDDED AS ATTRIBUTES, NOT
+  STANDALONE ENTITIES: s4auto:TrafficDirection (4 members),
+  s4auto:ClusterBreakupReason (5 members) and s4auto:ClusterLeaveReason (8
+  members) are small, closed, fully-enumerated vocabularies used by exactly
+  one property each; they are modeled as closed `enum` string attributes
+  (affectsTrafficDirection on TrafficEventObservation; reason on
+  ClusterBreakup/ClusterLeave) rather than as separate one-property-holding
+  entity types.
+
+  TrafficEventCause (161 named individuals: 20 top-level causes plus 141
+  narrower sub-causes, adapted from ETSI TS 102 894-2
+  CauseCodeChoice/SubCauseCode) IS MODELED AS A SINGLE ENTITY TYPE with an
+  open/enumerated `causeCode` string attribute (per this translation's rule
+  for open vocabularies) plus a closed `category` enum of the 20 top-level
+  causes and a `broaderCause` self-relationship for the narrower/broader
+  hierarchy -- not as ~160 separate data models. The 20 top-level causes are
+  listed in the schema description; the full narrower list is in the source
+  ontology/spec.
+
+  "KIND" SUB-TYPE NAMED INDIVIDUALS EMBEDDED AS ENUM ATTRIBUTES, NOT
+  SEPARATE ENTITIES: many SAREF4AUTO "classes" that are not owl:Class but
+  rather named individuals classified via skos:broader (e.g. the ~30 ISO
+  3833 vehicle kinds under Vehicle, the ~14 ETSI CDD TrafficParticipantType
+  kinds, the ~20 ADR DangerousGoods kinds, the VulnerableRoadUser profiles/
+  sub-profiles, the 3 ParkingSpot kinds, and AutomotiveDevice's
+  OnBoardUnit/MobileUnit) are modeled as `enum`-valued "kind" attributes on
+  their owning entity (vehicleKind, trafficParticipantKind,
+  dangerousGoodsKind, vruProfile/vruSubProfile, parkingSpotKind,
+  deviceKind), matching how this same pattern is handled for comparable
+  ontologies elsewhere in this repository.
+
+  ROAD TOPOLOGY (Road, RoadSegment, Lane, Intersection, HardShoulder, and
+  their many narrower kind/type named individuals, plus
+  DrivingLaneStatus/LaneWidth/SpeedLimit/HardShoulderStatus) IS OUT OF
+  SCOPE FOR THIS CANDIDATE SET: these SAREF4AUTO classes were not in this
+  task's target entity list, and smart-data-models/dataModel.Transportation
+  already publishes official Road and RoadSegment models -- modeling
+  SAREF4AUTO's versions here would duplicate, not extend, official SDM
+  coverage. Flagged for a possible separate/future pass if ever needed.
+
+  NAMING COLLISIONS WITH EXISTING OFFICIAL SMART DATA MODELS (kept
+  verbatim, not renamed, per translation rules):
+    - Vehicle: smart-data-models/dataModel.Transportation already publishes
+      an official "Vehicle" model (fleet/telematics-oriented: plate,
+      vehicleType, fuelType, etc.). SAREF4AUTO's Vehicle here is
+      C-ITS/kinematics-oriented (heading, speed, yaw rate, automation
+      level, platooning state, exterior lights, etc.) -- same type name,
+      different (complementary) attribute focus. A real deployment
+      combining both would need to reconcile or merge the two schemas.
+    - ParkingSpot: smart-data-models/dataModel.Parking already publishes an
+      official "ParkingSpot" model. SAREF4AUTO's version here is
+      C-ITS-oriented (parkingSpotKind, status) and much thinner than the
+      official model's electromobility/occupancy/category attribute set.
+    - Road/RoadSegment also collide with dataModel.Transportation, which
+      reinforced the decision to exclude SAREF4AUTO's road-topology classes
+      above rather than add a third, thinner, competing version.
+
+  TrafficLightController.currentSignalState'S ENUM IS NOT DRAWN FROM A
+  NAMED-INDIVIDUAL LIST IN THE SOURCE ONTOLOGY (SAREF4AUTO defines the
+  class but no explicit red/amber/green vocabulary); the schema description
+  flags this explicitly as an illustrative/common vocabulary rather than an
+  ontology-sourced one.
+
+  NO MACHINE-READABLE EXAMPLE DATA IN THE SOURCE: the ontology ships
+  figures/example PNGs referenced in Turtle comments (e.g.
+  "SAREF4AUTO_examples.Vehicle.png") but no example JSON/RDF instance data;
+  all example.json files here are synthetic, built from the ontology's own
+  class/property comments, units and enumerations (Barcelona-area
+  coordinates used as a neutral, realistic placeholder location).

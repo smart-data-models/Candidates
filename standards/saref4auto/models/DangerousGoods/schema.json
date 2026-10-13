@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4auto/models/DangerousGoods/schema.json",
+  "modelTags": "SAREF4AUTO,Transportation,ConnectedAndAutomatedVehicles,ITS",
+  "title": "Smart Data Models - SAREF4AUTO - DangerousGoods",
+  "description": "Kind of dangerous goods being carried by a heavy vehicle (s4auto:DangerousGoods). Narrower kinds are defined per the `class`/`division` definitions of part II, chapter 2.1.1.1 of the European Agreement concerning the International Carriage of Dangerous Goods by Road (ADR).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "DangerousGoods"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'DangerousGoods'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "dangerousGoodsKind": {
+      "type": "string",
+      "enum": [
+        "corrosiveSubstances",
+        "explosives1",
+        "explosives2",
+        "explosives3",
+        "explosives4",
+        "explosives5",
+        "explosives6",
+        "flammableGases",
+        "flammableLiquids",
+        "flammableSolids",
+        "infectiousSubstances",
+        "miscellaneousDangerousSubstances",
+        "nonFlammableGases",
+        "organicPeroxides",
+        "oxidizingSubstances",
+        "radioactiveMaterial",
+        "substancesEmittingFlammableGasesUponContactWithWater",
+        "substancesLiableToSpontaneousCombustion",
+        "toxicGases",
+        "toxicSubstances"
+      ],
+      "description": "Property. Kind of dangerous goods carried (s4auto:DangerousGoods_*)."
+    },
+    "dangerousGoodsCompany": {
+      "type": "string",
+      "description": "Property. Company that manages the transportation of the dangerous goods (s4auto:hasDangerousGoodsCompany)."
+    },
+    "dangerousGoodsPhone": {
+      "type": "string",
+      "description": "Property. Contact phone number of the assistance service in case of incident or accident, as a tel: URI per RFC 3966 (s4auto:hasDangerousGoodsPhone)."
+    },
+    "dangerousGoodsUnNumber": {
+      "type": "integer",
+      "description": "Property. UN number identifying the substance, per the UN Recommendations on the Transport of Dangerous Goods - Model Regulations (s4auto:hasDangerousGoodsUnNumber)."
+    },
+    "dangerousGoodsEmergencyActionCode": {
+      "type": "string",
+      "description": "Property. Physical signage placard code on the vehicle informing how an emergency service should deal with an incident (s4auto:hasDangerousGoodsEmergencyActionCode)."
+    },
+    "elevatedTemperature": {
+      "type": "boolean",
+      "description": "Property. TRUE if the carried dangerous goods are transported at high temperature (s4auto:ElevatedTemperature)."
+    },
+    "tunnelsRestricted": {
+      "type": "boolean",
+      "description": "Property. TRUE if the heavy vehicle carrying the dangerous goods is restricted from entering tunnels (s4auto:TunnelsRestricted)."
+    },
+    "limitedQuantity": {
+      "type": "boolean",
+      "description": "Property. TRUE if the carried dangerous goods are packed with limited quantity (s4auto:LimitedQuantity)."
+    },
+    "carriedByVehicle": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The Vehicle carrying these dangerous goods (inverse of s4auto:Vehicle saref:consistsOf DangerousGoods)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4auto/models/VulnerableRoadUser/schema.json",
+  "modelTags": "SAREF4AUTO,Transportation,ConnectedAndAutomatedVehicles,ITS",
+  "title": "Smart Data Models - SAREF4AUTO - VulnerableRoadUser",
+  "description": "Archetype of vulnerable road users: non-motorized road users as well as users of VRU vehicles (L-class vehicles, e.g. mopeds or motorcycles) participating in road traffic (s4auto:VulnerableRoadUser, subclass of s4auto:TrafficParticipant).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "VulnerableRoadUser"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'VulnerableRoadUser'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. WGS84 position, modeling s4auto:Position / s4auto:GeoPosition.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "number"
+          },
+          "description": "Property. Coordinates of the Point, in WGS84 [longitude, latitude] order."
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    },
+    "heading": {
+      "type": "number",
+      "description": "Property. Orientation of the horizontal velocity vector (s4auto:Heading), in degrees."
+    },
+    "speed": {
+      "type": "number",
+      "description": "Property. Magnitude of the velocity vector (s4auto:Velocity3d), in m/s."
+    },
+    "vruProfile": {
+      "type": "string",
+      "enum": [
+        "pedestrian",
+        "bicyclistAndLightVruVehicle",
+        "motorcyclist",
+        "animal"
+      ],
+      "description": "Property. VRU profile (s4auto:VulnerableRoadUser_*)."
+    },
+    "vruSubProfile": {
+      "type": "string",
+      "enum": [
+        "ordinary-pedestrian",
+        "road-worker",
+        "first-responder",
+        "bicyclist",
+        "e-scooter",
+        "horse-and-rider",
+        "pedelec",
+        "personal-transporter",
+        "rollerskater",
+        "speed-pedelec",
+        "wheelchair-user",
+        "moped",
+        "motorcycle",
+        "motorcycle-and-sidecar-left",
+        "motorcycle-and-sidecar-right",
+        "farm-animal",
+        "service-animal",
+        "wild-animal"
+      ],
+      "description": "Property. Narrower VRU sub-profile, where applicable (s4auto:VulnerableRoadUser_<Profile>_*)."
+    },
+    "trajectoryInterceptionProbability": {
+      "type": "number",
+      "description": "Property. Probability (%) that the observer's trajectory intercepts with the trajectory of this VRU (s4auto:TrajectoryInterceptionProbability)."
+    },
+    "vruDeviceUsage": {
+      "type": "string",
+      "enum": [
+        "idle",
+        "listeningToAudio",
+        "typing",
+        "calling",
+        "playingGames",
+        "reading",
+        "viewing"
+      ],
+      "description": "Property. Usage condition of the VRU's device (s4auto:VruDeviceUsage)."
+    },
+    "vruEnvironment": {
+      "type": "string",
+      "enum": [
+        "intersectionCrossing",
+        "zebraCrossing",
+        "sidewalk",
+        "onVehicleRoad",
+        "protectedGeographicArea"
+      ],
+      "description": "Property. Environment condition the VRU is in (s4auto:VruEnvironment)."
+    },
+    "vruSpecificExteriorLights": {
+      "type": "object",
+      "properties": {
+        "backFlashLight": {
+          "type": "boolean",
+          "description": "s4auto:VruSpecificExteriorLights_backFlashLight"
+        },
+        "helmetLight": {
+          "type": "boolean",
+          "description": "s4auto:VruSpecificExteriorLights_helmetLight"
+        },
+        "armLight": {
+          "type": "boolean",
+          "description": "s4auto:VruSpecificExteriorLights_armLight"
+        },
+        "legLight": {
+          "type": "boolean",
+          "description": "s4auto:VruSpecificExteriorLights_legLight"
+        },
+        "wheelLight": {
+          "type": "boolean",
+          "description": "s4auto:VruSpecificExteriorLights_wheelLight"
+        }
+      },
+      "description": "Property. Status of the VRU's exterior light switches (s4auto:VruSpecificExteriorLights)."
+    },
+    "vruMovementControl": {
+      "type": "string",
+      "enum": [
+        "braking",
+        "hardBraking",
+        "stopPedaling",
+        "brakingAndStopPedaling",
+        "hardBrakingAndStopPedaling",
+        "noReaction"
+      ],
+      "description": "Property. Status of the human control a VRU is exerting over their VRU vehicle (s4auto:VruMovementControl)."
+    },
+    "vruSizeClass": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "description": "Property. Approximate size class of the VRU, including any VRU vehicle used (s4auto:VruSizeClass)."
+    },
+    "cluster": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The VRUCluster this VRU is currently a member of, if any."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
