@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4agri/models/Animal/schema.json",
+  "modelTags": "SAREF4AGRI,Agriculture,Livestock,FeatureOfInterest",
+  "title": "Smart Data Models - SAREF4AGRI - Animal",
+  "description": "https://saref.etsi.org/saref4agri/Animal. An individual and identifiable living organism that feeds on organic matter, typically having specialized sense organs and nervous system and able to respond rapidly to stimuli. Subclass of saref:FeatureOfInterest (SAREF core class, not modeled here); animals and animal groups are related to measurements via the saref:FeatureOfInterest concept of SAREF. Animals can be further specialized using subclasses, e.g. a lactating cow created as a subclass of Animal (ETSI TS 103 410-6 clause 4.2.4/4.3.1 example, not part of the base ontology). NOTE: dataModel.Agrifood (the official Smart Data Models AgriFood subject) already publishes its own distinct entity also named 'Animal'; naming is kept verbatim from the ontology per translation rules, so this is a known name collision to resolve during Candidates review.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Animal"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Animal'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. rdfs:label (max 1 per the ttl restriction). The name of the animal."
+    },
+    "identifier": {
+      "type": "string",
+      "description": "Property. saref:hasIdentifier (max 1, xsd:string, inherited from SAREF core). The unique identifier of the animal (e.g. ear tag number)."
+    },
+    "taxonRank": {
+      "type": "string",
+      "description": "Property. obo:TAXRANK_1000000 ('has taxon rank') some obo:TAXRANK_0000000 ('Taxon rank'), reusing the OBO TAXRANK taxonomy vocabulary. The taxonomic classification of the animal, e.g. 'Bos taurus' (see the ex:Cow1/ex:Cow2 TAXRANK example in ETSI TS 103 410-6 clause 4.3.1, Figure 7)."
+    },
+    "dateOfBirth": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. s4agri:hasBirthDate (max 1, xsd:dateTime). The birth date of the animal."
+    },
+    "dateOfDeath": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. s4agri:hasDeathDate (max 1, xsd:dateTime). The death date of the animal, if applicable."
+    },
+    "isLocatedIn": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. s4agri:isLocatedIn some geo:Feature (inverse: s4agri:isLocationOf). The physical location (e.g. a Parcel) of the animal."
+    },
+    "isMemberOf": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. s4agri:isMemberOf some AnimalGroup (inverse: s4agri:hasMember). The AnimalGroup this animal is a member of."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

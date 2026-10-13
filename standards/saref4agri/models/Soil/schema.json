@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4agri/models/Soil/schema.json",
+  "modelTags": "SAREF4AGRI,Agriculture,Soil,FeatureOfInterest",
+  "title": "Smart Data Models - SAREF4AGRI - Soil",
+  "description": "https://saref.etsi.org/saref4agri/Soil. Upper layer of the earth in which plants grow. Subclass of saref:FeatureOfInterest (SAREF core class, not modeled here); the ontology declares no further own owl:Restriction for Soil beyond this subclassing. Soil-related measurements (e.g. soil moisture, soil temperature, captured by SoilTensiometer/Thermometer observations) are produced against this entity as their saref:FeatureOfInterest, not stored directly on the Soil entity itself. NOTE: the official dataModel.Agrifood subject publishes a conceptually similar but differently-named 'AgriSoil' entity.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Soil"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Soil'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. A human-readable name for this soil feature of interest."
+    },
+    "isLocatedIn": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. s4agri:isLocatedIn some geo:Feature. The s4agri:isLocatedIn property definition ('the physical location of a saref4agri entity, e.g. an animal') is generic and reused here to relate a Soil feature of interest to the Parcel/Farm it is physically part of; not formally restricted to Soil in the published v2.1.1 ttl."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

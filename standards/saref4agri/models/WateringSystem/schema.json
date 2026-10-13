@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4agri/models/WateringSystem/schema.json",
+  "modelTags": "SAREF4AGRI,Agriculture,SmartIrrigation,System",
+  "title": "Smart Data Models - SAREF4AGRI - WateringSystem",
+  "description": "https://saref.etsi.org/saref4agri/WateringSystem. A class to describe a system that dispenses or irrigates water. Subclass of ssn:System (W3C SSN, not modeled here); inherited ssn:System vocabulary (ssn:implements, generic composition semantics) is documented here rather than repeated structurally, per the Gaia-X inheritance-flattening precedent. See the ex:ArvalisIrrinovStation01 example in ETSI TS 103 410-6 clause 4.3.2, Figure 9, which has sub-systems (ssn:hasSubSystem) including SoilTensiometer sensors.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "WateringSystem"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'WateringSystem'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. A human-readable name for this watering system, e.g. 'ex:ArvalisIrrinovStation01'."
+    },
+    "hasSubSystem": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. ssn:hasSubSystem (inverse: ssn:deployedSystem context). The components of this watering system, e.g. WateringGun, WateringValve and SoilTensiometer instances."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ],
+      "description": "Property. The current operational state of the watering system."
+    },
+    "isHostedBy": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. sosa:isHostedBy (inverse: sosa:hosts). The Platform hosting this system."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

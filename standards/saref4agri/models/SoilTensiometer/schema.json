@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4agri/models/SoilTensiometer/schema.json",
+  "modelTags": "SAREF4AGRI,Agriculture,SmartIrrigation,Sensor",
+  "title": "Smart Data Models - SAREF4AGRI - SoilTensiometer",
+  "description": "https://saref.etsi.org/saref4agri/SoilTensiometer. A sensor that measures the soil moisture. Subclass of saref:Sensor (SAREF core class, not modeled here); inherited saref:Sensor vocabulary (saref:measuresProperty, saref:hasValue, etc.) is documented here rather than repeated structurally, per the Gaia-X inheritance-flattening precedent. See the ex:ArvalisIrrinovStation01SoilSensor02 example in ETSI TS 103 410-6 clause 4.3.2, Figure 9: this SoilTensiometer observes SoilMoisture with a measured value of 1 490,0 (om:millibar).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "SoilTensiometer"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'SoilTensiometer'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "observes": {
+      "type": "string",
+      "enum": [
+        "SoilMoisture"
+      ],
+      "description": "Property/Relationship. saref:observes. The s4agri:Property named individual this sensor measures: 'the amount of water or humidity contained in the soil'. IRI: https://saref.etsi.org/saref4agri/SoilMoisture."
+    },
+    "hasFeatureOfInterest": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. saref:hasFeatureOfInterest. The Soil (or Parcel) this measurement is about."
+    },
+    "value": {
+      "type": "number",
+      "description": "Property. saref:hasValue. The last soil-moisture (tension) measurement reported by the sensor, e.g. 1 490,0 per the ETSI TS 103 410-6 clause 4.3.2 example."
+    },
+    "unitCode": {
+      "type": "string",
+      "description": "Property. saref:isMeasuredIn. The unit of measure for 'value', e.g. 'millibar' (om:millibar), per the ETSI TS 103 410-6 clause 4.3.2 example."
+    },
+    "dateObserved": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. The date and time this measurement was made."
+    },
+    "isSubSystemOf": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. ssn:hasSubSystem (inverse). The System this sensor is a component/subsystem of, e.g. the ex:ArvalisIrrinovStation01 irrigation station in the ETSI TS 103 410-6 clause 4.3.2 example."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
