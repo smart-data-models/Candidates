@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4grid/models/SpecialDayEntry/schema.json",
+  "modelTags": "SAREF4GRID,SmartGrid,Automation,Tariff,ActivityCalendar",
+  "title": "Smart Data Models - SAREF4GRID - SpecialDayEntry",
+  "description": "https://saref.etsi.org/saref4grid/SpecialDayEntry. This class represents the parameters that are needed by an activity calendar for adding a new special day. Subclass of SAREF4GRID's own ComplexActionOperationInput; inherits obtainInputFromObis (documented on the CosemOperationInput model and not repeated here).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "SpecialDayEntry"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'SpecialDayEntry'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasIndex": {
+      "type": "integer",
+      "description": "Property. It defines the index of the special day."
+    },
+    "hasSpecialDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. It defines the date at which a normal day is considered a special date."
+    },
+    "hasDayId": {
+      "type": "integer",
+      "description": "Property. It defines the unique identifier of a day."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "hasIndex",
+    "hasSpecialDate",
+    "hasDayId"
+  ]
+}

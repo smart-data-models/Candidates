@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4grid/models/RangeDescriptor/schema.json",
+  "modelTags": "SAREF4GRID,SmartGrid,COSEM,RemoteControl",
+  "title": "Smart Data Models - SAREF4GRID - RangeDescriptor",
+  "description": "https://saref.etsi.org/saref4grid/RangeDescriptor. In the case of a get service of a profile generic class a selective access can be specified. This indicates the range of values to be retrieved from the profile generic class. Subclass of SAREF4GRID's own SelectiveAccess.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "RangeDescriptor"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'RangeDescriptor'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "obtainFromValue": {
+      "type": "string",
+      "description": "Property. It restricts the range of entries to be retrieved from a profile generic, defining the oldest or smallest entry to retrieve; represented here as a string since its range varies with the captured object's own datatype."
+    },
+    "obtainToValue": {
+      "type": "string",
+      "description": "Property. It restricts the range of entries to be retrieved from a profile generic, defining the newest or largest entry to retrieve; represented here as a string since its range varies with the captured object's own datatype."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "obtainFromValue",
+    "obtainToValue"
+  ]
+}

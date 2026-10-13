@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4grid/models/NetworkInterface/schema.json",
+  "modelTags": "SAREF4GRID,SmartGrid,SmartMeter,DeviceManagement",
+  "title": "Smart Data Models - SAREF4GRID - NetworkInterface",
+  "description": "https://saref.etsi.org/saref4grid/NetworkInterface. [COSEM] This class holds the MAC address of the physical device (or, more generally, of a device or software). There shall be an instance of this class for each network interface of the physical device.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "NetworkInterface"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'NetworkInterface'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasMACAddress": {
+      "type": "string",
+      "description": "Property. [COSEM] Holds the MAC address."
+    },
+    "hasObis": {
+      "type": "string",
+      "description": "Property. [COSEM/IEC 62056] OBIS code uniquely identifying this network interface COSEM object."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "hasMACAddress"
+  ]
+}

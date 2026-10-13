@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4grid/models/SetOperationObjectInput/schema.json",
+  "modelTags": "SAREF4GRID,SmartGrid,COSEM,RemoteControl",
+  "title": "Smart Data Models - SAREF4GRID - SetOperationObjectInput",
+  "description": "https://saref.etsi.org/saref4grid/SetOperationObjectInput. This class specifies that just the range of an object property of the instance is going to be modified. Subclass of SAREF4GRID's own CosemOperationInput; inherits obtainInputFromObis (documented on the CosemOperationInput model and not repeated here).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "SetOperationObjectInput"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'SetOperationObjectInput'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "obtainInputForProperty": {
+      "type": "string",
+      "description": "Property. It identifies the attribute of an instance (COSEM object) of a class from which the data is going to be obtained. The value of this property conforms to an object property of SAREF4GRID."
+    },
+    "hasInputObjectType": {
+      "type": "string",
+      "description": "Property. It identifies the type of the attribute of an instance (COSEM object) of a class from which the data is going to be obtained."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "obtainInputForProperty",
+    "hasInputObjectType"
+  ]
+}

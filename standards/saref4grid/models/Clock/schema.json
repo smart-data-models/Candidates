@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4grid/models/Clock/schema.json",
+  "modelTags": "SAREF4GRID,SmartGrid,SmartMeter,DeviceManagement",
+  "title": "Smart Data Models - SAREF4GRID - Clock",
+  "description": "https://saref.etsi.org/saref4grid/Clock. [COSEM] This class models the device clock, managing all information related to date and time including deviations of the local time to a generalized time reference (UTC) due to time zones and daylight-saving time schemes.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Clock"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Clock'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. [COSEM] Meter's local date and time."
+    },
+    "hasTimeZone": {
+      "type": "integer",
+      "description": "Property. [COSEM] The deviation of local, normal time to UTC in minutes. The value depends on the geographical location of the meter."
+    },
+    "hasStatus": {
+      "type": "integer",
+      "description": "Property. [COSEM] Status of the clock."
+    },
+    "hasClockBase": {
+      "type": "integer",
+      "description": "Property. [COSEM] Defines where the basic timing information comes from: (0) not defined, (1) internal crystal, (2) mains frequency 50 Hz, (3) mains frequency 60 Hz, (4) GPS (global positioning system), (5) radio controlled."
+    },
+    "hasDaylightSavingsBegin": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. [COSEM] Defines the local switch date and time when the local time starts to deviate from the normal time."
+    },
+    "hasDaylightSavingsEnd": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. [COSEM] Defines the local switch date and time when the local time ends to deviate from the local normal time."
+    },
+    "hasDaylightSavingsDeviation": {
+      "type": "integer",
+      "description": "Property. [COSEM] Contains the number of minutes by which the deviation in generalized time shall be corrected at daylight savings begin."
+    },
+    "hasDaylightSavingsEnabled": {
+      "type": "boolean",
+      "description": "Property. [COSEM] Enable and disable the daylight savings time feature."
+    },
+    "hasObis": {
+      "type": "string",
+      "description": "Property. [COSEM/IEC 62056] OBIS code uniquely identifying this clock COSEM object."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "hasTime",
+    "hasTimeZone",
+    "hasStatus",
+    "hasClockBase",
+    "hasDaylightSavingsBegin",
+    "hasDaylightSavingsEnd",
+    "hasDaylightSavingsDeviation",
+    "hasDaylightSavingsEnabled"
+  ]
+}

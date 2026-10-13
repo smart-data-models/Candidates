@@ -1,0 +1,147 @@
+title: "SAREF4GRID"
+publisher: "ETSI"
+sourceUrl: "https://saref.etsi.org/saref4grid/v2.1.1/"
+sourceOntologyVersion: "v2.1.1"
+normativeReference: "ETSI TS 103 410-12 V1.1.1 (2023-11): SmartM2M; Extension to SAREF; Part 12: Smart Grid Domain, https://www.etsi.org/deliver/etsi_ts/103400_103499/10341012/01.01.01_60/ts_10341012v010101p.pdf"
+domains:
+  - SmartGrid
+  - EnergyMetering
+  - Energy
+description: >
+  SAREF4GRID is the SAREF (Smart Appliances REFerence ontology) extension for
+  the smart grid domain, developed to describe smart electricity meters and
+  the data/services they expose, explicitly aligned with DLMS/COSEM
+  (IEC 62056) so that SAREF4GRID classes map cleanly onto real COSEM objects
+  identified by OBIS codes. It covers: the core metering device (GridMeter,
+  a subclass of saref:Meter) and its device-management components (Firmware,
+  NetworkInterface, Clock with timezone/daylight-saving handling,
+  BreakerState for remote connect/disconnect); tariff and billing automation
+  (ActivityCalendar, SeasonProfile, DayProfile/RegularDayProfile/
+  SpecialDayProfile, DaySchedule, SpecialDayEntry, PresetAdjustingTime,
+  ScriptTable, Script, SingleScheduledAction); generic data capture
+  (ProfileGeneric, aligned with COSEM "profile generic" objects); power-line
+  and meter measurement property kinds (EnergyAndPowerProperty,
+  QualityProperty, MeterProperty -- each populated, in the source ontology,
+  by a controlled set of named individuals such as ActiveEnergy, Voltage,
+  Current, ReactivePower, DemandRegister, PowerLimit, and modelled here via a
+  propertyType enum plus a SKOS-style broaderPropertyType field -- and
+  PowerLine, the saref:FeatureOfInterest these properties are properties
+  of); and the remote COSEM read/write/action service machinery (GetService,
+  SetService, ActionService and their GetOperation/SetOperation/
+  ActionOperation, each with typed CosemOperationInput/GetOperationOutput
+  subclasses and SelectiveAccess subclasses EntryDescriptor/RangeDescriptor).
+  40 own SAREF4GRID classes are translated; saref core classes it imports
+  and subclasses (saref:Meter, saref:Service, saref:Operation, saref:State,
+  saref:Property, saref:Function, saref:FeatureOfInterest, saref:PropertyValue,
+  saref:Observation) and oneM2M classes it reuses (Device, Service,
+  OperationInput, OperationOutput) are referenced in descriptions but not
+  re-modelled as their own candidates here, since they belong to SAREF core /
+  oneM2M, not to this extension.
+license: "ETSI Forge Software License (https://forge.etsi.org/etsi-software-license), per the ontology's own dcterms:license statement"
+licenseNote: >
+  The ontology file's own metadata (dcterms:license) points to the ETSI
+  Forge Software License; verify applicability/compatibility before
+  promoting this candidate out of Candidates/.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-10-14 from:
+    - the SAREF4GRID v2.1.1 Turtle ontology file
+      (https://saref.etsi.org/saref4grid/saref4grid.ttl), parsed with
+      rdflib to enumerate all 46 owl:Class declarations (40 of them native
+      to SAREF4GRID; the other 6 -- schema:Organization, schema:Person,
+      oneM2M:Device, oneM2M:Service, oneM2M:OperationInput,
+      oneM2M:OperationOutput -- are external classes merely referenced/
+      subclassed, not SAREF4GRID's own, and are not modelled here), every
+      owl:ObjectProperty/owl:DatatypeProperty (local rdfs:domain triples
+      and anonymous owl:Restriction subClassOf axioms were both collected
+      and merged per class to get each class's exhaustive own attribute
+      set), and the 28 owl:NamedIndividual instances of EnergyAndPowerProperty/
+      QualityProperty/MeterProperty (ActiveEnergy, ActivePower,
+      ApparentPower, Current, DemandRegister, PowerFactor, ReactiveEnergy,
+      ReactivePower, Voltage; DurationLongPowerFailure, DurationVoltageSag,
+      DurationVoltageSwell; BillingPeriod, LongPowerFailuresNumber,
+      Manufacturer, Network, Phase, PhaseAngle, PowerLimit, PowerQuality,
+      ProfileStatus, Quadrant, ScreenDisplay, Threshold, TimeThreshold,
+      TransformerRatio, VoltageSagNumber, VoltageSwellNumber);
+    - the normative ETSI TS 103 410-12 V1.1.1 PDF (38 pages, read in full
+      via pdftotext), in particular clause 6's 12 worked usage-example
+      figures (Figures 20-41: electric grid meter information, firmware,
+      network interface, clock, breaker state, script table/scheduled
+      action, activity calendar, two power-line measurement examples,
+      profile generic, and five get/set/action service examples), whose
+      entity/attribute names (e.g. ex:Meter1234, ex:ActivePLCFirmware,
+      ex:TotalIncrementalActiveEnergyImport,
+      ex:MaximumDemandRegisterImportC1TP1, ex:ActivityCalendarContract1-1234)
+      and modelling pattern (OBIS-coded COSEM objects; power-line/meter
+      properties related to a small set of general properties via SKOS
+      broader/narrower) directly informed the example payloads and the
+      propertyType/broaderPropertyType design below;
+    - the SAREF core v4.1.1 Turtle file (https://saref.etsi.org/core/v4.1.1/saref.ttl),
+      consulted to confirm the exact names/domains/ranges of the core SAREF
+      properties SAREF4GRID classes reuse without redeclaring (saref:hasInput,
+      saref:hasOutput domain Operation; saref:hasOperation domain Service,
+      range Operation; saref:hasProperty domain FeatureOfInterest, range
+      Property; saref:hasPropertyValue / saref:isValueOfProperty).
+
+  MODELLING DECISION -- saref:Property named individuals are not separate
+  entity types: EnergyAndPowerProperty, QualityProperty and MeterProperty
+  are each populated in the ontology by a small, closed set of named
+  individuals (e.g. s4grid:ActiveEnergy, s4grid:Voltage, s4grid:PowerLimit)
+  representing general/broad property kinds; concrete meter-specific
+  properties (e.g. ex:TotalIncrementalActiveEnergyImport,
+  ex:ActivePowerLimitContract1TariffPeriod1) are their own OBIS-identified
+  instances related to one of these general individuals via skos:broader
+  per the specification's own clause 6 worked examples. These are OWL
+  individuals, not OWL classes -- translating "every class" does not require
+  giving each one its own entity-type model. Instead, each of the three
+  group classes is translated as one entity type carrying a propertyType
+  enum (closed to its own set of named individuals), a broaderPropertyType
+  field for the skos:broader relationship, hasObis, and unitOfMeasure. This
+  keeps the named individuals fully represented as controlled-vocabulary
+  values while avoiding ~28 near-identical, attribute-free entity types.
+
+  NAMING: class and property names are preserved verbatim from the source
+  ontology (e.g. `GridMeter`, `hasObis`, `executesScript`) per
+  system_prompt.md's naming rules -- no forced PascalCase/camelCase
+  renaming of ontology-native identifiers. `propertyType` and
+  `broaderPropertyType` are the only ontology-adjacent names invented for
+  this translation (to carry the SKOS-based general/specific property
+  distinction), and are named in camelCase per the recommendation for
+  newly-invented attribute names.
+
+  SUBCLASS/INHERITANCE NOTE: following the convention already used by
+  other ontology-derived candidates in this repository (e.g.
+  gaiax-ontology-v2111), a SAREF4GRID subclass's own schema.json does not
+  repeat attributes already documented on its SAREF4GRID parent's model
+  (e.g. RegularDayProfile/SpecialDayProfile do not repeat DayProfile's
+  hasDaySchedule; the various CosemOperationInput subclasses do not repeat
+  obtainInputFromObis) -- each subclass's description names its parent and
+  points there.
+
+  hasObis PLACEMENT: s4grid:hasObis is declared as a global (domain-less)
+  datatype property in the ontology; this translation places it, as an
+  optional attribute, on exactly the classes the specification's clause 6
+  prose states are "represented by an OBIS code": Firmware, NetworkInterface,
+  Clock, BreakerState, ScriptTable, SingleScheduledAction, ActivityCalendar,
+  ProfileGeneric, EnergyAndPowerProperty, QualityProperty and MeterProperty.
+
+  CORE/EXTERNAL REFERENCES KEPT AS RELATIONSHIPS, NOT MODELLED: several
+  relationships point to core SAREF classes deliberately left unmodelled
+  here (out of SAREF4GRID's own scope) -- saref:PropertyValue
+  (GridMeter.hasPropertyValue, ProfileGeneric.relatedPropertyValue),
+  saref:Observation (ProfileGeneric.relatedObservation). These are
+  documented as Relationship-typed attributes whose target is a core SAREF
+  class, consistent with how core-SAREF subclassing (saref:Meter,
+  saref:Service, saref:Operation, saref:State, saref:Property,
+  saref:Function, saref:FeatureOfInterest) is noted in each affected
+  model's description rather than re-modelled.
+
+  DUPLICATION RISK, NOT CHECKED IN DETAIL: this repository's
+  saref4ener-candidates branch (translated in parallel, covering the
+  related but distinct SAREF4ENER energy-flexibility/demand-response
+  extension) and the published Smart Data Models energy/device models may
+  overlap conceptually with some classes here (e.g. generic device/
+  property patterns). Should be checked before promoting this candidate
+  out of Candidates/.

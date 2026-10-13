@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4grid/models/GetOperation/schema.json",
+  "modelTags": "SAREF4GRID,SmartGrid,COSEM,RemoteControl",
+  "title": "Smart Data Models - SAREF4GRID - GetOperation",
+  "description": "https://saref.etsi.org/saref4grid/GetOperation. This class is the means of a get service to communicate in a procedure-type manner over the network (i.e. transmit data to/from other devices). It is the machine-interpretable exposure of a human-understandable Command to a network. Subclass of saref:Operation (core SAREF).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "GetOperation"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'GetOperation'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasInput": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship (saref:hasInput, core SAREF). The COSEM-instance/property input of the get operation (a CosemOperationInput subtype, e.g. GetOperationPropertyInput)."
+    },
+    "hasOutput": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship (saref:hasOutput, core SAREF). The output of the get operation (a GetOperationOutput subtype: GetOperationDataOutput or GetOperationObjectOutput)."
+    },
+    "hasSelectiveAccess": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The selective access of a profile generic get service."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "hasInput",
+    "hasOutput"
+  ]
+}

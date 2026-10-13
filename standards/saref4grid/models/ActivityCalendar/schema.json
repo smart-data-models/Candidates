@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4grid/models/ActivityCalendar/schema.json",
+  "modelTags": "SAREF4GRID,SmartGrid,Automation,Tariff,ActivityCalendar",
+  "title": "Smart Data Models - SAREF4GRID - ActivityCalendar",
+  "description": "https://saref.etsi.org/saref4grid/ActivityCalendar. [COSEM] This class allows handling various tariff structures in the meter. This class provides a list of scheduled actions, following the classical way of calendar-based schedules by defining seasons, weeks, etc.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ActivityCalendar"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ActivityCalendar'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasCalendarNameActive": {
+      "type": "string",
+      "description": "Property. [COSEM] User defined name identifying the active calendar (currently active), which is descriptive to the set of scripts activated by the object."
+    },
+    "hasCalendarNamePassive": {
+      "type": "string",
+      "description": "Property. [COSEM] User defined name identifying the passive calendar (will be activated), which is descriptive to the set of scripts activated by the object."
+    },
+    "hasActivatePassiveCalendarTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. [COSEM] Defines the time when the passive calendar will be activated."
+    },
+    "hasActiveSeasonProfile": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. [COSEM] Contains a list of active season profiles. These season profiles form an active calendar."
+    },
+    "hasPassiveSeasonProfile": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. [COSEM] Contains a list of passive season profiles. These season profiles form a passive calendar."
+    },
+    "hasObis": {
+      "type": "string",
+      "description": "Property. [COSEM/IEC 62056] OBIS code uniquely identifying this activity calendar COSEM object."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "hasCalendarNameActive",
+    "hasCalendarNamePassive"
+  ]
+}
