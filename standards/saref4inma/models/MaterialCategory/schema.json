@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4inma/models/MaterialCategory/schema.json",
+  "modelTags": "SAREF4INMA,Manufacturing,Item",
+  "title": "Smart Data Models - SAREF4INMA - MaterialCategory",
+  "description": "https://saref.etsi.org/saref4inma/MaterialCategory . Describes a category of material in terms of its static properties, e.g. a certain category of steel or plastic. Each MaterialCategory can have multiple related MaterialBatches, which represent the physical material; essential properties of the material related to a MaterialCategory are similar across its batches, though small deviations might occur.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "MaterialCategory"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'MaterialCategory'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "isCategoryOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The material batches that belong to this material category (inverse of MaterialBatch's belongsToCategory). Target model: 'MaterialBatch'."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

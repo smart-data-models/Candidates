@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4inma/models/Factory/schema.json",
+  "modelTags": "SAREF4INMA,Manufacturing,Location",
+  "title": "Smart Data Models - SAREF4INMA - Factory",
+  "description": "https://saref.etsi.org/saref4inma/Factory . A subclass of the external s4bldg:Building class (SAREF4BLDG), specialized for SAREF4INMA: a factory represents one or more organizations sharing a definite mission, goals and objectives, which provides an output such as a product (definition taken from IEC 62264). A factory can be divided into one or multiple sites.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Factory"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Factory'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasSpace": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The sites this factory is divided into. Object property reused from the imported SAREF4BLDG ontology (s4bldg:hasSpace, not redefined in the SAREF4INMA ttl itself); included here because Figure 3/8 of ETSI TS 103 410-5 explicitly uses it to structure the factory/site/area/work-center hierarchy. Target model: 'Site'."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

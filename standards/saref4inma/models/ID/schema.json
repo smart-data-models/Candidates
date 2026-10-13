@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4inma/models/ID/schema.json",
+  "modelTags": "SAREF4INMA,Identifier,Manufacturing",
+  "title": "Smart Data Models - SAREF4INMA - ID",
+  "description": "https://saref.etsi.org/saref4inma/ID . A unique identifier. s4inma:ID is a subclass of skos:ConceptScheme and the root of the SAREF4INMA identifier hierarchy; GTIN8ID, GTIN12ID, GTIN13ID, GTIN14ID, IRDI and UUID are its concrete subclasses, each adding its own more specific identifier-value property (documented on each of those models) instead of repeating hasIDValue.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ID"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ID'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasIDValue": {
+      "type": "string",
+      "description": "Property. Model:'https://saref.etsi.org/saref4inma/hasIDValue'. The value of the identifier expressed as a string (used as an alternative to, or in combination with, the hasIdentifier relationship linking an entity to its ID)."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "hasIDValue"
+  ]
+}

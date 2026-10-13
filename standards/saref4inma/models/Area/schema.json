@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4inma/models/Area/schema.json",
+  "modelTags": "SAREF4INMA,Manufacturing,Location",
+  "title": "Smart Data Models - SAREF4INMA - Area",
+  "description": "https://saref.etsi.org/saref4inma/Area . A subclass of the external s4bldg:BuildingSpace class (SAREF4BLDG), used to define the physical spaces of the building. According to IEC 62264, areas are physical, geographical or logical groupings of resources determined by the site. A site can be divided into areas, and areas contain work centers. Disjoint with s4inma:Site and s4inma:WorkCenter per the ontology's AllDisjointClasses axiom.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Area"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Area'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "contains": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The work centers contained in this area. Object property reused from the imported SAREF4BLDG ontology (s4bldg:contains, not redefined in the SAREF4INMA ttl itself); included here because Figure 3/8 of ETSI TS 103 410-5 explicitly uses it to structure the factory/site/area/work-center hierarchy. Target model: 'WorkCenter'."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
