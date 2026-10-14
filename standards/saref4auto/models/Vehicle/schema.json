@@ -1,0 +1,418 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4auto/models/Vehicle/schema.json",
+  "modelTags": "SAREF4AUTO,Transportation,ConnectedAndAutomatedVehicles,ITS",
+  "title": "Smart Data Models - SAREF4AUTO - Vehicle",
+  "description": "Self-propelled transport device, along with any attachments (e.g. trailers), that is a legal user of the transportation network (s4auto:Vehicle, subclass of s4auto:TrafficParticipant; Source: ISO/TS 19091:2019). Examples of vehicle kinds are car, truck, public transport and two-wheeler. The main IoT device considered in the vehicle is the s4auto:OnBoardUnit (see AutomotiveDevice).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Vehicle"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Vehicle'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. WGS84 position, modeling s4auto:Position / s4auto:GeoPosition.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "number"
+          },
+          "description": "Property. Coordinates of the Point, in WGS84 [longitude, latitude] order."
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    },
+    "heading": {
+      "type": "number",
+      "description": "Property. Orientation of the horizontal velocity vector (s4auto:Heading), in degrees."
+    },
+    "speed": {
+      "type": "number",
+      "description": "Property. Magnitude of the velocity vector (s4auto:Velocity3d), in m/s."
+    },
+    "acceleration": {
+      "type": "number",
+      "description": "Property. Magnitude of the acceleration vector (s4auto:Acceleration3d), in m/s^2."
+    },
+    "yawRate": {
+      "type": "number",
+      "description": "Property. Vehicle rotation rate around the z-axis centred on the empty-loaded vehicle's centre of mass (s4auto:YawRate), in degree/s."
+    },
+    "curvature": {
+      "type": "number",
+      "description": "Property. Curvature of the vehicle trajectory, as the inverse of the vehicle turning-curve radius (s4auto:Curvature), in 1/m. Positive values indicate a turning curve to the left of the driver."
+    },
+    "vehicleKind": {
+      "type": "string",
+      "enum": [
+        "articulatedBus",
+        "articulatedRoadTrain",
+        "busSemiTrailer",
+        "busTrailer",
+        "bus",
+        "caravan",
+        "commercialVehicle",
+        "compositeRoadTrain",
+        "convertibleSaloon",
+        "convertible",
+        "coupe",
+        "doubleRoadTrain",
+        "forwardControlPassengerCar",
+        "generalPurposeSemiTrailer",
+        "generalPurposeTrailer",
+        "interurbanCoach",
+        "longDistanceCoach",
+        "minibus",
+        "moped",
+        "motorCycle",
+        "multipurposePassengerCar",
+        "passengerCar",
+        "passengerRoadTrain",
+        "pullmanSaloon",
+        "roadTrain",
+        "saloon",
+        "semiTrailerTowingVehicle",
+        "semiTrailer",
+        "specialBus",
+        "specialCommercialVehicle",
+        "specialPassengerCar",
+        "specialRoadTrain",
+        "specialSemiTrailer",
+        "specialTrailer",
+        "specialVehicle",
+        "stationWagon",
+        "trailer",
+        "trailingTowingVehicle",
+        "trolleyBus",
+        "truckStationWagon",
+        "urbanBus"
+      ],
+      "description": "Property. Kind of vehicle, as defined by ISO 3833 (s4auto:*Vehicle)."
+    },
+    "vehicleIdentification": {
+      "type": "object",
+      "properties": {
+        "wmiNumber": {
+          "type": "string",
+          "description": "World Manufacturer Identifier (WMI) code, assigned according to ISO 3779 (s4auto:WMInumber)."
+        },
+        "vds": {
+          "type": "string",
+          "description": "Vehicle Descriptor Section (VDS), assigned according to ISO 3779 (s4auto:VDS)."
+        }
+      },
+      "description": "Property. Vehicle identification (s4auto:VehicleIdentification)."
+    },
+    "vehicleHeight": {
+      "type": "number",
+      "description": "Property. Height of the vehicle measured from the ground to the highest point, excluding antennas, in metres (s4auto:VehicleHeight)."
+    },
+    "vehicleLength": {
+      "type": "number",
+      "description": "Property. Length of the vehicle, in metres (s4auto:VehicleLength)."
+    },
+    "vehicleWidth": {
+      "type": "number",
+      "description": "Property. Width of the vehicle, excluding side mirrors, in metres (s4auto:VehicleWidth)."
+    },
+    "vehicleMass": {
+      "type": "number",
+      "description": "Property. Mass of the empty-loaded vehicle, in kg (s4auto:VehicleMass; ISO 1176 clause 4.6)."
+    },
+    "wheelBase": {
+      "type": "number",
+      "description": "Property. Perpendicular distance between front and rear axle of the vehicle (s4auto:WheelBaseVehicle), in metres."
+    },
+    "turningRadius": {
+      "type": "number",
+      "description": "Property. Smallest circular turn (U-turn) the vehicle is capable of making, in metres (s4auto:TurningRadius)."
+    },
+    "numberOfOccupants": {
+      "type": "integer",
+      "description": "Property. Number of occupants in the vehicle (s4auto:NumberOfOccupants)."
+    },
+    "driveDirection": {
+      "type": "string",
+      "enum": [
+        "forward",
+        "backward"
+      ],
+      "description": "Property. Direction in which the vehicle is moving (s4auto:DriveDirection)."
+    },
+    "embarkationStatus": {
+      "type": "boolean",
+      "description": "Property. Whether the vehicle (e.g. public transport, truck) is under the embarkation process (s4auto:EmbarkationStatus)."
+    },
+    "exteriorLights": {
+      "type": "object",
+      "properties": {
+        "lowBeamHeadlightsOn": {
+          "type": "boolean",
+          "description": "s4auto:ExteriorLights_lowBeamHeadlightsOn"
+        },
+        "highBeamHeadlightsOn": {
+          "type": "boolean",
+          "description": "s4auto:ExteriorLights_highBeamHeadlightsOn"
+        },
+        "leftTurnSignalOn": {
+          "type": "boolean",
+          "description": "s4auto:ExteriorLights_leftTurnSignalOn"
+        },
+        "rightTurnSignalOn": {
+          "type": "boolean",
+          "description": "s4auto:ExteriorLights_rightTurnSignalOn"
+        },
+        "daytimeRunningLightsOn": {
+          "type": "boolean",
+          "description": "s4auto:ExteriorLights_daytimeRunningLightsOn"
+        },
+        "reverseLightOn": {
+          "type": "boolean",
+          "description": "s4auto:ExteriorLights_reverseLightOn"
+        },
+        "fogLightOn": {
+          "type": "boolean",
+          "description": "s4auto:ExteriorLights_fogLightOn"
+        },
+        "parkingLightsOn": {
+          "type": "boolean",
+          "description": "s4auto:ExteriorLights_parkingLightsOn"
+        }
+      },
+      "description": "Property. Status of the exterior light switches of the vehicle (s4auto:ExteriorLights). TRUE indicates the corresponding switch is on; it does not indicate whether the lamp is alight."
+    },
+    "vehicleRole": {
+      "type": "string",
+      "enum": [
+        "default",
+        "publicTransport",
+        "specialTransport",
+        "dangerousGoods",
+        "roadWork",
+        "rescue",
+        "emergency",
+        "safetyCar",
+        "agriculture",
+        "commercial",
+        "military",
+        "roadOperator",
+        "taxi"
+      ],
+      "description": "Property. Role played by the vehicle at a point in time (s4auto:VehicleRole)."
+    },
+    "vehicleAcceleration": {
+      "type": "string",
+      "enum": [
+        "accelerate",
+        "decelerate"
+      ],
+      "description": "Property. Whether the vehicle's horizontal speed is increasing or decreasing (s4auto:VehicleAcceleration)."
+    },
+    "turningDirection": {
+      "type": "string",
+      "enum": [
+        "left",
+        "right"
+      ],
+      "description": "Property. Direction in which the vehicle is turning (s4auto:TurningDirection)."
+    },
+    "itineraryPath": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "Point"
+            ]
+          },
+          "coordinates": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "description": "Property. Ordered list of waypoints forming the vehicle's planned itinerary (s4auto:ItineraryPath, composed of s4auto:Position values)."
+    },
+    "stabilityLossProbability": {
+      "type": "integer",
+      "description": "Property. Estimated probability of loss of stability, 0 (stable) to 50 (total loss of stability); 63 means unavailable (s4auto:StabilityLossProbability)."
+    },
+    "steeringWheelAngle": {
+      "type": "number",
+      "description": "Property. Steering wheel angle of the vehicle, in the ISO 8855 vehicle coordinate system, in degrees (s4auto:SteeringWheelAngle)."
+    },
+    "vehicleAutomationLevel": {
+      "type": "integer",
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "description": "Property. SAE J3016 driving automation level: 0 (no automation) to 5 (full automation) (s4auto:VehicleAutomationLevel)."
+    },
+    "vehicleEnvironment": {
+      "type": "object",
+      "properties": {
+        "airHumidity": {
+          "type": "number",
+          "description": "Air humidity, in % (s4auto:AirHumidity)."
+        },
+        "barometricPressure": {
+          "type": "number",
+          "description": "Uncompensated atmospheric pressure, in Pa (s4auto:BarometricPressure)."
+        },
+        "precipitationIntensity": {
+          "type": "number",
+          "description": "Total rainfall during one hour per square metre, in mm/h (s4auto:PrecipitationIntensity)."
+        },
+        "temperature": {
+          "type": "number",
+          "description": "Air temperature around the vehicle, in degrees Celsius (s4auto:Temperature)."
+        }
+      },
+      "description": "Property. Entities and conditions present in the area around the vehicle (s4auto:VehicleEnvironment)."
+    },
+    "platoonRole": {
+      "type": "string",
+      "enum": [
+        "leader",
+        "follower",
+        "readyForLeading",
+        "trailing",
+        "unknown"
+      ],
+      "description": "Property. Role the vehicle assumes in a platoon (s4auto:PlatoonRole)."
+    },
+    "platoonAutomationLevel": {
+      "type": "string",
+      "enum": [
+        "levelA",
+        "levelB",
+        "levelC"
+      ],
+      "description": "Property. Level of automation of the vehicle while platooning, per the ENSEMBLE project (s4auto:PlatoonAutomationLevel)."
+    },
+    "platoonVehicleState": {
+      "type": "string",
+      "enum": [
+        "standalone",
+        "searching",
+        "forming",
+        "engaging",
+        "platooning",
+        "disengaging",
+        "unknown"
+      ],
+      "description": "Property. State of the vehicle with respect to platooning (s4auto:PlatoonVehicleState)."
+    },
+    "platoonPosition": {
+      "type": "integer",
+      "description": "Property. Index of the vehicle in its platoon, starting from 0 (leader) up to N (trailing vehicle) (s4auto:PlatoonPosition)."
+    },
+    "vehicleParkingState": {
+      "type": "string",
+      "enum": [
+        "parked",
+        "parking",
+        "drivingToParkingSpot",
+        "drivingToPickUpSpot",
+        "atDropOffSpot",
+        "atPickUpSpot",
+        "charging"
+      ],
+      "description": "Property. State related to the parking phases of the vehicle (s4auto:VehicleParkingState)."
+    },
+    "platoon": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The Platoon this vehicle is currently a member of, if any (inverse of s4auto:Platoon saref:consistsOf Vehicle)."
+    },
+    "trailer": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The Trailer(s) attached to this vehicle (s4auto:Vehicle saref:consistsOf Trailer)."
+    },
+    "dangerousGoods": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The kind(s) of DangerousGoods carried by this vehicle, if any (s4auto:Vehicle saref:consistsOf DangerousGoods)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

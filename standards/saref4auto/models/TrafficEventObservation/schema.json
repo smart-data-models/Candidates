@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4auto/models/TrafficEventObservation/schema.json",
+  "modelTags": "SAREF4AUTO,Transportation,ConnectedAndAutomatedVehicles,ITS",
+  "title": "Smart Data Models - SAREF4AUTO - TrafficEventObservation",
+  "description": "Act of carrying out an observation resulting in a traffic event description (s4auto:TrafficEventObservation, subclass of saref:Observation). saref:hasResult links to the cause of the traffic event (TrafficEventCause); s4auto:affectsTrafficDirection links to the traffic direction the event affects.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "TrafficEventObservation"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'TrafficEventObservation'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. WGS84 position, modeling s4auto:Position / s4auto:GeoPosition.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "number"
+          },
+          "description": "Property. Coordinates of the Point, in WGS84 [longitude, latitude] order."
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    },
+    "dateObserved": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Time at which the traffic event was observed."
+    },
+    "affectsTrafficDirection": {
+      "type": "string",
+      "enum": [
+        "allTrafficDirections",
+        "upstreamTraffic",
+        "downstreamTraffic",
+        "oppositeTraffic"
+      ],
+      "description": "Property. Traffic direction affected by the observed event, relative to the event position (s4auto:affectsTrafficDirection, s4auto:TrafficDirection_*)."
+    },
+    "eventCause": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The TrafficEventCause describing the cause of this traffic event (saref:hasResult)."
+    },
+    "observedBy": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The sensor/device/road side unit that made this observation (saref:madeBySensor)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

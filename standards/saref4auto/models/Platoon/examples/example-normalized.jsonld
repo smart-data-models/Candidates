@@ -1,0 +1,53 @@
+{
+  "id": "urn:ngsi-ld:Platoon:example001",
+  "type": "Platoon",
+  "source": {
+    "type": "Relationship",
+    "object": "https://saref.etsi.org/saref4auto/v2.1.1/"
+  },
+  "location": {
+    "type": "GeoProperty",
+    "value": {
+      "type": "Point",
+      "coordinates": [
+        2.1734,
+        41.3851
+      ]
+    }
+  },
+  "heading": {
+    "type": "Property",
+    "value": 90.0
+  },
+  "platoonMaxSize": {
+    "type": "Property",
+    "value": 5
+  },
+  "platoonSize": {
+    "type": "Property",
+    "value": 3
+  },
+  "platoonLength": {
+    "type": "Property",
+    "value": 45.5
+  },
+  "platoonState": {
+    "type": "Property",
+    "value": "platooning"
+  },
+  "leader": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:Vehicle:platoon-leader-01"
+  },
+  "members": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:Vehicle:platoon-leader-01",
+      "urn:ngsi-ld:Vehicle:platoon-follower-02",
+      "urn:ngsi-ld:Vehicle:platoon-follower-03"
+    ]
+  },
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4auto/models/Platoon/context.jsonld"
+  ]
+}

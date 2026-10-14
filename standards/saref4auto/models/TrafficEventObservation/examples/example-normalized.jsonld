@@ -1,0 +1,37 @@
+{
+  "id": "urn:ngsi-ld:TrafficEventObservation:example001",
+  "type": "TrafficEventObservation",
+  "source": {
+    "type": "Relationship",
+    "object": "https://saref.etsi.org/saref4auto/v2.1.1/"
+  },
+  "location": {
+    "type": "GeoProperty",
+    "value": {
+      "type": "Point",
+      "coordinates": [
+        2.177,
+        41.387
+      ]
+    }
+  },
+  "dateObserved": {
+    "type": "Property",
+    "value": "2026-10-14T07:45:00Z"
+  },
+  "affectsTrafficDirection": {
+    "type": "Property",
+    "value": "downstreamTraffic"
+  },
+  "eventCause": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:TrafficEventCause:Accident"
+  },
+  "observedBy": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:RoadSideSensor:barcelona-highway-km12"
+  },
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4auto/models/TrafficEventObservation/context.jsonld"
+  ]
+}

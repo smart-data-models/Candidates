@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4auto/models/TrafficEventCause/schema.json",
+  "modelTags": "SAREF4AUTO,Transportation,ConnectedAndAutomatedVehicles,ITS",
+  "title": "Smart Data Models - SAREF4AUTO - TrafficEventCause",
+  "description": "Class of concepts describing traffic event causes (s4auto:TrafficEventCause, subclass of skos:Concept; adapted from ETSI TS 102 894-2 CauseCodeChoice/SubCauseCode). The vocabulary is large (161 named individuals in the v2.1.1 ontology: 20 top-level causes, each with several narrower sub-causes) and open-ended, so it is modeled here as an open/enumerated string rather than as ~160 separate data models (see translation notes). The 20 top-level causes are: TrafficCondition, Accident, Roadworks, Impassability, Aquaplaning, HumanPresenceOnTheRoad, WrongWayDriving, RescueAndRecoveryWorkInProgress, Violence, SlowVehicle, DangerousEndOfQueue, VehicleBreakdown, PostCrash, HumanProblem, StationaryVehicle, EmergencyVehicleApproaching, CollisionRisk, SignalViolation, DangerousSituation, RailwayLevelCrossing. Narrower causes follow the naming pattern '<TopLevelCause>_<narrowerCause>', e.g. 'Accident_accidentInvolvingBus' or 'TrafficCondition_trafficJamIncreasing'; see the full ETSI TS 103 410-7 / TS 102 894-2 specification for the exhaustive list.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "TrafficEventCause"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'TrafficEventCause'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. This will usually be allocated by the storage platform."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. Description of this item."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "seeAlso": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Property. Model:'https://schema.org/URL'. list of uri pointing to additional resources about the item."
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "TrafficCondition",
+        "Accident",
+        "Roadworks",
+        "Impassability",
+        "Aquaplaning",
+        "HumanPresenceOnTheRoad",
+        "WrongWayDriving",
+        "RescueAndRecoveryWorkInProgress",
+        "Violence",
+        "SlowVehicle",
+        "DangerousEndOfQueue",
+        "VehicleBreakdown",
+        "PostCrash",
+        "HumanProblem",
+        "StationaryVehicle",
+        "EmergencyVehicleApproaching",
+        "CollisionRisk",
+        "SignalViolation",
+        "DangerousSituation",
+        "RailwayLevelCrossing"
+      ],
+      "description": "Property. The top-level traffic event cause category this concept belongs to (or equals, if this is itself a top-level cause)."
+    },
+    "causeCode": {
+      "type": "string",
+      "description": "Property. The specific (possibly narrower) traffic event cause term, e.g. 'Accident' or 'Accident_accidentInvolvingBus'. Open vocabulary; not exhaustively enumerated here (161 named individuals in the source ontology)."
+    },
+    "broaderCause": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The broader/parent TrafficEventCause concept, if this is a narrower cause (skos:broader)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
