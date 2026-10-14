@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ehaw/models/Activity/schema.json",
+  "modelTags": "SAREF4EHAW,eHealth,Activity",
+  "title": "Smart Data Models - SAREF4EHAW - Activity",
+  "description": "https://saref.etsi.org/saref4ehaw/Activity. The activity of a patient/user, i.e. daily and nocturnal activities (ttl rdfs:comment). Superclass of DailyActivity and NocturnalActivity (both zero-own-property candidates that inherit activityDuration and velocity from here). Activity is the range of HealthActor.hasActivity.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["Activity"],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Activity'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "activityDuration": {
+      "type": "number",
+      "description": "Property. Model:'https://saref.etsi.org/saref4ehaw/activityDuration'. The duration of an activity, in seconds. ttl-confirmed, domain Activity, range xsd:float (s4ehaw:activityDuration)."
+    },
+    "velocity": {
+      "type": "number",
+      "description": "Property. Model:'https://saref.etsi.org/saref4ehaw/Velocity'. The velocity of a moving entity, typically expressed in m/s. The source ttl declares s4ehaw:Velocity as an undomained saref:Property individual (no rdfs:domain); attached here to Activity as the best-fitting class (e.g. the speed of a walking or running activity)."
+    }
+  },
+  "required": ["id", "type"]
+}

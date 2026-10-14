@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ehaw/models/BanApplicationTask/schema.json",
+  "modelTags": "SAREF4EHAW,eHealth,Ban",
+  "title": "Smart Data Models - SAREF4EHAW - BanApplicationTask",
+  "description": "https://saref.etsi.org/saref4ehaw/BanApplicationTask. BAN application tasks, such as healthcare, telemedicine, assisted living, sport training, safety and emergency... (ttl rdfs:comment). Modelled as a subClassOf saref:Task. Related to Ban via the reused saref:accomplishes relationship (see Ban.accomplishes). The source ttl declares 8 owl:NamedIndividual instances of this class itself (not subclasses): AssistedLiving, Emergency, Healthcare, PervasiveComputing, Safety, SportTraining, Telemedicine, Prevention -- see the 'name' property below for their one-line meanings.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["BanApplicationTask"],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'BanApplicationTask'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Open vocabulary (not a closed enum) naming which BAN application task this instance represents. These are owl:NamedIndividual instances of the class itself in the ttl, not further sub-properties. The ttl's 8 known individuals and their meanings: AssistedLiving ('Assisted living task for BAN application'), Emergency ('Emergency task for BAN application'), Healthcare ('Healthcare domain for BAN application'), PervasiveComputing ('Pervasive computing task for BAN application'), Safety ('Safety task for BAN application'), SportTraining ('Sport training task for BAN application'), Telemedicine ('Telemedicine task for BAN application'), Prevention ('Prevention task (e.g. preventive health) for BAN application'). The ontology does not declare this list exhaustive."
+    }
+  },
+  "required": ["id", "type"]
+}
