@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4grid/models/GetOperationDataOutput/schema.json",
+  "modelTags": "SAREF4GRID,SmartGrid,COSEM,RemoteControl",
+  "title": "Smart Data Models - SAREF4GRID - GetOperationDataOutput",
+  "description": "https://saref.etsi.org/saref4grid/GetOperationDataOutput. This class specifies that the output of a get operation is going to be a datatype. Subclass of SAREF4GRID's own GetOperationOutput.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "GetOperationDataOutput"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'GetOperationDataOutput'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasOutputDataType": {
+      "type": "string",
+      "description": "Property. It identifies the datatype of the output. The value of this property conforms to the range of a datatype property of SAREF4GRID."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "hasOutputDataType"
+  ]
+}

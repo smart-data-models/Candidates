@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4grid/models/GetOperationOutput/schema.json",
+  "modelTags": "SAREF4GRID,SmartGrid,COSEM,RemoteControl",
+  "title": "Smart Data Models - SAREF4GRID - GetOperationOutput",
+  "description": "https://saref.etsi.org/saref4grid/GetOperationOutput. This class specifies the output of a get operation, which can be either a class or a datatype. Subclass of oneM2M:OperationOutput. SAREF4GRID further specializes this class as GetOperationDataOutput and GetOperationObjectOutput (documented on their own models).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "GetOperationOutput"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'GetOperationOutput'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

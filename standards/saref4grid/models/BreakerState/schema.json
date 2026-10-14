@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4grid/models/BreakerState/schema.json",
+  "modelTags": "SAREF4GRID,SmartGrid,SmartMeter,DeviceManagement",
+  "title": "Smart Data Models - SAREF4GRID - BreakerState",
+  "description": "https://saref.etsi.org/saref4grid/BreakerState. [COSEM] This class manages an internal or external disconnect unit of the meter (e.g. electricity breaker, gas valve) in order to connect or disconnect -- partly or entirely -- the premises of the consumer to / from the supply. Subclass of saref:State (core SAREF).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "BreakerState"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'BreakerState'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasOutputState": {
+      "type": "boolean",
+      "description": "Property. [COSEM] Shows the actual physical state of the device connection to the supply: (true) Connected, (false) Disconnected."
+    },
+    "hasControlState": {
+      "type": "integer",
+      "description": "Property. Shows the internal state of the disconnect control object: (0) Disconnected, (1) Connected, (2) Ready for reconnection."
+    },
+    "hasControlMode": {
+      "type": "integer",
+      "description": "Property. [COSEM] Configures the behaviour of the disconnect control object for all triggers, i.e. the possible state transitions."
+    },
+    "hasObis": {
+      "type": "string",
+      "description": "Property. [COSEM/IEC 62056] OBIS code uniquely identifying this breaker/disconnect-control COSEM object."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "hasOutputState",
+    "hasControlState",
+    "hasControlMode"
+  ]
+}

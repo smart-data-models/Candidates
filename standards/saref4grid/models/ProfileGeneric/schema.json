@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4grid/models/ProfileGeneric/schema.json",
+  "modelTags": "SAREF4GRID,SmartGrid,DataCapture,COSEM",
+  "title": "Smart Data Models - SAREF4GRID - ProfileGeneric",
+  "description": "https://saref.etsi.org/saref4grid/ProfileGeneric. [COSEM] This class provides a generalized concept allowing to store, sort and access data groups or data series, called capture objects. Capture objects are appropriate attributes or elements of (an) attribute(s) of COSEM objects. The capture objects are collected periodically or occasionally.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ProfileGeneric"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ProfileGeneric'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasCapturePeriod": {
+      "type": "integer",
+      "description": "Property. [COSEM] The capturing period of a profile generic in seconds. If its value is 0, then there is no automatic capturing; capturing is triggered externally or through capture events occurring asynchronously. If its value is greater than 0, then automatic capturing is assumed."
+    },
+    "relatedClock": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The clock that is captured by a profile generic."
+    },
+    "relatedObservation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship (saref:relatedObservation). The saref:Observation (core SAREF, not modelled in this standard) that is captured by a profile generic."
+    },
+    "relatedPropertyValue": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship (saref:relatedPropertyValue). The saref:PropertyValue (core SAREF, not modelled in this standard) that is captured by a profile generic."
+    },
+    "hasObis": {
+      "type": "string",
+      "description": "Property. [COSEM/IEC 62056] OBIS code uniquely identifying this profile generic COSEM object."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "hasCapturePeriod"
+  ]
+}

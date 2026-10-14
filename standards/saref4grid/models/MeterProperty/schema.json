@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4grid/models/MeterProperty/schema.json",
+  "modelTags": "SAREF4GRID,SmartGrid,PowerQuality,Metering",
+  "title": "Smart Data Models - SAREF4GRID - MeterProperty",
+  "description": "https://saref.etsi.org/saref4grid/MeterProperty. Class to group those properties related to electric grid meters. Subclass of saref:Property (core SAREF). Same general/specific-via-SKOS pattern as EnergyAndPowerProperty, scoped to meter (device-level, not power-line) properties; these are the properties a GridMeter links to via saref:hasPropertyValue.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "MeterProperty"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'MeterProperty'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "propertyType": {
+      "type": "string",
+      "enum": [
+        "BillingPeriod",
+        "LongPowerFailuresNumber",
+        "Manufacturer",
+        "Network",
+        "Phase",
+        "PhaseAngle",
+        "PowerLimit",
+        "PowerQuality",
+        "ProfileStatus",
+        "Quadrant",
+        "ScreenDisplay",
+        "Threshold",
+        "TimeThreshold",
+        "TransformerRatio",
+        "VoltageSagNumber",
+        "VoltageSwellNumber"
+      ],
+      "description": "Property. The specific kind of meter property this instance represents, drawn from the SAREF4GRID controlled vocabulary of named MeterProperty individuals (the 'general' properties of Figure 6 of the specification)."
+    },
+    "broaderPropertyType": {
+      "type": "string",
+      "enum": [
+        "BillingPeriod",
+        "LongPowerFailuresNumber",
+        "Manufacturer",
+        "Network",
+        "Phase",
+        "PhaseAngle",
+        "PowerLimit",
+        "PowerQuality",
+        "ProfileStatus",
+        "Quadrant",
+        "ScreenDisplay",
+        "Threshold",
+        "TimeThreshold",
+        "TransformerRatio",
+        "VoltageSagNumber",
+        "VoltageSwellNumber"
+      ],
+      "description": "Property (skos:broader). When this instance represents a specific, narrower, OBIS-identified property (e.g. 'ActivePowerLimitContract1TariffPeriod1'), this names the general MeterProperty individual it specializes."
+    },
+    "hasObis": {
+      "type": "string",
+      "description": "Property. [COSEM/IEC 62056] OBIS code identifying this meter property instance."
+    },
+    "unitOfMeasure": {
+      "type": "string",
+      "description": "Property. Unit of measure of the property's values, where defined (e.g. om:watt). Notice that some meter properties do not specify a unit of measure."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "propertyType"
+  ]
+}
