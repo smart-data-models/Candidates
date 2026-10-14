@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4watr/models/WaterKind/schema.json",
+  "modelTags": "SAREF4WATR,Water,Infrastructure",
+  "title": "Smart Data Models - SAREF4WATR - WaterKind",
+  "description": "https://saref.etsi.org/saref4watr/WaterKind. This class is used to define kinds of water features. Subclass of saref:FeatureKind (imported, not separately modeled here) per the SAREF4WATR ontology, with no properties of its own. Not a geo:Feature, so it has no location. Named individuals of this class defined in the ontology (used elsewhere as controlled-vocabulary values, e.g. as enum items of WaterInfrastructure.isDesignedFor): DrinkingWater (\"Drinking water is water that is treated to comply with drinking water standards.\", also labeled \"Potable water\"), RawWater (\"Raw water is water found in the environment that has not been treated and does not have any of its minerals, ions, particles, bacteria, or parasites removed.\"), Stormwater (\"Stormwater is water that originates during precipitation events and snow/ice melt.\"), Wastewater (\"Wastewater is water that has been used in the home, in a business, or as part of an industrial process.\").",
+  "type": "object",
+  "properties": {
+    "id": {"type": "string", "format": "uri", "description": "Property. Unique identifier of the entity"},
+    "type": {"type": "string", "enum": ["WaterKind"], "description": "Property. NGSI-LD Entity type. It must be equal to 'WaterKind'"},
+    "dateCreated": {"type": "string", "format": "date-time", "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."},
+    "dateModified": {"type": "string", "format": "date-time", "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."},
+    "source": {"type": "string", "description": "Property. A sequence of characters giving the source of the entity data."},
+    "dataProvider": {"type": "string", "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."}
+  },
+  "required": ["id", "type"]
+}

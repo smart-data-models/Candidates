@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4watr/models/TimeBasedTariff/schema.json",
+  "modelTags": "SAREF4WATR,Water,Tariff",
+  "title": "Smart Data Models - SAREF4WATR - TimeBasedTariff",
+  "description": "https://saref.etsi.org/saref4watr/TimeBasedTariff. A time-based tariff is a tariff that is based on time. Subclass of Tariff per the SAREF4WATR ontology; not a geo:Feature, so it has no location. Own properties: appliesTo, hasBillingPeriod, hasDuration, hasPeriod, hasBillingDate, hasStartTimestamp (repeated from Tariff), plus forAbsoluteTimeAtDay, forWeekDay, forDayInMonth.",
+  "type": "object",
+  "properties": {
+    "id": {"type": "string", "format": "uri", "description": "Property. Unique identifier of the entity"},
+    "type": {"type": "string", "enum": ["TimeBasedTariff"], "description": "Property. NGSI-LD Entity type. It must be equal to 'TimeBasedTariff'"},
+    "dateCreated": {"type": "string", "format": "date-time", "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."},
+    "dateModified": {"type": "string", "format": "date-time", "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."},
+    "source": {"type": "string", "description": "Property. A sequence of characters giving the source of the entity data."},
+    "dataProvider": {"type": "string", "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."},
+    "appliesTo": {"type": "string", "format": "uri", "description": "Relationship. The water meter to which this tariff applies. Maps to s4watr:appliesTo. Points to a WaterMeter entity."},
+    "hasBillingPeriod": {"type": "string", "description": "Property. The billing period of a tariff, as an ISO8601 duration (e.g. 'P1M' for monthly). Maps to s4watr:hasBillingPeriod. Model:'https://schema.org/Duration'."},
+    "hasDuration": {"type": "string", "description": "Property. The duration of a tariff, as an ISO8601 duration. Maps to s4watr:hasDuration. Model:'https://schema.org/Duration'."},
+    "hasPeriod": {"type": "string", "description": "Property. The period of a tariff, as an ISO8601 duration. Maps to s4watr:hasPeriod. Model:'https://schema.org/Duration'."},
+    "hasBillingDate": {"type": "string", "format": "date-time", "description": "Property. The billing date of a tariff. Maps to s4watr:hasBillingDate."},
+    "hasStartTimestamp": {"type": "string", "format": "date-time", "description": "Property. The start date and time of a tariff. Maps to s4watr:hasStartTimestamp."},
+    "forAbsoluteTimeAtDay": {"type": "string", "description": "Property. The time interval in each day for which this tariff is applied (e.g., 8:00 to 10:00), as an ISO8601 time interval. Maps to s4watr:forAbsoluteTimeAtDay."},
+    "forWeekDay": {
+      "type": "array",
+      "description": "Property. The day(s) of the week for which this tariff is applied (e.g., each Saturday and Sunday). Maps to s4watr:forWeekDay.",
+      "items": {
+        "type": "string",
+        "enum": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+      }
+    },
+    "forDayInMonth": {"type": "integer", "minimum": 1, "maximum": 31, "description": "Property. The day of the month for which this tariff is applied (e.g., each 15th), lexically an xsd:gDay in the ontology. Maps to s4watr:forDayInMonth."}
+  },
+  "required": ["id", "type"]
+}

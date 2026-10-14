@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4watr/models/WaterMeter/schema.json",
+  "modelTags": "SAREF4WATR,Water,Device",
+  "title": "Smart Data Models - SAREF4WATR - WaterMeter",
+  "description": "https://saref.etsi.org/saref4watr/WaterMeter. A water meter is an instrument intended to measure continuously, memorize, and display the volume of water passing through the meter. Subclass of WaterDevice and saref:Meter (saref:Meter imported, not separately modeled here) per the SAREF4WATR ontology, restricted to saref:hasProperty allValuesFrom s4watr:WaterMeterProperty and saref:observes someValuesFrom s4watr:WaterFlowProperty. WaterMeter adds real restrictions beyond WaterDevice so it is given a full schema here rather than a bare stub. Own properties: hasFabricationNumber, hasFirmwareVersion, hasHardwareVersion, operatesAtRadioFrequency, requiresPower (repeated from WaterDevice), plus hasProperty, observes.",
+  "type": "object",
+  "properties": {
+    "id": {"type": "string", "format": "uri", "description": "Property. Unique identifier of the entity"},
+    "type": {"type": "string", "enum": ["WaterMeter"], "description": "Property. NGSI-LD Entity type. It must be equal to 'WaterMeter'"},
+    "dateCreated": {"type": "string", "format": "date-time", "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."},
+    "dateModified": {"type": "string", "format": "date-time", "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."},
+    "source": {"type": "string", "description": "Property. A sequence of characters giving the source of the entity data."},
+    "dataProvider": {"type": "string", "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."},
+    "location": {"type": "object", "description": "Geoproperty. Geojson reference to the item. Maps to geo:hasGeometry in the SAREF4WATR/GeoSPARQL ontology.", "properties": {"type": {"type": "string", "enum": ["Point"]}, "coordinates": {"type": "array", "items": {"type": "number"}}}},
+    "hasFabricationNumber": {"type": "string", "description": "Property. subPropertyOf saref:hasIdentifier. The fabrication number of a device. Maps to s4watr:hasFabricationNumber."},
+    "hasFirmwareVersion": {"type": "string", "description": "Property. subPropertyOf saref:hasVersion. The firmware version of a device. Maps to s4watr:hasFirmwareVersion."},
+    "hasHardwareVersion": {"type": "string", "description": "Property. subPropertyOf saref:hasVersion. The hardware version of a device. Maps to s4watr:hasHardwareVersion."},
+    "operatesAtRadioFrequency": {"type": "number", "description": "Property. The radio frequency (Hz) at which a device operates. Maps to s4watr:operatesAtRadioFrequency."},
+    "requiresPower": {"type": "number", "description": "Property. The power (W) required by a device. Maps to s4watr:requiresPower."},
+    "hasProperty": {
+      "type": "array",
+      "description": "Property. The water-meter-specific properties (battery/operating-time telemetry) this meter reports, drawn from the SAREF4WATR WaterMeterProperty taxonomy. Maps to saref:hasProperty.",
+      "items": {
+        "type": "string",
+        "enum": ["BatteryOperatingTime", "BatteryRemainingTime", "BatteryLastChange", "MeterOnTime", "MeterOperatingTime"]
+      }
+    },
+    "observes": {
+      "type": "array",
+      "description": "Property. The water-flow properties this meter observes/measures, drawn from the SAREF4WATR WaterFlowProperty taxonomy. Maps to saref:observes.",
+      "items": {
+        "type": "string",
+        "enum": ["FlowPressure", "FlowRate", "FlowTemperature", "FlowVolume"]
+      }
+    }
+  },
+  "required": ["id", "type"]
+}

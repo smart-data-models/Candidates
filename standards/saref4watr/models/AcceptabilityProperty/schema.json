@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4watr/models/AcceptabilityProperty/schema.json",
+  "modelTags": "SAREF4WATR,Water,WaterQuality",
+  "title": "Smart Data Models - SAREF4WATR - AcceptabilityProperty",
+  "description": "https://saref.etsi.org/saref4watr/AcceptabilityProperty. An acceptability property is a property of water that is related to its acceptability. Subclass of WaterProperty per the SAREF4WATR ontology, with no properties of its own; inherited properties are documented on the WaterProperty model and not repeated here. Named individuals of this class defined in the ontology (used elsewhere as controlled-vocabulary values, e.g. as enum items of Water.hasProperty): Colour, Conductivity, Hardness, HydrogenIonConcentration (label 'pH'), Odour, Oxidisability, Taste, Temperature, TotalIndicativeDose, TotalDissolvedSolids, TotalSuspendedSolids, Turbidity.",
+  "type": "object",
+  "properties": {
+    "id": {"type": "string", "format": "uri", "description": "Property. Unique identifier of the entity"},
+    "type": {"type": "string", "enum": ["AcceptabilityProperty"], "description": "Property. NGSI-LD Entity type. It must be equal to 'AcceptabilityProperty'"},
+    "dateCreated": {"type": "string", "format": "date-time", "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."},
+    "dateModified": {"type": "string", "format": "date-time", "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."},
+    "source": {"type": "string", "description": "Property. A sequence of characters giving the source of the entity data."},
+    "dataProvider": {"type": "string", "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."}
+  },
+  "required": ["id", "type"]
+}

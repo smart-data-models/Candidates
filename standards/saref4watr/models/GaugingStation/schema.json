@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4watr/models/GaugingStation/schema.json",
+  "modelTags": "SAREF4WATR,Water,Infrastructure",
+  "title": "Smart Data Models - SAREF4WATR - GaugingStation",
+  "description": "https://saref.etsi.org/saref4watr/GaugingStation. A gauging station is an infrastructure to monitor and test terrestrial bodies of water. Subclass of MonitoringInfrastructure (itself a subclass of WaterInfrastructure) per the SAREF4WATR ontology, with no properties of its own; inherited properties (including isDesignedFor and isIntendedFor) are documented on the MonitoringInfrastructure and WaterInfrastructure models and not repeated here.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "GaugingStation"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'GaugingStation'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "location": {
+      "type": "object",
+      "description": "Geoproperty. Geojson reference to the item. Maps to geo:hasGeometry in the SAREF4WATR/GeoSPARQL ontology.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
