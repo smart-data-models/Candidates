@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ener/models/Slot/schema.json",
+  "modelTags": "SAREF4ENER,PowerSequenceStructure",
+  "title": "Smart Data Models - SAREF4ENER - Slot",
+  "description": "https://saref.etsi.org/saref4ener/Slot. The single steps of a power sequence are represented by slots. A slot is associated with a slot number (while a power sequence is associated with a power sequence identifier). The slot numbers of two power sequences should be considered independent from each other, i.e., slot number 7 of sequence 1 describes a different slot than slot number 7 of sequence 2. Therefore a slot is only uniquely identified in combination with a sequence ID.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Slot"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Slot'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasUsage": {
+      "type": "string",
+      "enum": [
+        "Average",
+        "BaseLine",
+        "Consumption",
+        "Downflex",
+        "LowerLimit",
+        "Maximum",
+        "Minimum",
+        "Production",
+        "SetPoint",
+        "Skewness",
+        "Upflex",
+        "UpperLimit"
+      ],
+      "description": "Property. This property provides the possibility to add some additional information about the usage of a data-point or time-series. For example, a data point or time series can be used as an upper limit, a lower limit, a baseline, a maximum versus minimum value, or a consumption versus a production value. Controlled vocabulary (Usage)."
+    },
+    "belongsTo": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. A relationship identifying the ownership of an entity. In particular, a slot belongs to a power sequence, a power sequence belongs to an alternative, an alternative belongs to a power profile, a power profile belongs to a device. Relationship to PowerSequence."
+    },
+    "slotNumber": {
+      "type": "integer",
+      "description": "Property. Provides a unique slot identifier for a certain power sequence"
+    },
+    "optionalSlot": {
+      "type": "boolean",
+      "description": "Property. Indicates whether a slot is optional (if set to TRUE). Otherwise, if a slot is mandatory, SHALL be omitted or set to FALSE. Note: This element applies to every repetition of the slot number."
+    },
+    "slotActivated": {
+      "type": "boolean",
+      "description": "Property. If a slot is optional, represents the current status of the slot (true = the slot will be executed, false = the slot will not be executed). If the slot is not optional, this element SHALL be absent."
+    },
+    "hasDefaultDuration": {
+      "type": "string",
+      "description": "Property. The duration of a slot (SHALL be present in case of 'determined slot'). If a slot has a configurable lenght, this element SHALL reflect the currently configured lenght This property is suggested to be added to SAREF4Ener_v2 to replace the time:TemporalEntity and/or time:DurationDescription. ISO 8601 duration (e.g. 'PT30M')."
+    },
+    "hasDurationUncertainty": {
+      "type": "string",
+      "description": "Property. The uncertainty of the duration given in the s4ener:defaultDuration property. ISO 8601 duration (e.g. 'PT30M')."
+    },
+    "hasEarliestStartTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. The earliest possible start time for a power sequence or a slot. Only 'xs:duration' value types SHALL be used to denote a relative time which relates to 'now' as time 0. Note: This element applies to the first repetition of the slot number only. This property is suggested to be added to SAREF4Ener_v2 to replace the time:TemporalEntity and/or time:DurationDescription."
+    },
+    "hasEndTime": {
+      "type": "string",
+      "description": "Property. The endTime of a power sequence. If the value is available, it SHALL be denoted here. Otherwise the element SHALL be omitted. The end time of a slot MAY be stated in this element. The following equation SHALL apply: endTime - startTime = defaultDuration. ISO 8601 duration (e.g. 'PT30M')."
+    },
+    "hasLatestEndTime": {
+      "type": "string",
+      "description": "Property. The latest possible end time for a power sequence or a slot. Only 'xs:duration' value types SHALL be used to denote a relative time which relates to 'now' as time 0. Note: This element applies to the first repetition of the slot number only. This property is suggested to be added to SAREF4Ener_v2 to replace the time:TemporalEntity and/or time:DurationDescription."
+    },
+    "hasMaxDuration": {
+      "type": "string",
+      "description": "Property. If a slot has a configurable duration, it SHALL be present and denote the maximum supported configuration. Note: This element applies to the first repetition of the slot number only ISO 8601 duration (e.g. 'PT30M')."
+    },
+    "hasMinDuration": {
+      "type": "string",
+      "description": "Property. If a slot has a configurable duration, it SHALL be present and denote the minimum supported configuration. Note: This element applies to the first repetition of the slot number only. ISO 8601 duration (e.g. 'PT30M')."
+    },
+    "hasRemainingPauseTime": {
+      "type": "string",
+      "description": "Property. The duration that the current slot (s4ee:activeSlotNumber) permits being paused. This element SHALL ONLY be present if the power sequence is interruptible. Otherwise, it SHALL be omitted. In case the power sequence is interruptible the following rules apply: If the element is absent this means there is no explicit pause duration restriction for the current slot; a value of 0s denoted the slot does not permit being paused. ISO 8601 duration (e.g. 'PT30M')."
+    },
+    "hasStartTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. The startTime of a power sequence or slot. SHALL be present"
+    },
+    "hasSlotValue": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "description": "Numeric value."
+        },
+        "unitCode": {
+          "type": "string",
+          "description": "Unit of measure code (UN/CEFACT common code where applicable)."
+        }
+      },
+      "description": "Property. This property is intended to specify the power or energy value of a slot in a power sequence as part of a power profile. Models saref:PropertyValue (core SAREF, not itself translated in this candidate): a value with its unit of measure."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "hasUsage",
+    "slotNumber"
+  ]
+}

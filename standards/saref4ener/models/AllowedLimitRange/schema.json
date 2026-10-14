@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ener/models/AllowedLimitRange/schema.json",
+  "modelTags": "SAREF4ENER,PowerLimitation",
+  "title": "Smart Data Models - SAREF4ENER - AllowedLimitRange",
+  "description": "https://saref.etsi.org/saref4ener/AllowedLimitRange. The actual constraints of an Power Envelope Based Profile.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "AllowedLimitRange"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'AllowedLimitRange'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "limitType": {
+      "type": "string",
+      "enum": [
+        "LowerLimit",
+        "UpperLimit"
+      ],
+      "description": "Property. Indicates if this ranges applies to the upper limit or the lower limit. Controlled vocabulary (PowerEnvelopeLimitType)."
+    },
+    "rangeBoundary": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Boundaries of the power range of this AllowedLimitRange. The CEM is allowed to choose values within this range for the power envelope for the limit as described in limitType. The start of the range shall be smaller or equal than the end of the range. Relationship to NumberRange."
+    },
+    "abnormalConditionOnly": {
+      "type": "boolean",
+      "description": "Property. Indicates if this element can only be used during an abnormal condition."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

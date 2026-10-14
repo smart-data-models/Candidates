@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ener/models/Transition/schema.json",
+  "modelTags": "SAREF4ENER,OperationModeFillRate",
+  "title": "Smart Data Models - SAREF4ENER - Transition",
+  "description": "https://saref.etsi.org/saref4ener/Transition. Possible transitions to switch from one Operation Mode to another or to set new parameters. Subclass of Thing (http://www.w3.org/2002/07/owl#Thing, not itself translated in this candidate).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Transition"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Transition'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "fromOperationMode": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. ID of the OperationMode (exact type differs per ControlType) that should be switched from. Relationship to OperationMode."
+    },
+    "isBlockedBy": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The Timers that block this Transition from initiating while at least one of these Timers is not yet finished Relationship to Timer."
+    },
+    "startsTimer": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. List of IDs of Timers that will be (re)started when this transition is initiated Relationship to Timer."
+    },
+    "toOperationMode": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. ID of the OperationMode (exact type differs per ControlType) that will be switched to. Relationship to OperationMode."
+    },
+    "hasTransitionCosts": {
+      "type": "number",
+      "description": "Property. Absolute costs for going through this Transition in the currency as described in the ResourceManagerDetails."
+    },
+    "hasTransitionDuration": {
+      "type": "string",
+      "description": "Property. Indicates the time between the initiation of this Transition, and the time at which the device behaves according to the Operation Mode which is defined in the appropriate data element. When no value is provided it is assumed the transition duration is negligible. ISO 8601 duration (e.g. 'PT30M')."
+    },
+    "abnormalConditionOnly": {
+      "type": "boolean",
+      "description": "Property. Indicates if this element can only be used during an abnormal condition."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

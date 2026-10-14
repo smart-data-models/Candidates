@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ener/models/EndInterruptionInstruction/schema.json",
+  "modelTags": "SAREF4ENER,FlexibilityInstructions",
+  "title": "Smart Data Models - SAREF4ENER - EndInterruptionInstruction",
+  "description": "https://saref.etsi.org/saref4ener/EndInterruptionInstruction. An Instruction message indicating when an interruption can end. Subclass of InterruptionInstruction per the SAREF4ENER ontology; inherited properties are documented on the InterruptionInstruction model and not repeated here.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "EndInterruptionInstruction"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'EndInterruptionInstruction'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

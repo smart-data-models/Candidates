@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ener/models/PEBCInstruction/schema.json",
+  "modelTags": "SAREF4ENER,FlexibilityInstructions",
+  "title": "Smart Data Models - SAREF4ENER - PEBCInstruction",
+  "description": "https://saref.etsi.org/saref4ener/PEBCInstruction. An instruction for the Power Envelope Based Profile. Subclass of FlexibilityInstruction per the SAREF4ENER ontology; inherited properties are documented on the FlexibilityInstruction model and not repeated here.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "PEBCInstruction"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'PEBCInstruction'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasConstraints": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. This property relates a Power Envelop Instruction or Profile to the constraints it needs to follow. There are two types of constraints modelled: Power constraints and energy constraints. Relationship to PowerConstraint/EnergyConstraint."
+    },
+    "hasPowerEnvelope": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The PEBC.PowerEnvelope(s) that should be followed by the Resource Manager. There shall be at least one PEBC.PowerEnvelope, but at most one PEBC.PowerEnvelope for each Commodity. Relationship to PowerEnvelope."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

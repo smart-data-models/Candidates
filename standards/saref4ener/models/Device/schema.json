@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ener/models/Device/schema.json",
+  "modelTags": "SAREF4ENER,DeviceRoles",
+  "title": "Smart Data Models - SAREF4ENER - Device",
+  "description": "https://saref.etsi.org/saref4ener/Device. A specialization of a saref:Device that exposes a power profile with power sequences to the CEM. Most of the existing devices can expose at most one power profile, but there are special cases in which more than one power profiles can be exposed by the same device. For example, consider the case of a combined fridge-freezer in which there are 2 logical devices (fridge and freezer) combined in 1 physical device. This combined device can expose 2 power profiles, one for the fridge and one for the freezer. A s4ee:Device (e.g. a household appliance or a smart meter) can also receive events about overload warning severity level and related load control commands (LoadControlEventData) Specializes saref:Device (core SAREF ontology, not itself translated in this candidate) with SAREF4ENER-specific properties.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Device"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Device'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "receives": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. A relationship between a device (e.g., an appliance or a smart meter) and a load control event Relationship to LoadControlEventData."
+    },
+    "brandName": {
+      "type": "string",
+      "description": "Property. Provides the name of the brand of a device. Useful where the name of the brand and the vendor differs."
+    },
+    "deviceCode": {
+      "type": "string",
+      "description": "Property. Provides a device code for the device as defined by the manufacturer."
+    },
+    "deviceName": {
+      "type": "string",
+      "description": "Property. Provides the name of the device as defined by the manufacturer."
+    },
+    "hardwareRevision": {
+      "type": "string",
+      "description": "Property. Indicates the hardware revision of the device as defined by the manufacturer."
+    },
+    "hasManufacturer": {
+      "type": "string",
+      "description": "Property. A reference to the manufacturer of the device (saref:Manufacturer, core SAREF concept not itself translated in this candidate)."
+    },
+    "serialNumber": {
+      "type": "string",
+      "description": "Property. Indicates the serial number of a device as defined by the manufacturer. Usually the same as printed on the case."
+    },
+    "softwareRevision": {
+      "type": "string",
+      "description": "Property. Indicates the software revision of a device as defined by the manufacturer."
+    },
+    "vendorCode": {
+      "type": "string",
+      "description": "Property. Provides a code for the vendor of the device as defined by the manufacturer."
+    },
+    "vendorName": {
+      "type": "string",
+      "description": "Property. Provides the name of the vendor of the device as defined by the manufacturer."
+    },
+    "hasPowerSource": {
+      "type": "string",
+      "enum": [
+        "BatteryPowerSource",
+        "DCPowerSource",
+        "Mains3Phase",
+        "MainsSinglePhase"
+      ],
+      "description": "Property. Indicates the power source of a device. Possible values are e.g. mainsSinglePhase or battery Controlled vocabulary (PowerSource)."
+    },
+    "hasRole": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Each Resource Manager provides one or more energy Roles Relationship to Role."
+    },
+    "firmwareVersion": {
+      "type": "string",
+      "description": "Property. Version identifier of the firmware used in the device (provided by the manufacturer)"
+    },
+    "hasManufacturerNodeIdentification": {
+      "type": "string",
+      "description": "Property. A node identification for the device as defined by the manufacturer. This could be used for the identification of a device, even if it was removed from the network and re-joined later with changed node address."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

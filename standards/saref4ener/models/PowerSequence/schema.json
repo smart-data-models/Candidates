@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ener/models/PowerSequence/schema.json",
+  "modelTags": "SAREF4ENER,PowerSequenceStructure",
+  "title": "Smart Data Models - SAREF4ENER - PowerSequence",
+  "description": "https://saref.etsi.org/saref4ener/PowerSequence. A Power Sequence following S2 is a container containing one or more PowerSequenceElements among which the EMS can choose the Element with the best fit to the current energy demands. Subclass of Thing (http://www.w3.org/2002/07/owl#Thing, not itself translated in this candidate).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "PowerSequence"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'PowerSequence'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "belongsTo": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. A relationship identifying the ownership of an entity. In particular, a slot belongs to a power sequence, a power sequence belongs to an alternative, an alternative belongs to a power profile, a power profile belongs to a device. Relationship to AlternativesGroup."
+    },
+    "hasState": {
+      "type": "string",
+      "enum": [
+        "Completed",
+        "Inactive",
+        "Invalid",
+        "Paused",
+        "Pending",
+        "Running",
+        "Scheduled",
+        "ScheduledPaused"
+      ],
+      "description": "Property. Controlled vocabulary (PowerSequenceState)."
+    },
+    "hasResumeCostEstimated": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "description": "Numeric value."
+        },
+        "unitCode": {
+          "type": "string",
+          "description": "Unit of measure code (UN/CEFACT common code where applicable)."
+        }
+      },
+      "description": "Property. In a power sequence the additional costs for the resumption of a device to its normal operation (after a pause). Models saref:PropertyValue (core SAREF, not itself translated in this candidate): a value with its unit of measure."
+    },
+    "hasResumeEnergyEstimated": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "description": "Numeric value."
+        },
+        "unitCode": {
+          "type": "string",
+          "description": "Unit of measure code (UN/CEFACT common code where applicable)."
+        }
+      },
+      "description": "Property. In a power sequence the additional energy for the resumption of a device to its normal operation (after a pause). Models saref:PropertyValue (core SAREF, not itself translated in this candidate): a value with its unit of measure."
+    },
+    "consistsOf": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Relationship to Slot."
+    },
+    "hasIdentifier": {
+      "type": "string",
+      "description": "Property. A unique identifier for this power sequence."
+    },
+    "sequenceRemoteControllable": {
+      "type": "boolean",
+      "description": "Property. Denotes whether a power sequence is modifiable (if value is TRUE) or not (if value is FALSE). Modifiability is required to configure power sequences and slots. It is also required to change a power sequence state."
+    },
+    "activeRepetitionNumber": {
+      "type": "integer",
+      "description": "Property. Indicates the current repetition of the sequence of slots. SHALL be present if a power sequence can repeat its sequence of slots (i.e., if s4ee:repetitionTotal is present and has a value > 1). Otherwise, it SHALL be absent."
+    },
+    "activeSlotNumber": {
+      "type": "integer",
+      "description": "Property. Indicates the currently active slot number, if the power sequence state is set to 'running' or 'paused'. Otherwise it SHALL be omitted."
+    },
+    "cheapest": {
+      "type": "boolean",
+      "description": "Property. Indicates whether a power sequence applies a configuration that minimises the user's energy bill (if set to TRUE). MAY be present. Absence of this element is equal to the presence with value FALSE."
+    },
+    "greenest": {
+      "type": "boolean",
+      "description": "Property. Indicates whether a power sequence optimises the configuration towards the maximum availability of renewable energy (if set to TRUE). MAY be present. Absence of this element is equal to the presence with value FALSE."
+    },
+    "isPausable": {
+      "type": "boolean",
+      "description": "Property. Specifies if the power sequence is pausable."
+    },
+    "isStoppable": {
+      "type": "boolean",
+      "description": "Property. Specifies if the power sequence is stoppable."
+    },
+    "maxCyclesPerDay": {
+      "type": "integer",
+      "description": "Property. States the maximum amount of starts a power sequence (of a device) allows per day."
+    },
+    "repetitionsTotal": {
+      "type": "integer",
+      "description": "Property. Contains the total number of repetitions, if a power sequence repeats its sequence of slots. Absence of the element is equal to a presence with a value of 0 (zero). SHALL be absent if the value is 1."
+    },
+    "hasActiveDurationMax": {
+      "type": "string",
+      "description": "Property. The active maximum duration a power sequence can run without interruption. This property is suggested to be added to SAREF4Ener_v2 to replace the time:TemporalEntity and/or time:DurationDescription. ISO 8601 duration (e.g. 'PT30M')."
+    },
+    "hasActiveDurationMin": {
+      "type": "string",
+      "description": "Property. The active mininum duration a power sequence can run without interruption. This property is suggested to be added to SAREF4Ener_v2 to replace the time:TemporalEntity and/or time:DurationDescription. ISO 8601 duration (e.g. 'PT30M')."
+    },
+    "hasActiveDurationSumMax": {
+      "type": "string",
+      "description": "Property. The active maximum duration a power sequence can run in total (summation of all active times). This property is suggested to be added to SAREF4Ener_v2 to replace the time:TemporalEntity and/or time:DurationDescription. ISO 8601 duration (e.g. 'PT30M')."
+    },
+    "hasActiveDurationSumMin": {
+      "type": "string",
+      "description": "Property. The active minimum duration a power sequence must run in total (summation of all active times). This property is suggested to be added to SAREF4Ener_v2 to replace the time:TemporalEntity and/or time:DurationDescription. ISO 8601 duration (e.g. 'PT30M')."
+    },
+    "hasEarliestStartTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. The earliest possible start time for a power sequence or a slot. Only 'xs:duration' value types SHALL be used to denote a relative time which relates to 'now' as time 0. Note: This element applies to the first repetition of the slot number only. This property is suggested to be added to SAREF4Ener_v2 to replace the time:TemporalEntity and/or time:DurationDescription."
+    },
+    "hasElapsedSlotTime": {
+      "type": "string",
+      "description": "Property. If state is set to 'running' or 'paused' AND the slot is determined, this property CAN contain the time the slot has already been in 'running' state (this also means the value remains constant during a 'paused' state). Otherwise it SHALL be omitted."
+    },
+    "hasEndTime": {
+      "type": "string",
+      "description": "Property. The endTime of a power sequence. If the value is available, it SHALL be denoted here. Otherwise the element SHALL be omitted. The end time of a slot MAY be stated in this element. The following equation SHALL apply: endTime - startTime = defaultDuration. ISO 8601 duration (e.g. 'PT30M')."
+    },
+    "hasLatestEndTime": {
+      "type": "string",
+      "description": "Property. The latest possible end time for a power sequence or a slot. Only 'xs:duration' value types SHALL be used to denote a relative time which relates to 'now' as time 0. Note: This element applies to the first repetition of the slot number only. This property is suggested to be added to SAREF4Ener_v2 to replace the time:TemporalEntity and/or time:DurationDescription."
+    },
+    "hasPauseDurationMax": {
+      "type": "string",
+      "description": "Property. The maximum duration a power sequence can pause after the end of an activity. ISO 8601 duration (e.g. 'PT30M')."
+    },
+    "hasPauseDurationMin": {
+      "type": "string",
+      "description": "Property. The minimum duration a power sequence can pause after the end of an activity. ISO 8601 duration (e.g. 'PT30M')."
+    },
+    "hasRemainingSlotTime": {
+      "type": "string",
+      "description": "Property. If state is set to 'running' or 'paused' AND the slot is determined, this element SHALL contain the time the slot still needs to be in 'running' state (this also means the value remains constant during a 'paused' state). Otherwise it SHALL be omitted. ISO 8601 duration (e.g. 'PT30M')."
+    },
+    "hasValueSource": {
+      "type": "string",
+      "enum": [
+        "Calculated",
+        "Empirical",
+        "Measured"
+      ],
+      "description": "Property. Indicates the source (origin/foundation) of the observation forecasted values for a power sequence. If absent, the source is undefined. Remark: This element shall express the reliability of the forecast. Controlled vocabulary (ValueSource)."
+    },
+    "hasStartTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. The startTime of a power sequence or slot. SHALL be present"
+    },
+    "hasPowerSequenceElement": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. A connection between the Power Sequence and the elements (or Slots) describing the exact contents. Relationship to PowerSequenceElement."
+    },
+    "hasTaskIdentifier": {
+      "type": "string",
+      "description": "Property. Used by a device that wants to uniquely identify reoccurring types of power sequences. For example, specific types of washing cycles with specific parameters SHOULD have the same s4ener:taskIdentifier value every time they are offered using power sequences."
+    },
+    "hasMaxDuration": {
+      "type": "string",
+      "description": "Property. If a slot has a configurable duration, it SHALL be present and denote the maximum supported configuration. Note: This element applies to the first repetition of the slot number only ISO 8601 duration (e.g. 'PT30M')."
+    },
+    "hasMinDuration": {
+      "type": "string",
+      "description": "Property. If a slot has a configurable duration, it SHALL be present and denote the minimum supported configuration. Note: This element applies to the first repetition of the slot number only. ISO 8601 duration (e.g. 'PT30M')."
+    },
+    "hasMaxPauseBefore": {
+      "type": "string",
+      "description": "Property. The maximum duration for which a device can be paused between the end of the previous running sequence and the start of this one ISO 8601 duration (e.g. 'PT30M')."
+    },
+    "isInterruptible": {
+      "type": "boolean",
+      "description": "Property. This property indicates whether the PowerSequence is interruptible."
+    },
+    "abnormalConditionOnly": {
+      "type": "boolean",
+      "description": "Property. Indicates if this element can only be used during an abnormal condition."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "hasIdentifier",
+    "sequenceRemoteControllable",
+    "hasActiveDurationMax",
+    "hasActiveDurationMin",
+    "hasStartTime"
+  ]
+}

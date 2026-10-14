@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ener/models/DemandDrivenProfile/schema.json",
+  "modelTags": "SAREF4ENER,FlexibilityProfile",
+  "title": "Smart Data Models - SAREF4ENER - DemandDrivenProfile",
+  "description": "https://saref.etsi.org/saref4ener/DemandDrivenProfile. The Flexibility Profile following the Demand Driven strategy. Subclass of FlexibilityProfile per the SAREF4ENER ontology; inherited properties are documented on the FlexibilityProfile model and not repeated here.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "DemandDrivenProfile"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'DemandDrivenProfile'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasDemandRate": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The present demand rate that needs to be satisfied by the system Relationship to NumberRange."
+    },
+    "hasDemandRateForecast": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. This property relates a Demand Driven Profile to a TimeSeries object that indicates a forecast of the average demand rate. Relationship to TimeSeries."
+    },
+    "isActuatedBy": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. A reference to an (external) actuator that can potentially activate this profile or where the instruction originates from. References an external/core-SAREF concept (Actuator) not itself translated in this candidate."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
