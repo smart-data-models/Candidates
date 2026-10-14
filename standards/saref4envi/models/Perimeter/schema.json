@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4envi/models/Perimeter/schema.json",
+  "modelTags": "SAREF4ENVI,SmartCities",
+  "title": "Smart Data Models - SAREF4ENVI - Perimeter",
+  "description": "https://saref.etsi.org/saref4envi/Perimeter. Spatial extent considered as containing: (1) the attributee or attributees of a container, or (2) the generator or generators of a waste flux. Subclass of geo:Feature and saref:FeatureOfInterest (ETSI TS 103 410-2 clause 6.2.1.1.2); base class for s4envi:Building, s4envi:City, s4envi:Neighbourhood and s4envi:CollectionOfBuildings, whose own models document only their own additional attributes and inherit this model's attributes, including location, consistsOf and population.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Perimeter"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Perimeter'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geolocation of the perimeter, expressed as a GeoJSON Polygon.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Polygon"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {}
+        }
+      }
+    },
+    "consistsOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://saref.etsi.org/core/consistsOf'. A perimeter consists of the generator(s) of a waste flux (ontology restriction: at least one). Links to WasteProducer entities."
+    },
+    "population": {
+      "type": "integer",
+      "description": "Property. Model:'https://saref.etsi.org/saref4envi/Population'. Total number of people living within a perimeter."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

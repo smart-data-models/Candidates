@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4envi/models/Itinerary/schema.json",
+  "modelTags": "SAREF4ENVI,WasteManagement",
+  "title": "Smart Data Models - SAREF4ENVI - Itinerary",
+  "description": "https://saref.etsi.org/saref4envi/Itinerary. Set of road segments that make up the route taken by a waste collection vehicle, from its depot to the collection points on its round and finally to a waste processing site. Subclass of geo:Feature and saref:FeatureOfInterest (ETSI TS 103 410-2 clause 6.2.2.1.3).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Itinerary"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Itinerary'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geolocation of the itinerary, expressed as a GeoJSON LineString.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "LineString"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {}
+        }
+      }
+    },
+    "consistsOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://saref.etsi.org/core/consistsOf'. An itinerary consists of one or more road segments (ontology restriction: allValuesFrom RoadSegment). Links to RoadSegment entities."
+    },
+    "averageSpeedLimit": {
+      "type": "number",
+      "description": "Property. Model:'https://saref.etsi.org/saref4envi/AverageSpeedLimit'. Mean speed limit for a road segment or an itinerary. Unit: km/h; not fixed by the ontology."
+    },
+    "length": {
+      "type": "number",
+      "description": "Property. Model:'https://saref.etsi.org/saref4envi/Length'. Length in distance of a journey or an itinerary. Unit: kilometre (km); not fixed by the ontology."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

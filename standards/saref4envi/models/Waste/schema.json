@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4envi/models/Waste/schema.json",
+  "modelTags": "SAREF4ENVI,WasteManagement",
+  "title": "Smart Data Models - SAREF4ENVI - Waste",
+  "description": "https://saref.etsi.org/saref4envi/Waste. Substances or objects which are discarded, are intended to be discarded or are required to be discarded in accordance with national laws. Waste is a potential resource or commodity that could be turned into a useful product, recycled or recovered (source: ISO 24161:2022). See also envo:00002264. Subclass of s4envi:Resource (ETSI TS 103 410-2 clause 6.2.1.1.12); location is inherited from the Resource model and not repeated here.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Waste"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Waste'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "isProducedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://saref.etsi.org/saref4envi/isProducedBy'. Waste is produced by a waste producer. (ontology restriction: minimum 1). Links to WasteProducer entities."
+    },
+    "isDepositedIn": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://saref.etsi.org/saref4envi/isDepositedIn'. Waste is deposited in one container. (ontology restriction: exactly 1). Links to a Container entity."
+    },
+    "isDepositedAt": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://saref.etsi.org/saref4envi/isDepositedAt'. Waste is deposited at a waste processing site. (ontology restriction: exactly 1). Links to a WasteProcessingSite entity."
+    },
+    "becomes": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://saref.etsi.org/saref4envi/becomes'. Waste becomes either a secondary raw resource, or final waste. Links to a SecondaryRawResource or FinalWaste entity."
+    },
+    "isProcessedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://saref.etsi.org/saref4envi/isProcessedBy'. Waste is processed by at least one waste processing device. (ontology restriction: minimum 1). Links to WasteProcessingDevice entities."
+    },
+    "isCollectedDuring": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://saref.etsi.org/saref4envi/isCollectedDuring'. Waste is collected during a journey. (ontology restriction: maximum 1). Links to a Journey entity."
+    },
+    "processingBeginsOn": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://saref.etsi.org/saref4envi/processingBeginsOn'. Waste begins being processed on a given date."
+    },
+    "processingEndsOn": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://saref.etsi.org/saref4envi/processingEndsOn'. Waste ends being processed on a given date."
+    },
+    "hasCollectionDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://saref.etsi.org/saref4envi/hasCollectionDate'. Waste has one collection date, the date on which it was initially collected. (ontology restriction: maximum 1)."
+    },
+    "wasteKind": {
+      "type": "string",
+      "description": "Property. Open/enumerated vocabulary, flattened from saref:hasFeatureKind whose range is s4envi:WasteKind -- not modelled as its own entity. Known individuals (non-exhaustive): 'BiodegradableWaste', 'FoodWaste', 'GardenParkWaste', 'ConstructionWaste', 'ConcreteConstructionWaste', 'WoodConstructionWaste', 'WoodWaste', 'GlassWaste', 'HouseholdWaste', 'PaperCardboardWaste', 'PlasticWaste', 'TextileWaste'."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

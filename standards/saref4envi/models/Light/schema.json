@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4envi/models/Light/schema.json",
+  "modelTags": "SAREF4ENVI,Lighting",
+  "title": "Smart Data Models - SAREF4ENVI - Light",
+  "description": "https://saref.etsi.org/saref4envi/Light. A light source, which may be a lantern, a street light, a floodlight, a signal lamp or any other device whose primary purpose is the generation of light (definition taken from OpenStreetMap wiki, Proposed_features/Key:light_source). Top-level saref:FeatureKind in the Lighting Domain (ETSI TS 103 410-2 clause 6.1.2); s4envi:FlashingLight is a narrower kind of Light (skos:broader) but not modelled as its own entity here (it is a named individual used as a classification value, not an independently-defined class).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Light"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Light'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geolocation of the light, expressed as a GeoJSON Point. Enrichment (ontology does not formally assert geo:Feature for Light, but it is a physical light source).",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {}
+        }
+      }
+    },
+    "color": {
+      "type": "string",
+      "description": "Property. Model:'https://saref.etsi.org/saref4envi/Color'. Color of the emitted light. It might be indicated by named colors or using other type of color values like hexadecimal for RGB, color temperature, etc. Flattened from saref:hasProperty :Color (an individual of s4envi:LightProperty; LightProperty is not modelled as its own entity -- see standard-metadata.yaml)."
+    },
+    "geometry": {
+      "type": "string",
+      "description": "Property. Model:'https://saref.etsi.org/saref4envi/Geometry'. The shape of a light emission. It may be described by individuals like 'spherical', 'cylindrical', etc. even though it is open to more complex representation of geometries using other vocabularies. Flattened from saref:hasProperty :Geometry."
+    },
+    "lightProjectionHeight": {
+      "type": "number",
+      "description": "Property. Model:'https://saref.etsi.org/saref4envi/LightProjectionHeight'. The height from which a light is projected. Unit of measure: metre (m); not fixed by the ontology. Flattened from saref:hasProperty :LightProjectionHeight (broader property: Height)."
+    },
+    "lightProjectionDirection": {
+      "type": "number",
+      "description": "Property. Model:'https://saref.etsi.org/saref4envi/LightProjectionDirection'. The direction in which a light is projected. Represented as a compass bearing in degrees [0, 360); not fixed by the ontology. Flattened from saref:hasProperty :LightProjectionDirection."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

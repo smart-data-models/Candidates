@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4envi/models/Resource/schema.json",
+  "modelTags": "SAREF4ENVI,WasteManagement",
+  "title": "Smart Data Models - SAREF4ENVI - Resource",
+  "description": "https://saref.etsi.org/saref4envi/Resource. Useful substances and objects. Subclass of geo:Feature and saref:FeatureOfInterest (ETSI TS 103 410-2 clause 6.2.1.1.11); base class for s4envi:Waste, s4envi:PrimaryRawResource and s4envi:SecondaryRawResource, whose own models document only their own additional attributes and do not repeat location.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Resource"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Resource'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geolocation of the resource, expressed as a GeoJSON Point.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {}
+        }
+      }
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

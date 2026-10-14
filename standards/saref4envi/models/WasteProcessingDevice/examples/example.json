@@ -1,0 +1,31 @@
+{
+  "id": "urn:ngsi-ld:WasteProcessingDevice:composter-01",
+  "type": "WasteProcessingDevice",
+  "dateCreated": "2023-06-12T09:00:00Z",
+  "dateModified": "2026-09-30T16:20:00Z",
+  "source": "https://example.org/waste-management/devices/composter-01",
+  "dataProvider": "AreaMetropolitanaDeBarcelona",
+  "location": {
+    "type": "Point",
+    "coordinates": [2.2185, 41.4106]
+  },
+  "directlyConsumes": [
+    "urn:ngsi-ld:SecondaryRawResource:compost-feedstock-01"
+  ],
+  "indirectlyConsumes": [
+    "urn:ngsi-ld:PrimaryRawResource:electricity-grid-01"
+  ],
+  "directlyEmits": [
+    "urn:ngsi-ld:Emission:co2-composter-01"
+  ],
+  "indirectlyEmits": [
+    "urn:ngsi-ld:Emission:heavymetal-composter-01"
+  ],
+  "produces": [
+    "urn:ngsi-ld:SecondaryRawResource:compost-batch-2026-10"
+  ],
+  "acceptedWasteKinds": ["BiodegradableWaste", "GardenParkWaste", "FoodWaste"],
+  "yield": 0.35,
+  "usesCommunicationInterface": "urn:ngsi-ld:CommunicationInterface:mqtt-if-01",
+  "usesCommunicationProtocol": "urn:ngsi-ld:CommunicationProtocol:mqtt-v5"
+}

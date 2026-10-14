@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4envi/models/Journey/schema.json",
+  "modelTags": "SAREF4ENVI,WasteManagement",
+  "title": "Smart Data Models - SAREF4ENVI - Journey",
+  "description": "https://saref.etsi.org/saref4envi/Journey. Trip that has been made by a waste collection vehicle in reality, following an itinerary, to collect waste from collection points and take it to a waste processing site. Subclass of saref:FeatureOfInterest directly (ETSI TS 103 410-2 clause 6.2.2.1.4); no location (not a geo:Feature, unlike Itinerary/RoadSegment).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Journey"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Journey'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "followsItinerary": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://saref.etsi.org/saref4envi/followsItinerary'. A journey follows a defined itinerary. Links to an Itinerary entity."
+    },
+    "isMadeBy": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://saref.etsi.org/saref4envi/isMadeBy'. A journey is made by one waste collection vehicle. Links to a WasteCollectionVehicle entity."
+    },
+    "isMadeOn": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://saref.etsi.org/saref4envi/isMadeOn'. A journey is made on a given date. (ontology restriction: maximum 1)."
+    },
+    "length": {
+      "type": "number",
+      "description": "Property. Model:'https://saref.etsi.org/saref4envi/Length'. Length in distance of a journey or an itinerary. Unit: km."
+    },
+    "duration": {
+      "type": "number",
+      "description": "Property. Model:'https://saref.etsi.org/saref4envi/Duration'. Duration in time of a journey. Unit: seconds; not fixed by the ontology."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
