@@ -1,0 +1,43 @@
+{
+  "id": "urn:ngsi-ld:ObservationCollectionExecution:example01",
+  "type": "ObservationCollectionExecution",
+  "dateCreated": {
+    "type": "Property",
+    "value": "2026-10-14T10:00:00Z"
+  },
+  "dateModified": {
+    "type": "Property",
+    "value": "2026-10-14T10:00:00Z"
+  },
+  "source": {
+    "type": "Relationship",
+    "object": "https://saref.etsi.org/saref4ehaw/v2.1.1/"
+  },
+  "dataProvider": {
+    "type": "Property",
+    "value": "SAREF4EHAW"
+  },
+  "madeBy": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:HealthDevice:example01"
+  },
+  "observes": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:Patient:example01"
+  },
+  "hasResult": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:ObservationCollection:example01"
+  },
+  "hasPrecondition": {
+    "type": "Property",
+    "value": "Device must be attached and battery level above 10 percent"
+  },
+  "hasEffect": {
+    "type": "Property",
+    "value": "Generates an alert if heart rate exceeds 120 bpm"
+  },
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ehaw/models/ObservationCollectionExecution/context.jsonld"
+  ]
+}

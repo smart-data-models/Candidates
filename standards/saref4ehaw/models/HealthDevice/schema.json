@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ehaw/models/HealthDevice/schema.json",
+  "modelTags": "SAREF4EHAW,eHealth,Device",
+  "title": "Smart Data Models - SAREF4EHAW - HealthDevice",
+  "description": "https://saref.etsi.org/saref4ehaw/HealthDevice. Health devices, e.g. BAN hub, health sensor/actuator/wearable (ttl rdfs:comment). Modelled as a subClassOf saref:Device. Superclass of HealthActuator, HealthSensor, HealthWearable and BanHub, all zero-own-property candidates that inherit every property declared here. HealthDevice carries the bulk of device characteristics in this extension because the ttl defines most of them only as undomained saref:Property/saref:FeatureKind individuals (comments like 'of a device'/'of a feature of interest'), and HealthDevice is the most specific common class in this extension that is not itself a zero-own-property leaf class.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["HealthDevice"],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'HealthDevice'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "serialNb": {
+      "type": "string",
+      "description": "Property. Model:'https://saref.etsi.org/saref4ehaw/serialNb'. The serial number of a health device. ttl-confirmed, domain HealthDevice (s4ehaw:serialNb)."
+    },
+    "isAttachedTo": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://saref.etsi.org/saref4ehaw/isAttachedTo'. A health Device is attached to a health actor such as a patient, a user and or a caregiver. ttl-confirmed, domain HealthDevice, range HealthActor (s4ehaw:isAttachedTo)."
+    },
+    "hasInterface": {
+      "type": "array",
+      "items": {"type": "string", "format": "uri"},
+      "description": "Relationship. Model:'https://saref.etsi.org/saref4ehaw/hasInterface'. A health device has one or multiple interfaces (Bluetooth, UWB, IEEE 802.15.6, serial interface, etc.). Attested in ETSI TS 103 410-8 Table 4 (domain HealthDevice, range Interface); NOT found as a declared OWL property in the currently-published saref4ehaw.ttl (dcterms:modified 2025-04-25) -- flagged as a possible ttl/TS synchronisation gap, provisional IRI constructed by namespace pattern. Target entity type is CommunicationInterface."
+    },
+    "locationRelativeToBody": {
+      "type": "string",
+      "enum": ["ArmpitWeared", "WristWeared", "ImplantLocation"],
+      "description": "Property. Model:'https://saref.etsi.org/saref4ehaw/LocationRelativeToBody'. The location of the device relative to the body (on the body surface or implanted). ttl-confirmed State class, the body-relative branch of the generic Location State ('on - body surface - or in the body - implant -'); attached to HealthDevice because the ttl's explicit OWL restriction hasState hasValue Location is declared directly on HealthDevice (see also HealthActor.hasPhysicalLocation for the other, geolocation branch of the same generic Location State)."
+    },
+    "availableFlash": {
+      "type": "number",
+      "description": "Property. Model:'https://saref.etsi.org/saref4ehaw/AvailableFlash'. The available flash memory (in bytes) of a device. It is a dynamic attribute. ttl-confirmed individual (undomained saref:Property); ETSI TS 103 410-8 Table 5 additionally tables a lowercase-initial s4ehaw:availableFlash as a formal xsd:long DatatypeProperty with domain HealthDevice."
+    },
+    "availableRam": {
+      "type": "number",
+      "description": "Property. Model:'https://saref.etsi.org/saref4ehaw/AvailableRam'. Indicates the available volatile memory space (in bytes) of a device. It is a dynamic attribute. Same pattern as availableFlash; TS Table 5 confirms domain HealthDevice."
+    },
+    "remainingBatteryLevel": {
+      "type": "number",
+      "description": "Property. Model:'https://saref.etsi.org/saref4ehaw/RemainingBatteryLevel'. The level of remaining battery (if any, in percent) for a health device. It is a dynamic attribute. Same pattern as availableFlash; TS Table 5 confirms domain HealthDevice."
+    },
+    "computingPower": {
+      "type": "object",
+      "description": "Property. Model:'https://saref.etsi.org/saref4ehaw/ComputingPower'. The computing power capabilities of a device. ttl-confirmed (s4ehaw:ComputingPower rdf:type saref:Property; saref:consistsOf s4ehaw:DutyCycle, s4ehaw:MaximumFlash, s4ehaw:MaximumRam, s4ehaw:CPUFrequency); ETSI TS 103 410-8 Figure 4 attaches it to HealthDevice via the reused saref:hasProperty relationship.",
+      "properties": {
+        "dutyCycle": {
+          "type": "number",
+          "description": "The duty cycle of an embedded processor of a device, typically in percent. Model:'https://saref.etsi.org/saref4ehaw/DutyCycle'."
+        },
+        "maximumFlash": {
+          "type": "number",
+          "description": "The maximum flash memory space (in bytes) of a device. Model:'https://saref.etsi.org/saref4ehaw/MaximumFlash'."
+        },
+        "maximumRam": {
+          "type": "number",
+          "description": "The maximum volatile memory space (in bytes) of a device. Model:'https://saref.etsi.org/saref4ehaw/MaximumRam'."
+        },
+        "cpuFrequency": {
+          "type": "number",
+          "description": "The number of instructions an embedded processor within a device can perform per second (MIPS). Model:'https://saref.etsi.org/saref4ehaw/CPUFrequency'."
+        }
+      }
+    },
+    "powerSource": {
+      "type": "array",
+      "items": {"type": "string", "enum": ["SolarPowered", "BatteryPowered", "MainsPowered"]},
+      "description": "Property. Model:'https://saref.etsi.org/saref4ehaw/PowerSource'. Characteristic describing the energy source of the health device. ttl individual, undomained (section header plus 5 saref:FeatureKind individuals: SolarPowered, BatteryPowered, MainsPowered, Rechargeable, NotRechargeable); attached to HealthDevice per its own comment 'Characteristic describing energy source and battery related capabilities of the health device'."
+    },
+    "rechargeable": {
+      "type": "boolean",
+      "description": "Property. Model:'https://saref.etsi.org/saref4ehaw/Rechargeable'. Whether the device's power source is rechargeable. ttl individual, undomained; simplifies the Rechargeable/NotRechargeable FeatureKind pair into one boolean."
+    },
+    "numberOfPowerSource": {
+      "type": "integer",
+      "description": "Property. Model:'https://saref.etsi.org/saref4ehaw/NumberOfPowerSource'. Number of power sources of the device. ttl-confirmed individual, undomained."
+    },
+    "availablePowerLevel": {
+      "type": "number",
+      "description": "Property. Model:'https://saref.etsi.org/saref4ehaw/AvailablePowerLevel'. Power level still available for the device to function. ttl-confirmed individual, undomained."
+    },
+    "dimensions": {
+      "type": "object",
+      "description": "Property. Model:'https://saref.etsi.org/saref4ehaw/Dimensions'. The dimensions of the device, consisting of a length, a width and a height. ttl-confirmed (s4ehaw:Dimensions rdf:type saref:Property; saref:consistsOf s4ehaw:Height, s4ehaw:Width, s4ehaw:Length), undomained; attached to HealthDevice as a physical-device characteristic.",
+      "properties": {
+        "height": {"type": "number", "description": "The height dimension of the device. Model:'https://saref.etsi.org/saref4ehaw/Height'."},
+        "width": {"type": "number", "description": "The width dimension of the device. Model:'https://saref.etsi.org/saref4ehaw/Width'."},
+        "length": {"type": "number", "description": "The length dimension of the device. Model:'https://saref.etsi.org/saref4ehaw/Length'."}
+      }
+    },
+    "weight": {
+      "type": "number",
+      "description": "Property. Model:'https://saref.etsi.org/saref4ehaw/Weight'. The weight of the device. ttl-confirmed individual, undomained."
+    },
+    "sendingFrequency": {
+      "type": "number",
+      "description": "Property. Model:'https://saref.etsi.org/saref4ehaw/SendingFrequency'. The sending frequency of a device with a periodic communication function. ttl-confirmed individual, undomained."
+    },
+    "precision": {
+      "type": "number",
+      "description": "Property. Model:'https://saref.etsi.org/saref4ehaw/Precision'. The degree of reproducibility of a measured quantity (when the same quantity is measured several times how close are the measurements from each other). ttl-confirmed individual, undomained."
+    },
+    "hasFunction": {
+      "type": "array",
+      "items": {"type": "string", "enum": ["CommunicationFunction", "PeriodicCommunicationFunction", "EventDrivenCommunicationFunction", "OnRequestCommunicationFunction", "Alarm", "Reminder"]},
+      "description": "Relationship. Model:'https://saref.etsi.org/core/hasFunction'. Reused SAREF core relationship; summarises the SAREF4EHAW-defined saref:Function individuals this device may support (ttl-confirmed individuals, domain not restricted to HealthDevice specifically)."
+    }
+  },
+  "required": ["id", "type"]
+}

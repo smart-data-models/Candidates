@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ehaw/models/HealthActor/schema.json",
+  "modelTags": "SAREF4EHAW,eHealth,Actor",
+  "title": "Smart Data Models - SAREF4EHAW - HealthActor",
+  "description": "https://saref.etsi.org/saref4ehaw/HealthActor. The eHealth actors like e.g. caregivers, patients, users, helpers... (ttl rdfs:comment). Modelled as a subClassOf foaf:Agent. Superclass of Caregiver, Helper, ResponsibleParty and User (and transitively Patient), which inherit every property declared here.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["HealthActor"],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'HealthActor'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "firstName": {
+      "type": "string",
+      "description": "Property. The first name of a health actor. ttl-confirmed, domain HealthActor (s4ehaw:firstName)."
+    },
+    "lastName": {
+      "type": "string",
+      "description": "Property. The family name of a health actor. ttl-confirmed, domain HealthActor (s4ehaw:lastName)."
+    },
+    "dob": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. The date of birth of a health actor. ttl-confirmed, domain HealthActor, range xsd:dateTime (s4ehaw:dob)."
+    },
+    "phone": {
+      "type": "string",
+      "description": "Property. The phone number of a health actor, in international format. ttl-confirmed, domain HealthActor (s4ehaw:phone)."
+    },
+    "hasMbox": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. An email address (or mail box) of a health actor: a URI with the 'mailto' scheme as defined by RFC 6068. ttl-confirmed, domain HealthActor, range xsd:anyURI (s4ehaw:hasMbox)."
+    },
+    "gender": {
+      "type": "string",
+      "enum": ["Male", "Female", "NonBinary", "UndeterminedGender"],
+      "description": "Property. The gender of a health actor. ttl-confirmed State class (s4ehaw:Gender) and its 4 StateValue individuals; HealthActor carries an explicit OWL restriction rdfs:subClassOf [owl:onProperty saref:hasState; owl:hasValue s4ehaw:Gender], so this State is genuinely anchored to HealthActor by the ontology itself, via the generic reused saref:hasState mechanism (not a SAREF4EHAW-specific named object property)."
+    },
+    "ageCategory": {
+      "type": "string",
+      "enum": ["Old", "Young"],
+      "description": "Property. The age group of a health actor, e.g. old or young. ttl-confirmed State class (s4ehaw:AgeCategory) and its 2 StateValue individuals; undomained by any explicit OWL restriction, attached here to HealthActor because its own rdfs:comment reads 'of a health actor'."
+    },
+    "hasPhysicalLocation": {
+      "type": "object",
+      "description": "GeoProperty. geo:json. The physical location (geolocation) of this health actor. Property name attested verbatim in ETSI TS 103 410-8 clause 4.3.1's worked Covid-19 proximity-detection example ('the geolocation property (s4ehaw:hasPhysicalLocation property) of patients... computed using the latitude and longitude... with the Haversine formula'); NOT found as a declared triple in the published saref4ehaw.ttl. Mapped here to the ttl's confirmed generic Location State class (s4ehaw:Location), whose own definition explicitly covers 'a physical location (a postal address, a geolocation)', as distinct from its LocationRelativeToBody branch used on HealthDevice for on-body/implant placement. HealthActor also carries the matching explicit OWL restriction hasState hasValue Location in the ttl.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["Point"]
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {"type": "number"},
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    },
+    "usesBan": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. A health actor (e.g. a caregiver, a patient or a helper) uses a BAN for collecting, aggregating and relaying vital parameters. ttl-confirmed, domain HealthActor, range Ban (s4ehaw:usesBan). Model:'https://saref.etsi.org/saref4ehaw/Ban'. May also be an array of URIs when a health actor uses more than one BAN."
+    },
+    "hasActivity": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. A health actor may have one or multiple activities. ttl-confirmed, domain HealthActor, range Activity (s4ehaw:hasActivity). Model:'https://saref.etsi.org/saref4ehaw/Activity'. May also be an array of URIs when a health actor has more than one activity."
+    }
+  },
+  "required": ["id", "type"]
+}

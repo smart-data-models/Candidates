@@ -1,0 +1,165 @@
+title: "SAREF4EHAW (SAREF extension for eHealth / Ageing Well)"
+publisher: "ETSI (European Telecommunications Standards Institute) - SmartM2M"
+sourceUrl: "https://saref.etsi.org/saref4ehaw/v2.1.1/"
+sourceOntologyVersion: "v2.1.1"
+normativeReference: "ETSI TS 103 410-8 V2.1.1 (2024-09), SmartM2M; Extension to SAREF; Part 8: eHealth/Ageing-well Domain -- https://www.etsi.org/deliver/etsi_ts/103400_103499/10341008/02.01.01_60/ts_10341008v020101p.pdf"
+domains:
+  - eHealth
+  - ActiveAssistedLiving
+  - AgeingWell
+  - SmartCities
+description: >
+  SAREF4EHAW extends the SAREF (Smart Applications REFerence) core ontology
+  to the eHealth and Ageing-Well / Active Assisted Living (AAL) vertical. It
+  models the actors, devices and networks involved in remote health
+  monitoring and ageing-well use cases: health actors (patients, users,
+  caregivers, helpers, responsible parties) equipped with a Body Area
+  Network (BAN) of health devices (sensors, actuators, wearables) connected
+  through a BAN hub, communicating over communication
+  interfaces/networks/protocols, and producing observation-collection
+  executions (e.g. ECG recording sessions, SpO2/heart-rate/body-temperature
+  readings). It reuses SAREF core (Device, Sensor, Actuator, Function,
+  Command, Property, Service, State/StateValue), SAREF4SYST (System,
+  Connection, ConnectionPoint) and SAREF4WEAR (WearableDevice) rather than
+  re-defining them. This candidate translates the full set of SAREF4EHAW-own
+  classes (21 classes) into one candidate model per class under models/.
+license: >
+  ETSI Forge Software License (BSD-3-Clause), per the ontology file's own
+  dcterms:license annotation (<https://saref.etsi.org/core/> style header),
+  which points to <https://forge.etsi.org/etsi-software-license> -- that
+  page states "the content of the repositories in the ETSI Forge is
+  licensed under the terms of the BSD-3-Clause LICENSE".
+licenseNote: >
+  The license above applies to the ontology/RDF artifacts (the .ttl/.jsonld/
+  .rdf/.nt/.n3 files themselves, published as software in the ETSI Forge).
+  The normative textual specification this candidate also draws on, ETSI TS
+  103 410-8 V2.1.1, carries ETSI's standard deliverable copyright notice
+  ("(c) ETSI 2024. All rights reserved" -- reproduction/modification of the
+  PDF itself requires ETSI's written authorization); only the ontology's own
+  class/property definitions (names, domains/ranges, comments) were
+  translated here, not the document's prose or figures verbatim. Verify
+  both notices before promoting this candidate out of Candidates/.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-10-14 from two complementary authoritative sources:
+    1. The published Turtle file https://saref.etsi.org/saref4ehaw/v2.1.1/saref4ehaw.ttl
+       (870 lines) -- the exhaustive, machine-parseable class/property/
+       individual list, used as ground truth for every rdfs:domain /
+       rdfs:range / rdfs:subClassOf triple and every named individual.
+    2. The normative ETSI TS 103 410-8 V2.1.1 (2024-09) PDF, read in full --
+       its clause 4.2 (module-by-module object/data property tables: Table 2
+       HealthActor, Table 3 Ban, Tables 4-5 HealthDevice, Tables 7-8
+       Function) and clause 4.3 worked examples (Bob the Covid-19 patient;
+       the Shimmer3 ECG early-warning scenario) were used to resolve
+       properties that exist in the ttl only as undomained saref:Property /
+       saref:FeatureKind / saref:State individuals with no explicit
+       rdfs:domain triple (the ontology attaches these generically via the
+       inherited SAREF saref:hasState / saref:hasProperty mechanism rather
+       than a SAREF4EHAW-specific named object property).
+
+  ENTITY COUNT: 21 classes, matching the brief's list exactly: Activity,
+  DailyActivity, NocturnalActivity, Ban, BanApplicationTask, BanHub,
+  Caregiver, Helper, HealthActor, HealthActuator, HealthDevice,
+  HealthSensor, HealthWearable, FunctionalDevice, CommunicationInterface,
+  CommunicationNetwork, CommunicationProtocol, ObservationCollectionExecution,
+  Patient, ResponsibleParty, User.
+
+  ZERO-OWN-PROPERTY MODELS (role/inheritance documented in their
+  description instead of invented properties, per the Gaia-X
+  inheritance-flattening precedent in standards/gaiax-ontology-v2111/):
+  DailyActivity, NocturnalActivity, FunctionalDevice, HealthActuator,
+  HealthSensor, HealthWearable, BanHub, Patient, ResponsibleParty. The
+  source ttl declares no rdfs:domain property for any of these nine classes
+  themselves -- they are pure rdfs:subClassOf specializations (HealthSensor/
+  HealthActuator are declared equivalent to the reused SAREF
+  Sensor/Actuator; HealthWearable to SAREF4WEAR's WearableDevice;
+  FunctionalDevice is declared in the TS text to have "exactly the same
+  object and data properties" as plain SAREF Device).
+
+  NAMING: class and property names are preserved verbatim from the source
+  ontology (e.g. `hasMbox`, `serialNb`, `isAttachedTo`) per
+  system_prompt.md's naming rules -- no forced PascalCase/camelCase renaming
+  of ontology-native identifiers. One ttl individual name contains escaped
+  hyphens (`IEEE802\-15\-6`, a Turtle PNAME escape); its real label is
+  "IEEE802-15-6", used verbatim as a CommunicationProtocol example value.
+
+  ASSUMPTIONS / JUDGMENT CALLS (also repeated in the relevant model's own
+  schema.json property descriptions):
+    - HealthActor: `gender` and `ageCategory` are modelled as closed-ish
+      enums from the ttl's Gender/AgeCategory StateValue individuals,
+      attached here because the ttl's only explicit OWL restriction tying a
+      State to a class (`rdfs:subClassOf [owl:onProperty saref:hasState;
+      owl:hasValue s4ehaw:Gender]`, ditto Location) is declared directly on
+      HealthActor. `hasPhysicalLocation` (GeoProperty) is named after its
+      exact mention in TS clause 4.3.1's Covid-19 proximity-detection
+      scenario ("the geolocation property (s4ehaw:hasPhysicalLocation
+      property) of patients"), even though no matching triple exists in the
+      published v2.1.1 ttl -- treated as the geolocation branch of the
+      ttl's more general `Location` State (whose other branch,
+      body-relative placement, is modelled on HealthDevice instead, see
+      below).
+    - HealthDevice carries the bulk of device characteristics (computing
+      power, power source, dimensions/weight, available flash/RAM,
+      remaining battery, sending frequency, precision) because the ttl
+      defines these only as undomained saref:Property/saref:FeatureKind
+      individuals with comments like "of a device" / "of a feature of
+      interest", and HealthDevice is the most specific common class in this
+      extension that is NOT itself one of the zero-own-property leaf
+      classes (HealthSensor/HealthActuator/HealthWearable/BanHub all
+      inherit these from HealthDevice). `locationRelativeToBody` (enum:
+      ArmpitWeared, WristWeared, ImplantLocation) is the body-relative
+      branch of the ttl's `Location` State, attached to HealthDevice
+      because TS Figure 4 ties the `hasState hasValue Location` restriction
+      to HealthDevice, not HealthActor, for on-body/implant placement.
+    - User carries `habit`, `impairment` (both confirmed by TS Table 2:
+      `hasHabit`/`hasImpairment`, domain `s4ehaw:User`), plus `posture` and
+      `chronicDisease` (named in TS clause 4.2.2's prose and clause 4.3.1's
+      worked example as `s4ehaw:hasChronicDisease`, but with no dedicated
+      object property in Table 2 -- these reuse the generic SAREF
+      `saref:hasState` mechanism). Patient inherits all of these and so has
+      no properties of its own, matching the brief.
+    - Ban's `consistsOf` (-> HealthDevice) and `accomplishesTask` (->
+      BanApplicationTask, from TS Figure 3's `saref:accomplishes` arrow)
+      are reused SAREF/SAREF4SYST core properties shown in the TS module
+      diagrams but not re-declared locally in the saref4ehaw.ttl file
+      (only properties new to this extension are declared there; imported
+      ones are not redeclared). `banTopology` (enum: AdhocBanTopology,
+      MeshBanTopology, StarBanTopology) is attached to Ban purely by name
+      ("BanTopology") since the ttl gives it no explicit rdfs:domain.
+    - BanApplicationTask and CommunicationProtocol are both named-individual
+      taxonomies (owl:NamedIndividual instances of the class itself, not
+      instances with their own further sub-properties); each is modelled
+      with a single open-vocabulary `name` string documenting the known
+      individuals (BanApplicationTask: AssistedLiving, Emergency,
+      Healthcare, PervasiveComputing, Safety, SportTraining, Telemedicine,
+      Prevention -- 8 in the ttl, though TS clause 4.2.3's prose lists only
+      7, omitting Prevention; CommunicationProtocol: BluetoothLowEnergy,
+      UltraWideBand, IEEE802-15-6) rather than a closed JSON Schema enum,
+      since the ontology explicitly disclaims these lists as exhaustive.
+    - ObservationCollectionExecution's `madeBy`/`observes`/`hasResult` are
+      named explicitly in the ttl's own rdfs:comment ("Use saref:madeBy...
+      Use saref:observes... Use saref:hasResult...") as reused SAREF core
+      properties; `hasPrecondition`/`hasEffect` apply via the ttl's
+      domain union that includes saref:ProcedureExecution (this class's
+      declared superclass). The TS PDF additionally uses a closely related
+      but differently-named `s4ehaw:ObservationCollectionSession` in its
+      worked ECG example (clause 4.3.2) -- not a separate class in the
+      published ttl, treated here as the same concept / a session instance
+      of ObservationCollectionExecution.
+
+  DUPLICATION / COLLISION CHECK: there is no repository literally named
+  `smart-data-models/dataModel.eHealth`; the closest official grouping is
+  the `SmartHealth` subject, which aggregates two submodule repos,
+  `dataModel.COVID19` (EUProofOfVaccination, VaccinationCertificate) and
+  `dataModel.Hl7` (Account, Citation, Claim, Immunization, Medication,
+  MedicationAdministration, Organization, Patient, Practitioner). Both were
+  listed via the GitHub API. COLLISION FOUND: `dataModel.Hl7` already
+  publishes a `Patient` model. Per instructions this is flagged, not
+  renamed -- SAREF4EHAW's `Patient` (a 0-own-property subclass of User,
+  itself "a cared-for person by one or multiple caregivers") is semantically
+  different from and much narrower than HL7 FHIR's `Patient` resource; the
+  two should be reconciled (or at minimum cross-referenced) before this
+  candidate is promoted out of Candidates/. No other class-name collisions
+  were found against the two checked repos' model lists.

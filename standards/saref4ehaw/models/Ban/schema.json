@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ehaw/models/Ban/schema.json",
+  "modelTags": "SAREF4EHAW,eHealth,Ban",
+  "title": "Smart Data Models - SAREF4EHAW - Ban",
+  "description": "https://saref.etsi.org/saref4ehaw/Ban. Body Area Network (ttl rdfs:comment). Modelled as a subClassOf s4syst:Connection, with a restriction that it connectsSystem some HealthDevice. A BAN is mainly used for collecting, aggregating and relaying patient/user vital parameters (ETSI TS 103 410-8 clause 4.2.3). Ban is the range of HealthActor.usesBan.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["Ban"],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Ban'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "consistsOf": {
+      "type": "array",
+      "items": {"type": "string", "format": "uri"},
+      "description": "Relationship. Model:'https://saref.etsi.org/core/consistsOf'. A Body Area Network or BAN contains one or multiple health devices. Reused SAREF core property (not redeclared locally in saref4ehaw.ttl since inherited via import); ETSI TS 103 410-8 Table 3 and Figure 3 confirm domain Ban, range HealthDevice."
+    },
+    "hasHub": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://saref.etsi.org/saref4ehaw/hasHub'. A Body Area Network or BAN elects one hub that mainly plays the role of both a data concentrator and a network gateway. ttl-confirmed, domain Ban, range BanHub (s4ehaw:hasHub)."
+    },
+    "hasResponsibleParty": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://saref.etsi.org/saref4ehaw/hasResponsibleParty'. A BAN has a responsible party which plays the role of the legal entity responsible for this BAN (e.g. to contact in case of problem). ttl-confirmed, domain Ban, range ResponsibleParty (s4ehaw:hasResponsibleParty)."
+    },
+    "hasContact": {
+      "type": "array",
+      "items": {"type": "string", "format": "uri"},
+      "description": "Relationship. Model:'https://saref.etsi.org/saref4ehaw/hasContact'. A BAN has one or multiple contacts (e.g. the patient or user that is monitored through this BAN, the caregiver that is using this BAN for monitoring purposes). ttl-confirmed, domain Ban, range HealthActor (s4ehaw:hasContact)."
+    },
+    "accomplishes": {
+      "type": "array",
+      "items": {"type": "string", "format": "uri"},
+      "description": "Relationship. Model:'https://saref.etsi.org/core/accomplishes'. Links the BAN to the application task(s) it enables. Reused SAREF core property (not redeclared locally); ETSI TS 103 410-8 clause 4.2.3 and Figure 3: 'A BAN enables the execution of tasks... modelled as the following SAREF4EHAW individuals: Healthcare, Telemedicine, AssistedLiving, SportTraining, PervasiveComputing, Safety, Emergency' (the ttl additionally has an 8th individual, Prevention, not mentioned in this TS prose list)."
+    },
+    "banTopology": {
+      "type": "string",
+      "enum": ["AdhocBanTopology", "MeshBanTopology", "StarBanTopology"],
+      "description": "Property. Model:'https://saref.etsi.org/saref4ehaw/BanTopology'. The BAN topology type, i.e. Adhoc, Star or Mesh. ttl-confirmed State class (s4ehaw:BanTopology) and its 3 StateValue individuals; undomained by any explicit rdfs:domain, attached here to Ban by name ('BAN topology type')."
+    }
+  },
+  "required": ["id", "type"]
+}

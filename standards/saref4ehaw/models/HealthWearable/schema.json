@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ehaw/models/HealthWearable/schema.json",
+  "modelTags": "SAREF4EHAW,eHealth,Device",
+  "title": "Smart Data Models - SAREF4EHAW - HealthWearable",
+  "description": "https://saref.etsi.org/saref4ehaw/HealthWearable. Health-related Wearable, sub-class of SAREF4WEAR Wearable (ttl rdfs:comment). Modelled as a subClassOf HealthDevice AND s4wear:WearableDevice (equivalence declared with SAREF4WEAR per ETSI TS 103 410-8 clause 4.2.4: 'HealthWearable class is equivalent to SAREF4WEAR Wearable class. It will therefore not be described within clause 4.2.3... in order to reduce duplication with SAREF4WEAR documentation, see ETSI TS 103 410-9 for details'). It therefore inherits every property of HealthDevice (serialNb, isAttachedTo, hasInterface, locationRelativeToBody, availableFlash, availableRam, remainingBatteryLevel, computingPower, powerSource, rechargeable, numberOfPowerSource, availablePowerLevel, dimensions, weight, sendingFrequency, precision, hasFunction -- see standards/saref4ehaw/models/HealthDevice/schema.json) plus SAREF4WEAR WearableDevice's own properties (out of this candidate's 21-class scope, since SAREF4WEAR itself is not part of this translation), with nothing of its own declared in the SAREF4EHAW ontology.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["HealthWearable"],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'HealthWearable'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    }
+  },
+  "required": ["id", "type"]
+}

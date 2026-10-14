@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4ehaw/models/ObservationCollectionExecution/schema.json",
+  "modelTags": "SAREF4EHAW,eHealth,Observation",
+  "title": "Smart Data Models - SAREF4EHAW - ObservationCollectionExecution",
+  "description": "https://saref.etsi.org/saref4ehaw/ObservationCollectionExecution. Execution consisting in collecting observations made by Device (e.g. Sensor, Wearable, ECG Device...) (ttl rdfs:comment). subClassOf saref:ProcedureExecution. Note: ETSI TS 103 410-8 clause 4.3.2's worked ECG example additionally uses a closely related but differently-named s4ehaw:ObservationCollectionSession (not declared as a separate class in the published ttl) for a single recording session instance -- treated here as the same concept / a session instance of this class.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ObservationCollectionExecution"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ObservationCollectionExecution'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "madeBy": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://saref.etsi.org/core/madeBy'. Links to the person (HealthActor) or the Device (HealthDevice) that made the observation collection execution -- polymorphic, whichever made the observation. Reused SAREF core property; ttl's own rdfs:comment explicitly instructs 'Use saref:madeBy to link to the person or the Device that made it.'"
+    },
+    "observes": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://saref.etsi.org/core/observes'. Links to the Patient being observed. Reused SAREF core property; ttl comment: 'Use saref:observes to link to the patient.'"
+    },
+    "hasResult": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://saref.etsi.org/core/hasResult'. Links to the result, an external/unmodeled 'ObservationCollection' concept outside this candidate's class scope. Reused SAREF core property; ttl comment: 'Use saref:hasResult to link to the result, an ObservationCollection.'"
+    },
+    "hasPrecondition": {
+      "type": "string",
+      "description": "Property. Model:'https://saref.etsi.org/saref4ehaw/hasPrecondition'. Links a command or operation to the conditions that are imposed over its inputs to be successfully invoked. Given as free text here, or as a Relationship URI if pointing to a described precondition resource. ttl-confirmed, domain is a union including saref:ProcedureExecution (ObservationCollectionExecution's own declared superclass)."
+    },
+    "hasEffect": {
+      "type": "string",
+      "description": "Property. Model:'https://saref.etsi.org/saref4ehaw/hasEffect'. Links a command or operation to the effect of invoking it. Can be an alert, nothing, an activation of another process... Given as free text here, or as a Relationship URI. ttl-confirmed, same domain-union reasoning as hasPrecondition."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
