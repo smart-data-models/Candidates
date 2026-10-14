@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4envi/models/Lamppost/schema.json",
+  "modelTags": "SAREF4ENVI,Lighting",
+  "title": "Smart Data Models - SAREF4ENVI - Lamppost",
+  "description": "https://saref.etsi.org/saref4envi/Lamppost. A tall pole with a light at the top. Device kind in the Lighting Domain (ETSI TS 103 410-2 clause 6.1.4); subclass of saref:Device. Per the TS: 's4envi:Lamppost belongs to the eponym class s4envi:Lamppost' -- i.e. the OWL class groups both actual Lamppost device instances and the Lamppost DeviceKind individual itself plus narrower device kinds (e.g. ShieldedLamppost).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Lamppost"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Lamppost'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geolocation of the lamppost, expressed as a GeoJSON Point.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {}
+        }
+      }
+    },
+    "hasLightPoint": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://saref.etsi.org/saref4envi/hasLightPoint'. A relation between a lamppost and its light points (sub-property of saref:consistsOf). Links to LightPoint entities."
+    },
+    "projectsLight": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://saref.etsi.org/saref4envi/projectsLight'. A relation between a lamppost or a light point and the light (or lights) they might project. Links to Light entities."
+    },
+    "usesCommunicationInterface": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://saref.etsi.org/saref4envi/usesCommunicationInterface'. A relation between a device and the communication interface it uses. Links to a CommunicationInterface entity."
+    },
+    "usesCommunicationProtocol": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://saref.etsi.org/saref4envi/usesCommunicationProtocol'. A relation between a device and the communication protocol it uses. Links to a CommunicationProtocol entity."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

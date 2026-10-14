@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4envi/models/WasteProcessingOrganisation/schema.json",
+  "modelTags": "SAREF4ENVI,WasteManagement",
+  "title": "Smart Data Models - SAREF4ENVI - WasteProcessingOrganisation",
+  "description": "https://saref.etsi.org/saref4envi/WasteProcessingOrganisation. Organisation in the waste processing industry that has waste processing sites. Subclass of org:Organisation (ETSI TS 103 410-2 clause 6.2.3.1); org:Organisation is out of this candidate's scope. No explicit object/datatype property is declared with this class as domain in the ontology (the 'has waste processing sites' relationship is descriptive prose only, not a formal OWL property), so no relationship is modelled here.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "WasteProcessingOrganisation"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'WasteProcessingOrganisation'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

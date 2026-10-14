@@ -1,0 +1,83 @@
+{
+  "id": "urn:ngsi-ld:WasteProcessingDevice:composter-01",
+  "type": "WasteProcessingDevice",
+  "dateCreated": {
+    "type": "Property",
+    "value": "2023-06-12T09:00:00Z"
+  },
+  "dateModified": {
+    "type": "Property",
+    "value": "2026-09-30T16:20:00Z"
+  },
+  "source": {
+    "type": "Relationship",
+    "object": "https://example.org/waste-management/devices/composter-01"
+  },
+  "dataProvider": {
+    "type": "Property",
+    "value": "AreaMetropolitanaDeBarcelona"
+  },
+  "location": {
+    "type": "GeoProperty",
+    "value": {
+      "type": "Point",
+      "coordinates": [
+        2.2185,
+        41.4106
+      ]
+    }
+  },
+  "directlyConsumes": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:SecondaryRawResource:compost-feedstock-01"
+    ]
+  },
+  "indirectlyConsumes": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:PrimaryRawResource:electricity-grid-01"
+    ]
+  },
+  "directlyEmits": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:Emission:co2-composter-01"
+    ]
+  },
+  "indirectlyEmits": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:Emission:heavymetal-composter-01"
+    ]
+  },
+  "produces": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:SecondaryRawResource:compost-batch-2026-10"
+    ]
+  },
+  "acceptedWasteKinds": {
+    "type": "Property",
+    "value": [
+      "BiodegradableWaste",
+      "GardenParkWaste",
+      "FoodWaste"
+    ]
+  },
+  "yield": {
+    "type": "Property",
+    "value": 0.35
+  },
+  "usesCommunicationInterface": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:CommunicationInterface:mqtt-if-01"
+  },
+  "usesCommunicationProtocol": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:CommunicationProtocol:mqtt-v5"
+  },
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4envi/models/WasteProcessingDevice/context.jsonld"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "id": "urn:ngsi-ld:Lamppost:barcelona-eixample-lamppost017",
+  "type": "Lamppost",
+  "dateCreated": {
+    "type": "Property",
+    "value": "2025-05-10T08:00:00Z"
+  },
+  "dateModified": {
+    "type": "Property",
+    "value": "2026-09-01T12:00:00Z"
+  },
+  "source": {
+    "type": "Relationship",
+    "object": "https://example.org/lighting/lampposts/017"
+  },
+  "dataProvider": {
+    "type": "Property",
+    "value": "AjuntamentDeBarcelona"
+  },
+  "location": {
+    "type": "GeoProperty",
+    "value": {
+      "type": "Point",
+      "coordinates": [
+        2.1591,
+        41.388
+      ]
+    }
+  },
+  "hasLightPoint": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:LightPoint:barcelona-eixample-lp017"
+    ]
+  },
+  "projectsLight": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:Light:barcelona-eixample-lp017-light1"
+    ]
+  },
+  "usesCommunicationInterface": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:CommunicationInterface:lamppost-nic-01"
+  },
+  "usesCommunicationProtocol": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:CommunicationProtocol:mqtt-v5"
+  },
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4envi/models/Lamppost/context.jsonld"
+  ]
+}

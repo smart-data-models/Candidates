@@ -1,0 +1,151 @@
+title: "SAREF4ENVI"
+publisher: "ETSI"
+sourceUrl: "https://saref.etsi.org/saref4envi/v2.1.1/"
+sourceOntologyVersion: "v2.1.1"
+sourceTurtle: "https://saref.etsi.org/saref4envi/v2.1.1/saref4envi.ttl"
+sourceSpecPdf: "https://www.etsi.org/deliver/etsi_ts/103400_103499/10341002/02.01.01_60/ts_10341002v020101p.pdf"
+domains:
+  - Environment
+  - WasteManagement
+  - SmartCities
+  - EnergyAndLighting
+description: >
+  SAREF4ENVI is ETSI's SAREF extension for the environment domain (ETSI TS
+  103 410-2 V2.1.1), published by the SmartM2M technical committee. It
+  extends SAREF Core (and reuses SAREF4SYST for connectivity) with two
+  largely independent application areas: (1) a lighting/light-pollution
+  domain -- light sources, light points, lampposts (including a shielded
+  variant), and the photometer/TESS sky-brightness sensor kinds used to
+  observe light properties such as illuminance, irradiance and light
+  magnitude; and (2) a waste-management domain, itself organised into three
+  chronological modules -- Waste (what is discarded, by whom, in what
+  container, within what spatial perimeter: building, house, city,
+  neighbourhood...), Collection (collection points, depots, itineraries,
+  journeys, road segments and the vehicles that travel them), and Treatment
+  (the organisations, sites, devices, tasks and functions involved in
+  pre-treating, treating -- composting, anaerobic digestion, incineration
+  with/without recovery -- and disposing of waste, landfilling included,
+  plus the emissions, primary/secondary raw resources and final waste that
+  result). This candidate translates the full v2.1.1 class list (66 owl:Class
+  declarations in the s4envi namespace, verified by parsing the ontology's
+  own Turtle file with rdflib) into one candidate model per real-world
+  entity type under models/.
+license: "BSD-3-Clause (\"ETSI Software License\", https://forge.etsi.org/etsi-software-license)"
+licenseNote: >
+  The ontology's own owl:Ontology header (saref4envi.ttl) declares
+  dcterms:license <https://forge.etsi.org/etsi-software-license>, which
+  states the content is licensed under the BSD-3-Clause license terms with
+  ETSI as copyright holder. This license covers the ontology files
+  (Turtle/JSON-LD/RDF-XML/etc.) themselves; the accompanying normative
+  document, ETSI TS 103 410-2, carries ETSI's standard TS copyright notice
+  ("No part may be reproduced ... except as authorized by written permission
+  of ETSI", (c) ETSI 2024, all rights reserved) and is used here only as a
+  secondary source for narrative definitions, not redistributed verbatim.
+  Verify both notices before promoting this candidate out of Candidates/.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-10-14 from:
+    - https://saref.etsi.org/saref4envi/v2.1.1/saref4envi.ttl (authoritative
+      class/property/restriction list, parsed with rdflib 7.6.0 -- not by
+      hand-reading the Turtle text), and
+    - ETSI TS 103 410-2 V2.1.1 (2024-10) PDF, for narrative definitions,
+      figures and clause cross-references confirming the TTL-derived
+      structure.
+
+  CLASS COUNT: rdflib found exactly 66 owl:Class declarations in the
+  s4envi namespace (https://saref.etsi.org/saref4envi/). This candidate
+  models 55 of them as full entities; the remaining 11 are deliberately
+  NOT given their own model, per the open-vocabulary design decision below.
+
+  OPEN-VOCABULARY DESIGN DECISION (11 classes folded away): 10 classes are
+  literally "*Kind"-suffixed OWL classes (ContainerKind, WasteKind,
+  ResourceKind, EmissionKind, AirEmissionKind, SoilEmissionKind,
+  WaterEmissionKind, PrimaryRawResourceKind, SecondaryRawResourceKind,
+  WasteCollectionVehicleKind) whose own members are a fixed, small set of
+  owl:NamedIndividual instances (e.g. s4envi:FoodWaste, s4envi:PlasticWaste
+  as instances of WasteKind; s4envi:CargoBicycle, s4envi:Lorry as instances
+  of WasteCollectionVehicleKind) -- i.e. a controlled vocabulary, not a
+  further-instantiable real-world entity type. Per the translation rule for
+  this pattern, no schema.json was created for any of the 10; instead, every
+  entity whose ontology relationship pointed at one of them (e.g.
+  s4envi:accepts, which ranges over ContainerKind/WasteKind) was given an
+  open/enumerated *string* attribute instead (e.g. Container.acceptedWasteKinds,
+  WasteCollectionVehicle.vehicleKind, WasteProcessingSite.acceptedWasteKinds),
+  documented per-attribute with the known individuals as non-exhaustive
+  example values.
+
+  A further, judgment-call 11th class, s4envi:LightProperty, was folded
+  away the same way even though it is not "*Kind"-suffixed: structurally
+  and semantically it is identical to the Kind pattern -- an owl:Class
+  whose only members (s4envi:Color, :Illuminance, :Irradiance,
+  :LightAbsorption, :ScatteringOfLight, :ReflectionOfLight, :Fluorescence,
+  :Phosphorescence, :LightMagnitude, :Luminescence) are named individuals
+  used purely as saref:hasProperty labels on s4envi:Light, never
+  independently instantiated or given their own attributes. Rather than
+  model LightProperty itself, its instances were flattened directly into
+  scalar attributes on the Light model (color, geometry,
+  lightProjectionHeight, lightProjectionDirection) -- the same treatment
+  Light's and LightPoint's own saref:hasProperty assignments received.
+  Likewise, saref:Property individuals with no owning class at all
+  (s4envi:Mass, :MassCapacity, :Population, :Volume, :VolumeCapacity,
+  :WasteGenerationRate, :AverageSpeedLimit, :Length, :Duration,
+  :MaximumSpeed, :CollectionReferencePeriod, :CollectionsPerReferencePeriod,
+  :Frequency, :ObservationFrequency, :Height, :Period, :TransmissionPeriod,
+  :WasteProcessingCapacity, :Yield) were flattened into real-valued/text
+  attributes on whichever entity the TS document's own prose names as their
+  bearer (e.g. Container.massCapacity, Container.volumeCapacity,
+  Perimeter.population, RoadSegment.averageSpeedLimit, Journey.length,
+  Journey.duration, WasteCollectionVehicle.maximumSpeed,
+  WasteProcessingDevice.yield) instead of modelling saref:Property/
+  saref:hasProperty/saref:Measurement as their own generic entities --
+  consistent with how most SDM device/environment models represent an
+  observed aspect as a plain typed attribute rather than reifying SAREF's
+  full Property/Measurement pattern.
+
+  s4envi:Photometer and s4envi:TESS are "Sensor kind" / saref:DeviceKind
+  *named individuals* in the ontology (not owl:Class declarations, unlike
+  s4envi:Lamppost and s4envi:ShieldedLamppost, which the TS text explicitly
+  calls "eponym classes" that double as both a Class for actual device
+  instances and an individual of saref:DeviceKind for classification
+  purposes). Since Photometer/TESS never get the parallel owl:Class
+  declaration, they are not modelled as their own entities either; no
+  generic Sensor/Device entity exists in this ontology to attach an open
+  "deviceKind" vocabulary attribute to, so they are simply noted here as
+  out of scope.
+
+  INHERITANCE / FLATTENING CONVENTION (precedent: standards/gaiax-ontology-v2111/):
+  every model's schema.json lists the shared NGSI-LD base attributes (id,
+  type, dateCreated, dateModified, source, dataProvider) plus only the
+  attributes/relationships OWN to that class (its own datatype/object
+  properties, own OWL restrictions, own flattened saref:hasProperty
+  assignments) -- never attributes already declared on a superclass's own
+  model. Each schema's description names its direct superclass(es) and
+  states that inherited attributes are documented there, not repeated.
+  Many classes in the Treatment module's Device/Task/Function hierarchies
+  (e.g. WastePreTreatmentDevice, Sorter, Disassembler, CompostBin,
+  WasteDisposalTask, WasteTreatmentFunction, ...) are pure taxonomy nodes
+  with zero properties of their own anywhere in the ontology; these still
+  get a full model (base 6 attributes + a description naming their role and
+  ancestor chain), per the Gaia-X precedent for thin subclass markers, since
+  -- unlike the Kind classes above -- each is independently instantiable
+  (an actual sorter, an actual incinerator) rather than a label drawn from a
+  closed/fixed set.
+
+  DEVICE ENRICHMENT: every entity whose superclass chain includes
+  saref:Device (Lamppost, ShieldedLamppost, and the whole
+  WasteProcessingDevice family) was given optional usesCommunicationInterface
+  / usesCommunicationProtocol relationships, since s4envi:usesCommunicationInterface
+  and s4envi:usesCommunicationProtocol both formally declare their domain as
+  the union of saref:Device and saref:DeviceKind. A "location" GeoProperty
+  was added to every entity that is a real-world physical/spatial feature
+  (geo:Feature subclasses, plus Light/LightPoint/Lamppost-family devices)
+  even on the handful where the base ttl's own rdfs:subClassOf chain does
+  not explicitly assert geo:Feature, as a practical, clearly-flagged
+  enrichment matching common SDM IoT/location modelling convention.
+
+  NAMING: every class and property name is preserved verbatim from the
+  source ontology (PascalCase classes, camelCase properties already native
+  to the ontology) -- no renaming was needed or performed; SAREF4ENVI's own
+  naming already satisfies this repo's naming rules.

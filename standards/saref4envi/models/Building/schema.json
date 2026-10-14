@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4envi/models/Building/schema.json",
+  "modelTags": "SAREF4ENVI,SmartCities",
+  "title": "Smart Data Models - SAREF4ENVI - Building",
+  "description": "https://saref.etsi.org/saref4envi/Building. Construction works that has the provision of shelter for its occupants or contents as one of its main purposes, usually partially or totally enclosed and designed to stand permanently in one place (source: ISO 6707-1:2020, clause 3.1.1.3). Subclass of s4envi:Perimeter (ETSI TS 103 410-2 clause 6.2.1.1.3); location, consistsOf and population are inherited from the Perimeter model and not repeated here. Base class for s4envi:ResidentialBuilding and s4envi:NonResidentialBuilding.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Building"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Building'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "address": {
+      "type": "object",
+      "description": "Property. Model:'https://www.w3.org/2006/vcard/ns#hasAddress'. A building has at most one postal address (ontology restriction: maximum 1, target class vcard:Address). Modelled as a structured civic-address object per common SDM convention.",
+      "properties": {
+        "streetAddress": {
+          "type": "string"
+        },
+        "addressLocality": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "addressCountry": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
