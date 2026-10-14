@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4wear/models/Occurrence/schema.json",
+  "modelTags": "SAREF4WEAR,Wearables,Events",
+  "title": "Smart Data Models - SAREF4WEAR - Occurrence",
+  "description": "https://saref.etsi.org/saref4wear/Occurrence. The fact of something existing or being found in a place, detectable by wearables (ETSI TS 103 410-9 clause 4.2.5), e.g. a queue detected by a crowd-control wearable (TS 103 410-9 Figure 9's ex:ToiletsQueue). Kept as its own standalone entity -- unlike the WearableProperty/WearerProperty/BiometricProperty/ElectricalProperty/ElectricalSafetyProperty/EmissionProperty/EnvironmentProperty/EnvironmentalProperty/CrowdProperty grouping classes, which were flattened into attributes of WearableDevice/Wearer -- because an Occurrence has real identity and structure of its own (a detecting device, a place, a time) rather than being merely the domain of a named measurement-kind individual; SAREF4CITY's s4city:Event is a documented subclass of this same class for city-scale occurrences. A 'name' attribute (not itself declared by the ontology) is added for readability, mirroring the descriptive individual names used in the ontology's own examples (ex:ToiletsQueue).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Occurrence"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Occurrence'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Short descriptive label for the occurrence, mirroring the ontology's own example individual names (e.g. ex:ToiletsQueue). Not itself an ontology-declared property."
+    },
+    "isDetectedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Device(s) detecting this occurrence (s4wear:isDetectedBy). Links to one or more WearableDevice entities."
+    },
+    "takesPlaceAt": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+      "description": "GeoProperty. Model:'https://purl.org/geojson/vocab#Point'. The place where the occurrence takes place (s4wear:takesPlaceAt, range geosp:Feature)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
