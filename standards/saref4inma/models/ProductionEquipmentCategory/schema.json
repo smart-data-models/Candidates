@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4inma/models/ProductionEquipmentCategory/schema.json",
+  "modelTags": "SAREF4INMA,Manufacturing,ProductionEquipment",
+  "title": "Smart Data Models - SAREF4INMA - ProductionEquipmentCategory",
+  "description": "https://saref.etsi.org/saref4inma/ProductionEquipmentCategory . Represents a certain category of production equipment, generally static over time: concretely, a certain model and brand of production equipment. Each ProductionEquipmentCategory can have multiple related ProductionEquipment instances (the actual individual machines), and each ItemCategory can be produced by multiple ProductionEquipmentCategories.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ProductionEquipmentCategory"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ProductionEquipmentCategory'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasName": {
+      "type": "string",
+      "description": "Property. Model:'https://saref.etsi.org/core/hasName' (reused from SAREF core). The name of this production equipment category (at most one)."
+    },
+    "hasModelNumber": {
+      "type": "string",
+      "description": "Property. Model:'https://saref.etsi.org/saref4inma/hasModelNumber'. The model number of this production equipment category (at most one)."
+    },
+    "hasManufacturer": {
+      "type": "string",
+      "description": "Property. Model:'https://saref.etsi.org/core/hasManufacturer' (reused from SAREF core). The manufacturer of this production equipment category (at most one)."
+    },
+    "isCategoryOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The individual production equipment instances belonging to this category (inverse of ProductionEquipment's belongsToCategory). Target model: 'ProductionEquipment'."
+    },
+    "produces": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The item categories produced using this production equipment category (inverse of ItemCategory's isProducedBy), e.g. welding machines or laser cutting machines producing certain categories of items. Target model: 'ItemCategory'."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

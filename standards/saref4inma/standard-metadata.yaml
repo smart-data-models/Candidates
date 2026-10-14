@@ -1,0 +1,113 @@
+title: "SAREF4INMA"
+publisher: "ETSI"
+sourceUrl: "https://saref.etsi.org/saref4inma/v2.1.1/"
+sourceOntologyVersion: "v2.1.1"
+normativeReference: "ETSI TS 103 410-5 V2.1.1 (2024-07): SmartM2M; Extension to SAREF; Part 5: Industry and Manufacturing Domains"
+normativeReferenceUrl: "https://www.etsi.org/deliver/etsi_ts/103400_103499/10341005/02.01.01_60/ts_10341005v020101p.pdf"
+domains:
+  - Manufacturing
+  - Industry4.0
+  - CrossSector
+description: >
+  SAREF4INMA is an OWL-DL extension of the SAREF (Smart Applications
+  REFerence) ontology for the industry and manufacturing domain, published
+  by ETSI as TS 103 410-5. It solves the lack of interoperability between
+  different types of production equipment that produce items in a factory
+  and, once items leave the factory, between the different organizations in
+  a value chain that need to uniquely trace a produced item back to the
+  corresponding production equipment, batch, material and precise time of
+  manufacture. The ontology was created to align with Industry 4.0
+  initiatives (e.g. RAMI - Reference Architectural Model Industry 4.0) and
+  reuses concepts from IEC 62264 (enterprise-control system integration) for
+  its factory/site/area/work-center location hierarchy. SAREF4INMA extends
+  SAREF with 21 classes, 16 object properties and 10 data type properties,
+  and reuses (imports) the core SAREF and SAREF4BLDG (SAREF for buildings)
+  ontologies rather than redefining their classes.
+  This candidate translates all 21 classes defined directly in SAREF4INMA
+  v2.1.1 into one model per class: Area, Batch, Factory, GTIN8ID, GTIN12ID,
+  GTIN13ID, GTIN14ID, ID, IRDI, Item, ItemBatch, ItemCategory, MaterialBatch,
+  MaterialCategory, ProductionEquipment, ProductionEquipmentCategory,
+  ProductionEquipmentFunction, Site, Size, UUID and WorkCenter. Classes that
+  SAREF4INMA merely reuses by importing other ontologies (e.g. saref:Device,
+  saref:FeatureOfInterest, saref:Property, saref:Observation, saref:State,
+  saref:Function from SAREF core; s4bldg:Building, s4bldg:BuildingSpace,
+  s4bldg:PhysicalObject from SAREF4BLDG) are referenced from the relevant
+  model's description/relationship target but are out of scope for this
+  candidate set (they belong to their own ontologies' translations).
+license: "ETSI Software License (https://forge.etsi.org/etsi-software-license)"
+licenseNote: >
+  Per the dct:license annotation on the ontology's owl:Ontology header in
+  https://saref.etsi.org/saref4inma/v2.1.1/saref4inma.ttl: value
+  <https://forge.etsi.org/etsi-software-license>. ETSI deliverables
+  themselves (this TS and the associated ontology files) additionally carry
+  ETSI's standard copyright notice ("(c) ETSI. All rights reserved.");
+  verify applicable terms before promoting this candidate out of Candidates/.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-10-14 from:
+    - the Turtle serialization of the ontology itself:
+      https://saref.etsi.org/saref4inma/v2.1.1/saref4inma.ttl (parsed in
+      full for the exhaustive class/property/subclass list), and
+    - the full normative ETSI TS 103 410-5 V2.1.1 PDF (22 pages), read in
+      full for narrative class definitions (clause 4.2, Tables 2-5) and the
+      worked "PhilBrau S40 Premium Gold Shaver" manufacturing example
+      (clause 4.3, Figures 4-8), which supplied the realistic values used in
+      every model's examples/example.json (factory Eindhoven_BIC, site
+      BIC_Site_A, area Site_A_Area_19, Welding_WorkCenter, the
+      WandI_Welding_Series_1000 welding machine category/instances, the
+      Lazor_Series_8030 laser-cutting category, the
+      PhilBrau_S40_Premium_Gold_Shaver item/item-category/item-batch, and
+      the Torx-screw/ABS-plastic material batches and categories).
+
+  INHERITANCE FLATTENING: following the Gaia-X ontology candidate's
+  precedent already in this repo (standards/gaiax-ontology-v2111/, e.g.
+  TaxID vs. RegistrationNumber, ComputeServiceOffering vs.
+  ServiceOffering/InfrastructureServiceOffering), every SAREF4INMA subclass
+  relationship is modeled by giving the subclass model ONLY its own new
+  properties, with a description note pointing to the parent model for
+  inherited properties (not repeated in the subclass's schema.json):
+    - GTIN8ID, GTIN12ID, GTIN13ID, GTIN14ID, IRDI, UUID -> ID (each uses its
+      own more specific hasXxxValue property, a declared sub-property of
+      ID's hasIDValue, so hasIDValue itself is not duplicated).
+    - ItemBatch, MaterialBatch -> Batch (hasIdentifier, hasSize,
+      needsEquipment, consistsOf stay on Batch only).
+    - WorkCenter -> ProductionEquipment (the ttl declares no additional own
+      property for WorkCenter at all, so its schema only adds a usability
+      `name` field plus the common envelope).
+
+  OUT-OF-SCOPE EXTERNAL CLASSES: ProductionEquipment, Area, Site, Factory,
+  Item and Batch subclass classes from the imported SAREF core and
+  SAREF4BLDG ontologies (saref:Device, saref:FeatureOfInterest,
+  geo:SpatialObject, s4bldg:Building, s4bldg:BuildingSpace,
+  s4bldg:PhysicalObject). Those parent classes, and SAREF-core properties
+  reused directly on SAREF4INMA classes (hasManufacturer, hasModel,
+  hasVersion, hasState, hasName, consistsOf, hasFunction, observes,
+  madeExecution) and SAREF4BLDG properties (hasSpace, contains), are
+  referenced with their real external namespace IRIs in each model's
+  context.jsonld, but are not modeled as their own Candidates entities here
+  (that is the scope of a SAREF-core / SAREF4BLDG translation, not this
+  SAREF4INMA one).
+
+  SIMPLIFICATION: the ontology additionally declares six convenience object
+  sub-properties of hasIdentifier (hasGTIN8ID, hasGTIN12ID, hasGTIN13ID,
+  hasGTIN14ID, hasIRDI, hasUUID) that let an entity link directly to a
+  specific identifier subtype instead of the generic hasIdentifier. To avoid
+  six near-duplicate optional Relationship properties on every identified
+  class (Item, ItemCategory, ProductionEquipment, Batch), only the generic
+  hasIdentifier relationship (targeting any ID/GTIN*ID/IRDI/UUID instance)
+  is modeled on those classes; this is noted as a deliberate simplification.
+
+  USABILITY ADDITIONS NOT LITERAL TO THE TTL (each flagged in its own
+  schema.json property description): Size.value / Size.unitCode (Size has
+  no declared OWL data property at all, but needs a usable numeric payload
+  to be the meaningful target of Batch.hasSize); ProductionEquipmentFunction
+  .name and WorkCenter.name (both classes have no declared own property,
+  but both are directly instantiated by name in the ETSI worked example,
+  e.g. ex:JoiningFunction, ex:Welding_WorkCenter).
+
+  NAMING: class and property names are preserved verbatim from the source
+  ontology (e.g. `GTIN8ID`, `hasGTIN8IDValue`, `belongsToItemBatch`) per
+  system_prompt.md's naming rules -- no forced renaming of ontology-native
+  identifiers; all are already valid NGSI-LD terms as given.

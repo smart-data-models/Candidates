@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4inma/models/Size/schema.json",
+  "modelTags": "SAREF4INMA,Manufacturing,Batch",
+  "title": "Smart Data Models - SAREF4INMA - Size",
+  "description": "https://saref.etsi.org/saref4inma/Size . The amount of certain objects in a collection (e.g. the size of a material batch). Subclass of the external saref:Property class (SAREF core, not redefined in this ontology file). The SAREF4INMA ttl does not itself declare a data property on Size; `value` and `unitCode` are included here, following the generic SAREF Property/Measurement value pattern, so that a Size instance is actually usable as the target of a Batch's hasSize relationship.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Size"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Size'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "value": {
+      "type": "number",
+      "description": "Property. Not a literal OWL data property of s4inma:Size in the ttl; added for usability so the quantity a Size represents can be expressed. The numeric amount of objects in the collection."
+    },
+    "unitCode": {
+      "type": "string",
+      "description": "Property. Not a literal OWL data property of s4inma:Size in the ttl; added for usability. The unit in which `value` is expressed (e.g. 'C62' UN/CEFACT code for 'one'/piece)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

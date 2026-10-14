@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4inma/models/ProductionEquipment/schema.json",
+  "modelTags": "SAREF4INMA,Manufacturing,ProductionEquipment",
+  "title": "Smart Data Models - SAREF4INMA - ProductionEquipment",
+  "description": "https://saref.etsi.org/saref4inma/ProductionEquipment . A specialization of the external saref:Device and s4bldg:PhysicalObject classes that can produce items in a manufacturing process. Represents an individual production equipment machine and its specification in terms of functions, states and services. Concrete machine types (e.g. LaserCuttingMachine, MillingMachine, MouldingMachine, WeldingMachine) can be defined as needed as subclasses of this class; s4inma:WorkCenter is the one subclass already defined in SAREF4INMA itself (documented on its own model, which does not repeat the properties below).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ProductionEquipment"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ProductionEquipment'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "belongsToCategory": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The category (model/brand) this individual production equipment belongs to. Target model: 'ProductionEquipmentCategory'."
+    },
+    "hasIdentifier": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The unique identifier of this production equipment. Target model: 'ID'."
+    },
+    "hasManufacturer": {
+      "type": "string",
+      "description": "Property. Model:'https://saref.etsi.org/core/hasManufacturer' (reused from SAREF core). The manufacturer of this production equipment (at most one)."
+    },
+    "hasModel": {
+      "type": "string",
+      "description": "Property. Model:'https://saref.etsi.org/core/hasModel' (reused from SAREF core). The model of this production equipment (at most one)."
+    },
+    "consistsOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Other devices (e.g. sensors, actuators) this production equipment is composed of. Reused from SAREF core's saref:Device, which is outside SAREF4INMA's own 21-class scope and therefore not separately modeled here. Target model: 'Device'."
+    },
+    "hasFunction": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The function(s) this production equipment can perform (at least one), e.g. a joining or welding function. Target model: 'ProductionEquipmentFunction'."
+    },
+    "hasState": {
+      "type": "string",
+      "description": "Property. Model:'https://saref.etsi.org/core/hasState' (reused from SAREF core's saref:State, simplified here to a free-text state label, e.g. 'running', 'idle', 'maintenance'). The current state of this production equipment."
+    },
+    "observes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The properties (e.g. welding temperature) that this production equipment, or the devices composing it, can measure. Reused from SAREF core's saref:Property, outside SAREF4INMA's own 21-class scope. Target model: 'Property'."
+    },
+    "madeExecution": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The observations made by this production equipment or the devices composing it. Reused from SAREF core's saref:Observation, outside SAREF4INMA's own 21-class scope. Target model: 'Observation'."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "hasFunction",
+    "observes",
+    "madeExecution"
+  ]
+}

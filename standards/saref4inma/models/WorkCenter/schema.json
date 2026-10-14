@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4inma/models/WorkCenter/schema.json",
+  "modelTags": "SAREF4INMA,Manufacturing,ProductionEquipment",
+  "title": "Smart Data Models - SAREF4INMA - WorkCenter",
+  "description": "https://saref.etsi.org/saref4inma/WorkCenter . A subclass of s4inma:ProductionEquipment (and therefore of the external s4bldg:PhysicalObject): an equipment element under an area in a role-based equipment hierarchy that performs production, storage or material movement (definition taken from IEC 62264). An Area contains work centers. Disjoint with s4inma:Area and s4inma:Site per the ontology's AllDisjointClasses axiom. Subclass of s4inma:ProductionEquipment per the SAREF4INMA ontology; inherited properties are documented on the ProductionEquipment model and not repeated here (the ttl declares no additional own property for WorkCenter).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "WorkCenter"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'WorkCenter'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Not a literal OWL data property of s4inma:WorkCenter in the ttl; added for usability as a human-readable label (e.g. 'Welding WorkCenter'), matching how work center instances are named in the ETSI TS 103 410-5 worked example (ex:Welding_WorkCenter)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

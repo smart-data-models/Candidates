@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4inma/models/ItemCategory/schema.json",
+  "modelTags": "SAREF4INMA,Manufacturing,Item",
+  "title": "Smart Data Models - SAREF4INMA - ItemCategory",
+  "description": "https://saref.etsi.org/saref4inma/ItemCategory . Describes a single type of item in terms of its static properties (e.g. a certain type of sensor). Each ItemCategory can have multiple related ItemBatches, which all contain individual Items whose essential properties are the same, even though small deviations between batches might occur because different batches can use different MaterialBatches and/or ProductionEquipment. An ItemCategory is produced by some ProductionEquipmentCategory.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ItemCategory"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ItemCategory'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasIdentifier": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The unique identifier of this item category. Target model: 'ID'."
+    },
+    "hasModelNumber": {
+      "type": "string",
+      "description": "Property. Model:'https://saref.etsi.org/saref4inma/hasModelNumber'. The model number of this item category (at most one); the combination of hasModelNumber and hasVersion should be unique."
+    },
+    "hasManufacturer": {
+      "type": "string",
+      "description": "Property. Model:'https://saref.etsi.org/core/hasManufacturer' (reused from SAREF core). The manufacturer of this item category (at most one)."
+    },
+    "hasVersion": {
+      "type": "string",
+      "description": "Property. Model:'https://saref.etsi.org/core/hasVersion' (reused from SAREF core). The version number of this item category (at most one)."
+    },
+    "hasUpdate": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Links to the newer revision of this item category, if any. Target model: 'ItemCategory'."
+    },
+    "isCategoryOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The item batches that belong to this item category (inverse of ItemBatch's belongsToCategory). Target model: 'ItemBatch'."
+    },
+    "isProducedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The production equipment categories (e.g. welding machines, laser cutting machines) that can produce items of this category. Target model: 'ProductionEquipmentCategory'."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "hasIdentifier"
+  ]
+}

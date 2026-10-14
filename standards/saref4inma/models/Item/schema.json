@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4inma/models/Item/schema.json",
+  "modelTags": "SAREF4INMA,Manufacturing,Item",
+  "title": "Smart Data Models - SAREF4INMA - Item",
+  "description": "https://saref.etsi.org/saref4inma/Item . A tangible object which can be uniquely identified, for example with a GTIN in the form of a barcode/QR/RFID tag. An item can be the result of an organization's production process (outflow of objects/goods) or a uniquely identifiable material (inflow of objects/supplies). Each item is created in exactly one ItemBatch, and can itself recursively consist of other items (sub-assemblies). Subclass of the external saref:FeatureOfInterest class (SAREF core).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Item"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Item'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "belongsToItemBatch": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The item batch in which this item was created (inverse of ItemBatch's containsItem). An item is created in exactly one item batch. Target model: 'ItemBatch'."
+    },
+    "hasSerialNumber": {
+      "type": "string",
+      "description": "Property. Model:'https://saref.etsi.org/saref4inma/hasSerialNumber'. The serial number of this item, unique per item (at most one)."
+    },
+    "hasIdentifier": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The unique identifier of this item (e.g. GTIN, IRDI, UUID). Target model: 'ID'."
+    },
+    "consistsOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. An item can recursively consist of other items (sub-assemblies). Target model: 'Item'."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "belongsToItemBatch",
+    "hasIdentifier"
+  ]
+}
