@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4city/models/PublicService/schema.json",
+  "modelTags": "SAREF4CITY,SmartCity,PublicService",
+  "title": "Smart Data Models - SAREF4CITY - PublicService",
+  "description": "https://saref.etsi.org/saref4city/PublicService. A service which is provided by government either directly (through the public sector) or by financing provision of services (definition taken from Wikipedia, https://en.wikipedia.org/wiki/Public_service). Subclass and specialization of cpsv:PublicService (http://purl.org/vocab/cpsv#PublicService, from the ISA2 Core Public Service Vocabulary), restricted so that cpsv:physicallyAvailableAt only ever points to a s4city:AdministrativeArea and s4city:involvesFacility only ever points to a s4city:Facility.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "PublicService"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'PublicService'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasName": {
+      "type": "string",
+      "description": "Property. Model:'https://saref.etsi.org/saref4city/hasName'. Name of the public service."
+    },
+    "hasDescription": {
+      "type": "string",
+      "description": "Property. Model:'https://saref.etsi.org/saref4city/hasDescription'. Natural-language description of the public service."
+    },
+    "isAvailableInLanguage": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://saref.etsi.org/saref4city/isAvailableInLanguage'. The dc:LinguisticSystem(s) (language resource URIs, e.g. from the Lexvo linguistic-system vocabulary) the service is available in."
+    },
+    "involvesFacility": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://saref.etsi.org/saref4city/involvesFacility'. The Facility(-ies) the service is provided at."
+    },
+    "physicallyAvailableAt": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'http://purl.org/vocab/cpsv#physicallyAvailableAt'. The AdministrativeArea in which the service is physically available."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

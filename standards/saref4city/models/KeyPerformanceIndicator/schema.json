@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4city/models/KeyPerformanceIndicator/schema.json",
+  "modelTags": "SAREF4CITY,SmartCity,KeyPerformanceIndicator",
+  "title": "Smart Data Models - SAREF4CITY - KeyPerformanceIndicator",
+  "description": "https://saref.etsi.org/saref4city/KeyPerformanceIndicator. A Key Performance Indicator (KPI) is a type of performance measurement; KPIs evaluate the success of an organization or of a particular activity in which it engages (definition taken from FIWARE, http://fiware-datamodels.readthedocs.io/en/latest/KeyPerformanceIndicator/doc/spec/index.html). This class holds the general, reusable definition of a KPI (e.g. 'road congestion'); its individual, timestamped values are represented separately as KeyPerformanceIndicatorAssessment entities, related to this one via s4city:quantifiesKPI.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "KeyPerformanceIndicator"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'KeyPerformanceIndicator'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasName": {
+      "type": "string",
+      "description": "Property. Model:'https://saref.etsi.org/saref4city/hasName'. Name of the KPI, e.g. 'Road congestion'."
+    },
+    "hasDescription": {
+      "type": "string",
+      "description": "Property. Model:'https://saref.etsi.org/saref4city/hasDescription'. Natural-language description of the KPI."
+    },
+    "hasCalculationPeriod": {
+      "type": "string",
+      "format": "duration",
+      "description": "Property. Model:'https://saref.etsi.org/saref4city/hasCalculationPeriod'. ISO 8601 duration (xsd:duration) over which the KPI is calculated, e.g. 'P1D' for a daily KPI."
+    },
+    "isKPIOf": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://saref.etsi.org/saref4city/isKPIOf'. The saref:FeatureOfInterest (e.g. a road segment) this KPI is defined for. Inverse of saref4city:hasKPI (declared on saref:FeatureOfInterest, outside the scope of this candidate)."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

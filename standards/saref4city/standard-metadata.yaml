@@ -1,0 +1,145 @@
+title: "SAREF4CITY (ETSI TS 103 410-4)"
+publisher: "ETSI (European Telecommunications Standards Institute) / SmartM2M Technical Committee"
+sourceUrl: "https://saref.etsi.org/saref4city/v2.1.1/"
+sourceOntologyFiles:
+  turtle: "https://saref.etsi.org/saref4city/v2.1.1/saref4city.ttl"
+  jsonld: "https://saref.etsi.org/saref4city/saref4city.jsonld"
+  rdfxml: "https://saref.etsi.org/saref4city/saref4city.rdf"
+  ntriples: "https://saref.etsi.org/saref4city/saref4city.nt"
+  n3: "https://saref.etsi.org/saref4city/saref4city.n3"
+sourceSpecificationPdf: "https://www.etsi.org/deliver/etsi_ts/103400_103499/10341004/02.01.01_60/ts_10341004v020101p.pdf"
+sourceOntologyVersion: "v2.1.1"
+ontologyIssued: "2020-06-05"
+ontologyModified: "2025-04-11"
+specificationDate: "2024-10 (ETSI TS 103 410-4 V2.1.1)"
+priorVersion: "https://saref.etsi.org/saref4city/v1.1.2/"
+domains:
+  - SmartCity
+  - PublicAdministration
+  - KeyPerformanceIndicators
+  - UrbanTopology
+  - AccessibilityAndEvents
+description: >
+  SAREF4CITY is an OWL-DL ontology that extends the ETSI SAREF (Smart
+  Applications REFerence) core ontology for the Smart City domain. It was
+  developed by ETSI STF 534 to provide a common core of general concepts for
+  smart-city data oriented to IoT, covering administrative-area topology
+  (countries, cities, districts, neighbourhoods and their containment
+  relations), generic city objects (e.g. lampposts, buildings — typically
+  co-typed with more specific extensions such as SAREF4BLDG or SAREF4ENVI),
+  temporary/scheduled events and their accessibility, agents (persons,
+  organizations, public administrations) and the public services they
+  provide or use, and a Key Performance Indicator (KPI) pattern that
+  separates a general KPI definition from its individual, timestamped
+  assessments (e.g. "road congestion" as a KPI, and "70% congestion on road
+  segment 50 at 13:30 on 2026-05-20" as one of its assessments). SAREF4CITY
+  reuses seven other vocabularies (SAREF core, W3C Time, OGC GeoSPARQL/Simple
+  Features, FOAF, W3C Org, DCMI Terms and W3C SKOS, plus the CPSV public
+  service vocabulary) rather than redefining their concepts; this candidate
+  translates only the 13 classes natively defined in the SAREF4CITY
+  namespace (plus their 4 AdministrativeArea subclasses counted individually
+  = 14 models), per the exhaustive-translation instructions for this pass.
+license: "ETSI Software License (as declared by the ontology's dc:license annotation)"
+licenseUrl: "https://forge.etsi.org/etsi-software-license"
+licenseNote: >
+  The saref4city.ttl ontology file's header states
+  `dc:license <https://forge.etsi.org/etsi-software-license>`. The full
+  normative ETSI TS 103 410-4 PDF document itself additionally carries
+  ETSI's standard "Copyright Notification" (© ETSI 2024, all rights
+  reserved; no part may be reproduced without written authorization) and
+  "Notice of disclaimer & limitation of liability" on its own front matter,
+  which governs reproduction of the TS document text as distinct from the
+  ontology files. Verify both notices before promoting this candidate out
+  of Candidates/.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology/specification to SDM candidate artifacts"
+notes: |
+  Translated on 2026-10-14 from:
+  - saref4city.ttl v2.1.1 (fetched from the versioned URL
+    https://saref.etsi.org/saref4city/v2.1.1/saref4city.ttl — the unversioned
+    https://saref.etsi.org/saref4city/saref4city.ttl path 404s; the
+    versioned path is the one that resolves), read in full (564 lines) for
+    the exhaustive, authoritative list of classes, object properties, data
+    properties and the subclass hierarchy.
+  - ETSI TS 103 410-4 V2.1.1 (2024-10) PDF, read in full (18 pages), for
+    narrative class descriptions (clauses 4.2.1-4.2.8), the property tables
+    (Tables 2-5) and the normative "Road Congestion" worked example (clause
+    4.3 / Figure 8), which supplied realistic relationship targets and
+    values reused in this candidate's examples (e.g. 70% road congestion,
+    the ex:metro accessibility concept, the Spanish-language public service
+    example via lexvo:iso639-3/spa).
+
+  SCOPE: SAREF4CITY defines 13 classes in its own namespace per the TS (4.1):
+  AccessibilityConcept, AdministrativeArea, Agent, City, CityObject, Country,
+  District, Event, Facility, KeyPerformanceIndicator,
+  KeyPerformanceIndicatorAssessment, Neighbourhood, PublicAdministration,
+  PublicService. That is 14 identifiers if City/Country/District/
+  Neighbourhood are counted individually as stated in the TS's "13 classes
+  defined in SAREF4CITY" count (AdministrativeArea + its 4 subclasses = 5,
+  so the TS's "13" already counts them individually: AccessibilityConcept,
+  AdministrativeArea, Agent, City, CityObject, Country, District, Event,
+  Facility, KeyPerformanceIndicator, KeyPerformanceIndicatorAssessment,
+  Neighbourhood, PublicAdministration, PublicService = 14 names, but the TS
+  prose states 13 — s4city:PublicService may be the one the TS does not
+  recount separately from cpsv:PublicService in its tally; all 14 distinct
+  s4city:-namespaced class IRIs found in the .ttl are translated here
+  regardless of the TS's summary count). Reused classes from SAREF core
+  (saref:FeatureOfInterest, saref:Observation, saref:UnitOfMeasure),
+  GeoSPARQL/Simple Features (geo:Feature, geo:Geometry, geo:SpatialObject,
+  sf:Geometry, sf:Point), FOAF (foaf:Agent, foaf:Person), W3C Org
+  (org:Organization), SKOS (skos:Concept), W3C Time (time:TemporalEntity),
+  DCMI (dc:LinguisticSystem) and CPSV (cpsv:PublicService) are NOT
+  translated as their own candidate models here — they belong to their own
+  source ontologies/standards, not to SAREF4CITY itself.
+
+  NAMING: class and property names are preserved verbatim from the source
+  ontology (e.g. `hasName`, `hasCalculationPeriod`, `isKPIOf`,
+  `refersToFeature`, `sfContains`) per system_prompt.md's naming rules — no
+  forced renaming of ontology-native identifiers into generic SDM-harmonised
+  equivalents (e.g. `hasName`/`hasDescription` are kept as-is rather than
+  folded into the generic SDM `name`/`description` attributes, since
+  SAREF4CITY defines its own distinct properties with that exact spelling).
+
+  COMMON ENVELOPE: every model additionally carries the generic SDM/NGSI-LD
+  harmonised metadata attributes `dateCreated`, `dateModified`, `source` and
+  `dataProvider` (record-level provenance, distinct from SAREF4CITY's own
+  domain-specific `hasCreationDate`/`hasLastUpdateDate` on
+  KeyPerformanceIndicatorAssessment, which are kept as separate attributes
+  since they describe the KPI assessment's own domain lifecycle, not the
+  database record's).
+
+  GEOSPATIAL PATTERN (clause 4.2.2 "Topology"): AdministrativeArea,
+  CityObject and Facility are all direct or indirect subclasses of
+  geo:Feature -> geo:SpatialObject, which carries geo:hasGeometry (mapped
+  here to the standard NGSI-LD/SDM `location` GeoProperty, per this
+  repository's existing convention of using `location` for geospatial
+  position regardless of the reused ontology's own property name — see e.g.
+  standards/edint-infraestructura/models/Facility/schema.json) plus
+  geo:sfContains / geo:sfWithin (kept verbatim as Relationship-valued
+  attributes `sfContains` / `sfWithin`, since these are genuine topology
+  properties with their own semantics, not a generic GeoProperty).
+
+  INHERITANCE-WITHOUT-DUPLICATION (City, Country, District, Neighbourhood):
+  following the precedent in standards/gaiax-ontology-v2111 (e.g. its
+  EmployeeResponsibilities model), these four AdministrativeArea subclasses
+  add no properties of their own in the ontology, so their schema.json files
+  carry only the common envelope (id, type, dateCreated, dateModified,
+  source, dataProvider) and document the inherited location/sfContains/
+  sfWithin attributes in their `description` field, pointing back at the
+  AdministrativeArea model rather than repeating them.
+
+  DOCUMENT/ONTOLOGY DISCREPANCY FOUND: Table 4 of the TS (clause 4.2.7)
+  lists the restrictions on KeyPerformanceIndicatorAssessment but omits
+  `s4city:refersToFeature`, even though saref4city.ttl explicitly declares
+  `s4city:refersToFeature rdfs:domain s4city:KeyPerformanceIndicatorAssessment
+  ; rdfs:range geo:Feature` and Figure 1/Figure 6 both draw the
+  refersToFeature arrow out of KeyPerformanceIndicatorAssessment. The .ttl
+  file was treated as authoritative and `refersToFeature` is included on
+  the KeyPerformanceIndicatorAssessment model.
+
+  ACCESSIBILITYCONCEPT: SAREF4CITY defines no datatype property for this
+  class — it is used in the normative example purely as a bare SKOS
+  individual (`ex:metro`), so its model here is deliberately thin (id, type
+  + common envelope only), consistent with how thin/reference-only models
+  are handled in the gaiax-ontology-v2111 precedent.
