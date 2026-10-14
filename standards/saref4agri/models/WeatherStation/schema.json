@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4agri/models/WeatherStation/schema.json",
+  "modelTags": "SAREF4AGRI,Agriculture,SmartIrrigation,Sensor,System",
+  "title": "Smart Data Models - SAREF4AGRI - WeatherStation",
+  "description": "https://saref.etsi.org/saref4agri/WeatherStation. A sensor or system that measures weather conditions. Dual subclass of ssn:System and saref:Sensor (W3C SSN / SAREF core, not modeled here); as a ssn:System it can itself compose sub-sensors (ssn:hasSubSystem), and as a saref:Sensor it can directly report observations. Inherited vocabulary from both parent classes is documented here rather than repeated structurally, per the Gaia-X inheritance-flattening precedent. Convenience numeric attributes are exposed for the weather-related s4agri:Property named individuals a weather station typically aggregates (ETSI TS 103 410-6 clause 4.2.6): s4agri:AirTemperature, s4agri:AmbientHumidity and s4agri:Precipitation.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "WeatherStation"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'WeatherStation'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. The physical location of the weather station."
+    },
+    "hasSubSystem": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. ssn:hasSubSystem (inverse: ssn:deployedOnPlatform/hasSubSystem context). The sub-sensors (e.g. a Pluviometer, a Thermometer) composing this weather station."
+    },
+    "airTemperature": {
+      "type": "number",
+      "description": "Property. Last value observed for the s4agri:AirTemperature named individual ('the degree or intensity of heat present in the air'), in degrees Celsius. IRI: https://saref.etsi.org/saref4agri/AirTemperature."
+    },
+    "ambientHumidity": {
+      "type": "number",
+      "description": "Property. Last value observed for the s4agri:AmbientHumidity named individual ('the amount of water vapour in the air'), in percent relative humidity. IRI: https://saref.etsi.org/saref4agri/AmbientHumidity."
+    },
+    "precipitation": {
+      "type": "number",
+      "description": "Property. Last value observed for the s4agri:Precipitation named individual ('the amount of water falling in the soil by natural process, e.g. rain'), in millimetres. IRI: https://saref.etsi.org/saref4agri/Precipitation."
+    },
+    "dateObserved": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. The date and time these measurements were made."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

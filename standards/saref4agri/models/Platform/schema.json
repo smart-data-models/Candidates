@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4agri/models/Platform/schema.json",
+  "modelTags": "SAREF4AGRI,Agriculture,SmartIrrigation,Platform",
+  "title": "Smart Data Models - SAREF4AGRI - Platform",
+  "description": "https://saref.etsi.org/saref4agri/Platform. A Platform is an entity that hosts other entities, particularly Sensors, Actuators, Samplers, and other Platforms (definition taken from sosa:Platform). Subclass of sosa:Platform (W3C SOSA, not modeled here). See the ex:ArvalisLand07 platform example in ETSI TS 103 410-6 clause 4.3.2, Figure 9, which hosts the ex:ArvalisIrrinovStation01 system.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Platform"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Platform'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. A human-readable name for this platform."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. The physical location of the platform (inherited geospatial convention; not a formally declared sosa:Platform restriction in the ttl)."
+    },
+    "hosts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. sosa:hosts (inverse: sosa:isHostedBy). 'Relation between a platform and the systems it hosts.' The systems/devices (e.g. a WateringSystem or WeatherStation) hosted by this platform."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

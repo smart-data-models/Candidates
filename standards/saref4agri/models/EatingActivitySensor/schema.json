@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4agri/models/EatingActivitySensor/schema.json",
+  "modelTags": "SAREF4AGRI,Agriculture,Livestock,Sensor",
+  "title": "Smart Data Models - SAREF4AGRI - EatingActivitySensor",
+  "description": "https://saref.etsi.org/saref4agri/EatingActivitySensor. Eating activity sensor. Subclass of saref:Sensor (SAREF core class, not modeled here); inherited saref:Sensor vocabulary is documented here rather than repeated structurally, per the Gaia-X inheritance-flattening precedent. See the ex:Cow_Eating_Activity_Sensor_33 example in ETSI TS 103 410-6 clause 4.3.1, Figure 8: two eating-activity measurements of the ex:Cow3 are reported, each measured in time:minute. The example's 'observes'/isValueOfProperty' target in the published figure is annotated ex:MilkYield, which appears to be a documentation artifact (MilkYield fits a MilkingSensor, not an eating-activity measurement); this model instead maps EatingActivitySensor to the s4agri:Intake named individual ('the amount of food or other substance taken into the body of an animal'), the semantically fitting property for this sensor -- an explicit modeling assumption, called out here.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "EatingActivitySensor"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'EatingActivitySensor'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "observes": {
+      "type": "string",
+      "enum": [
+        "Intake"
+      ],
+      "description": "Property/Relationship. saref:observes. The s4agri:Property named individual this sensor measures: 'the amount of food or other substance taken into the body of an animal'. IRI: https://saref.etsi.org/saref4agri/Intake."
+    },
+    "hasFeatureOfInterest": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. saref:hasFeatureOfInterest. The Animal (or AnimalGroup) this measurement is about, e.g. ex:Cow3 in the ETSI TS 103 410-6 clause 4.3.1 example."
+    },
+    "value": {
+      "type": "number",
+      "description": "Property. saref:hasValue. The last eating-activity duration measured by the sensor, per the ex:Cow_Activity_2019_03_01_15_00 example in ETSI TS 103 410-6 clause 4.3.1, Figure 8 (measured in time:minute)."
+    },
+    "unitCode": {
+      "type": "string",
+      "description": "Property. saref:isMeasuredIn. The unit of measure for 'value', e.g. 'minute' (time:minute), per the ETSI TS 103 410-6 clause 4.3.1 example."
+    },
+    "dateObserved": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. The date and time this measurement was made."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4agri/models/MovementActivitySensor/schema.json",
+  "modelTags": "SAREF4AGRI,Agriculture,Livestock,Sensor",
+  "title": "Smart Data Models - SAREF4AGRI - MovementActivitySensor",
+  "description": "https://saref.etsi.org/saref4agri/MovementActivitySensor. A class to describe a motion sensor. Subclass of saref:Sensor (SAREF core class, not modeled here); inherited saref:Sensor vocabulary is documented here rather than repeated structurally, per the Gaia-X inheritance-flattening precedent. NOTE: the SAREF4AGRI v2.1.1 ontology does not declare a dedicated saref4agri:Property named individual for 'movement'/'activity level' (unlike Precipitation, SoilMoisture, etc.); 'observes' is therefore left as free text rather than constrained to the ten declared named individuals. NOTE: the official dataModel.Agrifood subject publishes a conceptually related but differently-named 'AnimalMovement' entity.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "MovementActivitySensor"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'MovementActivitySensor'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "observes": {
+      "type": "string",
+      "description": "Property/Relationship. saref:observes. A free-text label for the quantity observed (e.g. 'MovementActivity'), since v2.1.1 declares no dedicated saref4agri:Property named individual for motion/activity level."
+    },
+    "hasFeatureOfInterest": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. saref:hasFeatureOfInterest. The Animal (or AnimalGroup) this measurement is about."
+    },
+    "value": {
+      "type": "number",
+      "description": "Property. saref:hasValue. The last activity-level measurement reported by the sensor (e.g. a motion/step count)."
+    },
+    "unitCode": {
+      "type": "string",
+      "description": "Property. saref:isMeasuredIn. The unit of measure for 'value' (e.g. 'counts/h')."
+    },
+    "dateObserved": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. The date and time this measurement was made."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

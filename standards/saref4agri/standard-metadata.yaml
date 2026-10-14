@@ -1,0 +1,126 @@
+title: "SAREF4AGRI"
+publisher: "ETSI"
+sourceUrl: "https://saref.etsi.org/saref4agri/v2.1.1/"
+sourceOntologyVersion: "v2.1.1"
+normativeReference: "ETSI TS 103 410-6 V2.1.1 (2024-10), SmartM2M; Extension to SAREF; Part 6: Smart Agriculture and Food Chain Domain"
+normativeReferenceUrl: "https://www.etsi.org/deliver/etsi_ts/103400_103499/10341006/02.01.01_60/ts_10341006v020101p.pdf"
+domains:
+  - Agrifood
+  - PrecisionAgriculture
+  - LivestockFarming
+  - SmartIrrigation
+description: >
+  SAREF4AGRI is an extension of the ETSI SAREF (Smart Applications REFerence)
+  ontology for the agriculture and food chain domain, developed by ETSI
+  SmartM2M (originally STF 534, revised under STF 641) and published as
+  ETSI TS 103 410-6. It connects SAREF's generic Device/Sensor/Actuator and
+  FeatureOfInterest/Property/Observation patterns with existing
+  standardization efforts in the AgriFood domain (ICAR for livestock data,
+  AEF for agricultural equipment, the Plant Ontology, AgGateway), reusing
+  W3C SSN/SOSA (System, Deployment, Platform), GeoSPARQL (Feature,
+  Geometry, sfContains/sfWithin topology), the TIME ontology (temporal
+  intervals for deployments), the TAXRANK taxonomy vocabulary (animal/crop
+  species classification) and FOAF (Person/Organization) vocabularies. The
+  ontology is illustrated in the normative TS through two worked examples:
+  livestock farming (farm, farm holding, farmer, animals, animal groups,
+  parcels, crops, milking/eating-activity sensors) and smart irrigation
+  (deployments, platforms, soil tensiometers, pluviometers). This candidate
+  translates the full v2.1.1 class list (21 classes) plus the ten
+  saref:Property named individuals it defines (AirTemperature,
+  AmbientHumidity, Area, Intake, IrrigationWater, PlantGrowthStage,
+  Precipitation, SoilMoisture, SoilTemperature, Yield) into one candidate
+  model per class under models/.
+license: "ETSI Software License (https://forge.etsi.org/etsi-software-license)"
+licenseNote: >
+  The SAREF4AGRI ontology document (saref4agri.ttl) declares
+  dcterms:license <https://forge.etsi.org/etsi-software-license> in its
+  ontology header. The associated normative ETSI TS 103 410-6 document
+  carries the standard ETSI deliverable copyright notice ("No part may be
+  reproduced or utilized in any form or by any means [...] except as
+  authorized by written permission of ETSI. (c) ETSI 2024. All rights
+  reserved."). Verify applicable terms before promoting this candidate out
+  of Candidates/.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-10-14 from:
+    - the SAREF4AGRI v2.1.1 OWL ontology (Turtle):
+      https://saref.etsi.org/saref4agri/v2.1.1/saref4agri.ttl (parsed in full,
+      546 lines -- exhaustive list of 21 owl:Class declarations plus 10
+      owl:NamedIndividual / saref:Property declarations and all object/data
+      properties)
+    - the normative ETSI TS 103 410-6 V2.1.1 (2024-10) PDF, clauses 4.1-4.3
+      (ontology description, class/property definition tables, and the two
+      worked instance examples: "Livestock farming" clause 4.3.1 and "Smart
+      Irrigation" clause 4.3.2), used for realistic example values (e.g. the
+      soil moisture observation of 1 490,0 millibar in the Arvalis smart
+      irrigation example, the milk yield measured in litres, the eating
+      activity duration measured in minutes).
+
+  CLASS LIST (21): Animal, AnimalGroup, Crop, Soil, Parcel, Farm, Deployment,
+  Farmer, FarmHolding, Platform, Pluviometer, SoilTensiometer, WeatherStation,
+  WateringGun, WateringSystem, WateringValve, MovementActivitySensor,
+  EatingActivitySensor, MilkingSensor, WeightSensor, Thermometer.
+
+  NAMED-INDIVIDUAL PROPERTIES (10, NOT translated as their own candidate
+  entity models): AirTemperature, AmbientHumidity, Area, Intake,
+  IrrigationWater, PlantGrowthStage, Precipitation, SoilMoisture,
+  SoilTemperature, Yield. These are owl:NamedIndividual instances of
+  saref:Property in the ontology -- i.e. a fixed, singleton controlled
+  vocabulary of "kinds of measurable quantity" (reused via saref:observes /
+  saref:measuresProperty / saref:isValueOfProperty on Device/Observation
+  instances), not classes with multiple real-world instances, so they are
+  not modeled as their own NGSI-LD entity type here. Instead: (a) where a
+  sensor/actuator subclass's measured or acted-upon property is named in the
+  ontology, the corresponding model exposes an `observes`/`actsUpon`
+  attribute constrained (by enum, where the ontology ties the device
+  unambiguously to one property) or documented as a Relationship whose
+  example value is the named individual's own IRI (e.g.
+  "https://saref.etsi.org/saref4agri/Precipitation" for Pluviometer); (b)
+  every named individual's own IRI and rdfs:comment definition is preserved
+  verbatim in the relevant model's context.jsonld / schema property
+  description so no information from the ontology is dropped. WeightSensor
+  and MovementActivitySensor measure quantities (mass, motion/activity) for
+  which v2.1.1 does not declare a dedicated saref4agri:Property named
+  individual; their `observes` property is left as free text/enum of the
+  closest applicable named individuals and this gap is called out in each
+  schema's own description.
+
+  INHERITANCE FLATTENING (Gaia-X precedent, see standards/gaiax-ontology-v2111/):
+  SAREF4AGRI defines its own classes almost entirely by rdfs:subClassOf a
+  generic SAREF-core / SSN / SOSA / FOAF / GeoSPARQL class that is NOT part
+  of SAREF4AGRI itself and is therefore not separately translated as its own
+  candidate model here (saref:Sensor, saref:Actuator, saref:Device,
+  saref:FeatureOfInterest, ssn:System, ssn:Deployment, sosa:Platform,
+  foaf:Person, foaf:Organization, geo:Feature). Each SAREF4AGRI model's
+  schema.json therefore lists only the properties the ontology attaches to
+  that specific subclass (its own owl:Restriction blocks / table rows in TS
+  103 410-6 clause 4.2), plus the SDM common envelope attributes every
+  Candidates model carries (id, type, dateCreated, dateModified, source,
+  dataProvider); the inherited parent-class vocabulary (e.g. saref:hasValue,
+  saref:measuresProperty, saref:hasState for saref:Sensor/Actuator; the
+  SOSA/SSN System/Deployment/Platform composition properties already
+  captured on the Deployment/Platform/WateringSystem models) is documented
+  in prose in the model's own description rather than repeated structurally.
+
+  NAMING: class and property names are preserved verbatim from the source
+  ontology (e.g. `WateringGun`, `hasBirthDate`, `isMemberOf`) per
+  system_prompt.md's naming rules -- no forced PascalCase/camelCase
+  renaming of ontology-native identifiers. A few convenience attributes with
+  no direct 1:1 ontology property (e.g. `value`, `unitCode`, `dateObserved`,
+  `status` on the sensor/actuator models) were added following common Smart
+  Data Models device-model conventions, to make the synthetic examples
+  realistic; these are called out per-model.
+
+  NAME COLLISION WITH THE OFFICIAL dataModel.Agrifood SUBJECT: the official
+  Smart Data Models AgriFood subject (https://github.com/smart-data-models/dataModel.Agrifood)
+  already publishes an entity literally named `Animal` (livestock condition
+  observations), plus conceptually overlapping but differently-named
+  entities `AgriFarm` (vs this candidate's `Farm`), `AgriParcel` (vs
+  `Parcel`), `AgriSoil` (vs `Soil`), `AgriCrop` (vs `Crop`) and
+  `AnimalMovement` (vs `MovementActivitySensor`). Per instructions, naming
+  is kept verbatim from SAREF4AGRI and not renamed to avoid the collision;
+  this is flagged here for the Candidates review process to resolve
+  (e.g. harmonizing/merging with dataModel.Agrifood, or disambiguating on
+  promotion out of Candidates/).

@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4agri/models/Parcel/schema.json",
+  "modelTags": "SAREF4AGRI,Agriculture,Parcel,Topology",
+  "title": "Smart Data Models - SAREF4AGRI - Parcel",
+  "description": "https://saref.etsi.org/saref4agri/Parcel. An area of land, which might be used for grazing animals or planting crops. The parcel is defined as an undividable logical area of land which contains homogeneous items. Subclass of geo:Feature (GeoSPARQL, not modeled here); as a geo:Feature, a Parcel inherits the possibility of a physical geometric description via geo:Geometry (ETSI TS 103 410-6 clause 4.2.7), exposed here as the NGSI-LD 'location' GeoProperty. NOTE: the official dataModel.Agrifood subject publishes a conceptually similar but differently-named 'AgriParcel' entity.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Parcel"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Parcel'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. rdfs:label (max 1 per the ttl restriction). The name of the parcel (e.g. 'Parcel_West', 'Parcel_East')."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. geo:hasGeometry (inherited from geo:Feature). The physical geometric description of the parcel's area."
+    },
+    "contains": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. geo:sfContains some Crop. The crop(s) grown in this parcel."
+    },
+    "area": {
+      "type": "number",
+      "description": "Property. Not a declared owl:Restriction on Parcel in the ttl, but the s4agri:Area named individual ('The total area of a spatial entity, such as a parcel or a farm.') is explicitly documented as applicable to Parcel/Farm; exposed here as a convenience numeric attribute, in hectares."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/saref4agri/models/MilkingSensor/schema.json",
+  "modelTags": "SAREF4AGRI,Agriculture,Livestock,Sensor",
+  "title": "Smart Data Models - SAREF4AGRI - MilkingSensor",
+  "description": "https://saref.etsi.org/saref4agri/MilkingSensor. A class to describe an animal milking sensor. Subclass of saref:Sensor (SAREF core class, not modeled here); inherited saref:Sensor vocabulary is documented here rather than repeated structurally, per the Gaia-X inheritance-flattening precedent. See the ex:MilkYieldSensor example in ETSI TS 103 410-6 clause 4.3.1, Figure 7: the sensor is contained in (saref:consistsOf) an ex:Milking_Machine, measures (saref:isValueOfProperty) ex:MilkYield (a worked-example subclass of s4agri:Yield, illustrating that Yield 'can further be specialized in subclasses, such as MilkYield, CropYield, MeatYield, etc.', per clause 4.2.6) and is measured in om:liter.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "MilkingSensor"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'MilkingSensor'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "observes": {
+      "type": "string",
+      "enum": [
+        "Yield"
+      ],
+      "description": "Property/Relationship. saref:observes / saref:isValueOfProperty. The s4agri:Property named individual this sensor measures: 'the produced amount of food for animals or of agricultural products', here specialized to milk yield (ex:MilkYield in the worked example). IRI: https://saref.etsi.org/saref4agri/Yield."
+    },
+    "hasFeatureOfInterest": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. saref:hasFeatureOfInterest. The Animal (or AnimalGroup) milked, e.g. ex:Cow1 in the ETSI TS 103 410-6 clause 4.3.1 example."
+    },
+    "value": {
+      "type": "number",
+      "description": "Property. saref:hasValue. The last milk-yield measurement reported by the sensor."
+    },
+    "unitCode": {
+      "type": "string",
+      "description": "Property. saref:isMeasuredIn. The unit of measure for 'value', e.g. 'liter' (om:liter), per the ETSI TS 103 410-6 clause 4.3.1 example."
+    },
+    "dateObserved": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. The date and time this measurement was made."
+    },
+    "isSubSystemOf": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. saref:consistsOf (inverse). The larger device (e.g. a milking machine) this sensor is a structural part of."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
