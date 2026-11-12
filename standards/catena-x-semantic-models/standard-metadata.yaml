@@ -1,0 +1,140 @@
+title: "Catena-X semantic models (Industry Core aspect models)"
+publisher: "Catena-X Automotive Network e.V., published through the Eclipse Tractus-X project (Eclipse Foundation)"
+sourceUrl: "https://github.com/eclipse-tractusx/sldt-semantic-models"
+specificationUrl: "https://catenax-ev.github.io/docs/standards/CX-0003-SAMMSemanticAspectMetaModel"
+contact: "https://github.com/eclipse-tractusx/sldt-semantic-models/issues"
+sourceOntologyVersion: "sldt-semantic-models main at commit 0e7bb22 (2026-11-11); Industry Core aspects in the io.catenax.industry_core.* namespaces (see notes for each model's version)"
+sourceOntologyFormat: "SAMM 2.1.0 aspect models (Turtle), plus the JSON Schemas generated from them in each model's gen/ folder"
+sourceOntologyNamespace: "urn:samm:io.catenax.industry_core.<model>:<version>#"
+sourceExampleUrl: "https://github.com/eclipse-tractusx/item-relationship-service/tree/main/local/testing/testdata"
+sourceExampleLicense: "Apache-2.0 (Eclipse Tractus-X item-relationship-service repository)"
+domains:
+  - Manufacturing
+  - Industry4.0
+description: >
+  Catena-X is the automotive data space. Its semantic models are SAMM
+  (Semantic Aspect Meta Model) aspect models: each one describes one aspect
+  of a digital twin, and a twin is identified by its globalAssetId (formerly
+  catenaXId). This candidate covers the Industry Core, the set of aspects
+  that every Catena-X traceability use case builds on: the twin itself
+  (SerialPart, Batch, JustInSequencePart for instances; PartType for part
+  types) and the single-level relations between twins (bill of material
+  and usage, as built and as planned).
+license: "CC-BY-4.0"
+licenseNote: >
+  Confirmed via the repository's LICENSE file and the SPDX header in each
+  .ttl file (CC-BY-4.0, "Copyright (c) Catena-X Automotive Network e.V.
+  and contributors to the Eclipse Foundation"). Attribution is given here
+  and in each schema description. The example data comes from the Eclipse
+  Tractus-X item-relationship-service repository, licensed Apache-2.0.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source aspect models to SDM candidate artifacts"
+notes: |
+  Translated on 2026-11-12. Source row 15 of the "Level A standards not in
+  Smart Data Models" list (licence verified: Yes).
+
+  SCOPE: the repository holds about 150 aspect namespaces (111 with a
+  released latest version), covering traceability, product passports
+  (battery, transmission, electric drive, generic DPP), PCF, quality,
+  demand and capacity management, circularity and more. This candidate
+  translates only the 8 Industry Core aspects, in their current
+  io.catenax.industry_core.* namespaces (moved there in the 26.09 release):
+    - SerialPart                 industry_core.serial_part 4.0.0
+    - Batch                      industry_core.batch 4.0.0
+    - JustInSequencePart         industry_core.just_in_sequence_part 4.0.0
+    - PartType                   industry_core.part_type 2.0.0
+    - SingleLevelBomAsBuilt      industry_core.single_level_bom_as_built 4.0.0
+    - SingleLevelBomAsPlanned    industry_core.single_level_bom_as_planned 4.0.0
+    - SingleLevelUsageAsBuilt    industry_core.single_level_usage_as_built 4.0.0
+    - SingleLevelUsageAsPlanned  industry_core.single_level_usage_as_planned 3.0.0
+  Good next candidates: pcf 10.0.0 (Product Carbon Footprint),
+  generic.digital_product_passport 7.0.0, battery.battery_pass 6.1.0 (check
+  overlap with the Battery Pass Data Model, row 17, and dataModel.Battery
+  first), fleet.vehicles 4.0.0 and the shared address/contact aspects.
+
+  ONE ASPECT = ONE ENTITY TYPE: Catena-X attaches several aspects to one
+  digital twin, all sharing its globalAssetId. NGSI-LD has no notion of
+  aspects, so each aspect becomes its own entity type, and the entity id is
+  urn:ngsi-ld:<AspectName>:<twin UUID>. The SerialPart, SingleLevelBomAsBuilt
+  and SingleLevelUsageAsBuilt examples are therefore three entities about
+  the same door twin, linked through the same globalAssetId value. An
+  alternative is one entity per twin carrying every aspect as an attribute;
+  this was not chosen because aspects are versioned and access-controlled
+  separately in Catena-X.
+
+  HOW THE SCHEMAS WERE BUILT: from the JSON Schema that the SAMM tooling
+  generates for each aspect (gen/<Aspect>-schema.json, draft-04), with every
+  $ref inlined. Property names, nesting, required lists, enumerations
+  (e.g. the 35 ItemUnitEnumeration values, AllowedKeys) and regular
+  expressions (UUID, BPNL, BPNS, alpha-3 country, dates) are kept exactly
+  as generated. The SAMM URN of each top-level property is in its
+  description ("Model:'urn:samm:...'"), and the URN of the aspect is in the
+  model description. Nested SAMM annotations (x-samm-aspect-model-urn) were
+  dropped. Added SDM attributes: id, type, dateCreated, dateModified,
+  source, dataProvider. A check confirmed that each aspect's own generated
+  example payload (gen/<Aspect>.json) validates against the translated
+  schema.
+
+  CONTEXT: each entity type and top-level aspect property maps to its SAMM
+  URN (urn:samm:...#name). The URNs do not dereference: SAMM uses them as
+  identifiers, not as RDF IRIs. Structured properties (objects and arrays
+  of objects, e.g. partTypeInformation, childItems) are declared with
+  "@type": "@json", so their value is kept as a JSON literal and the nested
+  keys are not expanded. This matters because the nested keys include `id`
+  and `description` (in partClassification), which NGSI-LD's core context
+  would otherwise turn into @id and a schema.org term.
+
+  RELATIONSHIPS ARE NOT NGSI-LD RELATIONSHIPS: in the BOM and usage aspects
+  the child and parent twins are referenced by their globalAssetId
+  (urn:uuid:...) inside the childItems / parentItems arrays, together with
+  quantity, business partner and timestamps. They are kept in that form,
+  as Property values, so that a Catena-X aspect payload maps 1:1. A
+  consumer that wants graph traversal can derive Relationships to
+  urn:ngsi-ld:SerialPart:<uuid> (or Batch / JustInSequencePart / PartType)
+  entities. Review point before promotion.
+
+  EXAMPLES: Catena-X production data is confidential and not public. The
+  examples come from the Eclipse Tractus-X reference test data set used by
+  the Item Relationship Service, which forms consistent twin trees:
+    - SerialPart, SingleLevelBomAsBuilt and SingleLevelUsageAsBuilt: the
+      "Door front-left" twin 49a3aa86-..., built into twin 4509ea7c-...
+      (its parent) and containing JIS part fc9a079f-...
+    - JustInSequencePart: that child, "Mirror left" (fc9a079f-...)
+    - Batch: batch twin 6c49a74d-... "Mirror left"
+    - PartType, SingleLevelBomAsPlanned and SingleLevelUsageAsPlanned: the
+      "OEM A High Voltage Battery" part type aad27ddb-..., planned into the
+      "Vehicle Model A" type 0733946c-...
+  The test data set uses older aspect versions, so each record was migrated
+  using the renames in each model's RELEASE_NOTES.md (catenaXId ->
+  globalAssetId, catenaXsiteId -> siteId, date -> productionDate,
+  classificationStandard/classificationID/classificationDescription ->
+  standard/id/description). Where a migration lost or needed data:
+    - SerialPart: itemVersion (not in 4.0.0) dropped; two local identifiers
+      with keys "customKey:company" and "customKey:brand" dropped. 3.0.0
+      allowed the pattern customKey:<name>, but 4.0.0's AllowedKeys
+      enumeration only accepts the literal "customKey". The release notes
+      do not mention this tightening.
+    - productionDate is the date part of the 3.0.0 timestamp.
+    - PartType: PartAsPlanned 2.0.0's free-text classification "product"
+      has no place in 2.0.0 and was dropped.
+    - SingleLevelUsageAsPlanned: the test record is version 1.1.0
+      (parentParts, parentCatenaXId, quantityNumber, measurementUnit) and
+      lacks businessPartner and customers, required since 2.0.0. Both were
+      taken from the same data set: the parent twin's BPNL and this item's
+      entry in the parent's SingleLevelBomAsPlanned. Note that the test
+      data itself is inconsistent here: the usage record says 2.5 litre,
+      while the parent's BOM says 1 piece. The usage record's own values
+      are kept.
+    - Batch country "HUR" is kept verbatim from the test data. It is not an
+      ISO 3166 code (Hungary is HUN), but it matches the schema pattern.
+  The source description of AllowedKeys says custom keys are not allowed
+  while its enumeration contains "customKey". This is kept as published.
+
+  DUPLICATION RISK, not checked in detail: Smart Data Models has
+  dataModel.ManufacturingMachine, dataModel.PredictiveMaintenance, the
+  dataModel.AAS metamodel (Catena-X digital twins are exposed as AAS
+  shells, and SAMM aspects as AAS submodels), dataModel.Battery and the
+  untp-v0.8.0 candidate (product passport). None of them models a
+  serialized part instance or a single-level BOM as such, but this should
+  be checked before promotion.

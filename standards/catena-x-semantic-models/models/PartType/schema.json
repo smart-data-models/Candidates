@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/catena-x-semantic-models/models/PartType/schema.json",
+  "modelTags": "Catena-X,Tractus-X,SAMM,IndustryCore,Automotive,Traceability",
+  "title": "Smart Data Models - Catena-X - PartType",
+  "description": "A Part Type represents an item in the Catena-X Bill of Material (BOM) on a type level in a specific version. (Catena-X aspect model urn:samm:io.catenax.industry_core.part_type:2.0.0#PartType, translated from the SAMM-generated JSON Schema; aspect property names and nested structures are kept verbatim.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity. Built as urn:ngsi-ld:<type>:<UUID of the Catena-X digital twin (globalAssetId without the urn:uuid: prefix)>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "PartType"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'PartType'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "partTypeInformation": {
+      "description": "Property. Model:'urn:samm:io.catenax.industry_core.part_type:2.0.0#partTypeInformation'. The part type from which the serialized part has been instantiated.",
+      "type": "object",
+      "properties": {
+        "partClassification": {
+          "description": "Property describing the classification of a part.",
+          "type": "array",
+          "items": {
+            "description": "Encapsulates data related to the classification of the part.",
+            "type": "object",
+            "properties": {
+              "standard": {
+                "type": "string",
+                "description": "Identified classification standards"
+              },
+              "id": {
+                "type": "string",
+                "description": "The classification ID of the part type according to the corresponding standard definition mentioned in the key value pair."
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional property describing the classification standard."
+              }
+            },
+            "required": [
+              "standard",
+              "id"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "nameAtManufacturer": {
+          "type": "string",
+          "description": "Name of the part as assigned by the manufacturer"
+        },
+        "manufacturerPartId": {
+          "type": "string",
+          "description": "Part ID as assigned by the manufacturer of the part. The Part ID identifies the part (as designed) in the manufacturer`s dataspace. The Part ID does not reference a specific instance of a part and thus should not be confused with the serial number or batch number."
+        }
+      },
+      "required": [
+        "nameAtManufacturer",
+        "manufacturerPartId"
+      ]
+    },
+    "partSitesInformationAsPlanned": {
+      "description": "Property. Model:'urn:samm:io.catenax.industry_core.part_type:2.0.0#partSitesInformationAsPlanned'. A site is a delimited geographical area where a legal entity does business (geographical address with geo coordinates). A site always has a primary physical address. It is possible that further physical addresses are specified for the site. P.O. box details are only possible in addition to the physical address. A site has a 1:n relation to addresses, means at least one address is necessary and multiple addresses are possible.",
+      "type": "array",
+      "items": {
+        "description": "Describes the ID, function and validity date of a site for the associated part in the AsPlanned context.",
+        "type": "object",
+        "properties": {
+          "siteId": {
+            "type": "string",
+            "description": "The identifier of the site according to BPDM. The siteId must be a valid BPN. The BPN is a unique, unchangeable identifier for business partners / company locations from foundation to closure, regardless of the different business relationships / structures between or within the business partners or company locations.",
+            "pattern": "^BPNS[a-zA-Z0-9]{12}$"
+          },
+          "function": {
+            "type": "string",
+            "description": "The function of the site in relation to the part (i.e. the activity within the value chain of the part that is performed at the site).",
+            "enum": [
+              "production",
+              "warehouse",
+              "spare part warehouse"
+            ]
+          },
+          "functionValidFrom": {
+            "type": "string",
+            "pattern": "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?",
+            "description": "Timestamp, from when the site has the specified function for the given part."
+          },
+          "functionValidUntil": {
+            "type": "string",
+            "pattern": "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?",
+            "description": "Timestamp, until when the site has the specified function for the given part."
+          }
+        },
+        "required": [
+          "siteId",
+          "function"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "globalAssetId": {
+      "type": "string",
+      "description": "Property. Model:'urn:samm:io.catenax.shared.industry_core.common:1.0.0#globalAssetId'. The fully anonymous ID in the dataspace of the part.",
+      "pattern": "(^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$)|(^urn:uuid:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$)"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "partTypeInformation",
+    "globalAssetId"
+  ]
+}
