@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/open-energy-ontology/models/SupplyGrid/schema.json",
+  "modelTags": "OpenEnergyOntology,OEO,Energy,Grid",
+  "title": "Smart Data Models - Open Energy Ontology - SupplyGrid",
+  "description": "A supply grid is a supply system of systematically connected artificial objects that can work as a supply system (oeo:OEO_00000200 'supply grid', Open Energy Ontology v2.14.0, definition verbatim; also 'grid', 'network'). Modelled generically: the specific OEO subclass (electricity grid, transmission grid, distribution grid, gas grid, heating grid, control area) is carried in oeoClass.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "SupplyGrid"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'SupplyGrid'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. The name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. A description of this item."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. Point, LineString or Polygon (RFC 7946). Not an OEO term: OEO has no direct geometry on artificial objects, so the NGSI-LD core location is used.",
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point",
+            "LineString",
+            "Polygon",
+            "MultiPoint",
+            "MultiLineString",
+            "MultiPolygon"
+          ]
+        },
+        "coordinates": {
+          "type": "array"
+        },
+        "bbox": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 4
+        }
+      }
+    },
+    "areaServed": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/areaServed'. The geographic area where the grid provides service. Not an OEO term."
+    },
+    "oeoClass": {
+      "type": "string",
+      "format": "uri",
+      "enum": [
+        "https://openenergyplatform.org/ontology/oeo/OEO_00360004",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00110020",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000143",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00020004",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00020005",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000200",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00110019"
+      ],
+      "description": "Relationship. The specific OEO class of this entity (rdf:type), as the class IRI. OEO v2.14.0 declares 7 classes in the 'supply grid' hierarchy (this class and all its subclasses), all allowed here: control area = oeo:OEO_00360004; distribution grid = oeo:OEO_00110020; electricity grid = oeo:OEO_00000143; gas grid = oeo:OEO_00020004; heating grid = oeo:OEO_00020005; supply grid = oeo:OEO_00000200; transmission grid = oeo:OEO_00110019."
+    },
+    "hasPart": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. GridComponent entities that are part of this supply grid (BFO 'has part')."
+    },
+    "hasSource": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Grid nodes (GridComponent) of this grid that work as entry points to the supply system (oeo:OEO_00000528 'has source')."
+    },
+    "hasSink": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Grid nodes (GridComponent) of this grid that work as extraction points of the supply system (oeo:OEO_00000527 'has sink')."
+    },
+    "ratedVoltage": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri",
+        "enum": [
+          "https://openenergyplatform.org/ontology/oeo/OEO_00410073",
+          "https://openenergyplatform.org/ontology/oeo/OEO_00410072",
+          "https://openenergyplatform.org/ontology/oeo/OEO_00410070",
+          "https://openenergyplatform.org/ontology/oeo/OEO_00410071"
+        ]
+      },
+      "description": "Relationship. Rated voltage classes this grid operates on (oeo:OEO_00410068 subclasses: low, medium, high, extra high rated voltage)."
+    },
+    "gridOperator": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. Name(s) of the grid operator(s) (TSO/DSO) responsible for this object. Not an OEO term: OEO declares 'power plant operator' but no grid operator class."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
