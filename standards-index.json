@@ -1,5 +1,42 @@
 [
   {
+    "slug": "agrovoc",
+    "title": "AGROVOC Multilingual Thesaurus",
+    "description": "AGROVOC is FAO's multilingual controlled vocabulary for agriculture, food, nutrition, fisheries, forestry, environment and related domains. The 2026-11-05 release has 42,100 concepts and 1,266,017 lexical labels in 42 languages (10.2 million triples), published as SKOS with SKOS-XL reified labels. Concepts are linked by SKOS hierarchical, associative and mapping relations (exactMatch and closeMatch to other thesauri) and by the Agrontology, FAO's ontology of domain relations (hasPest, isProducedBy, hasTaxonomicRank, ...). In Smart Data Models terms, AGROVOC is the reference vocabulary that agrifood entities can point to, e.g. the crop of an AgriParcel or the species of an Animal.",
+    "publisher": "Food and Agriculture Organization of the United Nations (FAO), with the AGROVOC editorial community",
+    "sourceUrl": "https://agrovoc.fao.org/",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "Agrifood",
+      "CrossSector"
+    ],
+    "modelCount": 3,
+    "models": [
+      {
+        "name": "Concept",
+        "title": "Smart Data Models - AGROVOC - Concept",
+        "description": "An idea or notion; a unit of thought (skos:Concept). In AGROVOC, one of about 42,100 concepts covering agriculture, food, nutrition, fisheries, forestry, environment and related domains, labelled in up to 42 languages and linked by SKOS hierarchical/associative relations, mappings to other vocabularies, and the Agrontology's specific relations (e.g. hasPest, isProducedBy, hasTaxonomicRank). Attributes are the properties actually used on AGROVOC concepts in release 2026-11-05 (counted on the AGROVOC SPARQL endpoint), named exactly as in SKOS, SKOS-XL, DCMI and the Agrontology.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/agrovoc/models/Concept/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/agrovoc/models/Concept"
+      },
+      {
+        "name": "ConceptScheme",
+        "title": "Smart Data Models - AGROVOC - ConceptScheme",
+        "description": "A set of concepts, optionally including statements about semantic relationships between them (skos:ConceptScheme). Here, the AGROVOC thesaurus itself and its top concepts. Attributes are the properties actually used on AGROVOC concept schemes in release 2026-11-05 (counted on the AGROVOC SPARQL endpoint), named exactly as in SKOS, SKOS-XL, DCMI and the Agrontology.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/agrovoc/models/ConceptScheme/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/agrovoc/models/ConceptScheme"
+      },
+      {
+        "name": "Label",
+        "title": "Smart Data Models - AGROVOC - Label",
+        "description": "A reified lexical label (skosxl:Label). AGROVOC publishes every preferred, alternative and hidden label as its own resource with an AgrovocCode notation, a term type and term-to-term relations (acronyms, synonyms, scientific names, old names, symbols). Attributes are the properties actually used on AGROVOC labels in release 2026-11-05 (counted on the AGROVOC SPARQL endpoint), named exactly as in SKOS, SKOS-XL, DCMI and the Agrontology.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/agrovoc/models/Label/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/agrovoc/models/Label"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/agrovoc"
+  },
+  {
     "slug": "battery-pass-data-model",
     "title": "Battery Pass Data Model",
     "description": "Data model for the EU battery passport required by the Battery Regulation (EU) 2023/1542, developed by the Battery Pass consortium and aligned with DIN DKE SPEC 99100 (\"Requirements for data attributes of the battery passport\"). It is split into seven SAMM aspect models: general product information, carbon footprint, circularity (dismantling, spare parts, recycled and renewable content, safety, end of life), labels and declaration of conformity, material composition (chemistry, critical raw materials, hazardous substances), performance and durability (rated technical properties and the dynamic battery condition, i.e. state of health), and supply chain due diligence.",

@@ -1,0 +1,121 @@
+title: "AGROVOC Multilingual Thesaurus"
+publisher: "Food and Agriculture Organization of the United Nations (FAO), with the AGROVOC editorial community"
+sourceUrl: "https://agrovoc.fao.org/"
+specificationUrl: "https://www.fao.org/agrovoc/"
+contact: "agrovoc@fao.org"
+sourceOntologyVersion: "AGROVOC release of 2026-11-05 (dct:modified of the concept scheme and of the VoID dataset description)"
+sourceOntologyDownload: "https://agrovoc.fao.org/latestAgrovoc/agrovoc_lod.nt.zip (also queried live at https://agrovoc.fao.org/sparql)"
+sourceOntologyNamespace: "http://aims.fao.org/aos/agrovoc/ (concepts and labels), http://aims.fao.org/aos/agrontology# (Agrontology relations)"
+sourceOntologyFormat: "SKOS and SKOS-XL RDF, with the Agrontology OWL ontology for domain-specific relations"
+sourceExampleUrl: "https://agrovoc.fao.org/browse/agrovoc/en/page/c_8373"
+domains:
+  - Agrifood
+  - CrossSector
+description: >
+  AGROVOC is FAO's multilingual controlled vocabulary for agriculture,
+  food, nutrition, fisheries, forestry, environment and related domains.
+  The 2026-11-05 release has 42,100 concepts and 1,266,017 lexical labels in
+  42 languages (10.2 million triples), published as SKOS with SKOS-XL
+  reified labels. Concepts are linked by SKOS hierarchical, associative and
+  mapping relations (exactMatch and closeMatch to other thesauri) and by
+  the Agrontology, FAO's ontology of domain relations (hasPest,
+  isProducedBy, hasTaxonomicRank, ...). In Smart Data Models terms, AGROVOC
+  is the reference vocabulary that agrifood entities can point to, e.g.
+  the crop of an AgriParcel or the species of an Animal.
+license: "CC-BY-4.0"
+licenseNote: >
+  Confirmed via AGROVOC's VoID dataset description
+  (http://aims.fao.org/aos/agrovoc/void.ttl): dct:license
+  <https://creativecommons.org/licenses/by/4.0/> and dc:rights "CC-BY 4.0".
+  Every example is a verbatim AGROVOC record, and attribution is given in
+  each example's `source`.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source vocabulary to SDM candidate artifacts"
+notes: |
+  Translated on 2026-11-12. Source row 24 of the "Level A standards not in
+  Smart Data Models" list (licence verified: Yes).
+
+  MODELS (3), named exactly as the source classes:
+    - Concept        skos:Concept       (42,100 in AGROVOC)
+    - Label          skosxl:Label       (1,266,017)
+    - ConceptScheme  skos:ConceptScheme (1: AGROVOC itself, with 25 top concepts)
+  Concept, Label and ConceptScheme are generic type names (they are the
+  SKOS names). Because they are generic, they apply to any SKOS thesaurus
+  that uses the same structure, not only to AGROVOC. Check the type names
+  for clashes before promotion.
+
+  ATTRIBUTES COME FROM ACTUAL USE, NOT FROM THE FULL ONTOLOGY: each model has
+  exactly the properties that occur on resources of that class in this
+  release, counted with SPARQL GROUP BY queries on the AGROVOC endpoint.
+  Each description records the usage count. Concept has 93 source
+  properties: 28 SKOS/SKOS-XL/DCMI/FOAF/OWL properties and 65 Agrontology
+  properties. Label has 19 (11 of them Agrontology) and ConceptScheme 4.
+  rdf:type is expressed by the entity type, and void:inDataset (always
+  the AGROVOC dataset) is left out. The Agrontology defines 174 terms;
+  relations it defines but AGROVOC does not use on concepts or labels
+  (e.g. hasWeed, isNaturalEnemyOf, hasTradeName) are left out and can be
+  added if a later release starts using them. Agrontology descriptions
+  are its own English rdfs:label and rdfs:comment.
+
+  NAMING: every attribute is the source property's local name, verbatim:
+  prefLabel, broader, exactMatch, hasTaxonomicRank, isAcronymOf, created,
+  modified, and so on. The three SKOS-XL label links share their local
+  names with the SKOS literal labels (skos:prefLabel vs skosxl:prefLabel).
+  They keep the source's own compact-IRI form, "skosxl:prefLabel",
+  "skosxl:altLabel" and "skosxl:hiddenLabel", and the context defines the
+  skosxl prefix. A colon is allowed in JSON Schema property names and in
+  NGSI-LD terms (compact IRIs). This is the main naming point to review.
+
+  NGSI-LD MAPPING:
+    - Language-tagged literals become language maps with
+      "@container": "@language" in the context. prefLabel and literalForm
+      have one string per language; altLabel, hiddenLabel and the notes
+      have a list of strings per language. They round-trip to the same RDF
+      literals and can be exchanged as NGSI-LD LanguageProperty.
+      build_examples.py renders them as plain Property.
+    - Links between AGROVOC resources become Relationships to
+      urn:ngsi-ld:Concept:c_<code>, urn:ngsi-ld:Label:<id> or
+      urn:ngsi-ld:ConceptScheme:agrovoc, so a broker can traverse the
+      thesaurus graph. Mapping links (exactMatch, closeMatch, ...) and
+      foaf:depiction keep their external IRIs.
+    - IDENTITY: the entity id is urn:ngsi-ld:<Type>:<AGROVOC local id>. An
+      added `sameAs` Relationship (owl:sameAs, not an AGROVOC statement)
+      gives the canonical AGROVOC IRI.
+    - Definitions are reified in AGROVOC: each skos:definition points to an
+      xDef_... resource with rdf:value, a source (free-text vb:hasSource
+      and/or dct:source IRI) and timestamps. They are flattened into an
+      array of objects {value, language, hasSource, source, created,
+      modified}. "language" is the literal's language tag, not an RDF
+      property. The attribute is "@type": "@json" in the context.
+    - created / modified keep the source's xsd:dateTime lexical form,
+      including values without a timezone (e.g. "2025-12-19T10:28:04"),
+      which AGROVOC publishes. A pattern checks them instead of
+      format: date-time, which requires a timezone. dateCreated and
+      dateModified remain the usual NGSI-LD system attributes.
+    - Label.isReplacedBy usually points to a concept or label; 5 of its
+      5,514 uses are language-tagged literals, which this schema does not
+      accept (array of IRIs).
+
+  EXAMPLES ARE REAL AGROVOC RECORDS, retrieved from the SPARQL endpoint on
+  2026-11-12 and converted mechanically by the generator script:
+    - Concept: c_8373 "wheat", with 29 preferred labels, 6 definitions
+      (with their sources), its broader and narrower concepts, 4 exactMatch
+      mappings (UNBIS, INRAE, GND, STW) and Agrontology relations
+      (isProducedBy, isSourceOf, isIncludedIn).
+    - Label: xl_en_1299522993458, the English label "FAO" (term type
+      Acronym, AgrovocCode 2791). It isAcronymOf the label "Food and
+      Agriculture Organization", and is the English preferred label of
+      concept c_2791.
+    - ConceptScheme: AGROVOC, with its 25 top concepts.
+
+  SCALE: these are data models, not a copy of AGROVOC. Loading all 42k
+  concepts and 1.27M labels into a context broker is possible but rarely
+  needed. The usual pattern is for other SDM entities to reference AGROVOC
+  concepts by IRI, and to load the Concept entities of the relevant
+  sub-tree when labels or relations are needed at runtime.
+
+  DUPLICATION RISK: Smart Data Models has no SKOS model. dataModel.Agrifood
+  already points to AGROVOC: AgriCrop has an agroVocConcept attribute.
+  These models give such references a resolvable NGSI-LD target. A generic SKOS subject could be considered
+  instead of AGROVOC-specific models. Check this before promotion.

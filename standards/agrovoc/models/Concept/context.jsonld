@@ -1,0 +1,374 @@
+{
+  "@context": {
+    "Concept": "http://www.w3.org/2004/02/skos/core#Concept",
+    "dateCreated": "https://schema.org/dateCreated",
+    "dateModified": "https://schema.org/dateModified",
+    "source": "https://purl.org/dc/terms/source",
+    "dataProvider": "https://smartdatamodels.org/dataProvider",
+    "sameAs": {
+      "@id": "http://www.w3.org/2002/07/owl#sameAs",
+      "@type": "@id"
+    },
+    "skosxl": "http://www.w3.org/2008/05/skos-xl#",
+    "prefLabel": {
+      "@id": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "@container": "@language"
+    },
+    "skosxl:prefLabel": {
+      "@id": "http://www.w3.org/2008/05/skos-xl#prefLabel",
+      "@type": "@id"
+    },
+    "altLabel": {
+      "@id": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "@container": "@language"
+    },
+    "skosxl:altLabel": {
+      "@id": "http://www.w3.org/2008/05/skos-xl#altLabel",
+      "@type": "@id"
+    },
+    "broader": {
+      "@id": "http://www.w3.org/2004/02/skos/core#broader",
+      "@type": "@id"
+    },
+    "narrower": {
+      "@id": "http://www.w3.org/2004/02/skos/core#narrower",
+      "@type": "@id"
+    },
+    "modified": {
+      "@id": "http://purl.org/dc/terms/modified",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "inScheme": {
+      "@id": "http://www.w3.org/2004/02/skos/core#inScheme",
+      "@type": "@id"
+    },
+    "created": {
+      "@id": "http://purl.org/dc/terms/created",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "exactMatch": {
+      "@id": "http://www.w3.org/2004/02/skos/core#exactMatch",
+      "@type": "@id"
+    },
+    "definition": {
+      "@id": "http://www.w3.org/2004/02/skos/core#definition",
+      "@type": "@json"
+    },
+    "scopeNote": {
+      "@id": "http://www.w3.org/2004/02/skos/core#scopeNote",
+      "@container": "@language"
+    },
+    "closeMatch": {
+      "@id": "http://www.w3.org/2004/02/skos/core#closeMatch",
+      "@type": "@id"
+    },
+    "related": {
+      "@id": "http://www.w3.org/2004/02/skos/core#related",
+      "@type": "@id"
+    },
+    "editorialNote": {
+      "@id": "http://www.w3.org/2004/02/skos/core#editorialNote",
+      "@container": "@language"
+    },
+    "hasTaxonomicRank": {
+      "@id": "http://aims.fao.org/aos/agrontology#hasTaxonomicRank",
+      "@type": "@id"
+    },
+    "isTaxonomicRankOf": {
+      "@id": "http://aims.fao.org/aos/agrontology#isTaxonomicRankOf",
+      "@type": "@id"
+    },
+    "hiddenLabel": {
+      "@id": "http://www.w3.org/2004/02/skos/core#hiddenLabel",
+      "@container": "@language"
+    },
+    "skosxl:hiddenLabel": {
+      "@id": "http://www.w3.org/2008/05/skos-xl#hiddenLabel",
+      "@type": "@id"
+    },
+    "includes": {
+      "@id": "http://aims.fao.org/aos/agrontology#includes",
+      "@type": "@id"
+    },
+    "isIncludedIn": {
+      "@id": "http://aims.fao.org/aos/agrontology#isIncludedIn",
+      "@type": "@id"
+    },
+    "isUseOf": {
+      "@id": "http://aims.fao.org/aos/agrontology#isUseOf",
+      "@type": "@id"
+    },
+    "isUsedAs": {
+      "@id": "http://aims.fao.org/aos/agrontology#isUsedAs",
+      "@type": "@id"
+    },
+    "affects": {
+      "@id": "http://aims.fao.org/aos/agrontology#affects",
+      "@type": "@id"
+    },
+    "isAffectedBy": {
+      "@id": "http://aims.fao.org/aos/agrontology#isAffectedBy",
+      "@type": "@id"
+    },
+    "isPartOfSubvocabulary": "http://aims.fao.org/aos/agrontology#isPartOfSubvocabulary",
+    "hasPathogen": {
+      "@id": "http://aims.fao.org/aos/agrontology#hasPathogen",
+      "@type": "@id"
+    },
+    "isPathogenOf": {
+      "@id": "http://aims.fao.org/aos/agrontology#isPathogenOf",
+      "@type": "@id"
+    },
+    "isUsedIn": {
+      "@id": "http://aims.fao.org/aos/agrontology#isUsedIn",
+      "@type": "@id"
+    },
+    "makeUseOf": {
+      "@id": "http://aims.fao.org/aos/agrontology#makeUseOf",
+      "@type": "@id"
+    },
+    "hasComponent": {
+      "@id": "http://aims.fao.org/aos/agrontology#hasComponent",
+      "@type": "@id"
+    },
+    "isComponentOf": {
+      "@id": "http://aims.fao.org/aos/agrontology#isComponentOf",
+      "@type": "@id"
+    },
+    "hasObjectOfActivity": {
+      "@id": "http://aims.fao.org/aos/agrontology#hasObjectOfActivity",
+      "@type": "@id"
+    },
+    "isObjectOfActivity": {
+      "@id": "http://aims.fao.org/aos/agrontology#isObjectOfActivity",
+      "@type": "@id"
+    },
+    "causes": {
+      "@id": "http://aims.fao.org/aos/agrontology#causes",
+      "@type": "@id"
+    },
+    "isCausedBy": {
+      "@id": "http://aims.fao.org/aos/agrontology#isCausedBy",
+      "@type": "@id"
+    },
+    "isProducedBy": {
+      "@id": "http://aims.fao.org/aos/agrontology#isProducedBy",
+      "@type": "@id"
+    },
+    "produces": {
+      "@id": "http://aims.fao.org/aos/agrontology#produces",
+      "@type": "@id"
+    },
+    "historyNote": {
+      "@id": "http://www.w3.org/2004/02/skos/core#historyNote",
+      "@container": "@language"
+    },
+    "isSpatiallyIncludedIn": {
+      "@id": "http://aims.fao.org/aos/agrontology#isSpatiallyIncludedIn",
+      "@type": "@id"
+    },
+    "spatiallyIncludes": {
+      "@id": "http://aims.fao.org/aos/agrontology#spatiallyIncludes",
+      "@type": "@id"
+    },
+    "hasMember": {
+      "@id": "http://aims.fao.org/aos/agrontology#hasMember",
+      "@type": "@id"
+    },
+    "isMemberOf": {
+      "@id": "http://aims.fao.org/aos/agrontology#isMemberOf",
+      "@type": "@id"
+    },
+    "isProcessFor": {
+      "@id": "http://aims.fao.org/aos/agrontology#isProcessFor",
+      "@type": "@id"
+    },
+    "usesProcess": {
+      "@id": "http://aims.fao.org/aos/agrontology#usesProcess",
+      "@type": "@id"
+    },
+    "hasProperty": {
+      "@id": "http://aims.fao.org/aos/agrontology#hasProperty",
+      "@type": "@id"
+    },
+    "isPropertyOf": {
+      "@id": "http://aims.fao.org/aos/agrontology#isPropertyOf",
+      "@type": "@id"
+    },
+    "isDerivedFrom": {
+      "@id": "http://aims.fao.org/aos/agrontology#isDerivedFrom",
+      "@type": "@id"
+    },
+    "isSourceOf": {
+      "@id": "http://aims.fao.org/aos/agrontology#isSourceOf",
+      "@type": "@id"
+    },
+    "m49Code": "http://aims.fao.org/aos/agrontology#m49Code",
+    "isStudiedBy": {
+      "@id": "http://aims.fao.org/aos/agrontology#isStudiedBy",
+      "@type": "@id"
+    },
+    "study": {
+      "@id": "http://aims.fao.org/aos/agrontology#study",
+      "@type": "@id"
+    },
+    "broadMatch": {
+      "@id": "http://www.w3.org/2004/02/skos/core#broadMatch",
+      "@type": "@id"
+    },
+    "hasCodeISO3Country": "http://aims.fao.org/aos/agrontology#hasCodeISO3Country",
+    "compose": {
+      "@id": "http://aims.fao.org/aos/agrontology#compose",
+      "@type": "@id"
+    },
+    "isComposedOf": {
+      "@id": "http://aims.fao.org/aos/agrontology#isComposedOf",
+      "@type": "@id"
+    },
+    "hasDisease": {
+      "@id": "http://aims.fao.org/aos/agrontology#hasDisease",
+      "@type": "@id"
+    },
+    "isDiseaseFor": {
+      "@id": "http://aims.fao.org/aos/agrontology#isDiseaseFor",
+      "@type": "@id"
+    },
+    "hasCommonNameConcept": {
+      "@id": "http://aims.fao.org/aos/agrontology#hasCommonNameConcept",
+      "@type": "@id"
+    },
+    "hasTaxonomicConcept": {
+      "@id": "http://aims.fao.org/aos/agrontology#hasTaxonomicConcept",
+      "@type": "@id"
+    },
+    "hasGoalOrProcess": {
+      "@id": "http://aims.fao.org/aos/agrontology#hasGoalOrProcess",
+      "@type": "@id"
+    },
+    "isAchievedByMeansOf": {
+      "@id": "http://aims.fao.org/aos/agrontology#isAchievedByMeansOf",
+      "@type": "@id"
+    },
+    "isMadeFrom": {
+      "@id": "http://aims.fao.org/aos/agrontology#isMadeFrom",
+      "@type": "@id"
+    },
+    "isUsedToMake": {
+      "@id": "http://aims.fao.org/aos/agrontology#isUsedToMake",
+      "@type": "@id"
+    },
+    "hasProduct": {
+      "@id": "http://aims.fao.org/aos/agrontology#hasProduct",
+      "@type": "@id"
+    },
+    "productOf": {
+      "@id": "http://aims.fao.org/aos/agrontology#productOf",
+      "@type": "@id"
+    },
+    "afflicts": {
+      "@id": "http://aims.fao.org/aos/agrontology#afflicts",
+      "@type": "@id"
+    },
+    "isAfflictedBy": {
+      "@id": "http://aims.fao.org/aos/agrontology#isAfflictedBy",
+      "@type": "@id"
+    },
+    "narrowMatch": {
+      "@id": "http://www.w3.org/2004/02/skos/core#narrowMatch",
+      "@type": "@id"
+    },
+    "isMeasuredBy": {
+      "@id": "http://aims.fao.org/aos/agrontology#isMeasuredBy",
+      "@type": "@id"
+    },
+    "measures": {
+      "@id": "http://aims.fao.org/aos/agrontology#measures",
+      "@type": "@id"
+    },
+    "depiction": {
+      "@id": "http://xmlns.com/foaf/0.1/depiction",
+      "@type": "@id"
+    },
+    "hasPest": {
+      "@id": "http://aims.fao.org/aos/agrontology#hasPest",
+      "@type": "@id"
+    },
+    "pestOf": {
+      "@id": "http://aims.fao.org/aos/agrontology#pestOf",
+      "@type": "@id"
+    },
+    "hasType": {
+      "@id": "http://aims.fao.org/aos/agrontology#hasType",
+      "@type": "@id"
+    },
+    "typeOf": {
+      "@id": "http://aims.fao.org/aos/agrontology#typeOf",
+      "@type": "@id"
+    },
+    "hasPart": {
+      "@id": "http://aims.fao.org/aos/agrontology#hasPart",
+      "@type": "@id"
+    },
+    "isPartOf": {
+      "@id": "http://aims.fao.org/aos/agrontology#isPartOf",
+      "@type": "@id"
+    },
+    "note": {
+      "@id": "http://www.w3.org/2004/02/skos/core#note",
+      "@container": "@language"
+    },
+    "hasSymptom": {
+      "@id": "http://aims.fao.org/aos/agrontology#hasSymptom",
+      "@type": "@id"
+    },
+    "indicates": {
+      "@id": "http://aims.fao.org/aos/agrontology#indicates",
+      "@type": "@id"
+    },
+    "isPreventedBy": {
+      "@id": "http://aims.fao.org/aos/agrontology#isPreventedBy",
+      "@type": "@id"
+    },
+    "prevents": {
+      "@id": "http://aims.fao.org/aos/agrontology#prevents",
+      "@type": "@id"
+    },
+    "topConceptOf": {
+      "@id": "http://www.w3.org/2004/02/skos/core#topConceptOf",
+      "@type": "@id"
+    },
+    "surroundedBy": {
+      "@id": "http://aims.fao.org/aos/agrontology#surroundedBy",
+      "@type": "@id"
+    },
+    "surrounds": {
+      "@id": "http://aims.fao.org/aos/agrontology#surrounds",
+      "@type": "@id"
+    },
+    "relatedMatch": {
+      "@id": "http://www.w3.org/2004/02/skos/core#relatedMatch",
+      "@type": "@id"
+    },
+    "hasHost": {
+      "@id": "http://aims.fao.org/aos/agrontology#hasHost",
+      "@type": "@id"
+    },
+    "isHostFor": {
+      "@id": "http://aims.fao.org/aos/agrontology#isHostFor",
+      "@type": "@id"
+    },
+    "isReplacedBy": {
+      "@id": "http://purl.org/dc/terms/isReplacedBy",
+      "@type": "@id"
+    },
+    "example": {
+      "@id": "http://www.w3.org/2004/02/skos/core#example",
+      "@container": "@language"
+    },
+    "deprecated": "http://www.w3.org/2002/07/owl#deprecated",
+    "changeNote": {
+      "@id": "http://www.w3.org/2004/02/skos/core#changeNote",
+      "@container": "@language"
+    }
+  }
+}
