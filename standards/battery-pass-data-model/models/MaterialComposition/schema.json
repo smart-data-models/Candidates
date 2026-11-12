@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/battery-pass-data-model/models/MaterialComposition/schema.json",
+  "modelTags": "BatteryPass,BatteryPassport,DigitalProductPassport,EUBatteryRegulation,SAMM,DIN-DKE-SPEC-99100",
+  "title": "Smart Data Models - Battery Pass - MaterialComposition",
+  "description": "Mandatory data: Battery chemistry; critical raw materials; materials used in the cathode, anode, and \nelectrolyte; hazardous substances; impact of substances on the environment and on human health or \nsafety\n\nCopyright ? 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution. (Battery Pass Data Model aspect urn:samm:io.BatteryPass.MaterialComposition:1.2.0#MaterialComposition. Structure from the SAMM-generated JSON Schema; property names, descriptions and units from the current .ttl source, with names kept verbatim, including their original spelling.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity. Built as urn:ngsi-ld:<type>:<battery passport id>, the same suffix for every aspect of one passport."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "MaterialComposition"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'MaterialComposition'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "refGeneralProductInformation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Not a Battery Pass term (Smart Data Models addition). Reference to the GeneralProductInformation entity of the same battery passport, which carries the product and passport identifiers. The Battery Pass aspects themselves have no shared identifier field; in the source they are tied together by the passport that contains them."
+    },
+    "batteryChemistry": {
+      "description": "Property. Model:'urn:samm:io.BatteryPass.MaterialComposition:1.2.0#batteryChemistry'. Composition of a product in general terms by specifying the cathode and anode active material as well as electrolyte.\n\nDIN DKE Spec 99100 chapter reference: 6.5.2",
+      "type": "object",
+      "properties": {
+        "shortName": {
+          "type": "string",
+          "description": "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."
+        },
+        "clearName": {
+          "type": "string",
+          "description": "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."
+        }
+      },
+      "required": [
+        "shortName",
+        "clearName"
+      ]
+    },
+    "batteryMaterials": {
+      "description": "Property. Model:'urn:samm:io.BatteryPass.MaterialComposition:1.2.0#batteryMaterials'. \"Component materials used\" (No. 17.a-c): Naming the materials (as a composition of substances) in cathode, anode, electrolyte according to public standards, including specification of the corresponding component (i.e., cathode, anode, or electrolyte). We suggest a reporting threshold of 0.1 % weight by weight.\n\nDIN DKE Spec 99100 chapter reference: 6.5.3-6.5.4",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "batteryMaterialLocation": {
+            "type": "object",
+            "description": "Battery component that relates to the material",
+            "properties": {
+              "componentName": {
+                "type": "string",
+                "description": "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."
+              },
+              "componentId": {
+                "type": "string",
+                "description": "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."
+              }
+            },
+            "required": [
+              "componentName"
+            ]
+          },
+          "batteryMaterialIdentifier": {
+            "type": "string",
+            "description": "CAS Number",
+            "pattern": "^\\d{2,7}-\\d{2}-\\d{1}$"
+          },
+          "batteryMaterialName": {
+            "type": "string",
+            "description": "Clear name of Material"
+          },
+          "batteryMaterialMass": {
+            "type": "number",
+            "description": "Weight of component material Units: 'gram' (SAMM unit, as declared in the source)."
+          },
+          "isCriticalRawMaterial": {
+            "type": "boolean",
+            "description": "The battery passport must contain information on the critical raw materials present in the battery.\n\nThe information on the critical raw materials must also be provided on the battery label.\nPer Annex VI, Part A(10), critical raw materials must be reported if present in the battery in a concentration of more than 0,1 % weight by weight."
+          }
+        },
+        "required": [
+          "batteryMaterialLocation",
+          "batteryMaterialIdentifier",
+          "batteryMaterialName",
+          "batteryMaterialMass",
+          "isCriticalRawMaterial"
+        ]
+      }
+    },
+    "hazardousSubstances": {
+      "description": "Property. Model:'urn:samm:io.BatteryPass.MaterialComposition:1.2.0#hazardousSubstances'. \"Hazardous substances\" (No 20.a-e): Name (agreed substance nomenclature, e.g. IUPAC or chemical name) all hazardous substance (as ?any substance that poses a threat to human health and the environment?). Suggested above 0.1 % weight by weight within each (sub-)component.\n\nDIN DKE Spec 99100 chapter reference: 6.5.4 - 6.5.6",
+      "type": "array",
+      "items": {
+        "description": "Hazardous substances (No. 19-23): Name (agreed substance nomenclature, e.g. IUPAC or chemical name) all hazardous substance (as ?any substance that poses a threat to human health and the environment?). Suggested above 0.1 % weight by weight within each (sub-)component.",
+        "type": "object",
+        "properties": {
+          "hazardousSubstanceClass": {
+            "type": "string",
+            "enum": [
+              "AcuteToxicity",
+              "SkinCorrosionOrIrritation",
+              "EyeDamageOrIrritation"
+            ],
+            "description": "Battery Regulation narrows reporting to substances falling under defined hazard classes and categories of the CLP regulation."
+          },
+          "hazardousSubstanceName": {
+            "type": "string",
+            "description": "Clear name of hazardous substance"
+          },
+          "hazardousSubstanceConcentration": {
+            "type": "number",
+            "description": "Concentration of hazardous substance Units: 'percent' (SAMM unit, as declared in the source)."
+          },
+          "hazardousSubstanceImpact": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."
+            },
+            "description": "Impact statements based on, e.g., REACH or GHS for all hazard classes applicable to substances in the battery."
+          },
+          "hazardousSubstanceLocation": {
+            "description": "Hazardous substances (No. 19-23): Location on a (sub-)component-level of all hazardous substances (as ?any substance that poses a threat to human health and the environment?). Suggested via a unique identifier or nomenclature.",
+            "type": "object",
+            "properties": {
+              "componentName": {
+                "type": "string",
+                "description": "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."
+              },
+              "componentId": {
+                "type": "string",
+                "description": "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."
+              }
+            },
+            "required": [
+              "componentName"
+            ]
+          },
+          "hazardousSubstanceIdentifier": {
+            "type": "string",
+            "description": "CAS identifier of hazardous substance",
+            "pattern": "^\\d{2,7}-\\d{2}-\\d{1}$"
+          }
+        },
+        "required": [
+          "hazardousSubstanceClass",
+          "hazardousSubstanceName",
+          "hazardousSubstanceConcentration",
+          "hazardousSubstanceImpact",
+          "hazardousSubstanceLocation",
+          "hazardousSubstanceIdentifier"
+        ]
+      }
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "batteryChemistry",
+    "batteryMaterials",
+    "hazardousSubstances",
+    "refGeneralProductInformation"
+  ]
+}

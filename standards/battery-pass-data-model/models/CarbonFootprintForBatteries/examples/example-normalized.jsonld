@@ -1,0 +1,56 @@
+{
+  "id": "urn:ngsi-ld:CarbonFootprintForBatteries:bmwk-123456687678",
+  "type": "CarbonFootprintForBatteries",
+  "refGeneralProductInformation": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:GeneralProductInformation:bmwk-123456687678"
+  },
+  "batteryCarbonFootprint": {
+    "type": "Property",
+    "value": 68.5
+  },
+  "carbonFootprintPerLifecycleStage": {
+    "type": "Property",
+    "value": [
+      {
+        "lifecycleStage": "RawMaterialExtraction",
+        "carbonFootprint": 41.2
+      },
+      {
+        "lifecycleStage": "MainProduction",
+        "carbonFootprint": 22.1
+      },
+      {
+        "lifecycleStage": "Distribution",
+        "carbonFootprint": 1.4
+      },
+      {
+        "lifecycleStage": "Recycling",
+        "carbonFootprint": 3.8
+      }
+    ]
+  },
+  "carbonFootprintPerformanceClass": {
+    "type": "Property",
+    "value": "B"
+  },
+  "carbonFootprintStudy": {
+    "type": "Relationship",
+    "object": "https://www.example.com/battery-passport/123456687678/carbon-footprint-study.pdf"
+  },
+  "absoluteCarbonFootprint": {
+    "type": "Property",
+    "value": 6507.5
+  },
+  "source": {
+    "type": "Property",
+    "value": "Synthetic example (no public battery passport data exists yet). One fictional 95 kWh NMC electric-vehicle battery shared by all 7 aspects. Values taken from the Battery Pass Data Model's own SAMM exampleValue entries where they exist (none in this aspect); all other values are illustrative, chosen to be physically consistent and to satisfy the schema. URLs use the reserved example.com domain."
+  },
+  "dataProvider": {
+    "type": "Property",
+    "value": "Smart Data Models (synthetic example for the Battery Pass Data Model candidate)"
+  },
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/battery-pass-data-model/models/CarbonFootprintForBatteries/context.jsonld"
+  ]
+}

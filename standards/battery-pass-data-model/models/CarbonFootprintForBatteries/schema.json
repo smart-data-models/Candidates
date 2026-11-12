@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/battery-pass-data-model/models/CarbonFootprintForBatteries/schema.json",
+  "modelTags": "BatteryPass,BatteryPassport,DigitalProductPassport,EUBatteryRegulation,SAMM,DIN-DKE-SPEC-99100",
+  "title": "Smart Data Models - Battery Pass - CarbonFootprintForBatteries",
+  "description": "The battery passport must contain carbon footprint per functional unit of the battery as declared in the battery carbon footprint declaration in accordance with the entry into force of the implementing acts on the format of declaration. Reference: REGULATION (EU) 2023/1542 aka EU Battery Regulation (Battery Pass Data Model aspect urn:samm:io.BatteryPass.CarbonFootprint:1.2.0#CarbonFootprintForBatteries. Structure from the SAMM-generated JSON Schema; property names, descriptions and units from the current .ttl source, with names kept verbatim, including their original spelling.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity. Built as urn:ngsi-ld:<type>:<battery passport id>, the same suffix for every aspect of one passport."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "CarbonFootprintForBatteries"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'CarbonFootprintForBatteries'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "refGeneralProductInformation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Not a Battery Pass term (Smart Data Models addition). Reference to the GeneralProductInformation entity of the same battery passport, which carries the product and passport identifiers. The Battery Pass aspects themselves have no shared identifier field; in the source they are tied together by the passport that contains them."
+    },
+    "batteryCarbonFootprint": {
+      "type": "number",
+      "description": "Property. Model:'urn:samm:io.BatteryPass.CarbonFootprint:1.2.0#batteryCarbonFootprint'. The carbon footprint of the battery, calculated as kg of carbon dioxide equivalent per one kWh of the total energy provided by the battery over its expected service life, as declared in the Carbon Footprint Declaration.\nDIN DKE Spec 99100 chapter reference: 6.3.2 Units: 'kilogramperkilowatthour' (SAMM unit, as declared in the source)."
+    },
+    "carbonFootprintPerLifecycleStage": {
+      "description": "Property. Model:'urn:samm:io.BatteryPass.CarbonFootprint:1.2.0#carbonFootprintPerLifecycleStage'. The carbon footprint of the battery as share of total Battery Carbon Footprint, differentiated per life cycle stages raw material extraction, battery production, distribution and recycling.\n\nDIN DKE Spec 99100 chapter reference: \n6.3.3: Raw material extraction\n6.3.4: Main production\n6.3.5: Distrinution\n6.3.6: EoL/Recycling",
+      "type": "array",
+      "items": {
+        "description": "The carbon footprint of the battery as share of total Battery Carbon Footprint, differentiated per life cycle stage raw material extraction, main production, distribution and end of ´┐¢ife and recycling.",
+        "type": "object",
+        "properties": {
+          "lifecycleStage": {
+            "type": "string",
+            "enum": [
+              "RawMaterialExtraction",
+              "MainProduction",
+              "Distribution",
+              "Recycling"
+            ],
+            "description": "The description of the life cycle stage"
+          },
+          "carbonFootprint": {
+            "type": "number",
+            "description": "Carbon footprint of the individual lifecycle stage Units: 'kilogramperkilowatthour' (SAMM unit, as declared in the source)."
+          }
+        },
+        "required": [
+          "lifecycleStage",
+          "carbonFootprint"
+        ]
+      }
+    },
+    "carbonFootprintPerformanceClass": {
+      "type": "string",
+      "description": "Property. Model:'urn:samm:io.BatteryPass.CarbonFootprint:1.2.0#carbonFootprintPerformanceClass'. The carbon footprint performance class that the relevant battery model per manufacturing plant corresponds to.\n\nDIN DKE Spec 99100 chapter reference:  6.3.7"
+    },
+    "carbonFootprintStudy": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'urn:samm:io.BatteryPass.CarbonFootprint:1.2.0#carbonFootprintStudy'. A web link to get access to a public version of the study supporting the carbon footprint values.\n\nDIN DKE Spec 99100 chapter reference:  6.3.8"
+    },
+    "absoluteCarbonFootprint": {
+      "type": "number",
+      "description": "Property. Model:'urn:samm:io.BatteryPass.CarbonFootprint:1.2.0#absoluteCarbonFootprint'. As a non-mandatory data attribute, the battery passport should include the battery carbon footprint in absolute terms.\n\nThe absolute battery carbon footprint should be calculated as kilograms of carbon dioxide equivalent, without reference to the functional unit as prescribed by the battery regulation.\n\nDIN DKE Spec 99100 chapter reference: 6.3.10 Units: 'kilogramm' (SAMM unit, as declared in the source)."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "batteryCarbonFootprint",
+    "carbonFootprintPerLifecycleStage",
+    "carbonFootprintPerformanceClass",
+    "carbonFootprintStudy",
+    "refGeneralProductInformation"
+  ]
+}

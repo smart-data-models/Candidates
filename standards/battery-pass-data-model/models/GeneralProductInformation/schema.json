@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/battery-pass-data-model/models/GeneralProductInformation/schema.json",
+  "modelTags": "BatteryPass,BatteryPassport,DigitalProductPassport,EUBatteryRegulation,SAMM,DIN-DKE-SPEC-99100",
+  "title": "Smart Data Models - Battery Pass - GeneralProductInformation",
+  "description": "Mandatory data: Product identification; manufacturer?s identification; manufacturing place; manufacturing date; battery category; battery weight; battery status (Annex VI, Part A and Annex XIII)\nCopyright ? 2023 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution. (Battery Pass Data Model aspect urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#GeneralProductInformation. Structure from the SAMM-generated JSON Schema; property names, descriptions and units from the current .ttl source, with names kept verbatim, including their original spelling.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity. Built as urn:ngsi-ld:<type>:<battery passport id>, the same suffix for every aspect of one passport."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "GeneralProductInformation"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'GeneralProductInformation'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "productIdentifier": {
+      "type": "string",
+      "description": "Property. Model:'urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#productIdentifier'. Unique identifier allowing for the unambiguous identification of each individual battery and hence each corresponding battery passport (exploration of a potential additional battery passport identifier (not requried per Battery Regulation) ongoing).\nDIN DKE Spec chapter reference: 6.1.2.2"
+    },
+    "batteryPassportIdentifier": {
+      "type": "string",
+      "description": "Property. Model:'urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#batteryPassportIdentifier'. Unique identifier allowing for the unambiguous identification of each individual battery and hence each corresponding battery passport (exploration of a potential additional battery passport identifier (not requried per Battery Regulation) ongoing).",
+      "pattern": "^urn:[a-z0-9]+:[a-z0-9]+$"
+    },
+    "batteryCategory": {
+      "type": "string",
+      "enum": [
+        "lmt",
+        "ev",
+        "industrial",
+        "stationary"
+      ],
+      "description": "Property. Model:'urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#batteryCategory'. Categories relevant for the battery passport: LMT battery, ?electric vehicle battery, stationary or other industrial battery >2kWh.\n\nDIN DKE Spec chapter reference: 6.1.3.5"
+    },
+    "manufacturerInformation": {
+      "type": "object",
+      "properties": {
+        "contactName": {
+          "type": "string",
+          "description": "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."
+        },
+        "postalAddress": {
+          "type": "object",
+          "properties": {
+            "addressCountry": {
+              "type": "string",
+              "description": "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."
+            },
+            "postalCode": {
+              "type": "string",
+              "description": "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."
+            },
+            "streetAddress": {
+              "type": "string",
+              "description": "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."
+            }
+          },
+          "required": [
+            "addressCountry",
+            "postalCode",
+            "streetAddress"
+          ]
+        },
+        "identifier": {
+          "type": "string",
+          "description": "Not demanded by the EU Battery Regulation"
+        },
+        "emailAddress": {
+          "type": "string",
+          "description": "email address",
+          "pattern": "^[w.-]+@[w.-]+.[A-Za-z]{2,}$"
+        },
+        "webAddress": {
+          "type": "string",
+          "format": "uri",
+          "description": "Web address."
+        }
+      },
+      "required": [
+        "contactName",
+        "postalAddress",
+        "identifier"
+      ],
+      "description": "Property. Model:'urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#manufacturerInformation'. Unambiguous identification of the manufacturer of the battery, suggested via a unique operator identifier (as \"unique string of characters for the identification of actors involved in the value chain of products\", ESPR Art. 2(32)). \n\nDIN DKE Spec chapter reference: 6.1.2.4"
+    },
+    "manufacturingDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#manufacturingDate'. The manufacturing date should not only relate to the battery model, but to the battery item.\n\nThe date code should comply with DIN ISO 8601 1:2020 12 and ISO 8601 2:2019.\n\nDIN DKE Spec chapter reference: 6.1.3.2"
+    },
+    "batteryStatus": {
+      "type": "string",
+      "description": "Property. Model:'urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#batteryStatus'. Lifecycle status of the battery. Status defined from a list, with the options suggested as follows: 'original', 'repurposed', 'reused', 'remanufactured', 'waste'.\n\nDIN DKE Spec chapter reference: 6.1.3.7",
+      "enum": [
+        "Original",
+        "Repurposed",
+        "Reused",
+        "Remanufactured",
+        "Waste"
+      ]
+    },
+    "batteryMass": {
+      "type": "number",
+      "description": "Property. Model:'urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#batteryMass'. Mass of the entire battery in kilograms. Voluntary: if the battery is defined on pack or module level: also weight of the modules and/or cells.\n\nDIN DKE Spec chapter reference: 6.1.3.6 Units: 'kilogram' (SAMM unit, as declared in the source)."
+    },
+    "manufacturingPlace": {
+      "type": "object",
+      "properties": {
+        "addressCountry": {
+          "type": "string",
+          "description": "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."
+        },
+        "streetAddress": {
+          "type": "string",
+          "description": "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."
+        }
+      },
+      "required": [
+        "addressCountry",
+        "postalCode",
+        "streetAddress"
+      ],
+      "description": "Property. Model:'urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#manufacturingPlace'. Unambiguous identification of the manufacturing facility (e.g. country, city, street, building (if needed)), suggested via a unique facility identifier (as \"unique string of characters for the identification of locations or buildings involved in the value chain of a product or used by actors involved in the value chain of a product\", ESPR Art. 2(33)).\n\nDIN DKE Spec chapter reference: 6.1.3.1"
+    },
+    "operatorInformation": {
+      "type": "object",
+      "properties": {
+        "contactName": {
+          "type": "string",
+          "description": "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."
+        },
+        "postalAddress": {
+          "type": "object",
+          "properties": {
+            "addressCountry": {
+              "type": "string",
+              "description": "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."
+            },
+            "postalCode": {
+              "type": "string",
+              "description": "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."
+            },
+            "streetAddress": {
+              "type": "string",
+              "description": "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."
+            }
+          },
+          "required": [
+            "addressCountry",
+            "postalCode",
+            "streetAddress"
+          ]
+        },
+        "identifier": {
+          "type": "string",
+          "description": "Not demanded by the EU Battery Regulation"
+        },
+        "emailAddress": {
+          "type": "string",
+          "description": "email address",
+          "pattern": "^[w.-]+@[w.-]+.[A-Za-z]{2,}$"
+        },
+        "webAddress": {
+          "type": "string",
+          "format": "uri",
+          "description": "Web address."
+        }
+      },
+      "required": [
+        "contactName",
+        "postalAddress",
+        "identifier"
+      ],
+      "description": "Property. Model:'urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#operatorInformation'. State the name, trade name or mark, postal address, web ad-dress, e-mail address. Suggested reporting via a unique operator identifier (see requirements of unique battery identifier).\n\nDIN DKE Spec chapter reference: 6.1.2.3"
+    },
+    "puttingIntoService": {
+      "type": "string",
+      "pattern": "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?",
+      "description": "Property. Model:'urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#puttingIntoService'. Where appropriate, the battery passport must include information on the date of putting the battery into service. BR Annex VI Part A (1); Art. 3(33); Art. 38(7); ESPR Art. 2(32)\n\nDIN DKE Spec chapter reference: 6.1.3.3"
+    },
+    "warrentyPeriod": {
+      "type": "string",
+      "pattern": "--(0[1-9]|1[0-2])(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?",
+      "description": "Property. Model:'urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#warrentyPeriod'. The battery passport must include information about the period for which the commercial warranty applies.\n\nDIN DKE Spec chapter reference: 6.1.3.4 Units: 'month' (SAMM unit, as declared in the source)."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "productIdentifier",
+    "batteryPassportIdentifier",
+    "batteryCategory",
+    "manufacturerInformation",
+    "manufacturingDate",
+    "batteryStatus",
+    "batteryMass",
+    "manufacturingPlace",
+    "operatorInformation",
+    "puttingIntoService",
+    "warrentyPeriod"
+  ]
+}

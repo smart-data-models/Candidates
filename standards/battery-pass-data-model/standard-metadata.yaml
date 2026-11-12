@@ -1,0 +1,151 @@
+title: "Battery Pass Data Model"
+publisher: "Battery Pass consortium (project funded by the German Federal Ministry for Economic Affairs and Climate Action, BMWK); data model maintained by Circulor GmbH on behalf of the consortium; published at thebatterypass.eu"
+sourceUrl: "https://github.com/batterypass/BatteryPassDataModel"
+specificationUrl: "https://batterypass.github.io/BatteryPassDataModel"
+contact: "https://github.com/batterypass/BatteryPassDataModel/issues"
+sourceOntologyVersion: "Data model v1.2 (aligned with DIN DKE SPEC 99100:2025-02), repository main at commit 7f40918 (2026-09-14); aspect versions per model listed in the notes"
+sourceOntologyFormat: "SAMM 2.1.0 aspect models (Turtle), plus the JSON Schemas generated from them in each model's gen/ folder"
+sourceOntologyNamespace: "urn:samm:io.BatteryPass.<aspect>:<version>#"
+domains:
+  - Manufacturing
+  - Energy
+  - Environment
+description: >
+  Data model for the EU battery passport required by the Battery
+  Regulation (EU) 2023/1542, developed by the Battery Pass consortium and
+  aligned with DIN DKE SPEC 99100 ("Requirements for data attributes of the
+  battery passport"). It is split into seven SAMM aspect models: general
+  product information, carbon footprint, circularity (dismantling, spare
+  parts, recycled and renewable content, safety, end of life), labels and
+  declaration of conformity, material composition (chemistry, critical raw
+  materials, hazardous substances), performance and durability (rated
+  technical properties and the dynamic battery condition, i.e. state of
+  health), and supply chain due diligence.
+license: "CC-BY-4.0"
+licenseNote: >
+  The repository has no LICENSE file. The licence is stated in the README
+  ("Creative Commons Attribution 4.0 International (CC-BY-4.0)") and in the
+  SPDX header of every current .ttl file ("Copyright (c) 2024 Circulor GmbH
+  on behalf of the Battery Pass Consortium", SPDX-License-Identifier:
+  CC-BY-4.0). Until October 2025 the models were CC-BY-NC-4.0. The release
+  notes record the switch ("License consistently updated to ... CC-BY-4.0"),
+  and the git history shows the headers changing from CC-BY-NC-4.0 to
+  CC-BY-4.0. This translation uses the current CC-BY-4.0 files. The README
+  also has a disclaimer: the data model is "still in draft mode", "for
+  demonstration purposes only" and "subject to change without notice".
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source aspect models to SDM candidate artifacts"
+notes: |
+  Translated on 2026-11-12. Source row 17 of the "Level A standards not in
+  Smart Data Models" list (licence verified: Yes).
+
+  MODELS (7), one per SAMM aspect, named exactly as the aspect:
+    - GeneralProductInformation    io.BatteryPass.GeneralProductInformation 1.2.0
+    - CarbonFootprintForBatteries  io.BatteryPass.CarbonFootprint 1.2.0
+    - Circularity                  io.BatteryPass.Circularity 1.2.0
+    - Labeling                     io.BatteryPass.Labels 1.2.0
+    - MaterialComposition          io.BatteryPass.MaterialComposition 1.2.0
+    - PerformanceAndDurability     io.BatteryPass.Performance 1.2.1
+    - SupplyChainDueDiligence      io.BatteryPass.SupplyChainDueDiligence 1.2.0
+  Circularity and Labeling are generic entity type names; they are kept
+  because they are the source's aspect names. Consider prefixing them
+  (e.g. BatteryCircularity) at promotion time.
+
+  SOURCE USED: the structure (nesting, types, required lists, enumerations,
+  regex patterns, numeric bounds) comes from each aspect's SAMM-generated
+  JSON Schema (draft-04), with every $ref inlined. Property names,
+  descriptions and units come from the current .ttl files. The two
+  disagree because the gen/ artefacts were not regenerated after the
+  2025-11-17 commits that renamed three properties. Following the .ttl:
+    - batteryTechicalProperties -> batteryTechnicalProperties
+      (PerformanceAndDurability)
+    - roundTripEfficiencyat50PerCentCycleLife ->
+      roundTripEfficiencyAt50PercentCycleLife (PerformanceAndDurability)
+    - extinguishingAgent -> extinguishingAgents (Circularity)
+  The git diff between the gen/ build commits and HEAD was checked: apart
+  from these renames, the .ttl changes are licence headers, preferred
+  names, descriptions and two example values, so the generated structure
+  is still valid.
+  Draft-04 to 2020-12 conversion: boolean exclusiveMinimum/exclusiveMaximum
+  were converted to the numeric form, single-$ref allOf wrappers were
+  flattened, and duplicated enum values (the recycledMaterial enumeration
+  lists Cobalt, Nickel, Lithium and Lead twice) were deduplicated.
+  Units are not in the generated schemas; they were read from the SAMM
+  Measurement characteristics in the .ttl and appended to each description
+  ("Units: '<SAMM unit>'"). For example, ratedEnergy is in kilowattHour,
+  batteryMass in kilogram, and the time-at-extreme-temperature values in
+  minuteUnitOfTime. CarbonFootprint declares its own units
+  (KilogramPerKilowattHour, kilogramm) rather than SAMM catalogue units.
+
+  SPELLINGS KEPT VERBATIM: warrentyPeriod, thirdPartyAussurances and
+  supplyChainIndicies are the source's own (misspelled) names and are kept,
+  as the translation rules require.
+
+  SOURCE ISSUES worth reporting upstream (kept as published here):
+    - GeneralProductInformation emailAddress (manufacturer and operator)
+      has the pattern ^[w.-]+@[w.-]+.[A-Za-z]{2,}$, which is missing its
+      backslashes. It rejects normal addresses (info@example.com fails)
+      and accepts only letters "w", "." and "-" before the @. Circularity's
+      emailAddressOfSupplier has the correct \w form. The examples omit
+      these two optional fields.
+    - warrentyPeriod uses the xsd:gMonth pattern (--MM) with the unit
+      "month", so it cannot express a period longer than 12 months. The
+      example uses "--08" only to satisfy the schema.
+    - remainingCapacityValue is declared in kilowattHour, although a
+      capacity is normally in ampere-hours (ratedCapacity and
+      capacityThroughputValue use ampereHour). The example follows the
+      declared unit.
+    - powerCapabilityAt (in originalPowerCapability and
+      remainingPowerCapability) is declared in percent, not kW. The example
+      gives it as a percentage of ratedMaximumPower.
+    - The generated example payloads in gen/ are random filler (e.g.
+      contactName "RYtGKbgicZaHCBRQDSx", numbers like -1.79e+308) and were
+      not used.
+
+  ONE ASPECT = ONE ENTITY TYPE, LINKED BY A NON-SOURCE RELATIONSHIP: the
+  seven aspects of one battery passport have no shared identifier field;
+  only GeneralProductInformation carries productIdentifier and
+  batteryPassportIdentifier. Each of the other six models therefore has
+  an added Relationship refGeneralProductInformation (namespace
+  https://smartdatamodels.org/dataModel.BatteryPass/), flagged in its
+  description. All seven entity ids share the same suffix, derived from the
+  passport identifier (urn:ngsi-ld:<Aspect>:bmwk-123456687678).
+  Structured attributes are declared "@type": "@json" in the context, so
+  nested keys are not expanded by the NGSI-LD core context. Document links
+  (carbonFootprintStudy, declarationOfConformity, ...) are URI strings in
+  the source. tools/build_examples.py renders every http(s) value as a
+  Relationship in the normalized examples, which is the repository-wide
+  convention, although these are documents rather than entities.
+
+  EXAMPLES ARE SYNTHETIC: battery passports become mandatory in the EU in
+  February 2027 and none is published as open data. The project's public
+  demonstrator (thebatterypass.io) loads its sample passport behind an
+  authenticated backend and was not used. The examples describe ONE
+  fictional 95 kWh NMC electric-vehicle battery across all seven aspects,
+  and each example says so in `source`. Source exampleValue entries were
+  used where they exist: batteryPassportIdentifier urn:bmwk:123456687678,
+  batteryMass 699, batteryStatus Original, the address Hindenburgstr. 10 /
+  10719 / DE, chemistry NMC / "Lithium nickel manganese cobalt oxides",
+  lithium CAS 7439-93-2, partName Cell and labelingMeaning "Separate
+  Collection". The other values are illustrative but physically consistent
+  (108 cells in series: 396 V nominal, 302-453 V range, 240 Ah, 95 kWh;
+  energy throughput of about 226 full cycles). The CAS numbers and GHS
+  hazard statements are real for the substances named. absoluteCarbonFootprint is batteryCarbonFootprint x
+  rated energy (68.5 kg CO2e/kWh x 95 kWh); the regulation's functional unit
+  (kWh over the service life) may need a different reading. All URLs use
+  the reserved example.com domain.
+
+  OVERLAP AND DUPLICATION RISK:
+    - Catena-X io.catenax.battery.battery_pass 6.1.0 (in
+      eclipse-tractusx/sldt-semantic-models) is a separate SAMM battery
+      passport model covering the same regulation, in a single aspect with
+      a different structure. It is not translated here; the
+      catena-x-semantic-models candidate covers only the Industry Core.
+      The two should be compared before either is promoted.
+    - dataModel.Battery (Battery, BatteryStatus, StorageBatteryDevice,
+      StorageBatteryMeasurement) models operational battery status and
+      storage devices, not passport content. Its BatteryStatus overlaps
+      in part with PerformanceAndDurability.batteryCondition.
+    - The untp-v0.8.0 candidate (UNTP Digital Product Passport) is a
+      generic product passport and may be the envelope for this content.

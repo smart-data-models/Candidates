@@ -1,0 +1,127 @@
+{
+  "id": "urn:ngsi-ld:PerformanceAndDurability:bmwk-123456687678",
+  "type": "PerformanceAndDurability",
+  "refGeneralProductInformation": "urn:ngsi-ld:GeneralProductInformation:bmwk-123456687678",
+  "batteryTechnicalProperties": {
+    "ratedCapacity": 240.0,
+    "ratedEnergy": 95.0,
+    "nominalVoltage": 396.0,
+    "minimumVoltage": 302.0,
+    "maximumVoltage": 453.0,
+    "ratedMaximumPower": 250.0,
+    "powerCapabilityRatio": 100.0,
+    "originalPowerCapability": [
+      {
+        "atSoC": 80.0,
+        "powerCapabilityAt": 100.0
+      },
+      {
+        "atSoC": 20.0,
+        "powerCapabilityAt": 72.0
+      }
+    ],
+    "expectedNumberOfCycles": 2000,
+    "expectedLifetime": 10,
+    "cRate": 1.0,
+    "cRateLifeCycleTest": 0.33,
+    "initialSelfDischarge": 2.0,
+    "roundtripEfficiency": 95.0,
+    "roundTripEfficiencyAt50PercentCycleLife": 93.0,
+    "roundTripEfficiencyFade": 2.1,
+    "powerFade": 3.0,
+    "initialInternalResistance": [
+      {
+        "batteryComponent": "pack",
+        "ohmicResistance": 0.085
+      },
+      {
+        "batteryComponent": "cell",
+        "ohmicResistance": 0.0007
+      }
+    ],
+    "capacityThresholdForExhaustion": 70.0,
+    "lifetimeReferenceTest": "https://www.example.com/battery-passport/123456687678/lifetime-reference-test.pdf",
+    "temperatureRangeIdleState": {
+      "minimum": -20.0,
+      "maximum": 45.0
+    }
+  },
+  "batteryCondition": {
+    "stateOfCharge": {
+      "stateOfChargeValue": 64.0,
+      "lastUpdate": "2026-11-01T09:30:00+01:00"
+    },
+    "stateOfCertifiedEnergy": {
+      "stateOfCertifiedEnergyValue": 96.5,
+      "lastUpdate": "2026-11-01T09:30:00+01:00"
+    },
+    "remainingEnergy": {
+      "remainingEnergyValue": 91.7,
+      "lastUpdate": "2026-11-01T09:30:00+01:00"
+    },
+    "remainingCapacity": {
+      "remainingCapacityValue": 91.7,
+      "lastUpdate": "2026-11-01T09:30:00+01:00"
+    },
+    "capacityFade": {
+      "capacityFadeValue": 3.4,
+      "lastUpdate": "2026-11-01T09:30:00+01:00"
+    },
+    "energyThroughput": {
+      "energyThroughputValue": 21470.0,
+      "lastUpdate": "2026-11-01T09:30:00+01:00"
+    },
+    "capacityThroughput": {
+      "capacityThroughputValue": 54220.0,
+      "lastUpdate": "2026-11-01T09:30:00+01:00"
+    },
+    "numberOfFullCycles": {
+      "numberOfFullCyclesValue": 226,
+      "lastUpdate": "2026-11-01T09:30:00+01:00"
+    },
+    "remainingPowerCapability": {
+      "remainingPowerCapabilityValue": {
+        "atSoC": 80.0,
+        "powerCapabilityAt": 96.0
+      },
+      "lastUpdate": "2026-11-01T09:30:00+01:00"
+    },
+    "remainingRoundTripEnergyEfficiency": {
+      "remainingRoundTripEnergyEfficiencyValue": 93.8,
+      "lastUpdate": "2026-11-01T09:30:00+01:00"
+    },
+    "evolutionOfSelfDischarge": {
+      "evolutionOfSelfDischargeValue": 0.3,
+      "lastUpdate": "2026-11-01T09:30:00+01:00"
+    },
+    "currentSelfDischargingRate": {
+      "currentSelfDischargingRateValue": 2.3,
+      "lastUpdate": "2026-11-01T09:30:00+01:00"
+    },
+    "internalResistanceIncrease": [
+      {
+        "batteryComponent": "pack",
+        "internalResistanceIncreaseValue": 6.5,
+        "lastUpdate": "2026-11-01T09:30:00+01:00"
+      }
+    ],
+    "temperatureInformation": {
+      "timeExtremeHighTemp": 42,
+      "timeExtremeLowTemp": 310,
+      "timeExtremeHighTempCharging": 5,
+      "timeExtremeLowTempCharging": 18,
+      "lastUpdate": "2026-11-01T09:30:00+01:00"
+    },
+    "negativeEvents": [
+      {
+        "negativeEvent": "Deep discharge: cell voltage below 2.5 V after 5 months parked; BMS isolated the pack",
+        "lastUpdate": "2026-10-12T07:15:00+02:00"
+      }
+    ]
+  },
+  "source": "Synthetic example (no public battery passport data exists yet). One fictional 95 kWh NMC electric-vehicle battery shared by all 7 aspects. Values taken from the Battery Pass Data Model's own SAMM exampleValue entries where they exist (temperatureRangeIdleState minimum/maximum bounds only); all other values are illustrative, chosen to be physically consistent and to satisfy the schema. URLs use the reserved example.com domain.",
+  "dataProvider": "Smart Data Models (synthetic example for the Battery Pass Data Model candidate)",
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/battery-pass-data-model/models/PerformanceAndDurability/context.jsonld"
+  ]
+}

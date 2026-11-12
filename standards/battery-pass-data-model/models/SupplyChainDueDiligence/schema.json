@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/battery-pass-data-model/models/SupplyChainDueDiligence/schema.json",
+  "modelTags": "BatteryPass,BatteryPassport,DigitalProductPassport,EUBatteryRegulation,SAMM,DIN-DKE-SPEC-99100",
+  "title": "Smart Data Models - Battery Pass - SupplyChainDueDiligence",
+  "description": "Data model for Battery due diligence\n\nCopyright ? 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution. (Battery Pass Data Model aspect urn:samm:io.BatteryPass.SupplyChainDueDiligence:1.2.0#SupplyChainDueDiligence. Structure from the SAMM-generated JSON Schema; property names, descriptions and units from the current .ttl source, with names kept verbatim, including their original spelling.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity. Built as urn:ngsi-ld:<type>:<battery passport id>, the same suffix for every aspect of one passport."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "SupplyChainDueDiligence"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'SupplyChainDueDiligence'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "refGeneralProductInformation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Not a Battery Pass term (Smart Data Models addition). Reference to the GeneralProductInformation entity of the same battery passport, which carries the product and passport identifiers. The Battery Pass aspects themselves have no shared identifier field; in the source they are tied together by the passport that contains them."
+    },
+    "supplyChainDueDiligenceReport": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'urn:samm:io.BatteryPass.SupplyChainDueDiligence:1.2.0#supplyChainDueDiligenceReport'. The battery passport must include the �information on responsible sourcing as indicated in the report on its due diligence policy referred to in BattReg Article 52(3)�.\n\nThe due diligence report must be accessible free of charge to the public via the battery passport and also on the internet.\n\nThe report and hence also the information in the battery passport must provide data and information on four aspects:\n- Supply chain due diligence policy: steps taken by the economic operator to comply with the requirements of Article 49.\n- Risk management plan: steps taken by the economic operator to comply with the requirements of Article 50, including findings of significant adverse impacts.\n- Summary report of the third-party verification carried out (Article 51).\n- An elaboration on access to information, public participation in decision-making and access to justice.\n\nDIN DKE Spec 99100 chapter reference: 6.4.2"
+    },
+    "thirdPartyAussurances": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'urn:samm:io.BatteryPass.SupplyChainDueDiligence:1.2.0#thirdPartyAussurances'. As a non-mandatory data attribute the battery passport should contain information on third-party supply chain assurances such as certifications, of recognised supply chain schemes. Based on the provided guidance, explore which and how to best make third-party assurances available via the battery passport\n\nDIN DKE Spec 99100 chapter reference: 6.4.3"
+    },
+    "supplyChainIndicies": {
+      "type": "number",
+      "description": "Property. Model:'urn:samm:io.BatteryPass.SupplyChainDueDiligence:1.2.0#supplyChainIndicies'. As a non-mandatory data attribute the battery passport should contain supply chain indices to allow easy assessment for consumers on level of responsible sourcing. ESGE+ indices under development by the GBA (Global Battery Alliance), scoring and benchmarking sustainability performance. Once developed, explore how to best make the indices available via the battery passport.\n\nDIN DKE Spec 99100 chapter reference: 6.4.4"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "supplyChainDueDiligenceReport",
+    "refGeneralProductInformation"
+  ]
+}

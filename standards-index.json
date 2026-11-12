@@ -1,5 +1,71 @@
 [
   {
+    "slug": "battery-pass-data-model",
+    "title": "Battery Pass Data Model",
+    "description": "Data model for the EU battery passport required by the Battery Regulation (EU) 2023/1542, developed by the Battery Pass consortium and aligned with DIN DKE SPEC 99100 (\"Requirements for data attributes of the battery passport\"). It is split into seven SAMM aspect models: general product information, carbon footprint, circularity (dismantling, spare parts, recycled and renewable content, safety, end of life), labels and declaration of conformity, material composition (chemistry, critical raw materials, hazardous substances), performance and durability (rated technical properties and the dynamic battery condition, i.e. state of health), and supply chain due diligence.",
+    "publisher": "Battery Pass consortium (project funded by the German Federal Ministry for Economic Affairs and Climate Action, BMWK); data model maintained by Circulor GmbH on behalf of the consortium; published at thebatterypass.eu",
+    "sourceUrl": "https://github.com/batterypass/BatteryPassDataModel",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "Manufacturing",
+      "Energy",
+      "Environment"
+    ],
+    "modelCount": 7,
+    "models": [
+      {
+        "name": "CarbonFootprintForBatteries",
+        "title": "Smart Data Models - Battery Pass - CarbonFootprintForBatteries",
+        "description": "The battery passport must contain carbon footprint per functional unit of the battery as declared in the battery carbon footprint declaration in accordance with the entry into force of the implementing acts on the format of declaration. Reference: REGULATION (EU) 2023/1542 aka EU Battery Regulation (Battery Pass Data Model aspect urn:samm:io.BatteryPass.CarbonFootprint:1.2.0#CarbonFootprintForBatteries. Structure from the SAMM-generated JSON Schema; property names, descriptions and units from the current .ttl source, with names kept verbatim, including their original spelling.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/battery-pass-data-model/models/CarbonFootprintForBatteries/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/battery-pass-data-model/models/CarbonFootprintForBatteries"
+      },
+      {
+        "name": "Circularity",
+        "title": "Smart Data Models - Battery Pass - Circularity",
+        "description": "Dismantling information (including at least: exploded diagrams of the battery system/pack showing the location of battery cells; disassembly sequences; type and number of fastening techniques to be unlocked; tools required for disassembly; warnings if risk of damaging parts exists; amount of cells used and layout); part numbers for components and contact details of sources for replacement spares; safety measures (Annex XIII (2b-d)); usable extinguishing agent (Annex VI, Part A(9)). 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is licensed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold commercially and is given appropriate attribution. (Battery Pass Data Model aspect urn:samm:io.BatteryPass.Circularity:1.2.0#Circularity. Structure from the SAMM-generated JSON Schema; property names, descriptions and units from the current .ttl source, with names kept verbatim, including their original spelling.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/battery-pass-data-model/models/Circularity/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/battery-pass-data-model/models/Circularity"
+      },
+      {
+        "name": "GeneralProductInformation",
+        "title": "Smart Data Models - Battery Pass - GeneralProductInformation",
+        "description": "Mandatory data: Product identification; manufacturer?s identification; manufacturing place; manufacturing date; battery category; battery weight; battery status (Annex VI, Part A and Annex XIII)\nCopyright ? 2023 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution. (Battery Pass Data Model aspect urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#GeneralProductInformation. Structure from the SAMM-generated JSON Schema; property names, descriptions and units from the current .ttl source, with names kept verbatim, including their original spelling.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/battery-pass-data-model/models/GeneralProductInformation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/battery-pass-data-model/models/GeneralProductInformation"
+      },
+      {
+        "name": "Labeling",
+        "title": "Smart Data Models - Battery Pass - Labeling",
+        "description": "Data model for battery labels and conformity\n\nCopyright 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution. (Battery Pass Data Model aspect urn:samm:io.BatteryPass.Labels:1.2.0#Labeling. Structure from the SAMM-generated JSON Schema; property names, descriptions and units from the current .ttl source, with names kept verbatim, including their original spelling.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/battery-pass-data-model/models/Labeling/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/battery-pass-data-model/models/Labeling"
+      },
+      {
+        "name": "MaterialComposition",
+        "title": "Smart Data Models - Battery Pass - MaterialComposition",
+        "description": "Mandatory data: Battery chemistry; critical raw materials; materials used in the cathode, anode, and \nelectrolyte; hazardous substances; impact of substances on the environment and on human health or \nsafety\n\nCopyright ? 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution. (Battery Pass Data Model aspect urn:samm:io.BatteryPass.MaterialComposition:1.2.0#MaterialComposition. Structure from the SAMM-generated JSON Schema; property names, descriptions and units from the current .ttl source, with names kept verbatim, including their original spelling.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/battery-pass-data-model/models/MaterialComposition/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/battery-pass-data-model/models/MaterialComposition"
+      },
+      {
+        "name": "PerformanceAndDurability",
+        "title": "Smart Data Models - Battery Pass - PerformanceAndDurability",
+        "description": "Battery performance and durability data model (Battery Pass Data Model aspect urn:samm:io.BatteryPass.Performance:1.2.1#PerformanceAndDurability. Structure from the SAMM-generated JSON Schema; property names, descriptions and units from the current .ttl source, with names kept verbatim, including their original spelling.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/battery-pass-data-model/models/PerformanceAndDurability/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/battery-pass-data-model/models/PerformanceAndDurability"
+      },
+      {
+        "name": "SupplyChainDueDiligence",
+        "title": "Smart Data Models - Battery Pass - SupplyChainDueDiligence",
+        "description": "Data model for Battery due diligence\n\nCopyright ? 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution. (Battery Pass Data Model aspect urn:samm:io.BatteryPass.SupplyChainDueDiligence:1.2.0#SupplyChainDueDiligence. Structure from the SAMM-generated JSON Schema; property names, descriptions and units from the current .ttl source, with names kept verbatim, including their original spelling.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/battery-pass-data-model/models/SupplyChainDueDiligence/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/battery-pass-data-model/models/SupplyChainDueDiligence"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/battery-pass-data-model"
+  },
+  {
     "slug": "brick-schema",
     "title": "Brick Schema",
     "description": "Uniform metadata schema for buildings: a vocabulary for describing the points (sensors, setpoints, commands, statuses, alarms), equipment (AHUs, chillers, pumps, VAVs, network devices, etc.), and their relationships (hasPoint/isPointOf, hasPart/isPartOf, feeds/isFedBy, hasUnit via QUDT) in building automation and IoT deployments. Widely used in the building controls / smart buildings community.",

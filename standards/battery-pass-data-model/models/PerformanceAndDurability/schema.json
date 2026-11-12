@@ -1,0 +1,578 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/battery-pass-data-model/models/PerformanceAndDurability/schema.json",
+  "modelTags": "BatteryPass,BatteryPassport,DigitalProductPassport,EUBatteryRegulation,SAMM,DIN-DKE-SPEC-99100",
+  "title": "Smart Data Models - Battery Pass - PerformanceAndDurability",
+  "description": "Battery performance and durability data model (Battery Pass Data Model aspect urn:samm:io.BatteryPass.Performance:1.2.1#PerformanceAndDurability. Structure from the SAMM-generated JSON Schema; property names, descriptions and units from the current .ttl source, with names kept verbatim, including their original spelling.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity. Built as urn:ngsi-ld:<type>:<battery passport id>, the same suffix for every aspect of one passport."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "PerformanceAndDurability"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'PerformanceAndDurability'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "refGeneralProductInformation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Not a Battery Pass term (Smart Data Models addition). Reference to the GeneralProductInformation entity of the same battery passport, which carries the product and passport identifiers. The Battery Pass aspects themselves have no shared identifier field; in the source they are tied together by the passport that contains them."
+    },
+    "batteryTechnicalProperties": {
+      "type": "object",
+      "description": "Property. Model:'urn:samm:io.BatteryPass.Performance:1.2.1#batteryTechnicalProperties'. This property covers all perfromance related properties",
+      "properties": {
+        "originalPowerCapability": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "atSoC": {
+                "type": "number",
+                "description": "Units: 'percent' (SAMM unit, as declared in the source)."
+              },
+              "powerCapabilityAt": {
+                "type": "number",
+                "description": "Units: 'percent' (SAMM unit, as declared in the source)."
+              }
+            },
+            "required": [
+              "atSoC",
+              "powerCapabilityAt"
+            ]
+          },
+          "description": "Pre-use power capability: Definition of power capability as given in Battery Regulation. \nAnnex IV Part B, point 4 --> measurement at 80 % and 20 % SoC required. This requirement may not be implementable for remaining power capability and power fade(see below). It, thus, should be reviewed together with SoC definition.\n\nDIN DKE Spec 99100 chapter reference: 6.7.3.2"
+        },
+        "ratedMaximumPower": {
+          "type": "number",
+          "description": "This data point describes the value of maximum permitted power the battery is rated for and reflects the data relevant for power limits.\n\nDIN DKE Spec 99100 chapter reference: 6.7.3.2 Units: 'kilowatt' (SAMM unit, as declared in the source)."
+        },
+        "powerCapabilityRatio": {
+          "type": "number",
+          "description": "Provides information on nominal/recommended charge rate (C-rate); equal to regulation definition. Units: 'percent' (SAMM unit, as declared in the source)."
+        },
+        "ratedEnergy": {
+          "type": "number",
+          "description": "The certified usable battery energy is the usable battery energy according to the procedure in the UN GTR No 22 as determined during the certification of the vehicle.\n\nDIN DKE Spec 99100 chapter reference: 6.7.2.5 Units: 'kilowattHour' (SAMM unit, as declared in the source)."
+        },
+        "expectedNumberOfCycles": {
+          "type": "number",
+          "minimum": -9223372036854775808,
+          "maximum": 9223372036854775807,
+          "description": "Expected battery lifetime expressed in cycles.\nThe exception for non-cycle applications in Article 10 appears sensible, but is not included in the Annex XIII provision.\nThe data attribute is defined by measurement conditions of the cycle-life test such as the C-Rate (see below) and the depth of discharge in the cycle-life test\n\nDIN DKE Spec 99100 chapter reference: 6.7.6.3 Units: 'cycle' (SAMM unit, as declared in the source)."
+        },
+        "initialSelfDischarge": {
+          "type": "number",
+          "description": "Initial self-discharge in % of capacity per unit of time in defined conditions (temperature range etc) as pre-use metric. \n\nDIN DKE Spec 99100 chapter reference: 6.7.4.6 Units: 'percentPerMonth' (SAMM unit, as declared in the source)."
+        },
+        "roundtripEfficiency": {
+          "type": "number",
+          "description": "Energy round trip efficiency is the ratio of the net energy delivered by a battery during a discharge test to the total energy required to restore the initial state of charge by a standard charge (see BattReg Annex IV (6)).\n\nDIN DKE Spec 99100 chapter reference: 6.7.4.2 Units: 'percent' (SAMM unit, as declared in the source)."
+        },
+        "ratedCapacity": {
+          "type": "number",
+          "description": "Rated capacity is the total number of ampere-hours (Ah) that can be withdrawn from a fully charged battery under reference conditions (see BattReg Annex IV (1)).\n\nDIN DKE Spec 99100 chapter reference: 6.7.2.2 Units: 'ampereHour' (SAMM unit, as declared in the source)."
+        },
+        "initialInternalResistance": {
+          "type": "array",
+          "items": {
+            "description": "The internal resistance is ´┐¢a quotient of change of voltage of a battery by the corresponding change in discharge current under specified conditions´┐¢ (IEV 482 03 36).",
+            "type": "object",
+            "properties": {
+              "ohmicResistance": {
+                "type": "number",
+                "description": "Initial (Pre-Use) internal resistance on battery pack level. \n\nDefinition of internal resistance should differ from regulation definition, as \"opposition\" is not an electrotechnical term and may be based on IEV 131-12-04: \"internal resistance means the absolute value of the quotient of the voltage drop between the terminals by the electric current increase in the battery circuit during a current pulse\" Units: 'ohm' (SAMM unit, as declared in the source)."
+              },
+              "batteryComponent": {
+                "type": "string",
+                "enum": [
+                  "pack",
+                  "module",
+                  "cell"
+                ]
+              }
+            },
+            "required": [
+              "ohmicResistance",
+              "batteryComponent"
+            ]
+          },
+          "description": "The battery passport can include additional information about the initial internal resistance on battery module level, if available. It should be defined and calculated analogously as the requirements on battery pack level above.\n\nDIN DKE Spec 99100 chapter reference: 6.7.5.2"
+        },
+        "expectedLifetime": {
+          "type": "number",
+          "minimum": -32768,
+          "maximum": 32767,
+          "description": "The battery passport must include information about the expected battery lifetime in calendar years.\n\nThe update interval must be upon placement on the market and upon change of the battery status.\n\nDIN DKE Spec 99100 chapter reference: 6.7.6.2 Units: 'year' (SAMM unit, as declared in the source)."
+        },
+        "cRate": {
+          "type": "number",
+          "description": "As a non-mandatory data point the battery passport should include the ratio between nominal battery power in W and battery energy in Wh. It aims to provide an indication of the applicable discharge and charge rate in terms of rated capacity (C-rate) (see BattReg Annex IV Part B(2)).\n\nThe update interval should be upon placement on the market and upon change of the battery status.\n\nDIN DKE Spec 99100 chapter reference: 6.7.3.6 Units: 'C' (SAMM unit, as declared in the source)."
+        },
+        "nominalVoltage": {
+          "type": "number",
+          "description": "Nominal voltage the battery is rated for.\n\nDIN DKE Spec 99100 chapter reference: 6.7.2.11 Units: 'volt' (SAMM unit, as declared in the source)."
+        },
+        "minimumVoltage": {
+          "type": "number",
+          "description": "Minimum voltage the battery is rated for.\n\nDIN DKE Spec 99100 chapter reference: 6.7.2.9 Units: 'volt' (SAMM unit, as declared in the source)."
+        },
+        "maximumVoltage": {
+          "type": "number",
+          "description": "Maximum voltage the battery is rated for.\n\nDIN DKE Spec 99100 chapter reference: 6.7.2.10 Units: 'volt' (SAMM unit, as declared in the source)."
+        },
+        "capacityThresholdForExhaustion": {
+          "type": "number",
+          "description": "The percentage of SOCE, above which the battery is still considered operational as EV battery in its current life, as provided by the economic operator.\n\nDIN DKE Spec 99100 chapter reference: 6.7.6.9 Units: 'percent' (SAMM unit, as declared in the source)."
+        },
+        "lifetimeReferenceTest": {
+          "type": "string",
+          "format": "uri",
+          "description": "The exception for non-cycle applications as mentioned in \"Expected lifetime: Number of charge-discharge cycles\" should apply to this data attribute as well.\n\nDIN DKE Spec 99100 chapter reference: 6.7.6.5"
+        },
+        "cRateLifeCycleTest": {
+          "type": "number",
+          "description": "The C-rate should be provided separately for both the charge and discharge of the battery, if applicable.\n\nThe exception for non-cycle applications as mentioned in \"Expected lifetime: Number of charge-discharge cycles\" should apply to this data attribute as well.\n\nDIN DKE Spec 99100 chapter reference: 6.7.6.6 Units: 'C' (SAMM unit, as declared in the source)."
+        },
+        "temperatureRangeIdleState": {
+          "type": "object",
+          "properties": {
+            "minimum": {
+              "type": "number",
+              "maximum": 200.0,
+              "minimum": -100.0,
+              "description": "lower temperature range. Units: 'degreeCelsius' (SAMM unit, as declared in the source)."
+            },
+            "maximum": {
+              "type": "number",
+              "maximum": 200.0,
+              "minimum": -100.0,
+              "description": "upper temperature range. Units: 'degreeCelsius' (SAMM unit, as declared in the source)."
+            }
+          },
+          "required": [
+            "minimum",
+            "maximum"
+          ],
+          "description": "Upper an lower boundary of the surrounding temperature range, which the battery can safely withstand. \n\nDIN DKE Spec 99100 chapter reference: 6.7.6.3-4"
+        },
+        "roundTripEfficiencyAt50PercentCycleLife": {
+          "type": "number",
+          "description": "Initial round trip energy efficiency shall be measured at reference conditions that include the specification of 50 % of cycle-life.\n\nTest methods and reference conditions should separately consider non-cycle applications and batteries with very long cycle-life.\n\nDIN DKE Spec 99100 chapter reference: 6.7.4.3 Units: 'percent' (SAMM unit, as declared in the source)."
+        },
+        "roundTripEfficiencyFade": {
+          "type": "number",
+          "description": "Energy round trip efficiency fade should be calculated using the initial round trip energy efficiency and remaining round trip energy efficiency following the formula below:\n\nRTEfade (x) = (1-RTE(x)) / RTEBOL  100\" %\" \nwhere\nx \tis the aging parameter (e.g. storage time, number of cycles, etc.);\nRTE(x) \tis the round trip energy efficiency at aging parameter x;\nRTEBOL \tis the round trip energy efficiency at begin of life.\n\nDIN DKE Spec 99100 chapter reference: 6.7.4.5 Units: 'percent' (SAMM unit, as declared in the source)."
+        },
+        "powerFade": {
+          "type": "number",
+          "description": "Power fade (in %) means the decrease over time and upon usage in the amount of power that a battery can deliver at the rated voltage. (see BattReg Annex IV (4)).\n\nPower fade should be calculated using original and remaining power capability following the formula below:\nPfade(x) = (1-P(x)) / PBOL\" 100\" %\" \nwhere\nx \tis the aging parameter (e.g. storage time, number of cycles, etc.);\nP(x) \tis the power capability at aging parameter x;\nPBOL \tis the power capability at begin of life.\n\nDIN DKE Spec 99100 chapter reference: 6.7.3.4 Units: 'percent' (SAMM unit, as declared in the source)."
+        }
+      },
+      "required": [
+        "originalPowerCapability",
+        "ratedMaximumPower",
+        "powerCapabilityRatio",
+        "ratedEnergy",
+        "expectedNumberOfCycles",
+        "initialSelfDischarge",
+        "roundtripEfficiency",
+        "ratedCapacity",
+        "initialInternalResistance",
+        "expectedLifetime",
+        "nominalVoltage",
+        "minimumVoltage",
+        "maximumVoltage",
+        "capacityThresholdForExhaustion",
+        "lifetimeReferenceTest",
+        "cRateLifeCycleTest",
+        "temperatureRangeIdleState",
+        "roundTripEfficiencyAt50PercentCycleLife",
+        "roundTripEfficiencyFade",
+        "powerFade"
+      ]
+    },
+    "batteryCondition": {
+      "description": "Property. Model:'urn:samm:io.BatteryPass.Performance:1.2.1#batteryCondition'. '- Expected battery lifetime expressed in cycles, and reference test used.\n- Their expected life-time under the reference conditions for which they have been designed in terms of cycles, except for non-cycle applications, and calendar years.",
+      "type": "object",
+      "properties": {
+        "energyThroughput": {
+          "type": "object",
+          "properties": {
+            "energyThroughputValue": {
+              "type": "number",
+              "description": "Units: 'kilowattHour' (SAMM unit, as declared in the source)."
+            },
+            "lastUpdate": {
+              "type": "string",
+              "pattern": "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?",
+              "description": "Timestamp for dynamic data attributes show the last update time."
+            }
+          },
+          "required": [
+            "energyThroughputValue",
+            "lastUpdate"
+          ],
+          "description": "The data attribute should be reported as measured for further potential processing. In addition, the normalisation by capacity may add a further useful value that ensures comparability among battery sizes.\n\nDIN DKE Spec 99100 chapter reference: 6.7.6.7"
+        },
+        "capacityThroughput": {
+          "description": "The data attribute should be reported as measured for further potential processing. In addition, the normalisation by capacity may add a further useful value that ensures comparability among battery sizes.\n\nDIN DKE Spec 99100 chapter reference: 6.7.6.8",
+          "type": "object",
+          "properties": {
+            "capacityThroughputValue": {
+              "type": "number",
+              "description": "Units: 'ampereHour' (SAMM unit, as declared in the source)."
+            },
+            "lastUpdate": {
+              "type": "string",
+              "pattern": "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?",
+              "description": "Timestamp for dynamic data attributes show the last update time."
+            }
+          },
+          "required": [
+            "capacityThroughputValue",
+            "lastUpdate"
+          ]
+        },
+        "numberOfFullCycles": {
+          "description": "Number of (full) charging and discharging cycles.\n\nDIN DKE Spec 99100 chapter reference: 6.7.6.4",
+          "type": "object",
+          "properties": {
+            "numberOfFullCyclesValue": {
+              "type": "number",
+              "description": "Units: 'cycle' (SAMM unit, as declared in the source)."
+            },
+            "lastUpdate": {
+              "type": "string",
+              "pattern": "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?",
+              "description": "Timestamp for dynamic data attributes show the last update time."
+            }
+          },
+          "required": [
+            "numberOfFullCyclesValue",
+            "lastUpdate"
+          ]
+        },
+        "stateOfCertifiedEnergy": {
+          "type": "object",
+          "properties": {
+            "stateOfCertifiedEnergyValue": {
+              "type": "number",
+              "description": "Units: 'percent' (SAMM unit, as declared in the source)."
+            },
+            "lastUpdate": {
+              "type": "string",
+              "pattern": "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?",
+              "description": "Timestamp for dynamic data attributes show the last update time."
+            }
+          },
+          "required": [
+            "stateOfCertifiedEnergyValue",
+            "lastUpdate"
+          ],
+          "description": "Definition based on UNECE GTR 22: The measured or on-board UBE performance at a specific point in its lifetime, expressed as a percentage of the certified usable battery energy.\n\nDIN DKE Spec 99100 chapter reference: 6.7.2.7"
+        },
+        "capacityFade": {
+          "type": "object",
+          "properties": {
+            "capacityFadeValue": {
+              "type": "number",
+              "description": "Units: 'percent' (SAMM unit, as declared in the source)."
+            },
+            "lastUpdate": {
+              "type": "string",
+              "pattern": "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?",
+              "description": "Timestamp for dynamic data attributes show the last update time."
+            }
+          },
+          "required": [
+            "capacityFadeValue",
+            "lastUpdate"
+          ],
+          "description": "The capacity fade is the Decrease over time and upon usage in the amount of charge that a battery can deliver at the rated voltage, with respect to the original rated capacity (see BattReg Annex IV (2)) as declared by the manufacturer.\n\nDIN DKE Spec 99100 chapter reference: 6.7.2.4"
+        },
+        "remainingEnergy": {
+          "type": "object",
+          "properties": {
+            "remainingEnergyValue": {
+              "type": "number",
+              "description": "Units: 'kilowattHour' (SAMM unit, as declared in the source)."
+            },
+            "lastUpdate": {
+              "type": "string",
+              "pattern": "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?",
+              "description": "Timestamp for dynamic data attributes show the last update time."
+            }
+          },
+          "required": [
+            "remainingEnergyValue",
+            "lastUpdate"
+          ],
+          "description": "Definition from UNECE GTR 22, applicable only to EVs.\nThe energy supplied by the battery from the beginning of the test procedure used for certification until the applicable break-off criterion of the test procedure used for certification is reached.\n\nDIN DKE Spec 99100 chapter reference: 6.7.2.6"
+        },
+        "remainingCapacity": {
+          "type": "object",
+          "properties": {
+            "remainingCapacityValue": {
+              "type": "number",
+              "description": "Units: 'kilowattHour' (SAMM unit, as declared in the source)."
+            },
+            "lastUpdate": {
+              "type": "string",
+              "pattern": "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?",
+              "description": "Timestamp for dynamic data attributes show the last update time."
+            }
+          },
+          "required": [
+            "remainingCapacityValue",
+            "lastUpdate"
+          ],
+          "description": "The in-use data attribute on capacity, corresponding with the definition of rated capacity.\n\nDIN DKE Spec 99100 chapter reference: 6.7.2.3"
+        },
+        "negativeEvents": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "negativeEvent": {
+                "type": "string",
+                "description": "Negative event, such as an accident. No further definition provided by regulation."
+              },
+              "lastUpdate": {
+                "type": "string",
+                "pattern": "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?",
+                "description": "Timestamp for dynamic data attributes show the last update time."
+              }
+            },
+            "required": [
+              "negativeEvent",
+              "lastUpdate"
+            ]
+          },
+          "description": "The battery passport must contain information and data resulting from its use such as accidents. \n\nDIN DKE Spec 99100 chapter reference: 6.7.8.4"
+        },
+        "temperatureInformation": {
+          "type": "object",
+          "properties": {
+            "timeExtremeHighTemp": {
+              "type": "number",
+              "description": "Cumulated time spent above the given upper boundary of temperature. Units: 'minuteUnitOfTime' (SAMM unit, as declared in the source)."
+            },
+            "timeExtremeLowTemp": {
+              "type": "number",
+              "description": "Cumulated time spent below the given lower boundary of temperature. Units: 'minuteUnitOfTime' (SAMM unit, as declared in the source)."
+            },
+            "timeExtremeHighTempCharging": {
+              "type": "number",
+              "description": "Cumulated time spent above the given upper boundary of temperature during Charging. Units: 'minuteUnitOfTime' (SAMM unit, as declared in the source)."
+            },
+            "timeExtremeLowTempCharging": {
+              "type": "number",
+              "description": "Cumulated time spent below the given lower boundary of temperature during charging. Units: 'minuteUnitOfTime' (SAMM unit, as declared in the source)."
+            },
+            "lastUpdate": {
+              "type": "string",
+              "pattern": "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?",
+              "description": "Timestamp for dynamic data attributes show the last update time."
+            }
+          },
+          "required": [
+            "timeExtremeHighTemp",
+            "timeExtremeLowTemp",
+            "timeExtremeHighTempCharging",
+            "timeExtremeLowTempCharging",
+            "lastUpdate"
+          ],
+          "description": "The battery passport must include periodically recorded information on the operating environmental conditions, including temperature.\n\nDIN DKE Spec 99100 chapter reference: 6.7.7.5 - 8"
+        },
+        "remainingPowerCapability": {
+          "type": "object",
+          "properties": {
+            "remainingPowerCapabilityValue": {
+              "type": "object",
+              "properties": {
+                "atSoC": {
+                  "type": "number",
+                  "description": "Units: 'percent' (SAMM unit, as declared in the source)."
+                },
+                "powerCapabilityAt": {
+                  "type": "number",
+                  "description": "Units: 'percent' (SAMM unit, as declared in the source)."
+                }
+              },
+              "required": [
+                "atSoC",
+                "powerCapabilityAt"
+              ]
+            },
+            "lastUpdate": {
+              "type": "string",
+              "pattern": "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?",
+              "description": "Timestamp for dynamic data attributes show the last update time."
+            }
+          },
+          "required": [
+            "remainingPowerCapabilityValue",
+            "lastUpdate"
+          ],
+          "description": "'- Original power capability (in Watts) and limits, with temperature range when relevant.\n- The amount of energy that a battery is capable to provide over a given period of time under reference conditions.\n- Power capability at 80% and 20% state of charge.\n\nDIN DKE Spec 99100 chapter reference: 6.7.3.3"
+        },
+        "evolutionOfSelfDischarge": {
+          "type": "object",
+          "properties": {
+            "evolutionOfSelfDischargeValue": {
+              "type": "number",
+              "description": "Units: 'percent' (SAMM unit, as declared in the source)."
+            },
+            "lastUpdate": {
+              "type": "string",
+              "pattern": "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?",
+              "description": "Timestamp for dynamic data attributes show the last update time."
+            }
+          },
+          "required": [
+            "evolutionOfSelfDischargeValue",
+            "lastUpdate"
+          ],
+          "description": "Evolution of self-discharge rates is the change of self-discharge over time and usage, as percentage calculated from the initial and current self-discharge rate.\n\nDIN DKE Spec 99100 chapter reference: 6.7.4.8"
+        },
+        "currentSelfDischargingRate": {
+          "type": "object",
+          "properties": {
+            "currentSelfDischargingRateValue": {
+              "type": "number",
+              "description": "Units: 'percent' (SAMM unit, as declared in the source)."
+            },
+            "lastUpdate": {
+              "type": "string",
+              "pattern": "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?",
+              "description": "Timestamp for dynamic data attributes show the last update time."
+            }
+          },
+          "required": [
+            "currentSelfDischargingRateValue",
+            "lastUpdate"
+          ],
+          "description": "The current self-discharge rate is the change of the self-discharge rate in an idle state of the battery in reference conditions (temperature etc.) at aging parameter x, e.g. after a certain amount of storage time or, number of cycles.\n\nDIN DKE Spec 99100 chapter reference: 6.7.4.7"
+        },
+        "internalResistanceIncrease": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "internalResistanceIncreaseValue": {
+                "type": "number",
+                "description": "Units: 'percent' (SAMM unit, as declared in the source)."
+              },
+              "lastUpdate": {
+                "type": "string",
+                "pattern": "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?",
+                "description": "Timestamp for dynamic data attributes show the last update time."
+              },
+              "batteryComponent": {
+                "type": "string",
+                "enum": [
+                  "pack",
+                  "module",
+                  "cell"
+                ]
+              }
+            },
+            "required": [
+              "internalResistanceIncreaseValue",
+              "lastUpdate",
+              "batteryComponent"
+            ]
+          },
+          "description": "The internal resistance increase over time and upon usage should be defined based on the ratio of current and initial values as follows:\nRincrease(x) = (R(x)  - RBOL) / RBOL  100 %\nwhere\nx \tis the aging parameter (e.g. storage time, number of cycles, etc.;);\nR(x)\tis the internal resistance at the aging parameter x; and\nRBOL\tis the internal resistance at begin of life.\n\nThe battery passport can include additional information about the internal resistance increase on battery cell and battery module level, if available. It should be defined and calculated analogously to the requirements on battery pack level above.\n\nDIN DKE Spec 99100 chapter reference: 6.7.5.3"
+        },
+        "remainingRoundTripEnergyEfficiency": {
+          "type": "object",
+          "properties": {
+            "remainingRoundTripEnergyEfficiencyValue": {
+              "type": "number",
+              "description": "Units: 'percent' (SAMM unit, as declared in the source)."
+            },
+            "lastUpdate": {
+              "type": "string",
+              "pattern": "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?",
+              "description": "Timestamp for dynamic data attributes show the last update time."
+            }
+          },
+          "required": [
+            "remainingRoundTripEnergyEfficiencyValue",
+            "lastUpdate"
+          ],
+          "description": "The battery passport shall include information, where possible, about the remaining round trip energy efficiency as information on the state of health of the battery \n\nThe update frequency of remaining round trip energy efficiency should be aligned with the update frequency of round trip energy efficiency fade and should be provided upon change of the battery status.\n\nDIN DKE Spec 99100 chapter reference: 6.7.4.4"
+        },
+        "stateOfCharge": {
+          "type": "object",
+          "properties": {
+            "stateOfChargeValue": {
+              "type": "number",
+              "description": "Units: 'percent' (SAMM unit, as declared in the source)."
+            },
+            "lastUpdate": {
+              "type": "string",
+              "pattern": "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?",
+              "description": "Timestamp for dynamic data attributes show the last update time."
+            }
+          },
+          "required": [
+            "stateOfChargeValue",
+            "lastUpdate"
+          ],
+          "description": "The Battery Pass consortium proposes to change the definition to: \"available capacity in a battery expressed as a percentage of remaining capacity\" to reflect use of SoC in practice.  \n\nDIN DKE Spec 99100 chapter reference: 6.7.2.8"
+        }
+      },
+      "required": [
+        "energyThroughput",
+        "capacityThroughput",
+        "numberOfFullCycles",
+        "stateOfCertifiedEnergy",
+        "capacityFade",
+        "remainingEnergy",
+        "remainingCapacity",
+        "negativeEvents",
+        "temperatureInformation",
+        "remainingPowerCapability",
+        "evolutionOfSelfDischarge",
+        "currentSelfDischargingRate",
+        "internalResistanceIncrease",
+        "remainingRoundTripEnergyEfficiency",
+        "stateOfCharge"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "batteryTechnicalProperties",
+    "batteryCondition",
+    "refGeneralProductInformation"
+  ]
+}

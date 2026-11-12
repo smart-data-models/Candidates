@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/battery-pass-data-model/models/Labeling/schema.json",
+  "modelTags": "BatteryPass,BatteryPassport,DigitalProductPassport,EUBatteryRegulation,SAMM,DIN-DKE-SPEC-99100",
+  "title": "Smart Data Models - Battery Pass - Labeling",
+  "description": "Data model for battery labels and conformity\n\nCopyright 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution. (Battery Pass Data Model aspect urn:samm:io.BatteryPass.Labels:1.2.0#Labeling. Structure from the SAMM-generated JSON Schema; property names, descriptions and units from the current .ttl source, with names kept verbatim, including their original spelling.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity. Built as urn:ngsi-ld:<type>:<battery passport id>, the same suffix for every aspect of one passport."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Labeling"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Labeling'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "refGeneralProductInformation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Not a Battery Pass term (Smart Data Models addition). Reference to the GeneralProductInformation entity of the same battery passport, which carries the product and passport identifiers. The Battery Pass aspects themselves have no shared identifier field; in the source they are tied together by the passport that contains them."
+    },
+    "declarationOfConformity": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'urn:samm:io.BatteryPass.Labels:1.2.0#declarationOfConformity'. A battery passport must include the EU declaration of conformity.\n\nThe regulation specifies the following requirements regarding the EU declaration of conformity (see BattReg Annex XIII (1r) and BattReg Article 18 (2)):\n\n- The EU declaration of conformity has the model structure set out in Annex IX.\n- The EU declaration of conformity must contain the elements specified in the relevant modules set out in Annex VIII.\n- The EU declaration of conformity must be kept up to date.\n- It is translated into the language or languages required by the Member State in which the battery is placed or made available on the market or put into service.\n- It must be drawn up in electronic format and, where requested, it must be provided in paper format.\n\nDIN DKE Spec chapter reference: 6.2.7"
+    },
+    "resultOfTestReport": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'urn:samm:io.BatteryPass.Labels:1.2.0#resultOfTestReport'. URL to a document that includes results of tests reports proving compliance in the market conformity assessment procedure with the requirements as per the technical documentation (Art. 7-10, Art. 12-14 and due diligence policies ).\n\nDIN DKE Spec chapter reference 6.2.8"
+    },
+    "labels": {
+      "description": "Property. Model:'urn:samm:io.BatteryPass.Labels:1.2.0#labels'. 'Separate collection' or 'WEEE label' indicating that a product should not be discarded as unsorted waste but must be sent to separate collection facilities for recovery and recycling. To be printed on the physical label and displayed via the battery passport, suggested to be translated also to text to ensure machine readability.\n\nDIN DKE Spec chapter reference: \n\n6.2.2 Separate collection\n6.2.3 Material symbol for Cadmium and Lead\n6.2.4 Carbon Footprint perfromance class\n6.2.5 Extinguishing agent",
+      "type": "array",
+      "items": {
+        "description": "Entity for the definition required battery labeling",
+        "type": "object",
+        "properties": {
+          "labelingSymbol": {
+            "type": "string",
+            "format": "uri",
+            "description": "The path of a resource."
+          },
+          "labelingMeaning": {
+            "type": "object",
+            "description": "Explanation of the meaning of all symbols and labels (including separate collection; cadmium and lead; and carbon footprint and carbon footprint performance class symbols; and symbols and labels printed on batteries or their accompanying documents but not accessible via the battery passport)."
+          },
+          "labelingSubject": {
+            "type": "string",
+            "enum": [
+              "SeparateCollection",
+              "HazardousMaterial",
+              "CarbonFootPrint",
+              "ExtinguishingAgent"
+            ],
+            "description": "Short name of required labeling subjects"
+          }
+        },
+        "required": [
+          "labelingSymbol",
+          "labelingMeaning",
+          "labelingSubject"
+        ]
+      }
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "declarationOfConformity",
+    "resultOfTestReport",
+    "labels",
+    "refGeneralProductInformation"
+  ]
+}
