@@ -1,0 +1,327 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/realestatecore/models/Asset/schema.json",
+  "modelTags": "RealEstateCore,REC,SmartBuildings,Asset",
+  "title": "Smart Data Models - RealEstateCore - Asset",
+  "description": "Something which is placed inside of a building, but is not an integral part of that building's structure; e.g., furniture, equipment, systems, etc. (rec:Asset, RealEstateCore 4.1, definition verbatim). Modelled generically: the specific REC asset class (Desk, Chair, IAQSensorEquipment, NetworkRouter, Door, Window, ...) is carried in recClass. Brick equipment classes (brick:Equipment and its ~220 subclasses, which REC places under Asset) are covered by the brick-schema candidate's Equipment model instead.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Asset"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Asset'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Human-readable name (REC 'name' in DTDL, rdfs:label in the SHACL source)."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. A description of this item. Not a REC term."
+    },
+    "identifiers": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Property. Map of external identifiers for this entity, keyed by the namespace/system that issued them (REC 'identifiers', DTDL Map<string,string>)."
+    },
+    "customTags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "boolean"
+      },
+      "description": "Property. Map of free-form boolean tags (REC 'customTags', DTDL Map<string,boolean>)."
+    },
+    "customProperties": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "description": "Property. Namespaced extension properties: a map from namespace to a map of property name to string value (REC 'customProperties', DTDL Map<string,Map<string,string>>)."
+    },
+    "recClass": {
+      "type": "string",
+      "format": "uri",
+      "enum": [
+        "https://w3id.org/rec#AccessPanel",
+        "https://w3id.org/rec#ArchitecturalAsset",
+        "https://w3id.org/rec#Asset",
+        "https://w3id.org/rec#AudioVisualEquipment",
+        "https://w3id.org/rec#BarrierAsset",
+        "https://w3id.org/rec#Bed",
+        "https://w3id.org/rec#Bookcase",
+        "https://w3id.org/rec#BulletinBoard",
+        "https://w3id.org/rec#Cart",
+        "https://w3id.org/rec#Chair",
+        "https://w3id.org/rec#CoatRack",
+        "https://w3id.org/rec#CoffeeTable",
+        "https://w3id.org/rec#ComputerCart",
+        "https://w3id.org/rec#ConferenceTable",
+        "https://w3id.org/rec#Controller",
+        "https://w3id.org/rec#DataNetworkEquipment",
+        "https://w3id.org/rec#DaylightSensorEquipment",
+        "https://w3id.org/rec#Desk",
+        "https://w3id.org/rec#DeskLamp",
+        "https://w3id.org/rec#Door",
+        "https://w3id.org/rec#EndTable",
+        "https://w3id.org/rec#EthernetPort",
+        "https://w3id.org/rec#EthernetSwitch",
+        "https://w3id.org/rec#FilingCabinet",
+        "https://w3id.org/rec#FloorLamp",
+        "https://w3id.org/rec#FloorMat",
+        "https://w3id.org/rec#FoldingChair",
+        "https://w3id.org/rec#FoldingTable",
+        "https://w3id.org/rec#Footrest",
+        "https://w3id.org/rec#Furniture",
+        "https://w3id.org/rec#Gateway",
+        "https://w3id.org/rec#IAQSensorEquipment",
+        "https://w3id.org/rec#ICTEquipment",
+        "https://w3id.org/rec#ICTHardware",
+        "https://w3id.org/rec#ITRack",
+        "https://w3id.org/rec#Lamp",
+        "https://w3id.org/rec#LeakDetectorEquipment",
+        "https://w3id.org/rec#MailroomCart",
+        "https://w3id.org/rec#MobileDesk",
+        "https://w3id.org/rec#NetworkRouter",
+        "https://w3id.org/rec#NetworkSecurityEquipment",
+        "https://w3id.org/rec#OccupancySensorEquipment",
+        "https://w3id.org/rec#OfficeChair",
+        "https://w3id.org/rec#Partition",
+        "https://w3id.org/rec#PeopleCountSensorEquipment",
+        "https://w3id.org/rec#PrinterCart",
+        "https://w3id.org/rec#PrinterStand",
+        "https://w3id.org/rec#ReceptionTable",
+        "https://w3id.org/rec#Safe",
+        "https://w3id.org/rec#SensorEquipment",
+        "https://w3id.org/rec#Server",
+        "https://w3id.org/rec#Sofa",
+        "https://w3id.org/rec#Stand",
+        "https://w3id.org/rec#StorageCabinet",
+        "https://w3id.org/rec#TVStand",
+        "https://w3id.org/rec#Table",
+        "https://w3id.org/rec#ThermostatEquipment",
+        "https://w3id.org/rec#VibrationSensorEquipment",
+        "https://w3id.org/rec#WasteBasket",
+        "https://w3id.org/rec#Window",
+        "https://w3id.org/rec#WirelessAccessPoint"
+      ],
+      "description": "Relationship. The specific RealEstateCore class of this entity (rdf:type), as the class IRI. REC 4.1 declares 61 non-deprecated classes in the rec:Asset hierarchy (this class and all its subclasses), all allowed here: AccessPanel; ArchitecturalAsset; Asset; AudioVisualEquipment; BarrierAsset; Bed; Bookcase; BulletinBoard; Cart; Chair; CoatRack; CoffeeTable; ComputerCart; ConferenceTable; Controller; DataNetworkEquipment; DaylightSensorEquipment (Daylight Sensor); Desk; DeskLamp; Door; EndTable; EthernetPort; EthernetSwitch; FilingCabinet; FloorLamp; FloorMat; FoldingChair; FoldingTable; Footrest; Furniture; Gateway; IAQSensorEquipment (Indoor Air Quality Sensor); ICTEquipment; ICTHardware; ITRack; Lamp; LeakDetectorEquipment (Leak Detector); MailroomCart; MobileDesk; NetworkRouter; NetworkSecurityEquipment; OccupancySensorEquipment (Occupancy Sensor); OfficeChair; Partition; PeopleCountSensorEquipment (People Count Sensor); PrinterCart; PrinterStand; ReceptionTable; Safe; SensorEquipment; Server; Sofa; Stand; StorageCabinet; TVStand; Table; ThermostatEquipment (Thermostat); VibrationSensorEquipment (Vibration Sensor); WasteBasket; Window; WirelessAccessPoint. Excluded because REC 4.1 release notes deprecate them: BACnetController, ModbusController."
+    },
+    "location": {
+      "type": "object",
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point",
+            "LineString",
+            "Polygon",
+            "MultiPoint",
+            "MultiLineString",
+            "MultiPolygon"
+          ]
+        },
+        "coordinates": {
+          "type": "array"
+        },
+        "bbox": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 4
+        }
+      },
+      "description": "GeoProperty. GeoJSON geometry of the item (RFC 7946). Corresponds to REC's 'geometry' (a GeoJSON Geometry; 'Polygon representing the spatial extent of this Space' / 'the position or extent of the asset'), carried in the NGSI-LD core 'location' attribute instead of a separate Geometry information object."
+    },
+    "locatedIn": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Spaces (Site, Building, Level, Room, Zone) in which this asset is located (rec:locatedIn; optional since REC 4.1)."
+    },
+    "mountedOn": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The BuildingElement this asset is mounted on, e.g. a camera on a wall (SHACL maxCount 1)."
+    },
+    "hasPart": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Assets that are parts of this asset."
+    },
+    "isPartOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Assets this asset is part of."
+    },
+    "hasPoint": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Brick Points exposed by this asset -- see the brick-schema candidate's Point and sensor models."
+    },
+    "modelNumber": {
+      "type": "string",
+      "description": "Property. Manufacturer model number (rec:modelNumber)."
+    },
+    "serialNumber": {
+      "type": "string",
+      "description": "Property. Serial number (rec:serialNumber)."
+    },
+    "assetTag": {
+      "type": "string",
+      "description": "Property. Organisation-internal asset tag (rec:assetTag)."
+    },
+    "IPAddress": {
+      "type": "string",
+      "description": "Property. IP address (rec:IPAddress; name kept verbatim, including its upper-case initial)."
+    },
+    "MACAddress": {
+      "type": "string",
+      "description": "Property. MAC address (rec:MACAddress; name kept verbatim)."
+    },
+    "colour": {
+      "type": "string",
+      "description": "Property. Colour of the asset, for visual identification (rec:colour, new in REC 4.1)."
+    },
+    "weight": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Property. Weight of the asset (rec:weight). SHACL types it xsd:decimal, the 4.1 DTDL as string; a number is used here. Units:'KGM' recommended -- REC states none."
+    },
+    "initialCost": {
+      "type": "string",
+      "description": "Property. Initial cost of the asset, as free text including currency, e.g. '1200 EUR' (rec:initialCost, a string in REC)."
+    },
+    "installationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://schema.org/Date'. Installation date (rec:installationDate)."
+    },
+    "commissioningDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://schema.org/Date'. Commissioning date (rec:commissioningDate)."
+    },
+    "turnoverDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://schema.org/Date'. Turnover (hand-over) date (rec:turnoverDate)."
+    },
+    "maintenanceInterval": {
+      "type": "string",
+      "description": "Property. Maintenance interval as an ISO 8601 duration, e.g. 'P6M' (rec:maintenanceInterval, xsd:duration)."
+    },
+    "heightRUs": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Height in rack units; applies to ICTEquipment subclasses (rec:heightRUs)."
+    },
+    "numberOfPorts": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Number of ports; applies to ICTEquipment subclasses (rec:numberOfPorts)."
+    },
+    "standard": {
+      "type": "string",
+      "description": "Property. Standard the equipment adheres to, e.g. 'IEEE 802.11'; applies to ICTEquipment subclasses (rec:standard)."
+    },
+    "manufacturedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Agents that manufactured this asset."
+    },
+    "installedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Agents that installed this asset."
+    },
+    "commissionedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Agents that commissioned this asset."
+    },
+    "servicedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Agents that service this asset."
+    },
+    "warranty": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Warranty events (rec:Warranty, new in REC 4.1) covering this asset. Warranty is not modelled as a separate entity in this candidate."
+    },
+    "documentation": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Documents describing this entity (rec:Document, e.g. manuals, drawings, contracts), as URIs."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

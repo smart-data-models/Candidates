@@ -3182,6 +3182,91 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/open-energy-ontology"
   },
   {
+    "slug": "realestatecore",
+    "title": "RealEstateCore (REC)",
+    "description": "Domain ontology for the real estate and smart buildings industry. It covers the spatial hierarchy of property (Region, Site, Building, Level, Room, Zone), building elements, assets placed in buildings (furniture, ICT and sensor equipment), administrative collections (real estate, portfolio, premises, apartment, campus), agents (organizations, persons), and events (leases, warranties, point observations). Since v4 it is co-designed with Brick Schema: Brick supplies the equipment and point taxonomy, and REC supplies the real estate and location layer. Brick has deprecated its own Location classes in favour of REC's.",
+    "publisher": "RealEstateCore Consortium (originally Swedish real estate owners and Idun, Willow, Microsoft and others); published at realestatecore.io",
+    "sourceUrl": "https://github.com/RealEstateCore/rec",
+    "license": "BSD-3-Clause",
+    "domains": [
+      "SmartCities"
+    ],
+    "modelCount": 10,
+    "models": [
+      {
+        "name": "Asset",
+        "title": "Smart Data Models - RealEstateCore - Asset",
+        "description": "Something which is placed inside of a building, but is not an integral part of that building's structure; e.g., furniture, equipment, systems, etc. (rec:Asset, RealEstateCore 4.1, definition verbatim). Modelled generically: the specific REC asset class (Desk, Chair, IAQSensorEquipment, NetworkRouter, Door, Window, ...) is carried in recClass. Brick equipment classes (brick:Equipment and its ~220 subclasses, which REC places under Asset) are covered by the brick-schema candidate's Equipment model instead.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/realestatecore/models/Asset/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/realestatecore/models/Asset"
+      },
+      {
+        "name": "Building",
+        "title": "Smart Data Models - RealEstateCore - Building",
+        "description": "A confined building structure (rec:Building, RealEstateCore 4.1, definition verbatim). Specific building types (Hospital, School, ShoppingMall, Stadium, VirtualBuilding) are carried in recClass.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/realestatecore/models/Building/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/realestatecore/models/Building"
+      },
+      {
+        "name": "BuildingElement",
+        "title": "Smart Data Models - RealEstateCore - BuildingElement",
+        "description": "A part that constitutes a piece of a building's structural makeup. E.g., Facade, Wall, Slab, Roof, etc. (rec:BuildingElement, RealEstateCore 4.1, definition verbatim). The element type is carried in recClass.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/realestatecore/models/BuildingElement/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/realestatecore/models/BuildingElement"
+      },
+      {
+        "name": "Collection",
+        "title": "Smart Data Models - RealEstateCore - Collection",
+        "description": "An administrative grouping of entities that are addressed and treated as a unit for some purpose (rec:Collection, RealEstateCore 4.1). The specific collection (Apartment, Campus, Portfolio, Premises, RealEstate, EquipmentCollection, FurnitureCollection) is carried in recClass. Brick collection classes that REC places under Collection are covered by the brick-schema candidate's Collection model.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/realestatecore/models/Collection/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/realestatecore/models/Collection"
+      },
+      {
+        "name": "Lease",
+        "title": "Smart Data Models - RealEstateCore - Lease",
+        "description": "A lease of some leasable object such as a property or a piece of equipment (rec:Lease, an rec:Event, RealEstateCore 4.1; REC gives no definition of its own). Temporal extent comes from start/end.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/realestatecore/models/Lease/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/realestatecore/models/Lease"
+      },
+      {
+        "name": "Level",
+        "title": "Smart Data Models - RealEstateCore - Level",
+        "description": "The level of a building, a.k.a. storey, floor, etc. (rec:Level, RealEstateCore 4.1, definition verbatim). BasementLevel, MezzanineLevel and RoofLevel are carried in recClass.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/realestatecore/models/Level/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/realestatecore/models/Level"
+      },
+      {
+        "name": "Organization",
+        "title": "Smart Data Models - RealEstateCore - Organization",
+        "description": "An organization of any sort (e.g., a business, association, project, consortium, tribe, etc.) (rec:Organization, RealEstateCore 4.1, definition verbatim). Company and Department are carried in recClass.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/realestatecore/models/Organization/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/realestatecore/models/Organization"
+      },
+      {
+        "name": "Room",
+        "title": "Smart Data Models - RealEstateCore - Room",
+        "description": "A room within a building (rec:Room, RealEstateCore 4.1; REC gives no definition of its own). Modelled generically: the specific room type -- 95 classes such as Office, ConferenceRoom, CookingRoom, Bedroom, Lobby, OperatingRoom -- is carried in recClass rather than as 95 separate entity types.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/realestatecore/models/Room/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/realestatecore/models/Room"
+      },
+      {
+        "name": "Site",
+        "title": "Smart Data Models - RealEstateCore - Site",
+        "description": "A piece of land upon which zero or more buildings may be situated (rec:Site, RealEstateCore 4.1, definition verbatim). Hierarchy: Site -> Architecture -> Space.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/realestatecore/models/Site/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/realestatecore/models/Site"
+      },
+      {
+        "name": "Zone",
+        "title": "Smart Data Models - RealEstateCore - Zone",
+        "description": "A sub-zone within or outside of a building defined to support some technology and/or use, e.g., an HVAC zone, a parking space, a security zone, etc. (rec:Zone, RealEstateCore 4.1, definition verbatim). Zone types (HVACZone, OccupancyZone, AccessControlZone, ParkingSpace, Workspace) are carried in recClass.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/realestatecore/models/Zone/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/realestatecore/models/Zone"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/realestatecore"
+  },
+  {
     "slug": "saref4agri",
     "title": "SAREF4AGRI",
     "description": "SAREF4AGRI is an extension of the ETSI SAREF (Smart Applications REFerence) ontology for the agriculture and food chain domain, developed by ETSI SmartM2M (originally STF 534, revised under STF 641) and published as ETSI TS 103 410-6. It connects SAREF's generic Device/Sensor/Actuator and FeatureOfInterest/Property/Observation patterns with existing standardization efforts in the AgriFood domain (ICAR for livestock data, AEF for agricultural equipment, the Plant Ontology, AgGateway), reusing W3C SSN/SOSA (System, Deployment, Platform), GeoSPARQL (Feature, Geometry, sfContains/sfWithin topology), the TIME ontology (temporal intervals for deployments), the TAXRANK taxonomy vocabulary (animal/crop species classification) and FOAF (Person/Organization) vocabularies. The ontology is illustrated in the normative TS through two worked examples: livestock farming (farm, farm holding, farmer, animals, animal groups, parcels, crops, milking/eating-activity sensors) and smart irrigation (deployments, platforms, soil tensiometers, pluviometers). This candidate translates the full v2.1.1 class list (21 classes) plus the ten saref:Property named individuals it defines (AirTemperature, AmbientHumidity, Area, Intake, IrrigationWater, PlantGrowthStage, Precipitation, SoilMoisture, SoilTemperature, Yield) into one candidate model per class under models/.",

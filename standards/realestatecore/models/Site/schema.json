@@ -1,0 +1,276 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/realestatecore/models/Site/schema.json",
+  "modelTags": "RealEstateCore,REC,SmartBuildings,RealEstate",
+  "title": "Smart Data Models - RealEstateCore - Site",
+  "description": "A piece of land upon which zero or more buildings may be situated (rec:Site, RealEstateCore 4.1, definition verbatim). Hierarchy: Site -> Architecture -> Space.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Site"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Site'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Human-readable name (REC 'name' in DTDL, rdfs:label in the SHACL source)."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. A description of this item. Not a REC term."
+    },
+    "identifiers": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Property. Map of external identifiers for this entity, keyed by the namespace/system that issued them (REC 'identifiers', DTDL Map<string,string>)."
+    },
+    "customTags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "boolean"
+      },
+      "description": "Property. Map of free-form boolean tags (REC 'customTags', DTDL Map<string,boolean>)."
+    },
+    "customProperties": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "description": "Property. Namespaced extension properties: a map from namespace to a map of property name to string value (REC 'customProperties', DTDL Map<string,Map<string,string>>)."
+    },
+    "location": {
+      "type": "object",
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point",
+            "LineString",
+            "Polygon",
+            "MultiPoint",
+            "MultiLineString",
+            "MultiPolygon"
+          ]
+        },
+        "coordinates": {
+          "type": "array"
+        },
+        "bbox": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 4
+        }
+      },
+      "description": "GeoProperty. GeoJSON geometry of the item (RFC 7946). Corresponds to REC's 'geometry' (a GeoJSON Geometry; 'Polygon representing the spatial extent of this Space' / 'the position or extent of the asset'), carried in the NGSI-LD core 'location' attribute instead of a separate Geometry information object."
+    },
+    "hasPart": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Sub-spaces of this space (rec:Space): a Site has Buildings, a Building has Levels, a Level has Rooms, a Zone groups Rooms, etc."
+    },
+    "isPartOf": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The single space (rec:Space) this space is part of (SHACL maxCount 1)."
+    },
+    "isLocationOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Things located in this space (e.g. Assets), as URIs. Inverse of Asset.locatedIn."
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "addressLine1": {
+          "type": "string",
+          "description": "Property. Address line 1 (rec:addressLine1)."
+        },
+        "addressLine2": {
+          "type": "string",
+          "description": "Property. Address line 2 (rec:addressLine2)."
+        },
+        "city": {
+          "type": "string",
+          "description": "Property. City (rec:city)."
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "Property. Postal code (rec:postalCode)."
+        },
+        "region": {
+          "type": "string",
+          "description": "Property. Region, state or province (rec:region)."
+        },
+        "country": {
+          "type": "string",
+          "description": "Property. Country name, or an ISO 3166-1 alpha-2 code such as 'SE', 'US' (rec:country)."
+        }
+      },
+      "description": "Property. Physical postal address of the architecture (rec:address -> rec:PostalAddress). REC models the address as a separate information object; here it is inlined with REC's own field names."
+    },
+    "area": {
+      "type": "object",
+      "properties": {
+        "grossArea": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Gross area (rec:grossArea)."
+        },
+        "netArea": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Net area (rec:netArea)."
+        },
+        "rentableArea": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Rentable area (rec:rentableArea)."
+        }
+      },
+      "description": "Property. Business-relevant area measurements (rec:area -> rec:ArchitectureArea), inlined. REC deliberately leaves the unit and measurement standard to the deployment ('as the exact requirements on these measurements will vary from case to case or jurisdiction to jurisdiction'); square metres (MTK) are recommended."
+    },
+    "capacity": {
+      "type": "object",
+      "properties": {
+        "maxOccupancy": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Property. Maximum occupancy, e.g. per building code (rec:maxOccupancy)."
+        },
+        "seatingCapacity": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Property. Seating capacity (rec:seatingCapacity)."
+        }
+      },
+      "description": "Property. Business-relevant capacity measurements (rec:capacity -> rec:ArchitectureCapacity), inlined."
+    },
+    "containsElement": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. BuildingElements contained in this space."
+    },
+    "adjacentElement": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. BuildingElements adjacent to this space."
+    },
+    "intersectingElement": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. BuildingElements intersecting this space."
+    },
+    "hasPoint": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Brick Points (sensors, setpoints, commands...) associated with this space -- see the brick-schema candidate's Point and sensor models."
+    },
+    "isFedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Equipment or systems that feed this space (e.g. an HVAC unit supplying air)."
+    },
+    "architectedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Agents (Organization/Person) that designed this architecture."
+    },
+    "constructedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Agents that constructed this architecture."
+    },
+    "operatedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Agents that operate this architecture."
+    },
+    "ownedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Agents that own this architecture."
+    },
+    "documentation": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Documents describing this entity (rec:Document, e.g. manuals, drawings, contracts), as URIs."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

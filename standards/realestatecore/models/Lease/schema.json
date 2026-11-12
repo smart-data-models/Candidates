@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/realestatecore/models/Lease/schema.json",
+  "modelTags": "RealEstateCore,REC,RealEstate,Lease",
+  "title": "Smart Data Models - RealEstateCore - Lease",
+  "description": "A lease of some leasable object such as a property or a piece of equipment (rec:Lease, an rec:Event, RealEstateCore 4.1; REC gives no definition of its own). Temporal extent comes from start/end.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Lease"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Lease'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Human-readable name (REC 'name' in DTDL, rdfs:label in the SHACL source)."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. A description of this item. Not a REC term."
+    },
+    "identifiers": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Property. Map of external identifiers for this entity, keyed by the namespace/system that issued them (REC 'identifiers', DTDL Map<string,string>)."
+    },
+    "customTags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "boolean"
+      },
+      "description": "Property. Map of free-form boolean tags (REC 'customTags', DTDL Map<string,boolean>)."
+    },
+    "customProperties": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "description": "Property. Namespaced extension properties: a map from namespace to a map of property name to string value (REC 'customProperties', DTDL Map<string,Map<string,string>>)."
+    },
+    "start": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Lease start timestamp (rec:start)."
+    },
+    "end": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Lease end timestamp (rec:end)."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Timestamp of the event, for instantaneous events (rec:timestamp)."
+    },
+    "leaseOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The object(s) being leased, e.g. a Building, Room, Premises or Asset (SHACL minCount 1)."
+    },
+    "leasee": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The agent(s) leasing the object, i.e. the user/tenant (SHACL minCount 1)."
+    },
+    "leasor": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The agent(s) leasing out the object, i.e. the owner/landlord (SHACL minCount 1)."
+    },
+    "regulatedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Lease contract documents (rec:LeaseContract) regulating the terms of this lease."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "leaseOf",
+    "leasee",
+    "leasor"
+  ]
+}

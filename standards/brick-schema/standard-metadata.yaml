@@ -230,3 +230,13 @@ notes: |
   carry no direct location coordinates in Brick's own model (spatial
   position, when present at all in real deployments, comes from the
   REC-modeled Location/Room, deferred per above).
+
+  UPDATE 2026-11-12: the RealEstateCore candidate (standards/realestatecore)
+  now exists. The placeholder location ids in this candidate's examples were
+  replaced by the real REC entity ids from the same IAQ deployment:
+  urn:ngsi-ld:Location:kitchen -> urn:ngsi-ld:Room:kitchen (rec:CookingRoom)
+  and urn:ngsi-ld:Location:home_hvac_zone -> urn:ngsi-ld:Zone:home_hvac_zone
+  (rec:HVACZone). Schemas are unchanged. Still open: Collection and System
+  can now gain an `includes` Relationship mapped to rec:includes
+  (https://w3id.org/rec#includes). That is a schema change and was left for
+  a separate revision.
