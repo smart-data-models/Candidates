@@ -1,0 +1,100 @@
+{
+  "id": "urn:ngsi-ld:Circularity:bmwk-123456687678",
+  "type": "Circularity",
+  "refGeneralProductInformation": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:GeneralProductInformation:bmwk-123456687678"
+  },
+  "dismantlingAndRemovalInformation": {
+    "type": "Property",
+    "value": [
+      {
+        "documentType": "DismantlingManual",
+        "mimeType": "application/pdf",
+        "documentURL": "https://www.example.com/battery-passport/123456687678/dismantling-manual.pdf"
+      },
+      {
+        "documentType": "BillOfMaterial",
+        "mimeType": "text/csv",
+        "documentURL": "https://www.example.com/battery-passport/123456687678/bill-of-material.csv"
+      }
+    ]
+  },
+  "sparePartSources": {
+    "type": "Property",
+    "value": [
+      {
+        "nameOfSupplier": "Example Battery Service GmbH",
+        "addressOfSupplier": {
+          "streetAddress": "Werkstrasse 12",
+          "postalCode": "70173",
+          "addressCountry": "DE"
+        },
+        "emailAddressOfSupplier": "spareparts@example.com",
+        "supplierWebAddress": "https://www.example.com/spare-parts",
+        "components": [
+          {
+            "partName": "Cell",
+            "partNumber": "CELL-NMC-67AH-01"
+          },
+          {
+            "partName": "Battery management system",
+            "partNumber": "BMS-108S-02"
+          }
+        ]
+      }
+    ]
+  },
+  "recycledContent": {
+    "type": "Property",
+    "value": [
+      {
+        "recycledMaterial": "Cobalt",
+        "preConsumerShare": 4.0,
+        "postConsumerShare": 12.0
+      },
+      {
+        "recycledMaterial": "Nickel",
+        "preConsumerShare": 2.0,
+        "postConsumerShare": 5.0
+      },
+      {
+        "recycledMaterial": "Lithium",
+        "preConsumerShare": 1.0,
+        "postConsumerShare": 5.5
+      }
+    ]
+  },
+  "safetyMeasures": {
+    "type": "Property",
+    "value": {
+      "safetyInstructions": "https://www.example.com/battery-passport/123456687678/safety-instructions.pdf",
+      "extinguishingAgents": [
+        "A"
+      ]
+    }
+  },
+  "endOfLifeInformation": {
+    "type": "Property",
+    "value": {
+      "wastePrevention": "https://www.example.com/battery-passport/123456687678/waste-prevention.html",
+      "separateCollection": "https://www.example.com/battery-passport/123456687678/separate-collection.html",
+      "informationOnCollection": "https://www.example.com/battery-passport/123456687678/collection-points.html"
+    }
+  },
+  "renewableContent": {
+    "type": "Property",
+    "value": 3.5
+  },
+  "source": {
+    "type": "Property",
+    "value": "Synthetic example (no public battery passport data exists yet). One fictional 95 kWh NMC electric-vehicle battery shared by all 7 aspects. Values taken from the Battery Pass Data Model's own SAMM exampleValue entries where they exist (partName Cell); all other values are illustrative, chosen to be physically consistent and to satisfy the schema. URLs use the reserved example.com domain."
+  },
+  "dataProvider": {
+    "type": "Property",
+    "value": "Smart Data Models (synthetic example for the Battery Pass Data Model candidate)"
+  },
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/battery-pass-data-model/models/Circularity/context.jsonld"
+  ]
+}
