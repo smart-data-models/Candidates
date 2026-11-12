@@ -1,0 +1,122 @@
+title: "Open Energy Ontology (OEO)"
+publisher: "Open Energy Family / Open Energy Platform community (OEO maintainers, incl. contributors from Reiner Lemoine Institut, Öko-Institut, DLR, OVGU Magdeburg and others); published at openenergyplatform.org"
+sourceUrl: "https://github.com/OpenEnergyPlatform/ontology"
+specificationUrl: "https://openenergyplatform.org/ontology/"
+contact: "https://github.com/OpenEnergyPlatform/ontology/issues"
+sourceOntologyVersion: "v2.14.0 (released 2026-10-08)"
+sourceOntologyDownload: "https://github.com/OpenEnergyPlatform/ontology/releases/download/v2.14.0/oeo-full.owl"
+sourceOntologyNamespace: "https://openenergyplatform.org/ontology/oeo/"
+sourceExampleUrl: "https://data.open-power-system-data.org/conventional_power_plants/latest/conventional_power_plants_DE.csv"
+sourceExampleLicense: "CC-BY-4.0 (Open Power System Data, Conventional power plants data package; underlying data from BNetzA Kraftwerksliste and UBA)"
+domains:
+  - SmartEnergy
+description: >
+  Domain ontology for energy system modelling and analysis, built on the
+  Basic Formal Ontology (BFO) and parts of the Common Core Ontologies. It
+  covers the physical energy system (power plants, power generating units,
+  energy converting components, energy storage objects, supply grids and
+  their components, energy carriers and fuels), quantities and units, and
+  the information side of energy system research (models, scenarios, data
+  sets, studies). It is the reference vocabulary of the Open Energy
+  Platform.
+license: "CC0-1.0"
+licenseNote: >
+  Confirmed via the GitHub repository's licence file (CC0-1.0, public
+  domain dedication). The example data comes from Open Power System Data,
+  licensed CC-BY-4.0. Attribution is given in each example's `source`
+  attribute.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-11-12 from OEO v2.14.0 (oeo-full.owl: 1,623 classes,
+  1,316 in the OEO namespace and the rest imported from BFO/IAO/RO/UO and the
+  Common Core Ontologies; 191 object properties; 8 datatype properties; 232
+  named individuals). Source row 9 of the "Level A standards not in Smart
+  Data Models" list (licence verified: Yes).
+
+  SCOPE: OEO is mostly a classification taxonomy plus an information-
+  artefact branch for scenario and model metadata. This candidate covers
+  the physical energy-system core that is most useful for NGSI-LD instance
+  data. It has 5 generic entity types, each with an `oeoClass` attribute
+  that holds the specific OEO subclass, constrained to an enum of every
+  class in that branch (the same approach as the Brick candidate's
+  `brickClass`):
+    - PowerPlant           oeo:OEO_00000031  (37 classes in branch)
+    - PowerGeneratingUnit  oeo:OEO_00000334  (30)
+    - EnergyStorageObject  oeo:OEO_00000159  (29)
+    - GridComponent        oeo:OEO_00020006  (19)
+    - SupplyGrid           oeo:OEO_00000200  (7)
+  None of these classes, or their subclasses, is deprecated in v2.14.0.
+  NOT covered yet, and possible next candidates: energy converting
+  component (generator, turbine, heater, ...), vehicle, combined heat and
+  power plant / unit and heat plant (siblings of power plant, not
+  subclasses), and the information branch (scenario, study, data set,
+  model). The information branch is mainly what the Open Energy Platform
+  uses OEO for.
+
+  NAMING: OEO class IRIs are opaque numeric identifiers (OEO_00000031), and
+  the human-readable names are lower-case rdfs:labels with spaces
+  ("power plant"). There is no source class name to keep verbatim, so the
+  entity types use the PascalCase form of the rdfs:label (PowerPlant). Each
+  context.jsonld still maps that term to the real OEO IRI. Property names
+  are the camelCase form of the label of the OEO property or quantity-value
+  class they represent (has part -> hasPart, is connected to ->
+  isConnectedTo, nameplate capacity -> nameplateCapacity).
+
+  QUANTITIES ARE FLATTENED: OEO does not attach capacities, efficiencies or
+  dates directly to objects. It models them as instances of quantity-value
+  classes (nameplate capacity OEO_00230003, declared net capacity
+  OEO_00230002, energy storage capacity OEO_00230000, efficiency value
+  OEO_00140050, full load hours, net capacity factor, operational life
+  time), linked through 'has quantity value' / 'quantity value of', with
+  'has unit' and 'has number'. This candidate flattens each one into a
+  plain numeric Property in a fixed unit (MW, MWh, ratio, hours, years)
+  stated in the schema description. The context maps each property term to
+  the quantity-value CLASS IRI, which is a pragmatic approximation, not a
+  true OWL property mapping. Commissioning end and decommissioning start
+  (temporal instants in OEO) are flattened to ISO 8601 dates the same way.
+
+  RELATIONSHIPS: hasPart and partOf map to BFO has part / part of
+  (BFO_0000051 / BFO_0000050), which OEO uses for its own axioms (e.g.
+  power plant has part some power generating unit). uses (OEO_00000503)
+  links a unit or plant to the fuel classes it uses, given as OEO class
+  IRIs. isConnectedTo, hasSource and hasSink are OEO's own grid
+  relations.
+
+  NON-OEO ADDITIONS (namespace https://smartdatamodels.org/dataModel.OpenEnergyOntology/):
+  operationalStatus (OPSD/BNetzA status values), eicCode (ENTSO-E EIC),
+  gridOperator, and refGridConnectionPoint (plant or storage to grid node).
+  OEO declares 'power plant operator' as a class but no grid operator, no
+  status vocabulary, and no relation from a plant to an external grid node.
+  These were added for practical NGSI-LD use and are flagged in each
+  schema description. Standard SDM/schema.org attributes (name,
+  description, address, location, areaServed, ...) are reused as usual.
+
+  EXAMPLES: PowerPlant, PowerGeneratingUnit, GridComponent and SupplyGrid
+  form one consistent real-data scenario: the Irsching power plant in
+  Bavaria, its unit 4 "Ulrich Hartmann", the grid node 'Irsching' it
+  connects to, and the TenneT transmission grid. The data is taken from
+  OPSD records BNA0993-BNA0995. Values derived from that data:
+    - The plant's nameplateCapacity (1894 MW) and declaredNetCapacity
+      (1822 MW) are the sums of the three units' gross (UBA) and net
+      (BNetzA) capacities.
+    - The plant's eicCode is the plant-level EIC (eic_code_plant), and the
+      unit ids use each unit's eic_code_block.
+    - commissioningEnd 2011-01-01 for Irsching 4 is copied as given in OPSD
+      (commissioned_original 01.01.2011); it is probably a year-only
+      placeholder date.
+    - The grid node has no location because OPSD gives none for network
+      nodes, and no coordinates were invented.
+  EnergyStorageObject has NO real example. OEO has no instance data, and
+  OPSD's conventional list puts pumped hydro under power plants, as OEO
+  does. Its example is explicitly synthetic and labelled as such in
+  `description` and `source`.
+
+  DUPLICATION RISK, not checked in detail: Smart Data Models already has
+  dataModel.Energy, dataModel.GreenEnergy, dataModel.EnergyStorage and
+  dataModel.EnergyCIM (CIM-based grid models). PowerGeneratingUnit /
+  PowerPlant overlap with GreenEnergy's generator models, EnergyStorageObject
+  with dataModel.EnergyStorage, and GridComponent / SupplyGrid with
+  EnergyCIM. This should be the first thing checked before promoting this
+  candidate.

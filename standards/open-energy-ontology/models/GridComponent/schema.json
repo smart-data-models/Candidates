@@ -1,0 +1,199 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/open-energy-ontology/models/GridComponent/schema.json",
+  "modelTags": "OpenEnergyOntology,OEO,Energy,Grid",
+  "title": "Smart Data Models - Open Energy Ontology - GridComponent",
+  "description": "A grid component is an energy transformation unit that is a discrete part of a supply grid serving a specific purpose. A grid component is defined by having a grid component role (oeo:OEO_00020006 'grid component', Open Energy Ontology v2.14.0, definition verbatim). Modelled generically: the specific OEO subclass (grid node, switchyard, transformer, AC-line, HVDC-line, vehicle charging station, ...) is carried in oeoClass.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "GridComponent"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'GridComponent'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. The name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. A description of this item."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. Point, LineString or Polygon (RFC 7946). Not an OEO term: OEO has no direct geometry on artificial objects, so the NGSI-LD core location is used.",
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point",
+            "LineString",
+            "Polygon",
+            "MultiPoint",
+            "MultiLineString",
+            "MultiPolygon"
+          ]
+        },
+        "coordinates": {
+          "type": "array"
+        },
+        "bbox": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 4
+        }
+      }
+    },
+    "address": {
+      "type": "object",
+      "description": "Property. Model:'https://schema.org/address'. The mailing address.",
+      "properties": {
+        "streetAddress": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "addressLocality": {
+          "type": "string"
+        },
+        "addressRegion": {
+          "type": "string"
+        },
+        "addressCountry": {
+          "type": "string"
+        }
+      }
+    },
+    "oeoClass": {
+      "type": "string",
+      "format": "uri",
+      "enum": [
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000047",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000126",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00320065",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00020249",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000144",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000399",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00020007",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00020006",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000255",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000296",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00020008",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00440000",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000253",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00420004",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00440001",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00020009",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000420",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00440002",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00320040"
+      ],
+      "description": "Relationship. The specific OEO class of this entity (rdf:type), as the class IRI. OEO v2.14.0 declares 19 classes in the 'grid component' hierarchy (this class and all its subclasses), all allowed here: AC-line = oeo:OEO_00000047; HVDC-line = oeo:OEO_00000126; bidirectional vehicle charging station = oeo:OEO_00320065; compressed-air energy storage unit = oeo:OEO_00020249; electricity grid component = oeo:OEO_00000144; energy storage unit = oeo:OEO_00000399; gas grid component = oeo:OEO_00020007; grid component = oeo:OEO_00020006; grid component link = oeo:OEO_00000255; grid node = oeo:OEO_00000296; heating grid component = oeo:OEO_00020008; overhead power line = oeo:OEO_00440000; power line = oeo:OEO_00000253; power line for vehicles = oeo:OEO_00420004; submarine power line = oeo:OEO_00440001; switchyard = oeo:OEO_00020009; transformer = oeo:OEO_00000420; underground power line = oeo:OEO_00440002; vehicle charging station = oeo:OEO_00320040."
+    },
+    "partOf": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The SupplyGrid this component is part of (BFO 'part of'; OEO axiom: grid component part of some supply grid)."
+    },
+    "isConnectedTo": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Neighbouring grid nodes in the same supply grid (oeo:OEO_00000526 'is connected to', domain and range grid node). Only meaningful when oeoClass is grid node or one of its specialisations; for links use hasPart / connects patterns of the grid model in use."
+    },
+    "ratedVoltage": {
+      "type": "string",
+      "format": "uri",
+      "enum": [
+        "https://openenergyplatform.org/ontology/oeo/OEO_00410073",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00410072",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00410070",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00410071"
+      ],
+      "description": "Relationship. Rated voltage class: the intended operating voltage level (oeo:OEO_00410068 subclasses): extra high rated voltage = oeo:OEO_00410073; high rated voltage = oeo:OEO_00410072; low rated voltage = oeo:OEO_00410070; medium rated voltage = oeo:OEO_00410071."
+    },
+    "powerRating": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Property. Power rating: the maximum power the object can convert (charge/discharge power for storage). Units:'MW'. OEO models this as a quantity value class (oeo:OEO_00230001) linked through 'has quantity value'; flattened here to a plain number in the stated unit."
+    },
+    "gridOperator": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. Name(s) of the grid operator(s) (TSO/DSO) responsible for this object. Not an OEO term: OEO declares 'power plant operator' but no grid operator class."
+    },
+    "commissioningEnd": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://schema.org/Date'. Commissioning end: the date on which commissioning finished, i.e. the start of commercial operation (oeo:OEO_00020421, a temporal instant in OEO, flattened to an ISO 8601 date)."
+    },
+    "decommissioningStart": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://schema.org/Date'. Decommissioning start: the date on which decommissioning began (oeo:OEO_00020417, flattened to an ISO 8601 date)."
+    },
+    "operationalStatus": {
+      "type": "string",
+      "enum": [
+        "operating",
+        "reserve",
+        "seasonal_conservation",
+        "shutdown_temporary",
+        "shutdown",
+        "special_case",
+        "planned",
+        "underConstruction"
+      ],
+      "description": "Property. Operational status of the object. Not an OEO term (OEO has no operating-status vocabulary for artificial objects); the values follow the Open Power System Data / BNetzA power plant list (operating, reserve, seasonal_conservation, shutdown_temporary, shutdown, special_case), plus planned and underConstruction."
+    },
+    "eicCode": {
+      "type": "string",
+      "description": "Property. ENTSO-E Energy Identification Code (EIC) of this object. Not an OEO term; added because it is the identifier used for generation units, plants and grid nodes in European market data."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/open-energy-ontology/models/PowerPlant/schema.json",
+  "modelTags": "OpenEnergyOntology,OEO,Energy,PowerPlant",
+  "title": "Smart Data Models - Open Energy Ontology - PowerPlant",
+  "description": "A power plant is an energy transformation unit consisting of power generating units and a grid component that feeds electric energy into an electric grid (oeo:OEO_00000031 'power plant', Open Energy Ontology v2.14.0, definition verbatim). Modelled generically: the specific OEO subclass (coal, gas, wind farm, pumped hydro storage power plant, ...) is carried in oeoClass rather than as 37 separate entity types.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "PowerPlant"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'PowerPlant'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. The name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. A description of this item."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. Point, LineString or Polygon (RFC 7946). Not an OEO term: OEO has no direct geometry on artificial objects, so the NGSI-LD core location is used.",
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point",
+            "LineString",
+            "Polygon",
+            "MultiPoint",
+            "MultiLineString",
+            "MultiPolygon"
+          ]
+        },
+        "coordinates": {
+          "type": "array"
+        },
+        "bbox": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 4
+        }
+      }
+    },
+    "address": {
+      "type": "object",
+      "description": "Property. Model:'https://schema.org/address'. The mailing address.",
+      "properties": {
+        "streetAddress": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "addressLocality": {
+          "type": "string"
+        },
+        "addressRegion": {
+          "type": "string"
+        },
+        "addressCountry": {
+          "type": "string"
+        }
+      }
+    },
+    "oeoClass": {
+      "type": "string",
+      "format": "uri",
+      "enum": [
+        "https://openenergyplatform.org/ontology/oeo/OEO_00020515",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000073",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000004",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00010092",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000089",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00020463",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000165",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000174",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000184",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000192",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000205",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00010086",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00010088",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000221",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000252",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00010111",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00010112",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00010113",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000303",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000308",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000310",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000311",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00020464",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00010091",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000324",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000031",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00140162",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00010089",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00010362",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00010094",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000361",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00010087",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000386",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000389",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000036",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000440",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000447"
+      ],
+      "description": "Relationship. The specific OEO class of this entity (rdf:type), as the class IRI. OEO v2.14.0 declares 37 classes in the 'power plant' hierarchy (this class and all its subclasses), all allowed here: base load power plant = oeo:OEO_00020515; biofuel power plant = oeo:OEO_00000073; biogas power plant = oeo:OEO_00000004; closed-loop pumped hydro storage power plant = oeo:OEO_00010092; coal power plant = oeo:OEO_00000089; combined cycle gas power plant = oeo:OEO_00020463; field photovoltaic power plant = oeo:OEO_00000165; fueled power plant = oeo:OEO_00000174; gas power plant = oeo:OEO_00000184; geothermal power plant = oeo:OEO_00000192; hard coal power plant = oeo:OEO_00000205; hydro power plant = oeo:OEO_00010086; hydro storage power plant = oeo:OEO_00010088; hydrogen power plant = oeo:OEO_00000221; lignite power plant = oeo:OEO_00000252; marine current energy power plant = oeo:OEO_00010111; marine tidal energy power plant = oeo:OEO_00010112; marine wave energy power plant = oeo:OEO_00010113; nuclear power plant = oeo:OEO_00000303; offshore wind farm = oeo:OEO_00000308; oil power plant = oeo:OEO_00000310; onshore wind farm = oeo:OEO_00000311; open cycle gas power plant = oeo:OEO_00020464; open-loop pumped hydro storage power plant = oeo:OEO_00010091; photovoltaic power plant = oeo:OEO_00000324; power plant = oeo:OEO_00000031; power plant with electro motive generator = oeo:OEO_00140162; pumped hydro storage power plant = oeo:OEO_00010089; renewable power plant = oeo:OEO_00010362; reservoir hydro storage power plant = oeo:OEO_00010094; rooftop photovoltaic power plant = oeo:OEO_00000361; run of river power plant = oeo:OEO_00010087; solar power plant = oeo:OEO_00000386; solar thermal power plant = oeo:OEO_00000389; solid biomass power plant = oeo:OEO_00000036; waste power plant = oeo:OEO_00000440; wind farm = oeo:OEO_00000447."
+    },
+    "hasPart": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The PowerGeneratingUnit (and, optionally, GridComponent) entities this power plant has as parts (BFO 'has part'; OEO axiom: power plant has part some power generating unit and has part some electricity grid component)."
+    },
+    "refGridConnectionPoint": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The GridComponent (usually a grid node / substation) through which the object feeds into or draws from the supply grid. Not an OEO property: OEO only states that a power plant 'has part some electricity grid component' and that grid nodes are connected to each other, without a relation from a plant to an external grid node."
+    },
+    "powerPlantOperator": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. Name(s) of the power plant operator(s): the agent(s) operating the generation station (oeo:OEO_00140130 'power plant operator' is an agent class in OEO; carried here as the operator's name)."
+    },
+    "uses": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. The fuel(s) or energy carrier(s) the object requires as input to work (oeo:OEO_00000503 'uses'), given as OEO class IRIs, e.g. natural gas = oeo:OEO_00000292, mineral oil = oeo:OEO_00010317, lignite = oeo:OEO_00000251, hard coal = oeo:OEO_00000204. Any OEO portion-of-matter / energy-carrier class IRI is allowed."
+    },
+    "nameplateCapacity": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Property. Nameplate capacity: the maximum power the object can generate under nominal conditions (gross). Units:'MW'. OEO models this as a quantity value class (oeo:OEO_00230003) linked through 'has quantity value'; flattened here to a plain number in the stated unit."
+    },
+    "declaredNetCapacity": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Property. Declared net capacity: the maximum power the object can deliver to the electrical grid (gross capacity minus own consumption). Units:'MW'. OEO models this as a quantity value class (oeo:OEO_00230002) linked through 'has quantity value'; flattened here to a plain number in the stated unit."
+    },
+    "fullLoadHours": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Property. Full load hours: annual energy generated divided by the declared net capacity. Units:'HUR (hours per year)'. OEO models this as a quantity value class (oeo:OEO_00140144) linked through 'has quantity value'; flattened here to a plain number in the stated unit.",
+      "maximum": 8784
+    },
+    "netCapacityFactor": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Property. Net capacity factor: net electricity generation over a time step divided by the declared net capacity times the duration of the time step, as a fraction 0..1. Units:'C62 (ratio)'. OEO models this as a quantity value class (oeo:OEO_00240016) linked through 'has quantity value'; flattened here to a plain number in the stated unit.",
+      "maximum": 1
+    },
+    "commissioningEnd": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://schema.org/Date'. Commissioning end: the date on which commissioning finished, i.e. the start of commercial operation (oeo:OEO_00020421, a temporal instant in OEO, flattened to an ISO 8601 date)."
+    },
+    "decommissioningStart": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://schema.org/Date'. Decommissioning start: the date on which decommissioning began (oeo:OEO_00020417, flattened to an ISO 8601 date)."
+    },
+    "operationalStatus": {
+      "type": "string",
+      "enum": [
+        "operating",
+        "reserve",
+        "seasonal_conservation",
+        "shutdown_temporary",
+        "shutdown",
+        "special_case",
+        "planned",
+        "underConstruction"
+      ],
+      "description": "Property. Operational status of the object. Not an OEO term (OEO has no operating-status vocabulary for artificial objects); the values follow the Open Power System Data / BNetzA power plant list (operating, reserve, seasonal_conservation, shutdown_temporary, shutdown, special_case), plus planned and underConstruction."
+    },
+    "eicCode": {
+      "type": "string",
+      "description": "Property. ENTSO-E Energy Identification Code (EIC) of this object. Not an OEO term; added because it is the identifier used for generation units, plants and grid nodes in European market data."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

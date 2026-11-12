@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/open-energy-ontology/models/EnergyStorageObject/schema.json",
+  "modelTags": "OpenEnergyOntology,OEO,Energy,EnergyStorage",
+  "title": "Smart Data Models - Open Energy Ontology - EnergyStorageObject",
+  "description": "An energy storage object is an artificial object that has the function energy storage (oeo:OEO_00000159 'energy storage object', Open Energy Ontology v2.14.0, definition verbatim). Modelled generically: the specific OEO subclass (lithium-ion battery, flow battery, sensible heat storage object, underground hydrogen storage object, ...) is carried in oeoClass. Note that OEO classifies pumped hydro storage as a power plant (pumped hydro storage power plant), not as an energy storage object; use PowerPlant for those.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "EnergyStorageObject"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'EnergyStorageObject'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. The name of this item."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/alternateName'. An alternative name for this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. A description of this item."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. Point, LineString or Polygon (RFC 7946). Not an OEO term: OEO has no direct geometry on artificial objects, so the NGSI-LD core location is used.",
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point",
+            "LineString",
+            "Polygon",
+            "MultiPoint",
+            "MultiLineString",
+            "MultiPolygon"
+          ]
+        },
+        "coordinates": {
+          "type": "array"
+        },
+        "bbox": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 4
+        }
+      }
+    },
+    "address": {
+      "type": "object",
+      "description": "Property. Model:'https://schema.org/address'. The mailing address.",
+      "properties": {
+        "streetAddress": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "addressLocality": {
+          "type": "string"
+        },
+        "addressRegion": {
+          "type": "string"
+        },
+        "addressCountry": {
+          "type": "string"
+        }
+      }
+    },
+    "oeoClass": {
+      "type": "string",
+      "format": "uri",
+      "enum": [
+        "https://openenergyplatform.org/ontology/oeo/OEO_00280013",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00280012",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000068",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00020363",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00310033",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00020362",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000159",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000169",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00020364",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00310045",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00310043",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00310044",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00280014",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000259",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000248",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000282",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00020371",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00310038",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00310037",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00310039",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000376",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000377",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00310034",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000374",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00020365",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00310032",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00010026",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00010325",
+        "https://openenergyplatform.org/ontology/oeo/OEO_00000429"
+      ],
+      "description": "Relationship. The specific OEO class of this entity (rdf:type), as the class IRI. OEO v2.14.0 declares 29 classes in the 'energy storage object' hierarchy (this class and all its subclasses), all allowed here: LFP battery = oeo:OEO_00280013; NMC battery = oeo:OEO_00280012; battery = oeo:OEO_00000068; chemical energy storage object = oeo:OEO_00020363; chemical heat storage object = oeo:OEO_00310033; electrical energy storage object = oeo:OEO_00020362; energy storage object = oeo:OEO_00000159; flow battery = oeo:OEO_00000169; kinetic energy storage object = oeo:OEO_00020364; latent fluid-gaseous heat storage object = oeo:OEO_00310045; latent heat storage object = oeo:OEO_00310043; latent solid-fluid heat storage object = oeo:OEO_00310044; lead-acid battery = oeo:OEO_00280014; liquid-metal battery = oeo:OEO_00000259; lithium-ion battery = oeo:OEO_00000248; molten-salt battery = oeo:OEO_00000282; potential energy storage object = oeo:OEO_00020371; sensible fluid heat storage object = oeo:OEO_00310038; sensible heat storage object = oeo:OEO_00310037; sensible solid heat storage object = oeo:OEO_00310039; sodium-ion battery = oeo:OEO_00000376; sodium-sulphur battery = oeo:OEO_00000377; sorption heat storage object = oeo:OEO_00310034; superconducting magnetic energy storage = oeo:OEO_00000374; thermal energy storage object = oeo:OEO_00020365; thermo-chemical heat storage object = oeo:OEO_00310032; traction battery = oeo:OEO_00010026; underground fuel storage object = oeo:OEO_00010325; underground hydrogen storage object = oeo:OEO_00000429."
+    },
+    "partOf": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The entity this storage object is part of, typically a GridComponent of OEO class 'energy storage unit' (oeo:OEO_00000399) or a PowerPlant (BFO 'part of')."
+    },
+    "refGridConnectionPoint": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The GridComponent (usually a grid node / substation) through which the object feeds into or draws from the supply grid. Not an OEO property: OEO only states that a power plant 'has part some electricity grid component' and that grid nodes are connected to each other, without a relation from a plant to an external grid node."
+    },
+    "energyStorageCapacity": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Property. Energy storage capacity: the maximum energy the energy storage object can store. Units:'MWh'. OEO models this as a quantity value class (oeo:OEO_00230000) linked through 'has quantity value'; flattened here to a plain number in the stated unit."
+    },
+    "powerRating": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Property. Power rating: the maximum power the object can convert (charge/discharge power for storage). Units:'MW'. OEO models this as a quantity value class (oeo:OEO_00230001) linked through 'has quantity value'; flattened here to a plain number in the stated unit."
+    },
+    "efficiencyValue": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Property. Efficiency value: the ratio between the useful outputs and the inputs of the energy transformation, as a fraction 0..1 (for storage: round-trip efficiency). Units:'C62 (ratio)'. OEO models this as a quantity value class (oeo:OEO_00140050) linked through 'has quantity value'; flattened here to a plain number in the stated unit.",
+      "maximum": 1
+    },
+    "operationalLifeTime": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Property. Operational life time: the lifetime of the object, measured from the end of construction to the start of decommissioning. Units:'ANN (years)'. OEO models this as a quantity value class (oeo:OEO_00020178) linked through 'has quantity value'; flattened here to a plain number in the stated unit."
+    },
+    "commissioningEnd": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://schema.org/Date'. Commissioning end: the date on which commissioning finished, i.e. the start of commercial operation (oeo:OEO_00020421, a temporal instant in OEO, flattened to an ISO 8601 date)."
+    },
+    "decommissioningStart": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://schema.org/Date'. Decommissioning start: the date on which decommissioning began (oeo:OEO_00020417, flattened to an ISO 8601 date)."
+    },
+    "operationalStatus": {
+      "type": "string",
+      "enum": [
+        "operating",
+        "reserve",
+        "seasonal_conservation",
+        "shutdown_temporary",
+        "shutdown",
+        "special_case",
+        "planned",
+        "underConstruction"
+      ],
+      "description": "Property. Operational status of the object. Not an OEO term (OEO has no operating-status vocabulary for artificial objects); the values follow the Open Power System Data / BNetzA power plant list (operating, reserve, seasonal_conservation, shutdown_temporary, shutdown, special_case), plus planned and underConstruction."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
