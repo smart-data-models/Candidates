@@ -1,0 +1,134 @@
+title: "RealEstateCore (REC)"
+publisher: "RealEstateCore Consortium (originally Swedish real estate owners and Idun, Willow, Microsoft and others); published at realestatecore.io"
+sourceUrl: "https://github.com/RealEstateCore/rec"
+specificationUrl: "https://www.realestatecore.io/"
+contact: "https://github.com/RealEstateCore/rec/issues"
+sourceOntologyVersion: "v4.1.0 (released 2026-06-29)"
+sourceOntologyDownload: "https://github.com/RealEstateCore/rec/blob/v4.1.0/RealEstateCore.DTDLv2.jsonld"
+sourceOntologyNamespace: "https://w3id.org/rec#"
+sourceExampleUrl: "https://github.com/BrickSchema/Brick/tree/master/examples/iaq_sensor_deployment"
+domains:
+  - SmartCities
+description: >
+  Domain ontology for the real estate and smart buildings industry. It
+  covers the spatial hierarchy of property (Region, Site, Building, Level,
+  Room, Zone), building elements, assets placed in buildings (furniture,
+  ICT and sensor equipment), administrative collections (real estate,
+  portfolio, premises, apartment, campus), agents (organizations, persons),
+  and events (leases, warranties, point observations). Since v4 it is
+  co-designed with Brick Schema: Brick supplies the equipment and point
+  taxonomy, and REC supplies the real estate and location layer. Brick has
+  deprecated its own Location classes in favour of REC's.
+license: "BSD-3-Clause"
+licenseNote: >
+  The source list marked this standard "Licence verified: No". Verified
+  during translation: the repository's LICENSE file is BSD-3-Clause
+  ("Copyright (c) 2022, RealEstateCore Consortium"), and the v4.0 release
+  notes state that REC moved to the BSD licence for compatibility with
+  Brick Schema. The example data comes from Brick Schema's own example
+  files, which are also BSD-3-Clause.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-11-12 from REC v4.1.0.
+
+  SOURCE FORMAT -- DTDL IS AUTHORITATIVE FOR 4.1: REC ships both SHACL
+  (Source/SHACL/RealEstateCore/rec.ttl) and DTDL v2
+  (RealEstateCore.DTDLv2.jsonld plus 1,364 per-interface files: 270 REC
+  and 1,094 Brick). In the v4.1.0 tag the SHACL file has NOT been updated.
+  It still says owl:versionInfo "4.0", and none of the 4.1 additions are in
+  it (Warranty, Asset.colour, Asset.warranty, Agent.memberOf, the Lobby,
+  Lounge and TeamRoom room types). This candidate therefore takes classes
+  and properties from the 4.1 DTDL. SHACL is used for cardinalities
+  (maxCount/minCount), datatypes and definitions where DTDL is silent.
+  Terms that exist only in DTDL are mapped to IRIs in the same namespace
+  (https://w3id.org/rec#<name>), which do not yet resolve in the SHACL
+  graph.
+
+  MODELS (10): Site, Building, Level, Room, Zone, Asset, Collection,
+  BuildingElement, Organization, Lease. Names are REC's own class names,
+  kept exactly as REC writes them (already PascalCase). Where a class has
+  subclasses, a `recClass` Relationship holds the specific REC class IRI,
+  restricted to an enum of the non-deprecated classes in that branch:
+    - Room: 95 classes (Office, CookingRoom, Bedroom, Lobby, ...)
+    - Asset: 61 classes (REC-namespace only: furniture, ICT/sensor
+      equipment, doors, windows...)
+    - Collection: 8 classes
+    - BuildingElement: 7 classes
+    - Building: 6 classes
+    - Zone: 6 classes
+    - Level: 4 classes
+    - Organization: 3 classes
+  Excluded because the 4.1 release notes deprecate them:
+  BACnetController and ModbusController (Asset), and Agent.isMemberOf (use
+  memberOf). The DTDL itself carries no deprecation markers, so this
+  relies on the release notes.
+  Not modelled: Region, SubBuilding and OutdoorSpace (Space classes with
+  no properties of their own); Person; Warranty; ServiceObject; Document /
+  LeaseContract; and the ~45 ObservationEvent classes. Observations
+  overlap with Brick Points and NGSI-LD temporal properties.
+
+  RELATIONSHIP TO THE brick-schema CANDIDATE: REC places brick:Equipment
+  (and its ~220 subclasses) under rec:Asset, and Brick collections under
+  rec:Collection. Those are NOT repeated here. The Asset and Collection
+  recClass enums contain only REC-namespace classes, and Brick equipment
+  stays with the brick-schema candidate's Equipment model. The examples are
+  built from the SAME real deployment as the brick-schema candidate
+  (Brick's examples/iaq_sensor_deployment). Asset.hasPoint therefore points
+  at that candidate's existing entity ids (urn:ngsi-ld:CO2_Level_Sensor:
+  kitchen_stove_co2, ...).
+  KNOWN INCONSISTENCY: the brick-schema candidate's examples point at
+  placeholder ids "urn:ngsi-ld:Location:kitchen" and
+  "urn:ngsi-ld:Location:home_hvac_zone". Brick Location was deprecated and
+  deferred to this candidate. The REC entities for those places are
+  urn:ngsi-ld:Room:kitchen and urn:ngsi-ld:Zone:home_hvac_zone. The
+  Brick examples were not changed in this PR. The brick-schema
+  Collection/System models can also now gain an `includes` Relationship
+  (rec:includes), which the Brick notes say they were waiting for.
+
+  STRUCTURAL MAPPINGS:
+    - geometry -> NGSI-LD `location` (GeoProperty). REC's geometry is a
+      GeoJSON Geometry, held in a separate Information object.
+      `georeference` (local-to-geographic coordinate transform) is not
+      modelled.
+    - address -> an inline object with REC's own field names (addressLine1,
+      addressLine2, city, postalCode, region, country), not schema.org's
+      address. In REC, PostalAddress is a separate information object.
+    - area -> {grossArea, netArea, rentableArea} and capacity ->
+      {maxOccupancy, seatingCapacity}, inlined in the same way (DTDL
+      Components). REC deliberately states no area unit; square metres are
+      recommended in the schema.
+    - identifiers / customTags / customProperties -> JSON objects
+      constrained like the DTDL Maps.
+    - name -> schema.org name. REC uses `name` in DTDL and rdfs:label in
+      SHACL. `description` is a common SDM addition that REC lacks.
+    - Asset.weight: SHACL says xsd:decimal and the 4.1 DTDL says string.
+      Modelled as a number.
+
+  EXAMPLES:
+    - Site, Building, Level, Room, Zone and Asset use the real
+      Brick/REC IAQ deployment: the 123 Alder Street parcel, Home 1 (with
+      its address and gross/net area), the first floor, the kitchen as
+      rec:CookingRoom, the whole-home HVACZone, and the kitchen stove IAQ
+      sensor device.
+    - Only directions asserted in the source are included. For example,
+      Building has no isPartOf because the source states Site hasPart
+      Building.
+    - Collection uses the real rec:Apartment from Brick's
+      examples/simple_apartment/apartment.ttl, a separate small example.
+      Its room ids are prefixed apartment_ so they don't clash with the
+      IAQ home's rooms.
+    - The IAQ device is brick:IAQ_Sensor_Equipment in the source. Here its
+      recClass is REC's own rec:IAQSensorEquipment. The source links it to
+      its points with brick:hosts, which does not exist in released Brick
+      (see the brick-schema notes); REC's hasPoint is used instead.
+    - BuildingElement, Organization and Lease have no instance data in any
+      REC or Brick example. Their examples are synthetic and labelled as
+      such.
+
+  DUPLICATION RISK, not checked in detail: Smart Data Models already
+  has dataModel.Building (Building, BuildingOperation...), dataModel.Organization,
+  dataModel.PointOfInterest and the S4BLDG subject. The saref4city and
+  saref4inma candidates may overlap too. Building, Site and Organization
+  are the most likely to overlap. Check this before promotion.

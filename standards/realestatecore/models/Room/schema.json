@@ -1,0 +1,378 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/realestatecore/models/Room/schema.json",
+  "modelTags": "RealEstateCore,REC,SmartBuildings,RealEstate",
+  "title": "Smart Data Models - RealEstateCore - Room",
+  "description": "A room within a building (rec:Room, RealEstateCore 4.1; REC gives no definition of its own). Modelled generically: the specific room type -- 95 classes such as Office, ConferenceRoom, CookingRoom, Bedroom, Lobby, OperatingRoom -- is carried in recClass rather than as 95 separate entity types.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Room"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Room'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. Human-readable name (REC 'name' in DTDL, rdfs:label in the SHACL source)."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. A description of this item. Not a REC term."
+    },
+    "identifiers": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Property. Map of external identifiers for this entity, keyed by the namespace/system that issued them (REC 'identifiers', DTDL Map<string,string>)."
+    },
+    "customTags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "boolean"
+      },
+      "description": "Property. Map of free-form boolean tags (REC 'customTags', DTDL Map<string,boolean>)."
+    },
+    "customProperties": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "description": "Property. Namespaced extension properties: a map from namespace to a map of property name to string value (REC 'customProperties', DTDL Map<string,Map<string,string>>)."
+    },
+    "recClass": {
+      "type": "string",
+      "format": "uri",
+      "enum": [
+        "https://w3id.org/rec#AdmittingRoom",
+        "https://w3id.org/rec#Atrium",
+        "https://w3id.org/rec#Auditorium",
+        "https://w3id.org/rec#BackOffice",
+        "https://w3id.org/rec#BarRoom",
+        "https://w3id.org/rec#Bathroom",
+        "https://w3id.org/rec#Bedroom",
+        "https://w3id.org/rec#BicycleGarage",
+        "https://w3id.org/rec#Cabinet",
+        "https://w3id.org/rec#CableRoom",
+        "https://w3id.org/rec#CafeteriaRoom",
+        "https://w3id.org/rec#Cinema",
+        "https://w3id.org/rec#Classroom",
+        "https://w3id.org/rec#CleaningRoom",
+        "https://w3id.org/rec#ClimateControlRoom",
+        "https://w3id.org/rec#CloakRoom",
+        "https://w3id.org/rec#ConferenceRoom",
+        "https://w3id.org/rec#ConversationRoom",
+        "https://w3id.org/rec#CookingRoom",
+        "https://w3id.org/rec#CopyingRoom",
+        "https://w3id.org/rec#DataServerRoom",
+        "https://w3id.org/rec#DiningRoom",
+        "https://w3id.org/rec#DisabledToilet",
+        "https://w3id.org/rec#DishingRoom",
+        "https://w3id.org/rec#DressingRoom",
+        "https://w3id.org/rec#EducationalRoom",
+        "https://w3id.org/rec#ElectricityRoom",
+        "https://w3id.org/rec#ElevatorRoom",
+        "https://w3id.org/rec#ElevatorShaft",
+        "https://w3id.org/rec#Entrance",
+        "https://w3id.org/rec#ExerciseRoom",
+        "https://w3id.org/rec#ExhibitionRoom",
+        "https://w3id.org/rec#FittingRoom",
+        "https://w3id.org/rec#FoodHandlingRoom",
+        "https://w3id.org/rec#Garage",
+        "https://w3id.org/rec#GroupRoom",
+        "https://w3id.org/rec#Hallway",
+        "https://w3id.org/rec#HealthcareRoom",
+        "https://w3id.org/rec#Kitchenette",
+        "https://w3id.org/rec#Laboratory",
+        "https://w3id.org/rec#LaboratoryDry",
+        "https://w3id.org/rec#LaboratoryWet",
+        "https://w3id.org/rec#LaundryRoom",
+        "https://w3id.org/rec#Library",
+        "https://w3id.org/rec#LivingRoom",
+        "https://w3id.org/rec#LoadingReceivingRoom",
+        "https://w3id.org/rec#Lobby",
+        "https://w3id.org/rec#LockerRoom",
+        "https://w3id.org/rec#Lounge",
+        "https://w3id.org/rec#MailRoom",
+        "https://w3id.org/rec#MainEntrance",
+        "https://w3id.org/rec#MeditationRoom",
+        "https://w3id.org/rec#Morgue",
+        "https://w3id.org/rec#MothersRoom",
+        "https://w3id.org/rec#MultiPurposeRoom",
+        "https://w3id.org/rec#NeonatalNursingRoom",
+        "https://w3id.org/rec#Office",
+        "https://w3id.org/rec#OfficeLandscape",
+        "https://w3id.org/rec#OfficeRoom",
+        "https://w3id.org/rec#OperatingRoom",
+        "https://w3id.org/rec#OutpatientServicesRoom",
+        "https://w3id.org/rec#Pantry",
+        "https://w3id.org/rec#PersonalHygiene",
+        "https://w3id.org/rec#PharmacyRoom",
+        "https://w3id.org/rec#PhoneBooth",
+        "https://w3id.org/rec#RadiologyRoom",
+        "https://w3id.org/rec#Reception",
+        "https://w3id.org/rec#RecordingRoom",
+        "https://w3id.org/rec#RecreationalRoom",
+        "https://w3id.org/rec#RestingRoom",
+        "https://w3id.org/rec#RetailRoom",
+        "https://w3id.org/rec#Room",
+        "https://w3id.org/rec#Sauna",
+        "https://w3id.org/rec#SecurityRoom",
+        "https://w3id.org/rec#ServiceEntrance",
+        "https://w3id.org/rec#ServiceShaft",
+        "https://w3id.org/rec#Shelter",
+        "https://w3id.org/rec#ShelterGasLock",
+        "https://w3id.org/rec#ShelterRoom",
+        "https://w3id.org/rec#ShowerRoom",
+        "https://w3id.org/rec#SmallStudyRoom",
+        "https://w3id.org/rec#SprinklerRoom",
+        "https://w3id.org/rec#StaffRoom",
+        "https://w3id.org/rec#Stairwell",
+        "https://w3id.org/rec#Storage",
+        "https://w3id.org/rec#TeamRoom",
+        "https://w3id.org/rec#TelecommunicationRoom",
+        "https://w3id.org/rec#Theater",
+        "https://w3id.org/rec#TherapyRoom",
+        "https://w3id.org/rec#Toilet",
+        "https://w3id.org/rec#TreatmentRoom",
+        "https://w3id.org/rec#TreatmentWaitingRoom",
+        "https://w3id.org/rec#UtilitiesRoom",
+        "https://w3id.org/rec#WasteManagementRoom",
+        "https://w3id.org/rec#Workshop"
+      ],
+      "description": "Relationship. The specific RealEstateCore class of this entity (rdf:type), as the class IRI. REC 4.1 declares 95 non-deprecated classes in the rec:Room hierarchy (this class and all its subclasses), all allowed here: AdmittingRoom; Atrium; Auditorium; BackOffice; BarRoom; Bathroom; Bedroom; BicycleGarage; Cabinet; CableRoom; CafeteriaRoom; Cinema; Classroom; CleaningRoom; ClimateControlRoom (Climate-control room); CloakRoom; ConferenceRoom; ConversationRoom; CookingRoom; CopyingRoom; DataServerRoom; DiningRoom; DisabledToilet; DishingRoom; DressingRoom; EducationalRoom; ElectricityRoom; ElevatorRoom; ElevatorShaft; Entrance; ExerciseRoom; ExhibitionRoom; FittingRoom; FoodHandlingRoom (Food-handling room); Garage; GroupRoom; Hallway; HealthcareRoom; Kitchenette; Laboratory; LaboratoryDry (Laboratory (dry)); LaboratoryWet (Laboratory (wet)); LaundryRoom; Library; LivingRoom; LoadingReceivingRoom (Loading/receiving room); Lobby; LockerRoom; Lounge; MailRoom; MainEntrance; MeditationRoom; Morgue; MothersRoom (Mothers' room); MultiPurposeRoom (Multi-purpose room); NeonatalNursingRoom; Office; OfficeLandscape; OfficeRoom; OperatingRoom; OutpatientServicesRoom; Pantry; PersonalHygiene (Personal hygiene room); PharmacyRoom; PhoneBooth; RadiologyRoom; Reception; RecordingRoom; RecreationalRoom; RestingRoom; RetailRoom; Room; Sauna; SecurityRoom; ServiceEntrance; ServiceShaft; Shelter; ShelterGasLock; ShelterRoom; ShowerRoom; SmallStudyRoom; SprinklerRoom; StaffRoom; Stairwell; Storage; TeamRoom; TelecommunicationRoom; Theater; TherapyRoom; Toilet; TreatmentRoom; TreatmentWaitingRoom; UtilitiesRoom; WasteManagementRoom; Workshop."
+    },
+    "location": {
+      "type": "object",
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point",
+            "LineString",
+            "Polygon",
+            "MultiPoint",
+            "MultiLineString",
+            "MultiPolygon"
+          ]
+        },
+        "coordinates": {
+          "type": "array"
+        },
+        "bbox": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 4
+        }
+      },
+      "description": "GeoProperty. GeoJSON geometry of the item (RFC 7946). Corresponds to REC's 'geometry' (a GeoJSON Geometry; 'Polygon representing the spatial extent of this Space' / 'the position or extent of the asset'), carried in the NGSI-LD core 'location' attribute instead of a separate Geometry information object."
+    },
+    "hasPart": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Sub-spaces of this space (rec:Space): a Site has Buildings, a Building has Levels, a Level has Rooms, a Zone groups Rooms, etc."
+    },
+    "isPartOf": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. The single space (rec:Space) this space is part of (SHACL maxCount 1)."
+    },
+    "isLocationOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Things located in this space (e.g. Assets), as URIs. Inverse of Asset.locatedIn."
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "addressLine1": {
+          "type": "string",
+          "description": "Property. Address line 1 (rec:addressLine1)."
+        },
+        "addressLine2": {
+          "type": "string",
+          "description": "Property. Address line 2 (rec:addressLine2)."
+        },
+        "city": {
+          "type": "string",
+          "description": "Property. City (rec:city)."
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "Property. Postal code (rec:postalCode)."
+        },
+        "region": {
+          "type": "string",
+          "description": "Property. Region, state or province (rec:region)."
+        },
+        "country": {
+          "type": "string",
+          "description": "Property. Country name, or an ISO 3166-1 alpha-2 code such as 'SE', 'US' (rec:country)."
+        }
+      },
+      "description": "Property. Physical postal address of the architecture (rec:address -> rec:PostalAddress). REC models the address as a separate information object; here it is inlined with REC's own field names."
+    },
+    "area": {
+      "type": "object",
+      "properties": {
+        "grossArea": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Gross area (rec:grossArea)."
+        },
+        "netArea": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Net area (rec:netArea)."
+        },
+        "rentableArea": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Rentable area (rec:rentableArea)."
+        }
+      },
+      "description": "Property. Business-relevant area measurements (rec:area -> rec:ArchitectureArea), inlined. REC deliberately leaves the unit and measurement standard to the deployment ('as the exact requirements on these measurements will vary from case to case or jurisdiction to jurisdiction'); square metres (MTK) are recommended."
+    },
+    "capacity": {
+      "type": "object",
+      "properties": {
+        "maxOccupancy": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Property. Maximum occupancy, e.g. per building code (rec:maxOccupancy)."
+        },
+        "seatingCapacity": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Property. Seating capacity (rec:seatingCapacity)."
+        }
+      },
+      "description": "Property. Business-relevant capacity measurements (rec:capacity -> rec:ArchitectureCapacity), inlined."
+    },
+    "containsElement": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. BuildingElements contained in this space."
+    },
+    "adjacentElement": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. BuildingElements adjacent to this space."
+    },
+    "intersectingElement": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. BuildingElements intersecting this space."
+    },
+    "hasPoint": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Brick Points (sensors, setpoints, commands...) associated with this space -- see the brick-schema candidate's Point and sensor models."
+    },
+    "isFedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Equipment or systems that feed this space (e.g. an HVAC unit supplying air)."
+    },
+    "architectedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Agents (Organization/Person) that designed this architecture."
+    },
+    "constructedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Agents that constructed this architecture."
+    },
+    "operatedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Agents that operate this architecture."
+    },
+    "ownedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Agents that own this architecture."
+    },
+    "documentation": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Documents describing this entity (rec:Document, e.g. manuals, drawings, contracts), as URIs."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

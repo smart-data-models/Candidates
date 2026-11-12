@@ -1,0 +1,31 @@
+{
+  "id": "urn:ngsi-ld:Collection:my_apartment",
+  "type": "Collection",
+  "name": {
+    "type": "Property",
+    "value": "My apartment"
+  },
+  "source": {
+    "type": "Property",
+    "value": "Brick Schema example examples/simple_apartment/apartment.ttl (Brick + RealEstateCore, BSD-3-Clause)"
+  },
+  "dataProvider": {
+    "type": "Property",
+    "value": "Brick Schema / RealEstateCore example data"
+  },
+  "recClass": {
+    "type": "Relationship",
+    "object": "https://w3id.org/rec#Apartment"
+  },
+  "includes": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:Room:apartment_bedroom",
+      "urn:ngsi-ld:Room:apartment_kitchen",
+      "urn:ngsi-ld:Room:apartment_living_room"
+    ]
+  },
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/realestatecore/models/Collection/context.jsonld"
+  ]
+}
