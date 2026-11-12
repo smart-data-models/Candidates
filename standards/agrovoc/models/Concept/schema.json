@@ -1,0 +1,853 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/agrovoc/models/Concept/schema.json",
+  "modelTags": "AGROVOC,FAO,SKOS,SKOS-XL,Agrontology,Thesaurus,Agrifood",
+  "title": "Smart Data Models - AGROVOC - Concept",
+  "description": "An idea or notion; a unit of thought (skos:Concept). In AGROVOC, one of about 42,100 concepts covering agriculture, food, nutrition, fisheries, forestry, environment and related domains, labelled in up to 42 languages and linked by SKOS hierarchical/associative relations, mappings to other vocabularies, and the Agrontology's specific relations (e.g. hasPest, isProducedBy, hasTaxonomicRank). Attributes are the properties actually used on AGROVOC concepts in release 2026-11-05 (counted on the AGROVOC SPARQL endpoint), named exactly as in SKOS, SKOS-XL, DCMI and the Agrontology.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Concept:<AGROVOC local id> (e.g. c_8373, xl_en_1299522993458, agrovoc)."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Concept"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Concept'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp (NGSI-LD system attribute; the source's own dct:created is 'created')."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification (NGSI-LD system attribute; the source's own dct:modified is 'modified')."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "sameAs": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'http://www.w3.org/2002/07/owl#sameAs'. Not an AGROVOC statement (Smart Data Models addition): the canonical AGROVOC IRI of this resource (http://aims.fao.org/aos/agrovoc/<local id>), which the NGSI-LD entity id is derived from."
+    },
+    "prefLabel": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-zA-Z]{2,3}(-[a-zA-Z0-9]{2,8})*$"
+      },
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Property. Model:'http://www.w3.org/2004/02/skos/core#prefLabel'. The preferred lexical label for a resource, in a given language. Used 1,078,886 times on 42,100 AGROVOC concepts (release 2026-11-05). Language map: one string per BCP 47 language tag (can be exchanged as an NGSI-LD LanguageProperty)."
+    },
+    "skosxl:prefLabel": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://www.w3.org/2008/05/skos-xl#prefLabel'. The preferred label of the concept, as a reified skosxl:Label resource (one per language). Used 1,078,886 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Label entities (urn:ngsi-ld:Label:<label id>)."
+    },
+    "altLabel": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-zA-Z]{2,3}(-[a-zA-Z0-9]{2,8})*$"
+      },
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "description": "Property. Model:'http://www.w3.org/2004/02/skos/core#altLabel'. An alternative lexical label for a resource (synonyms, near-synonyms, abbreviations, acronyms, spelling variants). Used 181,467 times on 42,100 AGROVOC concepts (release 2026-11-05). Language map: a list of strings per BCP 47 language tag."
+    },
+    "skosxl:altLabel": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://www.w3.org/2008/05/skos-xl#altLabel'. An alternative label of the concept, as a reified skosxl:Label resource. Used 181,467 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Label entities (urn:ngsi-ld:Label:<label id>)."
+    },
+    "broader": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://www.w3.org/2004/02/skos/core#broader'. Relates a concept to a concept that is more general in meaning. Used 42,549 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "narrower": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://www.w3.org/2004/02/skos/core#narrower'. Relates a concept to a concept that is more specific in meaning. Used 42,549 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "modified": {
+      "type": "string",
+      "pattern": "^-?\\d{4,}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})?$",
+      "description": "Property. Model:'http://purl.org/dc/terms/modified'. Date on which the resource was last changed (xsd:dateTime as published; some values have no timezone). Used 42,100 times on 42,100 AGROVOC concepts (release 2026-11-05)."
+    },
+    "inScheme": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://www.w3.org/2004/02/skos/core#inScheme'. Relates a resource to a concept scheme in which it is included. Used 42,100 times on 42,100 AGROVOC concepts (release 2026-11-05). Target is the AGROVOC ConceptScheme entity (urn:ngsi-ld:ConceptScheme:agrovoc)."
+    },
+    "created": {
+      "type": "string",
+      "pattern": "^-?\\d{4,}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})?$",
+      "description": "Property. Model:'http://purl.org/dc/terms/created'. Date of creation of the resource (xsd:dateTime as published; some values have no timezone). Used 42,099 times on 42,100 AGROVOC concepts (release 2026-11-05)."
+    },
+    "exactMatch": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://www.w3.org/2004/02/skos/core#exactMatch'. Links two concepts in different schemes that can be used interchangeably. Used 37,043 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are IRIs outside AGROVOC (other thesauri, images), kept as published."
+    },
+    "definition": {
+      "type": "array",
+      "description": "Property. Model:'http://www.w3.org/2004/02/skos/core#definition'. A statement or formal explanation of the meaning of a concept. Used 26,675 times on 42,100 AGROVOC concepts (release 2026-11-05). AGROVOC reifies each definition as a resource (xDef_...) with rdf:value, a source and timestamps; it is flattened here into one object per definition.",
+      "items": {
+        "type": "object",
+        "required": [
+          "value",
+          "language"
+        ],
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "The definition text (rdf:value)."
+          },
+          "language": {
+            "type": "string",
+            "pattern": "^[a-zA-Z]{2,3}(-[a-zA-Z0-9]{2,8})*$",
+            "description": "Language tag of the rdf:value literal. Not an RDF property: the tag is carried by the literal in the source."
+          },
+          "hasSource": {
+            "type": "string",
+            "description": "Free-text source of the definition (VocBench vb:hasSource)."
+          },
+          "source": {
+            "type": "string",
+            "format": "uri",
+            "description": "IRI of the source of the definition (dct:source)."
+          },
+          "created": {
+            "type": "string",
+            "pattern": "^-?\\d{4,}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})?$",
+            "description": "dct:created of the definition."
+          },
+          "modified": {
+            "type": "string",
+            "pattern": "^-?\\d{4,}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})?$",
+            "description": "dct:modified of the definition."
+          }
+        }
+      }
+    },
+    "scopeNote": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-zA-Z]{2,3}(-[a-zA-Z0-9]{2,8})*$"
+      },
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "description": "Property. Model:'http://www.w3.org/2004/02/skos/core#scopeNote'. A note that helps to clarify the meaning and/or the use of a concept. Used 17,470 times on 42,100 AGROVOC concepts (release 2026-11-05). Language map: a list of strings per BCP 47 language tag."
+    },
+    "closeMatch": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://www.w3.org/2004/02/skos/core#closeMatch'. Links two concepts in different schemes that are sufficiently similar to be used interchangeably in some applications. Used 13,948 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are IRIs outside AGROVOC (other thesauri, images), kept as published."
+    },
+    "related": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://www.w3.org/2004/02/skos/core#related'. Relates a concept to a concept with which there is an associative semantic relationship. Used 13,070 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "editorialNote": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-zA-Z]{2,3}(-[a-zA-Z0-9]{2,8})*$"
+      },
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "description": "Property. Model:'http://www.w3.org/2004/02/skos/core#editorialNote'. A note for an editor, translator or maintainer of the vocabulary. Used 12,339 times on 42,100 AGROVOC concepts (release 2026-11-05). Language map: a list of strings per BCP 47 language tag."
+    },
+    "hasTaxonomicRank": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#hasTaxonomicRank'. Agrontology 'Has taxonomic rank'. X <has taxonomic rank> Y. Describes taxonomic rank Y of organism X. “Spodoptera frugiperda” <has taxonomic rank> “species (taxa)”. Used 9,315 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isTaxonomicRankOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isTaxonomicRankOf'. Agrontology 'Is taxonomic rank of'. Y <is taxonomic rank of> X. Describes taxonomic rank Y of organism X. E.g. “species (taxa)” <is taxonomic rank of> “Spodoptera frugiperda”. Used 9,315 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "hiddenLabel": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-zA-Z]{2,3}(-[a-zA-Z0-9]{2,8})*$"
+      },
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "description": "Property. Model:'http://www.w3.org/2004/02/skos/core#hiddenLabel'. A lexical label for a resource that should be hidden when generating visual displays, but accessible to free-text search (e.g. misspellings). Used 5,665 times on 42,100 AGROVOC concepts (release 2026-11-05). Language map: a list of strings per BCP 47 language tag."
+    },
+    "skosxl:hiddenLabel": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://www.w3.org/2008/05/skos-xl#hiddenLabel'. A hidden label of the concept, as a reified skosxl:Label resource. Used 5,665 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Label entities (urn:ngsi-ld:Label:<label id>)."
+    },
+    "includes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#includes'. Agrontology 'Includes'. X <includes> Y. X is an entity that includes the element Y. For example: “animal husbandry methods” <includes> ”dehorning”, “water analysis” <includes> ”microbiological analysis”. Used 3,536 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isIncludedIn": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isIncludedIn'. Agrontology 'Is included in'. Y <is included in>X. X is an entity that includes the element Y. For example: \"dehorning” <included in> ”animal husbandry methods”, “microbiological analysis\" <included in> “water analysis” Used 3,536 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isUseOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isUseOf'. Agrontology 'Is use of'. Y <is use of> X. For example, \"sweeteners\" <is use of> '\"sorbitol\", \"fuels\" <is use of> \"ethanol\". Used 2,666 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isUsedAs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isUsedAs'. Agrontology 'Is used as'. X <is used as> Y. E.g. \"sorbitol\" <is used as> \"sweetener\"; \"ethanol\" <is used as> \"fuel\". Used 2,666 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "affects": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#affects'. Agrontology 'Affects'. X <affects> Y. Action of agent X changes the state or location of Y. E.g. \"water depletion\" <affects> \"groundwater table\", \"mechanical damage\" <affects> “transporting quality”. Do not use for diseases or disorders; for those, use <afflicts/is afflicted by>. Used 2,506 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isAffectedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isAffectedBy'. Agrontology 'Is affected by'. Y <is affected by> X. An object Y changes state or location because of an action of an agent X. E.g. \"trees\" <is affected by> \"arboricides\", \"transporting quality\" <is affected by> \"mechanical damage\". Do not use for diseases or disorders; for those, use <afflicts/is afflicted by>. Used 2,506 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isPartOfSubvocabulary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. Model:'http://aims.fao.org/aos/agrontology#isPartOfSubvocabulary'. Agrontology 'Is part of subvocabulary'. Used 1,967 times on 42,100 AGROVOC concepts (release 2026-11-05)."
+    },
+    "hasPathogen": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#hasPathogen'. Agrontology 'Has pathogen'. X <has pathogen> Y. Organism X has pathogen Y. Pathogens are pathogenic microorganism such as viruses, bacteria and fungi. E.g. \"Olea europaea\" <has pathogen> \"Xylella fastidiosa\". Used 1,397 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isPathogenOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isPathogenOf'. Agrontology 'Is pathogen of'. Y <is pathogen of> X . Y is pathogen of organism X. E.g. \"Xylella fastidiosa\" <is pathogen of> \"Olea europaea\". Used 1,397 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isUsedIn": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isUsedIn'. Agrontology 'Is used in'. X <is used in> Y. X is habitually used in Y, it is normal to use X in the practice of Y. E.g. “pheromones” <is used in> “pheromone traps”, “trains” <is used in> “rail transport”. Used 1,384 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "makeUseOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#makeUseOf'. Agrontology 'Make use of'. Y <make use of> X. Activity Y makes use of process or input X. E.g. “navigation” <make use of> ”navigational aids”, “precision agriculture” <make use of> ”geographical information systems”, “rail transport” <make use of> “trains”. Used 1,384 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "hasComponent": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#hasComponent'. Agrontology 'Has component'. Y <has component> X. An object X that is a part of a whole Y and also has an existence independently from Y. E.g. \"trees\" <has component> \"leaves\", \"vehicle systems\" <has component> \"engines\". Used 781 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isComponentOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isComponentOf'. Agrontology 'Is component of'. X <is component of> Y. An object X that is a part of a whole Y, also has an existence independently from Y. E.g. \"leaves\" <is component of> \"trees\", \"engines\" <is component of> \"vehicle systems\". Used 781 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "hasObjectOfActivity": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#hasObjectOfActivity'. Agrontology 'Has object of activity'. X <has object of activity> Y. Activity X focuses on Y. E.g. “shearing” <has object of activity> “wool”, “ratification” <has object of activity> “treaties”. Used 760 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isObjectOfActivity": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isObjectOfActivity'. Agrontology 'Is object of activity'. Y <is object of activity> X. Y is the focus of activity X. E.g. “wool” <is object of activity> \"shearing”, “treaties\" <is object of activity> “ratification”. Used 760 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "causes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#causes'. Agrontology 'Causes'. X <causes> Y. Agent X (animate or inanimate) brings about a result Y. E.g. \"prions\" <causes> \"spongiform encephalopathy\", \"soil moisture deficit\" <causes> \"wilting\". Used 757 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isCausedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isCausedBy'. Agrontology 'Is caused by'. Y <is caused by> X. A result Y occurred because of an agent X (animate or inanimate). E.g. \"spongiform encephalopathy\" <is caused by> “prions”, \"soil moisture deficit” <is caused by> \"wilting\". Used 757 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isProducedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isProducedBy'. Agrontology 'Is produced by'. X <is produced by> Y. Restrict use to natural processes (such as fruits growing on plants, eggs, milk) - but also chemical processes. E.g. “honey” <is produced by> “honey bees”, “potatoes” <is produced by> “Solanum tuberosum\". However, “cheese-making” <has product>” cheese”. Used 674 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "produces": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#produces'. Agrontology 'Produces'. Y <produces> X. E.g. “honey bees” <produces>“honey”, “Solanum tuberosum” <produces> \"potatoes\". However, “cheese-making” <has product>”cheese”. Used 674 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "historyNote": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-zA-Z]{2,3}(-[a-zA-Z0-9]{2,8})*$"
+      },
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "description": "Property. Model:'http://www.w3.org/2004/02/skos/core#historyNote'. A note about the past state/use/meaning of a concept. Used 532 times on 42,100 AGROVOC concepts (release 2026-11-05). Language map: a list of strings per BCP 47 language tag."
+    },
+    "isSpatiallyIncludedIn": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isSpatiallyIncludedIn'. Agrontology 'Is spatially included in'. Y <is spatially included in> X. Spatial region Y is an inalienable spatial part of spatial region X. E.g. \"African inland waters\" <is spatially included in> \"Africa\", \"Peru\" <is spatially included in> \"Andean region\". Used 529 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "spatiallyIncludes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#spatiallyIncludes'. Agrontology 'Spatially includes'. X <spatially includes> Y. Region X spatially includes as inalienable part the spatial region Y. E.g. \"Africa\" <spatially includes> \"African inland waters\", \"Andean region\" <spatially includes> \"Peru\". Used 529 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "hasMember": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#hasMember'. Agrontology 'Has member'. Y <has member> X. A social or political group Y consists of one or more subsidiary social or political units (group or individual) X. E.g. \"Francophone Africa\" <has member> \"Benin\", \"bee colonies\" <has member> \"worker bees\". Limit use to geographical or socio-political units. Do not use for grouping organisms by use, climate, or taxonomic rank. Use <includes> / <included in> if describing spatial or temporal relation, if more loose than <has part/is part of>. Used 509 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isMemberOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isMemberOf'. Agrontology 'Is member of'. X <isMemberOf> Y. A social or political unit (group or individual) X belongs to a social or political group Y. E.g. \"cow\" <isMemberOf> \"herd\"; \"Algeria\", \"Benin\", \"Burkina Faso\", etc. <isMemberOf> \"Francophone Africa\". Used 509 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isProcessFor": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isProcessFor'. Agrontology 'Is process for'. Y <is process for> X. One or more actions, activities, methods Y that produce a change or development for X. E.g. ”sterilization” <is process for> “sterile insect release”, “alcoholic fermentation” <is process for> “winemaking”. Used 500 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "usesProcess": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#usesProcess'. Agrontology 'Uses process'. X <uses process> Y. X uses one or more actions, activities, methods Y as a process. E.g. “winter crops” <uses process> “vernalization”, “canning” <uses process> “sterilizing”. Used 500 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "hasProperty": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#hasProperty'. Agrontology 'Has property'. X <has property> Y. A property might be a quality or trait. E.g. “seed” <has property> “seed size\", “medicinal plants” <has property> “medicinal properties”. Used 335 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isPropertyOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isPropertyOf'. Agrontology 'Is property of'. Y <is property of> X. A property might be a quality or trait. E.g. “seed viability” <is property of> “seed”, “medicinal properties” <is property of> “medicinal plants”. Used 335 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isDerivedFrom": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isDerivedFrom'. Agrontology 'Is derived from'. X <is derived from> Y. A substance or product X obtained exclusively from source Y without any additional substance or product. E.g. “almond oil” <is derived from> “almonds”, “orange juice” <is derived from> “sweet oranges”. Use to relate an organism with a derived product: “mutton” <is derived from> “sheep”. Used 285 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isSourceOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isSourceOf'. Agrontology 'Is source of'. Y <is source of> X. E.g. “almonds\" <is source of> “almond oil”, “sweet oranges”<is source of> “orange juice\". Use to relate an organism with a derived product: “sheep” <is source of> “mutton”. Used 285 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "m49Code": {
+      "type": "string",
+      "description": "Property. Model:'http://aims.fao.org/aos/agrontology#m49Code'. Agrontology 'M49 code'. UN M49 or the Standard Country or Area Codes for Statistical Use (Series M, No. 49) is a standard for area codes used by the United Nations for statistical purposes, developed and maintained by the United Nations Statistics Division. Used 283 times on 42,100 AGROVOC concepts (release 2026-11-05)."
+    },
+    "isStudiedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isStudiedBy'. Agrontology 'Is studied by'. X <is studied by> Y. Concept X is studied by field, science or group Y. E.g. “palaeontology”<is studied by> \"palaeontologists”, “working conditions” <is studied by> “ergonomics”. Used 270 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "study": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#study'. Agrontology 'Study'. Y <study> X. Field, science or group Y studies concept X. E.g. “sedimentology” <study> “sediment”, “wood anatomy” <study> “heartwood”. Used 270 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "broadMatch": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://www.w3.org/2004/02/skos/core#broadMatch'. States a hierarchical mapping link to a more general concept in another scheme. Used 261 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are IRIs outside AGROVOC (other thesauri, images), kept as published."
+    },
+    "hasCodeISO3Country": {
+      "type": "string",
+      "description": "Property. Model:'http://aims.fao.org/aos/agrontology#hasCodeISO3Country'. Agrontology 'Has ISO 3 country code'. The International Standard for country codes and codes for their subdivisions. Alpha-3 code – a three-letter code that represents a country name, which is usually more closely related to the country name Used 220 times on 42,100 AGROVOC concepts (release 2026-11-05)."
+    },
+    "compose": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#compose'. Agrontology 'Compose'. Y <compose> X. Y is the material or substance of which X is composed. E.g. “microbial flora” <compose> \"soil flora\", “volcanic materials” <compose> \"tuff\". Used 207 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isComposedOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isComposedOf'. Agrontology 'Is composed of'. X <is composed of> Y. X is composed of material or substance Y . E.g. “soil flora” <is composed of> “microbial flora”, “tuff”<is composed of> “volcanic materials”. Used 207 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "hasDisease": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#hasDisease'. Agrontology 'Has disease'. X <has disease> Y. Organism X can have disease Y. E.g. “Sorghum” <has disease> “loose smut of sorghum”, \"honey bees\" <has disease> \"varroosis\". Organism to disease relationship. Used 178 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isDiseaseFor": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isDiseaseFor'. Agrontology 'Is disease for'. Y <is disease for> X. Disease Y is disease of organism X. E.g. “loose smut of sorghum”<is disease for> “Sorghum\", \"varroosis\" <is disease for> \"honey bees\". Disease to organism relationship. Used 178 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "hasCommonNameConcept": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#hasCommonNameConcept'. Agrontology 'Has common name concept'. Y <has common name concept> X. Y is a scientifically defined concept for an organism or a group of organisms with scientific name as labels, having a specific taxonomic rank. \"Apis mellifera” <has common name concept> “honey bees”. Use at concept level when common name and scientific name are separate concepts. For label-to-label relationship for use within a concept, use <has scientific name / scientific name of>. Used 175 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "hasTaxonomicConcept": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#hasTaxonomicConcept'. Agrontology 'Has taxonomic concept'. X <has taxonomic concept> Y. X is a common name concept for an organism or organism group. Y is the scientifically defined concept name for the same organism or a group of organisms, having a specific taxonomic rank. E.g. “honey bees” <has taxonomic concept> ”Apis mellifera”. Use at concept level when common name and scientific name are separate concepts. For label-to-label relationship for use within a concept, use <has scientific name / scientific name of>. Used 175 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "hasGoalOrProcess": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#hasGoalOrProcess'. Agrontology 'Has goal or process'. X <has goal or process> Y. X has intended goal or process Y. E.g. “veterinary services” <has goal or process> “animal health”, “coppicing” <has goal or process> “natural regeneration”. Used 145 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isAchievedByMeansOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isAchievedByMeansOf'. Agrontology 'Is achieved by means of'. Y <is achieved by means of> X. Y is an objective or process used by X, without Y necessarily being part of X. E.g. “mating disruption” <is achieved by means of> “pheromone analogues”, “decision making” <is achieved by means of> “decision support systems”. Used 145 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isMadeFrom": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isMadeFrom'. Agrontology 'Is made from'. X <is made from> Y. Product X is mainly made from substance or a product Y. E.g. \"sheep cheese\" <is made from> \"ewe milk\", \"concrete\" <is made from> \"cement\", \"bacon\" <is made from> \"pork\". Stronger processing element than <is source of>. Used 131 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isUsedToMake": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isUsedToMake'. Agrontology 'Is used to make'. Y <is used to make> X. A substance or a product Y is used to make product X. E.g. \"ewe milk\" <is used to make> \"sheep cheese\", \"cement\" <is used to make> \"concrete\", \"pork\" <is used to make> \"bacon\". Stronger processing element than <is source of>. Used 131 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "hasProduct": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#hasProduct'. Agrontology 'Has product'. X <has product> Y. X is the source of product Y, with a processing element. E.g. “logging”<has product> “logging wastes”, “Spain” <has product> “sherry”. Used 102 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "productOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#productOf'. Agrontology 'Product of'. Y <product of> X, with a processing element. Y is produced or manufactured as a result or consequence of X. E.g. “logging wastes” <product of> “logging”. However, “honey” <is produced by> “honey bees”. Used 102 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "afflicts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#afflicts'. Agrontology 'Afflicts'. X <afflicts> Y. The disease or disorder X could have negative effects in Y, such as adversely affect the health of an organism or body part Y. E.g. \"endocrine diseases\" <afflicts> \"endocrine glands\", “glossitis” <afflicts> “tongue”. Used 97 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isAfflictedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isAfflictedBy'. Agrontology 'Is afflicted by'. Y <is Afflicted By> X. The health or wellbeing of an organism part Y could adversely be affected by the disease X. E.g. \"endocrine glands\" <is Afflicted By> \"endocrine diseases\", “tongue” <is Afflicted By> “glossitis”. Used 97 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "narrowMatch": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://www.w3.org/2004/02/skos/core#narrowMatch'. States a hierarchical mapping link to a more specific concept in another scheme. Used 72 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are IRIs outside AGROVOC (other thesauri, images), kept as published."
+    },
+    "isMeasuredBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isMeasuredBy'. Agrontology 'Is measured by'. X <is measured by> Y. A quantitative property of X is measured by Y. For example: “temperature” <is measured by> “thermometers”, “social change” <is measured by> “social indicators\". Used 67 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "measures": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#measures'. Agrontology 'Measures'. Y <measures> X. Y is used to measure a quantitative property of X. For example: “thermometers” <measures> “temperature”, “social indicators” <measures> ”social change”. Used 67 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "depiction": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://xmlns.com/foaf/0.1/depiction'. An image that depicts the concept. Used 59 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are IRIs outside AGROVOC (other thesauri, images), kept as published."
+    },
+    "hasPest": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#hasPest'. Agrontology 'Has pest'. Y <has pest> X. An organism Y in which the pest X causes harm. Pests are insects, nematodes and rodents that cause damage. E.g. \"Apis mellifera\" <has pest> \"Varroa destructor\", \"Olea europaea\" <has pest> \"Bactrocera oleae\". Used 57 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "pestOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#pestOf'. Agrontology 'Is a pest of'. X <pest of> Y. Pest X causes harm to organism Y. E.g. \"Varroa destructor\" <pest of> \"Apis mellifera\". Used 57 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "hasType": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#hasType'. Agrontology 'Has type'. X <has type> Y. Concept X has types Y. <type of> is broader and quite similar to <skos:broader>, but it is not exclusive. E.g. “horse gaits” <has type> “gallop”, but also elephants and camels can gallop. Used 38 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "typeOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#typeOf'. Agrontology 'Type of'. Y <type of> X. Concept Y is a type of X. <type of> is broader and quite similar to <skos:broader>, but it is not exclusive. E.g. “gallop” <type of> “horse gaits”, but also elephants and camels can gallop. Used 38 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "hasPart": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#hasPart'. Agrontology 'Has part'. X <has part> Y. A composite entity X that can be identified as being composed of one or more parts, between which Y. E.g. “stems” <has part> “cortex”, “roots” <has part>“root nodules”. Use this relationship when none of the other lower partitive relations (<has component>, <is composed of>, <member>) apply. Used 37 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isPartOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isPartOf'. Agrontology 'Is part of'. Y <is part of> X. X is composed of one or more parts, where Y is one part. E.g. “cortex” <is part of> “stems”, “root nodules” <is part of> “roots\". Use this relationship when none of the other lower partitive relations (<is composed of>, <has member>) apply. Used 37 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "note": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-zA-Z]{2,3}(-[a-zA-Z0-9]{2,8})*$"
+      },
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "description": "Property. Model:'http://www.w3.org/2004/02/skos/core#note'. A general note, for any purpose. Used 30 times on 42,100 AGROVOC concepts (release 2026-11-05). Language map: a list of strings per BCP 47 language tag."
+    },
+    "hasSymptom": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#hasSymptom'. Agrontology 'Has symptom'. X <has symptom> Y. A disease or disorder X presents disease characteristic Y in an organism. E.g. \"malnutrition\" <has symptom> \"thinness\", \"septicaemia\" <has symptom> \"septic shock\". Used 29 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "indicates": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#indicates'. Agrontology 'Indicates'. Y <indicates> X. A disease or disorder characteristic Y in an organism indicates disease X. E.g. \"septic shock\" <indicates> \"septicaemia\". Use only for symptoms of diseases and disorders, not for measurements. Used 29 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isPreventedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isPreventedBy'. Agrontology 'Is prevented by'. X <is prevented by> Y. X can be reduced, interrupted or prevented by Y. E.g. \"disease transmission\" <is prevented by> \"hand hygiene\", \"occupational hazards\" <is prevented by> \"safety at work\". Used 28 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "prevents": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#prevents'. Agrontology 'Prevents'. Y <prevents> X. Y is an element which prevents, interrupts or reduces harm or damage X. E.g. “hand hygiene” <prevents> “disease transmission”, “safety at work”<prevents> “occupational hazards”. Used 28 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "topConceptOf": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://www.w3.org/2004/02/skos/core#topConceptOf'. Relates a concept to the concept scheme that it is a top level concept of. Used 25 times on 42,100 AGROVOC concepts (release 2026-11-05). Target is the AGROVOC ConceptScheme entity (urn:ngsi-ld:ConceptScheme:agrovoc)."
+    },
+    "surroundedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#surroundedBy'. Agrontology 'Surrounded by'. X <surrounded by> Y. The object X is physically surrounded by object Y. E.g. “pupae” <surrounded by> “cocoons“, \"endosperm” <surrounded by> “aleurone cells\". Use only for the terms that are physically immediately adjacent to each other. For geography use <is spatially included in>. Used 20 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "surrounds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#surrounds'. Agrontology 'Surrounds'. Y <surrounds> X. The object Y is physically surrounding object X. E.g. “cocoons” <surrounds> “pupae“, \"aleurone cells” <surrounds> “endosperm\". Use only for the terms that are physically immediately adjacent to each other. For geography use <spatially Includes>. Used 20 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "relatedMatch": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://www.w3.org/2004/02/skos/core#relatedMatch'. States an associative mapping link to a concept in another scheme. Used 13 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are IRIs outside AGROVOC (other thesauri, images), kept as published."
+    },
+    "hasHost": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#hasHost'. Agrontology 'Has vector or host'. X <has vector or host> Y. X has organism host or vector Y. E.g. “Plasmodium” <has host> ”Anopheles”. Used 9 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isHostFor": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://aims.fao.org/aos/agrontology#isHostFor'. Agrontology 'Is vector or host for'. Y <Is vector or host for> X. Organism Y is host or vector for X. E.g. “Anopheles” <is vector or host for> ”Plasmodium”. Used 9 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "isReplacedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://purl.org/dc/terms/isReplacedBy'. A related resource that supplants, displaces or supersedes the described resource. Used 3 times on 42,100 AGROVOC concepts (release 2026-11-05). Targets are AGROVOC Concept entities (urn:ngsi-ld:Concept:c_<code>)."
+    },
+    "example": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-zA-Z]{2,3}(-[a-zA-Z0-9]{2,8})*$"
+      },
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "description": "Property. Model:'http://www.w3.org/2004/02/skos/core#example'. An example of the use of a concept. Used 3 times on 42,100 AGROVOC concepts (release 2026-11-05). Language map: a list of strings per BCP 47 language tag."
+    },
+    "deprecated": {
+      "type": "boolean",
+      "description": "Property. Model:'http://www.w3.org/2002/07/owl#deprecated'. True if the resource is deprecated. Used 1 times on 42,100 AGROVOC concepts (release 2026-11-05)."
+    },
+    "changeNote": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-zA-Z]{2,3}(-[a-zA-Z0-9]{2,8})*$"
+      },
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "description": "Property. Model:'http://www.w3.org/2004/02/skos/core#changeNote'. A note about a modification to a concept or label. Used 1 times on 42,100 AGROVOC concepts (release 2026-11-05). Language map: a list of strings per BCP 47 language tag."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "prefLabel",
+    "skosxl:prefLabel",
+    "inScheme"
+  ]
+}
