@@ -86,6 +86,78 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/brick-schema"
   },
   {
+    "slug": "catena-x-semantic-models",
+    "title": "Catena-X semantic models (Industry Core aspect models)",
+    "description": "Catena-X is the automotive data space. Its semantic models are SAMM (Semantic Aspect Meta Model) aspect models: each one describes one aspect of a digital twin, and a twin is identified by its globalAssetId (formerly catenaXId). This candidate covers the Industry Core, the set of aspects that every Catena-X traceability use case builds on: the twin itself (SerialPart, Batch, JustInSequencePart for instances; PartType for part types) and the single-level relations between twins (bill of material and usage, as built and as planned).",
+    "publisher": "Catena-X Automotive Network e.V., published through the Eclipse Tractus-X project (Eclipse Foundation)",
+    "sourceUrl": "https://github.com/eclipse-tractusx/sldt-semantic-models",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "Manufacturing",
+      "Industry4.0"
+    ],
+    "modelCount": 8,
+    "models": [
+      {
+        "name": "Batch",
+        "title": "Smart Data Models - Catena-X - Batch",
+        "description": "A batch is a quantity of(semi-)finished products or(raw)material product that have been produced under the same circumstances(e.g. same production location), as specified groups or amounts, within a certain time frame. Every batch can differ in the number or amount of products. Different batches can have varied specifications, e.g., different colors. A batch is identified via a Batch ID. (Catena-X aspect model urn:samm:io.catenax.industry_core.batch:4.0.0#Batch, translated from the SAMM-generated JSON Schema; aspect property names and nested structures are kept verbatim.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/catena-x-semantic-models/models/Batch/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/catena-x-semantic-models/models/Batch"
+      },
+      {
+        "name": "JustInSequencePart",
+        "title": "Smart Data Models - Catena-X - JustInSequencePart",
+        "description": "A just-in-sequence part is an instantiation of a (design-)part, where the particular instantiation can be uniquely identified by means of a combination of several IDs related to a just-in-sequence process. (Catena-X aspect model urn:samm:io.catenax.industry_core.just_in_sequence_part:4.0.0#JustInSequencePart, translated from the SAMM-generated JSON Schema; aspect property names and nested structures are kept verbatim.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/catena-x-semantic-models/models/JustInSequencePart/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/catena-x-semantic-models/models/JustInSequencePart"
+      },
+      {
+        "name": "PartType",
+        "title": "Smart Data Models - Catena-X - PartType",
+        "description": "A Part Type represents an item in the Catena-X Bill of Material (BOM) on a type level in a specific version. (Catena-X aspect model urn:samm:io.catenax.industry_core.part_type:2.0.0#PartType, translated from the SAMM-generated JSON Schema; aspect property names and nested structures are kept verbatim.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/catena-x-semantic-models/models/PartType/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/catena-x-semantic-models/models/PartType"
+      },
+      {
+        "name": "SerialPart",
+        "title": "Smart Data Models - Catena-X - SerialPart",
+        "description": "A serialized part is an instantiation of a (design-)part, where the particular instantiation can be uniquely identified by means of a serial number or a similar identifier (e.g. VAN)or a combination of multiple identifiers (e.g. combination of manufacturer, date and number) (Catena-X aspect model urn:samm:io.catenax.industry_core.serial_part:4.0.0#SerialPart, translated from the SAMM-generated JSON Schema; aspect property names and nested structures are kept verbatim.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/catena-x-semantic-models/models/SerialPart/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/catena-x-semantic-models/models/SerialPart"
+      },
+      {
+        "name": "SingleLevelBomAsBuilt",
+        "title": "Smart Data Models - Catena-X - SingleLevelBomAsBuilt",
+        "description": "The single-level bill of material represents one sub-level of an assembly and does not include any lower-level subassemblies. The as-built lifecycle references all child items as manufactured by the manufacturer referencing only child items in an as-built lifecycle themselves (e.g. serial parts or batches), unless parts can only be tracked by an part ID (on a type level).\n\nIf it is unclear which item has been built-in into the parent item, all potential parts must be listed. This is the case when, e.g. the same item is supplied by two suppliers and the item is only tracked by a customer part ID during assembly, these items can not be differentiated from each other. (Catena-X aspect model urn:samm:io.catenax.industry_core.single_level_bom_as_built:4.0.0#SingleLevelBomAsBuilt, translated from the SAMM-generated JSON Schema; aspect property names and nested structures are kept verbatim.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/catena-x-semantic-models/models/SingleLevelBomAsBuilt/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/catena-x-semantic-models/models/SingleLevelBomAsBuilt"
+      },
+      {
+        "name": "SingleLevelBomAsPlanned",
+        "title": "Smart Data Models - Catena-X - SingleLevelBomAsPlanned",
+        "description": "The single-level bill of material (BoM) represents one sub-level of an assembly and does not include any lower-level subassemblies. In the As-Planned lifecycle state all variants are covered (\"120% BoM\").\nIf multiple versions of child parts exist that can be assembled into the same parent part, all versions of the child part are included in the BoM.\nIf there are multiple suppliers for the same child part, each supplier has an entry for their child part in the BoM. (Catena-X aspect model urn:samm:io.catenax.industry_core.single_level_bom_as_planned:4.0.0#SingleLevelBomAsPlanned, translated from the SAMM-generated JSON Schema; aspect property names and nested structures are kept verbatim.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/catena-x-semantic-models/models/SingleLevelBomAsPlanned/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/catena-x-semantic-models/models/SingleLevelBomAsPlanned"
+      },
+      {
+        "name": "SingleLevelUsageAsBuilt",
+        "title": "Smart Data Models - Catena-X - SingleLevelUsageAsBuilt",
+        "description": "The aspect provides the information in which parent part(s)/product(s)the given item is assembled in. Could be a 1:1 relationship in terms of an e.g. a brake component or 1:n for e.g. coatings. The parent item must refer to an object from as-built lifecycle phase, i.e. a batch or a serialized part. (Catena-X aspect model urn:samm:io.catenax.industry_core.single_level_usage_as_built:4.0.0#SingleLevelUsageAsBuilt, translated from the SAMM-generated JSON Schema; aspect property names and nested structures are kept verbatim.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/catena-x-semantic-models/models/SingleLevelUsageAsBuilt/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/catena-x-semantic-models/models/SingleLevelUsageAsBuilt"
+      },
+      {
+        "name": "SingleLevelUsageAsPlanned",
+        "title": "Smart Data Models - Catena-X - SingleLevelUsageAsPlanned",
+        "description": "The aspect provides the information in which parent part(s)/product(s)the given item is to be assembled into or used. This could be a 1:1 relationship in terms of a e.g. a brake component or 1:n for e.g. coatings. The given item as well as the parent item must refer to an object from the as-planned lifecycle phase.\nIf multiple versions of parent parts exist that the child part can be assembled into or used, all versions of the parent part are included in the usage list. (Catena-X aspect model urn:samm:io.catenax.industry_core.single_level_usage_as_planned:3.0.0#SingleLevelUsageAsPlanned, translated from the SAMM-generated JSON Schema; aspect property names and nested structures are kept verbatim.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/catena-x-semantic-models/models/SingleLevelUsageAsPlanned/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/catena-x-semantic-models/models/SingleLevelUsageAsPlanned"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/catena-x-semantic-models"
+  },
+  {
     "slug": "cityjson-v2",
     "title": "CityJSON v2.0",
     "description": "CityJSON is a JSON encoding of a subset of the OGC CityGML data model for 3D city models (buildings, bridges, tunnels, transportation, vegetation, water bodies, land use, city furniture, and generic/grouped city objects). This candidate translates all 33 core City Object types defined in schemas/cityobjects.schema.json (v2.0.2) into NGSI-LD/NGSI-v2 entities.",
