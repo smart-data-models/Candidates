@@ -1,0 +1,338 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/camara-apis/models/GeofencingSubscription/schema.json",
+  "modelTags": "CAMARA,DeviceLocation,Geofencing,Subscription,Telecom,NetworkAPI",
+  "title": "Smart Data Models - CAMARA APIs - GeofencingSubscription",
+  "description": "Represents a event-type subscription. (CAMARA geofencing-subscriptions 0.5.0, DeviceLocation release r3.2, OpenAPI component Subscription; field names kept verbatim.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:GeofencingSubscription:<id>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "GeofencingSubscription"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'GeofencingSubscription'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "protocol": {
+      "type": "string",
+      "enum": [
+        "HTTP",
+        "MQTT3",
+        "MQTT5",
+        "AMQP",
+        "NATS",
+        "KAFKA"
+      ],
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/DeviceLocation/r3.2/code/API_definitions/geofencing-subscriptions.yaml#/components/schemas/Subscription/properties/protocol'. Identifier of a delivery protocol. Only HTTP is allowed for now.",
+      "examples": [
+        "HTTP"
+      ]
+    },
+    "sink": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https:\\/\\/.+$",
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/DeviceLocation/r3.2/code/API_definitions/geofencing-subscriptions.yaml#/components/schemas/Subscription/properties/sink'. The address to which events shall be delivered using the selected protocol.",
+      "examples": [
+        "https://endpoint.example.com/sink"
+      ]
+    },
+    "types": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/DeviceLocation/r3.2/code/API_definitions/geofencing-subscriptions.yaml#/components/schemas/Subscription/properties/types'. Camara Event types eligible to be delivered by this subscription. Note: As of now we enforce to have only event type per subscription.",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "type": "string",
+        "description": "area-entered - Event triggered when the device enters the given area area-left - Event triggered when the device leaves the given area",
+        "enum": [
+          "org.camaraproject.geofencing-subscriptions.v0.area-entered",
+          "org.camaraproject.geofencing-subscriptions.v0.area-left"
+        ]
+      }
+    },
+    "config": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/DeviceLocation/r3.2/code/API_definitions/geofencing-subscriptions.yaml#/components/schemas/Subscription/properties/config'. Implementation-specific configuration parameters are needed by the subscription manager for acquiring events. In CAMARA we have predefined attributes like `subscriptionExpireTime`, `subscriptionMaxEvents`, `initialEvent`. Specific event type attributes granted by the implementation are included in `subscriptionDetail`. Note: If a request is performed for several event types, all subscribed events will use the same `config` parameters.",
+      "type": "object",
+      "properties": {
+        "subscriptionExpireTime": {
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "2023-01-17T13:18:23.682Z"
+          ],
+          "description": "The subscription expiration time (in date-time format) requested by the API consumer. It must follow [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) and must have time zone."
+        },
+        "subscriptionMaxEvents": {
+          "type": "integer",
+          "description": "Identifies the maximum number of event reports to be generated (>=1) requested by the API consumer - Once this number is reached, the subscription ends. Note on combined usage of `initialEvent` and `subscriptionMaxEvents`: If an event is triggered following `initialEvent` set to `true`, this event will be counted towards `subscriptionMaxEvents`.",
+          "minimum": 1,
+          "examples": [
+            5
+          ]
+        },
+        "initialEvent": {
+          "type": "boolean",
+          "description": "Set to `true` by API consumer if consumer wants to get an event as soon as the subscription is created and current situation reflects event request. Example: Consumer request area entered event. If consumer sets initialEvent to true and device is already in the geofence, an event is triggered."
+        },
+        "subscriptionDetail": {
+          "description": "The detail of the event subscription granted by the implementation.",
+          "type": "object",
+          "properties": {
+            "device": {
+              "description": "An identifier for the end-user equipment able to connect to the network that the response refers to. This parameter is only returned when the API consumer includes the `device` parameter in their request (i.e. they are using a two-legged access token), and is relevant when more than one device identifier is specified, as only one of those device identifiers is allowed in the response. If the API consumer provides more than one device identifier in their request, the API provider must return a single identifier which is the one they are using to fulfil the request, even if the identifiers do not match the same device. API provider does not perform any logic to validate/correlate that the indicated device identifiers match the same device. No error should be returned if the identifiers are otherwise valid to prevent API consumers correlating different identifiers with a given end user.",
+              "type": "object",
+              "properties": {
+                "phoneNumber": {
+                  "description": "A public identifier addressing a telephone subscription. In mobile networks, it corresponds to the MSISDN (Mobile Station International Subscriber Directory Number). In order to be globally unique it has to be formatted in international format, according to E.164 standard, prefixed with '+'.",
+                  "type": "string",
+                  "pattern": "^\\+[1-9][0-9]{4,14}$",
+                  "examples": [
+                    "+123456789"
+                  ]
+                },
+                "networkAccessIdentifier": {
+                  "description": "A public identifier addressing a subscription in a mobile network. In 3GPP terminology, it corresponds to the GPSI formatted with the External Identifier ({Local Identifier}@{Domain Identifier}). Unlike the telephone number, the network access identifier is not subjected to portability ruling in force, and is individually managed by each operator.",
+                  "type": "string",
+                  "examples": [
+                    "123456789@domain.com"
+                  ]
+                },
+                "ipv4Address": {
+                  "type": "object",
+                  "description": "The device should be identified by either the public (observed) IP address and port as seen by the application server, or the private (local) and any public (observed) IP addresses in use by the device (this information can be obtained by various means, for example from some DNS servers). If the allocated and observed IP addresses are the same (i.e. NAT is not in use) then the same address should be specified for both publicAddress and privateAddress. If NAT64 is in use, the device should be identified by its publicAddress and publicPort, or separately by its allocated IPv6 address (field ipv6Address of the Device object) In all cases, publicAddress must be specified, along with at least one of either privateAddress or publicPort, dependent upon which is known. In general, mobile devices cannot be identified by their public IPv4 address alone.",
+                  "properties": {
+                    "publicAddress": {
+                      "description": "A single IPv4 address with no subnet mask.",
+                      "type": "string",
+                      "format": "ipv4",
+                      "examples": [
+                        "84.125.93.10"
+                      ]
+                    },
+                    "privateAddress": {
+                      "description": "A single IPv4 address with no subnet mask.",
+                      "type": "string",
+                      "format": "ipv4",
+                      "examples": [
+                        "84.125.93.10"
+                      ]
+                    },
+                    "publicPort": {
+                      "description": "TCP or UDP port number.",
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 65535
+                    }
+                  },
+                  "anyOf": [
+                    {
+                      "required": [
+                        "publicAddress",
+                        "privateAddress"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "publicAddress",
+                        "publicPort"
+                      ]
+                    }
+                  ],
+                  "examples": [
+                    {
+                      "publicAddress": "84.125.93.10",
+                      "publicPort": 59765
+                    }
+                  ]
+                },
+                "ipv6Address": {
+                  "description": "The device should be identified by the observed IPv6 address, or by any single IPv6 address from within the subnet allocated to the device (e.g. adding ::0 to the /64 prefix).",
+                  "type": "string",
+                  "format": "ipv6",
+                  "examples": [
+                    "2001:db8:85a3:8d3:1319:8a2e:370:7344"
+                  ]
+                }
+              },
+              "minProperties": 1,
+              "maxProperties": 1
+            },
+            "area": {
+              "description": "",
+              "type": "object",
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "areaType": {
+                      "type": "string",
+                      "description": "Type of this area. CIRCLE - The area is defined as a circle.",
+                      "enum": [
+                        "CIRCLE"
+                      ]
+                    },
+                    "center": {
+                      "type": "object",
+                      "description": "Coordinates (latitude, longitude) defining a location in a map.",
+                      "required": [
+                        "latitude",
+                        "longitude"
+                      ],
+                      "properties": {
+                        "latitude": {
+                          "description": "Latitude component of a location.",
+                          "type": "number",
+                          "format": "double",
+                          "minimum": -90,
+                          "maximum": 90,
+                          "examples": [
+                            50.735851
+                          ]
+                        },
+                        "longitude": {
+                          "description": "Longitude component of location.",
+                          "type": "number",
+                          "format": "double",
+                          "minimum": -180,
+                          "maximum": 180,
+                          "examples": [
+                            7.10066
+                          ]
+                        }
+                      },
+                      "examples": [
+                        {
+                          "latitude": 50.735851,
+                          "longitude": 7.10066
+                        }
+                      ]
+                    },
+                    "radius": {
+                      "type": "number",
+                      "description": "Expected accuracy for the subscription event of device location, in meters from `center`. Note: The area surface could be restricted locally depending on regulations. Implementations may enforce a larger minimum radius (e.g. 1000 meters).",
+                      "minimum": 1
+                    }
+                  },
+                  "required": [
+                    "areaType",
+                    "center",
+                    "radius"
+                  ],
+                  "description": "Circular area",
+                  "examples": [
+                    {
+                      "areaType": "CIRCLE",
+                      "center": {
+                        "latitude": 50.735851,
+                        "longitude": 7.10066
+                      },
+                      "radius": 50000
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "required": [
+            "area"
+          ]
+        }
+      },
+      "required": [
+        "subscriptionDetail"
+      ]
+    },
+    "camaraId": {
+      "type": "string",
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/DeviceLocation/r3.2/code/API_definitions/geofencing-subscriptions.yaml#/components/schemas/Subscription/properties/id'. The unique identifier of the subscription in the scope of the subscription manager. When this information is contained within an event notification, this concept SHALL be referred as subscriptionId as per Commonalities Event Notification Model.",
+      "examples": [
+        "1119920371"
+      ]
+    },
+    "startsAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/DeviceLocation/r3.2/code/API_definitions/geofencing-subscriptions.yaml#/components/schemas/Subscription/properties/startsAt'. Date when the event subscription will begin/began It must follow [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) and must have time zone.",
+      "examples": [
+        "2023-07-03T12:27:08.312Z"
+      ]
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/DeviceLocation/r3.2/code/API_definitions/geofencing-subscriptions.yaml#/components/schemas/Subscription/properties/expiresAt'. Date when the event subscription will expire. Only provided when `subscriptionExpireTime` is indicated by API client or Telco Operator has specific policy about that. It must follow [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) and must have time zone.",
+      "examples": [
+        "2023-07-03T12:27:08.312Z"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/DeviceLocation/r3.2/code/API_definitions/geofencing-subscriptions.yaml#/components/schemas/Subscription/properties/status'. Current status of the subscription - Management of Subscription State engine is not mandatory for now. Note not all statuses may be considered to be implemented. Details: - `ACTIVATION_REQUESTED`: Subscription creation (POST) is triggered but subscription creation process is not finished yet. - `ACTIVE`: Subscription creation process is completed. Subscription is fully operative. - `INACTIVE`: Subscription is temporarily inactive, but its workflow logic is not deleted. - `EXPIRED`: Subscription is ended (no longer active). This status applies when subscription is ended due to `SUBSCRIPTION_EXPIRED` or `ACCESS_TOKEN_EXPIRED` event. - `DELETED`: Subscription is ended as deleted (no longer active). This status applies when subscription information is kept (i.e. subscription workflow is no longer active but its meta-information is kept).",
+      "enum": [
+        "ACTIVATION_REQUESTED",
+        "ACTIVE",
+        "EXPIRED",
+        "INACTIVE",
+        "DELETED"
+      ]
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. Not a CAMARA field (Smart Data Models addition): a GeoJSON Point built from the centre of the geofence circle in `config.subscriptionDetail.area`, so that NGSI-LD geo-queries work. The CAMARA object is kept unchanged.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "protocol",
+    "sink",
+    "types",
+    "config",
+    "camaraId",
+    "startsAt"
+  ]
+}

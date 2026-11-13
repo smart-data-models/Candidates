@@ -1,0 +1,259 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/camara-apis/models/RegionDeviceCount/schema.json",
+  "modelTags": "CAMARA,RegionDeviceCount,Crowd,Telecom,NetworkAPI",
+  "title": "Smart Data Models - CAMARA APIs - RegionDeviceCount",
+  "description": "RegionDeviceCount result (CAMARA region-device-count 0.2.0, RegionDeviceCount release r2.2, OpenAPI component RegionDeviceCountResponse; field names kept verbatim.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:RegionDeviceCount:<local identifier of the counted region>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "RegionDeviceCount"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'RegionDeviceCount'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "area": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/RegionDeviceCount/r2.2/code/API_definitions/region-device-count.yaml#/components/schemas/RegionDeviceCountRequestBody/properties/area'. ",
+      "type": "object",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "areaType": {
+              "type": "string",
+              "description": "Type of this area. CIRCLE - The area is defined as a circle. POLYGON - The area is defined as a polygon.",
+              "enum": [
+                "CIRCLE"
+              ]
+            },
+            "center": {
+              "type": "object",
+              "description": "Coordinates (latitude, longitude) defining a location in a map",
+              "required": [
+                "latitude",
+                "longitude"
+              ],
+              "properties": {
+                "latitude": {
+                  "description": "Latitude component of a location",
+                  "type": "number",
+                  "format": "double",
+                  "minimum": -90,
+                  "maximum": 90
+                },
+                "longitude": {
+                  "description": "Longitude component of location",
+                  "type": "number",
+                  "format": "double",
+                  "minimum": -180,
+                  "maximum": 180
+                }
+              },
+              "examples": [
+                {
+                  "latitude": 50.735851,
+                  "longitude": 7.10066
+                }
+              ]
+            },
+            "radius": {
+              "type": "number",
+              "description": "Distance from the center in meters",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "areaType",
+            "center",
+            "radius"
+          ],
+          "description": "Circular area"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "areaType": {
+              "type": "string",
+              "description": "Type of this area. CIRCLE - The area is defined as a circle. POLYGON - The area is defined as a polygon.",
+              "enum": [
+                "POLYGON"
+              ]
+            },
+            "boundary": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "description": "Coordinates (latitude, longitude) defining a location in a map",
+                "required": [
+                  "latitude",
+                  "longitude"
+                ],
+                "properties": {
+                  "latitude": {
+                    "description": "Latitude component of a location",
+                    "type": "number",
+                    "format": "double",
+                    "minimum": -90,
+                    "maximum": 90
+                  },
+                  "longitude": {
+                    "description": "Longitude component of location",
+                    "type": "number",
+                    "format": "double",
+                    "minimum": -180,
+                    "maximum": 180
+                  }
+                },
+                "examples": [
+                  {
+                    "latitude": 50.735851,
+                    "longitude": 7.10066
+                  }
+                ]
+              },
+              "minItems": 3,
+              "maxItems": 15
+            }
+          },
+          "required": [
+            "areaType",
+            "boundary"
+          ]
+        }
+      ]
+    },
+    "starttime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/RegionDeviceCount/r2.2/code/API_definitions/region-device-count.yaml#/components/schemas/RegionDeviceCountRequestBody/properties/starttime'. Starting timestamp for counting the number of devices in the area. It must follow [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) and must have time zone.",
+      "examples": [
+        "2023-07-03T14:27:08.312+02:00"
+      ]
+    },
+    "endtime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/RegionDeviceCount/r2.2/code/API_definitions/region-device-count.yaml#/components/schemas/RegionDeviceCountRequestBody/properties/endtime'. Ending timestamp for counting the number of devices in the area. It must follow [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) and must have time zone.",
+      "examples": [
+        "2023-07-04T14:27:08.312+02:00"
+      ]
+    },
+    "filter": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/RegionDeviceCount/r2.2/code/API_definitions/region-device-count.yaml#/components/schemas/RegionDeviceCountRequestBody/properties/filter'. This parameter is used to filter devices. Currently, two filtering criteria are defined, `roamingStatus` and `deviceType`, which can be expanded in the future. `IN` logic is used used for multiple filtering items within a single filtering criterion, `AND` logic is used between multiple filtering criteria. - If a filtering critera is not provided, it means that there is no need to filter this item. - At least one of the criteria must be provided,a filter without any criteria is not allowed. - If no filtering is required, this parameter does not need to be provided. For example ,`\"filter\":{\"roamingStatus\": [\"roaming\"],\"deviceType\": [\"human device\",\"IoT device\"]}` means the API need to return the count of human network devices and IoT devices that are in roaming mode.`\"filter\":{\"roamingStatus\": [\"non-roaming\"]}` means that the API need to return the count of all devices that are not in roaming mode.",
+      "type": "object",
+      "properties": {
+        "roamingStatus": {
+          "description": "Filter whether the device is in roaming mode,'roaming' represents the need to filter devices that are in roaming mode,'non-roaming' represents the need to filter devices that are not roaming.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "roaming",
+              "non-roaming"
+            ]
+          },
+          "minItems": 1
+        },
+        "deviceType": {
+          "description": "Filtering by device type, 'human device' represents the need to filter for human network devices, 'IoT device' represents the need to filter for IoT devices, and 'other' represents the need to filter for other types of devices.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "human device",
+              "IoT device",
+              "other"
+            ]
+          },
+          "minItems": 1
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "roamingStatus"
+          ]
+        },
+        {
+          "required": [
+            "deviceType"
+          ]
+        }
+      ]
+    },
+    "count": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/RegionDeviceCount/r2.2/code/API_definitions/region-device-count.yaml#/components/schemas/RegionDeviceCountResponse/properties/count'. Device Count",
+      "type": "number"
+    },
+    "status": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/RegionDeviceCount/r2.2/code/API_definitions/region-device-count.yaml#/components/schemas/RegionDeviceCountResponse/properties/status'. SUPPORTED_AREA: The whole requested area is supported Region Device Count for the entire requested area is returned - Telco Coverage = 100 % PART_OF_AREA_NOT_SUPPORTED: Part of the requested area is outside the MNOs coverage area, the area outside the coverage area are not returned - 100% >Telco Coverage >=50% AREA_NOT_SUPPORTED: The whole requested area is outside the MNO coverage area No data will be returned- Telco Coverage <50% DENSITY_BELOW_PRIVACY_THRESHOLD: The number of connected devices is below privacy threshold of local regulation TIME_INTERVAL_NO_DATA_FOUND: Unable to find device count data within the requested time interval",
+      "type": "string",
+      "enum": [
+        "SUPPORTED_AREA",
+        "PART_OF_AREA_NOT_SUPPORTED",
+        "AREA_NOT_SUPPORTED",
+        "DENSITY_BELOW_PRIVACY_THRESHOLD",
+        "TIME_INTERVAL_NO_DATA_FOUND"
+      ]
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. Not a CAMARA field (Smart Data Models addition): a GeoJSON Polygon built from the CAMARA `area` (circle centre or polygon boundary), so that NGSI-LD geo-queries work. The CAMARA object is kept unchanged.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Polygon"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "minItems": 4,
+            "items": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

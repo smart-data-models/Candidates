@@ -1,0 +1,69 @@
+{
+  "id": "urn:ngsi-ld:GeofencingSubscription:qs15-h556-rt89-1298",
+  "type": "GeofencingSubscription",
+  "camaraId": {
+    "type": "Text",
+    "value": "qs15-h556-rt89-1298"
+  },
+  "protocol": {
+    "type": "Text",
+    "value": "HTTP"
+  },
+  "sink": {
+    "type": "URL",
+    "value": "https://endpoint.example.com/sink"
+  },
+  "types": {
+    "type": "StructuredValue",
+    "value": [
+      "org.camaraproject.geofencing-subscriptions.v0.area-entered"
+    ]
+  },
+  "config": {
+    "type": "StructuredValue",
+    "value": {
+      "subscriptionDetail": {
+        "device": {
+          "phoneNumber": "+123456789"
+        },
+        "area": {
+          "areaType": "CIRCLE",
+          "center": {
+            "latitude": 40.416775,
+            "longitude": -3.70379
+          },
+          "radius": 500
+        }
+      },
+      "subscriptionExpireTime": "2026-11-08T00:00:00Z",
+      "subscriptionMaxEvents": 10,
+      "initialEvent": true
+    }
+  },
+  "startsAt": {
+    "type": "DateTime",
+    "value": "2026-11-07T16:00:00Z"
+  },
+  "expiresAt": {
+    "type": "DateTime",
+    "value": "2026-11-08T00:00:00Z"
+  },
+  "status": {
+    "type": "Text",
+    "value": "ACTIVE"
+  },
+  "location": {
+    "type": "StructuredValue",
+    "value": {
+      "type": "Point",
+      "coordinates": [
+        -3.70379,
+        40.416775
+      ]
+    }
+  },
+  "source": {
+    "type": "Text",
+    "value": "Synthetic example (CAMARA publishes no open data; operators expose these APIs only to registered API consumers). Device identifiers are the CAMARA specification's own example values (phone number +123456789) or documentation addresses (RFC 5737 / RFC 3849); the Madrid scenario, times and figures are invented. Structure: CAMARA geofencing-subscriptions 0.5.0, Apache-2.0, CAMARA Project (Linux Foundation)."
+  }
+}

@@ -226,6 +226,71 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/brick-schema"
   },
   {
+    "slug": "camara-apis",
+    "title": "CAMARA APIs (Linux Foundation telco network APIs)",
+    "description": "CAMARA is the open-source project of the Linux Foundation, run with the GSMA Open Gateway initiative, that defines network APIs exposed in the same way by mobile operators worldwide: quality on demand, device location and geofencing, population density, region device count, device status, SIM swap, number verification and more. Each API is an OpenAPI 3.0 specification in its own GitHub repository, released in coordinated meta-releases (Spring25, Fall25, Sync26, ...). This candidate translates the APIs whose resources have identity and state and are useful in smart-city and IoT settings: QoS profiles and QoD sessions, device location and geofencing subscriptions, crowd data (population density per geohash cell, device counts per region) and device reachability.",
+    "publisher": "CAMARA Project, Linux Foundation (in partnership with GSMA Open Gateway)",
+    "sourceUrl": "https://github.com/camaraproject",
+    "license": "Apache-2.0",
+    "domains": [
+      "SmartCities",
+      "CrossSector"
+    ],
+    "modelCount": 7,
+    "models": [
+      {
+        "name": "CellPopulationDensityData",
+        "title": "Smart Data Models - CAMARA APIs - CellPopulationDensityData",
+        "description": "Population density data of a cell in a concrete time range. In case of insufficient data, to guarantee an anonymized prediction due to the k-anonymity within a specific cell and time range, no population density data is returned and the property `dataType` value is \"LOW_DENSITY\". In case of a cell not supported `dataType` value is \"NO_DATA\" (CAMARA population-density-data 1.0.0, PopulationDensityData release r4.3, OpenAPI component CellPopulationDensityData; field names kept verbatim.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/camara-apis/models/CellPopulationDensityData/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/camara-apis/models/CellPopulationDensityData"
+      },
+      {
+        "name": "DeviceLocation",
+        "title": "Smart Data Models - CAMARA APIs - DeviceLocation",
+        "description": "Device location (CAMARA location-retrieval 0.5.0, DeviceLocation release r3.2, OpenAPI component Location; field names kept verbatim.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/camara-apis/models/DeviceLocation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/camara-apis/models/DeviceLocation"
+      },
+      {
+        "name": "DeviceReachabilityStatus",
+        "title": "Smart Data Models - CAMARA APIs - DeviceReachabilityStatus",
+        "description": "(CAMARA device-reachability-status 1.1.0, DeviceReachabilityStatus release r1.2, OpenAPI component ReachabilityStatusResponse; field names kept verbatim.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/camara-apis/models/DeviceReachabilityStatus/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/camara-apis/models/DeviceReachabilityStatus"
+      },
+      {
+        "name": "GeofencingSubscription",
+        "title": "Smart Data Models - CAMARA APIs - GeofencingSubscription",
+        "description": "Represents a event-type subscription. (CAMARA geofencing-subscriptions 0.5.0, DeviceLocation release r3.2, OpenAPI component Subscription; field names kept verbatim.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/camara-apis/models/GeofencingSubscription/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/camara-apis/models/GeofencingSubscription"
+      },
+      {
+        "name": "QosProfile",
+        "title": "Smart Data Models - CAMARA APIs - QosProfile",
+        "description": "Data type with attributes of a QosProfile (CAMARA qos-profiles 1.1.0, QualityOnDemand release r3.2, OpenAPI component QosProfile; field names kept verbatim.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/camara-apis/models/QosProfile/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/camara-apis/models/QosProfile"
+      },
+      {
+        "name": "RegionDeviceCount",
+        "title": "Smart Data Models - CAMARA APIs - RegionDeviceCount",
+        "description": "RegionDeviceCount result (CAMARA region-device-count 0.2.0, RegionDeviceCount release r2.2, OpenAPI component RegionDeviceCountResponse; field names kept verbatim.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/camara-apis/models/RegionDeviceCount/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/camara-apis/models/RegionDeviceCount"
+      },
+      {
+        "name": "SessionInfo",
+        "title": "Smart Data Models - CAMARA APIs - SessionInfo",
+        "description": "Session related information returned in responses. Note that the device object is defined as optional and will only to be returned if provided in createSession. If more than one type of device identifier was provided, only one identifier will be returned (at implementation choice and with the original value provided in createSession). Please note that IP addresses of devices can change and get reused, so the original values may no longer identify the same device. They identified the device at the time of session creation. (CAMARA quality-on-demand 1.1.0, QualityOnDemand release r3.2, OpenAPI component SessionInfo; field names kept verbatim.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/camara-apis/models/SessionInfo/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/camara-apis/models/SessionInfo"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/camara-apis"
+  },
+  {
     "slug": "catena-x-semantic-models",
     "title": "Catena-X semantic models (Industry Core aspect models)",
     "description": "Catena-X is the automotive data space. Its semantic models are SAMM (Semantic Aspect Meta Model) aspect models: each one describes one aspect of a digital twin, and a twin is identified by its globalAssetId (formerly catenaXId). This candidate covers the Industry Core, the set of aspects that every Catena-X traceability use case builds on: the twin itself (SerialPart, Batch, JustInSequencePart for instances; PartType for part types) and the single-level relations between twins (bill of material and usage, as built and as planned).",
