@@ -1,0 +1,111 @@
+title: "Open Contracting Data Standard (OCDS)"
+publisher: "Open Contracting Partnership"
+sourceUrl: "https://github.com/open-contracting/standard"
+specificationUrl: "https://standard.open-contracting.org/latest/en/"
+contact: "data@open-contracting.org (issues: https://github.com/open-contracting/standard/issues)"
+sourceOntologyVersion: "OCDS 1.1.5 (release schema https://standard.open-contracting.org/schema/1__1__5/release-schema.json)"
+sourceOntologyDownload: "https://standard.open-contracting.org/schema/1__1__5/release-schema.json"
+sourceOntologyNamespace: "https://standard.open-contracting.org/schema/1__1__5/release-schema.json#"
+sourceOntologyFormat: "JSON Schema (draft-04) with CSV codelists; no RDF vocabulary"
+sourceExampleUrl: "https://www.find-tender.service.gov.uk/api/1.0/ocdsReleasePackages?limit=20&stages=award"
+sourceExampleLicense: "Open Government Licence v3.0 (UK Find a Tender Service release packages)"
+domains:
+  - SmartCities
+  - CrossSector
+description: >
+  OCDS is the open data standard for publishing information on public
+  contracting: planning, tender, award, contract and implementation. Data
+  is published as releases (notices about one stage of a contracting
+  process, identified by its ocid) that can be compiled into records. It
+  is used by more than 50 governments and many cities, including the UK
+  Find a Tender and Contracts Finder services, and is the basis of the
+  OCDS for EU profile used for eForms.
+license: "Apache-2.0"
+licenseNote: >
+  Confirmed via the repository LICENSE file (Copyright (c) 2014-2017 Open
+  Contracting Partnership, Apache License 2.0). The examples use a real
+  UK Find a Tender Service release; the release package states the Open
+  Government Licence v3.0, and attribution is given in each example's
+  `source`.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source JSON Schema to SDM candidate artifacts"
+notes: |
+  Translated on 2026-11-13 from the OCDS 1.1.5 release schema (the latest
+  release; the 1.2-dev branch is unreleased and was not used). Source row 37
+  of the "Level A standards not in Smart Data Models" list (licence
+  verified: Yes).
+
+  MODELS (5), named as the OCDS objects:
+    - Release       the release itself (root of release-schema.json)
+    - Organization  #/definitions/Organization (the entries of `parties`)
+    - Tender        #/definitions/Tender
+    - Award         #/definitions/Award
+    - Contract      #/definitions/Contract
+  Planning, Implementation, Item, Document, Milestone, Amendment, Period,
+  Value, Address, Identifier, ContactPoint, Budget, Transaction and
+  RelatedProcess stay nested inside their parent, with their full OCDS
+  structure, and are "@type": "@json" in the contexts.
+
+  RELATIONSHIPS: OCDS embeds objects inside the release and refers to
+  parties by OrganizationReference ({id, name}). Here:
+    - Release.parties, buyer, tender, awards and contracts,
+    - Tender.procuringEntity and tenderers,
+    - Award.suppliers
+  are NGSI-LD Relationships to the separate entities. Contract.awardID is
+  kept as the OCDS string. References inside nested objects (e.g.
+  Transaction.payer/payee) stay OrganizationReference objects.
+  Entity ids:
+    urn:ngsi-ld:Release:<ocid>:<release id>
+    urn:ngsi-ld:Tender:<ocid>
+    urn:ngsi-ld:Award:<ocid>:<award id>
+    urn:ngsi-ld:Contract:<ocid>:<contract id>
+    urn:ngsi-ld:Organization:<party id> (an org-id.guide identifier when
+    the publisher uses one, e.g. GB-COH-RS008181)
+
+  NAMING: field names are kept verbatim, with two exceptions forced by
+  NGSI-LD: `id` -> `ocdsId` (the entity id is the NGSI-LD URN) and
+  `value` -> `ocdsValue` on Tender, Award and Contract (`value` is an
+  NGSI-LD core term). Inside nested objects, `id` and `value` keep their
+  OCDS names. The added `ocid` on Tender, Award and Contract is the
+  release's ocid; those objects have no ocid of their own in OCDS.
+  Organization is a generic type name that already exists in
+  dataModel.Organization and in three candidates.
+
+  CONTEXT IRIs: OCDS has no RDF vocabulary. Terms map to JSON Pointer IRIs
+  into the 1.1.5 release schema, e.g.
+  https://standard.open-contracting.org/schema/1__1__5/release-schema.json#/definitions/Tender/properties/procurementMethod.
+
+  SCHEMA CONVERSION (draft-04 to 2020-12): $refs inlined; "null" removed
+  from types and enums (absent fields are omitted instead); OCDS merge and
+  codelist keywords (wholeListMerge, omitWhenMerged, versionId, codelist,
+  openCodelist) removed, with the codelist named in each description;
+  closed codelists stay enums, open codelists are free strings. The
+  language-variant patternProperties (title_es, ...) are not carried over.
+  Deprecated fields are left out: the singular `amendment` and
+  Amendment.changes, Budget.source, Milestone.documents,
+  Transaction.amount/providerOrganization/receiverOrganization, and the
+  deprecated identifier/address/contactPoint fields of
+  OrganizationReference.
+
+  EXAMPLES ARE REAL: one UK Find a Tender Service release (108186-2026,
+  ocid ocds-h6vhtk-07bc1b, 13 November 2026), "Lift Consultancy Services":
+  Citizen Housing Group Ltd awards a contract to Cundall Johnson &
+  Partners LLP, signed 20 July 2026, GBP 250,000. Find a Tender uses OCDS
+  extensions (lots, bids, legalBasis, the EU profile, ...); only core
+  1.1.5 fields are kept. Two changes, both stated in the example's
+  `source`:
+    - the tender's CPV classification (71315100, an extension field at
+      tender level) is given on the tender's item, where OCDS core puts
+      classifications;
+    - the buyer's contact person (name and e-mail) is left out of the
+      Organization example.
+
+  EXTENSIONS: OCDS is designed to be extended (lots, bids, EU profile,
+  ...). None are included; they could become further candidates or
+  optional attributes.
+
+  DUPLICATION RISK: Smart Data Models has no public procurement subject.
+  dataModel.Organization overlaps with Organization; the type name
+  clashes and should be reviewed at promotion. dataModel.CPSV-AP
+  describes public services, not contracting.
