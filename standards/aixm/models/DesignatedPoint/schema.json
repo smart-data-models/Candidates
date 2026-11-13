@@ -1,0 +1,1219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/aixm/models/DesignatedPoint/schema.json",
+  "modelTags": "AIXM,Aviation,AeronauticalInformation,Navigation",
+  "title": "Smart Data Models - AIXM - DesignatedPoint",
+  "description": "A geographical location not marked by the site of a radio navigation aid, used in defining an ATS route, the flight path of an aircraft or for other navigation or ATS purposes. (AIXM 5.2 feature DesignatedPoint. One NGSI-LD entity per AIXM feature; its attributes are the properties of one TimeSlice, normally the current BASELINE, flattened at entity level, with validTime and the other TimeSlice properties kept as attributes. Property names kept verbatim; nested AIXM <<object>> types keep their structure.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:DesignatedPoint:<gml:identifier UUID>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "DesignatedPoint"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'DesignatedPoint'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "identifier": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Other_AIXMFeature.html#identifier'. gml:identifier of the AIXM feature (codeSpace urn:uuid:): a UUID that stays the same in every TimeSlice of the feature. The NGSI-LD id is urn:ngsi-ld:<feature>:<identifier>."
+    },
+    "validTime": {
+      "type": "object",
+      "properties": {
+        "beginPosition": {
+          "type": "string",
+          "format": "date-time",
+          "description": "gml:beginPosition of the gml:TimePeriod."
+        },
+        "endPosition": {
+          "type": "string",
+          "format": "date-time",
+          "description": "gml:endPosition of the gml:TimePeriod. Absent when the end is indeterminate (indeterminatePosition='unknown'), i.e. until further notice."
+        }
+      },
+      "required": [
+        "beginPosition"
+      ],
+      "additionalProperties": false,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Other_AIXMFeatureTimeSlice.html#validTime'. gml:validTime of the TimeSlice whose properties are carried by this entity: the period during which these values are effective. The efffectivity of the TimeSlice."
+    },
+    "interpretation": {
+      "type": "string",
+      "enum": [
+        "BASELINE",
+        "SNAPSHOT",
+        "TEMPDELTA",
+        "PERMDELTA"
+      ],
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Other_AIXMFeatureTimeSlice.html#interpretation'. Property indicating how the timeslice is to be interpreted. See the AIXM Temporality model for details. Normally BASELINE (or SNAPSHOT) for an NGSI-LD entity, which carries the full state of the feature."
+    },
+    "sequenceNumber": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Other_AIXMFeatureTimeSlice.html#sequenceNumber'. Used for the identification of the Time Slice concerned. See the AIXM Temporality model for details."
+    },
+    "correctionNumber": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Other_AIXMFeatureTimeSlice.html#correctionNumber'. Used for indicating the order of the corrections of a Time Slice. See the AIXM Temporality model for details."
+    },
+    "featureLifetime": {
+      "type": "object",
+      "properties": {
+        "beginPosition": {
+          "type": "string",
+          "format": "date-time",
+          "description": "gml:beginPosition of the gml:TimePeriod."
+        },
+        "endPosition": {
+          "type": "string",
+          "format": "date-time",
+          "description": "gml:endPosition of the gml:TimePeriod. Absent when the end is indeterminate (indeterminatePosition='unknown'), i.e. until further notice."
+        }
+      },
+      "required": [
+        "beginPosition"
+      ],
+      "additionalProperties": false,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Other_AIXMFeatureTimeSlice.html#featureLifetime'. The start and end of life of the feature. See the AIXM Temporality model for details."
+    },
+    "designator": {
+      "type": "string",
+      "pattern": "^(?:([A-Z]|\\d)*)$",
+      "minLength": 1,
+      "maxLength": 5,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_DesignatedPoint.html#designator'. The coded designator of the point. For example, the five-letter ICAO name of the point, etc.."
+    },
+    "aixmType": {
+      "type": "string",
+      "anyOf": [
+        {
+          "enum": [
+            "ICAO",
+            "COORD",
+            "CNF",
+            "TERMINAL",
+            "BRG_DIST",
+            "VRP"
+          ]
+        },
+        {
+          "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+        }
+      ],
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_DesignatedPoint.html#type'. AIXM property 'type', renamed to aixmType (NGSI-LD reserved term). The kind of point designator, indicating the rules by which the designator has been created. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+    },
+    "name": {
+      "type": "string",
+      "pattern": "^(?:([A-Z]|[a-z]|[0-9]|[, !\"&#$%'\\(\\)\\*\\+\\-\\./:;<=>\\?@\\[\\\\\\]\\^_\\|\\{\\}])*)$",
+      "minLength": 1,
+      "maxLength": 60,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_DesignatedPoint.html#name'. The full textual name of a designated point, if any."
+    },
+    "aixmLocation": {
+      "$ref": "#/$defs/Point",
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_DesignatedPoint.html#location'. AIXM property 'location', renamed to aixmLocation (NGSI-LD reserved term). Represents the graphical location of the designated point"
+    },
+    "aimingPoint": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_DesignatedPoint.html#aimingPoint'. The DesignatedPoint is located above the centre of the TLOF. Reference to the AIXM feature TouchDownLiftOff: urn:ngsi-ld:<feature type>:<gml:identifier UUID>."
+    },
+    "airportHeliport": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_DesignatedPoint.html#airportHeliport'. The DesignatedPoint identifier is unique within all other designated points associated with the same aerodrome/heliport. Typically, such points are used for RNAV procedures at that aerodrome/heliport. Reference to the AIXM feature AirportHeliport: urn:ngsi-ld:<feature type>:<gml:identifier UUID>."
+    },
+    "runwayPoint": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_DesignatedPoint.html#runwayPoint'. The DesignatedPoint is over a centreline point. Reference to the AIXM feature RunwayCentrelinePoint: urn:ngsi-ld:<feature type>:<gml:identifier UUID>."
+    },
+    "annotation": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Note"
+      },
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_DesignatedPoint.html#annotation'."
+    },
+    "codeICAOCountry": {
+      "type": "string",
+      "pattern": "^(?:([A-Z]|\\d)*)$",
+      "maxLength": 2,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_DesignatedPoint.html#codeICAOCountry'. A code derived from the International Civil Aviation Organization (ICAO) list of nationality letters in Document 7910, which represents a State or a sub-region of that State where the point is located. Note: for points located on the border between two countries, the ICAO Country Code of the State having formally registered the five-letter code in the ICAO ICARD system is expected to used."
+    },
+    "fix": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PointReference"
+      },
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_DesignatedPoint.html#fix'. The point reference occurs at (locates) DesignatedPoint."
+    },
+    "location": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "Point"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 3,
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "LineString"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 3,
+                "items": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "Polygon"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "minItems": 4,
+                "items": {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 3,
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "MultiPolygon"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "minItems": 4,
+                  "items": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 3,
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "MultiLineString"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "minItems": 2,
+                "items": {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 3,
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ]
+        }
+      ],
+      "description": "GeoProperty. Geojson reference to the item. Not an AIXM property (Smart Data Models addition): GeoJSON copy of the AIXM location (renamed aixmLocation), in longitude/latitude order, so that NGSI-LD geo-queries work. The AIXM property is kept unchanged."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "identifier",
+    "validTime",
+    "interpretation"
+  ],
+  "$defs": {
+    "Angle": {
+      "type": "object",
+      "description": "AIXM <<object>> Angle. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Angle.html'. An angular reference from a navaid or with reference to a designated point.",
+      "properties": {
+        "angle": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 360
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The angle between the bearing and the North reference."
+        },
+        "angleType": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "TRUE",
+                "MAG",
+                "RDL",
+                "TRK",
+                "HDG"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "A code indicating the direction of the zero bearing. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "indicationDirection": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "TO",
+                "FROM"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "Code indicating the if the angle is TO or FROM the Navaid or Designated Point that is used. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "trueAngle": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 360
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The angle between the bearing and the True North reference."
+        },
+        "cardinalDirection": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "N",
+                "NE",
+                "E",
+                "SE",
+                "S",
+                "SW",
+                "W",
+                "NW",
+                "NNE",
+                "ENE",
+                "ESE",
+                "SSE",
+                "SSW",
+                "WSW",
+                "WNW",
+                "NNW"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "The angle expressed as compass direction. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "minimumReceptionAltitude": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string",
+                  "enum": [
+                    "UNL",
+                    "GND",
+                    "FLOOR",
+                    "CEILING"
+                  ]
+                }
+              ]
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "FT",
+                    "M",
+                    "FL",
+                    "SM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a vertical distance. For example, Flight Level, metres, feet."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The lowest altitude above the mean sea level (MSL) where an aircraft can receive signal. Units: given by uom."
+        },
+        "pointChoice_fixDesignatedPoint": {
+          "type": "string",
+          "format": "uri",
+          "description": "Indicates the navigation aid on which the fix is based. Reference to the AIXM feature DesignatedPoint: urn:ngsi-ld:<feature type>:<gml:identifier UUID>."
+        },
+        "pointChoice_navaidSystem": {
+          "type": "string",
+          "format": "uri",
+          "description": "Indicates the navigation aid on which the fix is based. Reference to the AIXM feature Navaid: urn:ngsi-ld:<feature type>:<gml:identifier UUID>."
+        },
+        "pointChoice_position": {
+          "$ref": "#/$defs/Point",
+          "description": "Indicates the navigation aid on which the fix is based."
+        },
+        "pointChoice_runwayPoint": {
+          "type": "string",
+          "format": "uri",
+          "description": "Indicates the navigation aid on which the fix is based. Reference to the AIXM feature RunwayCentrelinePoint: urn:ngsi-ld:<feature type>:<gml:identifier UUID>."
+        },
+        "pointChoice_aimingPoint": {
+          "type": "string",
+          "format": "uri",
+          "description": "Indicates the navigation aid on which the fix is based. Reference to the AIXM feature TouchDownLiftOff: urn:ngsi-ld:<feature type>:<gml:identifier UUID>."
+        },
+        "pointChoice_airportReferencePoint": {
+          "type": "string",
+          "format": "uri",
+          "description": "Indicates the navigation aid on which the fix is based. Reference to the AIXM feature AirportHeliport: urn:ngsi-ld:<feature type>:<gml:identifier UUID>."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        }
+      },
+      "additionalProperties": false
+    },
+    "AngleUse": {
+      "type": "object",
+      "description": "AIXM <<object>> AngleUse. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_AngleUse.html'. Indicates the role of the AngleIndication in the PointReference (for example, along track versus intersecting).",
+      "properties": {
+        "alongCourseGuidance": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "YES",
+                "NO"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "Defines if the angle indication provides the course guidance for the segment. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        },
+        "theAngle": {
+          "$ref": "#/$defs/Angle",
+          "description": "theAngle"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Distance": {
+      "type": "object",
+      "description": "AIXM <<object>> Distance. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Distance.html'. A distance reference from a navaid or with reference to a designated point.",
+      "properties": {
+        "distance": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "NM",
+                    "KM",
+                    "M",
+                    "FT",
+                    "MI",
+                    "CM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The value of the distance. Units: given by uom."
+        },
+        "minimumReceptionAltitude": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string",
+                  "enum": [
+                    "UNL",
+                    "GND",
+                    "FLOOR",
+                    "CEILING"
+                  ]
+                }
+              ]
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "FT",
+                    "M",
+                    "FL",
+                    "SM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a vertical distance. For example, Flight Level, metres, feet."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The lowest altitude above the mean sea level (MSL) where an aircraft can receive signal. Units: given by uom."
+        },
+        "type": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "DME",
+                "GEODETIC"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "indicates the distance is from distance measuring equipment or just a simple distance Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "pointChoice_fixDesignatedPoint": {
+          "type": "string",
+          "format": "uri",
+          "description": "Indicates the navigation aid on which the fix is based. Reference to the AIXM feature DesignatedPoint: urn:ngsi-ld:<feature type>:<gml:identifier UUID>."
+        },
+        "pointChoice_navaidSystem": {
+          "type": "string",
+          "format": "uri",
+          "description": "Indicates the navigation aid on which the fix is based. Reference to the AIXM feature Navaid: urn:ngsi-ld:<feature type>:<gml:identifier UUID>."
+        },
+        "pointChoice_position": {
+          "$ref": "#/$defs/Point",
+          "description": "Indicates the navigation aid on which the fix is based."
+        },
+        "pointChoice_runwayPoint": {
+          "type": "string",
+          "format": "uri",
+          "description": "Indicates the navigation aid on which the fix is based. Reference to the AIXM feature RunwayCentrelinePoint: urn:ngsi-ld:<feature type>:<gml:identifier UUID>."
+        },
+        "pointChoice_aimingPoint": {
+          "type": "string",
+          "format": "uri",
+          "description": "Indicates the navigation aid on which the fix is based. Reference to the AIXM feature TouchDownLiftOff: urn:ngsi-ld:<feature type>:<gml:identifier UUID>."
+        },
+        "pointChoice_airportReferencePoint": {
+          "type": "string",
+          "format": "uri",
+          "description": "Indicates the navigation aid on which the fix is based. Reference to the AIXM feature AirportHeliport: urn:ngsi-ld:<feature type>:<gml:identifier UUID>."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        }
+      },
+      "additionalProperties": false
+    },
+    "LinguisticNote": {
+      "type": "object",
+      "description": "AIXM <<object>> LinguisticNote. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_LinguisticNote.html'. The note content expressed in a specific language. As a minimum, all Notes shall be expressed in English.",
+      "properties": {
+        "note": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 10000
+            },
+            "lang": {
+              "type": "string",
+              "description": "XML attribute lang"
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The text of the Note, in a specific language."
+        }
+      },
+      "additionalProperties": false
+    },
+    "Note": {
+      "type": "object",
+      "description": "AIXM <<object>> Note. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Note.html'. A general text note for a feature or for one of its properties.",
+      "properties": {
+        "propertyName": {
+          "type": "string",
+          "pattern": "^(?:[A-Za-z\\-_]*)$",
+          "minLength": 1,
+          "maxLength": 60,
+          "description": "The name of the feature property for which this note is relevant, if applicable. If no propertyName is specified, then the Note is relevant for the feature as a whole."
+        },
+        "purpose": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "DESCRIPTION",
+                "REMARK",
+                "WARNING",
+                "DISCLAIMER"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indication of the goal which led to the provision of the free text note. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "translatedNote": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LinguisticNote"
+          },
+          "description": "The Note written linguistically."
+        }
+      },
+      "additionalProperties": false
+    },
+    "Point": {
+      "type": "object",
+      "description": "AIXM geometry Point. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Point.html'. A zero-dimensional object that specifies geometric location. One coordinate pair or triplet specifies the location.",
+      "properties": {
+        "geometry": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "Point"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 3,
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ],
+          "description": "The GML geometry of the AIXM Point (gml:pos / gml:posList, EPSG:4326) encoded as GeoJSON (longitude, latitude order). Smart Data Models encoding of the GML part; arcs and circles (ArcByCenterPoint, CircleByCenterPoint) must be densified to positions."
+        },
+        "horizontalAccuracy": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "NM",
+                    "KM",
+                    "M",
+                    "FT",
+                    "MI",
+                    "CM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The difference between the recorded horizontal coordinates of a point and its true position referenced to the same geodetic datum expressed as a circular error corresponding to the confidence level specified in the ICAO PANS-AIM (DOC 10066) for the specific subject/property. Units: given by uom."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        }
+      },
+      "required": [
+        "geometry"
+      ],
+      "additionalProperties": false
+    },
+    "PointReference": {
+      "type": "object",
+      "description": "AIXM <<object>> PointReference. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_PointReference.html'. Defines the location of a designated point using a combination of angles and distances based on the guidance service. The set of angles and distances must not under specify the location. The indications that are part of the PointReference must locate the same designated point.",
+      "properties": {
+        "role": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "INTERSECTION",
+                "RECNAV",
+                "ATD",
+                "RAD_DME"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "Describes the role of the defined point reference. Example: DME, INT, recommended navaid, fix tolerance Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "priorFixTolerance": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "NM",
+                    "KM",
+                    "M",
+                    "FT",
+                    "MI",
+                    "CM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "Because the fix may be received early, protection against obstacles must be provided from a line perpendicular to the flight course. PriorFixTolerance indicates the error distance (from the fix to the earliest point where the fix may be received along the flight course. Units: given by uom."
+        },
+        "postFixTolerance": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "NM",
+                    "KM",
+                    "M",
+                    "FT",
+                    "MI",
+                    "CM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "Indicates the error distance (from the fix to the latest point where the fix may be received along the flight course. Units: given by uom."
+        },
+        "fixToleranceArea": {
+          "$ref": "#/$defs/Surface",
+          "description": "The dimensions of the fix tolerance area are determined by the system use accuracy of the navigation aid(s) on which the fix is based, and the distance from the facility."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        },
+        "minimumReceptionLimit": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string",
+                  "enum": [
+                    "UNL",
+                    "GND",
+                    "FLOOR",
+                    "CEILING"
+                  ]
+                }
+              ]
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "FT",
+                    "M",
+                    "FL",
+                    "SM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a vertical distance. For example, Flight Level, metres, feet."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The lowest vertical distance required to receive adequate signals from navigational aids used to locate a significant point. Units: given by uom."
+        },
+        "minimumReceptionLimitReference": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "SFC",
+                "MSL",
+                "W84",
+                "STD"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "A code which defines the reference surface for the minimum reception limit. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "maximumAuthorisedLimit": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string",
+                  "enum": [
+                    "UNL",
+                    "GND",
+                    "FLOOR",
+                    "CEILING"
+                  ]
+                }
+              ]
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "FT",
+                    "M",
+                    "FL",
+                    "SM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a vertical distance. For example, Flight Level, metres, feet."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The highest vertical distance where a point reference may be used to locate a significant point. Units: given by uom."
+        },
+        "maximumAuthorisedLimitReference": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "SFC",
+                "MSL",
+                "W84",
+                "STD"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "A code which defines the reference surface for the maximum authorised limit. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "distanceReference": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Distance"
+          },
+          "description": "Indicates the distance from the navigation aid(s) or designated point on which the fix is based."
+        },
+        "angleReference": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AngleUse"
+          },
+          "description": "Angle from the facility to the Significant Point."
+        }
+      },
+      "additionalProperties": false
+    },
+    "Surface": {
+      "type": "object",
+      "description": "AIXM geometry Surface. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Surface.html'. A 2-dimensional primitive and is composed of one or more surface patches as specified in ISO 19107:2003, 6.3.17.1. The surface patches are connected to one another.",
+      "properties": {
+        "geometry": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "enum": [
+                    "Polygon"
+                  ]
+                },
+                "coordinates": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "minItems": 4,
+                    "items": {
+                      "type": "array",
+                      "minItems": 2,
+                      "maxItems": 3,
+                      "items": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              },
+              "required": [
+                "type",
+                "coordinates"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "enum": [
+                    "MultiPolygon"
+                  ]
+                },
+                "coordinates": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "minItems": 4,
+                      "items": {
+                        "type": "array",
+                        "minItems": 2,
+                        "maxItems": 3,
+                        "items": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "required": [
+                "type",
+                "coordinates"
+              ]
+            }
+          ],
+          "description": "The GML geometry of the AIXM Surface (gml:pos / gml:posList, EPSG:4326) encoded as GeoJSON (longitude, latitude order). Smart Data Models encoding of the GML part; arcs and circles (ArcByCenterPoint, CircleByCenterPoint) must be densified to positions."
+        },
+        "horizontalAccuracy": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "NM",
+                    "KM",
+                    "M",
+                    "FT",
+                    "MI",
+                    "CM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The difference between the recorded horizontal coordinates of a surface and its true position referenced to the same geodetic datum expressed as a circular error corresponding to the confidence level specified in the ICAO PANS-AIM (DOC 10066) for the specific subject/property. Units: given by uom."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        }
+      },
+      "required": [
+        "geometry"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

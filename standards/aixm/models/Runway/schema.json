@@ -1,0 +1,1916 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/aixm/models/Runway/schema.json",
+  "modelTags": "AIXM,Aviation,AeronauticalInformation,Aerodrome",
+  "title": "Smart Data Models - AIXM - Runway",
+  "description": "<font color=\"#333333\">A defined rectangular area on a land or a water aerodrome/heliport prepared for the landing and take-off of aircraft. Note: this includes the concept of Final Approach and Take-Off Area (FATO) for helicopters.</font> (AIXM 5.2 feature Runway. One NGSI-LD entity per AIXM feature; its attributes are the properties of one TimeSlice, normally the current BASELINE, flattened at entity level, with validTime and the other TimeSlice properties kept as attributes. Property names kept verbatim; nested AIXM <<object>> types keep their structure.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Runway:<gml:identifier UUID>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Runway"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Runway'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "identifier": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Other_AIXMFeature.html#identifier'. gml:identifier of the AIXM feature (codeSpace urn:uuid:): a UUID that stays the same in every TimeSlice of the feature. The NGSI-LD id is urn:ngsi-ld:<feature>:<identifier>."
+    },
+    "validTime": {
+      "type": "object",
+      "properties": {
+        "beginPosition": {
+          "type": "string",
+          "format": "date-time",
+          "description": "gml:beginPosition of the gml:TimePeriod."
+        },
+        "endPosition": {
+          "type": "string",
+          "format": "date-time",
+          "description": "gml:endPosition of the gml:TimePeriod. Absent when the end is indeterminate (indeterminatePosition='unknown'), i.e. until further notice."
+        }
+      },
+      "required": [
+        "beginPosition"
+      ],
+      "additionalProperties": false,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Other_AIXMFeatureTimeSlice.html#validTime'. gml:validTime of the TimeSlice whose properties are carried by this entity: the period during which these values are effective. The efffectivity of the TimeSlice."
+    },
+    "interpretation": {
+      "type": "string",
+      "enum": [
+        "BASELINE",
+        "SNAPSHOT",
+        "TEMPDELTA",
+        "PERMDELTA"
+      ],
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Other_AIXMFeatureTimeSlice.html#interpretation'. Property indicating how the timeslice is to be interpreted. See the AIXM Temporality model for details. Normally BASELINE (or SNAPSHOT) for an NGSI-LD entity, which carries the full state of the feature."
+    },
+    "sequenceNumber": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Other_AIXMFeatureTimeSlice.html#sequenceNumber'. Used for the identification of the Time Slice concerned. See the AIXM Temporality model for details."
+    },
+    "correctionNumber": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Other_AIXMFeatureTimeSlice.html#correctionNumber'. Used for indicating the order of the corrections of a Time Slice. See the AIXM Temporality model for details."
+    },
+    "featureLifetime": {
+      "type": "object",
+      "properties": {
+        "beginPosition": {
+          "type": "string",
+          "format": "date-time",
+          "description": "gml:beginPosition of the gml:TimePeriod."
+        },
+        "endPosition": {
+          "type": "string",
+          "format": "date-time",
+          "description": "gml:endPosition of the gml:TimePeriod. Absent when the end is indeterminate (indeterminatePosition='unknown'), i.e. until further notice."
+        }
+      },
+      "required": [
+        "beginPosition"
+      ],
+      "additionalProperties": false,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Other_AIXMFeatureTimeSlice.html#featureLifetime'. The start and end of life of the feature. See the AIXM Temporality model for details."
+    },
+    "designator": {
+      "type": "string",
+      "pattern": "^(?:([A-Z]|[0-9]|[, !\"&#$%'\\(\\)\\*\\+\\-\\./:;<=>\\?@\\[\\\\\\]\\^_\\|\\{\\}])*)$",
+      "minLength": 1,
+      "maxLength": 16,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Runway.html#designator'. The designator of a runway, used to uniquely identify it at an airport/heliport."
+    },
+    "aixmType": {
+      "type": "string",
+      "anyOf": [
+        {
+          "enum": [
+            "RWY",
+            "FATO",
+            "WATER_RWY"
+          ]
+        },
+        {
+          "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+        }
+      ],
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Runway.html#type'. AIXM property 'type', renamed to aixmType (NGSI-LD reserved term). The type can be either runway for airplanes or Final Approach and Take-off Area (FATO) for helicopters. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+    },
+    "nominalLength": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "uom": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "NM",
+                "KM",
+                "M",
+                "FT",
+                "MI",
+                "CM"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+        },
+        "accuracy": {
+          "type": "number",
+          "minimum": 0,
+          "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "additionalProperties": false,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Runway.html#nominalLength'. The declared longitudinal extent of the runway for operational (performance) calculations. Units: given by uom."
+    },
+    "nominalWidth": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "uom": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "NM",
+                "KM",
+                "M",
+                "FT",
+                "MI",
+                "CM"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+        },
+        "accuracy": {
+          "type": "number",
+          "minimum": 0,
+          "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "additionalProperties": false,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Runway.html#nominalWidth'. The declared transversal extent of the runway for operational (performance) calculations. Units: given by uom."
+    },
+    "widthShoulder": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "uom": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "NM",
+                "KM",
+                "M",
+                "FT",
+                "MI",
+                "CM"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+        },
+        "accuracy": {
+          "type": "number",
+          "minimum": 0,
+          "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "additionalProperties": false,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Runway.html#widthShoulder'. The runway shoulder width. Units: given by uom."
+    },
+    "lengthStrip": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "uom": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "NM",
+                "KM",
+                "M",
+                "FT",
+                "MI",
+                "CM"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+        },
+        "accuracy": {
+          "type": "number",
+          "minimum": 0,
+          "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "additionalProperties": false,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Runway.html#lengthStrip'. The physical length of the strip. Where a strip is a defined area including the runway and, if applicable, the stopway. Units: given by uom."
+    },
+    "widthStrip": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "uom": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "NM",
+                "KM",
+                "M",
+                "FT",
+                "MI",
+                "CM"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+        },
+        "accuracy": {
+          "type": "number",
+          "minimum": 0,
+          "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "additionalProperties": false,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Runway.html#widthStrip'. The physical width of the strip. Where a strip is a defined area including the runway and, if applicable, the stopway. Units: given by uom."
+    },
+    "lengthOffset": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "uom": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "NM",
+                "KM",
+                "M",
+                "FT",
+                "MI",
+                "CM"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+        },
+        "accuracy": {
+          "type": "number",
+          "minimum": 0,
+          "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "additionalProperties": false,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Runway.html#lengthOffset'. A value specifying the longitudinal offset of the strip, when it is not symmetrically extended beyond the two runway ends. Where a strip is a defined area including the runway and, if applicable, the stopway. Units: given by uom."
+    },
+    "widthOffset": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "uom": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "NM",
+                "KM",
+                "M",
+                "FT",
+                "MI",
+                "CM"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+        },
+        "accuracy": {
+          "type": "number",
+          "minimum": 0,
+          "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "additionalProperties": false,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Runway.html#widthOffset'. A value specifying the lateral offset of the strip, when it is not symmetrically extended beyond the two runway edges. Where a strip is a defined area including the runway and, if applicable, the stopway. Units: given by uom."
+    },
+    "abandoned": {
+      "type": "string",
+      "anyOf": [
+        {
+          "enum": [
+            "YES",
+            "NO"
+          ]
+        },
+        {
+          "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+        }
+      ],
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Runway.html#abandoned'. An indicator that the surface is no longer in operational use, but is still physically present and visible, although usually in a degraded state. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+    },
+    "surfaceProperties": {
+      "$ref": "#/$defs/SurfaceCharacteristics",
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Runway.html#surfaceProperties'. Identifies the surface characteristics of the runway."
+    },
+    "associatedAirportHeliport": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Runway.html#associatedAirportHeliport'. Identifies the Airport where the Runway is situated. Reference to the AIXM feature AirportHeliport: urn:ngsi-ld:<feature type>:<gml:identifier UUID>."
+    },
+    "overallContaminant": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RunwayContamination"
+      },
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Runway.html#overallContaminant'. Identifies the contaminant of the runway."
+    },
+    "annotation": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Note"
+      },
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Runway.html#annotation'."
+    },
+    "areaContaminant": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RunwaySectionContamination"
+      },
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Runway.html#areaContaminant'. Area contamination of a runway."
+    },
+    "referenceCodeFieldLength": {
+      "type": "string",
+      "anyOf": [
+        {
+          "enum": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ]
+        },
+        {
+          "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+        }
+      ],
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Runway.html#referenceCodeFieldLength'. The highest value of the aeroplane reference field lengths of the aeroplanes for which the runway is intended. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+    },
+    "referenceCodeWingspan": {
+      "type": "string",
+      "anyOf": [
+        {
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F"
+          ]
+        },
+        {
+          "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+        }
+      ],
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Runway.html#referenceCodeWingspan'. The greatest wingspan of the aeroplanes for which the facility is intended. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+    },
+    "depth": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "uom": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "NM",
+                "KM",
+                "M",
+                "FT",
+                "MI",
+                "CM"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+        },
+        "accuracy": {
+          "type": "number",
+          "minimum": 0,
+          "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "additionalProperties": false,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Runway.html#depth'. The depth of the water measured at low water level in the water runway should not be less than 1.8 m (6 ft.) or less than 0.3 m below the hull or floats when the seaplane is stationary and loaded to maximum takeoff weight. Units: given by uom."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "identifier",
+    "validTime",
+    "interpretation"
+  ],
+  "$defs": {
+    "ElevatedSurface": {
+      "type": "object",
+      "description": "AIXM geometry ElevatedSurface. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_ElevatedSurface.html'. A 2-dimensional primitive and is composed of one or more surface patches as specified in ISO 19107:2003, 6.3.17.1, which is extended with properties that represent the vertical position (elevation, datum, accuracy).",
+      "properties": {
+        "geometry": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "enum": [
+                    "Polygon"
+                  ]
+                },
+                "coordinates": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "minItems": 4,
+                    "items": {
+                      "type": "array",
+                      "minItems": 2,
+                      "maxItems": 3,
+                      "items": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              },
+              "required": [
+                "type",
+                "coordinates"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "enum": [
+                    "MultiPolygon"
+                  ]
+                },
+                "coordinates": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "minItems": 4,
+                      "items": {
+                        "type": "array",
+                        "minItems": 2,
+                        "maxItems": 3,
+                        "items": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "required": [
+                "type",
+                "coordinates"
+              ]
+            }
+          ],
+          "description": "The GML geometry of the AIXM ElevatedSurface (gml:pos / gml:posList, EPSG:4326) encoded as GeoJSON (longitude, latitude order). Smart Data Models encoding of the GML part; arcs and circles (ArcByCenterPoint, CircleByCenterPoint) must be densified to positions."
+        },
+        "elevation": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string",
+                  "enum": [
+                    "UNL",
+                    "GND",
+                    "FLOOR",
+                    "CEILING"
+                  ]
+                }
+              ]
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "FT",
+                    "M",
+                    "FL",
+                    "SM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a vertical distance. For example, Flight Level, metres, feet."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The vertical distance of the surface level measured from Mean Sea Level (MSL). Units: given by uom."
+        },
+        "geoidUndulation": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "NM",
+                    "KM",
+                    "M",
+                    "FT",
+                    "MI",
+                    "CM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The distance of the geoid above (positive) or below (negative) the mathematical reference ellipsoid at the location of the surface. Units: given by uom."
+        },
+        "verticalDatum": {
+          "type": "string",
+          "pattern": "^(?:([A-Z]|[a-z]|[0-9]|[, !\"&#$%'\\(\\)\\*\\+\\-\\./:;<=>\\?@\\[\\\\\\]\\^_\\|\\{\\}])*)$",
+          "minLength": 1,
+          "maxLength": 60,
+          "description": "The set of reference points or a mathematical model of the Earth's surface (a datum) against which vertical position measurements of a surface, are made as basis for measuring elevations."
+        },
+        "horizontalAccuracy": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "NM",
+                    "KM",
+                    "M",
+                    "FT",
+                    "MI",
+                    "CM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The difference between the recorded horizontal coordinates of a surface and its true position referenced to the same geodetic datum expressed as a circular error corresponding to the confidence level specified in the ICAO PANS-AIM (DOC 10066) for the specific subject/property. Units: given by uom."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        }
+      },
+      "required": [
+        "geometry"
+      ],
+      "additionalProperties": false
+    },
+    "LinguisticNote": {
+      "type": "object",
+      "description": "AIXM <<object>> LinguisticNote. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_LinguisticNote.html'. The note content expressed in a specific language. As a minimum, all Notes shall be expressed in English.",
+      "properties": {
+        "note": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 10000
+            },
+            "lang": {
+              "type": "string",
+              "description": "XML attribute lang"
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The text of the Note, in a specific language."
+        }
+      },
+      "additionalProperties": false
+    },
+    "Note": {
+      "type": "object",
+      "description": "AIXM <<object>> Note. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Note.html'. A general text note for a feature or for one of its properties.",
+      "properties": {
+        "propertyName": {
+          "type": "string",
+          "pattern": "^(?:[A-Za-z\\-_]*)$",
+          "minLength": 1,
+          "maxLength": 60,
+          "description": "The name of the feature property for which this note is relevant, if applicable. If no propertyName is specified, then the Note is relevant for the feature as a whole."
+        },
+        "purpose": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "DESCRIPTION",
+                "REMARK",
+                "WARNING",
+                "DISCLAIMER"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indication of the goal which led to the provision of the free text note. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "translatedNote": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LinguisticNote"
+          },
+          "description": "The Note written linguistically."
+        }
+      },
+      "additionalProperties": false
+    },
+    "Ridge": {
+      "type": "object",
+      "description": "AIXM <<object>> Ridge. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Ridge.html'. Describes ridges of deposited material (such as a snow-bank) to the left or right of the runway (relative to the runway direction with the lowest designation number).",
+      "properties": {
+        "side": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "LEFT",
+                "RIGHT",
+                "BOTH",
+                "CENTRE"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "The side of the runway where the ridge of deposited material is located. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "distance": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "NM",
+                    "KM",
+                    "M",
+                    "FT",
+                    "MI",
+                    "CM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "Distance of the ridge of deposited material from the edge of the movement area. Units: given by uom."
+        },
+        "depth": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "MM",
+                    "CM",
+                    "IN",
+                    "FT"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement Unit of measurement for depth."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "Height of the ridges of deposited material. Units: given by uom."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        }
+      },
+      "additionalProperties": false
+    },
+    "RunwayContamination": {
+      "type": "object",
+      "description": "AIXM <<object>> RunwayContamination. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_RunwayContamination.html'. The presence or removal of hazardous conditions due to snow, ice, slush, water, etc. on the runway surface.",
+      "properties": {
+        "observationTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date and time of surface contamination measurement completion."
+        },
+        "depth": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "MM",
+                    "CM",
+                    "IN",
+                    "FT"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement Unit of measurement for depth."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The depth of the contamination on the surface. Units: given by uom."
+        },
+        "frictionCoefficient": {
+          "type": "number",
+          "description": "The average ratio of the weight of an object being moved along an airport/heliport surface with contamination and the force that maintains contact between the object and that surface."
+        },
+        "frictionEstimation": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "GOOD",
+                "MEDIUM_GOOD",
+                "MEDIUM",
+                "MEDIUM_POOR",
+                "POOR",
+                "UNRELIABLE",
+                "RWYCC_0",
+                "RWYCC_1",
+                "RWYCC_2",
+                "RWYCC_3",
+                "RWYCC_4",
+                "RWYCC_5",
+                "RWYCC_6"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "A qualitative estimate of the friction on an airport/heliport surface with contamination. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "frictionDevice": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "BRD",
+                "GRT",
+                "MUM",
+                "RFT",
+                "SFH",
+                "SFL",
+                "SKH",
+                "SKL",
+                "TAP"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "The type of equipment used to determine the friction coefficient of an airport/heliport surface with contamination. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "obscuredLights": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "YES",
+                "NO"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "Indicates that the surface lights are obscured by surface contamination. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "furtherClearanceTime": {
+          "type": "string",
+          "pattern": "^(?:(([0-1][0-9]|2[0-3]):[0-5][0-9])|(24:00))$",
+          "description": "The time when it is expected to complete further clearance of an airport/heliport surface with contamination."
+        },
+        "furtherTotalClearance": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "YES",
+                "NO"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "Indicates that further total clearance of an airport/heliport surface with contamination is expected. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "nextObservationTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date and time of surface contamination measurement completion."
+        },
+        "proportion": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "The percentage of the contaminated area of the overall extent of the surface."
+        },
+        "criticalRidge": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Ridge"
+          },
+          "description": "Identifies the critical bank associated to the contaminant."
+        },
+        "layer": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SurfaceContaminationLayer"
+          },
+          "description": "A layer of contaminant."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        },
+        "clearedLength": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "NM",
+                    "KM",
+                    "M",
+                    "FT",
+                    "MI",
+                    "CM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "Length of runway cleared of contamination, if less than the total length of the runway. Units: given by uom."
+        },
+        "clearedWidth": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "NM",
+                    "KM",
+                    "M",
+                    "FT",
+                    "MI",
+                    "CM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "Width of runway cleared of contamination, if less than the total width. Units: given by uom."
+        },
+        "clearedSide": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "LEFT",
+                "RIGHT",
+                "BOTH",
+                "CENTRE"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "Indicates that the cleared width is offset left or right of a runway centre line. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "furtherClearanceLength": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "NM",
+                    "KM",
+                    "M",
+                    "FT",
+                    "MI",
+                    "CM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "Length of runway that is expected to be cleared of contamination, if less than the total length. Units: given by uom."
+        },
+        "furtherClearanceWidth": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "NM",
+                    "KM",
+                    "M",
+                    "FT",
+                    "MI",
+                    "CM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "Width of runway that is expected to be cleared of contamination, if less than the total width. Units: given by uom."
+        },
+        "obscuredLightsSide": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "LEFT",
+                "RIGHT",
+                "BOTH",
+                "CENTRE"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "Indicates the side of the runway on which the lights are obscured by contamination. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "clearedLengthBegin": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "NM",
+                    "KM",
+                    "M",
+                    "FT",
+                    "MI",
+                    "CM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The distance from the threshold of the runway direction having the lowest designator number to the point where the cleared portion starts, in case of partial clearance. Units: given by uom."
+        },
+        "taxiwayAvailable": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "YES",
+                "NO"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indication that there are cleared taxiways available serving that runway. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "apronAvailable": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "YES",
+                "NO"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indication that there are cleared aprons available serving a runway. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        }
+      },
+      "additionalProperties": false
+    },
+    "RunwaySectionContamination": {
+      "type": "object",
+      "description": "AIXM <<object>> RunwaySectionContamination. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_RunwaySectionContamination.html'. The presence or removal of hazardous conditions due to snow, ice, slush, water, etc. on a section of the runway surface.",
+      "properties": {
+        "observationTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date and time of surface contamination measurement completion."
+        },
+        "depth": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "MM",
+                    "CM",
+                    "IN",
+                    "FT"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement Unit of measurement for depth."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The depth of the contamination on the surface. Units: given by uom."
+        },
+        "frictionCoefficient": {
+          "type": "number",
+          "description": "The average ratio of the weight of an object being moved along an airport/heliport surface with contamination and the force that maintains contact between the object and that surface."
+        },
+        "frictionEstimation": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "GOOD",
+                "MEDIUM_GOOD",
+                "MEDIUM",
+                "MEDIUM_POOR",
+                "POOR",
+                "UNRELIABLE",
+                "RWYCC_0",
+                "RWYCC_1",
+                "RWYCC_2",
+                "RWYCC_3",
+                "RWYCC_4",
+                "RWYCC_5",
+                "RWYCC_6"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "A qualitative estimate of the friction on an airport/heliport surface with contamination. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "frictionDevice": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "BRD",
+                "GRT",
+                "MUM",
+                "RFT",
+                "SFH",
+                "SFL",
+                "SKH",
+                "SKL",
+                "TAP"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "The type of equipment used to determine the friction coefficient of an airport/heliport surface with contamination. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "obscuredLights": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "YES",
+                "NO"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "Indicates that the surface lights are obscured by surface contamination. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "furtherClearanceTime": {
+          "type": "string",
+          "pattern": "^(?:(([0-1][0-9]|2[0-3]):[0-5][0-9])|(24:00))$",
+          "description": "The time when it is expected to complete further clearance of an airport/heliport surface with contamination."
+        },
+        "furtherTotalClearance": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "YES",
+                "NO"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "Indicates that further total clearance of an airport/heliport surface with contamination is expected. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "nextObservationTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date and time of surface contamination measurement completion."
+        },
+        "proportion": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "The percentage of the contaminated area of the overall extent of the surface."
+        },
+        "criticalRidge": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Ridge"
+          },
+          "description": "Identifies the critical bank associated to the contaminant."
+        },
+        "layer": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SurfaceContaminationLayer"
+          },
+          "description": "A layer of contaminant."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        },
+        "section": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "TDZ",
+                "AIM",
+                "CL",
+                "EDGE",
+                "THR",
+                "DESIG",
+                "AFT_THR",
+                "DTHR",
+                "END",
+                "TWY_INT",
+                "RPD_TWY_INT",
+                "1_THIRD",
+                "2_THIRD",
+                "3_THIRD",
+                "LAHSO"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "Indicates the part of the runway that is affected. This supports indicating the contamination information on each third of the runway length, starting from the threshold of the runway direction having the lower designation number. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        }
+      },
+      "additionalProperties": false
+    },
+    "SurfaceCharacteristics": {
+      "type": "object",
+      "description": "AIXM <<object>> SurfaceCharacteristics. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_SurfaceCharacteristics.html'. An entity grouping together the attributes that model characteristics of an airport surface, such as strength, material, etc.",
+      "properties": {
+        "composition": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "ASPH",
+                "ASPH_GRASS",
+                "CONC",
+                "CONC_ASPH",
+                "CONC_GRS",
+                "GRASS",
+                "SAND",
+                "WATER",
+                "BITUM",
+                "BRICK",
+                "MACADAM",
+                "STONE",
+                "CORAL",
+                "CLAY",
+                "LATERITE",
+                "GRAVEL",
+                "EARTH",
+                "ICE",
+                "SNOW",
+                "MEMBRANE",
+                "METAL",
+                "MATS",
+                "PIERCED_STEEL",
+                "WOOD",
+                "NON_BITUM_MIX",
+                "ASPH_EARTH",
+                "ASPH_GRAVEL",
+                "CONC_EARTH",
+                "CONC_GRAVEL",
+                "GRASS_EARTH",
+                "GRASS_GRAVEL"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "The type of the predominant material of which a surface of the movement area is composed. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "preparation": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "NATURAL",
+                "ROLLED",
+                "COMPACTED",
+                "GRADED",
+                "GROOVED",
+                "OILED",
+                "PAVED",
+                "PFC",
+                "AFSC",
+                "RFSC",
+                "NON_GROOVED",
+                "WIRE_COMB"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "The preparation technique(s) applied to a surface composition. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "surfaceCondition": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "GOOD",
+                "FAIR",
+                "POOR",
+                "UNSAFE",
+                "DEFORMED",
+                "EXCELLENT",
+                "FAILED"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "The quality of the surface of an airport surface. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "classPCN": {
+          "type": "number",
+          "description": "The bearing strength of a pavement for unrestricted operations."
+        },
+        "pavementTypePCN": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "RIGID",
+                "FLEXIBLE"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "The pavement behaviour (rigid or flexible) used for determining the Pavement Classification Number (PCN). Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "pavementSubgradePCN": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indication of the pavement subgrade strength related to the Pavement Classification Number (PCN). Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "maxTyrePressurePCN": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "W",
+                "X",
+                "Y",
+                "Z"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "The maximum allowable tire pressure category related to the Pavement Classification Number (PCN), as a category. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "evaluationMethodPCN": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "TECH",
+                "ACFT"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "The method used to rate a runway pavement. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "classLCN": {
+          "type": "number",
+          "description": "A value which denotes the peak bearing moment the surface can handle repeatedly without shortening its service life."
+        },
+        "weightSIWL": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "KG",
+                    "T",
+                    "LB",
+                    "TON"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for weight values."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "One of the characteristics of a surface that represents the maximum calculated load on each tire of a landing gear assembly that a movement area surface can support. Units: given by uom."
+        },
+        "tyrePressureSIWL": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "PA",
+                    "MPA",
+                    "PSI",
+                    "BAR",
+                    "TORR",
+                    "ATM",
+                    "HPA"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for pressure values."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "One of the characteristics of a surface that represents the maximum aircraft tire pressure that a movement area surface can support. Units: given by uom."
+        },
+        "weightAUW": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "KG",
+                    "T",
+                    "LB",
+                    "TON"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for weight values."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "One of the characteristics of a surface that represents the maximum total value of the weight of an aircraft that a movement area surface may support, regardless of the landing gear configuration of the aircraft. Units: given by uom."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        },
+        "classPCR": {
+          "type": "number",
+          "description": "The bearing strength of a pavement for unrestricted operations, according to the Pavement Classification Rating (PCR)."
+        },
+        "pavementTypePCR": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "RIGID",
+                "FLEXIBLE"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "The pavement behaviour (rigid or flexible) used for determining the pavement strength according to the Pavement Classification Rating (PCR). Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "pavementSubgradePCR": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indication of the pavement subgrade strength according to the Pavement Classification Rating (PCR). Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "maxTyrePressurePCR": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "W",
+                "X",
+                "Y",
+                "Z"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "The maximum allowable tire pressure category related to the Pavement Classification Rating (PCR). Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "evaluationMethodPCR": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "TECH",
+                "ACFT"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "The method used to rate a runway pavement related to the Pavement Classification Rating (PCR). Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        }
+      },
+      "additionalProperties": false
+    },
+    "SurfaceContaminationLayer": {
+      "type": "object",
+      "description": "AIXM <<object>> SurfaceContaminationLayer. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_SurfaceContaminationLayer.html'. An operationally significant contaminant of homogeneous type such as snow, ice, slush, water, sand, etc., which is present on a large surface of the airport/heliport area.",
+      "properties": {
+        "layerOrder": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The order of the layer (starting from the uppermost, towards the movement area surface), in case overlapping contaminants are present."
+        },
+        "type": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "NONE",
+                "WATER",
+                "FROST",
+                "DRY_SNOW",
+                "WET_SNOW",
+                "SLUSH",
+                "ICE",
+                "COMPACT_SNOW",
+                "RUT",
+                "ASH",
+                "SAND",
+                "OIL",
+                "RUBBER",
+                "GRAS",
+                "DRY",
+                "STANDING_WATER",
+                "SLIPPERY_WET",
+                "PREPARED_WINTER_RWY",
+                "WET",
+                "WET_ICE",
+                "DRIFTING_SNOW",
+                "LOOSE_SAND",
+                "CHEMICAL_TREATMENT"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "The type of contaminating substance on the movement area surface. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "extent": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ElevatedSurface"
+          },
+          "description": "The surface covered by the contamination. For runways this can be a runway third, such as in the current SNOWTAM reporting style.."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

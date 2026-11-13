@@ -1,0 +1,2435 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/aixm/models/Airspace/schema.json",
+  "modelTags": "AIXM,Aviation,AeronauticalInformation,Airspace",
+  "title": "Smart Data Models - AIXM - Airspace",
+  "description": "A defined three dimensional region of space relevant to air traffic. (AIXM 5.2 feature Airspace. One NGSI-LD entity per AIXM feature; its attributes are the properties of one TimeSlice, normally the current BASELINE, flattened at entity level, with validTime and the other TimeSlice properties kept as attributes. Property names kept verbatim; nested AIXM <<object>> types keep their structure.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Airspace:<gml:identifier UUID>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Airspace"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Airspace'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "identifier": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Other_AIXMFeature.html#identifier'. gml:identifier of the AIXM feature (codeSpace urn:uuid:): a UUID that stays the same in every TimeSlice of the feature. The NGSI-LD id is urn:ngsi-ld:<feature>:<identifier>."
+    },
+    "validTime": {
+      "type": "object",
+      "properties": {
+        "beginPosition": {
+          "type": "string",
+          "format": "date-time",
+          "description": "gml:beginPosition of the gml:TimePeriod."
+        },
+        "endPosition": {
+          "type": "string",
+          "format": "date-time",
+          "description": "gml:endPosition of the gml:TimePeriod. Absent when the end is indeterminate (indeterminatePosition='unknown'), i.e. until further notice."
+        }
+      },
+      "required": [
+        "beginPosition"
+      ],
+      "additionalProperties": false,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Other_AIXMFeatureTimeSlice.html#validTime'. gml:validTime of the TimeSlice whose properties are carried by this entity: the period during which these values are effective. The efffectivity of the TimeSlice."
+    },
+    "interpretation": {
+      "type": "string",
+      "enum": [
+        "BASELINE",
+        "SNAPSHOT",
+        "TEMPDELTA",
+        "PERMDELTA"
+      ],
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Other_AIXMFeatureTimeSlice.html#interpretation'. Property indicating how the timeslice is to be interpreted. See the AIXM Temporality model for details. Normally BASELINE (or SNAPSHOT) for an NGSI-LD entity, which carries the full state of the feature."
+    },
+    "sequenceNumber": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Other_AIXMFeatureTimeSlice.html#sequenceNumber'. Used for the identification of the Time Slice concerned. See the AIXM Temporality model for details."
+    },
+    "correctionNumber": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Other_AIXMFeatureTimeSlice.html#correctionNumber'. Used for indicating the order of the corrections of a Time Slice. See the AIXM Temporality model for details."
+    },
+    "featureLifetime": {
+      "type": "object",
+      "properties": {
+        "beginPosition": {
+          "type": "string",
+          "format": "date-time",
+          "description": "gml:beginPosition of the gml:TimePeriod."
+        },
+        "endPosition": {
+          "type": "string",
+          "format": "date-time",
+          "description": "gml:endPosition of the gml:TimePeriod. Absent when the end is indeterminate (indeterminatePosition='unknown'), i.e. until further notice."
+        }
+      },
+      "required": [
+        "beginPosition"
+      ],
+      "additionalProperties": false,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Other_AIXMFeatureTimeSlice.html#featureLifetime'. The start and end of life of the feature. See the AIXM Temporality model for details."
+    },
+    "aixmType": {
+      "type": "string",
+      "anyOf": [
+        {
+          "enum": [
+            "NAS",
+            "FIR",
+            "FIR_P",
+            "UIR",
+            "UIR_P",
+            "CTA",
+            "CTA_P",
+            "OCA_P",
+            "OCA",
+            "UTA",
+            "UTA_P",
+            "TMA",
+            "TMA_P",
+            "CTR",
+            "CTR_P",
+            "OTA",
+            "SECTOR",
+            "SECTOR_C",
+            "TSA",
+            "CBA",
+            "RCA",
+            "RAS",
+            "AWY",
+            "MTR",
+            "P",
+            "R",
+            "D",
+            "ADIZ",
+            "NO_FIR",
+            "PART",
+            "CLASS",
+            "POLITICAL",
+            "D_OTHER",
+            "TRA",
+            "A",
+            "W",
+            "PROTECT",
+            "ASR",
+            "ADV",
+            "UADV",
+            "ATZ",
+            "ATZ_P",
+            "NAS_P",
+            "NTZ",
+            "NOZ",
+            "FBZ",
+            "FIZ",
+            "FRA",
+            "MOA",
+            "NPZ",
+            "RCZ",
+            "RMZ",
+            "TMZ"
+          ]
+        },
+        {
+          "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+        }
+      ],
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Airspace.html#type'. AIXM property 'type', renamed to aixmType (NGSI-LD reserved term). An indicator of the general structure or characteristics of a particular airspace. Where airspace is a defined three dimensional region of space relevant to air traffic. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+    },
+    "designator": {
+      "type": "string",
+      "pattern": "^(?:([A-Z]|[0-9]|[, !\"&#$%'\\(\\)\\*\\+\\-\\./:;<=>\\?@\\[\\\\\\]\\^_\\|\\{\\}])*)$",
+      "minLength": 1,
+      "maxLength": 10,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Airspace.html#designator'. A published sequence of characters allowing the identification of the airspace. Where airspace is a defined three dimensional region of space relevant to air traffic."
+    },
+    "localType": {
+      "type": "string",
+      "pattern": "^(?:([A-Z]|[a-z]|[0-9]|[, !\"&#$%'\\(\\)\\*\\+\\-\\./:;<=>\\?@\\[\\\\\\]\\^_\\|\\{\\}])*)$",
+      "minLength": 1,
+      "maxLength": 60,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Airspace.html#localType'. A type designator used locally (inside a State or a Region) for a particular airspace sub-category. Where airspace is a defined three dimensional region of space relevant to air traffic."
+    },
+    "name": {
+      "type": "string",
+      "pattern": "^(?:([A-Z]|[a-z]|[0-9]|[, !\"&#$%'\\(\\)\\*\\+\\-\\./:;<=>\\?@\\[\\\\\\]\\^_\\|\\{\\}])*)$",
+      "minLength": 1,
+      "maxLength": 60,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Airspace.html#name'. The name given to an airspace by a responsible authority. It should be written as published, with no significance to upper or lower case letters. Where airspace is a defined three dimensional region of space relevant to air traffic."
+    },
+    "designatorICAO": {
+      "type": "string",
+      "anyOf": [
+        {
+          "enum": [
+            "YES",
+            "NO"
+          ]
+        },
+        {
+          "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+        }
+      ],
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Airspace.html#designatorICAO'. An indicator of whether an Airspace Designator is recorded in ICAO Doc. 7910, 'Location Indicators'. Where airspace is a defined three dimensional region of space relevant to air traffic. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+    },
+    "controlType": {
+      "type": "string",
+      "anyOf": [
+        {
+          "enum": [
+            "CIVIL",
+            "MIL",
+            "JOINT"
+          ]
+        },
+        {
+          "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+        }
+      ],
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Airspace.html#controlType'. The primary organization type in terms of civil or military, providing air traffic services within a designated airspace. Where airspace is a defined three dimensional region of space relevant to air traffic. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+    },
+    "upperLowerSeparation": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 999
+        },
+        "uom": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "FL",
+                "SM"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "XML attribute uom: Unit of measurement Unit of measurement for flight levels."
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "additionalProperties": false,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Airspace.html#upperLowerSeparation'. A flight level (e.g., 18000 feet MSL) that indicates the division of airspace between lower and upper airspace. Units: given by uom."
+    },
+    "class": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AirspaceLayerClass"
+      },
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Airspace.html#class'. A block of airspace with a specific class."
+    },
+    "protectedRoute": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Airspace.html#protectedRoute'. The route protected by the airspace. Reference to the AIXM feature Route: urn:ngsi-ld:<feature type>:<gml:identifier UUID>."
+    },
+    "geometryComponent": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AirspaceGeometryComponent"
+      },
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Airspace.html#geometryComponent'. An portion of airspace that contributes to the defintion of an Airspace geometry."
+    },
+    "activation": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AirspaceActivation"
+      },
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Airspace.html#activation'. The operational status of the Airspace."
+    },
+    "annotation": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Note"
+      },
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Airspace.html#annotation'."
+    },
+    "location": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "Point"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 3,
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "LineString"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 3,
+                "items": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "Polygon"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "minItems": 4,
+                "items": {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 3,
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "MultiPolygon"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "minItems": 4,
+                  "items": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 3,
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "MultiLineString"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "minItems": 2,
+                "items": {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 3,
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ]
+        }
+      ],
+      "description": "GeoProperty. Geojson reference to the item. Not an AIXM property (Smart Data Models addition): GeoJSON copy of the horizontalProjection surfaces of geometryComponent[].theAirspaceVolume (one Polygon per component, MultiPolygon if several; the aggregation operation BASE/UNION/SUBTR/INTERS is not applied, so it is an approximation when SUBTR or INTERS is used), in longitude/latitude order, so that NGSI-LD geo-queries work. The AIXM property is kept unchanged."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "identifier",
+    "validTime",
+    "interpretation"
+  ],
+  "$defs": {
+    "AircraftCharacteristic": {
+      "type": "object",
+      "description": "AIXM <<object>> AircraftCharacteristic. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_AircraftCharacteristic.html'. Classification, properties, and equipment capabilities of aircraft, such as airplane, balloon, helicopter, etc.",
+      "properties": {
+        "engine": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "JET",
+                "PISTON",
+                "TURBOPROP",
+                "ELECTRIC",
+                "ALL"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indication of the type of aircraft engine. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "numberEngine": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "6",
+                "8",
+                "2C"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indication for the number of engines of an aircraft. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "typeAircraftICAO": {
+          "type": "string",
+          "pattern": "^(?:([A-Z]|\\d)*)$",
+          "minLength": 1,
+          "maxLength": 4,
+          "description": "A coded aircraft type designator assigned by ICAO to all aircraft heavier than micro-/ultra-light."
+        },
+        "aircraftLandingCategory": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "A",
+                "B",
+                "C",
+                "D",
+                "E",
+                "H",
+                "DL",
+                "HPMA",
+                "A_B",
+                "C_D",
+                "A_B_C",
+                "A_B_C_D",
+                "A_B_C_D_DL"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "Classification of aircraft based on 1.3 times stall speed in landing configuration at maximum certified landing mass. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "wingSpan": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "NM",
+                    "KM",
+                    "M",
+                    "FT",
+                    "MI",
+                    "CM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The distance between the wing tips of the aircraft. Units: given by uom."
+        },
+        "wingSpanInterpretation": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "ABOVE",
+                "AT_OR_ABOVE",
+                "AT_OR_BELOW",
+                "BELOW"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "Indicates whether the Aircraft Characteristic concerns aircraft with larger or smaller wingspan. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "classWingSpan": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "A",
+                "B",
+                "C",
+                "D",
+                "E",
+                "F"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "A classification of aircraft by wing span dimension. It can be used to indicate the size of aircraft that a taxiway can handle. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "weight": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "KG",
+                    "T",
+                    "LB",
+                    "TON"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for weight values."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The maximum aircraft take-off weight. Units: given by uom."
+        },
+        "weightInterpretation": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "ABOVE",
+                "AT_OR_ABOVE",
+                "AT_OR_BELOW",
+                "BELOW"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "Indicates whether the Aircraft Characteristic concerns aircraft with bigger or smaller weight. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "passengers": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The maximum number of passengers carried on an aircraft."
+        },
+        "passengersInterpretation": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "ABOVE",
+                "AT_OR_ABOVE",
+                "AT_OR_BELOW",
+                "BELOW"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "Indicates whether the Aircraft Characteristic concerns aircraft with larger or smaller number of passengers. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "speed": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "KM_H",
+                    "KT",
+                    "MACH",
+                    "M_MIN",
+                    "FT_MIN",
+                    "M_SEC",
+                    "FT_SEC",
+                    "MPH"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for speed."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "An Indicated Air Speed (IAS) that can be maintained by the aircraft. Units: given by uom."
+        },
+        "speedInterpretation": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "ABOVE",
+                "AT_OR_ABOVE",
+                "AT_OR_BELOW",
+                "BELOW"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "Indicates whether the Indicated Air Speed that can be maintained by an aircraft is a maximum or minimum imposed value. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "wakeTurbulence": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "LIGHT",
+                "MEDIUM",
+                "HEAVY",
+                "SUPER",
+                "GROUP_A",
+                "GROUP_B",
+                "GROUP_C",
+                "GROUP_D",
+                "GROUP_E",
+                "GROUP_F",
+                "GROUP_G"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "The wake turbulence category of the aircraft. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "navigationSpecification": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "RNAV_10",
+                "RNAV_5",
+                "RNAV_2",
+                "RNAV_1",
+                "RNP_4",
+                "RNP_2",
+                "RNP_APCH",
+                "RNP_AR_APCH",
+                "RNAV",
+                "RNP",
+                "RNP_1",
+                "A_RNP",
+                "RNP_0_3"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "A set of aircraft and flight crew requirements needed to support performance-based navigation operations. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "verticalSeparationCapability": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "RVSM",
+                "NON_RVSM"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indication of the aircraft capability to maintain a specified vertical separation. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "antiCollisionAndSeparationEquipment": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "ACAS_I",
+                "ACAS_II",
+                "GPWS"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indication of the aircraft equipment with collision avoidance systems. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "communicationEquipment": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "HF",
+                "VHF",
+                "VDL1",
+                "VDL2",
+                "VDL4",
+                "AMSS",
+                "ADS_B",
+                "ADS_B_VDL",
+                "HFDL",
+                "VHF_833",
+                "UHF"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indication of the aircraft equipment with voice and data communication devices. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "surveillanceEquipment": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "MODE_1",
+                "MODE_2",
+                "MODE_3A",
+                "MODE_4",
+                "MODE_5",
+                "MODE_C",
+                "MODE_S"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indication of the aircraft capability for operating with a certain surveillance system. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        },
+        "category": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "LANDPLANE",
+                "SEAPLANE",
+                "AMPHIBIAN",
+                "HELICOPTER",
+                "GYROCOPTER",
+                "TILT_WING",
+                "STOL",
+                "GLIDER",
+                "HANGGLIDER",
+                "PARAGLIDER",
+                "ULTRA_LIGHT",
+                "BALLOON",
+                "ALL",
+                "UA"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indication of the category of aircraft. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "navigationType": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "CONV",
+                "TACAN",
+                "PBN"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indication if performance based navigation or conventional navigation is required. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "navigationAccuracy": {
+          "type": "number",
+          "description": "The navigation accuracy value associated with the navigation specification."
+        },
+        "dualFrequency": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "YES",
+                "NO"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "Simultaneous radio communication capability on two different frequencies, such as dual VHF. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "helicopterPerformanceClass": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "1",
+                "2",
+                "3",
+                "2WE"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "A code indicating the performance class of a helicopter. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "radioNavigationEquipment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AircraftNavigationEquipment"
+          },
+          "description": "Radio navigation equipment available on the aircraft. Note: multiple occurrences in relation with the same AircraftCharacteristics are interpreted with an ‘and’ operator."
+        }
+      },
+      "additionalProperties": false
+    },
+    "AircraftNavigationEquipment": {
+      "type": "object",
+      "description": "AIXM <<object>> AircraftNavigationEquipment. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_AircraftNavigationEquipment.html'. Radio navigation equipment capabilities available on board.",
+      "properties": {
+        "navigationEquipment": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "DME",
+                "VOR_DME",
+                "DME_DME",
+                "TACAN",
+                "ILS",
+                "MLS",
+                "GNSS",
+                "WAAS",
+                "LORAN",
+                "INS",
+                "FMS",
+                "VOR",
+                "DUAL_VOR",
+                "ADF",
+                "DUAL_ADF",
+                "DME_DME_IRU",
+                "FMS_RF"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indication of the aircraft capability for using a specified ground based, satellite based or on-board system for aerial navigation. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        }
+      },
+      "additionalProperties": false
+    },
+    "AirspaceActivation": {
+      "type": "object",
+      "description": "AIXM <<object>> AirspaceActivation. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_AirspaceActivation.html'. Information about the operational status of the airspace.",
+      "properties": {
+        "timeInterval": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Timesheet"
+          },
+          "description": "A component of the schedule."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        },
+        "specialDateAuthority": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          },
+          "description": "Indicates that the SpecialDates associated with the related OrganisationAuthority are applicable to the schedule definition. Reference to the AIXM feature OrganisationAuthority: urn:ngsi-ld:<feature type>:<gml:identifier UUID>."
+        },
+        "activity": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "AD_TFC",
+                "HELI_TFC",
+                "TRAINING",
+                "AEROBATICS",
+                "AIRSHOW",
+                "SPORT",
+                "ULM",
+                "GLIDING",
+                "PARAGLIDER",
+                "HANGGLIDING",
+                "PARACHUTE",
+                "AIR_DROP",
+                "BALLOON",
+                "RADIOSONDE",
+                "SPACE_FLIGHT",
+                "AERIAL_WORK",
+                "CROP_DUSTING",
+                "FIRE_FIGHTING",
+                "MILOPS",
+                "REFUEL",
+                "JET_CLIMBING",
+                "EXERCISE",
+                "TOWING",
+                "NAVAL_EXER",
+                "MISSILES",
+                "AIR_GUN",
+                "ARTILLERY",
+                "SHOOTING",
+                "BLASTING",
+                "WATER_BLASTING",
+                "ANTI_HAIL",
+                "BIRD",
+                "BIRD_MIGRATION",
+                "FIREWORK",
+                "HI_RADIO",
+                "HI_LIGHT",
+                "LASER",
+                "NATURE",
+                "FAUNA",
+                "NO_NOISE",
+                "ACCIDENT",
+                "POPULATION",
+                "VIP",
+                "VIP_PRES",
+                "VIP_VICE",
+                "OIL",
+                "GAS",
+                "REFINERY",
+                "CHEMICAL",
+                "NUCLEAR",
+                "TECHNICAL",
+                "ATS",
+                "PROCEDURE",
+                "UAS",
+                "ACFT_MASS_MOVEMENT",
+                "CAPTIVE_BALLOON_KITE",
+                "DEMOLITION",
+                "DISASTER_RELIEF",
+                "FORMATION_FLIGHT",
+                "MODEL_FLYING",
+                "NIGHT_VISION_OPS",
+                "SAR",
+                "SKY_LANTERN",
+                "SMOKE",
+                "VOLCANO"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "The primary situation or reason on the ground or in the air, which may have an impact on airspace usage. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "status": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "AVBL_FOR_ACTIVATION",
+                "ACTIVE",
+                "IN_USE",
+                "INACTIVE",
+                "INTERMITTENT"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "The activation status of the airspace. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "levels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AirspaceLayer"
+          },
+          "description": "The airspace layer associated with the airspace usage part."
+        },
+        "user": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          },
+          "description": "The Organisation that uses the Airspace layer. Reference to the AIXM feature OrganisationAuthority: urn:ngsi-ld:<feature type>:<gml:identifier UUID>."
+        },
+        "aircraft": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AircraftCharacteristic"
+          },
+          "description": "Indicates the type of Aircraft that are using the Airspace during its activation."
+        }
+      },
+      "additionalProperties": false
+    },
+    "AirspaceGeometryComponent": {
+      "type": "object",
+      "description": "AIXM <<object>> AirspaceGeometryComponent. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_AirspaceGeometryComponent.html'. The role of the component in the airspace geometry. If the geometry of an airspace is composed of single volume, then the attributes of this association class may be left empty.",
+      "properties": {
+        "operation": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "BASE",
+                "UNION",
+                "INTERS",
+                "SUBTR"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indicator of how the component participates in the aggregation, such as addition, subtraction or intersection. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "operationSequence": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "An indicator of the order of the component in an aggregation."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        },
+        "theAirspaceVolume": {
+          "$ref": "#/$defs/AirspaceVolume",
+          "description": "theAirspaceVolume"
+        }
+      },
+      "additionalProperties": false
+    },
+    "AirspaceLayer": {
+      "type": "object",
+      "description": "AIXM <<object>> AirspaceLayer. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_AirspaceLayer.html'. The portion of airspace between two specified vertical levels.",
+      "properties": {
+        "upperLimit": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string",
+                  "enum": [
+                    "UNL",
+                    "GND",
+                    "FLOOR",
+                    "CEILING"
+                  ]
+                }
+              ]
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "FT",
+                    "M",
+                    "FL",
+                    "SM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a vertical distance. For example, Flight Level, metres, feet."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The vertical distance, measured relative to a separately specified upper limit reference, of the upper bound of an airspace layer or block. Where airspace layer is the portion of airspace between two specified vertical levels. Units: given by uom."
+        },
+        "upperLimitReference": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "SFC",
+                "MSL",
+                "W84",
+                "STD"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "The reference surface (Mean Sea Level, Ground, standard pressure, etc.) used for determining the value of the lower limit of an airspace Layer or block. Where airspace layer is the portion of airspace between two specified vertical levels. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "lowerLimit": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string",
+                  "enum": [
+                    "UNL",
+                    "GND",
+                    "FLOOR",
+                    "CEILING"
+                  ]
+                }
+              ]
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "FT",
+                    "M",
+                    "FL",
+                    "SM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a vertical distance. For example, Flight Level, metres, feet."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The vertical distance, measured relative to a separately specified lower limit reference, of the lower bound of an airspace layer or block. Where airspace layer is the portion of airspace between two specified vertical levels. Units: given by uom."
+        },
+        "lowerLimitReference": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "SFC",
+                "MSL",
+                "W84",
+                "STD"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "The reference surface (Mean Sea Level, Ground, standard pressure, etc.) used for determining the value of the lower limit of an airspace Layer or block. Where airspace layer is the portion of airspace between two specified vertical levels. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "altitudeInterpretation": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "AT_OR_ABOVE",
+                "AT_OR_BELOW",
+                "AT",
+                "BETWEEN",
+                "RECOMMENDED",
+                "EXPECTED",
+                "BY_ATC"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "Indicates how the upper and/or lower altitude values should be interpreted. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "discreteLevelSeries": {
+          "type": "string",
+          "format": "uri",
+          "description": "Restriction of the AirspaceLayer to a number of standard IFR or VFR levels. Reference to the AIXM feature StandardLevelColumn: urn:ngsi-ld:<feature type>:<gml:identifier UUID>."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        }
+      },
+      "additionalProperties": false
+    },
+    "AirspaceLayerClass": {
+      "type": "object",
+      "description": "AIXM <<object>> AirspaceLayerClass. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_AirspaceLayerClass.html'. The airspace class for a portion of airspace between two specified vertical levels.",
+      "properties": {
+        "timeInterval": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Timesheet"
+          },
+          "description": "A component of the schedule."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        },
+        "specialDateAuthority": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          },
+          "description": "Indicates that the SpecialDates associated with the related OrganisationAuthority are applicable to the schedule definition. Reference to the AIXM feature OrganisationAuthority: urn:ngsi-ld:<feature type>:<gml:identifier UUID>."
+        },
+        "classification": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "A",
+                "B",
+                "C",
+                "D",
+                "E",
+                "F",
+                "G"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "A classification of airspace which determines the operating rules, flight requirements, and services provided. According to ICAO Annex 11 'Air Traffic Services', Appendix 4 : 'ATS Airspace Classes -- Services Provided and Flight Requirements'. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "associatedLevels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AirspaceLayer"
+          },
+          "description": "The airspace layer associated with the airspace class."
+        }
+      },
+      "additionalProperties": false
+    },
+    "AirspaceVolume": {
+      "type": "object",
+      "description": "AIXM <<object>> AirspaceVolume. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_AirspaceVolume.html'. A defined volume in the air, described as horizontal projection with vertical limits.",
+      "properties": {
+        "upperLimit": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string",
+                  "enum": [
+                    "UNL",
+                    "GND",
+                    "FLOOR",
+                    "CEILING"
+                  ]
+                }
+              ]
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "FT",
+                    "M",
+                    "FL",
+                    "SM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a vertical distance. For example, Flight Level, metres, feet."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The vertical distance of the upper bound (ceiling) of an airspace volume. The vertical distance is measured relative to a separately specified upper limit reference. An airspace volume is a defined volume in air described as horizontal projection with vertical limits. Units: given by uom."
+        },
+        "upperLimitReference": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "SFC",
+                "MSL",
+                "W84",
+                "STD"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "The reference surface (Mean Sea Level, Ground, standard pressure, etc.) used for the value of the upper limit of an airspace volume. Where airspace volume is a defined volume in air described as horizontal projection with vertical limits. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "maximumLimit": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string",
+                  "enum": [
+                    "UNL",
+                    "GND",
+                    "FLOOR",
+                    "CEILING"
+                  ]
+                }
+              ]
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "FT",
+                    "M",
+                    "FL",
+                    "SM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a vertical distance. For example, Flight Level, metres, feet."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The vertical distance of the maximum limit of an airspace volume. The vertical distance is measured relative to a separately specified maximum limit reference. An airspace volume is a defined volume in air described as horizontal projection with vertical limits. The maximum limit overrides the upper limit, in those parts of the airspace where the upper limit is situated below the maximum limit. Units: given by uom."
+        },
+        "maximumLimitReference": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "SFC",
+                "MSL",
+                "W84",
+                "STD"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "The reference surface (Mean Sea Level, Ground, standard pressure, etc.) used for determining the value of the maximum limit of an airspace volume. Where airspace volume is a defined volume in air described as horizontal projection with vertical limits. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "lowerLimit": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string",
+                  "enum": [
+                    "UNL",
+                    "GND",
+                    "FLOOR",
+                    "CEILING"
+                  ]
+                }
+              ]
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "FT",
+                    "M",
+                    "FL",
+                    "SM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a vertical distance. For example, Flight Level, metres, feet."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The vertical distance of the lower bound (floor) of an airspace volume. The vertical distance is measured relative to a separately specified lower limit reference. An airspace volume is a defined volume in air described as horizontal projection with vertical limits. Units: given by uom."
+        },
+        "lowerLimitReference": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "SFC",
+                "MSL",
+                "W84",
+                "STD"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "The reference surface (Mean Sea Level, Ground, standard pressure, etc.) used for determining the value of the lower limit of an airspace volume. Where airspace volume is a defined volume in air described as horizontal projection with vertical limits. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "minimumLimit": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string",
+                  "enum": [
+                    "UNL",
+                    "GND",
+                    "FLOOR",
+                    "CEILING"
+                  ]
+                }
+              ]
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "FT",
+                    "M",
+                    "FL",
+                    "SM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a vertical distance. For example, Flight Level, metres, feet."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The vertical distance of the minimum limit of an airspace volume. The vertical distance is measured relative to a separately specified minimum limit reference. An airspace volume is a defined volume in air described as horizontal projection with vertical limits. The minimum limit overrides the lower limit, in those parts of the airspace where the lower limit is situated below the minimum limit. Units: given by uom."
+        },
+        "minimumLimitReference": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "SFC",
+                "MSL",
+                "W84",
+                "STD"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "The reference surface (Mean Sea Level, Ground, standard pressure, etc.) used for the value of the minimum limit of an airspace volume. Where airspace volume is a defined volume in air described as horizontal projection with vertical limits. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "width": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "NM",
+                    "KM",
+                    "M",
+                    "FT",
+                    "MI",
+                    "CM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The width of the corridor, in case the AirspaceVolume has been originally defined as having a corridor shape. Units: given by uom."
+        },
+        "horizontalProjection": {
+          "$ref": "#/$defs/Surface",
+          "description": "The surface defining the horizontal shape of the AirspaceVolume."
+        },
+        "centreline": {
+          "$ref": "#/$defs/Curve",
+          "description": "The line passing through the centre of an airspace volume having a corridor shape."
+        },
+        "contributorAirspace": {
+          "$ref": "#/$defs/AirspaceVolumeDependency",
+          "description": "A (parent) Airspace, whose geometry has an impact on the geometry of the AirspaceVolume."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        },
+        "name": {
+          "type": "string",
+          "pattern": "^(?:([A-Z]|[a-z]|[0-9]|[, !\"&#$%'\\(\\)\\*\\+\\-\\./:;<=>\\?@\\[\\\\\\]\\^_\\|\\{\\}])*)$",
+          "minLength": 1,
+          "maxLength": 60,
+          "description": "The free text identifier or name of the the airspace volume."
+        },
+        "location": {
+          "$ref": "#/$defs/Point",
+          "description": "A single position used as geographical reference for the AirspaceVolume, in particular when a precise horizontalProjection is not provided."
+        }
+      },
+      "additionalProperties": false
+    },
+    "AirspaceVolumeDependency": {
+      "type": "object",
+      "description": "AIXM <<object>> AirspaceVolumeDependency. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_AirspaceVolumeDependency.html'. The relationship between the geometry of an AirspaceVolume and the geometry of another (parent) Airspace.",
+      "properties": {
+        "dependency": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "FULL_GEOMETRY",
+                "HORZ_PROJECTION"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indicator of the type of dependency between the geometry of the AirspaceVolume and the geometry of the contributor Airspace. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        },
+        "theAirspace": {
+          "type": "string",
+          "format": "uri",
+          "description": "Reference to the AIXM feature Airspace: urn:ngsi-ld:<feature type>:<gml:identifier UUID>."
+        }
+      },
+      "additionalProperties": false
+    },
+    "Curve": {
+      "type": "object",
+      "description": "AIXM geometry Curve. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Curve.html'. A one-dimensional geometric primitive, representing the continuous image of a line.",
+      "properties": {
+        "geometry": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "enum": [
+                    "LineString"
+                  ]
+                },
+                "coordinates": {
+                  "type": "array",
+                  "minItems": 2,
+                  "items": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 3,
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "type",
+                "coordinates"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "enum": [
+                    "MultiLineString"
+                  ]
+                },
+                "coordinates": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "minItems": 2,
+                    "items": {
+                      "type": "array",
+                      "minItems": 2,
+                      "maxItems": 3,
+                      "items": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              },
+              "required": [
+                "type",
+                "coordinates"
+              ]
+            }
+          ],
+          "description": "The GML geometry of the AIXM Curve (gml:pos / gml:posList, EPSG:4326) encoded as GeoJSON (longitude, latitude order). Smart Data Models encoding of the GML part; arcs and circles (ArcByCenterPoint, CircleByCenterPoint) must be densified to positions."
+        },
+        "horizontalAccuracy": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "NM",
+                    "KM",
+                    "M",
+                    "FT",
+                    "MI",
+                    "CM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The difference between the recorded horizontal coordinates of a curve and its true position referenced to the same geodetic datum expressed as a circular error corresponding to the confidence level specified in the ICAO PANS-AIM (DOC 10066) for the specific subject/property. Units: given by uom."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        }
+      },
+      "required": [
+        "geometry"
+      ],
+      "additionalProperties": false
+    },
+    "LinguisticNote": {
+      "type": "object",
+      "description": "AIXM <<object>> LinguisticNote. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_LinguisticNote.html'. The note content expressed in a specific language. As a minimum, all Notes shall be expressed in English.",
+      "properties": {
+        "note": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 10000
+            },
+            "lang": {
+              "type": "string",
+              "description": "XML attribute lang"
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The text of the Note, in a specific language."
+        }
+      },
+      "additionalProperties": false
+    },
+    "Note": {
+      "type": "object",
+      "description": "AIXM <<object>> Note. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Note.html'. A general text note for a feature or for one of its properties.",
+      "properties": {
+        "propertyName": {
+          "type": "string",
+          "pattern": "^(?:[A-Za-z\\-_]*)$",
+          "minLength": 1,
+          "maxLength": 60,
+          "description": "The name of the feature property for which this note is relevant, if applicable. If no propertyName is specified, then the Note is relevant for the feature as a whole."
+        },
+        "purpose": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "DESCRIPTION",
+                "REMARK",
+                "WARNING",
+                "DISCLAIMER"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indication of the goal which led to the provision of the free text note. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "translatedNote": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LinguisticNote"
+          },
+          "description": "The Note written linguistically."
+        }
+      },
+      "additionalProperties": false
+    },
+    "Point": {
+      "type": "object",
+      "description": "AIXM geometry Point. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Point.html'. A zero-dimensional object that specifies geometric location. One coordinate pair or triplet specifies the location.",
+      "properties": {
+        "geometry": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "Point"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 3,
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ],
+          "description": "The GML geometry of the AIXM Point (gml:pos / gml:posList, EPSG:4326) encoded as GeoJSON (longitude, latitude order). Smart Data Models encoding of the GML part; arcs and circles (ArcByCenterPoint, CircleByCenterPoint) must be densified to positions."
+        },
+        "horizontalAccuracy": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "NM",
+                    "KM",
+                    "M",
+                    "FT",
+                    "MI",
+                    "CM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The difference between the recorded horizontal coordinates of a point and its true position referenced to the same geodetic datum expressed as a circular error corresponding to the confidence level specified in the ICAO PANS-AIM (DOC 10066) for the specific subject/property. Units: given by uom."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        }
+      },
+      "required": [
+        "geometry"
+      ],
+      "additionalProperties": false
+    },
+    "Surface": {
+      "type": "object",
+      "description": "AIXM geometry Surface. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Surface.html'. A 2-dimensional primitive and is composed of one or more surface patches as specified in ISO 19107:2003, 6.3.17.1. The surface patches are connected to one another.",
+      "properties": {
+        "geometry": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "enum": [
+                    "Polygon"
+                  ]
+                },
+                "coordinates": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "minItems": 4,
+                    "items": {
+                      "type": "array",
+                      "minItems": 2,
+                      "maxItems": 3,
+                      "items": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              },
+              "required": [
+                "type",
+                "coordinates"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "enum": [
+                    "MultiPolygon"
+                  ]
+                },
+                "coordinates": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "minItems": 4,
+                      "items": {
+                        "type": "array",
+                        "minItems": 2,
+                        "maxItems": 3,
+                        "items": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "required": [
+                "type",
+                "coordinates"
+              ]
+            }
+          ],
+          "description": "The GML geometry of the AIXM Surface (gml:pos / gml:posList, EPSG:4326) encoded as GeoJSON (longitude, latitude order). Smart Data Models encoding of the GML part; arcs and circles (ArcByCenterPoint, CircleByCenterPoint) must be densified to positions."
+        },
+        "horizontalAccuracy": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "NM",
+                    "KM",
+                    "M",
+                    "FT",
+                    "MI",
+                    "CM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The difference between the recorded horizontal coordinates of a surface and its true position referenced to the same geodetic datum expressed as a circular error corresponding to the confidence level specified in the ICAO PANS-AIM (DOC 10066) for the specific subject/property. Units: given by uom."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        }
+      },
+      "required": [
+        "geometry"
+      ],
+      "additionalProperties": false
+    },
+    "Timesheet": {
+      "type": "object",
+      "description": "AIXM <<object>> Timesheet. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Timesheet.html'. The definition of a single time interval, that occurs repeatedly as part of a schedule.",
+      "properties": {
+        "timeReference": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "UTC",
+                "UTC-12",
+                "UTC-11",
+                "UTC-10",
+                "UTC-9",
+                "UTC-8",
+                "UTC-7",
+                "UTC-6",
+                "UTC-5",
+                "UTC-4",
+                "UTC-3",
+                "UTC-2",
+                "UTC-1",
+                "UTC+1",
+                "UTC+2",
+                "UTC+3",
+                "UTC+4",
+                "UTC+5",
+                "UTC+6",
+                "UTC+7",
+                "UTC+8",
+                "UTC+9",
+                "UTC+10",
+                "UTC+11",
+                "UTC+12",
+                "UTC+13",
+                "UTC+14",
+                "UTC-9:30",
+                "UTC-3:30",
+                "UTC-2:30",
+                "UTC+4:30",
+                "UTC+5:30",
+                "UTC+5:45",
+                "UTC+6:30",
+                "UTC+8:45",
+                "UTC:+9:30",
+                "UTC+10:30",
+                "UTC+12:45"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indicator of the time reference system or reference system offset (for example, Coordinated Universal Time (UTC), or UTC minus 7 hours), applied to the time, day and date values specified in the timesheet. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "startDate": {
+          "type": "string",
+          "pattern": "^(?:(((0[1-9])|(1[0-9])|(2[0-9]))\\-((0[1-9])|10|11|12))|(30\\-(01|03|04|05|06|07|08|09|10|11|12))|(31\\-(01|03|05|07|08|10|12))|SDLST|EDLST)$",
+          "description": "The start date of the validity of a timesheet. Used together with a timesheet's 'EndDate' to express repetitive time periods like 15 May to 15 November."
+        },
+        "endDate": {
+          "type": "string",
+          "pattern": "^(?:(((0[1-9])|(1[0-9])|(2[0-9]))\\-((0[1-9])|10|11|12))|(30\\-(01|03|04|05|06|07|08|09|10|11|12))|(31\\-(01|03|05|07|08|10|12))|SDLST|EDLST)$",
+          "description": "The end date of the validity of a timesheet. Used together with a timesheet's 'StartDate' to express repetitive time periods like 15 May to 15 November."
+        },
+        "day": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "MON",
+                "TUE",
+                "WED",
+                "THU",
+                "FRI",
+                "SAT",
+                "SUN",
+                "WORK_DAY",
+                "BEF_WORK_DAY",
+                "AFT_WORK_DAY",
+                "HOL",
+                "BEF_HOL",
+                "AFT_HOL",
+                "ANY",
+                "BUSY_FRI",
+                "MON_FRI",
+                "SUN_THU",
+                "SAT_WED",
+                "SAT_THU"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indicator of the day the timesheet is referring to. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "dayTil": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "MON",
+                "TUE",
+                "WED",
+                "THU",
+                "FRI",
+                "SAT",
+                "SUN",
+                "WORK_DAY",
+                "BEF_WORK_DAY",
+                "AFT_WORK_DAY",
+                "HOL",
+                "BEF_HOL",
+                "AFT_HOL",
+                "ANY",
+                "BUSY_FRI",
+                "MON_FRI",
+                "SUN_THU",
+                "SAT_WED",
+                "SAT_THU"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indicator of the days affected by a timesheet, as follows: if the value of this attribute is left blank, the 'EndTime', 'EndEvent', 'EndTimeRelativeEvent' and 'endEventInterpretation' values of a timesheet must be considered as occurring on the day specified. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "startTime": {
+          "type": "string",
+          "pattern": "^(?:(([0-1][0-9]|2[0-3]):[0-5][0-9])|(24:00))$",
+          "description": "The time of the day (specified in the timesheet's 'day' attribute) when the period described in the timesheet starts."
+        },
+        "startEvent": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "SR",
+                "SS",
+                "BMCT",
+                "EECT"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "A reference to an event (like sunset or sunrise), the occurrence of which indicates when the period described in a timesheet starts. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "startTimeRelativeEvent": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "HR",
+                    "MIN",
+                    "SEC"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for time. For example, seconds, minutes, hours"
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The number of minutes before or after the event referred to by the timesheet's 'StartEvent' when the period described in the timesheet starts. Units: given by uom."
+        },
+        "startEventInterpretation": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "EARLIEST",
+                "LATEST"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "When both the 'StartTime' and 'StartEvent' values of a timesheet are not blank, this explains how the combination of the two values should be interpreted, i.e. which of the two moments in time is the beginning of the period described by the timesheet. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "endTime": {
+          "type": "string",
+          "pattern": "^(?:(([0-1][0-9]|2[0-3]):[0-5][0-9])|(24:00))$",
+          "description": "The time of the day when the period described in the timesheet ends."
+        },
+        "endEvent": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "SR",
+                "SS",
+                "BMCT",
+                "EECT"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "A reference to an event (like sunset or sunrise), the occurrence of which indicates when the period described in a timesheet ends. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "endTimeRelativeEvent": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "HR",
+                    "MIN",
+                    "SEC"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for time. For example, seconds, minutes, hours"
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The number of minutes before or after an event, referred to by the timesheet's 'EndEvent', when the period described in the timesheet ends. Units: given by uom."
+        },
+        "endEventInterpretation": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "EARLIEST",
+                "LATEST"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "When both the 'EndTime' and 'EndEvent' values of a timesheet are not blank, this attribute explains how the combination of the two attributes should be interpreted, i.e. which of the two moments in time is the end of the period described by the timesheet. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "daylightSavingAdjust": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "YES",
+                "NO"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "Indicates that the 'StartTime' and 'EndTime' values of a timesheet have to be decreased by one hour when Daylight Saving is in force (summer time). Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "excluded": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "YES",
+                "NO"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indicator that the time block indicated by a timesheet is excluded (subtracted) from the total time interval(s) defined by one or more additional timesheet(s). Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
