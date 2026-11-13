@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/mds/models/Incident/schema.json",
+  "modelTags": "MDS,OpenMobilityFoundation,SharedMobility,Micromobility,MobilityRegulation",
+  "title": "Smart Data Models - Mobility Data Specification (MDS) - Incident",
+  "description": "An MDS incident (new in MDS 2.1): a safety, enforcement or operational occurrence (crash, tip over, near miss, vandalism, violation, remote takeover, ...) reported by an operator, on or off a trip. (MDS 2.1.0, data-types.md section 'Incidents'; field names kept verbatim; MDS timestamps are integer milliseconds since the Unix epoch.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Incident:<incident_id>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Incident"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Incident'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "incident_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#incidents/incident_id'. ID used for uniquely identifying an Incident."
+    },
+    "incident_type": {
+      "type": "string",
+      "enum": [
+        "unplanned_stop",
+        "remote_takeover",
+        "ads_engaged",
+        "ads_disengaged",
+        "tip_over",
+        "harsh_stopping"
+      ],
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#incidents/incident_type'. The type of incident. One of 'unplanned_stop', 'remote_takeover', 'ads_engaged' (Automated Driving System), 'ads_disengaged', 'tip_over', 'harsh_stopping' (e.g. braking), 'harsh_starting' (e.g. acceleration), 'near_miss', 'vandalism', 'theft', 'violation', 'crash'. Exact definitions, and when and if which incident types are sent, come from the public agency."
+    },
+    "incident_time": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#incidents/incident_time'. Date/time that incident first occurred. Note that this timestamp of the incident first occurance is independent of one or more Telemetry timestamps referenced via 'incident_id'. Note that more frequent telemetry data points may be required when an incident is first discovered and occuring. Units:'milliseconds since the Unix epoch (MDS Timestamp)'."
+    },
+    "discovery_time": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#incidents/discovery_time'. Date/time that incident was first discovered by the operator. This may be at the same moment of the 'incident_time', or may have been discovered later. Units:'milliseconds since the Unix epoch (MDS Timestamp)'."
+    },
+    "publication_time": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#incidents/publication_time'. Date/time that incident became first available to an agency through an Incident endpoint. Units:'milliseconds since the Unix epoch (MDS Timestamp)'."
+    },
+    "last_updated": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#incidents/last_updated'. Date/time that incident was last updated in the Incident endpoint. Units:'milliseconds since the Unix epoch (MDS Timestamp)'."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#incidents/description'. Text description of the incident."
+    },
+    "severity": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#incidents/severity'. Text description of the severity of the incident."
+    },
+    "medical_dispatch": {
+      "type": "boolean",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#incidents/medical_dispatch'. If 'true', a medical dispatch occured connected to the incident."
+    },
+    "medical_transport": {
+      "type": "boolean",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#incidents/medical_transport'. If 'true', one or more individuals was transported via an ambulance or emergency response vehicle because of the incident."
+    },
+    "report_id": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#incidents/report_id'. Identifier of an external report, from a police report, citation, internal system, service request, etc. The report source is communicated by the operator to the agency outside of MDS."
+    },
+    "report_type": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#incidents/report_type'. Description of the type of report referenced by the 'report_id', eg. police, customer, remote operator, 311 call, etc."
+    },
+    "enforcement": {
+      "$ref": "#/$defs/Enforcement",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#incidents/enforcement'. Enforcement and violation information related to this incident. Can be used for any 'incident_type'."
+    },
+    "external_references": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ExternalReference"
+      },
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#incidents/external_references'. One or more references to external data feeds, links, reports, or documents impacting or related to this Incident, as they become available."
+    },
+    "contact_info": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#incidents/contact_info'. Description of any relevant contact information about the incident the operator can provide."
+    },
+    "preliminary": {
+      "type": "boolean",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#incidents/preliminary'. If 'true', then this information in this Incident is only preliminary, with more details and/or validation coming at a later date. If 'false', the information provided here is deemed valed with no more updates expected."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "incident_id",
+    "incident_type",
+    "incident_time",
+    "discovery_time",
+    "publication_time",
+    "last_updated"
+  ],
+  "$defs": {
+    "Enforcement": {
+      "type": "object",
+      "properties": {
+        "enforcement_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "An identifier unique to the enforcement incident, generated the first time an enforcement event is recorded, and referenced in future related enforcement events. Multiple Incidents (ex: 'crash', 'violation', or 'vandalism') that relate to the same enforcement activity can share the same 'enforcement_id'."
+        },
+        "citation_id": {
+          "type": "string",
+          "description": "A unique id which represents a single citation."
+        },
+        "is_warning": {
+          "type": "boolean",
+          "description": "A boolean value to indicate if the enforcement action is being processed as a warning."
+        },
+        "action_taken": {
+          "type": "string",
+          "description": "Indicates how the violation was enforced. Typical well-known values are 'citation_registered', 'citation_posted', 'citation_served', or 'citation_emailed'."
+        },
+        "citation_cost": {
+          "type": "string",
+          "description": "The total cost of all violations associated to this enforcement action."
+        },
+        "violations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Violation"
+          },
+          "description": "An array of Violation objects that indicate the one-to-many violations associated to this enforcement event."
+        }
+      },
+      "required": [
+        "enforcement_id"
+      ]
+    },
+    "ExternalReference": {
+      "type": "object",
+      "properties": {
+        "reference_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "A web-accessible identifier URL for the source of the publicly or privately accessible data feed, document, website, etc. This MUST be a full HTTPS URL pointing to a location which contains more information impacting or explaining the location, event, or policy, etc."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the data source for reference. E.g. \"WZDx\", \"CWZ\", \"CDS\", \"GBFS\", \"GTFS\", \"MDS\"."
+        },
+        "public": {
+          "type": "boolean",
+          "description": "Is this data source able to be viewed with out any sort of authentication? If 'true', the 'reference_url' is public. If 'false', the 'reference_url' requires some sort of authentication, authorization, or API key to access. This is an informational field to set access expectations for the data source user, and does not provide any credentials directly unless explicitly contained in the 'reference_url'."
+        },
+        "identifier_name": {
+          "type": "string",
+          "description": "The name of the data field identifier or object that is referenced by the unique 'ids'. E.g. \"id\", \"report_id\", \"trip_id\", \"vehicle_id\", \"RoadEventFeature\", etc, if relevant and available in 'reference_url'."
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "An array of one or more ids from the data sources that impacts the use of or relationship to part of MDS, e.g. Trips, Events, Stops, etc. The ids and their details are be found in the referenced 'reference_url'."
+        }
+      },
+      "required": [
+        "reference_url"
+      ]
+    },
+    "Violation": {
+      "type": "object",
+      "properties": {
+        "violation_code": {
+          "type": "string",
+          "description": "The unique code created by the municipality, city, county, state, federal, or enforcement agency to identify the type of rule being enforced."
+        },
+        "violation_name": {
+          "type": "string",
+          "description": "The city/municipal, county, state, provincial, or federal code that was violated."
+        },
+        "violation_cost": {
+          "type": "string",
+          "description": "The original cost associated with the violation."
+        }
+      },
+      "required": []
+    }
+  }
+}

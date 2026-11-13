@@ -1,0 +1,60 @@
+{
+  "id": "urn:ngsi-ld:Policy:ed6c2dc2-7be5-520e-82df-dbeff2b9aeaa",
+  "type": "Policy",
+  "name": "Dockless vehicle fleet cap and speed limit",
+  "mode_id": "micromobility",
+  "policy_id": "ed6c2dc2-7be5-520e-82df-dbeff2b9aeaa",
+  "provider_ids": [
+    "963aab9a-0e40-5e5e-a26c-e93af811d266"
+  ],
+  "description": "Each permitted provider may deploy at most 1,050 vehicles in the municipal boundary; standing scooters are limited to 15 mph.",
+  "currency": "USD",
+  "start_date": 1796101200000,
+  "published_date": 1794582000000,
+  "rules": [
+    {
+      "name": "Fleet cap",
+      "rule_id": "62fa0a46-eaa1-544a-8d61-484b16d73070",
+      "rule_type": "count",
+      "rule_units": "devices",
+      "geographies": [
+        "e00535dd-d8ff-4b1b-920d-34e7404d0208"
+      ],
+      "states": {
+        "available": [],
+        "non_operational": [],
+        "reserved": [],
+        "on_trip": []
+      },
+      "vehicle_types": [
+        "scooter_standing",
+        "bicycle"
+      ],
+      "maximum": 1050
+    },
+    {
+      "name": "Speed limit",
+      "rule_id": "0cd55654-5bdb-5f72-8bda-92240b6a039a",
+      "rule_type": "speed",
+      "rule_units": "mph",
+      "geographies": [
+        "e00535dd-d8ff-4b1b-920d-34e7404d0208"
+      ],
+      "states": {
+        "on_trip": []
+      },
+      "vehicle_types": [
+        "scooter_standing"
+      ],
+      "maximum": 15,
+      "messages": {
+        "en-US": "Remember to stay under 15 MPH.",
+        "es-US": "Recuerde permanecer por debajo de 15 MPH."
+      }
+    }
+  ],
+  "source": "Synthetic example modelled on the MDS Policy examples (fleet cap and speed limit rules); it refers to the real Louisville municipal-boundary Geography example of the MDS repository but is not a Louisville Metro policy. Structure: Mobility Data Specification 2.1.0, CC BY 4.0, Open Mobility Foundation.",
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/mds/models/Policy/context.jsonld"
+  ]
+}

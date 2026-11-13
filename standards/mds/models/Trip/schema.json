@@ -1,0 +1,295 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/mds/models/Trip/schema.json",
+  "modelTags": "MDS,OpenMobilityFoundation,SharedMobility,Micromobility,MobilityRegulation",
+  "title": "Smart Data Models - Mobility Data Specification (MDS) - Trip",
+  "description": "An MDS trip: a journey taken by a mobility-as-a-service customer (or an operator movement) with a start and end point, duration, distance and cost. (MDS 2.1.0, data-types.md section 'Trips'; field names kept verbatim; MDS timestamps are integer milliseconds since the Unix epoch.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Trip:<trip_id>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Trip"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Trip'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "provider_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/provider_id'. A UUID for the Provider, unique within MDS. See MDS provider list."
+    },
+    "data_provider_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/data_provider_id'. If different than 'provider_id', a UUID for the data solution provider managing this data endpoint. See MDS provider list which includes both service operators and data solution providers."
+    },
+    "device_id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/device_id'. A unique device ID in UUID format. Cross reference with '/vehicles' for more device details. Points to Vehicle entities (urn:ngsi-ld:Vehicle:<MDS UUID>)."
+    },
+    "journey_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/journey_id'. A unique journey ID for associating collections of trips for its mode."
+    },
+    "journey_attributes": {
+      "type": "object",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/journey_attributes'. Mode Specific. Journey attributes given as unordered key-value pairs."
+    },
+    "trip_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/trip_id'. A unique ID for each trip."
+    },
+    "trip_type": {
+      "type": "string",
+      "enum": [
+        "rider",
+        "rebalance",
+        "maintenance",
+        "private",
+        "shared",
+        "reservation",
+        "mapping",
+        "empty",
+        "delivery",
+        "return",
+        "advertising",
+        "roaming",
+        "testing"
+      ],
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/trip_type'. Mode Specific. The trip type describing the purpose of a trip segment. _Note: if not provided, only send trips of the default 'trip_type', as marked for each mode._."
+    },
+    "trip_attributes": {
+      "type": "object",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/trip_attributes'. Mode Specific. Trip attributes given as unordered key-value pairs."
+    },
+    "fare_attributes": {
+      "type": "object",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/fare_attributes'. Mode Specific. Fare attributes given as unordered key-value pairs."
+    },
+    "start_time": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/start_time'. Start of the passenger/driver trip. Units:'milliseconds since the Unix epoch (MDS Timestamp)'."
+    },
+    "end_time": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/end_time'. End of the passenger/driver trip. Units:'milliseconds since the Unix epoch (MDS Timestamp)'."
+    },
+    "start_location": {
+      "$ref": "#/$defs/GPS",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/start_location'. Location of the start of the trip."
+    },
+    "end_location": {
+      "$ref": "#/$defs/GPS",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/end_location'. Location of the end of the trip."
+    },
+    "duration": {
+      "type": "integer",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/duration'. Time, in Seconds. Units:'seconds'."
+    },
+    "distance": {
+      "type": "integer",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/distance'. Trip Distance, in Meters. Units:'meters'."
+    },
+    "publication_time": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/publication_time'. Date/time that trip became available through the trips endpoint. Units:'milliseconds since the Unix epoch (MDS Timestamp)'."
+    },
+    "accessibility_attributes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "adaptive",
+          "wheelchair_accessible",
+          "audio_cue",
+          "visual_cue",
+          "remote_open"
+        ]
+      },
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/accessibility_attributes'. Mode Specific. Accessibility attributes given as an array of enumerated values. List of any accessibility attributes used during the trip. (Required if Available.)"
+    },
+    "parking_verification_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/parking_verification_url'. A URL to a photo (or other evidence) of proper vehicle parking at the end of a trip, provided by customer or operator."
+    },
+    "parking_category": {
+      "type": "string",
+      "enum": [
+        "corral",
+        "curb",
+        "rack",
+        "space",
+        "dock",
+        "other_valid",
+        "invalid"
+      ],
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/parking_category'. The type of parking location detected or provided and the end of a trip. One of 'corral', 'curb', 'rack', 'space', 'dock', 'other_valid', 'invalid'. Note that 'other_valid' covers any other allowed parking location beyond what is enumerated, and 'invalid' is any improper parking based on agency parking rules. Use 'external_references' to specify more details, like a link to CDS Curb Zones."
+    },
+    "standard_cost": {
+      "type": "integer",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/standard_cost'. The cost, in the currency defined in 'currency', to perform that trip in the standard operation of the System (see Costs & Currencies)"
+    },
+    "actual_cost": {
+      "type": "integer",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/actual_cost'. The actual cost, in the currency defined in 'currency', paid by the customer of the *mobility as a service* provider (see Costs & Currencies)"
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/currency'. An ISO 4217 Alphabetic Currency Code representing the currency of the payee (see Costs & Currencies) (Optional, USD cents is implied if null..)"
+    },
+    "gtfs_trip_id": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/gtfs_trip_id'. A unique trip ID for the associated scheduled GTFS route-trip. Matches GTFS 'trip_id' in the trips.txt and other files. (Required if Applicable.)"
+    },
+    "gtfs_api_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/gtfs_api_url'. Full URL to the location where the associated GTFS dataset zip files are located. (Required if Applicable.)"
+    },
+    "external_references": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ExternalReference"
+      },
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/external_references'. One or more references impacting or related to this Trip."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "provider_id",
+    "device_id",
+    "trip_id",
+    "start_time",
+    "end_time",
+    "start_location",
+    "end_location",
+    "duration",
+    "distance"
+  ],
+  "$defs": {
+    "ExternalReference": {
+      "type": "object",
+      "properties": {
+        "reference_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "A web-accessible identifier URL for the source of the publicly or privately accessible data feed, document, website, etc. This MUST be a full HTTPS URL pointing to a location which contains more information impacting or explaining the location, event, or policy, etc."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the data source for reference. E.g. \"WZDx\", \"CWZ\", \"CDS\", \"GBFS\", \"GTFS\", \"MDS\"."
+        },
+        "public": {
+          "type": "boolean",
+          "description": "Is this data source able to be viewed with out any sort of authentication? If 'true', the 'reference_url' is public. If 'false', the 'reference_url' requires some sort of authentication, authorization, or API key to access. This is an informational field to set access expectations for the data source user, and does not provide any credentials directly unless explicitly contained in the 'reference_url'."
+        },
+        "identifier_name": {
+          "type": "string",
+          "description": "The name of the data field identifier or object that is referenced by the unique 'ids'. E.g. \"id\", \"report_id\", \"trip_id\", \"vehicle_id\", \"RoadEventFeature\", etc, if relevant and available in 'reference_url'."
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "An array of one or more ids from the data sources that impacts the use of or relationship to part of MDS, e.g. Trips, Events, Stops, etc. The ids and their details are be found in the referenced 'reference_url'."
+        }
+      },
+      "required": [
+        "reference_url"
+      ]
+    },
+    "GPS": {
+      "type": "object",
+      "properties": {
+        "lat": {
+          "type": "number",
+          "description": "Latitude of the location.",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "lng": {
+          "type": "number",
+          "description": "Longitude of the location.",
+          "minimum": -180,
+          "maximum": 180
+        },
+        "altitude": {
+          "type": "number",
+          "description": "Altitude above mean sea level in meters. (Required if Available.) Units:'meters'."
+        },
+        "heading": {
+          "type": "number",
+          "description": "Degrees - clockwise starting at 0 degrees at true North. (Required if Available.) Units:'degrees'."
+        },
+        "speed": {
+          "type": "number",
+          "description": "Estimated speed in meters / sec as reported by the GPS chipset. (Required if Available.) Units:'meters per second'."
+        },
+        "horizontal_accuracy": {
+          "type": "number",
+          "description": "Horizontal accuracy, in meters. (Required if Available.) Units:'meters'."
+        },
+        "vertical_accuracy": {
+          "type": "number",
+          "description": "Vertical accuracy, in meters. (Required if Available.) Units:'meters'."
+        },
+        "satellites": {
+          "type": "integer",
+          "description": "Number of GPS or GNSS satellites. (Required if Available.)"
+        },
+        "accelerometer_x": {
+          "type": "number",
+          "description": "The x-axis acceleration in G's (gravitational force). (Required if Available.) Units:'g'."
+        },
+        "accelerometer_y": {
+          "type": "number",
+          "description": "The y-axis acceleration in G's (gravitational force). (Required if Available.) Units:'g'."
+        },
+        "accelerometer_z": {
+          "type": "number",
+          "description": "The z-axis acceleration in G's (gravitational force). (Required if Available.) Units:'g'."
+        }
+      },
+      "required": [
+        "lat",
+        "lng"
+      ],
+      "description": "GPS / GNSS position and sensor data (MDS GPS Data object). WGS 84 decimal degrees."
+    }
+  }
+}

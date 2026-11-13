@@ -1,0 +1,172 @@
+title: "Mobility Data Specification (MDS)"
+publisher: "Open Mobility Foundation (OMF)"
+sourceUrl: "https://github.com/openmobilityfoundation/mobility-data-specification"
+specificationUrl: "https://www.openmobilityfoundation.org/about-mds/"
+contact: "https://github.com/openmobilityfoundation/mobility-data-specification/issues"
+sourceOntologyVersion: "MDS 2.1.0 (GitHub release tag 2.1.0, 2026-07-09); cross-checked against the OMF OpenAPI description (mds-openapi, branch main, info.version 2.0)"
+sourceOntologyDownload: "https://codeload.github.com/openmobilityfoundation/mobility-data-specification/tar.gz/refs/tags/2.1.0"
+sourceOntologyNamespace: "https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/"
+sourceOntologyFormat: "Markdown specification with field tables (data-types.md, geography/README.md, policy/README.md, modes/*.md); OpenAPI 3.1 YAML in the separate mds-openapi repository (MDS 2.0 only); no RDF vocabulary"
+sourceExampleUrl: "https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/geography/examples/municipal-boundary.json"
+sourceExampleLicense: "CC BY 4.0, Open Mobility Foundation (Geography example only; the other examples are synthetic)"
+domains:
+  - Transportation
+  - SmartCities
+description: >
+  The Mobility Data Specification (MDS), a project of the Open Mobility
+  Foundation, is the data standard used by cities and other public
+  agencies to manage and regulate mobility services that operate in the
+  public right of way: shared micromobility (scooters, bikes, mopeds),
+  car share and fleets, delivery robots and passenger services (taxis,
+  TNCs, robotaxis). Operators share vehicles, trips, vehicle events,
+  telemetry, stops, incidents and aggregated reports through the Provider
+  and Agency APIs; agencies publish geographies, policies (fleet caps,
+  speed limits, fees) and data requirements. MDS 2.0 introduced multiple
+  modes; MDS 2.1 adds incidents and enforcement, external references,
+  GTFS links, statistical areas, vehicle commissioning dates and
+  accelerometer data.
+license: "CC-BY-4.0"
+licenseNote: >
+  Verified in the LICENSE file of the mobility-data-specification
+  repository at tag 2.1.0 (and on main): "Creative Commons Attribution 4.0
+  International Public License". The mds-openapi repository has the same
+  licence. Attribution: "Mobility Data Specification, (c) Open Mobility
+  Foundation, CC BY 4.0, https://github.com/openmobilityfoundation/mobility-data-specification".
+  These candidate models are adapted material (renamed fields, JSON Schema
+  and JSON-LD re-encoding). OMF deliverables are provided "AS IS"
+  (LIABILITY file). The GitHub API reports the licence as NOASSERTION only
+  because the file is not auto-detected; its text is the full CC BY 4.0.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source specification to SDM candidate artifacts"
+notes: |
+  Translated on 2026-11-13. Source row 66 ("Mobility Data Specification
+  (MDS)", Open Mobility Foundation, sector Mobility) of the "Level A
+  standards not in Smart Data Models" list. The sheet marked the licence
+  "No" (not verified); it is now verified as CC BY 4.0 (see licenseNote).
+
+  VERSION AND SOURCE: the latest release is MDS 2.1.0 (2026-07-09). Since
+  MDS 2.0 the JSON Schemas were removed from the main repository in favour
+  of the OpenAPI description in openmobilityfoundation/mds-openapi, but
+  that repository (main and v2.0 branches) still describes MDS 2.0 and
+  lacks every 2.1 field (hardware_model, commissioned, incidents,
+  external_references, gtfs_*, statistical_areas, accelerometer_*, ...).
+  The generator therefore parses the field tables of the normative 2.1.0
+  markdown (data-types.md, geography/README.md, policy/README.md and the
+  code-list tables in modes/*.md), and uses mds-openapi only to
+  cross-check (mode list, GPS bounds, event-type list).
+
+  MODELS (8). MDS has many objects; the core with identity and state was
+  chosen:
+    - Vehicle    (data-types.md#vehicles, id = device_id)
+    - Event      (data-types.md#events, id = event_id): a vehicle state change
+    - Telemetry  (data-types.md#telemetry, id = telemetry_id): one GPS point
+    - Trip       (data-types.md#trips, id = trip_id)
+    - Stop       (data-types.md#stops, id = stop_id)
+    - Incident   (data-types.md#incidents, id = incident_id; new in 2.1)
+    - Geography  (geography/README.md#geography-fields, id = geography_id)
+    - Policy     (policy/README.md#policy, id = policy_id), rules nested
+  The NGSI-LD id is urn:ngsi-ld:<Type>:<MDS UUID>. Left out (follow-ups):
+  Vehicle Status (only a wrapper of last_event + last_telemetry, which is
+  what an NGSI-LD Vehicle/Event/Telemetry history already gives), Reports
+  (monthly k-anonymised trip counts, better as a statistics model),
+  Jurisdiction, Metrics, and Policy Requirements (agency data
+  requirements; programme metadata rather than mobility data).
+
+  NAMING: every MDS field name is kept verbatim (snake_case, e.g.
+  device_id, vehicle_state, event_types, start_location,
+  num_vehicles_available). One rename, forced by an NGSI-LD reserved term:
+    - Event.location, Telemetry.location, Stop.location -> mdsLocation
+      (the MDS GPS object {lat, lng, altitude, heading, speed, ...} is not
+      a GeoJSON geometry). Its context IRI still points to the MDS
+      'location' field.
+
+  MAPPING:
+    - Relationships (values are URNs instead of the MDS UUIDs) where a
+      field points to another entity of this candidate: Event.device_id,
+      trip_ids, stop_id, event_geographies; Telemetry.device_id, trip_ids,
+      stop_id, incident_ids; Trip.device_id; Stop.geography_id,
+      parent_stop, devices; Geography.prev_geographies;
+      Policy.prev_policies. The entity's own identifier field (device_id in
+      Vehicle, trip_id in Trip, ...) stays a UUID Property. provider_id,
+      data_provider_id and journey_id stay UUID Properties (registry
+      identifiers / no MDS entity). Geography UUIDs inside Policy.rules
+      stay UUIDs (nested @json object).
+    - Timestamps are kept as MDS defines them: integer milliseconds since
+      the Unix epoch (not converted to ISO 8601 date-time).
+    - Nested objects keep their MDS structure, are defined once in $defs
+      and are "@type": "@json" in the contexts: GPS, StopStatus,
+      ExternalReference, Enforcement and Violation, Rule.
+      Mode-specific maps (vehicle_attributes, trip_attributes,
+      journey_attributes, fare_attributes) are free objects.
+    - Code lists are enums: vehicle_type (14 values incl. the 2.1 additions
+      scooter, van, freight), propulsion_types, vehicle_state, event_types,
+      location_type, parking_category, incident_type, mode_id, and in rules
+      rule_type, rule_units, rate_recurrence, rate_applies_when, days.
+      trip_type and accessibility_attributes are mode-specific in MDS: the
+      enums are the union of the values listed by the four modes.
+      geography_type stays a free string (MDS allows custom text);
+      rental_methods stays an array of strings (values defined by GBFS).
+    - "Required" in the MDS tables -> JSON Schema required; "Required if
+      Available/Applicable/Known" and "Conditionally Required" are optional
+      and the condition is repeated in the description.
+      Telemetry.trip_ids and journey_id are required but may be null
+      ("If not in a trip, null"), as in MDS.
+
+  NON-MDS ADDITION: `location` GeoProperty on Event, Telemetry and Stop (a
+  GeoJSON Point from lng/lat of the MDS GPS object) and on Geography (the
+  feature geometries of geography_json merged into a MultiPolygon or
+  MultiPoint), so that NGSI-LD geo-queries work. Trip gets no location
+  (start_location and end_location are kept as MDS GPS objects; a
+  start-to-end line would misrepresent the route).
+
+  CONTEXT IRIs: MDS has no RDF vocabulary. Each term maps to the field
+  inside its section of the 2.1.0 specification page, e.g.
+  https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#trips/trip_id
+  (the page resolves; the section anchors #trips, #events, ... exist).
+
+  SOURCE NOTES (worth reporting upstream):
+    - modes/event_types.md lists 'system_start' ("Start of service"), while
+      all mode state machines and the OpenAPI enum use 'service_start'
+      (the counterpart of 'service_end'). The enum here uses service_start.
+    - policy/README.md, Rules table: the 'accessibility_options' row has no
+      Required/Optional cell (3 cells instead of 4); treated as optional.
+    - data-types.md, Events: 'location' is now "Required", but
+      'event_geographies' and 'statistical_areas' still say "Required if
+      'location' ... not present", and they refer to 'statistical_area_ids'
+      while the field is named 'statistical_areas'.
+    - data-types.md, Trips: trip_type is a single Enum, while mds-openapi
+      types it as an array of strings. Modelled as a single string.
+    - The mds-openapi description has not been updated for MDS 2.1.
+
+  EXAMPLES: MDS trip, event and telemetry data is sensitive personal
+  location data (OMF Privacy Guide), so no real operator feed is used.
+    - Geography: REAL, the Louisville Metro (KY) municipal boundary
+      geography published in the MDS repository
+      (geography/examples/municipal-boundary.json, CC BY 4.0, OMF);
+      prev_geographies turned into URNs, location derived.
+    - Vehicle, Trip, Event, Telemetry, Incident, Stop, Policy: SYNTHETIC
+      and consistent: a fictitious provider (UUIDv5, not in providers.csv)
+      runs a standing e-scooter that makes an 8-minute, 1.46 km rider trip
+      in downtown Louisville, records a harsh-stopping incident mid-trip
+      (telemetry linked to the incident) and ends the trip at a corral stop
+      (trip_end event); the Policy (fleet cap and 15 mph speed limit) is
+      modelled on the MDS Policy examples, refers to the real municipal
+      boundary geography, and is not a Louisville Metro policy. Each
+      example says so in `source`. No personal data.
+
+  DUPLICATION RISK:
+    - dataModel.Transportation: Vehicle, FleetVehicle, FleetVehicleStatus,
+      FleetVehicleOperation, VehicleFault, BikeHireDockingStation (~ Stop),
+      RestrictedTrafficArea (~ Geography / Policy zone), TrafficViolation
+      and RoadAccident (~ Incident). The type name Vehicle is already used
+      officially.
+    - dataModel.UrbanMobility: GtfsTrip, GtfsStop, PublicTransportStop
+      (public transport, but same type-name family as Trip / Stop).
+    - Candidates: edint-vehiculos-compartidos (SharedVehicle,
+      SharedVehicleStation, Dock, Route: same shared-mobility scope),
+      edint-censo-vehiculos/Vehicle, saref4auto/Vehicle, era-evr/Vehicle,
+      saref4city/Event, saref4wear/Policy (same generic type names).
+    Generic names (Vehicle, Event, Trip, Stop, Policy) clash; on promotion
+    an MDS prefix (MdsVehicle, MdsTrip, ...) or a dedicated subject
+    (dataModel.MDS) should be considered.

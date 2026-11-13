@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/mds/models/Vehicle/schema.json",
+  "modelTags": "MDS,OpenMobilityFoundation,SharedMobility,Micromobility,MobilityRegulation",
+  "title": "Smart Data Models - Mobility Data Specification (MDS) - Vehicle",
+  "description": "A vehicle (device) registered by a mobility provider in MDS: identity, vehicle type, propulsion and capabilities. (MDS 2.1.0, data-types.md section 'Vehicles'; field names kept verbatim; MDS timestamps are integer milliseconds since the Unix epoch.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Vehicle:<device_id>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Vehicle"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Vehicle'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "device_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#vehicles/device_id'. A unique device ID in UUID format, should match this device in Provider."
+    },
+    "provider_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#vehicles/provider_id'. A UUID for the Provider, unique within MDS. See MDS provider list."
+    },
+    "data_provider_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#vehicles/data_provider_id'. If different than 'provider_id', a UUID for the data solution provider managing the data feed in this endpoint. See MDS provider list which includes both service operators and data solution providers."
+    },
+    "vehicle_id": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#vehicles/vehicle_id'. A unique vehicle identifier (visible code, license plate, etc), visible on the vehicle itself."
+    },
+    "vehicle_type": {
+      "type": "string",
+      "enum": [
+        "bicycle",
+        "bus",
+        "cargo_bicycle",
+        "car",
+        "delivery_robot",
+        "moped",
+        "motorcycle",
+        "scooter",
+        "scooter_standing",
+        "scooter_seated",
+        "truck",
+        "van",
+        "freight",
+        "other"
+      ],
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#vehicles/vehicle_type'. The vehicle type."
+    },
+    "vehicle_attributes": {
+      "type": "object",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#vehicles/vehicle_attributes'. Mode Specific. Vehicle attributes given as mode-specific unordered key-value pairs."
+    },
+    "propulsion_types": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "human",
+          "electric_assist",
+          "electric",
+          "combustion",
+          "combustion_diesel",
+          "hybrid",
+          "hydrogen_fuel_cell",
+          "plug_in_hybrid"
+        ]
+      },
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#vehicles/propulsion_types'. Array of propulsion types; allows multiple values."
+    },
+    "accessibility_attributes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "adaptive",
+          "wheelchair_accessible",
+          "audio_cue",
+          "visual_cue",
+          "remote_open"
+        ]
+      },
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#vehicles/accessibility_attributes'. Mode Specific. Accessibility attributes given as an array of enumerated values. List of any accessibility attributes available on the vehicle. (Required if Available.)"
+    },
+    "battery_capacity": {
+      "type": "integer",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#vehicles/battery_capacity'. Capacity of battery expressed as milliamp hours (mAh) (Required if Available.) Units:'mAh'."
+    },
+    "fuel_capacity": {
+      "type": "integer",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#vehicles/fuel_capacity'. Capacity of fuel tank (liquid, solid, gaseous) expressed in liters. (Required if Available.) Units:'liters'."
+    },
+    "maximum_speed": {
+      "type": "integer",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#vehicles/maximum_speed'. Maximum speed (kph) possible with vehicle under normal, flat incline, smooth surface conditions. Applicable if the device has a built-in or intelligent speed limiter/governor. (Required if Available.) Units:'km/h'."
+    },
+    "hardware_model": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#vehicles/hardware_model'. Number, identifier, or description of the main device hardware model. Can apply to any mode. (Required if Available.)"
+    },
+    "commissioned": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#vehicles/commissioned'. Date/time the vehicle first starts providing service in the jurisdiction. Required if asked for by public agency. (Conditionally Required.) Units:'milliseconds since the Unix epoch (MDS Timestamp)'."
+    },
+    "decommissioned": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#vehicles/decommissioned'. Date/time the vehicle stops providing service in the jurisdiction and is decommissioned. Required when the vehicle is retired from operations. (Conditionally Required.) Units:'milliseconds since the Unix epoch (MDS Timestamp)'."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "device_id",
+    "provider_id",
+    "vehicle_id",
+    "vehicle_type",
+    "propulsion_types"
+  ]
+}

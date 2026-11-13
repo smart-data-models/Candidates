@@ -1,0 +1,330 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/mds/models/Event/schema.json",
+  "modelTags": "MDS,OpenMobilityFoundation,SharedMobility,Micromobility,MobilityRegulation",
+  "title": "Smart Data Models - Mobility Data Specification (MDS) - Event",
+  "description": "An MDS vehicle event: a change of vehicle state (vehicle_state) caused by one or more event types, with the position where it happened. (MDS 2.1.0, data-types.md section 'Events'; field names kept verbatim; MDS timestamps are integer milliseconds since the Unix epoch.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Event:<event_id>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Event"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Event'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "device_id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#events/device_id'. A unique device ID in UUID format. Points to Vehicle entities (urn:ngsi-ld:Vehicle:<MDS UUID>)."
+    },
+    "provider_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#events/provider_id'. A UUID for the Provider, unique within MDS. See MDS provider list."
+    },
+    "data_provider_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#events/data_provider_id'. If different than 'provider_id', a UUID for the data solution provider managing the data feed in this endpoint. See MDS provider list which includes both service operators and data solution providers."
+    },
+    "event_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#events/event_id'. A unique event ID."
+    },
+    "vehicle_state": {
+      "type": "string",
+      "enum": [
+        "removed",
+        "available",
+        "non_operational",
+        "reserved",
+        "on_trip",
+        "stopped",
+        "non_contactable",
+        "missing",
+        "elsewhere"
+      ],
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#events/vehicle_state'. See vehicle state table."
+    },
+    "event_types": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": [
+          "agency_drop_off",
+          "agency_pick_up",
+          "battery_charged",
+          "battery_low",
+          "changed_geographies",
+          "charging_end",
+          "charging_start",
+          "comms_lost",
+          "comms_restored",
+          "compliance_pick_up",
+          "customer_cancellation",
+          "decommissioned",
+          "driver_cancellation",
+          "fueling_end",
+          "fueling_start",
+          "located",
+          "maintenance",
+          "maintenance_end",
+          "maintenance_pick_up",
+          "not_located",
+          "off_hours",
+          "on_hours",
+          "order_drop_off",
+          "order_pick_up",
+          "passenger_cancellation",
+          "provider_cancellation",
+          "provider_drop_off",
+          "rebalance_pick_up",
+          "recommission",
+          "remote_end",
+          "remote_start",
+          "reservation_cancel",
+          "reservation_start",
+          "reservation_stop",
+          "service_end",
+          "service_start",
+          "system_resume",
+          "system_suspend",
+          "trip_cancel",
+          "trip_end",
+          "trip_enter_jurisdiction",
+          "trip_leave_jurisdiction",
+          "trip_pause",
+          "trip_resume",
+          "trip_start",
+          "trip_stop",
+          "unspecified"
+        ]
+      },
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#events/event_types'. Vehicle event types for state change, with allowable values determined by 'vehicle_state'."
+    },
+    "timestamp": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#events/timestamp'. Date/time that event occurred at. See Event Times. Units:'milliseconds since the Unix epoch (MDS Timestamp)'."
+    },
+    "publication_time": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#events/publication_time'. Date/time that event became available through the status changes endpoint. Units:'milliseconds since the Unix epoch (MDS Timestamp)'."
+    },
+    "mdsLocation": {
+      "$ref": "#/$defs/GPS",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#events/location'. See also Telemetry."
+    },
+    "software_version": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#events/software_version'. Software version the main device is running on. Can be provided only when there is an update."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#events/description'. Description of the reason for the event, e.g. the type and reason for maintenance performed, note a software version upgrade, reason for system suspension, comms lost details, provider pickup reason, inspection details, etc."
+    },
+    "event_geographies": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#events/event_geographies'. Array of Geography UUIDs consisting of every Geography that contains the location of the status change. See Geography Driven Events. Required if 'location' and 'statistical_area_ids' are not present. Points to Geography entities (urn:ngsi-ld:Geography:<MDS UUID>)."
+    },
+    "statistical_areas": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#events/statistical_areas'. Array of statistical area identifier(s) where the event occurred. e.g. US census area IDs (tract, block group, block, etc), Canadian dissemination blocks or areas, UK output areas, etc, or any other pre-defined standard district, area, sector, neighborhood, etc. Details of the type and meaning of these identifiers are communicated between the public agency and operator outside of MDS. Note that instead of these pre-defined areas, custom geographic areas can be defined using 'event_geographies'. Required if 'location' and 'event_geographies' are not present."
+    },
+    "battery_percent": {
+      "type": "integer",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#events/battery_percent'. Percent battery charge of vehicle, expressed between 0 and 100. (Required if Applicable.) Units:'percent'."
+    },
+    "fuel_percent": {
+      "type": "integer",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#events/fuel_percent'. Percent fuel in vehicle, expressed between 0 and 100. (Required if Applicable.) Units:'percent'."
+    },
+    "trip_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#events/trip_ids'. Trip UUIDs (foreign key to /trips endpoint), required if 'event_types' contains 'trip_start', 'trip_end', 'trip_cancel', 'trip_enter_jurisdiction', or 'trip_leave_jurisdiction'. (Required if Applicable.) Points to Trip entities (urn:ngsi-ld:Trip:<MDS UUID>)."
+    },
+    "stop_id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#events/stop_id'. Stop that the vehicle is currently located at. See Stops. (Required if Applicable.) Points to Stop entities (urn:ngsi-ld:Stop:<MDS UUID>)."
+    },
+    "associated_ticket": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#events/associated_ticket'. Identifier for an associated ticket inside an Agency-maintained 311 or CRM system."
+    },
+    "gtfs_stop_id": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#events/gtfs_stop_id'. A unique stop ID to be recorded when a vehicle makes a stop event at a location. Matches GTFS 'stop_id'."
+    },
+    "external_references": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ExternalReference"
+      },
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#events/external_references'. One or more references impacting or related to this Event."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. Not an MDS field (Smart Data Models addition): a GeoJSON Point built from lng/lat of the MDS GPS object (mdsLocation), so that NGSI-LD geo-queries work. The MDS object is kept unchanged.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array"
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "device_id",
+    "provider_id",
+    "event_id",
+    "vehicle_state",
+    "event_types",
+    "timestamp",
+    "mdsLocation"
+  ],
+  "$defs": {
+    "ExternalReference": {
+      "type": "object",
+      "properties": {
+        "reference_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "A web-accessible identifier URL for the source of the publicly or privately accessible data feed, document, website, etc. This MUST be a full HTTPS URL pointing to a location which contains more information impacting or explaining the location, event, or policy, etc."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the data source for reference. E.g. \"WZDx\", \"CWZ\", \"CDS\", \"GBFS\", \"GTFS\", \"MDS\"."
+        },
+        "public": {
+          "type": "boolean",
+          "description": "Is this data source able to be viewed with out any sort of authentication? If 'true', the 'reference_url' is public. If 'false', the 'reference_url' requires some sort of authentication, authorization, or API key to access. This is an informational field to set access expectations for the data source user, and does not provide any credentials directly unless explicitly contained in the 'reference_url'."
+        },
+        "identifier_name": {
+          "type": "string",
+          "description": "The name of the data field identifier or object that is referenced by the unique 'ids'. E.g. \"id\", \"report_id\", \"trip_id\", \"vehicle_id\", \"RoadEventFeature\", etc, if relevant and available in 'reference_url'."
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "An array of one or more ids from the data sources that impacts the use of or relationship to part of MDS, e.g. Trips, Events, Stops, etc. The ids and their details are be found in the referenced 'reference_url'."
+        }
+      },
+      "required": [
+        "reference_url"
+      ]
+    },
+    "GPS": {
+      "type": "object",
+      "properties": {
+        "lat": {
+          "type": "number",
+          "description": "Latitude of the location.",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "lng": {
+          "type": "number",
+          "description": "Longitude of the location.",
+          "minimum": -180,
+          "maximum": 180
+        },
+        "altitude": {
+          "type": "number",
+          "description": "Altitude above mean sea level in meters. (Required if Available.) Units:'meters'."
+        },
+        "heading": {
+          "type": "number",
+          "description": "Degrees - clockwise starting at 0 degrees at true North. (Required if Available.) Units:'degrees'."
+        },
+        "speed": {
+          "type": "number",
+          "description": "Estimated speed in meters / sec as reported by the GPS chipset. (Required if Available.) Units:'meters per second'."
+        },
+        "horizontal_accuracy": {
+          "type": "number",
+          "description": "Horizontal accuracy, in meters. (Required if Available.) Units:'meters'."
+        },
+        "vertical_accuracy": {
+          "type": "number",
+          "description": "Vertical accuracy, in meters. (Required if Available.) Units:'meters'."
+        },
+        "satellites": {
+          "type": "integer",
+          "description": "Number of GPS or GNSS satellites. (Required if Available.)"
+        },
+        "accelerometer_x": {
+          "type": "number",
+          "description": "The x-axis acceleration in G's (gravitational force). (Required if Available.) Units:'g'."
+        },
+        "accelerometer_y": {
+          "type": "number",
+          "description": "The y-axis acceleration in G's (gravitational force). (Required if Available.) Units:'g'."
+        },
+        "accelerometer_z": {
+          "type": "number",
+          "description": "The z-axis acceleration in G's (gravitational force). (Required if Available.) Units:'g'."
+        }
+      },
+      "required": [
+        "lat",
+        "lng"
+      ],
+      "description": "GPS / GNSS position and sensor data (MDS GPS Data object). WGS 84 decimal degrees."
+    }
+  }
+}

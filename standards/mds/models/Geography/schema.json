@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/mds/models/Geography/schema.json",
+  "modelTags": "MDS,OpenMobilityFoundation,SharedMobility,Micromobility,MobilityRegulation",
+  "title": "Smart Data Models - Mobility Data Specification (MDS) - Geography",
+  "description": "An MDS geography: an immutable, versioned GeoJSON area published by an agency (municipal boundary, policy zone, stop area, district, ...) that policies, events and reports refer to. (MDS 2.1.0, geography/README.md section 'Geography Fields'; field names kept verbatim; MDS timestamps are integer milliseconds since the Unix epoch.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Geography:<geography_id>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Geography"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Geography'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/geography/README.md#geography-fields/name'. Name of geography."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/geography/README.md#geography-fields/description'. Detailed description of geography."
+    },
+    "geography_type": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/geography/README.md#geography-fields/geography_type'. Type of geography, e.g. 'municipal_boundary' or 'council_district' or custom text. See Geography Type."
+    },
+    "geography_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/geography/README.md#geography-fields/geography_id'. Unique ID of geography."
+    },
+    "geography_json": {
+      "type": "object",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/geography/README.md#geography-fields/geography_json'. The GeoJSON that defines the geographical coordinates. A GeoJSON FeatureCollection.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "FeatureCollection"
+          ]
+        },
+        "features": {
+          "type": "array"
+        }
+      },
+      "required": [
+        "type",
+        "features"
+      ]
+    },
+    "effective_date": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/geography/README.md#geography-fields/effective_date'. The date at which a Geography is considered \"live\". Must be at or after 'published_date'. Units:'milliseconds since the Unix epoch (MDS Timestamp)'."
+    },
+    "published_date": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/geography/README.md#geography-fields/published_date'. Time that the geography was published, i.e. made immutable. Units:'milliseconds since the Unix epoch (MDS Timestamp)'."
+    },
+    "retire_date": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/geography/README.md#geography-fields/retire_date'. Time that the geography is slated to retire. Once the retire date is passed, new policies can no longer reference it and old policies referencing it should be updated. Retired geographies should continue to be returned in the geographies list. Must be after 'effective_date'. Geographies referencing others with 'prev_geographies' immediately replace the previous ones. Units:'milliseconds since the Unix epoch (MDS Timestamp)'."
+    },
+    "prev_geographies": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/geography/README.md#geography-fields/prev_geographies'. Unique IDs of prior geographies replaced by this one. Points to Geography entities (urn:ngsi-ld:Geography:<MDS UUID>)."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. Not an MDS field (Smart Data Models addition): the geometries of the features of geography_json merged into one GeoJSON geometry (Polygons/MultiPolygons into a MultiPolygon, Points into a MultiPoint), so that NGSI-LD geo-queries work. The MDS object is kept unchanged.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point",
+            "MultiPoint",
+            "LineString",
+            "MultiLineString",
+            "Polygon",
+            "MultiPolygon"
+          ]
+        },
+        "coordinates": {
+          "type": "array"
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "name",
+    "geography_id",
+    "geography_json",
+    "published_date"
+  ]
+}
