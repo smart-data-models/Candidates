@@ -6849,6 +6849,70 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-physicalinfrastructure"
   },
   {
+    "slug": "sunspec-models",
+    "title": "SunSpec Information Models",
+    "description": "The SunSpec Information Models are the open, Modbus-based data models that solar inverters, batteries, meters and other distributed energy resources (DER) use to expose their nameplate data, measurements, status and settings. They are maintained by the SunSpec Alliance, are referenced by IEEE 1547-2018 (SunSpec Modbus is one of the DER communication protocols it allows), and are implemented by most PV inverter manufacturers. Each model has a numeric id and a fixed set of named points (registers) with a type, units, an optional scale factor and, for enums and bitfields, named symbols: model 1 (common) identifies the device; the 100 series are the legacy inverter models; the 200 series meters; the 300-600 series environmental, string combiner, module and tracker models; the 700 series the IEEE 1547-2018 DER models; the 800 series batteries. Release v2026-04-20 has 113 models.",
+    "publisher": "SunSpec Alliance",
+    "sourceUrl": "https://github.com/sunspec/models",
+    "license": "Apache-2.0",
+    "domains": [
+      "SmartEnergy"
+    ],
+    "modelCount": 7,
+    "models": [
+      {
+        "name": "DERCapacity",
+        "title": "Smart Data Models - SunSpec Information Models - DERCapacity",
+        "description": "DER Capacity. DER capacity model. SunSpec Information Model 702 (DERCapacity), sunspec/models v2026-04-20. Point names kept verbatim; values are given already scaled, so the scale-factor (*_SF), padding and model framing (ID, L) points are left out.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/sunspec-models/models/DERCapacity/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/sunspec-models/models/DERCapacity"
+      },
+      {
+        "name": "DERMeasureAC",
+        "title": "Smart Data Models - SunSpec Information Models - DERMeasureAC",
+        "description": "DER AC Measurement. DER AC measurement model. SunSpec Information Model 701 (DERMeasureAC), sunspec/models v2026-04-20. Point names kept verbatim; values are given already scaled, so the scale-factor (*_SF), padding and model framing (ID, L) points are left out.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/sunspec-models/models/DERMeasureAC/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/sunspec-models/models/DERMeasureAC"
+      },
+      {
+        "name": "DERMeasureDC",
+        "title": "Smart Data Models - SunSpec Information Models - DERMeasureDC",
+        "description": "DER DC Measurement. DER DC measurement. SunSpec Information Model 714 (DERMeasureDC), sunspec/models v2026-04-20. Point names kept verbatim; values are given already scaled, so the scale-factor (*_SF), padding and model framing (ID, L) points are left out.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/sunspec-models/models/DERMeasureDC/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/sunspec-models/models/DERMeasureDC"
+      },
+      {
+        "name": "DERStorageCapacity",
+        "title": "Smart Data Models - SunSpec Information Models - DERStorageCapacity",
+        "description": "DER Storage Capacity. DER storage capacity. SunSpec Information Model 713 (DERStorageCapacity), sunspec/models v2026-04-20. Point names kept verbatim; values are given already scaled, so the scale-factor (*_SF), padding and model framing (ID, L) points are left out.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/sunspec-models/models/DERStorageCapacity/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/sunspec-models/models/DERStorageCapacity"
+      },
+      {
+        "name": "ac_meter_abcn",
+        "title": "Smart Data Models - SunSpec Information Models - ac_meter_abcn",
+        "description": "wye-connect three phase (abcn) meter. SunSpec Information Model 203 (ac_meter_abcn), sunspec/models v2026-04-20. Point names kept verbatim; values are given already scaled, so the scale-factor (*_SF), padding and model framing (ID, L) points are left out.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/sunspec-models/models/ac_meter_abcn/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/sunspec-models/models/ac_meter_abcn"
+      },
+      {
+        "name": "common",
+        "title": "Smart Data Models - SunSpec Information Models - common",
+        "description": "Common. All SunSpec compliant devices must include this as the first model. SunSpec Information Model 1 (common), sunspec/models v2026-04-20. Point names kept verbatim; values are given already scaled, so the scale-factor (*_SF), padding and model framing (ID, L) points are left out.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/sunspec-models/models/common/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/sunspec-models/models/common"
+      },
+      {
+        "name": "inverter_three_phase",
+        "title": "Smart Data Models - SunSpec Information Models - inverter_three_phase",
+        "description": "Inverter (Three Phase). Include this model for three phase inverter monitoring. SunSpec Information Model 103 (inverter_three_phase), sunspec/models v2026-04-20. Point names kept verbatim; values are given already scaled, so the scale-factor (*_SF), padding and model framing (ID, L) points are left out.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/sunspec-models/models/inverter_three_phase/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/sunspec-models/models/inverter_three_phase"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/sunspec-models"
+  },
+  {
     "slug": "tmforum-open-apis",
     "title": "TM Forum Open APIs (Product, Service and Resource Inventory, Trouble Ticket, Product Ordering)",
     "description": "The TM Forum Open APIs are a family of about 60 REST APIs for the telecom and digital-service industry, part of TM Forum's Open Digital Architecture (ODA). They are implemented by communication service providers and their IT vendors for ordering, inventory, assurance, billing, party and catalogue management. This candidate covers the inventory and assurance core: the product a customer holds (TMF637 Product), the services that realize it (TMF638 Service), the network, logical and physical resources that support those services (TMF639 Resource), the order that created it (TMF622 ProductOrder) and the trouble ticket raised when something goes wrong (TMF621 TroubleTicket). The sector is Telecom; the APIs are also used by other digital-service providers (utilities, cloud, smart-city operators).",

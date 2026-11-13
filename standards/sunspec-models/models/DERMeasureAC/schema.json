@@ -1,0 +1,373 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/sunspec-models/models/DERMeasureAC/schema.json",
+  "modelTags": "SunSpec,DER,Solar,PV,Inverter,Modbus,IEEE1547",
+  "title": "Smart Data Models - SunSpec Information Models - DERMeasureAC",
+  "description": "DER AC Measurement. DER AC measurement model. SunSpec Information Model 701 (DERMeasureAC), sunspec/models v2026-04-20. Point names kept verbatim; values are given already scaled, so the scale-factor (*_SF), padding and model framing (ID, L) points are left out.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:DERMeasureAC:<Mn>-<SN> (manufacturer and serial number of the device)."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "DERMeasureAC"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'DERMeasureAC'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "refCommon": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://schema.org/URL'. The `common` entity (SunSpec model 1: manufacturer, model, serial number) of the device that exposes this SunSpec model. Not a SunSpec point (Smart Data Models addition): in SunSpec all models of a device are read from the same Modbus map, whose first model is always model 1."
+    },
+    "dateObserved": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Date and time when the values of this SunSpec model were read from the device. Not a SunSpec point (Smart Data Models addition): SunSpec models carry no timestamp."
+    },
+    "ACType": {
+      "type": "string",
+      "enum": [
+        "SINGLE_PHASE",
+        "SPLIT_PHASE",
+        "THREE_PHASE"
+      ],
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#ACType'. AC Wiring Type. Values are the SunSpec symbol names (SINGLE_PHASE=0, SPLIT_PHASE=1, THREE_PHASE=2). SunSpec type enum16. Mandatory in SunSpec."
+    },
+    "St": {
+      "type": "string",
+      "enum": [
+        "OFF",
+        "ON"
+      ],
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#St'. Operating State. Operating state of the DER. Values are the SunSpec symbol names (OFF=0, ON=1). SunSpec type enum16. Standards: IEEE 1547-2018."
+    },
+    "InvSt": {
+      "type": "string",
+      "enum": [
+        "OFF",
+        "SLEEPING",
+        "STARTING",
+        "RUNNING",
+        "THROTTLED",
+        "SHUTTING_DOWN",
+        "FAULT",
+        "STANDBY"
+      ],
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#InvSt'. Inverter State. Values are the SunSpec symbol names (OFF=0, SLEEPING=1, STARTING=2, RUNNING=3, THROTTLED=4, SHUTTING_DOWN=5, FAULT=6, STANDBY=7). SunSpec type enum16."
+    },
+    "ConnSt": {
+      "type": "string",
+      "enum": [
+        "DISCONNECTED",
+        "CONNECTED"
+      ],
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#ConnSt'. Grid Connection State. Grid connection state of the DER. Values are the SunSpec symbol names (DISCONNECTED=0, CONNECTED=1). SunSpec type enum16. Standards: IEEE 1547-2018."
+    },
+    "Alrm": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "GROUND_FAULT",
+          "DC_OVER_VOLT",
+          "AC_DISCONNECT",
+          "DC_DISCONNECT",
+          "GRID_DISCONNECT",
+          "CABINET_OPEN",
+          "MANUAL_SHUTDOWN",
+          "OVER_TEMP",
+          "OVER_FREQUENCY",
+          "UNDER_FREQUENCY",
+          "AC_OVER_VOLT",
+          "AC_UNDER_VOLT",
+          "BLOWN_STRING_FUSE",
+          "UNDER_TEMP",
+          "MEMORY_LOSS",
+          "HW_TEST_FAILURE",
+          "MANUFACTURER_ALRM"
+        ]
+      },
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#Alrm'. Alarm Bitfield. Active alarms for the DER. Bitfield: the array lists the names of the bits that are set (GROUND_FAULT=bit 0, DC_OVER_VOLT=bit 1, AC_DISCONNECT=bit 2, DC_DISCONNECT=bit 3, GRID_DISCONNECT=bit 4, CABINET_OPEN=bit 5, MANUAL_SHUTDOWN=bit 6, OVER_TEMP=bit 7, OVER_FREQUENCY=bit 8, UNDER_FREQUENCY=bit 9, AC_OVER_VOLT=bit 10, AC_UNDER_VOLT=bit 11, BLOWN_STRING_FUSE=bit 12, UNDER_TEMP=bit 13, MEMORY_LOSS=bit 14, HW_TEST_FAILURE=bit 15, MANUFACTURER_ALRM=bit 16); an empty array means no bit set. SunSpec type bitfield32. Standards: IEEE 1547-2018."
+    },
+    "DERMode": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "GRID_FOLLOWING",
+          "GRID_FORMING",
+          "PV_CLIPPED"
+        ]
+      },
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#DERMode'. DER Operational Characteristics. Current operational characteristics of the DER. Bitfield: the array lists the names of the bits that are set (GRID_FOLLOWING=bit 0, GRID_FORMING=bit 1, PV_CLIPPED=bit 2); an empty array means no bit set. SunSpec type bitfield32."
+    },
+    "W": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#W'. Active Power. Total active power. Active power is positive for DER generation and negative for absorption. Units:'W'. SunSpec type int16 with scale factor W_SF; the value is given already scaled (register value x 10^W_SF). Standards: IEEE 1547-2018."
+    },
+    "VA": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#VA'. Apparent Power. Total apparent power. Units:'VA'. SunSpec type int16 with scale factor VA_SF; the value is given already scaled (register value x 10^VA_SF)."
+    },
+    "Var": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#Var'. Reactive Power. Total reactive power. Units:'Var'. SunSpec type int16 with scale factor Var_SF; the value is given already scaled (register value x 10^Var_SF). Standards: IEEE 1547-2018."
+    },
+    "PF": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#PF'. Power Factor. Power factor. The sign of power factor should be the sign of active power. SunSpec type int16 with scale factor PF_SF; the value is given already scaled (register value x 10^PF_SF)."
+    },
+    "A": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#A'. Total AC Current. Units:'A'. SunSpec type int16 with scale factor A_SF; the value is given already scaled (register value x 10^A_SF)."
+    },
+    "LLV": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#LLV'. Voltage LL. Line to line AC voltage as an average of active phases. Units:'V'. SunSpec type uint16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF). Standards: IEEE 1547-2018."
+    },
+    "LNV": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#LNV'. Voltage LN. Line to neutral AC voltage as an average of active phases. Units:'V'. SunSpec type uint16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF). Standards: IEEE 1547-2018."
+    },
+    "Hz": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#Hz'. Frequency. AC frequency. Units:'Hz'. SunSpec type uint32 with scale factor Hz_SF; the value is given already scaled (register value x 10^Hz_SF). Standards: IEEE 1547-2018."
+    },
+    "TotWhInj": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#TotWhInj'. Total Energy Injected. Total active energy injected (Quadrants 1 & 4). Units:'Wh'. SunSpec type uint64 with scale factor TotWh_SF; the value is given already scaled (register value x 10^TotWh_SF)."
+    },
+    "TotWhAbs": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#TotWhAbs'. Total Energy Absorbed. Total active energy absorbed (Quadrants 2 & 3). Units:'Wh'. SunSpec type uint64 with scale factor TotWh_SF; the value is given already scaled (register value x 10^TotWh_SF)."
+    },
+    "TotVarhInj": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#TotVarhInj'. Total Reactive Energy Inj. Total reactive energy injected (Quadrants 1 & 2). Units:'Varh'. SunSpec type uint64 with scale factor TotVarh_SF; the value is given already scaled (register value x 10^TotVarh_SF)."
+    },
+    "TotVarhAbs": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#TotVarhAbs'. Total Reactive Energy Abs. Total reactive energy absorbed (Quadrants 3 & 4). Units:'Varh'. SunSpec type uint64 with scale factor TotVarh_SF; the value is given already scaled (register value x 10^TotVarh_SF)."
+    },
+    "TmpAmb": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#TmpAmb'. Ambient Temperature. Units:'C'. SunSpec type int16 with scale factor Tmp_SF; the value is given already scaled (register value x 10^Tmp_SF)."
+    },
+    "TmpCab": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#TmpCab'. Cabinet Temperature. Units:'C'. SunSpec type int16 with scale factor Tmp_SF; the value is given already scaled (register value x 10^Tmp_SF)."
+    },
+    "TmpSnk": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#TmpSnk'. Heat Sink Temperature. Units:'C'. SunSpec type int16 with scale factor Tmp_SF; the value is given already scaled (register value x 10^Tmp_SF)."
+    },
+    "TmpTrns": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#TmpTrns'. Transformer Temperature. Units:'C'. SunSpec type int16 with scale factor Tmp_SF; the value is given already scaled (register value x 10^Tmp_SF)."
+    },
+    "TmpSw": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#TmpSw'. IGBT/MOSFET Temperature. Units:'C'. SunSpec type int16 with scale factor Tmp_SF; the value is given already scaled (register value x 10^Tmp_SF)."
+    },
+    "TmpOt": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#TmpOt'. Other Temperature. Units:'C'. SunSpec type int16 with scale factor Tmp_SF; the value is given already scaled (register value x 10^Tmp_SF)."
+    },
+    "WL1": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#WL1'. Watts L1. Active power L1. Units:'W'. SunSpec type int16 with scale factor W_SF; the value is given already scaled (register value x 10^W_SF)."
+    },
+    "VAL1": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#VAL1'. VA L1. Apparent power L1. Units:'VA'. SunSpec type int16 with scale factor VA_SF; the value is given already scaled (register value x 10^VA_SF)."
+    },
+    "VarL1": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#VarL1'. Var L1. Reactive power L1. Units:'Var'. SunSpec type int16 with scale factor Var_SF; the value is given already scaled (register value x 10^Var_SF)."
+    },
+    "PFL1": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#PFL1'. PF L1. Power factor phase L1. SunSpec type int16 with scale factor PF_SF; the value is given already scaled (register value x 10^PF_SF)."
+    },
+    "AL1": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#AL1'. Amps L1. Current phase L1. Units:'A'. SunSpec type int16 with scale factor A_SF; the value is given already scaled (register value x 10^A_SF)."
+    },
+    "VL1L2": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#VL1L2'. Phase Voltage L1-L2. Units:'V'. SunSpec type uint16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF). Standards: IEEE 1547-2018."
+    },
+    "VL1": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#VL1'. Phase Voltage L1-N. Units:'V'. SunSpec type uint16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF). Standards: IEEE 1547-2018."
+    },
+    "TotWhInjL1": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#TotWhInjL1'. Total Watt-Hours Inj L1. Total active energy injected L1. Units:'Wh'. SunSpec type uint64 with scale factor TotWh_SF; the value is given already scaled (register value x 10^TotWh_SF)."
+    },
+    "TotWhAbsL1": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#TotWhAbsL1'. Total Watt-Hours Abs L1. Total active energy absorbed L1. Units:'Wh'. SunSpec type uint64 with scale factor TotWh_SF; the value is given already scaled (register value x 10^TotWh_SF)."
+    },
+    "TotVarhInjL1": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#TotVarhInjL1'. Total Var-Hours Inj L1. Total reactive energy injected L1. Units:'Varh'. SunSpec type uint64 with scale factor TotVarh_SF; the value is given already scaled (register value x 10^TotVarh_SF)."
+    },
+    "TotVarhAbsL1": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#TotVarhAbsL1'. Total Var-Hours Abs L1. Total reactive energy absorbed L1. Units:'Varh'. SunSpec type uint64 with scale factor TotVarh_SF; the value is given already scaled (register value x 10^TotVarh_SF)."
+    },
+    "WL2": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#WL2'. Watts L2. Active power L2. Units:'W'. SunSpec type int16 with scale factor W_SF; the value is given already scaled (register value x 10^W_SF)."
+    },
+    "VAL2": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#VAL2'. VA L2. Apparent power L2. Units:'VA'. SunSpec type int16 with scale factor VA_SF; the value is given already scaled (register value x 10^VA_SF)."
+    },
+    "VarL2": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#VarL2'. Var L2. Reactive power L2. Units:'Var'. SunSpec type int16 with scale factor Var_SF; the value is given already scaled (register value x 10^Var_SF)."
+    },
+    "PFL2": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#PFL2'. PF L2. Power factor L2. SunSpec type int16 with scale factor PF_SF; the value is given already scaled (register value x 10^PF_SF)."
+    },
+    "AL2": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#AL2'. Amps L2. Current L2. Units:'A'. SunSpec type int16 with scale factor A_SF; the value is given already scaled (register value x 10^A_SF)."
+    },
+    "VL2L3": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#VL2L3'. Phase Voltage L2-L3. Units:'V'. SunSpec type uint16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF). Standards: IEEE 1547-2018."
+    },
+    "VL2": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#VL2'. Phase Voltage L2-N. Units:'V'. SunSpec type uint16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF). Standards: IEEE 1547-2018."
+    },
+    "TotWhInjL2": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#TotWhInjL2'. Total Watt-Hours Inj L2. Total active energy injected L2. Units:'Wh'. SunSpec type uint64 with scale factor TotWh_SF; the value is given already scaled (register value x 10^TotWh_SF)."
+    },
+    "TotWhAbsL2": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#TotWhAbsL2'. Total Watt-Hours Abs L2. Total active energy absorbed L2. Units:'Wh'. SunSpec type uint64 with scale factor TotWh_SF; the value is given already scaled (register value x 10^TotWh_SF)."
+    },
+    "TotVarhInjL2": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#TotVarhInjL2'. Total Var-Hours Inj L2. Total reactive energy injected L2. Units:'Varh'. SunSpec type uint64 with scale factor TotVarh_SF; the value is given already scaled (register value x 10^TotVarh_SF)."
+    },
+    "TotVarhAbsL2": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#TotVarhAbsL2'. Total Var-Hours Abs L2. Total reactive energy absorbed L2. Units:'Varh'. SunSpec type uint64 with scale factor TotVarh_SF; the value is given already scaled (register value x 10^TotVarh_SF)."
+    },
+    "WL3": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#WL3'. Watts L3. Active power L3. Units:'W'. SunSpec type int16 with scale factor W_SF; the value is given already scaled (register value x 10^W_SF)."
+    },
+    "VAL3": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#VAL3'. VA L3. Apparent power L3. Units:'VA'. SunSpec type int16 with scale factor VA_SF; the value is given already scaled (register value x 10^VA_SF)."
+    },
+    "VarL3": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#VarL3'. Var L3. Reactive power L3. Units:'Var'. SunSpec type int16 with scale factor Var_SF; the value is given already scaled (register value x 10^Var_SF)."
+    },
+    "PFL3": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#PFL3'. PF L3. Power factor L3. SunSpec type int16 with scale factor PF_SF; the value is given already scaled (register value x 10^PF_SF)."
+    },
+    "AL3": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#AL3'. Amps L3. Current L3. Units:'A'. SunSpec type int16 with scale factor A_SF; the value is given already scaled (register value x 10^A_SF)."
+    },
+    "VL3L1": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#VL3L1'. Phase Voltage L3-L1. Units:'V'. SunSpec type uint16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF). Standards: IEEE 1547-2018."
+    },
+    "VL3": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#VL3'. Phase Voltage L3-N. Units:'V'. SunSpec type uint16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF). Standards: IEEE 1547-2018."
+    },
+    "TotWhInjL3": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#TotWhInjL3'. Total Watt-Hours Inj L3. Total active energy injected L3. Units:'Wh'. SunSpec type uint64 with scale factor TotWh_SF; the value is given already scaled (register value x 10^TotWh_SF)."
+    },
+    "TotWhAbsL3": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#TotWhAbsL3'. Total Watt-Hours Abs L3. Total active energy absorbed L3. Units:'Wh'. SunSpec type uint64 with scale factor TotWh_SF; the value is given already scaled (register value x 10^TotWh_SF)."
+    },
+    "TotVarhInjL3": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#TotVarhInjL3'. Total Var-Hours Inj L3. Total reactive energy injected L3. Units:'Varh'. SunSpec type uint64 with scale factor TotVarh_SF; the value is given already scaled (register value x 10^TotVarh_SF)."
+    },
+    "TotVarhAbsL3": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#TotVarhAbsL3'. Total Var-Hours Abs L3. Total reactive energy absorbed L3. Units:'Varh'. SunSpec type uint64 with scale factor TotVarh_SF; the value is given already scaled (register value x 10^TotVarh_SF)."
+    },
+    "ThrotPct": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#ThrotPct'. Throttling In Pct. Throttling in pct of maximum active power. Units:'Pct'. SunSpec type uint16."
+    },
+    "ThrotSrc": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "MAX_W",
+          "FIXED_W",
+          "FIXED_VAR",
+          "FIXED_PF",
+          "VOLT_VAR",
+          "FREQ_WATT",
+          "DYN_REACT_CURR",
+          "LVRT",
+          "HVRT",
+          "WATT_VAR",
+          "VOLT_WATT",
+          "SCHEDULED",
+          "LFRT",
+          "HFRT",
+          "DERATED"
+        ]
+      },
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#ThrotSrc'. Throttle Source Information. Active throttling source. Bitfield: the array lists the names of the bits that are set (MAX_W=bit 0, FIXED_W=bit 1, FIXED_VAR=bit 2, FIXED_PF=bit 3, VOLT_VAR=bit 4, FREQ_WATT=bit 5, DYN_REACT_CURR=bit 6, LVRT=bit 7, HVRT=bit 8, WATT_VAR=bit 9, VOLT_WATT=bit 10, SCHEDULED=bit 11, LFRT=bit 12, HFRT=bit 13, DERATED=bit 14); an empty array means no bit set. SunSpec type bitfield32."
+    },
+    "MnAlrmInfo": {
+      "type": "string",
+      "maxLength": 64,
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#MnAlrmInfo'. Manufacturer Alarm Info. Manufacturer alarm information. Valid if MANUFACTURER_ALRM indication is active. SunSpec type string."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "ACType"
+  ]
+}
