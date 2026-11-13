@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/cf-conventions/models/Dataset/schema.json",
+  "modelTags": "CF,CFConventions,netCDF,Climate,Forecast,Earth observation,Environment",
+  "title": "Smart Data Models - CF Metadata Conventions - Dataset",
+  "description": "A CF-netCDF dataset (one netCDF file or aggregation), described by its CF global attributes (CF Metadata Conventions 1.13, Section 2.6 and Appendix A, attributes with use G/Gr). Attribute names are kept verbatim except 'source' -> 'cfSource' and 'location' -> 'cfLocation'.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Dataset"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Dataset'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "comment": {
+      "description": "Property. Model:'https://cfconventions.org/Data/cf-conventions/cf-conventions-1.13/cf-conventions.html#attribute-appendix/comment'. Miscellaneous information about the data or methods used to produce it. (CF 1.13 Appendix A: type string; used on global attribute, coordinate variables, data variables; defined in Section 2.6.2, \"Description of file contents\".)",
+      "type": "string"
+    },
+    "Conventions": {
+      "description": "Property. Model:'https://cfconventions.org/Data/cf-conventions/cf-conventions-1.13/cf-conventions.html#attribute-appendix/Conventions'. Name of the conventions followed by the dataset. Section 2.6.1: files following CF 1.13 must set it to a string containing \"CF-1.13\"; several conventions may be listed, separated by blanks or commas. (CF 1.13 Appendix A: type string; used on global attribute; defined in NUG Appendix A, \"Attribute Conventions\".)",
+      "type": "string",
+      "pattern": "CF-1\\.[0-9]+"
+    },
+    "external_variables": {
+      "description": "Property. Model:'https://cfconventions.org/Data/cf-conventions/cf-conventions-1.13/cf-conventions.html#attribute-appendix/external_variables'. Identifies variables which are named by cell_measures attributes in the file but which are not present in the file. (CF 1.13 Appendix A: type string; used on global attribute; defined in Section 2.6.3, \"External variables\", Section 7.2, \"Cell Measures\".)",
+      "type": "string"
+    },
+    "featureType": {
+      "description": "Property. Model:'https://cfconventions.org/Data/cf-conventions/cf-conventions-1.13/cf-conventions.html#attribute-appendix/featureType'. Specifies the type of discrete sampling geometry to which the data in the scope of this attribute belongs, and implies that all data variables in the scope of this attribute contain collections of features of that type. Section 9.4 / Table 9.1: one of point, timeSeries, trajectory, profile, timeSeriesProfile, trajectoryProfile (case-insensitive). (CF 1.13 Appendix A: type string; used on global attribute; defined in Section 9.4, \"The featureType attribute\".)",
+      "type": "string",
+      "pattern": "^([pP][oO][iI][nN][tT]|[tT][iI][mM][eE][sS][eE][rR][iI][eE][sS]|[tT][rR][aA][jJ][eE][cC][tT][oO][rR][yY]|[pP][rR][oO][fF][iI][lL][eE]|[tT][iI][mM][eE][sS][eE][rR][iI][eE][sS][pP][rR][oO][fF][iI][lL][eE]|[tT][rR][aA][jJ][eE][cC][tT][oO][rR][yY][pP][rR][oO][fF][iI][lL][eE])$"
+    },
+    "history": {
+      "description": "Property. Model:'https://cfconventions.org/Data/cf-conventions/cf-conventions-1.13/cf-conventions.html#attribute-appendix/history'. List of the applications that have modified the original data. (CF 1.13 Appendix A: type string; used on global attribute, group attribute; defined in NUG Appendix A, \"Attribute Conventions\".)",
+      "type": "string"
+    },
+    "institution": {
+      "description": "Property. Model:'https://cfconventions.org/Data/cf-conventions/cf-conventions-1.13/cf-conventions.html#attribute-appendix/institution'. Where the original data was produced. (CF 1.13 Appendix A: type string; used on global attribute, data variables; defined in Section 2.6.2, \"Description of file contents\".)",
+      "type": "string"
+    },
+    "references": {
+      "description": "Property. Model:'https://cfconventions.org/Data/cf-conventions/cf-conventions-1.13/cf-conventions.html#attribute-appendix/references'. References that describe the data or methods used to produce it. (CF 1.13 Appendix A: type string; used on global attribute, data variables; defined in Section 2.6.2, \"Description of file contents\".)",
+      "type": "string"
+    },
+    "cfSource": {
+      "description": "Property. Model:'https://cfconventions.org/Data/cf-conventions/cf-conventions-1.13/cf-conventions.html#attribute-appendix/source'. Method of production of the original data. (CF 1.13 Appendix A: type string; used on global attribute, data variables; defined in Section 2.6.2, \"Description of file contents\".) CF attribute 'source', renamed because 'source' is the Smart Data Models common source property.",
+      "type": "string"
+    },
+    "title": {
+      "description": "Property. Model:'https://cfconventions.org/Data/cf-conventions/cf-conventions-1.13/cf-conventions.html#attribute-appendix/title'. Short description of the file contents. (CF 1.13 Appendix A: type string; used on global attribute, group attribute; defined in NUG Appendix A, \"Attribute Conventions\".)",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "Conventions"
+  ]
+}
