@@ -2455,6 +2455,56 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/era-rinf"
   },
   {
+    "slug": "fibo",
+    "title": "FIBO - Financial Industry Business Ontology",
+    "description": "The Financial Industry Business Ontology (FIBO) is the EDM Council's formal OWL model of the concepts of the financial industry: business entities and their identifiers (including the ISO 17442 Legal Entity Identifier), ownership and control, contracts and agreements, financial instruments and securities, loans, derivatives, indices and indicators, corporate actions, and the ACTUS contract taxonomy. It is published as modules (FND, BE, FBC, SEC, LOAN, DER, IND, CAE, ACTUS) with a quarterly Production release. The 2026Q3 Production release has 156 ontology files (134,232 triples) and builds on the OMG Commons Ontology Library.",
+    "publisher": "EDM Council (Enterprise Data Management Council); FIBO Community",
+    "sourceUrl": "https://github.com/edmcouncil/fibo",
+    "license": "MIT",
+    "domains": [
+      "CrossSector"
+    ],
+    "modelCount": 5,
+    "models": [
+      {
+        "name": "LegalEntity",
+        "title": "Smart Data Models - FIBO - LegalEntity",
+        "description": "legal person that is a partnership, corporation, or other organization having the capacity to negotiate contracts, assume financial obligations, and pay off debts, organized under the laws of some jurisdiction (FIBO Production 2026Q3 class cmns-org:LegalEntity, 'legal entity'. Attributes derived from the OWL restrictions on this class and its superclasses cmns-org:LegalPerson, cmns-pts:Party, cmns-pts:Agent, cmns-org:FormalOrganization, cmns-org:Organization; FIBO property names verbatim.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/fibo/models/LegalEntity/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/fibo/models/LegalEntity"
+      },
+      {
+        "name": "LegalEntityIdentifierRegistryEntry",
+        "title": "Smart Data Models - FIBO - LegalEntityIdentifierRegistryEntry",
+        "description": "entry in a legal entity identifier registry that conforms to ISO 17442 and the Global Legal Entity Identifier Foundation (GLEIF) Common Data Format (CDF) (FIBO Production 2026Q3 class fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry, 'legal entity identifier registry entry'. Attributes derived from the OWL restrictions on this class and its superclasses fibo-fbc-fct-breg:BusinessRegistryEntry, cmns-ra:RegistryEntry, cmns-col:Constituent; FIBO property names verbatim.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/fibo/models/LegalEntityIdentifierRegistryEntry/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/fibo/models/LegalEntityIdentifierRegistryEntry"
+      },
+      {
+        "name": "ListedShare",
+        "title": "Smart Data Models - FIBO - ListedShare",
+        "description": "share that is listed on at least one platform (FIBO Production 2026Q3 class fibo-sec-eq-eq:ListedShare, 'listed share'. Attributes derived from the OWL restrictions on this class and its superclasses fibo-sec-eq-eq:Share, fibo-fbc-fi-fi:EquityInstrument, fibo-fbc-fi-fi:Security, fibo-fbc-fi-fi:FinancialInstrument, fibo-sec-sec-lst:ListedSecurity, fibo-sec-sec-lst:RegisteredSecurity; FIBO property names verbatim.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/fibo/models/ListedShare/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/fibo/models/ListedShare"
+      },
+      {
+        "name": "Loan",
+        "title": "Smart Data Models - FIBO - Loan",
+        "description": "debt instrument whereby one party extends money or credit to another party (or parties) with the understanding that the borrowed money will be repaid according to the terms of the contract (FIBO Production 2026Q3 class fibo-loan-ln-ln:Loan, 'loan'. Attributes derived from the OWL restrictions on this class and its superclasses fibo-fbc-dae-dbt:CreditAgreementRepaidPeriodically, fibo-fbc-dae-dbt:CreditAgreement, fibo-fnd-agr-ctr:WrittenContract, fibo-fnd-agr-ctr:Contract, fibo-fbc-fi-fi:DebtInstrument, fibo-fbc-fi-fi:FinancialInstrument; FIBO property names verbatim.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/fibo/models/Loan/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/fibo/models/Loan"
+      },
+      {
+        "name": "RelationshipRecord",
+        "title": "Smart Data Models - FIBO - RelationshipRecord",
+        "description": "a record describing relationships between legal entities (FIBO Production 2026Q3 class fibo-be-le-lei:RelationshipRecord, 'relationship record'. Attributes derived from the OWL restrictions on this class and its superclasses cmns-col:Constituent; FIBO property names verbatim.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/fibo/models/RelationshipRecord/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/fibo/models/RelationshipRecord"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/fibo"
+  },
+  {
     "slug": "gaiax-ontology-v2111",
     "title": "Gaia-X Ontology (Trust Framework / Self-Description Schema)",
     "description": "The Gaia-X ontology defines the vocabulary used to write Self-Descriptions (verifiable-credential-based claims) for participants, resources and service offerings in a Gaia-X data space / federated cloud ecosystem. It spans infrastructure and service-offering classes (compute, storage, network, container/function-as-a-service, data products), physical and virtual resource classes (CPU, GPU, Memory, Disk, Datacenter, Device, ServerFlavor), connectivity and QoS metrics (Latency, Jitter, PacketLoss, Throughput, BandWidth, RoundTripTime), and a large body of governance, legal, compliance, security-policy and credential/trust-anchor classes (LegalPerson, TermsAndConditions, DataUsageAgreement, InformationSecurity Policies, LabelCredential, EvidenceTemplate, ...) that describe how a participant or resource is governed and certified rather than what it physically measures. This candidate translates the full v2111 class list (165 classes) into one candidate per class under models/.",

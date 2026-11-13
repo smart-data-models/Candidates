@@ -1,0 +1,326 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/fibo/models/Loan/schema.json",
+  "modelTags": "FIBO,EDMCouncil,Finance,Loan,Credit",
+  "title": "Smart Data Models - FIBO - Loan",
+  "description": "debt instrument whereby one party extends money or credit to another party (or parties) with the understanding that the borrowed money will be repaid according to the terms of the contract (FIBO Production 2026Q3 class fibo-loan-ln-ln:Loan, 'loan'. Attributes derived from the OWL restrictions on this class and its superclasses fibo-fbc-dae-dbt:CreditAgreementRepaidPeriodically, fibo-fbc-dae-dbt:CreditAgreement, fibo-fnd-agr-ctr:WrittenContract, fibo-fnd-agr-ctr:Contract, fibo-fbc-fi-fi:DebtInstrument, fibo-fbc-fi-fi:FinancialInstrument; FIBO property names verbatim.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Loan"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Loan'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "isIdentifiedBy": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Identifier"
+      },
+      "description": "Property. Model:'https://www.omg.org/spec/Commons/Identifiers/isIdentifiedBy'. has an identifier that is unique within some context. FIBO restriction: fibo-fbc-fi-fi:FinancialInstrument min 0 fibo-fbc-fi-fi:FinancialInstrumentIdentifier."
+    },
+    "hasLender": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasLender'. relates a contract, such as a debt instrument or credit agreement, to one or more parties that are financing the debt. Points to the LegalEntity playing the lender role. FIBO restriction: fibo-fbc-fi-fi:DebtInstrument some fibo-fbc-dae-dbt:Lender."
+    },
+    "hasBorrower": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasBorrower'. relates a contract, such as a debt instrument or credit agreement, to one or more parties that are incurring the debt. Points to the LegalEntity entities playing the borrower role (natural persons are out of scope of this candidate). FIBO restriction: fibo-fbc-fi-fi:DebtInstrument some fibo-fbc-dae-dbt:Borrower."
+    },
+    "isIssuedBy": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/isIssuedBy'. indicates a functional entity or party responsible for circulating, distributing, or publishing something. For a loan, normally the lender. FIBO restriction: fibo-fbc-fi-fi:FinancialInstrument some fibo-fbc-fi-fi:Issuer."
+    },
+    "isServicedBy": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/isServicedBy'. relates a loan to the financial service provider that services it. Points to the LegalEntity playing the servicer role. FIBO restriction: fibo-loan-ln-ln:Loan min 0 fibo-loan-ln-ln:Servicer."
+    },
+    "hasGuarantor": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Guaranty/hasGuarantor'. relates the guarantor to the contract for which they are providing a guaranty. Points to LegalEntity entities playing the guarantor role. FIBO restriction: fibo-loan-ln-ln:Loan min 0 fibo-fbc-dae-gty:Guarantor."
+    },
+    "hasPrincipalAmount": {
+      "$ref": "#/$defs/MonetaryAmount",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasPrincipalAmount'. indicates the nominal amount of the loan that must be paid at or before maturity. FIBO restriction: fibo-loan-ln-ln:Loan some fibo-fnd-acc-cur:MonetaryAmount."
+    },
+    "isDenominatedIn": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/isDenominatedIn'. indicates the currency in which the financial instrument was issued. Here: ISO 4217 code. FIBO restriction: fibo-fbc-fi-fi:FinancialInstrument some fibo-fnd-acc-cur:Currency."
+    },
+    "hasCurrency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasCurrency'. specifies the medium of exchange value in which something, such as a monetary amount is denominated. Here: ISO 4217 code. FIBO restriction: fibo-fbc-dae-dbt:CreditAgreement min 0 fibo-fnd-acc-cur:Currency."
+    },
+    "hasNominalValue": {
+      "$ref": "#/$defs/MonetaryAmount",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/hasNominalValue'. indicates the face value of a contract. FIBO restriction: fibo-fbc-fi-fi:FinancialInstrument min 0 fibo-fnd-acc-cur:MonetaryAmount."
+    },
+    "hasTotalClosingCosts": {
+      "$ref": "#/$defs/MonetaryAmount",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasTotalClosingCosts'. indicates the total the amount paid at the closing of a real estate transaction, i.e., at the time when the title to the property is conveyed (transferred) to the buyer. FIBO restriction: fibo-loan-ln-ln:Loan min 0 fibo-fnd-acc-cur:MonetaryAmount."
+    },
+    "hasTotalPointsAndFees": {
+      "$ref": "#/$defs/MonetaryAmount",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasTotalPointsAndFees'. indicates a form of pre-paid interest, charged by the lender as an alternative to charging a higher rate of interest on the mortgage loan. FIBO restriction: fibo-loan-ln-ln:Loan min 0 fibo-fnd-acc-cur:MonetaryAmount."
+    },
+    "hasInterestPaymentTerms": {
+      "$ref": "#/$defs/InterestPaymentTerms",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/DebtInstruments/hasInterestPaymentTerms'. indicates the specific terms related to interest payments on the principal as specified in the instrument or a related contract document. FIBO restriction: fibo-fbc-fi-fi:DebtInstrument some fibo-fbc-dae-dbt:InterestPaymentTerms."
+    },
+    "hasRepaymentTerms": {
+      "$ref": "#/$defs/PrincipalRepaymentTerms",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/DebtInstruments/hasRepaymentTerms'. indicates the specific terms related to repayment of principal as specified in the instrument or a related contract document. FIBO restriction: fibo-fbc-fi-fi:DebtInstrument some fibo-fbc-dae-dbt:PrincipalRepaymentTerms."
+    },
+    "isInterestOnly": {
+      "type": "boolean",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/isInterestOnly'. indicates whether the contractual terms include or would have included interest only payments. FIBO restriction: fibo-loan-ln-ln:Loan min 0 xsd:boolean."
+    },
+    "hasNegativeAmortization": {
+      "type": "boolean",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasNegativeAmortization'. indicates whether the contractual terms include or would have included a feature that allows unpaid interest to be added to the balance of unpaid principal. FIBO restriction: fibo-loan-ln-ln:Loan min 0 xsd:boolean."
+    },
+    "hasExecutionDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasExecutionDate'. indicates the date a contract has been signed by all the necessary parties. FIBO restriction: fibo-fnd-agr-ctr:WrittenContract min 0 cmns-dt:Date."
+    },
+    "hasEffectiveDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasEffectiveDate'. indicates the date a contract, relationship, or policy comes into force. FIBO restriction: fibo-fnd-agr-ctr:Contract min 0 cmns-dt:Date."
+    },
+    "hasInitialExchangeDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasInitialExchangeDate'. indicates the specific date when the initial exchange of assets or funds takes place. FIBO restriction: fibo-fbc-dae-dbt:CreditAgreement min 0 cmns-dt:ExplicitDate."
+    },
+    "hasMaturityDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasMaturityDate'. indicates the date on which the principal amount of an instrument is due to be repaid to the investor and interest or coupon payments stop, and/or the date on which the instrument may be redeemed. FIBO restriction: fibo-loan-ln-ln:Loan min 0 cmns-dt:ExplicitDate; fibo-fbc-dae-dbt:CreditAgreement min 0 cmns-dt:ExplicitDate."
+    },
+    "isAssignable": {
+      "type": "boolean",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/isAssignable'. indicates whether the contract and the rights thereunder may be assigned by one of the signatories to some other party. FIBO restriction: fibo-fnd-agr-ctr:WrittenContract exactly 1 xsd:boolean."
+    },
+    "isNegotiable": {
+      "type": "boolean",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/isNegotiable'. specifies whether a particular financial instrument is or is not transferable. FIBO restriction: fibo-fbc-fi-fi:FinancialInstrument exactly 1 xsd:boolean."
+    },
+    "isLegallyRecordedIn": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}(-[A-Z0-9]{1,3})?$",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/isLegallyRecordedIn'. jurisdiction (country, county, state, province, city) in which the financial instrument is legally recorded for regulatory and/or tax purposes. Here: ISO 3166-1 alpha-2 or ISO 3166-2 code. FIBO restriction: fibo-fbc-fi-fi:FinancialInstrument min 0 cmns-rga:Jurisdiction."
+    },
+    "isClassifiedBy": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Classifier"
+      },
+      "description": "Property. Model:'https://www.omg.org/spec/Commons/Classifiers/isClassifiedBy'. is systematically grouped based on characteristics by. E.g. the lender lien position (classifierClass fibo-loan-ln-ln:LenderLienPosition, hasTag fibo-loan-ln-ln:PrimaryLienPosition or fibo-loan-ln-ln:SubordinateLienPosition) or a CFI code. FIBO restriction: fibo-loan-ln-ln:Loan min 0 fibo-loan-ln-ln:LenderLienPosition; fibo-fbc-fi-fi:FinancialInstrument min 0 fibo-sec-sec-cls:FinancialInstrumentClassifier; fibo-fbc-fi-fi:FinancialInstrument min 0 fibo-fnd-arr-cls:IndustrySectorClassifier."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "hasLender",
+    "hasBorrower",
+    "isIssuedBy",
+    "hasPrincipalAmount",
+    "isDenominatedIn",
+    "hasInterestPaymentTerms",
+    "hasRepaymentTerms",
+    "isAssignable",
+    "isNegotiable"
+  ],
+  "$defs": {
+    "Classifier": {
+      "type": "object",
+      "required": [
+        "hasTag"
+      ],
+      "description": "OMG Commons cmns-cls:Classifier (and FIBO subclasses), nested: a code from a classification scheme.",
+      "properties": {
+        "classifierClass": {
+          "type": "string",
+          "description": "Not a FIBO term (Smart Data Models addition, stands for rdf:type): the FIBO class of the classifier as a compact IRI, e.g. fibo-fbc-fct-breg:NorthAmericanIndustryClassificationSystemCode, fibo-sec-sec-cls:FinancialInstrumentClassifier (ISO 10962 CFI), fibo-loan-ln-ln:LenderLienPosition."
+        },
+        "hasTag": {
+          "type": "string",
+          "description": "Model:'https://www.omg.org/spec/Commons/Designators/hasTag'. associates unique combination of alphanumeric characters corresponding to a designator for something Here: the code, or the FIBO individual (compact IRI) when FIBO enumerates the values."
+        }
+      }
+    },
+    "Identifier": {
+      "type": "object",
+      "required": [
+        "hasTag"
+      ],
+      "description": "FIBO / OMG Commons identifier (cmns-id:Identifier and its subclasses), nested. FIBO pattern: the identifier is an individual of its class whose code is given by cmns-dsg:hasTag and which cmns-id:identifies the thing.",
+      "properties": {
+        "identifierClass": {
+          "type": "string",
+          "enum": [
+            "fibo-be-le-lei:LegalEntityIdentifier",
+            "fibo-be-le-cb:RegistrationIdentifier",
+            "fibo-fbc-fct-breg:BusinessRegisterIdentifier",
+            "fibo-fbc-fct-fse:BusinessIdentifierCode",
+            "fibo-be-le-fbo:ValueAddedTaxIdentificationNumber",
+            "fibo-fnd-pty-pty:TaxIdentifier",
+            "fibo-sec-sec-id:InternationalSecuritiesIdentificationNumber",
+            "fibo-fbc-fi-fi:FinancialInstrumentIdentifier",
+            "fibo-fbc-pas-caa:AccountIdentifier",
+            "cmns-id:Identifier"
+          ],
+          "description": "Not a FIBO term (Smart Data Models addition, stands for rdf:type): the FIBO/Commons class of the identifier: fibo-be-le-lei:LegalEntityIdentifier (legal entity identifier); fibo-be-le-cb:RegistrationIdentifier (registration identifier); fibo-fbc-fct-breg:BusinessRegisterIdentifier (business register identifier); fibo-fbc-fct-fse:BusinessIdentifierCode (business identifier code); fibo-be-le-fbo:ValueAddedTaxIdentificationNumber (value-added tax identification number); fibo-fnd-pty-pty:TaxIdentifier (tax identifier); fibo-sec-sec-id:InternationalSecuritiesIdentificationNumber (international securities identification number); fibo-fbc-fi-fi:FinancialInstrumentIdentifier (financial instrument identifier); fibo-fbc-pas-caa:AccountIdentifier (account identifier); cmns-id:Identifier (identifier)."
+        },
+        "hasTag": {
+          "type": "string",
+          "description": "Model:'https://www.omg.org/spec/Commons/Designators/hasTag'. associates unique combination of alphanumeric characters corresponding to a designator for something Here: the identifier code itself (e.g. the 20-character LEI, the ISIN, the register number)."
+        },
+        "isRegisteredIn": {
+          "type": "string",
+          "description": "Model:'https://www.omg.org/spec/Commons/RegistrationAuthorities/isRegisteredIn'. indicates the registry that something is registered in Here: the registry, given by its GLEIF Registration Authorities List code (e.g. RA000304) or name."
+        },
+        "identifies": {
+          "type": "string",
+          "format": "uri",
+          "description": "Model:'https://www.omg.org/spec/Commons/Identifiers/identifies'. recognizes or establishes identity within some context Here: the NGSI-LD id of the identified entity, when it is in the same system."
+        }
+      }
+    },
+    "InterestPaymentTerms": {
+      "type": "object",
+      "description": "FIBO fibo-fbc-dae-dbt:InterestPaymentTerms, nested: contract terms for payment of interest on a debt. Properties from its restrictions (rate flattened to a percentage, frequencies to ISO 8601 durations).",
+      "properties": {
+        "hasInterestRate": {
+          "type": "number",
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasInterestRate'. relates something, such as an agreement, or debt instrument, to the rate (typically annual) of interest that is to be paid by the debtor to the creditor on the debt Units:'P1' (percent per year). FIBO models the rate as an InterestRate object; flattened here to the nominal annual rate."
+        },
+        "hasInterestRateCap": {
+          "type": "number",
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasInterestRateCap'. relates something, such as an agreement, or debt instrument, to the upper bound (ceiling) rate (typically annual) of interest on variable-rate debt that is to be paid by the debtor to the creditor on the debt Units:'P1'."
+        },
+        "hasAccrualBasis": {
+          "type": "string",
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasAccrualBasis'. identifies the convention that defines how interest accrues on something, that is the number of days in a month and days in a year that are counted when performing interest accrual calculations Here: the day count convention name, e.g. ACT/360, 30/360."
+        },
+        "hasInterestPaymentFrequency": {
+          "type": "string",
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasInterestPaymentFrequency'. the frequency at which interest payments must be made on the debt Here: ISO 8601 duration, e.g. P1M, P3M."
+        },
+        "hasCompoundingFrequency": {
+          "type": "string",
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasCompoundingFrequency'. the frequency at which interest is added to the principal of the debt over the course of the agreement Here: ISO 8601 duration."
+        },
+        "hasInitialInterestAccrualDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasInitialInterestAccrualDate'. the date from which interest begins to accrue"
+        },
+        "hasInitialInterestPaymentDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasInitialInterestPaymentDate'. the date on which the first interest payment is due"
+        },
+        "hasInterestPaymentDay": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 31,
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasInterestPaymentDay'. the day of the month on which interest payments must be made on the debt"
+        }
+      }
+    },
+    "MonetaryAmount": {
+      "type": "object",
+      "required": [
+        "hasAmount",
+        "hasCurrency"
+      ],
+      "description": "FIBO fibo-fnd-acc-cur:MonetaryAmount, nested: measure that is an amount of money specified in monetary units. Properties from its restrictions (hasAmount exactly 1, hasCurrency exactly 1).",
+      "properties": {
+        "hasAmount": {
+          "type": "number",
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasAmount'. total number or quantity"
+        },
+        "hasCurrency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$",
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasCurrency'. specifies the medium of exchange value in which something, such as a monetary amount is denominated Here: ISO 4217 alphabetic code (FIBO links the ISO 4217 currency individuals)."
+        }
+      }
+    },
+    "PrincipalRepaymentTerms": {
+      "type": "object",
+      "description": "FIBO fibo-fbc-dae-dbt:PrincipalRepaymentTerms, nested: contract terms that specify requirements for repayment of the principal. Properties from its restrictions.",
+      "properties": {
+        "hasPrincipalPaymentFrequency": {
+          "type": "string",
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasPrincipalPaymentFrequency'. the frequency at which payments on the principal must be made Here: ISO 8601 duration, e.g. P1M."
+        },
+        "hasInitialPrincipalPaymentDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasInitialPrincipalPaymentDate'. the date on which the first payment against the principal is due"
+        },
+        "hasPrincipalRepaymentDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasPrincipalRepaymentDate'. relates an instrument to the date by which the principal must be repaid in full"
+        },
+        "hasPrincipalPaymentDay": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 31,
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasPrincipalPaymentDay'. the day of the month on which payments on the principal must be made"
+        },
+        "hasBalloonPayment": {
+          "type": "boolean",
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasBalloonPayment'. indicates whether the contractual terms include or would have included repayment of the outstanding principal sum at the end of a loan period, prior to which only partial or no payments were made on the principal"
+        },
+        "isInitiallyPayable": {
+          "type": "boolean",
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/isInitiallyPayable'. indicates whether the obligation arising from the covered loan was, or in the case of an application, would have been initially payable to the financial institution"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/fibo/models/RelationshipRecord/schema.json",
+  "modelTags": "FIBO,EDMCouncil,Finance,LEI,GLEIF,Ownership",
+  "title": "Smart Data Models - FIBO - RelationshipRecord",
+  "description": "a record describing relationships between legal entities (FIBO Production 2026Q3 class fibo-be-le-lei:RelationshipRecord, 'relationship record'. Attributes derived from the OWL restrictions on this class and its superclasses cmns-col:Constituent; FIBO property names verbatim.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "RelationshipRecord"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'RelationshipRecord'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "relationshipType": {
+      "type": "string",
+      "enum": [
+        "fibo-be-le-lei:isDirectlyConsolidatedBy",
+        "fibo-be-le-lei:isUltimatelyConsolidatedBy",
+        "fibo-be-le-lei:isInternationalBranchOf"
+      ],
+      "description": "Property. Model:'https://smartdatamodels.org/dataModel.FIBO/relationshipType'. Not a FIBO term (Smart Data Models addition): the FIBO LEI property this record is about, as a compact IRI: fibo-be-le-lei:isDirectlyConsolidatedBy (GLEIF IS_DIRECTLY_CONSOLIDATED_BY), fibo-be-le-lei:isUltimatelyConsolidatedBy (IS_ULTIMATELY_CONSOLIDATED_BY) or fibo-be-le-lei:isInternationalBranchOf (IS_INTERNATIONAL_BRANCH_OF)."
+    },
+    "hasOwnedEntity": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/OwnershipParties/hasOwnedEntity'. indicates a formal organization, including potentially a sole proprietorship, that is owned by a legal person. Points to the child LegalEntity (GLEIF StartNode). Flattened from the EntityOwnership that this record records (cmns-doc:records exactly 1 fibo-be-oac-opty:EntityOwnership); FIBO restriction on fibo-be-oac-opty:EntityOwnership: some (fibo-be-le-fbo:NotForProfitOrganization or fibo-be-le-lp:BusinessEntity or cmns-org:LegalEntity)."
+    },
+    "hasOwningEntity": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/OwnershipParties/hasOwningEntity'. indicates a party that owns a formal organization. Points to the parent LegalEntity (GLEIF EndNode). Flattened from the EntityOwnership that this record records (cmns-doc:records exactly 1 fibo-be-oac-opty:EntityOwnership); FIBO restriction on fibo-be-oac-opty:EntityOwnership: some cmns-org:LegalPerson."
+    },
+    "isClassifiedBy": {
+      "type": "string",
+      "enum": [
+        "fibo-be-le-lei:RelationshipStatusActive",
+        "fibo-be-le-lei:RelationshipStatusInactive"
+      ],
+      "description": "Property. Model:'https://www.omg.org/spec/Commons/Classifiers/isClassifiedBy'. is systematically grouped based on characteristics by. Values: FIBO individuals of fibo-be-le-lei:RelationshipStatus as compact IRIs: fibo-be-le-lei:RelationshipStatusActive (relationship status - active); fibo-be-le-lei:RelationshipStatusInactive (relationship status - inactive). GLEIF RelationshipStatus (ACTIVE / INACTIVE). Flattened from the EntityOwnership that this record records (cmns-doc:records exactly 1 fibo-be-oac-opty:EntityOwnership); FIBO restriction on fibo-be-oac-opty:EntityOwnership: exactly 1 fibo-be-le-lei:RelationshipStatus."
+    },
+    "holdsDuring": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/DatePeriod"
+      },
+      "description": "Property. Model:'https://www.omg.org/spec/Commons/PartiesAndSituations/holdsDuring'. indicates a date period during which something is true. GLEIF RelationshipPeriods: the relationship period has no qualifier; accounting and document filing periods carry isQualifiedBy. Flattened from the EntityOwnership that this record records (cmns-doc:records exactly 1 fibo-be-oac-opty:EntityOwnership); FIBO restriction on cmns-pts:Situation: min 0 cmns-dt:DatePeriod."
+    },
+    "hasOwnershipPercentage": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/hasOwnershipPercentage'. the percentage ownership interest in the owned entity owned by owning entity, if known. Units:'P1'. Flattened from the EntityOwnership that this record records (cmns-doc:records exactly 1 fibo-be-oac-opty:EntityOwnership); FIBO restriction on fibo-be-oac-opty:EntityOwnership: min 0 xsd:decimal."
+    },
+    "isQualifiedBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "fibo-be-le-lei:GenerallyAcceptedAccountingPrinciples",
+          "fibo-be-le-lei:InternationalFinancialReportingStandard",
+          "fibo-be-le-lei:OtherAccountingFramework"
+        ]
+      },
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/isQualifiedBy'. indicates a constraint, limitation or refinement on something. Values: FIBO individuals of fibo-be-le-lei:AccountingFramework as compact IRIs: fibo-be-le-lei:GenerallyAcceptedAccountingPrinciples (Generally Accepted Accounting Principles); fibo-be-le-lei:InternationalFinancialReportingStandard (International Financial Reporting Standard); fibo-be-le-lei:OtherAccountingFramework (other accounting framework). GLEIF RelationshipQualifiers (accounting standard). FIBO restriction: fibo-be-le-lei:RelationshipRecord min 0 fibo-be-le-lei:RelationshipQualifier."
+    },
+    "isQuantifiedBy": {
+      "type": "number",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/isQuantifiedBy'. indicates that something is limited to or conditional due to some rate or other statistical value. GLEIF RelationshipQuantifiers (e.g. accounting consolidation or ownership percentage). FIBO restriction: fibo-be-le-lei:RelationshipRecord min 0 xsd:decimal."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "hasOwnedEntity",
+    "hasOwningEntity",
+    "isClassifiedBy"
+  ],
+  "$defs": {
+    "DatePeriod": {
+      "type": "object",
+      "description": "OMG Commons cmns-dt:DatePeriod, nested: time span over one or more calendar days. Properties from its restrictions.",
+      "properties": {
+        "hasStartDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Model:'https://www.omg.org/spec/Commons/DatesAndTimes/hasStartDate'. indicates the initial date associated with something"
+        },
+        "hasEndDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Model:'https://www.omg.org/spec/Commons/DatesAndTimes/hasEndDate'. indicates the final or ending date associated with something"
+        },
+        "isQualifiedBy": {
+          "type": "string",
+          "enum": [
+            "fibo-be-le-lei:AccountingPeriod",
+            "fibo-be-le-lei:DocumentFilingPeriod"
+          ],
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/isQualifiedBy'. indicates a constraint, limitation or refinement on something Here: the period qualifier (fibo-be-le-lei:RelationshipPeriodQualifier): fibo-be-le-lei:AccountingPeriod (accounting period); fibo-be-le-lei:DocumentFilingPeriod (document filing period). Omitted for the relationship period itself."
+        }
+      }
+    }
+  }
+}

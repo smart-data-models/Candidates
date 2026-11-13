@@ -1,0 +1,194 @@
+title: "FIBO - Financial Industry Business Ontology"
+publisher: "EDM Council (Enterprise Data Management Council); FIBO Community"
+sourceUrl: "https://github.com/edmcouncil/fibo"
+specificationUrl: "https://spec.edmcouncil.org/fibo/"
+contact: "https://github.com/edmcouncil/fibo/issues"
+sourceOntologyVersion: "Production release 2026Q3 (GitHub tag master_2026Q3, the latest quarterly release on 2026-11-13); OMG Commons and LCC terms as bundled in the 2026Q3 production quickstart file"
+sourceOntologyDownload: "https://spec.edmcouncil.org/fibo/ontology/master/2026Q3/prod.ttl.zip"
+sourceOntologyNamespace: "https://spec.edmcouncil.org/fibo/ontology/"
+sourceOntologyFormat: "OWL 2 DL ontologies (Turtle, RDF/XML, JSON-LD), restriction-based, importing the OMG Commons Ontology Library (https://www.omg.org/spec/Commons/) and LCC"
+sourceExampleUrl: "https://api.gleif.org/api/v1/lei-records/529900QBVWXMWANH7H45"
+sourceExampleLicense: "CC0 1.0 (GLEIF LEI data, Global LEI Index; https://www.gleif.org/en/meta/lei-data-terms-of-use)"
+domains:
+  - CrossSector
+description: >
+  The Financial Industry Business Ontology (FIBO) is the EDM Council's
+  formal OWL model of the concepts of the financial industry: business
+  entities and their identifiers (including the ISO 17442 Legal Entity
+  Identifier), ownership and control, contracts and agreements, financial
+  instruments and securities, loans, derivatives, indices and indicators,
+  corporate actions, and the ACTUS contract taxonomy. It is published as
+  modules (FND, BE, FBC, SEC, LOAN, DER, IND, CAE, ACTUS) with a quarterly
+  Production release. The 2026Q3 Production release has 156 ontology files
+  (134,232 triples) and builds on the OMG Commons Ontology Library.
+license: "MIT"
+licenseNote: >
+  Confirmed via the repository LICENSE file (The MIT License, Copyright (c)
+  2020 Enterprise Data Management Council) and the dcterms:license statement
+  in each ontology file ("Copyright (c) 2013-2025 EDM Council, Inc. ...
+  Permission is hereby granted, free of charge ... See
+  https://opensource.org/licenses/MIT"). Attribution: FIBO, EDM Council,
+  MIT licence; the copyright and permission notice must be kept. The
+  LegalEntity, LegalEntityIdentifierRegistryEntry and RelationshipRecord
+  examples use GLEIF LEI data, CC0 1.0 (attributed in `source`). ListedShare
+  and Loan examples are synthetic.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-11-13 from the FIBO Production release 2026Q3. Source
+  row 40 of the "Level A standards not in Smart Data Models" list (sector
+  Finance, licence verified: Yes, MIT).
+
+  SCOPE: FIBO is very large (thousands of classes). This candidate covers a
+  coherent core around the legal entity and its LEI, which is also what the
+  GLEIF open data publishes, plus two instruments:
+    - LegalEntity                         cmns-org:LegalEntity (24 FIBO attributes)
+    - LegalEntityIdentifierRegistryEntry  fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry (9)
+    - RelationshipRecord                  fibo-be-le-lei:RelationshipRecord (8)
+    - ListedShare                         fibo-sec-eq-eq:ListedShare (23)
+    - Loan                                fibo-loan-ln-ln:Loan (24)
+  LegalEntity is an OMG Commons class (FIBO imports it and adds the LEI
+  restrictions in BE/LegalEntities/LEIEntities). Value objects stay nested
+  ($defs, "@type": "@json"): Identifier, Address, EntityLegalForm,
+  DatePeriod, MonetaryAmount, Classifier, InterestPaymentTerms,
+  PrincipalRepaymentTerms.
+  NOT covered yet, and possible next candidates: Account
+  (fibo-fbc-pas-caa:Account, linked from Loan through hasCorrespondingAccount),
+  Listing / Exchange (fibo-sec-sec-lst, fibo-fbc-fct-mkt), debt securities
+  (Bond), Collateral and Guaranty, derivatives (DER), economic indicators
+  and indices (IND), corporate actions (CAE), and the ACTUS contract types.
+
+  ATTRIBUTE DERIVATION: each model's attributes come from the OWL
+  restrictions (owl:onProperty) declared on the class and all its named
+  superclasses. The generator reads every restriction and prints each
+  property it does not keep. Every attribute description quotes the
+  restriction(s) it comes from. Rules:
+    - Restrictions that are only universal ("only") are constraints, not
+      attributes, and are left out (Organization hasMember / hasPart,
+      RegistryEntry isIncludedIn). The exception is
+      hasManagingLocalOperatingUnit ("only LegalEntityIdentifier"), kept
+      because it carries the GLEIF ManagingLOU.
+    - Where FIBO restricts a generic property and defines specific
+      sub-properties for the GLEIF data, the sub-properties are used:
+      LegalEntity names (hasLegalName, hasAlternativeLanguageLegalName,
+      hasPreferredTransliteratedLegalName, ... in place of
+      cmns-dsg:hasTextualName) and the registry-entry dates
+      (hasInitialRegistrationDate, hasRegistrationRevisionDate,
+      hasRenewalDate, hasValidationDate in place of
+      cmns-ra:hasRegistrationDate). cmns-dsg:hasName (name objects) is
+      covered by these and left out.
+    - required = id, type and the properties restricted with "some",
+      "exactly n" or "min n" (n >= 1). OWL is open-world, so these are
+      FIBO's minimum-description axioms rather than data-validation rules;
+      reviewers may want to relax them. Required: LegalEntity hasLegalAddress,
+      isOrganizedIn, isRecognizedIn; registry entry comprises,
+      hasRegistrationStatus, hasInitialRegistrationDate, hasValidationLevel;
+      RelationshipRecord hasOwnedEntity, hasOwningEntity, isClassifiedBy;
+      ListedShare and Loan see their schemas (11-14 each).
+    - ListedShare: the contract layer (WrittenContract, Contract, Agreement,
+      Situation restrictions: contract parties, contract documents,
+      execution dates) is left out, because a listed share is used as a
+      security, not a bilateral contract. Also left out: confersOwnershipOf,
+      hasRestriction, isListedVia (Listing is a follow-up model).
+    - Loan: left out the Agreement/Situation layer (party roles) and
+      hasContractParty / hasCounterparty / hasPrincipalParty /
+      hasThirdParty (the parties are hasLender, hasBorrower, isServicedBy,
+      hasGuarantor), isEvidencedBy, hasContractualElement,
+      isCollateralizedBy, call/put features, hasOffering,
+      hasRedemptionProvision, hasRestriction, hasCorrespondingAccount
+      (Account is a follow-up), hasDateOfIssuance and the date-time stamp
+      variants of the execution/effective dates, and
+      hasFinancialInstrumentShortName.
+    - LegalEntity: left out isGovernedBy (organization covering agreement)
+      and hasGoal. Added, without restrictions in FIBO but needed for GLEIF
+      data: hasDateOfIncorporation (GLEIF EntityCreationDate) and the LEI
+      relations isDirectlyConsolidatedBy, isUltimatelyConsolidatedBy,
+      isInternationalBranchOf (range LegalEntity, no domain).
+
+  NAMING: entity types are the FIBO / Commons class local names and
+  attributes the FIBO property local names, verbatim. No renames were
+  needed (FIBO uses has.../is... names; none clashes with NGSI-LD reserved
+  terms). Every context.jsonld maps the type and each attribute to the
+  full FIBO or Commons IRI.
+
+  MAPPING:
+    - Properties whose range is a legal person or a role played by one
+      (hasLender, hasBorrower, isIssuedBy, isServicedBy, hasGuarantor,
+      hasOwnedEntity, hasOwningEntity, precedes, is...ConsolidatedBy) are
+      Relationships to LegalEntity. FIBO roles (Lender, Borrower, Issuer,
+      Servicer) are flattened to the party that plays them. Borrowers who
+      are natural persons are out of scope.
+    - Code lists that FIBO defines as named individuals are enums of
+      compact IRIs with "@type": "@vocab" and the FIBO prefixes in the
+      context (e.g. fibo-fbc-fct-breg:IssuedStatus). The GLEIF codes
+      (cmns-dsg:hasTag: ISSUED, LAPSED, ACTIVE, FULLY_CORROBORATED, ...)
+      are listed in the descriptions. Enums: EntityStatus,
+      EntityExpirationReason, RegistrationStatus, EntityValidationLevel,
+      RelationshipStatus, AccountingFramework, RelationshipPeriodQualifier,
+      SecurityForm, SharePaymentStatus.
+    - Jurisdictions, countries and subdivisions are ISO 3166-1 alpha-2 /
+      ISO 3166-2 codes, currencies ISO 4217 codes, exchanges ISO 10383 MICs
+      (FIBO links LCC / ISO individuals or functional-entity classes).
+    - Identifiers follow FIBO's own example pattern (identifier with
+      cmns-dsg:hasTag = the code, cmns-id:identifies = the thing), nested
+      with an identifierClass (rdf:type) and isRegisteredIn.
+    - RelationshipRecord flattens the EntityOwnership it records
+      (cmns-doc:records exactly 1): hasOwnedEntity, hasOwningEntity,
+      isClassifiedBy (relationship status), holdsDuring, and
+      hasOwnershipPercentage are EntityOwnership properties. The generic
+      super-properties hasOwningParty / hasOwnedAsset and the Situation
+      roles are left out.
+    - Interest rate is flattened to a percentage per year; payment
+      frequencies are ISO 8601 durations.
+  NON-FIBO ADDITIONS (namespace https://smartdatamodels.org/dataModel.FIBO/):
+  relationshipType on RelationshipRecord (which LEI relation the record
+  documents: isDirectlyConsolidatedBy / isUltimatelyConsolidatedBy /
+  isInternationalBranchOf, as compact IRIs), and identifierClass /
+  classifierClass inside the nested Identifier / Classifier objects
+  (rdf:type). No location GeoProperty: FIBO addresses carry no coordinates.
+
+  SOURCE NOTES:
+    - The OMG Commons term IRIs (https://www.omg.org/spec/Commons/...)
+      return 404 when dereferenced term by term; only the module IRIs
+      resolve (RDF/XML). FIBO term IRIs resolve.
+    - The production zip (2026Q3) does not contain the Commons and LCC
+      ontologies that FIBO imports; their definitions were taken from the
+      production quickstart file (https://spec.edmcouncil.org/fibo/ontology/master/latest/prod.fibo-quickstart.ttl),
+      which bundles them. The "latest" build differs from the 2026Q3 tag
+      only in three generated individual files (markets, business centres,
+      securities identification individuals).
+    - hasManagingLocalOperatingUnit has no domain or range; its only
+      restriction is "only LegalEntityIdentifier", i.e. the LOU is given by
+      its LEI, not as a party.
+    - Some restrictions are duplicated in the graph (once in the module,
+      once from the quickstart merge); deduplicated here.
+    - FIBO has no class for the GLEIF entity category (GENERAL, FUND,
+      BRANCH, SOLE_PROPRIETOR) or for the relationship registration status
+      (PUBLISHED), so those GLEIF fields are not mapped.
+
+  EXAMPLES:
+    - LegalEntity, LegalEntityIdentifierRegistryEntry and RelationshipRecord
+      are REAL: GLEIF Global LEI Index record 529900QBVWXMWANH7H45, Siemens
+      Healthineers AG (Munich/Forchheim, DE, Aktiengesellschaft, ELF 6QQB,
+      register HRB 237558 at RA000304, BIC SIHCDE8EXXX from the GLEIF BIC-LEI mapping), its LEI registration (ISSUED, fully
+      corroborated, managing LOU 5299000J2N45DDNE4Y28 = WM Datenservice),
+      and its Level 2 direct-parent relationship to Siemens
+      Aktiengesellschaft (W38RGI023J3WT1HWRP32, ACTIVE, with accounting,
+      relationship and document-filing periods). Golden copy of
+      2026-11-13, CC0 1.0. GLEIF's legal address line "n.a" is kept as
+      published. GLEIF gives period and creation dates as UTC timestamps of
+      German local midnight; they are converted to local calendar dates.
+    - ListedShare and Loan are SYNTHETIC (fictitious Example Manufacturing
+      AG and Example Bank AG, invented amounts and terms, no ISIN or LEI,
+      since those registries have no reserved test ranges). Real codes used
+      in them: MICs XETR and XFRA, CFI ESVUFR, ISO 4217 EUR.
+
+  DUPLICATION RISK: dataModel.VerifiableCredentials has a LegalEntity model
+  (same type name, different scope: the Gaia-X / EBSI legal entity
+  credential); the gaiax-ontology-v2111 candidate has LegalPerson. The bods
+  candidate (Beneficial Ownership Data Standard) covers company ownership
+  with EntityStatement / RelationshipStatement, which overlaps with
+  LegalEntity / RelationshipRecord (BODS also uses LEIs). Smart Data Models
+  has no finance subject (no Loan, Share or LEI registration models). Check
+  these before promotion.
