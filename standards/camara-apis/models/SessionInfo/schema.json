@@ -1,0 +1,333 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/camara-apis/models/SessionInfo/schema.json",
+  "modelTags": "CAMARA,QualityOnDemand,QoS,Telecom,NetworkAPI",
+  "title": "Smart Data Models - CAMARA APIs - SessionInfo",
+  "description": "Session related information returned in responses. Note that the device object is defined as optional and will only to be returned if provided in createSession. If more than one type of device identifier was provided, only one identifier will be returned (at implementation choice and with the original value provided in createSession). Please note that IP addresses of devices can change and get reused, so the original values may no longer identify the same device. They identified the device at the time of session creation. (CAMARA quality-on-demand 1.1.0, QualityOnDemand release r3.2, OpenAPI component SessionInfo; field names kept verbatim.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:SessionInfo:<sessionId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "SessionInfo"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'SessionInfo'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "device": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/quality-on-demand.yaml#/components/schemas/SessionInfo/allOf/0/properties/device'. Disambiguates the device to which the session applies when multiple device identifiers were provided",
+      "type": "object",
+      "properties": {
+        "phoneNumber": {
+          "description": "A public identifier addressing a telephone subscription. In mobile networks it corresponds to the MSISDN (Mobile Station International Subscriber Directory Number). In order to be globally unique it has to be formatted in international format, according to E.164 standard, prefixed with '+'.",
+          "type": "string",
+          "pattern": "^\\+[1-9][0-9]{4,14}$",
+          "examples": [
+            "+123456789"
+          ]
+        },
+        "networkAccessIdentifier": {
+          "description": "A public identifier addressing a subscription in a mobile network. In 3GPP terminology, it corresponds to the GPSI formatted with the External Identifier ({Local Identifier}@{Domain Identifier}). Unlike the telephone number, the network access identifier is not subjected to portability ruling in force, and is individually managed by each operator.",
+          "type": "string",
+          "examples": [
+            "123456789@domain.com"
+          ]
+        },
+        "ipv4Address": {
+          "type": "object",
+          "description": "The device should be identified by either the public (observed) IP address and port as seen by the application server, or the private (local) and any public (observed) IP addresses in use by the device (this information can be obtained by various means, for example from some DNS servers). If the allocated and observed IP addresses are the same (i.e. NAT is not in use) then the same address should be specified for both publicAddress and privateAddress. If NAT64 is in use, the device should be identified by its publicAddress and publicPort, or separately by its allocated IPv6 address (field ipv6Address of the Device object) In all cases, publicAddress must be specified, along with at least one of either privateAddress or publicPort, dependent upon which is known. In general, mobile devices cannot be identified by their public IPv4 address alone.",
+          "properties": {
+            "publicAddress": {
+              "description": "A single IPv4 address with no subnet mask",
+              "type": "string",
+              "format": "ipv4",
+              "examples": [
+                "203.0.113.0"
+              ]
+            },
+            "privateAddress": {
+              "description": "A single IPv4 address with no subnet mask",
+              "type": "string",
+              "format": "ipv4",
+              "examples": [
+                "203.0.113.0"
+              ]
+            },
+            "publicPort": {
+              "description": "TCP or UDP port number",
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 65535
+            }
+          },
+          "anyOf": [
+            {
+              "required": [
+                "publicAddress",
+                "privateAddress"
+              ]
+            },
+            {
+              "required": [
+                "publicAddress",
+                "publicPort"
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "publicAddress": "203.0.113.0",
+              "publicPort": 59765
+            }
+          ]
+        },
+        "ipv6Address": {
+          "description": "The device should be identified by the observed IPv6 address, or by any single IPv6 address from within the subnet allocated to the device (e.g. adding ::0 to the /64 prefix). The session shall apply to all IP flows between the device subnet and the specified application server, unless further restricted by the optional parameters devicePorts or applicationServerPorts.",
+          "type": "string",
+          "format": "ipv6",
+          "examples": [
+            "2001:db8:85a3:8d3:1319:8a2e:370:7344"
+          ]
+        }
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "examples": [
+        {
+          "phoneNumber": "+123456789"
+        }
+      ]
+    },
+    "applicationServer": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/quality-on-demand.yaml#/components/schemas/BaseSessionInfo/properties/applicationServer'. A server hosting backend applications to deliver some business logic to clients. The developer can choose to provide the below specified device identifiers: * `ipv4Address` * `ipv6Address`",
+      "type": "object",
+      "properties": {
+        "ipv4Address": {
+          "type": "string",
+          "examples": [
+            "198.51.100.0/24"
+          ],
+          "description": "IPv4 address may be specified in form <address/mask> as: - address - an IPv4 number in dotted-quad form 1.2.3.4. Only this exact IP number will match the flow control rule. - address/mask - an IP number as above with a mask width of the form 1.2.3.4/24. In this case, all IP numbers from 1.2.3.0 to 1.2.3.255 will match. The bit width MUST be valid for the IP version."
+        },
+        "ipv6Address": {
+          "type": "string",
+          "examples": [
+            "2001:db8:85a3:8d3:1319:8a2e:370:7344"
+          ],
+          "description": "IPv6 address may be specified in form <address/mask> as: - address - The /128 subnet is optional for single addresses: - 2001:db8:85a3:8d3:1319:8a2e:370:7344 - 2001:db8:85a3:8d3:1319:8a2e:370:7344/128 - address/mask - an IP v6 number with a mask: - 2001:db8:85a3:8d3::0/64 - 2001:db8:85a3:8d3::/64"
+        }
+      },
+      "minProperties": 1
+    },
+    "devicePorts": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/quality-on-demand.yaml#/components/schemas/BaseSessionInfo/properties/devicePorts'. The ports used locally by the device for flows to which the requested QoS profile should apply. If omitted, then the qosProfile will apply to all flows between the device and the specified application server address and ports",
+      "type": "object",
+      "minProperties": 1,
+      "properties": {
+        "ranges": {
+          "description": "Range of TCP or UDP ports",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "from",
+              "to"
+            ],
+            "properties": {
+              "from": {
+                "description": "TCP or UDP port number",
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65535
+              },
+              "to": {
+                "description": "TCP or UDP port number",
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65535
+              }
+            }
+          }
+        },
+        "ports": {
+          "description": "Array of TCP or UDP ports",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "description": "TCP or UDP port number",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 65535
+          }
+        }
+      },
+      "examples": [
+        {
+          "ranges": [
+            {
+              "from": 5010,
+              "to": 5020
+            }
+          ],
+          "ports": [
+            5060,
+            5070
+          ]
+        }
+      ]
+    },
+    "applicationServerPorts": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/quality-on-demand.yaml#/components/schemas/BaseSessionInfo/properties/applicationServerPorts'. A list of single ports or port ranges on the application server",
+      "type": "object",
+      "minProperties": 1,
+      "properties": {
+        "ranges": {
+          "description": "Range of TCP or UDP ports",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "from",
+              "to"
+            ],
+            "properties": {
+              "from": {
+                "description": "TCP or UDP port number",
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65535
+              },
+              "to": {
+                "description": "TCP or UDP port number",
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65535
+              }
+            }
+          }
+        },
+        "ports": {
+          "description": "Array of TCP or UDP ports",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "description": "TCP or UDP port number",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 65535
+          }
+        }
+      },
+      "examples": [
+        {
+          "ranges": [
+            {
+              "from": 5010,
+              "to": 5020
+            }
+          ],
+          "ports": [
+            5060,
+            5070
+          ]
+        }
+      ]
+    },
+    "qosProfile": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/quality-on-demand.yaml#/components/schemas/BaseSessionInfo/properties/qosProfile'. A unique name for identifying a specific QoS profile. This may follow different formats depending on the API provider implementation. Some options addresses: - A UUID style string - Support for predefined profiles QOS_S, QOS_M, QOS_L, and QOS_E - A searchable descriptive name The set of QoS Profiles that an API provider is offering may be retrieved by means of the QoS Profile API (qos-profile) or agreed on onboarding time. In CAMARA the value is the QoS profile name; here it is the id of the QosProfile entity (urn:ngsi-ld:QosProfile:<name>)."
+    },
+    "sink": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https:\\/\\/.+$",
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/quality-on-demand.yaml#/components/schemas/BaseSessionInfo/properties/sink'. The address to which events about all status changes of the session (e.g. session termination) shall be delivered using the selected protocol.",
+      "examples": [
+        "https://endpoint.example.com/sink"
+      ]
+    },
+    "sessionId": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/quality-on-demand.yaml#/components/schemas/SessionInfo/allOf/2/properties/sessionId'. Session ID in UUID format",
+      "type": "string",
+      "format": "uuid"
+    },
+    "duration": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/quality-on-demand.yaml#/components/schemas/SessionInfo/allOf/2/properties/duration'. Session duration in seconds. Implementations can grant the requested session duration or set a different duration, based on network policies or conditions. - When `qosStatus` is \"REQUESTED\", the value is the duration to be scheduled, granted by the implementation. - When `qosStatus` is AVAILABLE\", the value is the overall duration since `startedAt. When the session is extended, the value is the new overall duration of the session. - When `qosStatus` is \"UNAVAILABLE\", the value is the overall effective duration since `startedAt` until the session was terminated.",
+      "type": "integer",
+      "format": "int32",
+      "minimum": 1,
+      "examples": [
+        3600
+      ]
+    },
+    "startedAt": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/quality-on-demand.yaml#/components/schemas/SessionInfo/allOf/2/properties/startedAt'. Date and time when the QoS status became \"AVAILABLE\". Not to be returned when `qosStatus` is \"REQUESTED\". It must follow [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) and must have time zone.",
+      "type": "string",
+      "format": "date-time",
+      "examples": [
+        "2024-06-01T12:00:00Z"
+      ]
+    },
+    "expiresAt": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/quality-on-demand.yaml#/components/schemas/SessionInfo/allOf/2/properties/expiresAt'. Date and time of the QoS session expiration. It must follow [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) and must have time zone. - When `qosStatus` is \"AVAILABLE\", it is the limit time when the session is scheduled to finnish, if not terminated by other means. - When `qosStatus` is \"UNAVAILABLE\", it is the time when the session was terminated. - Not to be returned when `qosStatus` is \"REQUESTED\". When the session is extended, the value is the new expiration time of the session.",
+      "type": "string",
+      "format": "date-time",
+      "examples": [
+        "2024-06-01T13:00:00Z"
+      ]
+    },
+    "qosStatus": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/quality-on-demand.yaml#/components/schemas/SessionInfo/allOf/2/properties/qosStatus'. The current status of the requested QoS session. The status can be one of the following: * `REQUESTED` - QoS has been requested by creating a session * `AVAILABLE` - The requested QoS has been provided by the network * `UNAVAILABLE` - The requested QoS cannot be provided by the network due to some reason",
+      "type": "string",
+      "enum": [
+        "REQUESTED",
+        "AVAILABLE",
+        "UNAVAILABLE"
+      ]
+    },
+    "statusInfo": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/quality-on-demand.yaml#/components/schemas/SessionInfo/allOf/2/properties/statusInfo'. Reason for the new `qosStatus`. Currently `statusInfo` is only applicable when `qosStatus` is 'UNAVAILABLE'. * `DURATION_EXPIRED` - Session terminated due to requested duration expired * `NETWORK_TERMINATED` - Network terminated the session before the requested duration expired * `DELETE_REQUESTED`- User requested the deletion of the session before the requested duration expired",
+      "type": "string",
+      "enum": [
+        "DURATION_EXPIRED",
+        "NETWORK_TERMINATED",
+        "DELETE_REQUESTED"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "applicationServer",
+    "qosProfile",
+    "sessionId",
+    "duration",
+    "qosStatus"
+  ]
+}

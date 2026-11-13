@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/camara-apis/models/DeviceReachabilityStatus/schema.json",
+  "modelTags": "CAMARA,DeviceReachabilityStatus,DeviceStatus,Telecom,NetworkAPI",
+  "title": "Smart Data Models - CAMARA APIs - DeviceReachabilityStatus",
+  "description": "(CAMARA device-reachability-status 1.1.0, DeviceReachabilityStatus release r1.2, OpenAPI component ReachabilityStatusResponse; field names kept verbatim.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:DeviceReachabilityStatus:<local identifier of the device>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "DeviceReachabilityStatus"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'DeviceReachabilityStatus'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "device": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/DeviceReachabilityStatus/r1.2/code/API_definitions/device-reachability-status.yaml#/components/schemas/ReachabilityStatusResponse/properties/device'. An identifier for the end-user equipment able to connect to the network that the response refers to. This parameter is only returned when the API consumer includes the `device` parameter in their request (i.e. they are using a two-legged access token), and is relevant when more than one device identifier is specified, as only one of those device identifiers is allowed in the response. If the API consumer provides more than one device identifier in their request, the API provider must return a single identifier which is the one they are using to fulfil the request, even if the identifiers do not match the same device. API provider does not perform any logic to validate/correlate that the indicated device identifiers match the same device. No error should be returned if the identifiers are otherwise valid to prevent API consumers correlating different identifiers with a given end user.",
+      "type": "object",
+      "properties": {
+        "phoneNumber": {
+          "description": "A public identifier addressing a telephone subscription. In mobile networks it corresponds to the MSISDN (Mobile Station International Subscriber Directory Number). In order to be globally unique it has to be formatted in international format, according to E.164 standard, prefixed with '+'.",
+          "type": "string",
+          "pattern": "^\\+[1-9][0-9]{4,14}$",
+          "examples": [
+            "+123456789"
+          ]
+        },
+        "networkAccessIdentifier": {
+          "description": "A public identifier addressing a subscription in a mobile network. In 3GPP terminology, it corresponds to the GPSI formatted with the External Identifier ({Local Identifier}@{Domain Identifier}). Unlike the telephone number, the network access identifier is not subjected to portability ruling in force, and is individually managed by each operator.",
+          "type": "string",
+          "examples": [
+            "123456789@domain.com"
+          ]
+        },
+        "ipv4Address": {
+          "type": "object",
+          "description": "The device should be identified by either the public (observed) IP address and port as seen by the application server, or the private (local) and any public (observed) IP addresses in use by the device (this information can be obtained by various means, for example from some DNS servers). If the allocated and observed IP addresses are the same (i.e. NAT is not in use) then the same address should be specified for both publicAddress and privateAddress. If NAT64 is in use, the device should be identified by its publicAddress and publicPort, or separately by its allocated IPv6 address (field ipv6Address of the Device object) In all cases, publicAddress must be specified, along with at least one of either privateAddress or publicPort, dependent upon which is known. In general, mobile devices cannot be identified by their public IPv4 address alone.",
+          "properties": {
+            "publicAddress": {
+              "description": "A single IPv4 address with no subnet mask",
+              "type": "string",
+              "format": "ipv4",
+              "examples": [
+                "84.125.93.10"
+              ]
+            },
+            "privateAddress": {
+              "description": "A single IPv4 address with no subnet mask",
+              "type": "string",
+              "format": "ipv4",
+              "examples": [
+                "84.125.93.10"
+              ]
+            },
+            "publicPort": {
+              "description": "TCP or UDP port number",
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 65535
+            }
+          },
+          "anyOf": [
+            {
+              "required": [
+                "publicAddress",
+                "privateAddress"
+              ]
+            },
+            {
+              "required": [
+                "publicAddress",
+                "publicPort"
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "publicAddress": "84.125.93.10",
+              "publicPort": 59765
+            }
+          ]
+        },
+        "ipv6Address": {
+          "description": "The device should be identified by the observed IPv6 address, or by any single IPv6 address from within the subnet allocated to the device (e.g. adding ::0 to the /64 prefix).",
+          "type": "string",
+          "format": "ipv6",
+          "examples": [
+            "2001:db8:85a3:8d3:1319:8a2e:370:7344"
+          ]
+        }
+      },
+      "minProperties": 1,
+      "maxProperties": 1
+    },
+    "lastStatusTime": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/DeviceReachabilityStatus/r1.2/code/API_definitions/device-reachability-status.yaml#/components/schemas/ReachabilityStatusResponse/properties/lastStatusTime'. Last time that the associated device reachability status was updated. It must follow [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) and must have time zone. Recommended format is yyyy-MM-dd'T'HH:mm:ss.SSSZ (i.e. which allows 2023-07-03T14:27:08.312+02:00 or 2023-07-03T12:27:08.312Z)",
+      "type": "string",
+      "format": "date-time",
+      "examples": [
+        "2024-02-20T10:41:38.657Z"
+      ]
+    },
+    "reachable": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/DeviceReachabilityStatus/r1.2/code/API_definitions/device-reachability-status.yaml#/components/schemas/ReachabilityStatusResponse/properties/reachable'. Indicates overall device reachability",
+      "type": "boolean"
+    },
+    "connectivity": {
+      "type": "array",
+      "items": {
+        "description": "DATA: The device is connected to the network for Data usage (regardless of the SMS reachability) SMS: The device is connected to the network only for SMS usage",
+        "type": "string",
+        "enum": [
+          "DATA",
+          "SMS"
+        ]
+      },
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/DeviceReachabilityStatus/r1.2/code/API_definitions/device-reachability-status.yaml#/components/schemas/ReachabilityStatusResponse/properties/connectivity'. "
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "lastStatusTime",
+    "reachable"
+  ]
+}

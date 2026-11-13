@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/camara-apis/models/CellPopulationDensityData/schema.json",
+  "modelTags": "CAMARA,PopulationDensityData,Crowd,Telecom,NetworkAPI",
+  "title": "Smart Data Models - CAMARA APIs - CellPopulationDensityData",
+  "description": "Population density data of a cell in a concrete time range. In case of insufficient data, to guarantee an anonymized prediction due to the k-anonymity within a specific cell and time range, no population density data is returned and the property `dataType` value is \"LOW_DENSITY\". In case of a cell not supported `dataType` value is \"NO_DATA\" (CAMARA population-density-data 1.0.0, PopulationDensityData release r4.3, OpenAPI component CellPopulationDensityData; field names kept verbatim.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:CellPopulationDensityData:<geohash>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "CellPopulationDensityData"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'CellPopulationDensityData'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "startTime": {
+      "type": "string",
+      "format": "date-time",
+      "maxLength": 64,
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/PopulationDensityData/r4.3/code/API_definitions/population-density-data.yaml#/components/schemas/TimedPopulationDensityData/properties/startTime'. Interval start time.",
+      "examples": [
+        "2023-07-03T10:00:00Z"
+      ]
+    },
+    "endTime": {
+      "type": "string",
+      "format": "date-time",
+      "maxLength": 64,
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/PopulationDensityData/r4.3/code/API_definitions/population-density-data.yaml#/components/schemas/TimedPopulationDensityData/properties/endTime'. Interval end time.",
+      "examples": [
+        "2023-07-03T11:00:00Z"
+      ]
+    },
+    "geohash": {
+      "type": "string",
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/PopulationDensityData/r4.3/code/API_definitions/population-density-data.yaml#/components/schemas/CellPopulationDensityData/properties/geohash'. Geohash string identifying a cell using the [Geohash system](https://en.wikipedia.org/wiki/Geohash), encoding a geographic location into a short string. Characters are taken from the base-32 geohash alphabet (`0-9` and `b-z` excluding `a`, `i`, `l`, `o`). The length of the string determines the cell granularity (precision).",
+      "pattern": "^[0-9bcdefghjkmnpqrstuvwxyz]{1,12}$",
+      "maxLength": 12,
+      "examples": [
+        "ezdmemd"
+      ]
+    },
+    "dataType": {
+      "type": "string",
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/PopulationDensityData/r4.3/code/API_definitions/population-density-data.yaml#/components/schemas/CellPopulationDensityData/properties/dataType'. Type of population density data returned for the cell, the possible values are: - `DENSITY_ESTIMATION`: The population density estimation is returned for the cell. - `LOW_DENSITY`: The data related to the cell is not sufficient to guarantee k-anonymity, so no population density estimation is returned. - `NO_DATA`: The cell is outside the MNO coverage area, so no population density data is returned.",
+      "enum": [
+        "NO_DATA",
+        "LOW_DENSITY",
+        "DENSITY_ESTIMATION"
+      ]
+    },
+    "minPplDensity": {
+      "type": "integer",
+      "format": "int32",
+      "minimum": 0,
+      "maximum": 2147483647,
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/PopulationDensityData/r4.3/code/API_definitions/population-density-data.yaml#/components/schemas/DensityEstimation/allOf/1/properties/minPplDensity'. Minimum estimated number of people for the cell."
+    },
+    "pplDensity": {
+      "type": "integer",
+      "format": "int32",
+      "minimum": 0,
+      "maximum": 2147483647,
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/PopulationDensityData/r4.3/code/API_definitions/population-density-data.yaml#/components/schemas/DensityEstimation/allOf/1/properties/pplDensity'. Estimated number of people for the cell."
+    },
+    "maxPplDensity": {
+      "type": "integer",
+      "format": "int32",
+      "minimum": 0,
+      "maximum": 2147483647,
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/PopulationDensityData/r4.3/code/API_definitions/population-density-data.yaml#/components/schemas/DensityEstimation/allOf/1/properties/maxPplDensity'. Maximum estimated number of people for the cell."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. Not a CAMARA field (Smart Data Models addition): a GeoJSON Polygon built from the bounding box of the `geohash` cell, so that NGSI-LD geo-queries work. The CAMARA object is kept unchanged.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Polygon"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "minItems": 4,
+            "items": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "geohash",
+    "dataType"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "dataType": {
+            "const": "DENSITY_ESTIMATION"
+          }
+        },
+        "required": [
+          "dataType"
+        ]
+      },
+      "then": {
+        "required": [
+          "minPplDensity",
+          "pplDensity",
+          "maxPplDensity"
+        ]
+      }
+    }
+  ]
+}

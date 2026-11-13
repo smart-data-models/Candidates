@@ -1,0 +1,154 @@
+title: "CAMARA APIs (Linux Foundation telco network APIs)"
+publisher: "CAMARA Project, Linux Foundation (in partnership with GSMA Open Gateway)"
+sourceUrl: "https://github.com/camaraproject"
+specificationUrl: "https://camaraproject.org/"
+contact: "https://github.com/camaraproject/Governance/issues"
+sourceOntologyVersion: >
+  Latest public releases on 2026-11-13: QualityOnDemand r3.2 (Fall25 meta-release;
+  qos-profiles 1.1.0, quality-on-demand 1.1.0), DeviceLocation r3.2 (Fall25;
+  location-retrieval 0.5.0, geofencing-subscriptions 0.5.0), PopulationDensityData
+  r4.3 (Sync26; population-density-data 1.0.0), RegionDeviceCount r2.2 (Fall25;
+  region-device-count 0.2.0), DeviceReachabilityStatus r1.2 (Fall25;
+  device-reachability-status 1.1.0)
+sourceOntologyDownload: "https://github.com/camaraproject/<Repository>/tree/<release tag>/code/API_definitions (e.g. https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/qos-profiles.yaml)"
+sourceOntologyNamespace: "https://raw.githubusercontent.com/camaraproject/<Repository>/<release tag>/code/API_definitions/<api>.yaml#/components/schemas/"
+sourceOntologyFormat: "OpenAPI 3.0.3 specifications (YAML), one per API; no RDF vocabulary"
+domains:
+  - SmartCities
+  - CrossSector
+description: >
+  CAMARA is the open-source project of the Linux Foundation, run with the GSMA
+  Open Gateway initiative, that defines network APIs exposed in the same way
+  by mobile operators worldwide: quality on demand, device location and
+  geofencing, population density, region device count, device status, SIM
+  swap, number verification and more. Each API is an OpenAPI 3.0
+  specification in its own GitHub repository, released in coordinated
+  meta-releases (Spring25, Fall25, Sync26, ...). This candidate translates
+  the APIs whose resources have identity and state and are useful in
+  smart-city and IoT settings: QoS profiles and QoD sessions, device
+  location and geofencing subscriptions, crowd data (population density per
+  geohash cell, device counts per region) and device reachability.
+license: "Apache-2.0"
+licenseNote: >
+  Every CAMARA repository used (QualityOnDemand, DeviceLocation,
+  PopulationDensityData, RegionDeviceCount, DeviceReachabilityStatus) carries
+  an Apache License 2.0 LICENSE file at the release tag, and each OpenAPI file
+  declares info.license "Apache 2.0". Derived works are allowed; keep the
+  attribution to the CAMARA Project (Linux Foundation) and the licence notice.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source OpenAPI specifications to SDM candidate artifacts"
+notes: |
+  Translated on 2026-11-13. Source row 36 ("CAMARA APIs", sector Telecom) of
+  the "Level A standards not in Smart Data Models" list (licence verified: Yes;
+  Apache-2.0 checked in each repository's LICENSE file and in info.license).
+
+  VERSIONS: for each API, the latest PUBLIC release (no release candidates).
+  Most APIs are still at Fall25 (Commonalities 0.6); their Sync26 r4.x / r2.x
+  tags are pre-releases on 2026-11-13 and were not used.
+  PopulationDensityData already has its public Sync26 release (r4.3, API 1.0.0,
+  Commonalities 0.9.0), so it is used.
+
+  SCOPE: CAMARA has about 60 API repositories. Many are one-shot checks with
+  no state of their own (SIM swap, number verification, KYC match, location
+  verification, OTP), and some are about personal data. This candidate keeps
+  7 entities with identity and state that fit NGSI-LD:
+    - QosProfile                (qos-profiles QosProfile)
+    - SessionInfo               (quality-on-demand SessionInfo: a QoD session)
+    - DeviceLocation            (location-retrieval Location)
+    - GeofencingSubscription    (geofencing-subscriptions Subscription)
+    - CellPopulationDensityData (population-density-data CellPopulationDensityData,
+                                 with the startTime/endTime of its TimedPopulationDensityData)
+    - RegionDeviceCount         (region-device-count RegionDeviceCountRequestBody
+                                 area/starttime/endtime/filter + RegionDeviceCountResponse)
+    - DeviceReachabilityStatus  (device-reachability-status ReachabilityStatusResponse)
+  FOLLOW-UPS: ConnectedNetworkType and DeviceRoamingStatus (same pattern as
+  DeviceReachabilityStatus), qos-provisioning AssignmentInfo (0.3.0), the
+  *-subscriptions APIs of device status, Home Devices QoD, Edge Cloud
+  (application endpoints, edge zones), and Network Slice Booking.
+
+  NAMING: field names are CAMARA's, verbatim (including the lower-case
+  `starttime` / `endtime` of region-device-count). Entity names are the
+  OpenAPI component names (QosProfile, SessionInfo,
+  CellPopulationDensityData) except where the component is generic or a
+  request/response wrapper:
+    - Location -> DeviceLocation (API name; "Location" is too generic and
+      easily confused with the NGSI-LD `location` GeoProperty)
+    - Subscription -> GeofencingSubscription (`Subscription` is an NGSI-LD core term)
+    - RegionDeviceCountResponse -> RegionDeviceCount (API name)
+    - ReachabilityStatusResponse -> DeviceReachabilityStatus (API name)
+  The entity type IRI still points to the original component.
+  Property renames: GeofencingSubscription `id` -> `camaraId` (NGSI-LD `id`
+  is the URN; CAMARA calls it `subscriptionId` in notifications, but that is
+  also a protected NGSI-LD core term).
+  Kept although they are NGSI-LD core-context terms: `status`, `description`
+  and `expiresAt` (core context is @protected, so in a broker these terms
+  expand to the core IRIs instead of the CAMARA ones; many official models
+  already use `status` and `description`).
+
+  MAPPING:
+    - OpenAPI 3.0 -> JSON Schema 2020-12: $ref/allOf resolved and merged,
+      nullable dropped, example -> examples, discriminators turned into oneOf
+      (area: CIRCLE / POLYGON with `areaType` fixed per branch).
+    - SessionInfo.qosProfile is a Relationship to QosProfile
+      (urn:ngsi-ld:QosProfile:<name>); in CAMARA it is the profile name.
+    - CellPopulationDensityData flattens the DENSITY_ESTIMATION variant:
+      minPplDensity / pplDensity / maxPplDensity are optional, required by an
+      if/then when dataType is DENSITY_ESTIMATION. One entity per geohash
+      cell (id urn:ngsi-ld:CellPopulationDensityData:<geohash>); each hourly
+      slot is a new temporal value (startTime / endTime lifted from
+      TimedPopulationDensityData).
+    - Nested objects (device, applicationServer, ports, area, config,
+      filter, countryAvailability, Rate and Duration values) keep the CAMARA
+      structure and are "@type": "@json" in the contexts.
+    - Left out: SessionInfo.sinkCredential (delivery credentials, i.e.
+      access / refresh tokens, not entity state); the protocol-specific
+      `protocolSettings` of subscriptions (only HTTP is allowed);
+      request-only parameters (maxAge, maxSurface, precision, sink of the
+      crowd APIs). No property is deprecated in these releases. The
+      experimental QosProfile fields l4sQueueType and serviceClass are kept
+      (marked experimental in their descriptions).
+    - NON-CAMARA ADDITION: `location` (GeoProperty, GeoJSON) on
+      DeviceLocation and GeofencingSubscription (Point: circle centre),
+      RegionDeviceCount (Polygon from the area boundary) and
+      CellPopulationDensityData (Polygon: the geohash cell bounding box).
+
+  CONTEXT IRIs: CAMARA has no RDF vocabulary. Each term maps to a JSON pointer
+  into the released OpenAPI YAML on raw.githubusercontent.com at the release
+  tag, at the place where the property is declared (e.g.
+  .../quality-on-demand.yaml#/components/schemas/SessionInfo/allOf/2/properties/sessionId).
+
+  SOURCE NOTES (worth reporting upstream):
+    - qos-profiles QosProfile.targetMinDownstreamRate is described as "the
+      target maximum upload speed" (copy of the upstream text, wrong
+      direction and min/max); kept verbatim.
+    - qos-profiles QosProfileName declares `format: string`, which is not a
+      format; dropped.
+    - region-device-count Count is `type: number` although it is a count of
+      devices; kept as number. Its request and response mark no property as
+      required.
+
+  PERSONAL DATA: device identifiers (phone number, IP addresses) are personal
+  data when they identify a subscriber. Deployments should prefer
+  pseudonymous entity ids and omit `device` where it is not needed; the crowd
+  models (CellPopulationDensityData, RegionDeviceCount) are aggregated and
+  k-anonymised by the operator.
+
+  EXAMPLES ARE SYNTHETIC: CAMARA publishes no open data and operators expose
+  these APIs only to registered consumers. One consistent fictitious Madrid
+  scenario (an evening event at Puerta del Sol, 2026-11-07): a QOS_L profile
+  and a QoD session for a live-video uplink, a field team device located and
+  watched by a geofence around the square, the population density of geohash
+  cell ezjmgtw and a device count for the square. Device identifiers are the
+  CAMARA specification's own example phone number +123456789 (not a valid
+  E.164 number in use) and documentation addresses (RFC 5737 203.0.113.0/24,
+  198.51.100.0/24); the subscription id and sink URL are the specification's
+  example values. Each example says so in `source`.
+
+  DUPLICATION RISK: dataModel.Transportation CrowdFlowObserved (crowd counts;
+  overlaps CellPopulationDensityData and RegionDeviceCount),
+  dataModel.Device Device (device state; overlaps DeviceReachabilityStatus and
+  DeviceLocation), dataModel.IT NetworkConnection, dataModel.GBFS
+  geofencing_zones (different meaning: mobility geofences), and the Gaia-X
+  candidate QoS / QoSMetric (service-offering QoS, not network QoS). No
+  existing model covers QoD profiles or sessions.

@@ -1,0 +1,461 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/camara-apis/models/QosProfile/schema.json",
+  "modelTags": "CAMARA,QualityOnDemand,QoS,Telecom,NetworkAPI",
+  "title": "Smart Data Models - CAMARA APIs - QosProfile",
+  "description": "Data type with attributes of a QosProfile (CAMARA qos-profiles 1.1.0, QualityOnDemand release r3.2, OpenAPI component QosProfile; field names kept verbatim.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:QosProfile:<name>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "QosProfile"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'QosProfile'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "name": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/qos-profiles.yaml#/components/schemas/QosProfile/properties/name'. A unique name for identifying a specific QoS profile. This may follow different formats depending on the service providers implementation. Some options addresses: - A UUID style string - Support for predefined profile names like `QOS_E`, `QOS_S`, `QOS_M`, and `QOS_L` - A searchable descriptive name",
+      "type": "string",
+      "examples": [
+        "voice"
+      ],
+      "minLength": 3,
+      "maxLength": 256,
+      "pattern": "^[a-zA-Z0-9_.-]+$"
+    },
+    "description": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/qos-profiles.yaml#/components/schemas/QosProfile/properties/description'. A description of the QoS profile.",
+      "type": "string",
+      "examples": [
+        "QoS profile for video streaming"
+      ]
+    },
+    "status": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/qos-profiles.yaml#/components/schemas/QosProfile/properties/status'. The current status of the QoS Profile - `ACTIVE`- QoS Profile is available to be used - `INACTIVE`- QoS Profile is not currently available to be deployed - `DEPRECATED`- QoS profile is actively being used in a QoD session, but can not be deployed in new QoD sessions",
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "DEPRECATED"
+      ]
+    },
+    "countryAvailability": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/qos-profiles.yaml#/components/schemas/QosProfile/properties/countryAvailability'. A list of countries, and optionally networks, for which the API provider makes the profile available. - When profiles are filtered for a specific device (i.e. using a 3-legged access token or an explicit device filter parameter), the profile can be used by that device in any of these countries when connected to any of the listed networks (assuming roaming is permitted for networks that are not the device's home network), or the API provider's own network if no networks are listed - When there is no device filter, availability for a given country means that the QoS profile may be available to some devices connected to the listed networks in that country (or to the API provider’s default network if none are listed). However, this does not imply that the profile is available to all devices, or that a particular device will be able to use the profile across all listed countries or networks. In particular, the response does not provide enough information to determine availability for roaming for specific devices; consumers should query the API with a specific device identifier to get definitive availability. - If this field is not present in the QoS profile, no assumption can be made about the availability of the profile in any given country or for any given network",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "countryName"
+        ],
+        "properties": {
+          "countryName": {
+            "description": "The two letter ISO 3166-2 country code for the country in which the QoS profile is available in at least one network",
+            "type": "string",
+            "pattern": "^[A-Z]{2}$",
+            "examples": [
+              "GB"
+            ]
+          },
+          "networks": {
+            "description": "A list of networks within the country for which the QoS profile is available from the API provider",
+            "type": "array",
+            "items": {
+              "description": "The network identifier. For mobile networks, this is the PLMN Identifier (MCC + MNC), which is a 5 or 6 digit integer.",
+              "type": "string",
+              "examples": [
+                "23591"
+              ]
+            },
+            "examples": [
+              [
+                "23591",
+                "23415"
+              ]
+            ]
+          }
+        },
+        "examples": [
+          {
+            "countryName": "GB",
+            "networks": [
+              "23591",
+              "23415"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        [
+          {
+            "countryName": "GB",
+            "networks": [
+              "23591",
+              "23415"
+            ]
+          },
+          {
+            "countryName": "DE",
+            "networks": [
+              "26202"
+            ]
+          }
+        ]
+      ]
+    },
+    "targetMinUpstreamRate": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/qos-profiles.yaml#/components/schemas/QosProfile/properties/targetMinUpstreamRate'. This is the target minimum upload speed for the QoS profile. It represents the minimum rate that the network attempts to deliver. Please note that this is a target value—the network might not always be able to provide this rate under all conditions. It helps ensure that applications like video calls or live streaming perform consistently.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "Quantity of rate",
+          "type": "integer",
+          "examples": [
+            10
+          ],
+          "format": "int32",
+          "minimum": 0,
+          "maximum": 1024
+        },
+        "unit": {
+          "description": "Units of rate",
+          "type": "string",
+          "enum": [
+            "bps",
+            "kbps",
+            "Mbps",
+            "Gbps",
+            "Tbps"
+          ]
+        }
+      }
+    },
+    "maxUpstreamRate": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/qos-profiles.yaml#/components/schemas/QosProfile/properties/maxUpstreamRate'. The maximum best effort data",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "Quantity of rate",
+          "type": "integer",
+          "examples": [
+            10
+          ],
+          "format": "int32",
+          "minimum": 0,
+          "maximum": 1024
+        },
+        "unit": {
+          "description": "Units of rate",
+          "type": "string",
+          "enum": [
+            "bps",
+            "kbps",
+            "Mbps",
+            "Gbps",
+            "Tbps"
+          ]
+        }
+      }
+    },
+    "maxUpstreamBurstRate": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/qos-profiles.yaml#/components/schemas/QosProfile/properties/maxUpstreamBurstRate'. When defined, this is the maximum upstream burst rate for the QoS profile, that will enable the network to burst data at a higher rate than the maxUpstreamRate for a period of time.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "Quantity of rate",
+          "type": "integer",
+          "examples": [
+            10
+          ],
+          "format": "int32",
+          "minimum": 0,
+          "maximum": 1024
+        },
+        "unit": {
+          "description": "Units of rate",
+          "type": "string",
+          "enum": [
+            "bps",
+            "kbps",
+            "Mbps",
+            "Gbps",
+            "Tbps"
+          ]
+        }
+      }
+    },
+    "targetMinDownstreamRate": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/qos-profiles.yaml#/components/schemas/QosProfile/properties/targetMinDownstreamRate'. This is the target maximum upload speed for the QoS profile. It represents the maximum rate that the network attempts to deliver. Please note that this is a target value—the network might not always be able to provide this rate under all conditions. It helps ensure that applications like video calls or live streaming perform consistently.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "Quantity of rate",
+          "type": "integer",
+          "examples": [
+            10
+          ],
+          "format": "int32",
+          "minimum": 0,
+          "maximum": 1024
+        },
+        "unit": {
+          "description": "Units of rate",
+          "type": "string",
+          "enum": [
+            "bps",
+            "kbps",
+            "Mbps",
+            "Gbps",
+            "Tbps"
+          ]
+        }
+      }
+    },
+    "maxDownstreamRate": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/qos-profiles.yaml#/components/schemas/QosProfile/properties/maxDownstreamRate'. The maximum best effort rate",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "Quantity of rate",
+          "type": "integer",
+          "examples": [
+            10
+          ],
+          "format": "int32",
+          "minimum": 0,
+          "maximum": 1024
+        },
+        "unit": {
+          "description": "Units of rate",
+          "type": "string",
+          "enum": [
+            "bps",
+            "kbps",
+            "Mbps",
+            "Gbps",
+            "Tbps"
+          ]
+        }
+      }
+    },
+    "maxDownstreamBurstRate": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/qos-profiles.yaml#/components/schemas/QosProfile/properties/maxDownstreamBurstRate'. When defined, this is the maximum downstream burst rate for the QoS profile, that will enable the network to burst data at a higher rate than the maxDownstreamRate for a period of time. This can result in improved user experience when there is additional network capacity. For instance, when a user is streaming a video, the network can burst data at a higher rate to fill the buffer, and then return to the maxUpstreamRate once the buffer is full.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "Quantity of rate",
+          "type": "integer",
+          "examples": [
+            10
+          ],
+          "format": "int32",
+          "minimum": 0,
+          "maximum": 1024
+        },
+        "unit": {
+          "description": "Units of rate",
+          "type": "string",
+          "enum": [
+            "bps",
+            "kbps",
+            "Mbps",
+            "Gbps",
+            "Tbps"
+          ]
+        }
+      }
+    },
+    "minDuration": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/qos-profiles.yaml#/components/schemas/QosProfile/properties/minDuration'. The shortest time period that this profile can be deployed.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "Quantity of duration",
+          "type": "integer",
+          "examples": [
+            12
+          ],
+          "format": "int32",
+          "minimum": 1
+        },
+        "unit": {
+          "description": "Units of time",
+          "type": "string",
+          "enum": [
+            "Days",
+            "Hours",
+            "Minutes",
+            "Seconds",
+            "Milliseconds",
+            "Microseconds",
+            "Nanoseconds"
+          ]
+        }
+      }
+    },
+    "maxDuration": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/qos-profiles.yaml#/components/schemas/QosProfile/properties/maxDuration'. The maximum time period that this profile can be deployed. Overall session duration must not exceed this value. This includes the initial requested duration plus any extensions.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "Quantity of duration",
+          "type": "integer",
+          "examples": [
+            12
+          ],
+          "format": "int32",
+          "minimum": 1
+        },
+        "unit": {
+          "description": "Units of time",
+          "type": "string",
+          "enum": [
+            "Days",
+            "Hours",
+            "Minutes",
+            "Seconds",
+            "Milliseconds",
+            "Microseconds",
+            "Nanoseconds"
+          ]
+        }
+      }
+    },
+    "priority": {
+      "type": "integer",
+      "examples": [
+        20
+      ],
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/qos-profiles.yaml#/components/schemas/QosProfile/properties/priority'. Priority levels allow efficient resource allocation and ensure optimal performance for various services in each technology, with the highest priority traffic receiving preferential treatment. The lower value the higher priority. Not all access networks use the same priority range, so this priority will be scaled to the access network's priority range.",
+      "format": "int32",
+      "minimum": 1,
+      "maximum": 100
+    },
+    "packetDelayBudget": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/qos-profiles.yaml#/components/schemas/QosProfile/properties/packetDelayBudget'. The packet delay budget is the maximum allowable one-way latency between the customer's device and the gateway from the operator's network to other networks. By limiting the delay, the network can provide an acceptable level of performance for various services, such as voice calls, video streaming, and data. The end-to-end or round trip latency will be about two times this value plus the latency not controlled by the operator",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "Quantity of duration",
+          "type": "integer",
+          "examples": [
+            12
+          ],
+          "format": "int32",
+          "minimum": 1
+        },
+        "unit": {
+          "description": "Units of time",
+          "type": "string",
+          "enum": [
+            "Days",
+            "Hours",
+            "Minutes",
+            "Seconds",
+            "Milliseconds",
+            "Microseconds",
+            "Nanoseconds"
+          ]
+        }
+      }
+    },
+    "jitter": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/qos-profiles.yaml#/components/schemas/QosProfile/properties/jitter'. The jitter requirement aims to limit the maximum variation in round-trip packet delay for the 99th percentile of traffic, following ITU Y.1540 standards. It considers only acknowledged packets in a session, which are packets that receive a confirmation of receipt from the recipient (e.g., using TCP). This requirement helps maintain consistent latency, essential for real-time applications such as VoIP, video calls, and gaming.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "Quantity of duration",
+          "type": "integer",
+          "examples": [
+            12
+          ],
+          "format": "int32",
+          "minimum": 1
+        },
+        "unit": {
+          "description": "Units of time",
+          "type": "string",
+          "enum": [
+            "Days",
+            "Hours",
+            "Minutes",
+            "Seconds",
+            "Milliseconds",
+            "Microseconds",
+            "Nanoseconds"
+          ]
+        }
+      }
+    },
+    "packetErrorLossRate": {
+      "type": "integer",
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/qos-profiles.yaml#/components/schemas/QosProfile/properties/packetErrorLossRate'. This field specifies the acceptable level of data loss during transmission. The value is an exponent of 10, so a value of 3 means that up to 10⁻³, or 0.1%, of the data packets may be lost. This setting is part of a broader system that categorizes different types of network traffic (like phone calls, video streams, or data transfers) to ensure they perform reliably on the network.",
+      "format": "int32",
+      "minimum": 1,
+      "maximum": 10,
+      "examples": [
+        3
+      ]
+    },
+    "l4sQueueType": {
+      "type": "string",
+      "enum": [
+        "non-l4s-queue",
+        "l4s-queue",
+        "mixed-queue"
+      ],
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/qos-profiles.yaml#/components/schemas/QosProfile/properties/l4sQueueType'. NOTE: l4sQueueType is experimental and could change or be removed in a future release. Specifies the type of queue for L4S (Low Latency, Low Loss, Scalable Throughput) traffic management. L4S is an advanced queue management approach designed to provide ultra-low latency and high throughput for internet traffic, particularly beneficial for interactive applications such as gaming, video conferencing, and virtual reality. Queue Type Descriptions: - non-l4s-queue: A traditional queue used for legacy internet traffic that does not utilize L4S enhancements. It provides standard latency and throughput levels. - l4s-queue: A dedicated queue optimized for L4S traffic, delivering ultra-low latency, low loss, and scalable throughput to support latency-sensitive applications. - mixed-queue: A shared queue that can handle both L4S and traditional traffic, offering a balance between ultra-low latency for L4S flows and compatibility with non-L4S flows.",
+      "externalDocs": {
+        "description": "For more details, refer to the L4S standard.",
+        "url": "https://datatracker.ietf.org/doc/rfc9330/"
+      }
+    },
+    "serviceClass": {
+      "type": "string",
+      "description": "Property. Model:'https://raw.githubusercontent.com/camaraproject/QualityOnDemand/r3.2/code/API_definitions/qos-profiles.yaml#/components/schemas/QosProfile/properties/serviceClass'. NOTE: serviceClass is experimental and could change or be removed in a future release. The name of a Service Class, representing a QoS Profile designed to provide optimized behavior for a specific application type. While DSCP values are commonly associated with Service Classes, their use may vary across network segments and may not be applied throughout the entire end-to-end QoS session. This aligns with the serviceClass concept used in HomeDevicesQoQ for consistent terminology. Service classes define specific QoS behaviors that map to DSCP (Differentiated Services Code Point) values or Microsoft QoS traffic types. The supported mappings are: 1. Values aligned with the [RFC4594](https://datatracker.ietf.org/doc/html/rfc4594) guidelines for differentiated traffic classes. 2. Microsoft [QOS_TRAFFIC_TYPE](https://learn.microsoft.com/en-us/windows/win32/api/qos2/ne-qos2-qos_traffic_type) values for Windows developers. Supported Service Classes: | Service Class Name | DSCP Name | DSCP value (decimal) | DCSP value (binary) | Microsoft Value | Application Examples | |-----------------------|-----------|----------------------|---------------------|-----------------|----------------------------------------------------------------------| | Microsoft Voice | CS7 | 56 | 111000 | 4,5 | Microsoft QOSTrafficTypeVoice and QOSTrafficTypeControl | | Microsoft Audio/Video | CS5 | 40 | 101000 | 2,3 | Microsoft QOSTrafficTypeExcellentEffort and QOSTrafficTypeAudioVideo | | Real-Time Interactive | CS4 | 32 | 100000 | | Video conferencing and Interactive gaming | | Multimedia Streaming | AF31 | 26 | 011010 | | Streaming video and audio on demand | | Broadcast Video | CS3 | 24 | 011000 | | Broadcast TV & live events | | Low-Latency Data | AF21 | 18 | 010010 | | Client/server transactions Web-based ordering | | High-Throughput Data | AF11 | 10 | 001010 | | Store and forward applications | | Low-Priority Data | CS1 | 8 | 001000 | 1 | Any flow that has no BW assurance - also: | | | | | | | Microsoft QOSTrafficTypeBackground | | Standard | DF(CS0) | 0 | 000000 | 0 | Undifferentiated applications - also: | | | | | | | Microsoft QOSTrafficTypeBestEffort |",
+      "enum": [
+        "microsoft_voice",
+        "microsoft_audio_video",
+        "real_time_interactive",
+        "multimedia_streaming",
+        "broadcast_video",
+        "low_latency_data",
+        "high_throughput_data",
+        "low_priority_data",
+        "standard"
+      ],
+      "examples": [
+        "real_time_interactive"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "name",
+    "status"
+  ]
+}
