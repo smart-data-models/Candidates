@@ -427,6 +427,50 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/catena-x-semantic-models"
   },
   {
+    "slug": "cf-conventions",
+    "title": "CF (Climate and Forecast) Metadata Conventions",
+    "description": "The CF (Climate and Forecast) Metadata Conventions define the metadata that make netCDF datasets self-describing: global attributes (Conventions, title, institution, source, history, references, comment, featureType), variable attributes (standard_name, long_name, units, cell_methods, coordinates, axis, positive, calendar, valid ranges, _FillValue, flags, grid_mapping, ...), coordinate systems and grid mappings, cell bounds and methods, discrete sampling geometries (point, timeSeries, trajectory, profile, timeSeriesProfile, trajectoryProfile), compression and quantization. Its Standard Name Table (about 5,100 names) is the common vocabulary for geophysical quantities in climate, weather, ocean and Earth-observation data (CMIP, Copernicus, NOAA, ESA, ...).",
+    "publisher": "CF community (CF Conventions Committee and Standard Names Committee)",
+    "sourceUrl": "https://github.com/cf-convention/cf-conventions",
+    "license": "CC0-1.0",
+    "domains": [
+      "Environment",
+      "CrossSector"
+    ],
+    "modelCount": 4,
+    "models": [
+      {
+        "name": "CoordinateVariable",
+        "title": "Smart Data Models - CF Metadata Conventions - CoordinateVariable",
+        "description": "A coordinate variable (or auxiliary coordinate variable) of a CF-netCDF dataset, described by its CF attributes (CF Metadata Conventions 1.13, Chapters 4-5 and Appendix A, attributes with use C/BI). Attribute names are kept verbatim except 'source' -> 'cfSource' and 'location' -> 'cfLocation'.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/cf-conventions/models/CoordinateVariable/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/cf-conventions/models/CoordinateVariable"
+      },
+      {
+        "name": "DataVariable",
+        "title": "Smart Data Models - CF Metadata Conventions - DataVariable",
+        "description": "A data variable of a CF-netCDF dataset, described by its CF variable attributes (CF Metadata Conventions 1.13, Chapter 3 and Appendix A, attributes with use D). Its standard_name takes the names of the CF Standard Name Table. Attribute names are kept verbatim except 'source' -> 'cfSource' and 'location' -> 'cfLocation'.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/cf-conventions/models/DataVariable/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/cf-conventions/models/DataVariable"
+      },
+      {
+        "name": "Dataset",
+        "title": "Smart Data Models - CF Metadata Conventions - Dataset",
+        "description": "A CF-netCDF dataset (one netCDF file or aggregation), described by its CF global attributes (CF Metadata Conventions 1.13, Section 2.6 and Appendix A, attributes with use G/Gr). Attribute names are kept verbatim except 'source' -> 'cfSource' and 'location' -> 'cfLocation'.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/cf-conventions/models/Dataset/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/cf-conventions/models/Dataset"
+      },
+      {
+        "name": "GridMapping",
+        "title": "Smart Data Models - CF Metadata Conventions - GridMapping",
+        "description": "A grid mapping variable of a CF-netCDF dataset: a container for the attributes that define the coordinate reference system / map projection of the data (CF Metadata Conventions 1.13, Section 5.6 and Appendix F). Attribute names are kept verbatim except 'source' -> 'cfSource' and 'location' -> 'cfLocation'.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/cf-conventions/models/GridMapping/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/cf-conventions/models/GridMapping"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/cf-conventions"
+  },
+  {
     "slug": "cityjson-v2",
     "title": "CityJSON v2.0",
     "description": "CityJSON is a JSON encoding of a subset of the OGC CityGML data model for 3D city models (buildings, bridges, tunnels, transportation, vegetation, water bodies, land use, city furniture, and generic/grouped city objects). This candidate translates all 33 core City Object types defined in schemas/cityobjects.schema.json (v2.0.2) into NGSI-LD/NGSI-v2 entities.",
