@@ -1,0 +1,256 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/fibo/models/ListedShare/schema.json",
+  "modelTags": "FIBO,EDMCouncil,Finance,Security,Equity,Share",
+  "title": "Smart Data Models - FIBO - ListedShare",
+  "description": "share that is listed on at least one platform (FIBO Production 2026Q3 class fibo-sec-eq-eq:ListedShare, 'listed share'. Attributes derived from the OWL restrictions on this class and its superclasses fibo-sec-eq-eq:Share, fibo-fbc-fi-fi:EquityInstrument, fibo-fbc-fi-fi:Security, fibo-fbc-fi-fi:FinancialInstrument, fibo-sec-sec-lst:ListedSecurity, fibo-sec-sec-lst:RegisteredSecurity; FIBO property names verbatim.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ListedShare"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ListedShare'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "isIdentifiedBy": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Identifier"
+      },
+      "description": "Property. Model:'https://www.omg.org/spec/Commons/Identifiers/isIdentifiedBy'. has an identifier that is unique within some context. E.g. the ISIN (identifierClass fibo-sec-sec-id:InternationalSecuritiesIdentificationNumber). FIBO restriction: fibo-fbc-fi-fi:FinancialInstrument min 0 fibo-fbc-fi-fi:FinancialInstrumentIdentifier."
+    },
+    "hasFinancialInstrumentShortName": {
+      "type": "string",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/hasFinancialInstrumentShortName'. relates a security to its ISO 18774-compliant short name, which includes an issuer short name, abbreviated instrument characteristics, and abbreviated instrument description per the ISO standard. Here: the ISO 18774 FISN as text. FIBO restriction: fibo-fbc-fi-fi:FinancialInstrument min 0 fibo-sec-sec-iss:FinancialInstrumentShortName."
+    },
+    "hasShareClass": {
+      "type": "string",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityInstruments/hasShareClass'. indicates the class to which the share belongs, typically differentiated by privileges, such as voting rights. FIBO restriction: fibo-sec-eq-eq:Share min 0 xsd:string."
+    },
+    "isIssuedBy": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/isIssuedBy'. indicates a functional entity or party responsible for circulating, distributing, or publishing something. Points to the issuing LegalEntity (FIBO: some Issuer, a role played by the legal entity). FIBO restriction: fibo-fbc-fi-fi:FinancialInstrument some fibo-fbc-fi-fi:Issuer."
+    },
+    "isDenominatedIn": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/isDenominatedIn'. indicates the currency in which the financial instrument was issued. Here: ISO 4217 code. FIBO restriction: fibo-fbc-fi-fi:FinancialInstrument some fibo-fnd-acc-cur:Currency."
+    },
+    "isLegallyRecordedIn": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}(-[A-Z0-9]{1,3})?$",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/isLegallyRecordedIn'. jurisdiction (country, county, state, province, city) in which the financial instrument is legally recorded for regulatory and/or tax purposes. Here: ISO 3166-1 alpha-2 or ISO 3166-2 code. FIBO restriction: fibo-fbc-fi-fi:Security exactly 1 cmns-rga:Jurisdiction; fibo-fbc-fi-fi:FinancialInstrument min 0 cmns-rga:Jurisdiction."
+    },
+    "isNegotiable": {
+      "type": "boolean",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/isNegotiable'. specifies whether a particular financial instrument is or is not transferable. FIBO restriction: fibo-fbc-fi-fi:FinancialInstrument exactly 1 xsd:boolean."
+    },
+    "isClassifiedBy": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Classifier"
+      },
+      "description": "Property. Model:'https://www.omg.org/spec/Commons/Classifiers/isClassifiedBy'. is systematically grouped based on characteristics by. E.g. the ISO 10962 CFI code (classifierClass fibo-sec-sec-cls:FinancialInstrumentClassifier). FIBO restriction: fibo-fbc-fi-fi:FinancialInstrument min 0 fibo-sec-sec-cls:FinancialInstrumentClassifier; fibo-fbc-fi-fi:FinancialInstrument min 0 fibo-fnd-arr-cls:IndustrySectorClassifier."
+    },
+    "isIssuedInForm": {
+      "type": "string",
+      "enum": [
+        "fibo-sec-sec-iss:BearerAndRegisteredForm",
+        "fibo-sec-sec-iss:BearerForm",
+        "fibo-sec-sec-iss:BookEntryForm",
+        "fibo-sec-sec-iss:MiscellaneousForm",
+        "fibo-sec-sec-iss:RegisteredForm"
+      ],
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/isIssuedInForm'. indicates the form in which the security is issued, typically in registered form. Values: FIBO individuals of fibo-sec-sec-iss:SecurityForm as compact IRIs: fibo-sec-sec-iss:BearerAndRegisteredForm (bearer and registered form); fibo-sec-sec-iss:BearerForm (bearer form); fibo-sec-sec-iss:BookEntryForm (book entry form); fibo-sec-sec-iss:MiscellaneousForm (miscellaneous form); fibo-sec-sec-iss:RegisteredForm (registered form). FIBO restriction: fibo-fbc-fi-fi:Security min 0 fibo-sec-sec-iss:SecurityForm; fibo-sec-sec-lst:RegisteredSecurity some {fibo-sec-sec-iss:BearerAndRegisteredForm, fibo-sec-sec-iss:BookEntryForm, fibo-sec-sec-iss:RegisteredForm}."
+    },
+    "isRegisteredWith": {
+      "type": "string",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/isRegisteredWith'. indicates the registration authority for a given security, i.e., in the name of the owner on the books of the issuer, with the issuer's registrar, with a third-party transfer agent, with a broker-dealer, or other competent party. Here: the name of the registration authority. FIBO restriction: fibo-fbc-fi-fi:Security min 0 cmns-ra:RegistrationAuthority; fibo-sec-sec-lst:RegisteredSecurity some cmns-ra:RegistrationAuthority."
+    },
+    "hasRegistrationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://www.omg.org/spec/Commons/RegistrationAuthorities/hasRegistrationDate'. indicates the date or date and time on which something is registered. FIBO restriction: fibo-sec-sec-lst:RegisteredSecurity some cmns-dt:CombinedDateTime."
+    },
+    "hasHomeExchange": {
+      "type": "string",
+      "pattern": "^[A-Z0-9]{4}$",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesListings/hasHomeExchange'. indicates the exchange that is considered the primary market for a security; typically, but not always, in the country in which the security was originally issued. Here: the ISO 10383 Market Identifier Code (MIC) of the exchange. FIBO restriction: fibo-sec-sec-lst:ListedSecurity exactly 1 fibo-fbc-fct-mkt:Exchange."
+    },
+    "hasOriginalPlaceOfListing": {
+      "type": "string",
+      "pattern": "^[A-Z0-9]{4}$",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesListings/hasOriginalPlaceOfListing'. indicates the original exchange that listed the security. Here: ISO 10383 MIC. FIBO restriction: fibo-sec-sec-lst:ListedSecurity exactly 1 fibo-fbc-fct-mkt:Exchange."
+    },
+    "hasNominalValue": {
+      "$ref": "#/$defs/MonetaryAmount",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/hasNominalValue'. indicates the face value of a contract. FIBO restriction: fibo-fbc-fi-fi:FinancialInstrument min 0 fibo-fnd-acc-cur:MonetaryAmount."
+    },
+    "hasSharesAuthorized": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/CorporateBodies/hasSharesAuthorized'. indicates the maximum number of shares that are permitted to be issued, as established by the board of directors. FIBO restriction: fibo-sec-eq-eq:Share some xsd:nonNegativeInteger."
+    },
+    "hasSharesIssued": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityInstruments/hasSharesIssued'. indicates the actual number of shares held by shareholders (i.e., shares outstanding) and treasury shares. FIBO restriction: fibo-sec-eq-eq:Share min 0 xsd:nonNegativeInteger."
+    },
+    "hasSharesOutstanding": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityInstruments/hasSharesOutstanding'. indicates the number of shares currently held by shareholders, including those held by retail investors, institutional investors and insiders, and typically available for trading. FIBO restriction: fibo-sec-eq-eq:Share min 0 xsd:nonNegativeInteger."
+    },
+    "hasTreasuryShares": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityInstruments/hasTreasuryShares'. indicates the number of shares issued but not outstanding, including those that were available in the market at one time but have been repurchased by the company. FIBO restriction: fibo-sec-eq-eq:Share min 0 xsd:nonNegativeInteger."
+    },
+    "hasAvailableShares": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityInstruments/hasAvailableShares'. indicates the number of shares outstanding less those shares that are restricted, i.e., those that are available for trading. FIBO restriction: fibo-sec-eq-eq:Share min 0 xsd:nonNegativeInteger."
+    },
+    "hasFloatingStock": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityInstruments/hasFloatingStock'. indicates the number of shares that are available for trading, i.e., the number of shares outstanding less closely held shares (those held by insiders) and restricted shares. FIBO restriction: fibo-sec-eq-eq:Share min 0 xsd:nonNegativeInteger."
+    },
+    "confersNumberOfVotesPerShare": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityInstruments/confersNumberOfVotesPerShare'. grants the right to vote on a per share basis to the shareholder. FIBO restriction: fibo-sec-eq-eq:Share some xsd:decimal."
+    },
+    "hasVotingRestriction": {
+      "type": "string",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityInstruments/hasVotingRestriction'. specifies restrictions on voting rights, if any. FIBO restriction: fibo-sec-eq-eq:Share min 0 xsd:string."
+    },
+    "hasSharePaymentStatus": {
+      "type": "string",
+      "enum": [
+        "fibo-sec-eq-eq:FullyPaidShareStatus",
+        "fibo-sec-eq-eq:NilPaidShareStatus",
+        "fibo-sec-eq-eq:PartiallyPaidShareStatus"
+      ],
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityInstruments/hasSharePaymentStatus'. indicates the payment status for shares issued. Values: FIBO individuals of fibo-sec-eq-eq:SharePaymentStatus as compact IRIs: fibo-sec-eq-eq:FullyPaidShareStatus (fully paid share status); fibo-sec-eq-eq:NilPaidShareStatus (nil paid share status); fibo-sec-eq-eq:PartiallyPaidShareStatus (partially paid share status). FIBO restriction: fibo-sec-eq-eq:Share some fibo-sec-eq-eq:SharePaymentStatus."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "isIssuedBy",
+    "isDenominatedIn",
+    "isLegallyRecordedIn",
+    "isNegotiable",
+    "isIssuedInForm",
+    "isRegisteredWith",
+    "hasRegistrationDate",
+    "hasHomeExchange",
+    "hasOriginalPlaceOfListing",
+    "hasSharesAuthorized",
+    "confersNumberOfVotesPerShare",
+    "hasSharePaymentStatus"
+  ],
+  "$defs": {
+    "Classifier": {
+      "type": "object",
+      "required": [
+        "hasTag"
+      ],
+      "description": "OMG Commons cmns-cls:Classifier (and FIBO subclasses), nested: a code from a classification scheme.",
+      "properties": {
+        "classifierClass": {
+          "type": "string",
+          "description": "Not a FIBO term (Smart Data Models addition, stands for rdf:type): the FIBO class of the classifier as a compact IRI, e.g. fibo-fbc-fct-breg:NorthAmericanIndustryClassificationSystemCode, fibo-sec-sec-cls:FinancialInstrumentClassifier (ISO 10962 CFI), fibo-loan-ln-ln:LenderLienPosition."
+        },
+        "hasTag": {
+          "type": "string",
+          "description": "Model:'https://www.omg.org/spec/Commons/Designators/hasTag'. associates unique combination of alphanumeric characters corresponding to a designator for something Here: the code, or the FIBO individual (compact IRI) when FIBO enumerates the values."
+        }
+      }
+    },
+    "Identifier": {
+      "type": "object",
+      "required": [
+        "hasTag"
+      ],
+      "description": "FIBO / OMG Commons identifier (cmns-id:Identifier and its subclasses), nested. FIBO pattern: the identifier is an individual of its class whose code is given by cmns-dsg:hasTag and which cmns-id:identifies the thing.",
+      "properties": {
+        "identifierClass": {
+          "type": "string",
+          "enum": [
+            "fibo-be-le-lei:LegalEntityIdentifier",
+            "fibo-be-le-cb:RegistrationIdentifier",
+            "fibo-fbc-fct-breg:BusinessRegisterIdentifier",
+            "fibo-fbc-fct-fse:BusinessIdentifierCode",
+            "fibo-be-le-fbo:ValueAddedTaxIdentificationNumber",
+            "fibo-fnd-pty-pty:TaxIdentifier",
+            "fibo-sec-sec-id:InternationalSecuritiesIdentificationNumber",
+            "fibo-fbc-fi-fi:FinancialInstrumentIdentifier",
+            "fibo-fbc-pas-caa:AccountIdentifier",
+            "cmns-id:Identifier"
+          ],
+          "description": "Not a FIBO term (Smart Data Models addition, stands for rdf:type): the FIBO/Commons class of the identifier: fibo-be-le-lei:LegalEntityIdentifier (legal entity identifier); fibo-be-le-cb:RegistrationIdentifier (registration identifier); fibo-fbc-fct-breg:BusinessRegisterIdentifier (business register identifier); fibo-fbc-fct-fse:BusinessIdentifierCode (business identifier code); fibo-be-le-fbo:ValueAddedTaxIdentificationNumber (value-added tax identification number); fibo-fnd-pty-pty:TaxIdentifier (tax identifier); fibo-sec-sec-id:InternationalSecuritiesIdentificationNumber (international securities identification number); fibo-fbc-fi-fi:FinancialInstrumentIdentifier (financial instrument identifier); fibo-fbc-pas-caa:AccountIdentifier (account identifier); cmns-id:Identifier (identifier)."
+        },
+        "hasTag": {
+          "type": "string",
+          "description": "Model:'https://www.omg.org/spec/Commons/Designators/hasTag'. associates unique combination of alphanumeric characters corresponding to a designator for something Here: the identifier code itself (e.g. the 20-character LEI, the ISIN, the register number)."
+        },
+        "isRegisteredIn": {
+          "type": "string",
+          "description": "Model:'https://www.omg.org/spec/Commons/RegistrationAuthorities/isRegisteredIn'. indicates the registry that something is registered in Here: the registry, given by its GLEIF Registration Authorities List code (e.g. RA000304) or name."
+        },
+        "identifies": {
+          "type": "string",
+          "format": "uri",
+          "description": "Model:'https://www.omg.org/spec/Commons/Identifiers/identifies'. recognizes or establishes identity within some context Here: the NGSI-LD id of the identified entity, when it is in the same system."
+        }
+      }
+    },
+    "MonetaryAmount": {
+      "type": "object",
+      "required": [
+        "hasAmount",
+        "hasCurrency"
+      ],
+      "description": "FIBO fibo-fnd-acc-cur:MonetaryAmount, nested: measure that is an amount of money specified in monetary units. Properties from its restrictions (hasAmount exactly 1, hasCurrency exactly 1).",
+      "properties": {
+        "hasAmount": {
+          "type": "number",
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasAmount'. total number or quantity"
+        },
+        "hasCurrency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$",
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasCurrency'. specifies the medium of exchange value in which something, such as a monetary amount is denominated Here: ISO 4217 alphabetic code (FIBO links the ISO 4217 currency individuals)."
+        }
+      }
+    }
+  }
+}

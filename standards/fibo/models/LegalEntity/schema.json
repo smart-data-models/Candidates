@@ -1,0 +1,309 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/fibo/models/LegalEntity/schema.json",
+  "modelTags": "FIBO,EDMCouncil,Finance,LegalEntity,LEI,GLEIF",
+  "title": "Smart Data Models - FIBO - LegalEntity",
+  "description": "legal person that is a partnership, corporation, or other organization having the capacity to negotiate contracts, assume financial obligations, and pay off debts, organized under the laws of some jurisdiction (FIBO Production 2026Q3 class cmns-org:LegalEntity, 'legal entity'. Attributes derived from the OWL restrictions on this class and its superclasses cmns-org:LegalPerson, cmns-pts:Party, cmns-pts:Agent, cmns-org:FormalOrganization, cmns-org:Organization; FIBO property names verbatim.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "LegalEntity"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'LegalEntity'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasLegalName": {
+      "type": "string",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/hasLegalName'. specifies the name used to refer to a party in legal communications. GLEIF CDF LegalName. FIBO restriction on cmns-dsg:hasTextualName, of which this is a FIBO sub-property: cmns-pts:Agent min 0 cmns-txt:Text."
+    },
+    "hasAlternativeLanguageLegalName": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasAlternativeLanguageLegalName'. denotes a registered legal name for the entity in an alternative language used in the legal jurisdiction in which the entity is registered. FIBO restriction on cmns-dsg:hasTextualName, of which this is a FIBO sub-property: cmns-pts:Agent min 0 cmns-txt:Text."
+    },
+    "hasPreferredTransliteratedLegalName": {
+      "type": "string",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasPreferredTransliteratedLegalName'. denotes a preferred ASCII-transliterated representation of the legal name for the entity. FIBO restriction on cmns-dsg:hasTextualName, of which this is a FIBO sub-property: cmns-pts:Agent min 0 cmns-txt:Text."
+    },
+    "hasAutomaticallyTransliteratedLegalName": {
+      "type": "string",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasAutomaticallyTransliteratedLegalName'. denotes an auto-generated ASCII-transliterated representation of the legal name for the entity. FIBO restriction on cmns-dsg:hasTextualName, of which this is a FIBO sub-property: cmns-pts:Agent min 0 cmns-txt:Text."
+    },
+    "hasTradingOrOperationalName": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasTradingOrOperationalName'. denotes a 'trading as', 'brand name', 'doing business as', or 'operating under' name currently used by the entity in addition to, but not replacing, the (primary) legal, official registered name. FIBO restriction on cmns-dsg:hasTextualName, of which this is a FIBO sub-property: cmns-pts:Agent min 0 cmns-txt:Text."
+    },
+    "hasPriorLegalName": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasPriorLegalName'. denotes a primary legal name that was used previously for the entity. FIBO restriction on cmns-dsg:hasTextualName, of which this is a FIBO sub-property: cmns-pts:Agent min 0 cmns-txt:Text."
+    },
+    "isIdentifiedBy": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Identifier"
+      },
+      "description": "Property. Model:'https://www.omg.org/spec/Commons/Identifiers/isIdentifiedBy'. has an identifier that is unique within some context. Holds the LEI (identifierClass fibo-be-le-lei:LegalEntityIdentifier) and other identifiers such as the business register number (fibo-be-le-cb:RegistrationIdentifier, with isRegisteredIn = the GLEIF Registration Authority code) or the BIC. FIBO restriction: cmns-org:LegalPerson min 0 fibo-be-le-lei:LegalEntityIdentifier."
+    },
+    "hasLegalAddress": {
+      "$ref": "#/$defs/Address",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/hasLegalAddress'. indicates the legal address for the entity, in the jurisdiction in which the entity is established, used for registration purposes with respect to obtaining an LEI. FIBO restriction: cmns-org:LegalEntity exactly 1 fibo-fnd-plc-adr:ConventionalStreetAddress."
+    },
+    "hasHeadquartersAddress": {
+      "$ref": "#/$defs/Address",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/hasHeadquartersAddress'. indicates the main address at which communications may be delivered for the organization. FIBO restriction: cmns-org:LegalEntity min 0 fibo-fnd-plc-adr:PhysicalAddress."
+    },
+    "hasAddress": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Address"
+      },
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/hasAddress'. indicates a means by which something (in the case of a network address) or some entity may be located or contacted or may receive correspondence. FIBO restriction: cmns-pts:Party min 0 fibo-fnd-plc-adr:PhysicalAddress."
+    },
+    "hasMailingAddress": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Address"
+      },
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/hasMailingAddress'. identifies a physical address where an independent party can receive communications, including letters and packages. FIBO restriction: cmns-pts:Party min 0 fibo-fnd-plc-adr:PhysicalAddress."
+    },
+    "isOrganizedIn": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}(-[A-Z0-9]{1,3})?$",
+      "description": "Property. Model:'https://www.omg.org/spec/Commons/RegulatoryAgencies/isOrganizedIn'. indicates the jurisdiction whose laws a legal entity is organized under. Here: the jurisdiction as ISO 3166-1 alpha-2 or ISO 3166-2 code (GLEIF CDF LegalJurisdiction). FIBO restriction: cmns-org:LegalEntity exactly 1 cmns-rga:Jurisdiction."
+    },
+    "isRecognizedIn": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z]{2}(-[A-Z0-9]{1,3})?$"
+      },
+      "description": "Property. Model:'https://www.omg.org/spec/Commons/RegulatoryAgencies/isRecognizedIn'. indicates the jurisdiction in which a legal person is considered competent to enter into a contract, conduct business, or participate in other activities, or in which an agreement may be acknowledged and possibly enforceable. Here: ISO 3166-1 alpha-2 or ISO 3166-2 codes. FIBO restriction: cmns-org:LegalPerson some cmns-rga:Jurisdiction; cmns-org:LegalPerson min 0 cmns-rga:Jurisdiction."
+    },
+    "isDomiciledIn": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}(-[A-Z0-9]{1,3})?$",
+      "description": "Property. Model:'https://www.omg.org/spec/Commons/Organizations/isDomiciledIn'. indicates the principal place where an entity conducts business within some country, such as where its headquarters is located. Here: ISO 3166-1 alpha-2 or ISO 3166-2 code. FIBO restriction: cmns-org:FormalOrganization min 0 cmns-loc:GeopoliticalEntity."
+    },
+    "hasLegalForm": {
+      "$ref": "#/$defs/EntityLegalForm",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/hasLegalForm'. indicates the nature of the entity as defined from a legal or regulatory perspective in a given jurisdiction. FIBO restriction: cmns-org:LegalEntity max 1 fibo-be-le-lei:EntityLegalForm."
+    },
+    "hasEntityStatus": {
+      "type": "string",
+      "enum": [
+        "fibo-fbc-fct-breg:ActiveStatus",
+        "fibo-fbc-fct-breg:InactiveStatus"
+      ],
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasEntityStatus'. indicates the status of the entity (i.e., active, inactive). Values: FIBO individuals of fibo-fbc-fct-breg:EntityStatus as compact IRIs: fibo-fbc-fct-breg:ActiveStatus (active status, GLEIF code ACTIVE); fibo-fbc-fct-breg:InactiveStatus (inactive status, GLEIF code INACTIVE). FIBO restriction: cmns-org:LegalEntity max 1 fibo-fbc-fct-breg:EntityStatus."
+    },
+    "hasEntityExpirationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasEntityExpirationDate'. indicates the date on which an entity ceases(d) to exist. FIBO restriction: cmns-org:LegalEntity max 1 cmns-dt:CombinedDateTime."
+    },
+    "hasEntityExpirationReason": {
+      "type": "string",
+      "enum": [
+        "fibo-fbc-fct-breg:EntityExpirationReasonCorporateAction",
+        "fibo-fbc-fct-breg:EntityExpirationReasonDissolved",
+        "fibo-fbc-fct-breg:EntityExpirationReasonOther"
+      ],
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasEntityExpirationReason'. indicates the reason that an entity ceased to exist (i.e., disolved, merged with another entity, etc.). Values: FIBO individuals of fibo-fbc-fct-breg:EntityExpirationReason as compact IRIs: fibo-fbc-fct-breg:EntityExpirationReasonCorporateAction (entity expiration reason - corporate action, GLEIF code CORPORATE_ACTION); fibo-fbc-fct-breg:EntityExpirationReasonDissolved (entity expiration reason - disolved, GLEIF code DISSOLVED); fibo-fbc-fct-breg:EntityExpirationReasonOther (entity expiration reason - other, GLEIF code OTHER). FIBO restriction: cmns-org:LegalEntity max 1 fibo-fbc-fct-breg:EntityExpirationReason."
+    },
+    "hasDateOfIncorporation": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/CorporateBodies/hasDateOfIncorporation'. indicates the formal date of incorporation as stated in filing documents. GLEIF CDF EntityCreationDate. (no restriction; FIBO property without domain (BE/LegalEntities/CorporateBodies), added for the GLEIF entity creation date.)"
+    },
+    "isClassifiedBy": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Classifier"
+      },
+      "description": "Property. Model:'https://www.omg.org/spec/Commons/Classifiers/isClassifiedBy'. is systematically grouped based on characteristics by. Industry classifications (NAICS, SIC or other industry sector classifier codes). FIBO restriction: cmns-org:LegalEntity min 0 fibo-fbc-fct-breg:NorthAmericanIndustryClassificationSystemCode; cmns-org:LegalEntity min 0 fibo-fnd-arr-cls:IndustrySectorClassifier; cmns-org:LegalEntity min 0 fibo-fbc-fct-breg:StandardIndustrialClassificationCode; cmns-org:FormalOrganization min 0 fibo-fbc-fct-breg:NorthAmericanIndustryClassificationSystemCode; cmns-org:FormalOrganization min 0 fibo-fbc-fct-breg:StandardIndustrialClassificationCode."
+    },
+    "precedes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://www.omg.org/spec/Commons/DatesAndTimes/precedes'. associates based on prior spatial or temporal proximity; occurs before in a logical order or sequence. Points to successor LegalEntity entities (GLEIF CDF SuccessorEntity). FIBO restriction: cmns-org:LegalEntity min 0 cmns-org:LegalEntity."
+    },
+    "isDirectlyConsolidatedBy": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/isDirectlyConsolidatedBy'. indicates that the entity considered the 'end node' or consolidating entity (parent) fully consolidates the accounting of the 'start node' (child) per the accounting rules specified, and is the closest consolidating entity to that child in any applicable ownership hierarchy. GLEIF Level 2 direct parent (IS_DIRECTLY_CONSOLIDATED_BY). Points to a LegalEntity; the RelationshipRecord entity carries the details. (no restriction; FIBO LEI property (range LegalEntity, no domain), added for GLEIF Level 2 data.)"
+    },
+    "isUltimatelyConsolidatedBy": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/isUltimatelyConsolidatedBy'. indicates that the entity considered the 'end node' or consolidating entity (parent) fully consolidates the accounting of the 'start node' (child) per the accounting rules specified, and is the most distant consolidating entity to that child in any applicable ownership hierarchy. GLEIF Level 2 ultimate parent (IS_ULTIMATELY_CONSOLIDATED_BY). Points to a LegalEntity. (no restriction; FIBO LEI property (range LegalEntity, no domain), added for GLEIF Level 2 data.)"
+    },
+    "isInternationalBranchOf": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/isInternationalBranchOf'. indicates that the entity considered the 'start node' or consolidated entity (child) is an international subsidiary of the 'end node' (parent) in the jurisdiction of the child. GLEIF IS_INTERNATIONAL_BRANCH_OF. Points to a LegalEntity. (no restriction; FIBO LEI property (range LegalEntity, no domain), added for GLEIF data.)"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "hasLegalAddress",
+    "isOrganizedIn",
+    "isRecognizedIn"
+  ],
+  "$defs": {
+    "Address": {
+      "type": "object",
+      "description": "FIBO fibo-fnd-plc-adr:ConventionalStreetAddress / PhysicalAddress, nested. Properties from the restrictions of PhysicalAddress (hasCityName, hasCountry, hasSubdivision, hasIndividualPostcode) and the address lines used in FIBO's own examples. Countries and subdivisions are ISO 3166-1 alpha-2 / ISO 3166-2 codes (FIBO links LCC individuals).",
+      "properties": {
+        "hasAddressLine1": {
+          "type": "string",
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/hasAddressLine1'. the first line of the street address"
+        },
+        "hasAddressLine2": {
+          "type": "string",
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/hasAddressLine2'. the second line of the street address"
+        },
+        "hasAddressLine3": {
+          "type": "string",
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/hasAddressLine3'. the third line of the street address"
+        },
+        "hasCityName": {
+          "type": "string",
+          "description": "Model:'https://www.omg.org/spec/Commons/Locations/hasCityName'. indicates the name of a typically large, permanent, and densely settled place"
+        },
+        "hasPostalCode": {
+          "type": "string",
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/hasPostalCode'. the postal code of this address as specified by the local postal service"
+        },
+        "hasSubdivision": {
+          "type": "string",
+          "pattern": "^[A-Z]{2}(-[A-Z0-9]{1,3})?$",
+          "description": "Model:'https://www.omg.org/spec/Commons/Locations/hasSubdivision'. identifies a country subdivision (state, province, region, etc.) Here: ISO 3166-2 code."
+        },
+        "hasCountry": {
+          "type": "string",
+          "pattern": "^[A-Z]{2}$",
+          "description": "Model:'https://www.omg.org/spec/Commons/Locations/hasCountry'. indicates a country, such as one that is recognized by the United Nations Here: ISO 3166-1 alpha-2 code."
+        }
+      }
+    },
+    "Classifier": {
+      "type": "object",
+      "required": [
+        "hasTag"
+      ],
+      "description": "OMG Commons cmns-cls:Classifier (and FIBO subclasses), nested: a code from a classification scheme.",
+      "properties": {
+        "classifierClass": {
+          "type": "string",
+          "description": "Not a FIBO term (Smart Data Models addition, stands for rdf:type): the FIBO class of the classifier as a compact IRI, e.g. fibo-fbc-fct-breg:NorthAmericanIndustryClassificationSystemCode, fibo-sec-sec-cls:FinancialInstrumentClassifier (ISO 10962 CFI), fibo-loan-ln-ln:LenderLienPosition."
+        },
+        "hasTag": {
+          "type": "string",
+          "description": "Model:'https://www.omg.org/spec/Commons/Designators/hasTag'. associates unique combination of alphanumeric characters corresponding to a designator for something Here: the code, or the FIBO individual (compact IRI) when FIBO enumerates the values."
+        }
+      }
+    },
+    "EntityLegalForm": {
+      "type": "object",
+      "description": "FIBO fibo-be-le-lei:EntityLegalForm, nested: a classifier for a legal entity that indicates the nature of that entity as defined from a legal or regulatory perspective, in the jurisdiction in which it was established. Properties from its restrictions; the ISO 20275 ELF code (fibo-be-le-lei:EntityLegalFormIdentifier) is given as hasTag.",
+      "properties": {
+        "hasTag": {
+          "type": "string",
+          "pattern": "^[A-Z0-9]{4}$",
+          "description": "Model:'https://www.omg.org/spec/Commons/Designators/hasTag'. associates unique combination of alphanumeric characters corresponding to a designator for something Here: the ISO 20275 Entity Legal Form (ELF) code."
+        },
+        "hasTextualName": {
+          "type": "string",
+          "description": "Model:'https://www.omg.org/spec/Commons/Designators/hasTextualName'. associates a name, reference name, or appellation with an individual concept"
+        },
+        "hasTransliteratedName": {
+          "type": "string",
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/hasTransliteratedName'. a transliterated (i.e., in Latin or Romanized ASCII) representation of a name for the entity"
+        },
+        "hasLegalFormAbbreviation": {
+          "type": "string",
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/hasLegalFormAbbreviation'. the precise abbreviation for the entity legal form as defined in the jurisdiction in which it is registered, for example LLC, LLP, Ltd, PLC, Corp."
+        },
+        "hasTransliteratedLegalFormAbbreviation": {
+          "type": "string",
+          "description": "Model:'https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/hasTransliteratedLegalFormAbbreviation'. a transliterated (i.e., in Latin or Romanized ASCII) representation of the abbreviation for the entity legal form"
+        }
+      }
+    },
+    "Identifier": {
+      "type": "object",
+      "required": [
+        "hasTag"
+      ],
+      "description": "FIBO / OMG Commons identifier (cmns-id:Identifier and its subclasses), nested. FIBO pattern: the identifier is an individual of its class whose code is given by cmns-dsg:hasTag and which cmns-id:identifies the thing.",
+      "properties": {
+        "identifierClass": {
+          "type": "string",
+          "enum": [
+            "fibo-be-le-lei:LegalEntityIdentifier",
+            "fibo-be-le-cb:RegistrationIdentifier",
+            "fibo-fbc-fct-breg:BusinessRegisterIdentifier",
+            "fibo-fbc-fct-fse:BusinessIdentifierCode",
+            "fibo-be-le-fbo:ValueAddedTaxIdentificationNumber",
+            "fibo-fnd-pty-pty:TaxIdentifier",
+            "fibo-sec-sec-id:InternationalSecuritiesIdentificationNumber",
+            "fibo-fbc-fi-fi:FinancialInstrumentIdentifier",
+            "fibo-fbc-pas-caa:AccountIdentifier",
+            "cmns-id:Identifier"
+          ],
+          "description": "Not a FIBO term (Smart Data Models addition, stands for rdf:type): the FIBO/Commons class of the identifier: fibo-be-le-lei:LegalEntityIdentifier (legal entity identifier); fibo-be-le-cb:RegistrationIdentifier (registration identifier); fibo-fbc-fct-breg:BusinessRegisterIdentifier (business register identifier); fibo-fbc-fct-fse:BusinessIdentifierCode (business identifier code); fibo-be-le-fbo:ValueAddedTaxIdentificationNumber (value-added tax identification number); fibo-fnd-pty-pty:TaxIdentifier (tax identifier); fibo-sec-sec-id:InternationalSecuritiesIdentificationNumber (international securities identification number); fibo-fbc-fi-fi:FinancialInstrumentIdentifier (financial instrument identifier); fibo-fbc-pas-caa:AccountIdentifier (account identifier); cmns-id:Identifier (identifier)."
+        },
+        "hasTag": {
+          "type": "string",
+          "description": "Model:'https://www.omg.org/spec/Commons/Designators/hasTag'. associates unique combination of alphanumeric characters corresponding to a designator for something Here: the identifier code itself (e.g. the 20-character LEI, the ISIN, the register number)."
+        },
+        "isRegisteredIn": {
+          "type": "string",
+          "description": "Model:'https://www.omg.org/spec/Commons/RegistrationAuthorities/isRegisteredIn'. indicates the registry that something is registered in Here: the registry, given by its GLEIF Registration Authorities List code (e.g. RA000304) or name."
+        },
+        "identifies": {
+          "type": "string",
+          "format": "uri",
+          "description": "Model:'https://www.omg.org/spec/Commons/Identifiers/identifies'. recognizes or establishes identity within some context Here: the NGSI-LD id of the identified entity, when it is in the same system."
+        }
+      }
+    }
+  }
+}

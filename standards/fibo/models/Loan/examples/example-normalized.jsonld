@@ -1,0 +1,109 @@
+{
+  "id": "urn:ngsi-ld:Loan:example-bank-2026-000123",
+  "type": "Loan",
+  "isIdentifiedBy": {
+    "type": "Property",
+    "value": [
+      {
+        "identifierClass": "cmns-id:Identifier",
+        "hasTag": "2026-000123",
+        "isRegisteredIn": "Example Bank AG loan book"
+      }
+    ]
+  },
+  "hasLender": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:LegalEntity:example-bank-ag"
+  },
+  "hasBorrower": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:LegalEntity:example-manufacturing-ag"
+    ]
+  },
+  "isIssuedBy": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:LegalEntity:example-bank-ag"
+  },
+  "hasPrincipalAmount": {
+    "type": "Property",
+    "value": {
+      "hasAmount": 5000000.0,
+      "hasCurrency": "EUR"
+    }
+  },
+  "isDenominatedIn": {
+    "type": "Property",
+    "value": "EUR"
+  },
+  "hasInterestPaymentTerms": {
+    "type": "Property",
+    "value": {
+      "hasInterestRate": 4.25,
+      "hasAccrualBasis": "ACT/360",
+      "hasInterestPaymentFrequency": "P3M",
+      "hasInitialInterestAccrualDate": "2026-07-01",
+      "hasInitialInterestPaymentDate": "2026-09-30"
+    }
+  },
+  "hasRepaymentTerms": {
+    "type": "Property",
+    "value": {
+      "hasPrincipalPaymentFrequency": "P3M",
+      "hasInitialPrincipalPaymentDate": "2027-03-31",
+      "hasBalloonPayment": false
+    }
+  },
+  "isInterestOnly": {
+    "type": "Property",
+    "value": false
+  },
+  "hasNegativeAmortization": {
+    "type": "Property",
+    "value": false
+  },
+  "hasExecutionDate": {
+    "type": "Property",
+    "value": "2026-06-24"
+  },
+  "hasEffectiveDate": {
+    "type": "Property",
+    "value": "2026-07-01"
+  },
+  "hasInitialExchangeDate": {
+    "type": "Property",
+    "value": "2026-07-01"
+  },
+  "hasMaturityDate": {
+    "type": "Property",
+    "value": "2031-06-30"
+  },
+  "isAssignable": {
+    "type": "Property",
+    "value": true
+  },
+  "isNegotiable": {
+    "type": "Property",
+    "value": false
+  },
+  "isLegallyRecordedIn": {
+    "type": "Property",
+    "value": "DE"
+  },
+  "isClassifiedBy": {
+    "type": "Property",
+    "value": [
+      {
+        "classifierClass": "fibo-loan-ln-ln:LenderLienPosition",
+        "hasTag": "fibo-loan-ln-ln:PrimaryLienPosition"
+      }
+    ]
+  },
+  "source": {
+    "type": "Property",
+    "value": "Synthetic example (fictitious companies, amounts and terms; no real identifiers). Vocabulary: FIBO Production 2026Q3, EDM Council, MIT."
+  },
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/fibo/models/Loan/context.jsonld"
+  ]
+}

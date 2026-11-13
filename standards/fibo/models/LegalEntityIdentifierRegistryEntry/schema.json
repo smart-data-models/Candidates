@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/fibo/models/LegalEntityIdentifierRegistryEntry/schema.json",
+  "modelTags": "FIBO,EDMCouncil,Finance,LEI,GLEIF,Registry",
+  "title": "Smart Data Models - FIBO - LegalEntityIdentifierRegistryEntry",
+  "description": "entry in a legal entity identifier registry that conforms to ISO 17442 and the Global Legal Entity Identifier Foundation (GLEIF) Common Data Format (CDF) (FIBO Production 2026Q3 class fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry, 'legal entity identifier registry entry'. Attributes derived from the OWL restrictions on this class and its superclasses fibo-fbc-fct-breg:BusinessRegistryEntry, cmns-ra:RegistryEntry, cmns-col:Constituent; FIBO property names verbatim.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "LegalEntityIdentifierRegistryEntry"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'LegalEntityIdentifierRegistryEntry'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "comprises": {
+      "$ref": "#/$defs/Identifier",
+      "description": "Property. Model:'https://www.omg.org/spec/Commons/Collections/comprises'. includes, consists of, or contains, especially within a particular scope. Here: the legal entity identifier (identifierClass fibo-be-le-lei:LegalEntityIdentifier, hasTag = the LEI, identifies = the LegalEntity). FIBO restriction: fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry some fibo-be-le-lei:LegalEntityIdentifier; fibo-fbc-fct-breg:BusinessRegistryEntry some fibo-be-le-cb:RegistrationIdentifier; cmns-ra:RegistryEntry min 0 cmns-ra:RegisteredIdentifier."
+    },
+    "hasRegistrationStatus": {
+      "type": "string",
+      "enum": [
+        "fibo-fbc-fct-breg:AnnulledStatus",
+        "fibo-fbc-fct-breg:CancelledStatus",
+        "fibo-fbc-fct-breg:DuplicateStatus",
+        "fibo-fbc-fct-breg:IssuedStatus",
+        "fibo-fbc-fct-breg:LapsedStatus",
+        "fibo-fbc-fct-breg:MergedStatus",
+        "fibo-fbc-fct-breg:PendingArchivalStatus",
+        "fibo-fbc-fct-breg:PendingTransferStatus",
+        "fibo-fbc-fct-breg:PendingValidationStatus",
+        "fibo-fbc-fct-breg:RetiredStatus",
+        "fibo-fbc-fct-breg:TransferredStatus"
+      ],
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasRegistrationStatus'. indicates the status of a specific registration, such as for an identifier or license. Values: FIBO individuals of fibo-fbc-fct-breg:RegistrationStatus as compact IRIs: fibo-fbc-fct-breg:AnnulledStatus (annulled status, GLEIF code ANNULLED); fibo-fbc-fct-breg:CancelledStatus (cancelled status, GLEIF code CANCELLED); fibo-fbc-fct-breg:DuplicateStatus (duplicate status, GLEIF code DUPLICATE); fibo-fbc-fct-breg:IssuedStatus (issued status, GLEIF code ISSUED); fibo-fbc-fct-breg:LapsedStatus (lapsed status, GLEIF code LAPSED); fibo-fbc-fct-breg:MergedStatus (merged status, GLEIF code MERGED); fibo-fbc-fct-breg:PendingArchivalStatus (pending archival status, GLEIF code PENDING_ARCHIVAL); fibo-fbc-fct-breg:PendingTransferStatus (pending transfer status, GLEIF code PENDING_TRANSFER); fibo-fbc-fct-breg:PendingValidationStatus (pending validation status, GLEIF code PENDING_VALIDATION); fibo-fbc-fct-breg:RetiredStatus (retired status, GLEIF code RETIRED); fibo-fbc-fct-breg:TransferredStatus (transferred status, GLEIF code TRANSFERRED). FIBO restriction: fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry some fibo-fbc-fct-breg:RegistrationStatus; fibo-fbc-fct-breg:BusinessRegistryEntry max 1 fibo-fbc-fct-breg:RegistrationStatus."
+    },
+    "hasInitialRegistrationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasInitialRegistrationDate'. indicates the date on which an identifier or other registered item was created and/or first registered. GLEIF CDF InitialRegistrationDate. FIBO restriction on cmns-ra:hasRegistrationDate, of which this is a FIBO sub-property: fibo-fbc-fct-breg:BusinessRegistryEntry some cmns-dt:CombinedDateTime."
+    },
+    "hasRegistrationRevisionDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasRegistrationRevisionDate'. indicates the date that the status of a specific registration in the registry was revised. GLEIF CDF LastUpdateDate. FIBO restriction on cmns-ra:hasRegistrationDate, of which this is a FIBO sub-property: fibo-fbc-fct-breg:BusinessRegistryEntry some cmns-dt:CombinedDateTime."
+    },
+    "hasRenewalDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasRenewalDate'. indicates the date by which a specific registration in the registry must be renewed or updated. GLEIF CDF NextRenewalDate. FIBO restriction on cmns-ra:hasRegistrationDate, of which this is a FIBO sub-property: fibo-fbc-fct-breg:BusinessRegistryEntry some cmns-dt:CombinedDateTime."
+    },
+    "hasValidationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasValidationDate'. indicates the date that a specific registration in the registry was most recently reviewed and validated. FIBO restriction on cmns-ra:hasRegistrationDate, of which this is a FIBO sub-property: fibo-fbc-fct-breg:BusinessRegistryEntry some cmns-dt:CombinedDateTime."
+    },
+    "hasValidationLevel": {
+      "type": "string",
+      "enum": [
+        "fibo-fbc-fct-breg:EntityValidationLevelEntitySuppliedOnly",
+        "fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated",
+        "fibo-fbc-fct-breg:EntityValidationLevelPartiallyCorroborated"
+      ],
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasValidationLevel'. indicates the level of validation performed by the registrar with respect to the legal entity. Values: FIBO individuals of fibo-fbc-fct-breg:EntityValidationLevel as compact IRIs: fibo-fbc-fct-breg:EntityValidationLevelEntitySuppliedOnly (entity validation level - entity-supplied only, GLEIF code ENTITY_SUPPLIED_ONLY); fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated (entity validation level - fully corroborated, GLEIF code FULLY_CORROBORATED); fibo-fbc-fct-breg:EntityValidationLevelPartiallyCorroborated (entity validation level - partially corroborated, GLEIF code PARTIALLY_CORROBORATED). GLEIF CDF ValidationSources. FIBO restriction: fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry some fibo-fbc-fct-breg:EntityValidationLevel."
+    },
+    "hasValidationAuthority": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^RA[0-9]{6}$|^RA888888$"
+      },
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasValidationAuthority'. identifies the business registration authority for the legal entity, used by the Local Operating Unit (LOU) as the basis for validation, as defined in the GLEIF Registration Authorities List. Here: GLEIF Registration Authorities List codes (CDF ValidationAuthorityID), e.g. RA000304. FIBO restriction: fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry min 0 fibo-fbc-fct-breg:BusinessRegistrationAuthority."
+    },
+    "hasManagingLocalOperatingUnit": {
+      "$ref": "#/$defs/Identifier",
+      "description": "Property. Model:'https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasManagingLocalOperatingUnit'. relates a legal entity identification record to the identifier for the local operating unit that registered the relevant legal entity identifier. Here: the LEI of the managing LOU (GLEIF CDF ManagingLOU), as an Identifier. FIBO restriction: fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry only fibo-be-le-lei:LegalEntityIdentifier."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "comprises",
+    "hasRegistrationStatus",
+    "hasInitialRegistrationDate",
+    "hasValidationLevel"
+  ],
+  "$defs": {
+    "Identifier": {
+      "type": "object",
+      "required": [
+        "hasTag"
+      ],
+      "description": "FIBO / OMG Commons identifier (cmns-id:Identifier and its subclasses), nested. FIBO pattern: the identifier is an individual of its class whose code is given by cmns-dsg:hasTag and which cmns-id:identifies the thing.",
+      "properties": {
+        "identifierClass": {
+          "type": "string",
+          "enum": [
+            "fibo-be-le-lei:LegalEntityIdentifier",
+            "fibo-be-le-cb:RegistrationIdentifier",
+            "fibo-fbc-fct-breg:BusinessRegisterIdentifier",
+            "fibo-fbc-fct-fse:BusinessIdentifierCode",
+            "fibo-be-le-fbo:ValueAddedTaxIdentificationNumber",
+            "fibo-fnd-pty-pty:TaxIdentifier",
+            "fibo-sec-sec-id:InternationalSecuritiesIdentificationNumber",
+            "fibo-fbc-fi-fi:FinancialInstrumentIdentifier",
+            "fibo-fbc-pas-caa:AccountIdentifier",
+            "cmns-id:Identifier"
+          ],
+          "description": "Not a FIBO term (Smart Data Models addition, stands for rdf:type): the FIBO/Commons class of the identifier: fibo-be-le-lei:LegalEntityIdentifier (legal entity identifier); fibo-be-le-cb:RegistrationIdentifier (registration identifier); fibo-fbc-fct-breg:BusinessRegisterIdentifier (business register identifier); fibo-fbc-fct-fse:BusinessIdentifierCode (business identifier code); fibo-be-le-fbo:ValueAddedTaxIdentificationNumber (value-added tax identification number); fibo-fnd-pty-pty:TaxIdentifier (tax identifier); fibo-sec-sec-id:InternationalSecuritiesIdentificationNumber (international securities identification number); fibo-fbc-fi-fi:FinancialInstrumentIdentifier (financial instrument identifier); fibo-fbc-pas-caa:AccountIdentifier (account identifier); cmns-id:Identifier (identifier)."
+        },
+        "hasTag": {
+          "type": "string",
+          "description": "Model:'https://www.omg.org/spec/Commons/Designators/hasTag'. associates unique combination of alphanumeric characters corresponding to a designator for something Here: the identifier code itself (e.g. the 20-character LEI, the ISIN, the register number)."
+        },
+        "isRegisteredIn": {
+          "type": "string",
+          "description": "Model:'https://www.omg.org/spec/Commons/RegistrationAuthorities/isRegisteredIn'. indicates the registry that something is registered in Here: the registry, given by its GLEIF Registration Authorities List code (e.g. RA000304) or name."
+        },
+        "identifies": {
+          "type": "string",
+          "format": "uri",
+          "description": "Model:'https://www.omg.org/spec/Commons/Identifiers/identifies'. recognizes or establishes identity within some context Here: the NGSI-LD id of the identified entity, when it is in the same system."
+        }
+      }
+    }
+  }
+}
