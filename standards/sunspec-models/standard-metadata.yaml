@@ -1,0 +1,153 @@
+title: "SunSpec Information Models"
+publisher: "SunSpec Alliance"
+sourceUrl: "https://github.com/sunspec/models"
+specificationUrl: "https://sunspec.org/specifications/"
+contact: "support@sunspec.org"
+sourceOntologyVersion: "sunspec/models release v2026-04-20 (latest GitHub release, published 2026-04-20)"
+sourceOntologyDownload: "https://github.com/sunspec/models/archive/refs/tags/v2026-04-20.tar.gz"
+sourceOntologyNamespace: "https://github.com/sunspec/models/blob/v2026-04-20/json/"
+sourceOntologyFormat: "JSON model definitions (model_<id>.json: groups, points, units, scale factors, enum/bitfield symbols), with an SMDX XML and spreadsheet variant; no RDF vocabulary"
+domains:
+  - SmartEnergy
+description: >
+  The SunSpec Information Models are the open, Modbus-based data models
+  that solar inverters, batteries, meters and other distributed energy
+  resources (DER) use to expose their nameplate data, measurements, status
+  and settings. They are maintained by the SunSpec Alliance, are referenced
+  by IEEE 1547-2018 (SunSpec Modbus is one of the DER communication
+  protocols it allows), and are implemented by most PV inverter manufacturers. Each model has a
+  numeric id and a fixed set of named points (registers) with a type, units,
+  an optional scale factor and, for enums and bitfields, named symbols:
+  model 1 (common) identifies the device; the 100 series are the legacy
+  inverter models; the 200 series meters; the 300-600 series environmental,
+  string combiner, module and tracker models; the 700 series the IEEE
+  1547-2018 DER models; the 800 series batteries. Release v2026-04-20 has
+  113 models.
+license: "Apache-2.0"
+licenseNote: >
+  The sheet marked the licence only "Partial". Verified on the primary
+  source: the github.com/sunspec/models repository is licensed under the
+  Apache License 2.0 (LICENSE file at tag v2026-04-20; GitHub reports
+  Apache-2.0), which allows derivative works and redistribution with
+  attribution and a notice of changes. The JSON model files used here carry
+  no other copyright or licence statement. The only file with its own
+  terms is the SMDX XML Schema (smdx/smdx.xsd, "Copyright (c) SunSpec
+  Alliance 2012 ... may not be modified"), which was not used or
+  reproduced. The SunSpec specification documents (PDF) on sunspec.org are
+  distributed separately under SunSpec's own terms and were not used. This
+  candidate is a derived work of the Apache-2.0 JSON models: attribution
+  "SunSpec Information Models, SunSpec Alliance, Apache-2.0"; changes are
+  described in the notes. All examples are synthetic.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source model definitions to SDM candidate artifacts"
+notes: |
+  Translated on 2026-11-13. Source row 53 ("SunSpec Information Models",
+  SunSpec Alliance, sector Solar energy, licence marked "Partial") of the
+  "Level A standards not in Smart Data Models" list. Licence verified as
+  Apache-2.0 (see licenseNote).
+
+  SCOPE: the release has 113 models, many of them protocol or security
+  blocks (models 2-19), vendor models (64xxx), test models (63xxx) or
+  control curves. This candidate covers the core that describes the state of
+  a PV / storage installation and fits NGSI-LD as entities:
+    - common                (model 1)   device identity: Mn, Md, Opt, Vr, SN, DA
+    - inverter_three_phase  (model 103) legacy three-phase inverter
+                                        measurements and status (the model
+                                        most fielded inverters still expose)
+    - DERMeasureAC          (model 701) IEEE 1547-2018 DER AC measurement
+    - DERCapacity           (model 702) DER nameplate ratings and settings
+    - DERStorageCapacity    (model 713) DER storage capacity, SoC, SoH
+    - DERMeasureDC          (model 714) DER DC measurement with its
+                                        repeating DC ports (PV strings,
+                                        battery, ...)
+    - ac_meter_abcn         (model 203) wye-connected three-phase meter
+  Follow-ups: the other inverter and meter variants (101, 102, 111-113, 201,
+  202, 204, 211-214), DER controls and curves (703-712, 715), the battery
+  models (802-809), irradiance / met / module / tracker models (302-308,
+  501, 502, 601), string combiners (401-404) and the legacy storage model
+  124.
+
+  MODELS: one entity per SunSpec model. The entity type is the SunSpec
+  model (group) name, verbatim, as used in the JSON definitions and in the
+  SunSpec reference library pySunSpec2 (so `common`, `inverter_three_phase`
+  and `ac_meter_abcn` are lower case with underscores). All models of one
+  device describe the same physical device, so the NGSI-LD id is
+  urn:ngsi-ld:<model name>:<Mn>-<SN>.
+
+  NAMING: every attribute is a SunSpec point name, verbatim (W, VA, Var, PF,
+  PhVphA, TotWhInj, St, InvSt, Evt1, ...). No point name clashes with an
+  NGSI-LD reserved term at entity level, so nothing is renamed. The
+  repeating group Prt of model 714 keeps its points (including the port
+  point `ID`, which is nested and therefore not a clash).
+
+  MAPPING:
+    - Scale factors: SunSpec transmits integers plus scale-factor points
+      (value = register x 10^SF). Here every value is given ALREADY SCALED,
+      in the units of the point, so all *_SF (sunssf) points are left out;
+      each description names the scale factor that applies.
+    - Left out as Modbus framing: ID (model id) and L (model length) of each
+      model, and Pad points. Unimplemented values (0x8000, 0xFFFF, ...)
+      should be omitted rather than sent.
+    - Numeric points with units, a scale factor or an accumulator type
+      (acc32, acc64) are numbers; other integer points (DA, NPrt, port ID)
+      are integers.
+    - enum16 points with symbols are enums of the SunSpec symbol names (e.g.
+      InvSt RUNNING); the numeric codes are listed in the description.
+    - bitfield points with symbols are arrays of the names of the bits that
+      are set (e.g. Alrm ["OVER_TEMP"]; [] means none); bitfields and enums
+      without symbols (vendor events Evt2, EvtVnd1-4, StVnd, PrtAlrms) are
+      the raw integer.
+    - string points have maxLength = 2 x register size.
+    - Repeating groups (Prt in 714) are arrays of objects, "@type": "@json"
+      in the context.
+    - required = id, type and the points SunSpec marks mandatory ("M").
+    - Static points, read-write settings, units and the IEEE standards a
+      point supports are stated in the descriptions.
+  NON-SUNSPEC ADDITIONS: `refCommon` (Relationship to the `common` entity of
+  the same device, on every model except common) and `dateObserved` (read
+  time; on the measurement models 103, 701, 713, 714 and 203).
+
+  CONTEXT IRIs: SunSpec has no RDF vocabulary. Each term maps to the model's
+  JSON definition at the release tag plus the point name as fragment, e.g.
+  https://github.com/sunspec/models/blob/v2026-04-20/json/model_701.json#W.
+  The same point name means different things in different models (e.g. PF
+  is a fraction in 701 but a percentage in 103 and 203), so the IRIs are per
+  model: do not merge these contexts into one.
+
+  SOURCE NOTES (worth reporting upstream):
+    - Units are spelt inconsistently across models: "Var"/"Varh" (701, 702)
+      vs "var"/"varh" (103, 203); "WH" (713) vs "Wh" (701, 714).
+    - PF has no units in 701/702 (a fraction) but units "Pct" in 103/203.
+    - Model 203: Evt symbols start at bit 2 (bits 0-1 unused); Evt includes
+      placeholder symbols M_EVENT_Reserved1-8; 36 of its 74 points have no
+      desc (the scale factors among them).
+    - Model 103: Evt2 is mandatory but "Reserved for future use".
+    - Model 714 DCAlrm has a symbol literally named RESERVED (bit 10); a
+      DCV_SF scale factor exists at model level without a model-level DCV.
+    - Model 1: Md and SN descriptions say "32 chars" and Opt / Vr "16 chars",
+      which matches the register sizes.
+    - Model 201's label is "Meter (Single Phase) single phase (AN or AB)
+      meter" (duplicated wording).
+
+  EXAMPLES ARE SYNTHETIC: SunSpec devices are read locally over Modbus and
+  no open dataset of SunSpec readings was found. The examples describe one
+  fictitious installation at the same instant (2026-11-12T12:15:00Z): a
+  10 kW three-phase hybrid PV + battery inverter (Mn "ExampleSolar", SN
+  EXS10K3P000123) producing 6.42 kW AC from two PV strings (7.24 kW DC)
+  while charging its 10.24 kWh battery (SoC 66.5 %), exposing both the
+  legacy model 103 and the 700-series models, and a grid meter (model 203)
+  of another fictitious device. Each example says so in `source`.
+
+  DUPLICATION RISK: dataModel.Energy (InverterDevice, ACMeasurement,
+  ThreePhaseAcMeasurement), dataModel.GreenEnergy (PhotovoltaicDevice,
+  PhotovoltaicMeasurement), dataModel.Battery (StorageBatteryDevice,
+  StorageBatteryMeasurement) and dataModel.Device (Device, Modbus) cover the
+  same physical things with SDM-style attribute names (activePower,
+  stateOfCharge, ...), while this candidate keeps the SunSpec register
+  names. The candidates edint-fotovoltaica (PhotovoltaicSystem,
+  PhotovoltaicMeter, ...), open-energy-ontology (PowerGeneratingUnit,
+  EnergyStorageObject) and saref4ener (Device, Storage) overlap in scope.
+  No type name collides (common is the only generic one). A mapping from
+  SunSpec points to the dataModel.Energy / GreenEnergy / Battery attributes
+  is the obvious next step before promotion.

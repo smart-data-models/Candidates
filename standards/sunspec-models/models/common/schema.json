@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/sunspec-models/models/common/schema.json",
+  "modelTags": "SunSpec,DER,Solar,PV,Inverter,Modbus,IEEE1547",
+  "title": "Smart Data Models - SunSpec Information Models - common",
+  "description": "Common. All SunSpec compliant devices must include this as the first model. SunSpec Information Model 1 (common), sunspec/models v2026-04-20. Point names kept verbatim; values are given already scaled, so the scale-factor (*_SF), padding and model framing (ID, L) points are left out.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:common:<Mn>-<SN> (manufacturer and serial number of the device)."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "common"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'common'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "Mn": {
+      "type": "string",
+      "maxLength": 32,
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_1.json#Mn'. Manufacturer. Well known value registered with SunSpec for compliance. SunSpec type string. Static value (does not change during operation). Mandatory in SunSpec. Standards: IEEE 1547-2018."
+    },
+    "Md": {
+      "type": "string",
+      "maxLength": 32,
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_1.json#Md'. Model. Manufacturer specific value (32 chars). SunSpec type string. Static value (does not change during operation). Mandatory in SunSpec. Standards: IEEE 1547-2018."
+    },
+    "Opt": {
+      "type": "string",
+      "maxLength": 16,
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_1.json#Opt'. Options. Manufacturer specific value (16 chars). SunSpec type string. Static value (does not change during operation)."
+    },
+    "Vr": {
+      "type": "string",
+      "maxLength": 16,
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_1.json#Vr'. Version. Manufacturer specific value (16 chars). SunSpec type string. Static value (does not change during operation). Standards: IEEE 1547-2018."
+    },
+    "SN": {
+      "type": "string",
+      "maxLength": 32,
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_1.json#SN'. Serial Number. Manufacturer specific value (32 chars). SunSpec type string. Static value (does not change during operation). Mandatory in SunSpec. Standards: IEEE 1547-2018."
+    },
+    "DA": {
+      "type": "integer",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_1.json#DA'. Device Address. Modbus device address. This point is mandatory for all SunSpec RTU devices and, for those devices, they must support values from 1-247. SunSpec type uint16. Read-write setting."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "Mn",
+    "Md",
+    "SN"
+  ]
+}

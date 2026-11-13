@@ -1,0 +1,355 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/sunspec-models/models/ac_meter_abcn/schema.json",
+  "modelTags": "SunSpec,DER,Solar,PV,Inverter,Modbus,IEEE1547",
+  "title": "Smart Data Models - SunSpec Information Models - ac_meter_abcn",
+  "description": "wye-connect three phase (abcn) meter. SunSpec Information Model 203 (ac_meter_abcn), sunspec/models v2026-04-20. Point names kept verbatim; values are given already scaled, so the scale-factor (*_SF), padding and model framing (ID, L) points are left out.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:ac_meter_abcn:<Mn>-<SN> (manufacturer and serial number of the device)."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ac_meter_abcn"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ac_meter_abcn'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "refCommon": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://schema.org/URL'. The `common` entity (SunSpec model 1: manufacturer, model, serial number) of the device that exposes this SunSpec model. Not a SunSpec point (Smart Data Models addition): in SunSpec all models of a device are read from the same Modbus map, whose first model is always model 1."
+    },
+    "dateObserved": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Date and time when the values of this SunSpec model were read from the device. Not a SunSpec point (Smart Data Models addition): SunSpec models carry no timestamp."
+    },
+    "A": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#A'. Amps. Total AC Current. Units:'A'. SunSpec type int16 with scale factor A_SF; the value is given already scaled (register value x 10^A_SF). Mandatory in SunSpec."
+    },
+    "AphA": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#AphA'. Amps PhaseA. Phase A Current. Units:'A'. SunSpec type int16 with scale factor A_SF; the value is given already scaled (register value x 10^A_SF). Mandatory in SunSpec."
+    },
+    "AphB": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#AphB'. Amps PhaseB. Phase B Current. Units:'A'. SunSpec type int16 with scale factor A_SF; the value is given already scaled (register value x 10^A_SF). Mandatory in SunSpec."
+    },
+    "AphC": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#AphC'. Amps PhaseC. Phase C Current. Units:'A'. SunSpec type int16 with scale factor A_SF; the value is given already scaled (register value x 10^A_SF). Mandatory in SunSpec."
+    },
+    "PhV": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#PhV'. Voltage LN. Line to Neutral AC Voltage (average of active phases). Units:'V'. SunSpec type int16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF). Mandatory in SunSpec."
+    },
+    "PhVphA": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#PhVphA'. Phase Voltage AN. Units:'V'. SunSpec type int16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF). Mandatory in SunSpec."
+    },
+    "PhVphB": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#PhVphB'. Phase Voltage BN. Units:'V'. SunSpec type int16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF). Mandatory in SunSpec."
+    },
+    "PhVphC": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#PhVphC'. Phase Voltage CN. Units:'V'. SunSpec type int16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF). Mandatory in SunSpec."
+    },
+    "PPV": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#PPV'. Voltage LL. Line to Line AC Voltage (average of active phases). Units:'V'. SunSpec type int16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF). Mandatory in SunSpec."
+    },
+    "PhVphAB": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#PhVphAB'. Phase Voltage AB. Units:'V'. SunSpec type int16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF). Mandatory in SunSpec."
+    },
+    "PhVphBC": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#PhVphBC'. Phase Voltage BC. Units:'V'. SunSpec type int16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF). Mandatory in SunSpec."
+    },
+    "PhVphCA": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#PhVphCA'. Phase Voltage CA. Units:'V'. SunSpec type int16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF). Mandatory in SunSpec."
+    },
+    "Hz": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#Hz'. Hz. Frequency. Units:'Hz'. SunSpec type int16 with scale factor Hz_SF; the value is given already scaled (register value x 10^Hz_SF). Mandatory in SunSpec."
+    },
+    "W": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#W'. Watts. Total Real Power. Units:'W'. SunSpec type int16 with scale factor W_SF; the value is given already scaled (register value x 10^W_SF). Mandatory in SunSpec."
+    },
+    "WphA": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#WphA'. Watts phase A. Units:'W'. SunSpec type int16 with scale factor W_SF; the value is given already scaled (register value x 10^W_SF)."
+    },
+    "WphB": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#WphB'. Watts phase B. Units:'W'. SunSpec type int16 with scale factor W_SF; the value is given already scaled (register value x 10^W_SF)."
+    },
+    "WphC": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#WphC'. Watts phase C. Units:'W'. SunSpec type int16 with scale factor W_SF; the value is given already scaled (register value x 10^W_SF)."
+    },
+    "VA": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#VA'. VA. AC Apparent Power. Units:'VA'. SunSpec type int16 with scale factor VA_SF; the value is given already scaled (register value x 10^VA_SF)."
+    },
+    "VAphA": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#VAphA'. VA phase A. Units:'VA'. SunSpec type int16 with scale factor VA_SF; the value is given already scaled (register value x 10^VA_SF)."
+    },
+    "VAphB": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#VAphB'. VA phase B. Units:'VA'. SunSpec type int16 with scale factor VA_SF; the value is given already scaled (register value x 10^VA_SF)."
+    },
+    "VAphC": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#VAphC'. VA phase C. Units:'VA'. SunSpec type int16 with scale factor VA_SF; the value is given already scaled (register value x 10^VA_SF)."
+    },
+    "VAR": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#VAR'. VAR. Reactive Power. Units:'var'. SunSpec type int16 with scale factor VAR_SF; the value is given already scaled (register value x 10^VAR_SF)."
+    },
+    "VARphA": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#VARphA'. VAR phase A. Units:'var'. SunSpec type int16 with scale factor VAR_SF; the value is given already scaled (register value x 10^VAR_SF)."
+    },
+    "VARphB": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#VARphB'. VAR phase B. Units:'var'. SunSpec type int16 with scale factor VAR_SF; the value is given already scaled (register value x 10^VAR_SF)."
+    },
+    "VARphC": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#VARphC'. VAR phase C. Units:'var'. SunSpec type int16 with scale factor VAR_SF; the value is given already scaled (register value x 10^VAR_SF)."
+    },
+    "PF": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#PF'. PF. Power Factor. Units:'Pct'. SunSpec type int16 with scale factor PF_SF; the value is given already scaled (register value x 10^PF_SF)."
+    },
+    "PFphA": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#PFphA'. PF phase A. Units:'Pct'. SunSpec type int16 with scale factor PF_SF; the value is given already scaled (register value x 10^PF_SF)."
+    },
+    "PFphB": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#PFphB'. PF phase B. Units:'Pct'. SunSpec type int16 with scale factor PF_SF; the value is given already scaled (register value x 10^PF_SF)."
+    },
+    "PFphC": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#PFphC'. PF phase C. Units:'Pct'. SunSpec type int16 with scale factor PF_SF; the value is given already scaled (register value x 10^PF_SF)."
+    },
+    "TotWhExp": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotWhExp'. Total Watt-hours Exported. Total Real Energy Exported. Units:'Wh'. SunSpec type acc32 with scale factor TotWh_SF; the value is given already scaled (register value x 10^TotWh_SF). Mandatory in SunSpec."
+    },
+    "TotWhExpPhA": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotWhExpPhA'. Total Watt-hours Exported phase A. Units:'Wh'. SunSpec type acc32 with scale factor TotWh_SF; the value is given already scaled (register value x 10^TotWh_SF)."
+    },
+    "TotWhExpPhB": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotWhExpPhB'. Total Watt-hours Exported phase B. Units:'Wh'. SunSpec type acc32 with scale factor TotWh_SF; the value is given already scaled (register value x 10^TotWh_SF)."
+    },
+    "TotWhExpPhC": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotWhExpPhC'. Total Watt-hours Exported phase C. Units:'Wh'. SunSpec type acc32 with scale factor TotWh_SF; the value is given already scaled (register value x 10^TotWh_SF)."
+    },
+    "TotWhImp": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotWhImp'. Total Watt-hours Imported. Total Real Energy Imported. Units:'Wh'. SunSpec type acc32 with scale factor TotWh_SF; the value is given already scaled (register value x 10^TotWh_SF). Mandatory in SunSpec."
+    },
+    "TotWhImpPhA": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotWhImpPhA'. Total Watt-hours Imported phase A. Units:'Wh'. SunSpec type acc32 with scale factor TotWh_SF; the value is given already scaled (register value x 10^TotWh_SF)."
+    },
+    "TotWhImpPhB": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotWhImpPhB'. Total Watt-hours Imported phase B. Units:'Wh'. SunSpec type acc32 with scale factor TotWh_SF; the value is given already scaled (register value x 10^TotWh_SF)."
+    },
+    "TotWhImpPhC": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotWhImpPhC'. Total Watt-hours Imported phase C. Units:'Wh'. SunSpec type acc32 with scale factor TotWh_SF; the value is given already scaled (register value x 10^TotWh_SF)."
+    },
+    "TotVAhExp": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotVAhExp'. Total VA-hours Exported. Total Apparent Energy Exported. Units:'VAh'. SunSpec type acc32 with scale factor TotVAh_SF; the value is given already scaled (register value x 10^TotVAh_SF)."
+    },
+    "TotVAhExpPhA": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotVAhExpPhA'. Total VA-hours Exported phase A. Units:'VAh'. SunSpec type acc32 with scale factor TotVAh_SF; the value is given already scaled (register value x 10^TotVAh_SF)."
+    },
+    "TotVAhExpPhB": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotVAhExpPhB'. Total VA-hours Exported phase B. Units:'VAh'. SunSpec type acc32 with scale factor TotVAh_SF; the value is given already scaled (register value x 10^TotVAh_SF)."
+    },
+    "TotVAhExpPhC": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotVAhExpPhC'. Total VA-hours Exported phase C. Units:'VAh'. SunSpec type acc32 with scale factor TotVAh_SF; the value is given already scaled (register value x 10^TotVAh_SF)."
+    },
+    "TotVAhImp": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotVAhImp'. Total VA-hours Imported. Total Apparent Energy Imported. Units:'VAh'. SunSpec type acc32 with scale factor TotVAh_SF; the value is given already scaled (register value x 10^TotVAh_SF)."
+    },
+    "TotVAhImpPhA": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotVAhImpPhA'. Total VA-hours Imported phase A. Units:'VAh'. SunSpec type acc32 with scale factor TotVAh_SF; the value is given already scaled (register value x 10^TotVAh_SF)."
+    },
+    "TotVAhImpPhB": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotVAhImpPhB'. Total VA-hours Imported phase B. Units:'VAh'. SunSpec type acc32 with scale factor TotVAh_SF; the value is given already scaled (register value x 10^TotVAh_SF)."
+    },
+    "TotVAhImpPhC": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotVAhImpPhC'. Total VA-hours Imported phase C. Units:'VAh'. SunSpec type acc32 with scale factor TotVAh_SF; the value is given already scaled (register value x 10^TotVAh_SF)."
+    },
+    "TotVArhImpQ1": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotVArhImpQ1'. Total VAR-hours Imported Q1. Total Reactive Energy Imported Quadrant 1. Units:'varh'. SunSpec type acc32 with scale factor TotVArh_SF; the value is given already scaled (register value x 10^TotVArh_SF)."
+    },
+    "TotVArhImpQ1PhA": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotVArhImpQ1PhA'. Total VAr-hours Imported Q1 phase A. Units:'varh'. SunSpec type acc32 with scale factor TotVArh_SF; the value is given already scaled (register value x 10^TotVArh_SF)."
+    },
+    "TotVArhImpQ1PhB": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotVArhImpQ1PhB'. Total VAr-hours Imported Q1 phase B. Units:'varh'. SunSpec type acc32 with scale factor TotVArh_SF; the value is given already scaled (register value x 10^TotVArh_SF)."
+    },
+    "TotVArhImpQ1PhC": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotVArhImpQ1PhC'. Total VAr-hours Imported Q1 phase C. Units:'varh'. SunSpec type acc32 with scale factor TotVArh_SF; the value is given already scaled (register value x 10^TotVArh_SF)."
+    },
+    "TotVArhImpQ2": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotVArhImpQ2'. Total VAr-hours Imported Q2. Total Reactive Power Imported Quadrant 2. Units:'varh'. SunSpec type acc32 with scale factor TotVArh_SF; the value is given already scaled (register value x 10^TotVArh_SF)."
+    },
+    "TotVArhImpQ2PhA": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotVArhImpQ2PhA'. Total VAr-hours Imported Q2 phase A. Units:'varh'. SunSpec type acc32 with scale factor TotVArh_SF; the value is given already scaled (register value x 10^TotVArh_SF)."
+    },
+    "TotVArhImpQ2PhB": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotVArhImpQ2PhB'. Total VAr-hours Imported Q2 phase B. Units:'varh'. SunSpec type acc32 with scale factor TotVArh_SF; the value is given already scaled (register value x 10^TotVArh_SF)."
+    },
+    "TotVArhImpQ2PhC": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotVArhImpQ2PhC'. Total VAr-hours Imported Q2 phase C. Units:'varh'. SunSpec type acc32 with scale factor TotVArh_SF; the value is given already scaled (register value x 10^TotVArh_SF)."
+    },
+    "TotVArhExpQ3": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotVArhExpQ3'. Total VAr-hours Exported Q3. Total Reactive Power Exported Quadrant 3. Units:'varh'. SunSpec type acc32 with scale factor TotVArh_SF; the value is given already scaled (register value x 10^TotVArh_SF)."
+    },
+    "TotVArhExpQ3PhA": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotVArhExpQ3PhA'. Total VAr-hours Exported Q3 phase A. Units:'varh'. SunSpec type acc32 with scale factor TotVArh_SF; the value is given already scaled (register value x 10^TotVArh_SF)."
+    },
+    "TotVArhExpQ3PhB": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotVArhExpQ3PhB'. Total VAr-hours Exported Q3 phase B. Units:'varh'. SunSpec type acc32 with scale factor TotVArh_SF; the value is given already scaled (register value x 10^TotVArh_SF)."
+    },
+    "TotVArhExpQ3PhC": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotVArhExpQ3PhC'. Total VAr-hours Exported Q3 phase C. Units:'varh'. SunSpec type acc32 with scale factor TotVArh_SF; the value is given already scaled (register value x 10^TotVArh_SF)."
+    },
+    "TotVArhExpQ4": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotVArhExpQ4'. Total VAr-hours Exported Q4. Total Reactive Power Exported Quadrant 4. Units:'varh'. SunSpec type acc32 with scale factor TotVArh_SF; the value is given already scaled (register value x 10^TotVArh_SF)."
+    },
+    "TotVArhExpQ4PhA": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotVArhExpQ4PhA'. Total VAr-hours Exported Q4 Imported phase A. Units:'varh'. SunSpec type acc32 with scale factor TotVArh_SF; the value is given already scaled (register value x 10^TotVArh_SF)."
+    },
+    "TotVArhExpQ4PhB": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotVArhExpQ4PhB'. Total VAr-hours Exported Q4 Imported phase B. Units:'varh'. SunSpec type acc32 with scale factor TotVArh_SF; the value is given already scaled (register value x 10^TotVArh_SF)."
+    },
+    "TotVArhExpQ4PhC": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#TotVArhExpQ4PhC'. Total VAr-hours Exported Q4 Imported phase C. Units:'varh'. SunSpec type acc32 with scale factor TotVArh_SF; the value is given already scaled (register value x 10^TotVArh_SF)."
+    },
+    "Evt": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "M_EVENT_Power_Failure",
+          "M_EVENT_Under_Voltage",
+          "M_EVENT_Low_PF",
+          "M_EVENT_Over_Current",
+          "M_EVENT_Over_Voltage",
+          "M_EVENT_Missing_Sensor",
+          "M_EVENT_Reserved1",
+          "M_EVENT_Reserved2",
+          "M_EVENT_Reserved3",
+          "M_EVENT_Reserved4",
+          "M_EVENT_Reserved5",
+          "M_EVENT_Reserved6",
+          "M_EVENT_Reserved7",
+          "M_EVENT_Reserved8",
+          "M_EVENT_OEM01",
+          "M_EVENT_OEM02",
+          "M_EVENT_OEM03",
+          "M_EVENT_OEM04",
+          "M_EVENT_OEM05",
+          "M_EVENT_OEM06",
+          "M_EVENT_OEM07",
+          "M_EVENT_OEM08",
+          "M_EVENT_OEM09",
+          "M_EVENT_OEM10",
+          "M_EVENT_OEM11",
+          "M_EVENT_OEM12",
+          "M_EVENT_OEM13",
+          "M_EVENT_OEM14",
+          "M_EVENT_OEM15"
+        ]
+      },
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_203.json#Evt'. Events. Meter Event Flags. Bitfield: the array lists the names of the bits that are set (M_EVENT_Power_Failure=bit 2, M_EVENT_Under_Voltage=bit 3, M_EVENT_Low_PF=bit 4, M_EVENT_Over_Current=bit 5, M_EVENT_Over_Voltage=bit 6, M_EVENT_Missing_Sensor=bit 7, M_EVENT_Reserved1=bit 8, M_EVENT_Reserved2=bit 9, M_EVENT_Reserved3=bit 10, M_EVENT_Reserved4=bit 11, M_EVENT_Reserved5=bit 12, M_EVENT_Reserved6=bit 13, M_EVENT_Reserved7=bit 14, M_EVENT_Reserved8=bit 15, M_EVENT_OEM01=bit 16, M_EVENT_OEM02=bit 17, M_EVENT_OEM03=bit 18, M_EVENT_OEM04=bit 19, M_EVENT_OEM05=bit 20, M_EVENT_OEM06=bit 21, M_EVENT_OEM07=bit 22, M_EVENT_OEM08=bit 23, M_EVENT_OEM09=bit 24, M_EVENT_OEM10=bit 25, M_EVENT_OEM11=bit 26, M_EVENT_OEM12=bit 27, M_EVENT_OEM13=bit 28, M_EVENT_OEM14=bit 29, M_EVENT_OEM15=bit 30); an empty array means no bit set. SunSpec type bitfield32. Mandatory in SunSpec."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "A",
+    "AphA",
+    "AphB",
+    "AphC",
+    "PhV",
+    "PhVphA",
+    "PhVphB",
+    "PhVphC",
+    "PPV",
+    "PhVphAB",
+    "PhVphBC",
+    "PhVphCA",
+    "Hz",
+    "W",
+    "TotWhExp",
+    "TotWhImp",
+    "Evt"
+  ]
+}

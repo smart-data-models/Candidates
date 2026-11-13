@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/sunspec-models/models/inverter_three_phase/schema.json",
+  "modelTags": "SunSpec,DER,Solar,PV,Inverter,Modbus,IEEE1547",
+  "title": "Smart Data Models - SunSpec Information Models - inverter_three_phase",
+  "description": "Inverter (Three Phase). Include this model for three phase inverter monitoring. SunSpec Information Model 103 (inverter_three_phase), sunspec/models v2026-04-20. Point names kept verbatim; values are given already scaled, so the scale-factor (*_SF), padding and model framing (ID, L) points are left out.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:inverter_three_phase:<Mn>-<SN> (manufacturer and serial number of the device)."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "inverter_three_phase"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'inverter_three_phase'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "refCommon": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://schema.org/URL'. The `common` entity (SunSpec model 1: manufacturer, model, serial number) of the device that exposes this SunSpec model. Not a SunSpec point (Smart Data Models addition): in SunSpec all models of a device are read from the same Modbus map, whose first model is always model 1."
+    },
+    "dateObserved": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Date and time when the values of this SunSpec model were read from the device. Not a SunSpec point (Smart Data Models addition): SunSpec models carry no timestamp."
+    },
+    "A": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#A'. Amps. AC Current. Sum of active phases. Units:'A'. SunSpec type uint16 with scale factor A_SF; the value is given already scaled (register value x 10^A_SF). Mandatory in SunSpec."
+    },
+    "AphA": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#AphA'. Amps PhaseA. Phase A Current. Connected Phase. Units:'A'. SunSpec type uint16 with scale factor A_SF; the value is given already scaled (register value x 10^A_SF). Mandatory in SunSpec."
+    },
+    "AphB": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#AphB'. Amps PhaseB. Phase B Current. Connected Phase. Units:'A'. SunSpec type uint16 with scale factor A_SF; the value is given already scaled (register value x 10^A_SF). Mandatory in SunSpec."
+    },
+    "AphC": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#AphC'. Amps PhaseC. Phase C Current. Connected Phase. Units:'A'. SunSpec type uint16 with scale factor A_SF; the value is given already scaled (register value x 10^A_SF). Mandatory in SunSpec."
+    },
+    "PPVphAB": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#PPVphAB'. Phase Voltage AB. Units:'V'. SunSpec type uint16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF)."
+    },
+    "PPVphBC": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#PPVphBC'. Phase Voltage BC. Units:'V'. SunSpec type uint16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF)."
+    },
+    "PPVphCA": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#PPVphCA'. Phase Voltage CA. Units:'V'. SunSpec type uint16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF)."
+    },
+    "PhVphA": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#PhVphA'. Phase Voltage AN. Units:'V'. SunSpec type uint16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF). Mandatory in SunSpec."
+    },
+    "PhVphB": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#PhVphB'. Phase Voltage BN. Units:'V'. SunSpec type uint16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF). Mandatory in SunSpec."
+    },
+    "PhVphC": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#PhVphC'. Phase Voltage CN. Units:'V'. SunSpec type uint16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF). Mandatory in SunSpec."
+    },
+    "W": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#W'. Watts. AC Power. Units:'W'. SunSpec type int16 with scale factor W_SF; the value is given already scaled (register value x 10^W_SF). Mandatory in SunSpec."
+    },
+    "Hz": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#Hz'. Hz. Line Frequency. Units:'Hz'. SunSpec type uint16 with scale factor Hz_SF; the value is given already scaled (register value x 10^Hz_SF). Mandatory in SunSpec."
+    },
+    "VA": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#VA'. VA. AC Apparent Power. Units:'VA'. SunSpec type int16 with scale factor VA_SF; the value is given already scaled (register value x 10^VA_SF)."
+    },
+    "VAr": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#VAr'. VAr. AC Reactive Power. Units:'var'. SunSpec type int16 with scale factor VAr_SF; the value is given already scaled (register value x 10^VAr_SF)."
+    },
+    "PF": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#PF'. PF. AC Power Factor. Units:'Pct'. SunSpec type int16 with scale factor PF_SF; the value is given already scaled (register value x 10^PF_SF)."
+    },
+    "WH": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#WH'. WattHours. AC Energy. Units:'Wh'. SunSpec type acc32 with scale factor WH_SF; the value is given already scaled (register value x 10^WH_SF). Mandatory in SunSpec."
+    },
+    "DCA": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#DCA'. DC Amps. DC Current. Units:'A'. SunSpec type uint16 with scale factor DCA_SF; the value is given already scaled (register value x 10^DCA_SF)."
+    },
+    "DCV": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#DCV'. DC Voltage. Units:'V'. SunSpec type uint16 with scale factor DCV_SF; the value is given already scaled (register value x 10^DCV_SF)."
+    },
+    "DCW": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#DCW'. DC Watts. DC Power. Units:'W'. SunSpec type int16 with scale factor DCW_SF; the value is given already scaled (register value x 10^DCW_SF)."
+    },
+    "TmpCab": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#TmpCab'. Cabinet Temperature. Units:'C'. SunSpec type int16 with scale factor Tmp_SF; the value is given already scaled (register value x 10^Tmp_SF). Mandatory in SunSpec."
+    },
+    "TmpSnk": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#TmpSnk'. Heat Sink Temperature. Units:'C'. SunSpec type int16 with scale factor Tmp_SF; the value is given already scaled (register value x 10^Tmp_SF)."
+    },
+    "TmpTrns": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#TmpTrns'. Transformer Temperature. Units:'C'. SunSpec type int16 with scale factor Tmp_SF; the value is given already scaled (register value x 10^Tmp_SF)."
+    },
+    "TmpOt": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#TmpOt'. Other Temperature. Units:'C'. SunSpec type int16 with scale factor Tmp_SF; the value is given already scaled (register value x 10^Tmp_SF)."
+    },
+    "St": {
+      "type": "string",
+      "enum": [
+        "OFF",
+        "SLEEPING",
+        "STARTING",
+        "MPPT",
+        "THROTTLED",
+        "SHUTTING_DOWN",
+        "FAULT",
+        "STANDBY"
+      ],
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#St'. Operating State. Values are the SunSpec symbol names (OFF=1, SLEEPING=2, STARTING=3, MPPT=4, THROTTLED=5, SHUTTING_DOWN=6, FAULT=7, STANDBY=8). SunSpec type enum16. Mandatory in SunSpec."
+    },
+    "StVnd": {
+      "type": "integer",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#StVnd'. Vendor Operating State. Vendor specific operating state code. SunSpec type enum16."
+    },
+    "Evt1": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "GROUND_FAULT",
+          "DC_OVER_VOLT",
+          "AC_DISCONNECT",
+          "DC_DISCONNECT",
+          "GRID_DISCONNECT",
+          "CABINET_OPEN",
+          "MANUAL_SHUTDOWN",
+          "OVER_TEMP",
+          "OVER_FREQUENCY",
+          "UNDER_FREQUENCY",
+          "AC_OVER_VOLT",
+          "AC_UNDER_VOLT",
+          "BLOWN_STRING_FUSE",
+          "UNDER_TEMP",
+          "MEMORY_LOSS",
+          "HW_TEST_FAILURE"
+        ]
+      },
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#Evt1'. Event1. Event fields. Bitfield: the array lists the names of the bits that are set (GROUND_FAULT=bit 0, DC_OVER_VOLT=bit 1, AC_DISCONNECT=bit 2, DC_DISCONNECT=bit 3, GRID_DISCONNECT=bit 4, CABINET_OPEN=bit 5, MANUAL_SHUTDOWN=bit 6, OVER_TEMP=bit 7, OVER_FREQUENCY=bit 8, UNDER_FREQUENCY=bit 9, AC_OVER_VOLT=bit 10, AC_UNDER_VOLT=bit 11, BLOWN_STRING_FUSE=bit 12, UNDER_TEMP=bit 13, MEMORY_LOSS=bit 14, HW_TEST_FAILURE=bit 15); an empty array means no bit set. SunSpec type bitfield32. Mandatory in SunSpec."
+    },
+    "Evt2": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#Evt2'. Event Bitfield 2. Reserved for future use. Bitfield without SunSpec symbols: the raw integer value of the bitfield. SunSpec type bitfield32. Mandatory in SunSpec."
+    },
+    "EvtVnd1": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#EvtVnd1'. Vendor Event Bitfield 1. Vendor defined events. Bitfield without SunSpec symbols: the raw integer value of the bitfield. SunSpec type bitfield32."
+    },
+    "EvtVnd2": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#EvtVnd2'. Vendor Event Bitfield 2. Vendor defined events. Bitfield without SunSpec symbols: the raw integer value of the bitfield. SunSpec type bitfield32."
+    },
+    "EvtVnd3": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#EvtVnd3'. Vendor Event Bitfield 3. Vendor defined events. Bitfield without SunSpec symbols: the raw integer value of the bitfield. SunSpec type bitfield32."
+    },
+    "EvtVnd4": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_103.json#EvtVnd4'. Vendor Event Bitfield 4. Vendor defined events. Bitfield without SunSpec symbols: the raw integer value of the bitfield. SunSpec type bitfield32."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "A",
+    "AphA",
+    "AphB",
+    "AphC",
+    "PhVphA",
+    "PhVphB",
+    "PhVphC",
+    "W",
+    "Hz",
+    "WH",
+    "TmpCab",
+    "St",
+    "Evt1",
+    "Evt2"
+  ]
+}

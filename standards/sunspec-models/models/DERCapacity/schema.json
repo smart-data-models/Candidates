@@ -1,0 +1,267 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/sunspec-models/models/DERCapacity/schema.json",
+  "modelTags": "SunSpec,DER,Solar,PV,Inverter,Modbus,IEEE1547",
+  "title": "Smart Data Models - SunSpec Information Models - DERCapacity",
+  "description": "DER Capacity. DER capacity model. SunSpec Information Model 702 (DERCapacity), sunspec/models v2026-04-20. Point names kept verbatim; values are given already scaled, so the scale-factor (*_SF), padding and model framing (ID, L) points are left out.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:DERCapacity:<Mn>-<SN> (manufacturer and serial number of the device)."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "DERCapacity"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'DERCapacity'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "refCommon": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://schema.org/URL'. The `common` entity (SunSpec model 1: manufacturer, model, serial number) of the device that exposes this SunSpec model. Not a SunSpec point (Smart Data Models addition): in SunSpec all models of a device are read from the same Modbus map, whose first model is always model 1."
+    },
+    "WMaxRtg": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#WMaxRtg'. Active Power Max Rating. Maximum active power rating at unity power factor in watts. Units:'W'. SunSpec type uint16 with scale factor W_SF; the value is given already scaled (register value x 10^W_SF). Static value (does not change during operation). Standards: IEEE 1547-2018."
+    },
+    "WOvrExtRtg": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#WOvrExtRtg'. Active Power (Over-Excited) Rating. Active power rating at specified over-excited power factor in watts. Units:'W'. SunSpec type uint16 with scale factor W_SF; the value is given already scaled (register value x 10^W_SF). Static value (does not change during operation). Standards: IEEE 1547-2018."
+    },
+    "WOvrExtRtgPF": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#WOvrExtRtgPF'. Specified Over-Excited PF. Specified over-excited power factor. SunSpec type uint16 with scale factor PF_SF; the value is given already scaled (register value x 10^PF_SF). Static value (does not change during operation). Standards: IEEE 1547-2018."
+    },
+    "WUndExtRtg": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#WUndExtRtg'. Active Power (Under-Excited) Rating. Active power rating at specified under-excited power factor in watts. Units:'W'. SunSpec type uint16 with scale factor W_SF; the value is given already scaled (register value x 10^W_SF). Static value (does not change during operation). Standards: IEEE 1547-2018."
+    },
+    "WUndExtRtgPF": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#WUndExtRtgPF'. Specified Under-Excited PF. Specified under-excited power factor. SunSpec type uint16 with scale factor PF_SF; the value is given already scaled (register value x 10^PF_SF). Static value (does not change during operation). Standards: IEEE 1547-2018."
+    },
+    "VAMaxRtg": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#VAMaxRtg'. Apparent Power Max Rating. Maximum apparent power rating in voltamperes. Units:'VA'. SunSpec type uint16 with scale factor VA_SF; the value is given already scaled (register value x 10^VA_SF). Static value (does not change during operation). Standards: IEEE 1547-2018."
+    },
+    "VarMaxInjRtg": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#VarMaxInjRtg'. Reactive Power Injected Rating. Maximum injected reactive power rating in vars. Units:'Var'. SunSpec type uint16 with scale factor Var_SF; the value is given already scaled (register value x 10^Var_SF). Static value (does not change during operation). Standards: IEEE 1547-2018."
+    },
+    "VarMaxAbsRtg": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#VarMaxAbsRtg'. Reactive Power Absorbed Rating. Maximum absorbed reactive power rating in vars. Units:'Var'. SunSpec type uint16 with scale factor Var_SF; the value is given already scaled (register value x 10^Var_SF). Static value (does not change during operation). Standards: IEEE 1547-2018."
+    },
+    "WChaRteMaxRtg": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#WChaRteMaxRtg'. Charge Rate Max Rating. Maximum active power charge rate in watts. Units:'W'. SunSpec type uint16 with scale factor W_SF; the value is given already scaled (register value x 10^W_SF). Static value (does not change during operation). Standards: IEEE 1547-2018."
+    },
+    "WDisChaRteMaxRtg": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#WDisChaRteMaxRtg'. Discharge Rate Max Rating. Maximum active power discharge rate in watts. Units:'W'. SunSpec type uint16 with scale factor W_SF; the value is given already scaled (register value x 10^W_SF). Static value (does not change during operation)."
+    },
+    "VAChaRteMaxRtg": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#VAChaRteMaxRtg'. Charge Rate Max VA Rating. Maximum apparent power charge rate in voltamperes. Units:'VA'. SunSpec type uint16 with scale factor VA_SF; the value is given already scaled (register value x 10^VA_SF). Static value (does not change during operation). Standards: IEEE 1547-2018."
+    },
+    "VADisChaRteMaxRtg": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#VADisChaRteMaxRtg'. Discharge Rate Max VA Rating. Maximum apparent power discharge rate in voltamperes. Units:'VA'. SunSpec type uint16 with scale factor VA_SF; the value is given already scaled (register value x 10^VA_SF). Static value (does not change during operation)."
+    },
+    "VNomRtg": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#VNomRtg'. AC Voltage Nominal Rating. Voltages are LN for single phase DER (e.g. 120 V nominal), LL for split phase DER (e.g. 240 V nominal), and LL for three phase DER (e.g., 480 V nominal). Units:'V'. SunSpec type uint16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF). Static value (does not change during operation). Standards: IEEE 1547-2018."
+    },
+    "VMaxRtg": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#VMaxRtg'. AC Voltage Max Rating. AC voltage maximum rating. Voltages are LN for single phase DER (e.g. 120 V nominal), LL for split phase DER (e.g. 240 V nominal), and LL for three phase DER (e.g., 480 V nominal). Units:'V'. SunSpec type uint16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF). Static value (does not change during operation). Standards: IEEE 1547-2018."
+    },
+    "VMinRtg": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#VMinRtg'. AC Voltage Min Rating. AC voltage minimum rating. Voltages are LN for single phase DER (e.g. 120 V nominal), LL for split phase DER (e.g. 240 V nominal), and LL for three phase DER (e.g., 480 V nominal). Units:'V'. SunSpec type uint16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF). Static value (does not change during operation). Standards: IEEE 1547-2018."
+    },
+    "AMaxRtg": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#AMaxRtg'. AC Current Max Rating. AC current maximum rating in amps. Units:'A'. SunSpec type uint16 with scale factor A_SF; the value is given already scaled (register value x 10^A_SF). Static value (does not change during operation)."
+    },
+    "PFOvrExtRtg": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#PFOvrExtRtg'. PF Over-Excited Rating (Unused). Unused. Please use WOvrExtRtgPF. This point is duplicative of WOvrExtRtgPF. SunSpec type uint16 with scale factor PF_SF; the value is given already scaled (register value x 10^PF_SF). Static value (does not change during operation)."
+    },
+    "PFUndExtRtg": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#PFUndExtRtg'. PF Under-Excited Rating (Unused). Unused. Please use WUndExtRtgPF. This point is duplicative of WUndExtRtgPF. SunSpec type uint16 with scale factor PF_SF; the value is given already scaled (register value x 10^PF_SF). Static value (does not change during operation)."
+    },
+    "ReactSusceptRtg": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#ReactSusceptRtg'. Reactive Susceptance. Reactive susceptance that remains connected to the Area EPS in the cease to energize and trip state. Units:'S'. SunSpec type uint16 with scale factor S_SF; the value is given already scaled (register value x 10^S_SF). Static value (does not change during operation). Standards: IEEE 1547-2018."
+    },
+    "NorOpCatRtg": {
+      "type": "string",
+      "enum": [
+        "CAT_A",
+        "CAT_B"
+      ],
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#NorOpCatRtg'. Normal Operating Category. Normal operating performance category as specified in IEEE 1547-2018. Values are the SunSpec symbol names (CAT_A=0, CAT_B=1). SunSpec type enum16. Static value (does not change during operation). Standards: IEEE 1547-2018."
+    },
+    "AbnOpCatRtg": {
+      "type": "string",
+      "enum": [
+        "CAT_1",
+        "CAT_2",
+        "CAT_3"
+      ],
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#AbnOpCatRtg'. Abnormal Operating Category. Abnormal operating performance category as specified in IEEE 1547-2018. Values are the SunSpec symbol names (CAT_1=0, CAT_2=1, CAT_3=2). SunSpec type enum16. Static value (does not change during operation). Standards: IEEE 1547-2018."
+    },
+    "CtrlModes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "MAX_W",
+          "FIXED_W",
+          "FIXED_VAR",
+          "FIXED_PF",
+          "VOLT_VAR",
+          "FREQ_WATT",
+          "DYN_REACT_CURR",
+          "LV_TRIP",
+          "HV_TRIP",
+          "WATT_VAR",
+          "VOLT_WATT",
+          "SCHEDULED",
+          "LF_TRIP",
+          "HF_TRIP"
+        ]
+      },
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#CtrlModes'. Supported Control Modes. Supported control mode functions. Bitfield: the array lists the names of the bits that are set (MAX_W=bit 0, FIXED_W=bit 1, FIXED_VAR=bit 2, FIXED_PF=bit 3, VOLT_VAR=bit 4, FREQ_WATT=bit 5, DYN_REACT_CURR=bit 6, LV_TRIP=bit 7, HV_TRIP=bit 8, WATT_VAR=bit 9, VOLT_WATT=bit 10, SCHEDULED=bit 11, LF_TRIP=bit 12, HF_TRIP=bit 13); an empty array means no bit set. SunSpec type bitfield32. Static value (does not change during operation). Standards: IEEE 1547-2018."
+    },
+    "IntIslandCatRtg": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "UNCATEGORIZED",
+          "INT_ISL_CAPABLE",
+          "BLACK_START_CAPABLE",
+          "ISOCH_CAPABLE"
+        ]
+      },
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#IntIslandCatRtg'. Intentional Island Categories. Bitfield: the array lists the names of the bits that are set (UNCATEGORIZED=bit 0, INT_ISL_CAPABLE=bit 1, BLACK_START_CAPABLE=bit 2, ISOCH_CAPABLE=bit 3); an empty array means no bit set. SunSpec type bitfield16. Static value (does not change during operation)."
+    },
+    "WMax": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#WMax'. Active Power Max Setting. Maximum active power setting used to adjust maximum active power setting. Units:'W'. SunSpec type uint16 with scale factor W_SF; the value is given already scaled (register value x 10^W_SF). Read-write setting."
+    },
+    "WMaxOvrExt": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#WMaxOvrExt'. Active Power (Over-Excited) Setting. Active power setting at specified over-excited power factor in watts. Units:'W'. SunSpec type uint16 with scale factor W_SF; the value is given already scaled (register value x 10^W_SF). Read-write setting."
+    },
+    "WOvrExtPF": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#WOvrExtPF'. Specified Over-Excited PF. Specified over-excited power factor. SunSpec type uint16 with scale factor PF_SF; the value is given already scaled (register value x 10^PF_SF). Read-write setting."
+    },
+    "WMaxUndExt": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#WMaxUndExt'. Active Power (Under-Excited) Setting. Active power setting at specified under-excited power factor in watts. Units:'W'. SunSpec type uint16 with scale factor W_SF; the value is given already scaled (register value x 10^W_SF). Read-write setting."
+    },
+    "WUndExtPF": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#WUndExtPF'. Specified Under-Excited PF. Specified under-excited power factor. SunSpec type uint16 with scale factor PF_SF; the value is given already scaled (register value x 10^PF_SF). Read-write setting."
+    },
+    "VAMax": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#VAMax'. Apparent Power Max Setting. Maximum apparent power setting used to adjust maximum apparent power rating. Units:'VA'. SunSpec type uint16 with scale factor VA_SF; the value is given already scaled (register value x 10^VA_SF). Read-write setting."
+    },
+    "VarMaxInj": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#VarMaxInj'. Reactive Power Injected Setting. Maximum injected reactive power setting used to adjust maximum injected reactive power rating. Units:'Var'. SunSpec type uint16 with scale factor Var_SF; the value is given already scaled (register value x 10^Var_SF). Read-write setting."
+    },
+    "VarMaxAbs": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#VarMaxAbs'. Reactive Power Absorbed Setting. Maximum absorbed reactive power setting used to adjust maximum absorbed reactive power rating. Units:'Var'. SunSpec type uint16 with scale factor Var_SF; the value is given already scaled (register value x 10^Var_SF). Read-write setting."
+    },
+    "WChaRteMax": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#WChaRteMax'. Charge Rate Max Setting. Maximum active power charge rate setting used to adjust maximum active power charge rate rating. Units:'W'. SunSpec type uint16 with scale factor W_SF; the value is given already scaled (register value x 10^W_SF). Read-write setting."
+    },
+    "WDisChaRteMax": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#WDisChaRteMax'. Discharge Rate Max Setting. Maximum active power discharge rate setting used to adjust maximum active power discharge rate rating. Units:'W'. SunSpec type uint16 with scale factor W_SF; the value is given already scaled (register value x 10^W_SF). Read-write setting."
+    },
+    "VAChaRteMax": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#VAChaRteMax'. Charge Rate Max VA Setting. Maximum apparent power charge rate setting used to adjust maximum apparent power charge rate rating. Units:'VA'. SunSpec type uint16 with scale factor VA_SF; the value is given already scaled (register value x 10^VA_SF). Read-write setting."
+    },
+    "VADisChaRteMax": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#VADisChaRteMax'. Discharge Rate Max VA Setting. Maximum apparent power discharge rate setting used to adjust maximum apparent power discharge rate rating. Units:'VA'. SunSpec type uint16 with scale factor VA_SF; the value is given already scaled (register value x 10^VA_SF). Read-write setting."
+    },
+    "VNom": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#VNom'. Nominal AC Voltage Setting. Voltages are LN for single phase DER (e.g. 120 V nominal), LL for split phase DER (e.g. 240 V nominal), and LL for three phase DER (e.g., 480 V nominal). Units:'V'. SunSpec type uint16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF). Read-write setting."
+    },
+    "VMax": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#VMax'. AC Voltage Max Setting. AC voltage maximum setting used to adjust AC voltage maximum rating. Voltages are LN for single phase DER (e.g. 120 V nominal), LL for split phase DER (e.g. 240 V nominal), and LL for three phase DER (e.g., 480 V nominal). Units:'V'. SunSpec type uint16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF). Read-write setting."
+    },
+    "VMin": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#VMin'. AC Voltage Min Setting. AC voltage minimum setting used to adjust AC voltage minimum rating. Voltages are LN for single phase DER (e.g. 120 V nominal), LL for split phase DER (e.g. 240 V nominal), and LL for three phase DER (e.g., 480 V nominal). Units:'V'. SunSpec type uint16 with scale factor V_SF; the value is given already scaled (register value x 10^V_SF). Read-write setting."
+    },
+    "AMax": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#AMax'. AC Current Max Setting. Maximum AC current setting used to adjust maximum AC current rating. Units:'A'. SunSpec type uint16 with scale factor A_SF; the value is given already scaled (register value x 10^A_SF). Read-write setting."
+    },
+    "PFOvrExt": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#PFOvrExt'. PF Over-Excited Setting (Unused). Unused. Please use WOvrExtPF. This point is duplicative of WOvrExtPF. SunSpec type uint16 with scale factor PF_SF; the value is given already scaled (register value x 10^PF_SF). Read-write setting."
+    },
+    "PFUndExt": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#PFUndExt'. PF Under-Excited Setting (Unused). Unused. Please use WUndExtPF. This point is duplicative of WUndExtPF. SunSpec type uint16 with scale factor PF_SF; the value is given already scaled (register value x 10^PF_SF). Read-write setting."
+    },
+    "IntIslandCat": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "UNCATEGORIZED",
+          "INT_ISL_CAPABLE",
+          "BLACK_START_CAPABLE",
+          "ISOCH_CAPABLE"
+        ]
+      },
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_702.json#IntIslandCat'. Intentional Island Categories. Bitfield: the array lists the names of the bits that are set (UNCATEGORIZED=bit 0, INT_ISL_CAPABLE=bit 1, BLACK_START_CAPABLE=bit 2, ISOCH_CAPABLE=bit 3); an empty array means no bit set. SunSpec type bitfield16. Read-write setting."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/sunspec-models/models/DERStorageCapacity/schema.json",
+  "modelTags": "SunSpec,DER,Solar,PV,Inverter,Modbus,IEEE1547",
+  "title": "Smart Data Models - SunSpec Information Models - DERStorageCapacity",
+  "description": "DER Storage Capacity. DER storage capacity. SunSpec Information Model 713 (DERStorageCapacity), sunspec/models v2026-04-20. Point names kept verbatim; values are given already scaled, so the scale-factor (*_SF), padding and model framing (ID, L) points are left out.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:DERStorageCapacity:<Mn>-<SN> (manufacturer and serial number of the device)."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "DERStorageCapacity"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'DERStorageCapacity'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "refCommon": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://schema.org/URL'. The `common` entity (SunSpec model 1: manufacturer, model, serial number) of the device that exposes this SunSpec model. Not a SunSpec point (Smart Data Models addition): in SunSpec all models of a device are read from the same Modbus map, whose first model is always model 1."
+    },
+    "dateObserved": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Date and time when the values of this SunSpec model were read from the device. Not a SunSpec point (Smart Data Models addition): SunSpec models carry no timestamp."
+    },
+    "WHRtg": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_713.json#WHRtg'. Energy Rating. Energy rating of the DER storage. Units:'WH'. SunSpec type uint16 with scale factor WH_SF; the value is given already scaled (register value x 10^WH_SF)."
+    },
+    "WHAvail": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_713.json#WHAvail'. Energy Available. Energy available of the DER storage (WHAvail = WHRtg * SoC * SoH). Units:'WH'. SunSpec type uint16 with scale factor WH_SF; the value is given already scaled (register value x 10^WH_SF)."
+    },
+    "SoC": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_713.json#SoC'. State of Charge. State of charge of the DER storage. SOC shall be fixed to 0% for DER without storage capabilities. Units:'Pct'. SunSpec type uint16 with scale factor Pct_SF; the value is given already scaled (register value x 10^Pct_SF). Standards: IEEE 1547-2018."
+    },
+    "SoH": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_713.json#SoH'. State of Health. State of health of the DER storage. Units:'Pct'. SunSpec type uint16 with scale factor Pct_SF; the value is given already scaled (register value x 10^Pct_SF)."
+    },
+    "Sta": {
+      "type": "string",
+      "enum": [
+        "OK",
+        "WARNING",
+        "ERROR"
+      ],
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_713.json#Sta'. Status. Storage status. Values are the SunSpec symbol names (OK=0, WARNING=1, ERROR=2). SunSpec type enum16."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

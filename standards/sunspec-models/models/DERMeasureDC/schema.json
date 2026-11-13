@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/sunspec-models/models/DERMeasureDC/schema.json",
+  "modelTags": "SunSpec,DER,Solar,PV,Inverter,Modbus,IEEE1547",
+  "title": "Smart Data Models - SunSpec Information Models - DERMeasureDC",
+  "description": "DER DC Measurement. DER DC measurement. SunSpec Information Model 714 (DERMeasureDC), sunspec/models v2026-04-20. Point names kept verbatim; values are given already scaled, so the scale-factor (*_SF), padding and model framing (ID, L) points are left out.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:DERMeasureDC:<Mn>-<SN> (manufacturer and serial number of the device)."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "DERMeasureDC"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'DERMeasureDC'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "refCommon": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://schema.org/URL'. The `common` entity (SunSpec model 1: manufacturer, model, serial number) of the device that exposes this SunSpec model. Not a SunSpec point (Smart Data Models addition): in SunSpec all models of a device are read from the same Modbus map, whose first model is always model 1."
+    },
+    "dateObserved": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Date and time when the values of this SunSpec model were read from the device. Not a SunSpec point (Smart Data Models addition): SunSpec models carry no timestamp."
+    },
+    "PrtAlrms": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_714.json#PrtAlrms'. Port Alarms. Bitfield of ports with active alarms. Bit is 1 if port has an active alarm. Bit 0 is first port. Bitfield without SunSpec symbols: the raw integer value of the bitfield. SunSpec type bitfield32."
+    },
+    "NPrt": {
+      "type": "integer",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_714.json#NPrt'. Number Of Ports. Number of DC ports. SunSpec type uint16. Static value (does not change during operation)."
+    },
+    "DCA": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_714.json#DCA'. DC Current. Total DC current for all ports. Units:'A'. SunSpec type int16 with scale factor DCA_SF; the value is given already scaled (register value x 10^DCA_SF)."
+    },
+    "DCW": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_714.json#DCW'. DC Power. Total DC power for all ports. Units:'W'. SunSpec type int16 with scale factor DCW_SF; the value is given already scaled (register value x 10^DCW_SF)."
+    },
+    "DCWhInj": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_714.json#DCWhInj'. DC Energy Injected. Total cumulative DC energy injected for all ports. Units:'Wh'. SunSpec type uint64 with scale factor DCWH_SF; the value is given already scaled (register value x 10^DCWH_SF)."
+    },
+    "DCWhAbs": {
+      "type": "number",
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_714.json#DCWhAbs'. DC Energy Absorbed. Total cumulative DC energy absorbed for all ports. Units:'Wh'. SunSpec type uint64 with scale factor DCWH_SF; the value is given already scaled (register value x 10^DCWH_SF)."
+    },
+    "Prt": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "PrtTyp": {
+            "type": "string",
+            "enum": [
+              "PV",
+              "ESS",
+              "EV",
+              "INJ",
+              "ABS",
+              "BIDIR",
+              "DC_DC"
+            ],
+            "description": "Port Type. Values are the SunSpec symbol names (PV=0, ESS=1, EV=2, INJ=3, ABS=4, BIDIR=5, DC_DC=6). SunSpec type enum16."
+          },
+          "ID": {
+            "type": "integer",
+            "description": "Port ID. SunSpec type uint16."
+          },
+          "IDStr": {
+            "type": "string",
+            "maxLength": 16,
+            "description": "Port ID String. SunSpec type string."
+          },
+          "DCA": {
+            "type": "number",
+            "description": "DC Current. DC current for the port. Units:'A'. SunSpec type int16 with scale factor DCA_SF; the value is given already scaled (register value x 10^DCA_SF)."
+          },
+          "DCV": {
+            "type": "number",
+            "description": "DC Voltage. DC voltage for the port. Units:'V'. SunSpec type uint16 with scale factor DCV_SF; the value is given already scaled (register value x 10^DCV_SF)."
+          },
+          "DCW": {
+            "type": "number",
+            "description": "DC Power. DC power for the port. Units:'W'. SunSpec type int16 with scale factor DCW_SF; the value is given already scaled (register value x 10^DCW_SF)."
+          },
+          "DCWhInj": {
+            "type": "number",
+            "description": "DC Energy Injected. Total cumulative DC energy injected for the port. Units:'Wh'. SunSpec type uint64 with scale factor DCWH_SF; the value is given already scaled (register value x 10^DCWH_SF)."
+          },
+          "DCWhAbs": {
+            "type": "number",
+            "description": "DC Energy Absorbed. Total cumulative DC energy absorbed for the port. Units:'Wh'. SunSpec type uint64 with scale factor DCWH_SF; the value is given already scaled (register value x 10^DCWH_SF)."
+          },
+          "Tmp": {
+            "type": "number",
+            "description": "DC Port Temperature. Units:'C'. SunSpec type int16 with scale factor Tmp_SF; the value is given already scaled (register value x 10^Tmp_SF)."
+          },
+          "DCSta": {
+            "type": "string",
+            "enum": [
+              "OFF",
+              "ON",
+              "WARNING",
+              "ERROR"
+            ],
+            "description": "DC Port Status. Values are the SunSpec symbol names (OFF=0, ON=1, WARNING=2, ERROR=3). SunSpec type enum16."
+          },
+          "DCAlrm": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": [
+                "GROUND_FAULT",
+                "INPUT_OVER_VOLTAGE",
+                "DC_DISCONNECT",
+                "CABINET_OPEN",
+                "MANUAL_SHUTDOWN",
+                "OVER_TEMP",
+                "BLOWN_FUSE",
+                "UNDER_TEMP",
+                "MEMORY_LOSS",
+                "ARC_DETECTION",
+                "RESERVED",
+                "TEST_FAILED",
+                "INPUT_UNDER_VOLTAGE",
+                "INPUT_OVER_CURRENT"
+              ]
+            },
+            "description": "DC Port Alarm. Bitfield: the array lists the names of the bits that are set (GROUND_FAULT=bit 0, INPUT_OVER_VOLTAGE=bit 1, DC_DISCONNECT=bit 3, CABINET_OPEN=bit 5, MANUAL_SHUTDOWN=bit 6, OVER_TEMP=bit 7, BLOWN_FUSE=bit 12, UNDER_TEMP=bit 13, MEMORY_LOSS=bit 14, ARC_DETECTION=bit 15, RESERVED=bit 19, TEST_FAILED=bit 20, INPUT_UNDER_VOLTAGE=bit 21, INPUT_OVER_CURRENT=bit 22); an empty array means no bit set. SunSpec type bitfield32."
+          }
+        }
+      },
+      "description": "Property. Model:'https://github.com/sunspec/models/blob/v2026-04-20/json/model_714.json#Prt'. Prt. SunSpec repeating group (count: NPrt); each array item is one repetition, with the same point names as in SunSpec; values are given already scaled."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}
