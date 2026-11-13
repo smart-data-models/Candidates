@@ -4001,6 +4001,63 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/open-mining-format"
   },
   {
+    "slug": "osdu-data-definitions",
+    "title": "OSDU Data Definitions (The Open Group OSDU Forum)",
+    "description": "OSDU (Open Subsurface Data Universe), a forum of The Open Group, publishes an open, vendor-neutral data platform for the energy industry. Its Data Definitions are the JSON schemas of the platform's records (\"kinds\"): master data (wells, wellbores, fields, basins, organisations, rigs, ...), work-product components (well logs, trajectories, markers, seismic, reservoir models, documents, ...), reference data (code lists) and datasets. Every record has a common envelope (id, kind, acl, legal, ancestry, meta, tags, system audit fields) and a `data` block with the domain attributes, built from shared abstract schemas (common resources, master, facility, work-product component, spatial location, vertical measurements, ...). Many attributes come from PPDM, Energistics and other industry standards.",
+    "publisher": "The Open Group OSDU Forum (Open Subsurface Data Universe)",
+    "sourceUrl": "https://community.opengroup.org/osdu/data/data-definitions",
+    "license": "Apache-2.0",
+    "domains": [
+      "Energy"
+    ],
+    "modelCount": 6,
+    "models": [
+      {
+        "name": "Field",
+        "title": "Smart Data Models - OSDU Data Definitions - Field",
+        "description": "A mineral deposit that has been exploited for commercial purposes. (OSDU kind osdu:wks:master-data--Field:1.1.0, OSDU Data Definitions v0.30.1. The attributes of the record's `data` block are entity attributes, with their OSDU names verbatim; the record envelope keeps osduId (OSDU `id`), kind, tags, ancestry, meta and legal; acl, version and the system audit fields are left out. OSDU abstract schemas used by nested attributes are in $defs.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/osdu-data-definitions/models/Field/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/osdu-data-definitions/models/Field"
+      },
+      {
+        "name": "Organisation",
+        "title": "Smart Data Models - OSDU Data Definitions - Organisation",
+        "description": "A legal or administrative body, institution, or company, or any of its divisions. (OSDU kind osdu:wks:master-data--Organisation:1.2.0, OSDU Data Definitions v0.30.1. The attributes of the record's `data` block are entity attributes, with their OSDU names verbatim; the record envelope keeps osduId (OSDU `id`), kind, tags, ancestry, meta and legal; acl, version and the system audit fields are left out. OSDU abstract schemas used by nested attributes are in $defs.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/osdu-data-definitions/models/Organisation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/osdu-data-definitions/models/Organisation"
+      },
+      {
+        "name": "Well",
+        "title": "Smart Data Models - OSDU Data Definitions - Well",
+        "description": "The origin of a set of wellbores. (OSDU kind osdu:wks:master-data--Well:1.5.0, OSDU Data Definitions v0.30.1. The attributes of the record's `data` block are entity attributes, with their OSDU names verbatim; the record envelope keeps osduId (OSDU `id`), kind, tags, ancestry, meta and legal; acl, version and the system audit fields are left out. OSDU abstract schemas used by nested attributes are in $defs.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/osdu-data-definitions/models/Well/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/osdu-data-definitions/models/Well"
+      },
+      {
+        "name": "WellLog",
+        "title": "Smart Data Models - OSDU Data Definitions - WellLog",
+        "description": "A well log is a data type that correlates a particular measurement or multiple measurements in a wellbore against depth and/or time within that wellbore. When plotted visually, well logs are typically long line graphs (called \"curves\") but may sometimes be discrete points or intervals. This schema object is intended for digital well logs, not raster log files or raster calibration files, but may be used for the latter in the absence of a defined OSDU schema for these use cases. (OSDU kind osdu:wks:work-product-component--WellLog:1.5.0, OSDU Data Definitions v0.30.1. The attributes of the record's `data` block are entity attributes, with their OSDU names verbatim; the record envelope keeps osduId (OSDU `id`), kind, tags, ancestry, meta and legal; acl, version and the system audit fields are left out. OSDU abstract schemas used by nested attributes are in $defs.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/osdu-data-definitions/models/WellLog/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/osdu-data-definitions/models/WellLog"
+      },
+      {
+        "name": "Wellbore",
+        "title": "Smart Data Models - OSDU Data Definitions - Wellbore",
+        "description": "A hole in the ground extending from a point at the earth's surface to the maximum point of penetration. (OSDU kind osdu:wks:master-data--Wellbore:1.5.1, OSDU Data Definitions v0.30.1. The attributes of the record's `data` block are entity attributes, with their OSDU names verbatim; the record envelope keeps osduId (OSDU `id`), kind, tags, ancestry, meta and legal; acl, version and the system audit fields are left out. OSDU abstract schemas used by nested attributes are in $defs.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/osdu-data-definitions/models/Wellbore/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/osdu-data-definitions/models/Wellbore"
+      },
+      {
+        "name": "WellboreTrajectory",
+        "title": "Smart Data Models - OSDU Data Definitions - WellboreTrajectory",
+        "description": "Work Product Component describing an individual instance of a wellbore trajectory data object. Also called a directional or deviation survey, wellbore trajectory is data that is used to calculate the position and spatial uncertainty of a planned or actual wellbore in 2-dimensional and 3-dimensional space. (OSDU kind osdu:wks:work-product-component--WellboreTrajectory:1.4.0, OSDU Data Definitions v0.30.1. The attributes of the record's `data` block are entity attributes, with their OSDU names verbatim; the record envelope keeps osduId (OSDU `id`), kind, tags, ancestry, meta and legal; acl, version and the system audit fields are left out. OSDU abstract schemas used by nested attributes are in $defs.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/osdu-data-definitions/models/WellboreTrajectory/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/osdu-data-definitions/models/WellboreTrajectory"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/osdu-data-definitions"
+  },
+  {
     "slug": "pmd-core-ontology",
     "title": "PMD Core Ontology (PMDco)",
     "description": "The Platform MaterialDigital Core Ontology (PMDco) is a mid-level ontology for materials science and engineering, built on the Basic Formal Ontology (BFO) and reusing RO, IAO, OBI and COB. It follows the processing - structure - properties paradigm: manufacturing, characterisation (assay) and simulation processes; materials, portions of matter, objects and devices; and material properties and qualities with their value specifications. It is the common semantic basis of the German MaterialDigital initiative and of its application ontologies (tensile test, hardness test, ...). Release 3.1.2 (full) has 1,426 classes (1,191 in the PMDco namespace), 112 object properties and 9 datatype properties.",
