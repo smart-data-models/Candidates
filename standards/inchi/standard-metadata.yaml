@@ -1,0 +1,138 @@
+title: "InChI (IUPAC International Chemical Identifier)"
+publisher: "IUPAC and the InChI Trust"
+sourceUrl: "https://github.com/IUPAC-InChI/InChI"
+specificationUrl: "https://www.inchi-trust.org/"
+contact: "https://github.com/IUPAC-InChI/InChI/issues"
+sourceOntologyVersion: "InChI version 1; InChI Software v1.07.5 (release of 2026-02-17). Technical Manual last revised 2020-12-15 (software 1.06), User Guide last revised 2024-01-19 (1.07-beta3), both as shipped in the v1.07.5 release"
+sourceOntologyDownload: "https://codeload.github.com/IUPAC-InChI/InChI/tar.gz/refs/tags/v1.07.5"
+sourceOntologyNamespace: "https://github.com/IUPAC-InChI/InChI/blob/v1.07.5/INCHI-1-DOC/InChI_TechMan.pdf"
+sourceOntologyFormat: "Technical Manual (PDF/DOCX) and User Guide (Markdown/PDF) defining a layered string format; no RDF vocabulary, no JSON/XML schema"
+sourceExampleUrl: "https://pubchem.ncbi.nlm.nih.gov/compound/5950"
+sourceExampleLicense: "US government public domain (PubChem, NCBI/NLM); please cite PubChem"
+domains:
+  - CrossSector
+  - Environment
+  - Manufacturing
+description: >
+  The IUPAC International Chemical Identifier (InChI) is an open,
+  structure-based textual identifier for chemical substances, developed by
+  IUPAC and maintained by the InChI Trust. An InChI is computed from a
+  chemical structure (connection table) by normalization,
+  canonicalization and serialization, and is written as a version prefix
+  followed by layers: chemical formula, connections, hydrogen atoms
+  (including mobile H), charge and protons, stereochemistry, isotopes,
+  fixed H and reconnected metals. The InChIKey is its fixed-length
+  (27-character) hashed form, used for database indexing and web search.
+  InChI is used by the major chemical databases (PubChem, ChEBI, ChEMBL,
+  ChemSpider, Wikidata, ...), regulatory chemical registries and
+  chemistry software.
+license: "MIT"
+licenseNote: >
+  The InChI repository (github.com/IUPAC-InChI/InChI), which contains the
+  software, the Technical Manual and the User Guide translated here, is
+  released under the MIT License ("Copyright (c) 2024 InChI Project",
+  LICENSE file at tag v1.07.5; GitHub reports MIT). The documentation
+  carries no separate licence statement, so the repository licence applies.
+  Keep the copyright and permission notice when redistributing. "InChI" is
+  a trademark of IUPAC; it is used here only to name the standard. Context
+  IRIs for InChI and InChIKey use the CHEMINF ontology (CC0 1.0). Example
+  data from PubChem (US government public domain).
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from the InChI Technical Manual and User Guide to SDM candidate artifacts"
+notes: |
+  Translated on 2026-11-13. Source row 33 ("InChI") of the "Level A
+  standards not in Smart Data Models" list, sector Chemicals (licence
+  verified: Yes; MIT, see licenseNote).
+
+  WHAT InChI IS (AND IS NOT): InChI is an identifier and its layered string
+  format, not an entity data model. It has no classes, no entities with
+  state and no machine-readable schema. This candidate is therefore small
+  on purpose: one entity that records the InChI of one chemical structure,
+  with the InChI outputs (InChI, InChIKey, AuxInfo) and the layers that the
+  Technical Manual defines, so that NGSI-LD entities (an air quality
+  observation, a process chemical analysis, a product material, a waste
+  stream) can point to an unambiguous chemical identity and be queried by
+  formula, skeleton (InChIKey first block) or stereo. It does not model
+  substances or compounds (names, CAS numbers, properties, hazards).
+
+  MODELS (1):
+    - ChemicalStructureIdentifier: 22 InChI attributes plus the common
+      dateCreated, dateModified, source, dataProvider. NGSI-LD id is
+      urn:ngsi-ld:ChemicalStructureIdentifier:<InChIKey>. Required: id,
+      type, InChI.
+
+  NAMING: the entity name is a Smart Data Models name (InChI defines no
+  class; "InChI" itself is kept for the string attribute). InChI, InChIKey
+  and AuxInfo are verbatim. Layer attributes use the labels of the
+  Technical Manual, Figure 2 ({formula}, {connections}, {H_atoms},
+  {charge}, {protons}, {stereo:dbond}, {isotopic:exchangeable_H},
+  {fixed_H:H_fixed}, {transposition}...): the ':' in those labels is
+  hierarchy and becomes nesting (stereo.dbond, isotopic.exchangeable_H,
+  fixed_H.isotopic.atoms), because a JSON-LD term containing ':' would be
+  read as a compact IRI. Renames: stereo:sp3:inverted -> sp3_inverted;
+  /r and /z, which have no label in Figure 2, are named reconnected and
+  polymer. SDM names: identifierKind (standard / non-standard / beta,
+  TechMan III.f), InChIKeyFirstBlock, InChIKeySecondBlock, InChIKeyFlag,
+  InChIKeyVersion, InChIKeyProtonation (TechMan V.b), options (User Guide
+  options), softwareVersion (provenance; not an InChI field). No source
+  name clashed with NGSI-LD reserved terms at entity level (stereo.type is
+  nested).
+
+  MAPPING: each layer attribute holds the segment content without its
+  '/letter' prefix (e.g. connections "1-2(4)3(5)6" for /c1-2(4)3(5)6). The
+  layers are redundant with the InChI string by design: they are derived
+  from it with the parsing algorithm of TechMan Appendix 3 (the generator
+  does exactly that) and exist so that layers can be filtered in NGSI-LD
+  queries. The InChI string remains authoritative. stereo, isotopic and
+  fixed_H are nested objects ("@type": "@json") following Figure 2;
+  reconnected keeps the whole "/r..." string. Code lists as enums:
+  version ["1"], identifierKind, stereo.type ["1","2","3"], InChIKeyFlag
+  ["S","N"], options (structure perception, stereo, creation and
+  experimental options of User Guide Tables 1-4; output and I/O options
+  and the deprecated SaveOpt are left out).
+
+  CONTEXT IRIs: InChI -> CHEMINF_000113 (InChI descriptor), InChIKey ->
+  CHEMINF_000059 (InChIKey), both exact matches (CHEMINF, CC0).
+  formula is not mapped to CHEMINF_000042 (molecular formula), because the
+  InChI formula layer has its own conventions (component order, dots,
+  multipliers). Everything else maps to the Technical Manual PDF of the
+  v1.07.5 tag with PDF open parameters, #page=<n>&term=<name>: viewers open
+  the right page and ignore 'term', which keeps one IRI per term. options
+  maps to the User Guide heading anchor #inchi-software-options,
+  softwareVersion to the releases page. The entity type maps to the
+  Technical Manual (page 5, the Identifier's objective).
+
+  SOURCE NOTES (worth reporting upstream):
+    - The documentation is behind the software: the v1.07.5 release ships a
+      Technical Manual for software 1.06 (revised 2020-12-15) and a User
+      Guide and readme for 1.07-beta3; the manual still points to
+      www.iupac.org/inchi for downloads.
+    - The User Guide gives the experimental prefix as "InChI=1B/" in the
+      text but "InChI=1/B..." in Table 4; the software and the manual use
+      "1B".
+    - CHEMINF's ontology description still says the InChI software is
+      LGPL; it is MIT since 2024.
+    - No machine-readable grammar is published; the layer order had to be
+      taken from Figure 2, Appendix 2 and Appendix 3 of the manual.
+
+  EXAMPLES: real. L-alanine, PubChem CID 5950 (US government public
+  domain): InChI and InChIKey exactly as published by PubChem. AuxInfo was
+  computed from PubChem's isomeric SMILES with the InChI library 1.07.3
+  (bundled in RDKit 2026.09.2), default (standard) options; it reproduces
+  PubChem's InChI and InChIKey. The schema "examples" use caffeine, the
+  Technical Manual's own example (Figure 31). The generator self-tests its
+  layer parser on the manual's Figure A2-1 (isotopic and fixed-H layers)
+  and Figure 32 (/p) examples.
+
+  FOLLOW-UPS: InChIKey hash extensions (XHash1/XHash2), RInChI (reactions)
+  and other InChI extensions (MInChI for mixtures, NInChI for
+  nanomaterials) if they are wanted; a Relationship from other models
+  (e.g. dataModel.Environment AirQualityObserved pollutants,
+  dataModel.IndustrialProcess ProcessChemicalAnalysis) to this entity.
+
+  DUPLICATION RISK: low. No official Smart Data Models subject and no
+  other candidate defines a chemical identifier (checked the official
+  list and all candidate schemas). dataModel.IndustrialProcess
+  ProcessChemicalAnalysis and brick-schema ChemicalProperty are related
+  but describe analyses / properties, not chemical identity.
