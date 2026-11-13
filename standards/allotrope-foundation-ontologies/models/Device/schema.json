@@ -1,0 +1,246 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/allotrope-foundation-ontologies/models/Device/schema.json",
+  "modelTags": "AFO,Allotrope,Laboratory,Instrument,Equipment",
+  "title": "Smart Data Models - Allotrope Foundation Ontologies - Device",
+  "description": "A device is an artifact that is designed to perform a function primarily by means of its mechanical or electrical nature. [Allotrope] (AFO REC/2026/09 class 'device', http://purl.allotrope.org/ontologies/equipment#AFE_0000354. The entity type is the PascalCase form of the AFO skos:prefLabel; attribute names are the camelCase form of the prefLabels of the AFO relations and facet classes they stand for.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Device"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Device'"
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. The name of this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. A description of this item."
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "afoClass": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "agitator",
+          "aperture",
+          "autosampler",
+          "balance",
+          "barcode reader",
+          "basket",
+          "bath",
+          "beamsplitter",
+          "bench",
+          "calorimeter",
+          "capillary",
+          "channel (communication)",
+          "chromatograph",
+          "chromatography column",
+          "clock",
+          "collecting device",
+          "communication device",
+          "compression device",
+          "computer",
+          "condenser lens",
+          "connecting device",
+          "container",
+          "controlled lab reactor",
+          "controller",
+          "conversion device",
+          "cooling device",
+          "coulometer",
+          "coupling device",
+          "covering device",
+          "damper",
+          "data acquisition device",
+          "degasser",
+          "detector",
+          "device",
+          "diode",
+          "disconnecting device",
+          "disintegration device",
+          "display",
+          "dissolution vessel",
+          "distribution device",
+          "divergence slit",
+          "electrochemical coulometer",
+          "electrode",
+          "electrolytic conductivity detector",
+          "electromagnetic radiation source",
+          "electron capture detector",
+          "electronic absorbance detector",
+          "evaporative light scattering detector",
+          "flame ionization detector",
+          "flame photometric detector",
+          "fluorescence detector",
+          "force gauge",
+          "fraction collector",
+          "frequency synthesizer",
+          "gas chromatograph",
+          "gripping device",
+          "guard slit",
+          "guiding device",
+          "heater bar",
+          "heating device",
+          "homogenizer",
+          "inhibition device",
+          "injection device",
+          "input device",
+          "ion detector",
+          "ion source",
+          "jacket",
+          "jar",
+          "lamp",
+          "lens",
+          "liquid chromatograph",
+          "mass flow controller",
+          "mass spectrometer",
+          "mass-to-charge analyzer",
+          "measurement component",
+          "measurement device",
+          "microscope",
+          "mixer",
+          "multimeter",
+          "nitrogen chemiluminescence detector",
+          "nitrogen-phosphorus detector",
+          "nozzle",
+          "observation device",
+          "optical device",
+          "optical microscope",
+          "oven",
+          "pan",
+          "photometer",
+          "placement device",
+          "plate heater",
+          "pressure sensor",
+          "probe",
+          "pump",
+          "radiation source",
+          "Raman spectrometer",
+          "reactor",
+          "receiving slit",
+          "refractive index detector",
+          "reservoir",
+          "sample measurement interface",
+          "sampler",
+          "sensor",
+          "separation column",
+          "separation device",
+          "server",
+          "shaping device",
+          "slit",
+          "Soller slit",
+          "solvent channel",
+          "spectrometer",
+          "spectrophotometer",
+          "splitter",
+          "stirrer",
+          "sulfur chemiluminescence detector",
+          "supercritical-fluid chromatograph",
+          "syringe",
+          "table",
+          "temperature controller",
+          "thermal conductivity detector",
+          "thermometer",
+          "titrator",
+          "transferring device",
+          "tray",
+          "tube",
+          "tubing connector",
+          "valve",
+          "vial",
+          "vial container",
+          "vial rack",
+          "visible lamp",
+          "weighing device",
+          "well plate"
+        ]
+      },
+      "description": "Property. Not an AFO term (Smart Data Models addition): the AFO classes this entity is an instance of, given by their skos:prefLabel, verbatim. Stands for rdf:type; covers the 132 classes of the AFO REC/2026/09 'device' branch (the root class and all its subclasses, including classes defined by owl:equivalentClass)."
+    },
+    "deviceIdentifier": {
+      "type": "string",
+      "description": "Property. Model:'http://purl.allotrope.org/ontologies/result#AFR_0002018'. AFO class 'device identifier': A device identifier is an identifier that identifies some device. [Allotrope] Flattened: the AFO facet individual is replaced by its literal value, as in the Allotrope Simple Model (ASM) JSON."
+    },
+    "equipmentSerialNumber": {
+      "type": "string",
+      "description": "Property. Model:'http://purl.allotrope.org/ontologies/result#AFR_0001119'. AFO class 'equipment serial number': Equipment serial number is a serial number that identifies an equipment used in the measuring by its serial number. [Allotrope] Flattened: the AFO facet individual is replaced by its literal value, as in the Allotrope Simple Model (ASM) JSON."
+    },
+    "modelNumber": {
+      "type": "string",
+      "description": "Property. Model:'http://purl.obolibrary.org/obo/IAO_0000017'. AFO class 'model number': A model number is an information content entity specifically borne by catalogs, design specifications, advertising materials, inventory systems and similar that is about manufactured objects of the same class. The model number is an alternative term for the class. [IAO] Flattened: the AFO facet individual is replaced by its literal value, as in the Allotrope Simple Model (ASM) JSON."
+    },
+    "productManufacturer": {
+      "type": "string",
+      "description": "Property. Model:'http://purl.allotrope.org/ontologies/result#AFR_0001258'. AFO class 'product manufacturer': A product manufacturer is a symbol that denotes the organizational entity manufacturing some entity with a product role (economic). [Allotrope] Flattened: the AFO facet individual is replaced by its literal value, as in the Allotrope Simple Model (ASM) JSON."
+    },
+    "firmwareVersion": {
+      "type": "string",
+      "description": "Property. Model:'http://purl.allotrope.org/ontologies/result#AFR_0001259'. AFO class 'firmware version': A firmware version is a version number that identifies the firmware of a device. [Allotrope] Flattened: the AFO facet individual is replaced by its literal value, as in the Allotrope Simple Model (ASM) JSON."
+    },
+    "hasComponent": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://purl.allotrope.org/ontologies/property#AFX_0000972'. AFO 'has component': A physical object that forms a system that has as part a physical entity that is one of its components. [Allotrope] Points to Device entities that are components of this device (detector, pump, autosampler, column...)."
+    },
+    "componentOf": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'http://purl.allotrope.org/ontologies/property#AFX_0000939'. AFO 'component of': A physical object that is a component that is a physical part of another physical object that is a system. [Allotrope] Points to the Device entity (system) this device is a component of."
+    },
+    "contains": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://purl.allotrope.org/ontologies/property#AFX_0001048'. AFO 'contains': The relation between a container and its physical content. A material entity a contains a material entity b if b is located in some cavity of a. [Allotrope] Points to PortionOfMaterial entities held by this device when it is a container."
+    },
+    "participatesIn": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'http://purl.obolibrary.org/obo/RO_0000056'. AFO 'participates in': A relation between a continuant and a process, in which the continuant is somehow involved in the process [RO] Points to PlannedProcess entities in which the device takes part."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "afoClass"
+  ]
+}
