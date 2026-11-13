@@ -1,0 +1,73 @@
+{
+  "id": "urn:ngsi-ld:Product:g265-tf85",
+  "type": "Product",
+  "tmfId": "g265-tf85",
+  "description": "This product is an Product Specification instance",
+  "isBundle": false,
+  "isCustomerVisible": false,
+  "name": "Voice Over IP Basic instance",
+  "creationDate": "2021-04-12T23:59:59.52Z",
+  "status": "created",
+  "tmfType": "Product",
+  "productCharacteristic": [
+    {
+      "@type": "BooleanCharacteristic",
+      "id": "Char1",
+      "name": "FixedIP",
+      "valueType": "boolean",
+      "value": false
+    },
+    {
+      "@type": "ObjectCharacteristic",
+      "id": "Char5",
+      "name": "FiberSpeed",
+      "valueType": "object",
+      "value": {
+        "@type": "Speed",
+        "volume": 90,
+        "unit": "Mbps"
+      }
+    }
+  ],
+  "place": [
+    {
+      "role": "installationAddress",
+      "place": {
+        "id": "9912",
+        "href": "https://host:port/geographicAddressManagement/v5/geographicAddress/9912",
+        "@referredType": "GeographicAddress",
+        "@type": "PlaceRef"
+      },
+      "@type": "RelatedPlaceRefOrValue"
+    }
+  ],
+  "realizingService": [
+    "urn:ngsi-ld:Service:5351"
+  ],
+  "productSpecification": {
+    "id": "PS-101",
+    "href": "https://host:port/productCatalogManagement/v5/productSpecification/PS-101",
+    "@referredType": "ProductSpecification",
+    "@type": "ProductSpecificationRef",
+    "version": "1"
+  },
+  "relatedParty": [
+    {
+      "role": "User",
+      "partyOrPartyRole": {
+        "id": "45hj-999",
+        "href": "https://host:port/partyManagement/v5/individual/45hj-999",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      },
+      "@type": "RelatedPartyOrPartyRole"
+    }
+  ],
+  "realizingResource": [
+    "urn:ngsi-ld:Resource:839933ec-4c65-4fc2-987b-58ca5ba9cfab"
+  ],
+  "source": "Adapted from the example payload 'RetrieveProduct1_response' of the TMF637 Product Inventory Management v5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names removed, phone numbers replaced by numbers reserved for fiction, href/@schemaLocation URLs left out; realizingService/realizingResource point to the Service and Resource examples of TMF638/TMF639 (TMF uses service id 7854).",
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Product/context.jsonld"
+  ]
+}

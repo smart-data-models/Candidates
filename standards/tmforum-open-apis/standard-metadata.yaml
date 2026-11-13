@@ -1,0 +1,185 @@
+title: "TM Forum Open APIs (Product, Service and Resource Inventory, Trouble Ticket, Product Ordering)"
+publisher: "TM Forum"
+sourceUrl: "https://github.com/tmforum-apis"
+specificationUrl: "https://www.tmforum.org/oda/open-apis/directory/"
+contact: "https://www.tmforum.org/contact-us/"
+sourceOntologyVersion: >
+  OpenAPI 3.0.1 specifications at release tag v5.0.0 of each repository:
+  TMF637 Product Inventory Management 5.0.0, TMF638 Service Inventory
+  Management 5.0.0, TMF639 Resource Inventory Management 5.0.0, TMF621
+  Trouble Ticket 5.0.1 (file shipped under tag v5.0.0), TMF622 Product
+  Ordering Management 5.0.0. The tag files are byte-identical to the
+  repositories' main branch on 2026-11-13.
+sourceOntologyDownload: >
+  https://raw.githubusercontent.com/tmforum-apis/TMF637_ProductInventory/v5.0.0/TMF637-ProductInventory-v5.0.0.oas.yaml ;
+  https://raw.githubusercontent.com/tmforum-apis/TMF638_ServiceInventory/v5.0.0/TMF638-Service_Inventory_Management-v5.0.0.oas.yaml ;
+  https://raw.githubusercontent.com/tmforum-apis/TMF639_ResourceInventory/v5.0.0/TMF639-Resource_Inventory_Management-v5.0.0.oas.yaml ;
+  https://raw.githubusercontent.com/tmforum-apis/TMF621_TroubleTicket/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml ;
+  https://raw.githubusercontent.com/tmforum-apis/TMF622_ProductOrder/v5.0.0/TMF622-ProductOrdering-v5.0.0.oas.yaml
+sourceOntologyNamespace: "https://github.com/tmforum-apis/<repo>/blob/v5.0.0/<file>.oas.yaml#/components/schemas/"
+sourceOntologyFormat: "OpenAPI 3.0.1 specifications (YAML); no RDF vocabulary"
+sourceExampleUrl: "components/examples of each OpenAPI file above (e.g. RetrieveProduct1_response, Service_retrieve_example_response, Resource_retrieve_example_response, TroubleTicket_retrieve_example_response, retrieveProductOrderById1_response)"
+sourceExampleLicense: "Apache-2.0 (TM Forum); illustrative example payloads from the specifications, not real operator data"
+domains:
+  - CrossSector
+  - SmartCities
+description: >
+  The TM Forum Open APIs are a family of about 60 REST APIs for the
+  telecom and digital-service industry, part of TM Forum's Open Digital
+  Architecture (ODA). They are implemented by communication service
+  providers and their IT vendors for ordering, inventory, assurance,
+  billing, party and catalogue management. This candidate covers the
+  inventory and assurance core: the product a customer holds (TMF637
+  Product), the services that realize it (TMF638 Service), the network,
+  logical and physical resources that support those services (TMF639
+  Resource), the order that created it (TMF622 ProductOrder) and the
+  trouble ticket raised when something goes wrong (TMF621 TroubleTicket).
+  The sector is Telecom; the APIs are also used by other digital-service
+  providers (utilities, cloud, smart-city operators).
+license: "Apache-2.0"
+licenseNote: >
+  The TM Forum "API Apache 2.0 Project"
+  (https://www.tmforum.org/collaboration/api-apache-2-0-project) releases
+  the "code" part of the TM Forum Open APIs (the OpenAPI specifications)
+  under the Apache 2.0 licence. Each repository used here
+  (github.com/tmforum-apis/TMF637_ProductInventory, TMF638_ServiceInventory,
+  TMF639_ResourceInventory, TMF621_TroubleTicket, TMF622_ProductOrder)
+  contains the Apache License 2.0 LICENSE file, GitHub reports it as
+  Apache-2.0, the README says "TM Forum Open API (Apache 2.0)", and the
+  TMF639 file declares info.license "Apache License 2.0". The TMF637 and
+  TMF622 files still carry the line "Copyright (c) TM Forum ... All Rights
+  Reserved" in info.description; the repository LICENSE governs.
+  Attribution: TM Forum. The user guides (PDF specification documents) are
+  member documents and were not used.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source OpenAPI specifications to SDM candidate artifacts"
+notes: |
+  Translated on 2026-11-13. Source row 35 ("TM Forum Open APIs", sector
+  Telecom) of the "Level A standards not in Smart Data Models" list
+  (licence verified: Yes).
+
+  SCOPE: the family has about 60 APIs. This candidate takes the coherent
+  core of the product / service / resource inventory and its order and
+  assurance lifecycle, all things with identity and state that fit
+  NGSI-LD well. Latest released OpenAPI version of each is v5 (Apache-2.0
+  in the repository), so v5 is used, not v4. Follow-ups: TMF632 Party
+  (Individual, Organization; overlaps dataModel.Organization and holds
+  personal data), TMF641 Service Ordering, TMF652 Resource Ordering,
+  TMF620 / TMF633 / TMF634 catalogues (ProductOffering,
+  ProductSpecification, ServiceSpecification, ResourceSpecification),
+  TMF642 Alarm, TMF656 Service Problem, TMF673-675 Geographic
+  Address / Site / Location, TMF666 Account, TMF678 Customer Bill.
+
+  MODELS (5), entity name = TMF resource name:
+    - Product        TMF637 Product          (36 attributes)
+    - Service        TMF638 Service          (38 attributes)
+    - Resource       TMF639 Resource         (57 attributes, sub-classes flattened in)
+    - TroubleTicket  TMF621 TroubleTicket    (34 attributes)
+    - ProductOrder   TMF622 ProductOrder     (39 attributes)
+  Attribute counts include id, type and the 4 common SDM attributes. The
+  NGSI-LD id is urn:ngsi-ld:<Type>:<TMF id>.
+
+  NAMING: every attribute name is TMF's, verbatim, except these
+  entity-level renames (NGSI-LD reserved terms / JSON-LD keywords):
+    id               -> tmfId
+    @type            -> tmfType
+    @baseType        -> tmfBaseType
+    @schemaLocation  -> tmfSchemaLocation
+    value            -> tmfValue   (LogicalResource.value, Resource only)
+  Inside nested objects (@json) TMF names, including id, @type,
+  @referredType, href and value, are kept unchanged.
+
+  MAPPING:
+    - TMF polymorphism (@type / @baseType / @schemaLocation): the NGSI-LD
+      `type` is the TMF base resource (Product, Service, ...). The TMF
+      @type is still needed because it names the sub-class or extension
+      actually used (e.g. LogicalResource, PhysicalResource, or an
+      operator-specific extension described by @schemaLocation), so the
+      three attributes are kept, renamed with a tmf prefix, not dropped.
+      tmfType is required, as @type is in TMF (Extensible.required).
+    - href (hyperlink to the resource in the TMF API) is kept as a
+      Property; it is API-instance specific, so the examples omit it.
+    - Resource sub-classes (LogicalResource, PhysicalResource,
+      SoftwareResource, ResourceFunction) are not separate models: their
+      own attributes are flattened into Resource and their descriptions
+      say which sub-class they belong to (set tmfType accordingly).
+    - Relationships: entity-level references to other entities of this
+      candidate become NGSI-LD Relationships (urn:ngsi-ld:<Type>:<TMF id>):
+      Product.product (ProductRefOrValue[]), Product.realizingService
+      (ServiceRef[]), Product.realizingResource (ResourceRef[]),
+      Service.supportingService (ServiceRefOrValue[]),
+      Service.supportingResource (ResourceRef[]),
+      Resource.supportingResource (ResourceRefOrValue[]). The inline-value
+      option of ...RefOrValue and the reference metadata (href, name,
+      @referredType) are not kept.
+    - Everything else stays nested with its full TMF structure, defined
+      once in $defs and "@type": "@json" in the context: references to
+      entities outside this candidate (ProductOfferingRef,
+      ProductSpecificationRef, BillingAccountRef, PartyRef, ...), and
+      references that carry a role or a relationship type
+      (productRelationship, serviceRelationship, resourceRelationship,
+      relatedParty, place, productOrderItem, relatedEntity,
+      troubleTicketRelationship). A TroubleTicket refers to the affected
+      Product / Service / Resource through relatedEntity[].entity.id,
+      which may hold the NGSI-LD id.
+    - OpenAPI to JSON Schema 2020-12: $ref to #/$defs, allOf kept,
+      oneOf turned into anyOf (the TMF alternatives such as PartyRef and
+      PartyRoleRef overlap and are told apart only by the OpenAPI
+      discriminator on @type, which JSON Schema does not have, so oneOf
+      would reject valid payloads), discriminator / nullable dropped,
+      example -> examples. Discriminator mappings are not followed, except
+      for Characteristic, whose sub-classes (StringCharacteristic,
+      NumberCharacteristic, ObjectCharacteristic, ...) carry the `value`
+      and are kept in $defs. Code lists (status, state and the resource
+      state types) are enums inlined in the attribute.
+    - Deprecated attributes left out: Resource.category,
+      PhysicalResource.powerState, PhysicalResource.versionNumber.
+
+  CONTEXT IRIs: TMF has no RDF vocabulary. Each term maps to its
+  component property inside the OpenAPI file at tag v5.0.0 on GitHub
+  (https://github.com/tmforum-apis/<repo>/blob/v5.0.0/<file>#/components/schemas/<Component>/properties/<attribute>);
+  inherited attributes point to the component that declares them
+  (Extensible, Addressable, or the Resource sub-class).
+
+  SOURCE ISSUES (worth reporting upstream):
+    - TMF637 ProductStatusType enumerates "aborted " with a trailing
+      space; the enum here is "aborted".
+    - TMF638 Service example: keys "featureCharacteritic" (should be
+      featureCharacteristic) and "ServiceRelationshipCharacteristic"
+      (should be serviceRelationshipCharacteristic); corrected in the
+      example.
+    - TMF621 TroubleTicket example: expectedResolutionDate (2019) is
+      before creationDate (2022); kept as published.
+    - TMF622 example: itemTerm[].duration carries "@type", which the
+      Duration schema does not declare (allowed, as TMF schemas are open).
+    - TMF637 / TMF622 info.description still says "All Rights Reserved"
+      although the repositories are Apache-2.0.
+    - TMF621 release tag v5.0.0 ships the file versioned 5.0.1.
+
+  EXAMPLES: adapted from the example payloads in the OpenAPI files
+  themselves (Apache-2.0, illustrative, not real operator data). Changes,
+  stated in each `source`: names of people removed (party references,
+  note authors, "for Jean" in a product name); phone numbers replaced by
+  numbers reserved for fiction (MSISDN 447700900123 from Ofcom's drama
+  range instead of 491702283968; 415 555 0139 instead of 415 279 7439);
+  href and @schemaLocation URLs left out; ids aligned so the five
+  examples form one set: Product g265-tf85 is realized by Service 5351
+  and Resource 839933ec-... (the MSISDN), Service 5351 is supported by
+  that Resource, and TroubleTicket 3180 gets a relatedEntity
+  "affectedProduct" pointing to the Product.
+
+  DUPLICATION RISK:
+    - dataModel.IT Service (IT service / orchestration) and the hsds
+      candidate's Service (human services) share the type name Service
+      with a different meaning; gs1-web-vocabulary and untp candidates
+      have Product (a product type / trade item, not a subscribed product
+      instance); gaiax-ontology and saref4envi candidates have Resource.
+      Type names will need disambiguation (e.g. TMF prefix or a separate
+      subject) at promotion.
+    - dataModel.IssueTracking (IssueReporting, Open311 service_requests)
+      overlaps in scope with TroubleTicket.
+    - The camara-apis candidate covers telecom network capabilities
+      (QoS, device location), not inventory; no overlap in types.
+    - TMF632 Party was not included because it overlaps
+      dataModel.Organization (Organization, Person).

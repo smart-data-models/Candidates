@@ -1,0 +1,908 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/TroubleTicket/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - TroubleTicket",
+  "description": "A trouble ticket is a record of an issue that is created, tracked, and managed by a trouble ticket management system (TM Forum TMF621 Trouble Ticket v5.0.1, OpenAPI component TroubleTicket; attribute names kept verbatim except id/@type/@baseType/@schemaLocation; deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:TroubleTicket:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "TroubleTicket"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'TroubleTicket'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/Extensible/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'TroubleTicket' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/Extensible/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/Extensible/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/Addressable/properties/href'. Hyperlink reference"
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/Addressable/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:TroubleTicket:<tmfId>. unique identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/name'. Name of the trouble ticket, typically a short description provided by the user that create the ticket"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/description'. Description of the trouble or issue"
+    },
+    "severity": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/severity'. The severity of the issue. Indicate the implication of the issue on the expected functionality e.g. of a system, application, service etc.. Severity values can be for example : Critical, Major, Minor"
+    },
+    "ticketType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/ticketType'. Represent a business type of the trouble ticket e.g. incident, complain, request"
+    },
+    "attachment": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AttachmentRefOrValue"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/attachment'. File(s) attached to the trouble ticket. e.g. picture of broken device, scanning of a bill or charge"
+    },
+    "channel": {
+      "$ref": "#/$defs/ChannelRef",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/channel'. The channel to which the resource reference to. e.g. channel for selling product offerings, channel for opening a trouble ticket etc.."
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/creationDate'. The date on which the trouble ticket was created"
+    },
+    "requestedResolutionDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/requestedResolutionDate'. The resolution date requested by the user"
+    },
+    "expectedResolutionDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/expectedResolutionDate'. The expected resolution date determined by the trouble ticket system"
+    },
+    "resolutionDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/resolutionDate'. The date and time the trouble ticket was resolved"
+    },
+    "externalIdentifier": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ExternalIdentifier"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/externalIdentifier'. An identification of an entity that is owned by or originates in a software system different from the current system, for example a ProductOrder handed off from a commerce platform into an order handling system. The structure identifies the system itself, the nature of the entity within the system (e.g. class name) and the unique ID of the entity within the system. It is anticipated that multiple external IDs can be held for a single entity, e.g. if the entity passed through multiple systems on the way to the current system. In this case the consumer is expected to sequence the IDs in the array in reverse order of provenance, i.e. most recent system first in the list."
+    },
+    "lastUpdate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/lastUpdate'. The date and time that the trouble ticket was last updated"
+    },
+    "note": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Note"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/note'. The note(s) that are associated to the ticket."
+    },
+    "priority": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/priority'. The priority of the trouble ticket and how quickly the issue should be resolved. Example: Critical, High, Medium, Low. The value is set by the ticket management system considering the severity, ticket type etc..."
+    },
+    "relatedEntity": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedEntity"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/relatedEntity'. An entity that is related to the ticket such as a bill, a product, etc. The entity against which the ticket is associated."
+    },
+    "relatedParty": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedPartyRefOrPartyRoleRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/relatedParty'. The related party(ies) that are associated to the ticket."
+    },
+    "status": {
+      "enum": [
+        "acknowledged",
+        "rejected",
+        "pending",
+        "held",
+        "inProgress",
+        "cancelled",
+        "closed",
+        "resolved"
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/status'. Possible values for the status of the trouble ticket"
+    },
+    "statusChangeDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/statusChangeDate'. The date and time the status changed."
+    },
+    "statusChangeReason": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/statusChangeReason'. The reason for changing the status"
+    },
+    "statusChangeHistory": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/StatusChange"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/statusChangeHistory'. The status change history that are associated to the ticket. Populated by the server"
+    },
+    "troubleTicketRelationship": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/TroubleTicketRelationship"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/troubleTicketRelationship'. A list of trouble ticket relationships (TroubleTicketRelationship [*]). Represents a relationship between trouble tickets"
+    },
+    "troubleTicketSpecification": {
+      "$ref": "#/$defs/TroubleTicketSpecificationRef",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/troubleTicketSpecification'. reference to an TroubleTicketSpecification object"
+    },
+    "troubleTicketCharacteristic": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Characteristic"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/troubleTicketCharacteristic'. List of characteristics of the trouble ticket"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tmfType"
+  ],
+  "$defs": {
+    "Addressable": {
+      "type": "object",
+      "description": "Base schema for addressable entities",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Hyperlink reference"
+        },
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        }
+      }
+    },
+    "Attachment": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Entity"
+        },
+        {
+          "type": "object",
+          "description": "Complements the description of an element (for instance a product) through video, pictures...",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The name of the attachment"
+            },
+            "description": {
+              "type": "string",
+              "description": "A narrative text describing the content of the attachment",
+              "examples": [
+                "Photograph of the Product"
+              ]
+            },
+            "url": {
+              "type": "string",
+              "description": "Uniform Resource Locator, is a web page address (a subset of URI)",
+              "examples": [
+                "https://host/Content/4aafacbd-11ff-4dc8-b445-305f2215715f"
+              ]
+            },
+            "content": {
+              "type": "string",
+              "format": "base64",
+              "description": "The actual contents of the attachment object, if embedded, encoded as base64"
+            },
+            "size": {
+              "$ref": "#/$defs/Quantity"
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            },
+            "attachmentType": {
+              "type": "string",
+              "description": "a business characterization of the purpose of the attachment, for example logo, instructionManual, contractCopy"
+            },
+            "mimeType": {
+              "type": "string",
+              "description": "a technical characterization of the attachment content format using IETF Mime Types"
+            }
+          }
+        }
+      ]
+    },
+    "AttachmentRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "Attachment reference. An attachment complements the description of an element (for instance a product) through video, pictures",
+          "properties": {
+            "description": {
+              "type": "string",
+              "description": "A narrative text describing the content of the attachment"
+            },
+            "url": {
+              "description": "Link to the attachment media/content",
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "AttachmentRefOrValue": {
+      "type": "object",
+      "description": "The polymorphic attributes @type, @schemaLocation & @referredType are related to the Attachment entity and not the AttachmentRefOrValue class itself",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Attachment"
+        },
+        {
+          "$ref": "#/$defs/AttachmentRef"
+        }
+      ]
+    },
+    "BooleanArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of Boolean(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "description": "A characteristic which value is an array of Boolean(s).",
+              "items": {
+                "type": "boolean",
+                "description": "Characteristic item boolean value"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "BooleanCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Boolean.",
+          "properties": {
+            "value": {
+              "type": "boolean",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "ChannelRef": {
+      "type": "object",
+      "description": "The channel to which the resource reference to. e.g. channel for selling product offerings, channel for opening a trouble ticket etc..",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "Characteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Describes a given characteristic of an object or entity through a name/value pair. This is an abstract base class, the actual value is in one of the strongly-typed subclasses : StringCharacteristic, ObjectCharacteristic, FloatCharacteristic, BooleanCharacteristic, NumberCharacteristic, IntegerCharacteristic, StringArrayCharacteristic, ObjectArrayCharacteristic, BooleanArrayCharacteristic, NumberArrayCharacteristic, IntegerArrayCharacteristic... The value is given by the sub-class named in @type (discriminator in the TMF specification): BooleanArrayCharacteristic, BooleanCharacteristic, FloatCharacteristic, IntegerArrayCharacteristic, IntegerCharacteristic, NumberArrayCharacteristic, NumberCharacteristic, ObjectArrayCharacteristic, ObjectCharacteristic, StringArrayCharacteristic, StringCharacteristic; see $defs.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique identifier of the characteristic"
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the characteristic"
+            },
+            "valueType": {
+              "type": "string",
+              "description": "Data type of the value of the characteristic"
+            },
+            "characteristicRelationship": {
+              "type": "array",
+              "description": "Collection of characteristic relationships",
+              "items": {
+                "$ref": "#/$defs/CharacteristicRelationship"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "CharacteristicRelationship": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Another Characteristic that is related to the current Characteristic;",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique identifier of the characteristic"
+            },
+            "relationshipType": {
+              "type": "string",
+              "description": "The type of relationship"
+            }
+          }
+        }
+      ]
+    },
+    "Entity": {
+      "type": "object",
+      "description": "Base entity schema for use in TMForum Open-APIs. Property.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        }
+      ]
+    },
+    "EntityRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        },
+        {
+          "type": "object",
+          "description": "Entity reference schema to be use for all entityRef class.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "The identifier of the referred entity."
+            },
+            "href": {
+              "type": "string",
+              "description": "The URI of the referred entity."
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the referred entity."
+            },
+            "@referredType": {
+              "type": "string",
+              "description": "The actual type of the target instance when needed for disambiguation."
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      ]
+    },
+    "Extensible": {
+      "type": "object",
+      "description": "Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means that the Entity described by the schema MUST be extended with the @type",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "ExternalIdentifier": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "An identification of an entity that is owned by or originates in a software system different from the current system, for example a ProductOrder handed off from a commerce platform into an order handling system. The structure identifies the system itself, the nature of the entity within the system (e.g. class name) and the unique ID of the entity within the system. It is anticipated that multiple external IDs can be held for a single entity, e.g. if the entity passed through multiple systems on the way to the current system. In this case the consumer is expected to sequence the IDs in the array in reverse order of provenance, i.e. most recent system first in the list.",
+          "properties": {
+            "owner": {
+              "type": "string",
+              "description": "Name of the external system that owns the entity.",
+              "examples": [
+                "MagentoCommerce"
+              ]
+            },
+            "externalIdentifierType": {
+              "type": "string",
+              "description": "Type of the identification, typically would be the type of the entity within the external system",
+              "examples": [
+                "ProductOrder"
+              ]
+            },
+            "id": {
+              "type": "string",
+              "description": "identification of the entity within the external system."
+            }
+          }
+        }
+      ]
+    },
+    "FloatCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Float.",
+          "properties": {
+            "value": {
+              "type": "number",
+              "format": "float",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "IntegerArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of Integer(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "description": "A characteristic which value is an array of Integer(s).",
+              "items": {
+                "type": "integer",
+                "description": "Characteristic value"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "IntegerCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Integer.",
+          "properties": {
+            "value": {
+              "type": "integer",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "Note": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Extra information about a given entity",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Identifier of the note within its containing entity",
+              "examples": [
+                "afa9-3d90aaa8da0f"
+              ]
+            },
+            "author": {
+              "type": "string",
+              "description": "Author of the note",
+              "examples": [
+                "Mr. N. Bene"
+              ]
+            },
+            "date": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Date of the note",
+              "examples": [
+                "2020-11-20T08:00:00Z"
+              ]
+            },
+            "text": {
+              "type": "string",
+              "description": "Text of the note",
+              "examples": [
+                "This is important"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "NumberArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of Number(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "description": "A characteristic which value is an array of Number(s).",
+              "items": {
+                "type": "number",
+                "description": "Characteristic value"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "NumberCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Number.",
+          "properties": {
+            "value": {
+              "type": "number",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "ObjectArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of Object(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "description": "Collection of characteristic values",
+              "items": {
+                "type": "object",
+                "description": "Characteristic value"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ObjectCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Object.",
+          "properties": {
+            "value": {
+              "type": "object",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "PartyRef": {
+      "type": "object",
+      "description": "A Party reference",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "PartyRefOrPartyRoleRef": {
+      "type": "object",
+      "description": "",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PartyRef"
+        },
+        {
+          "$ref": "#/$defs/PartyRoleRef"
+        }
+      ]
+    },
+    "PartyRoleRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "Party role reference. A party role represents the part played by a party in a given context.",
+          "properties": {
+            "partyId": {
+              "type": "string",
+              "description": "The identifier of the engaged party that is linked to the PartyRole object."
+            },
+            "partyName": {
+              "type": "string",
+              "description": "The name of the engaged party that is linked to the PartyRole object."
+            }
+          }
+        }
+      ]
+    },
+    "Quantity": {
+      "type": "object",
+      "description": "An amount in a given unit",
+      "properties": {
+        "amount": {
+          "type": "number",
+          "format": "float",
+          "default": 1,
+          "description": "Numeric value in a given unit"
+        },
+        "units": {
+          "type": "string",
+          "description": "Unit"
+        }
+      }
+    },
+    "RelatedEntity": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "A reference to an entity, where the type of the entity is not known in advance.",
+          "properties": {
+            "role": {
+              "type": "string"
+            },
+            "entity": {
+              "$ref": "#/$defs/EntityRef"
+            }
+          }
+        }
+      ]
+    },
+    "RelatedPartyRefOrPartyRoleRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "RelatedParty reference. A related party defines party or party role or its reference, linked to a specific entity",
+          "properties": {
+            "role": {
+              "description": "Role played by the related party or party role in the context of the specific entity it is linked to. Such as 'initiator', 'customer', 'salesAgent', 'user'",
+              "type": "string"
+            },
+            "partyOrPartyRole": {
+              "$ref": "#/$defs/PartyRefOrPartyRoleRef"
+            }
+          }
+        }
+      ]
+    },
+    "StatusChange": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Holds the status, reasons and associated date the status changed, populated by the server",
+          "properties": {
+            "statusChangeDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The date and time the status changed."
+            },
+            "statusChangeReason": {
+              "type": "string",
+              "description": "The reason why the status changed."
+            },
+            "status": {
+              "$ref": "#/$defs/TroubleTicketStatusType"
+            }
+          }
+        }
+      ]
+    },
+    "StringArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of String(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "description": "Collection of string characteristics",
+              "items": {
+                "type": "string",
+                "description": "Characteristic value"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "StringCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a String.",
+          "properties": {
+            "value": {
+              "type": "string",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "startDateTime": {
+          "description": "Start of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        },
+        "endDateTime": {
+          "description": "End of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        }
+      }
+    },
+    "TroubleTicketRelationship": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "Represents a relationship between trouble tickets",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique identifier of the related trouble ticket"
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the trouble ticket"
+            },
+            "relationshipType": {
+              "type": "string",
+              "description": "Type of relationship"
+            }
+          }
+        }
+      ]
+    },
+    "TroubleTicketSpecificationRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "reference to an TroubleTicketSpecification object",
+          "properties": {
+            "version": {
+              "type": "string",
+              "description": "The version of the trouble ticket specification, in case it is desired to maintain multiple versions of trouble ticket specifications"
+            }
+          }
+        }
+      ]
+    },
+    "TroubleTicketStatusType": {
+      "enum": [
+        "acknowledged",
+        "rejected",
+        "pending",
+        "held",
+        "inProgress",
+        "cancelled",
+        "closed",
+        "resolved"
+      ],
+      "type": "string",
+      "description": "Possible values for the status of the trouble ticket"
+    }
+  }
+}

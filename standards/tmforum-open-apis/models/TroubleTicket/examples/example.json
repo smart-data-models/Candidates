@@ -1,0 +1,178 @@
+{
+  "id": "urn:ngsi-ld:TroubleTicket:3180",
+  "type": "TroubleTicket",
+  "tmfId": "3180",
+  "creationDate": "2022-05-31T07:34:45.968Z",
+  "description": "I do not accept the last VOD charge, since the movie was constantly interrupted, I had to quick watching the movie in the middle ",
+  "expectedResolutionDate": "2019-06-10T07:34:45.968Z",
+  "lastUpdate": "2022-05-31T07:34:45.968Z",
+  "name": "complaint over last bill",
+  "priority": "High",
+  "requestedResolutionDate": "2022-05-31T07:34:45.968Z",
+  "resolutionDate": "2022-05-31T07:34:45.968Z",
+  "severity": "Minor",
+  "status": "resolved",
+  "statusChangeDate": "2022-05-31T07:34:45.968Z",
+  "statusChangeReason": "Apply full credit",
+  "ticketType": "Bill Dispute",
+  "troubleTicketCharacteristic": [
+    {
+      "id": "1",
+      "name": "disputeAmount",
+      "valueType": "number",
+      "value": 40,
+      "@type": "NumberCharacteristic"
+    },
+    {
+      "id": "2",
+      "name": "creditAmount",
+      "valueType": "number",
+      "value": 40,
+      "characteristicRelationship": [
+        {
+          "id": "4",
+          "relationshipType": "dependency",
+          "@type": "CharacteristicRelationship"
+        }
+      ],
+      "@type": "NumberCharacteristic"
+    },
+    {
+      "id": "3",
+      "name": "currency",
+      "valueType": "string",
+      "value": "USD",
+      "@type": "StringCharacteristic"
+    },
+    {
+      "id": "4",
+      "name": "creditReason",
+      "valueType": "string",
+      "value": "Network connectivity issues",
+      "@type": "StringCharacteristic"
+    }
+  ],
+  "attachment": [
+    {
+      "description": "Scanned disputed bill",
+      "attachmentType": "billCopy",
+      "mimeType": "image/png",
+      "name": "March Bill",
+      "url": "https://mycsp.com:7070/docloader?docnum=3534555",
+      "@type": "Attachment"
+    }
+  ],
+  "channel": {
+    "id": "8774",
+    "name": "self service",
+    "@type": "ChannelRef"
+  },
+  "note": [
+    {
+      "id": "77456",
+      "author": "customer care agent",
+      "date": "2019-05-31T07:34:45.968Z",
+      "text": "This is quite important, please approach me as soon as possible",
+      "@type": "Note"
+    }
+  ],
+  "relatedEntity": [
+    {
+      "role": "disputedBill",
+      "@type": "RelatedEntity",
+      "entity": {
+        "id": "3472",
+        "href": "https://mycsp.com:8080/tmf-api/customerBillManagement/v5/customerBill/8297",
+        "name": "March 2019 Bill",
+        "@type": "EntityRef",
+        "@referredType": "CustomerBill"
+      }
+    },
+    {
+      "role": "affectedProduct",
+      "@type": "RelatedEntity",
+      "entity": {
+        "id": "urn:ngsi-ld:Product:g265-tf85",
+        "name": "Voice Over IP Basic instance",
+        "@type": "EntityRef",
+        "@referredType": "Product"
+      }
+    }
+  ],
+  "relatedParty": [
+    {
+      "role": "member",
+      "partyOrPartyRole": {
+        "id": "9866",
+        "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/9866",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      },
+      "@type": "RelatedPartyRefOrPartyRoleRef"
+    },
+    {
+      "role": "reporter",
+      "partyOrPartyRole": {
+        "id": "9877",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      },
+      "@type": "RelatedPartyRefOrPartyRoleRef"
+    },
+    {
+      "role": "customer",
+      "partyOrPartyRole": {
+        "id": "9176",
+        "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/customer/9176",
+        "@type": "PartyRoleRef",
+        "@referredType": "Customer"
+      },
+      "@type": "RelatedPartyRefOrPartyRoleRef"
+    }
+  ],
+  "statusChangeHistory": [
+    {
+      "statusChangeDate": "2022-05-28T07:34:45.968Z",
+      "statusChangeReason": "trouble ticket created ",
+      "status": "acknowledged",
+      "@type": "StatusChange"
+    },
+    {
+      "statusChangeDate": "2022-05-28T08:34:45.968Z",
+      "statusChangeReason": "start process",
+      "status": "inProgress",
+      "@type": "StatusChange"
+    },
+    {
+      "statusChangeDate": "2022-05-29T07:34:45.968Z",
+      "statusChangeReason": "Need more information from the customer",
+      "status": "pending",
+      "@type": "StatusChange"
+    },
+    {
+      "statusChangeDate": "2022-05-31T07:34:45.968Z",
+      "statusChangeReason": "Apply full credit",
+      "status": "resolved",
+      "@type": "StatusChange"
+    }
+  ],
+  "troubleTicketRelationship": [
+    {
+      "id": "567433",
+      "href": "https://mycsp.com:8080/tmf-api/troubleTicket/v5/troubleTicket/567433",
+      "name": "Network Coverage",
+      "relationshipType": "dependecy",
+      "@type": "TroubleTicketRelationship"
+    }
+  ],
+  "externalIdentifier": [
+    {
+      "id": "3331234",
+      "owner": "BMC Remedy",
+      "externalIdentifierType": "Incident",
+      "@type": "ExternalIdentifier"
+    }
+  ],
+  "tmfType": "TroubleTicket",
+  "source": "Adapted from the example payload 'TroubleTicket_retrieve_example_response' of the TMF621 Trouble Ticket v5.0.1 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names removed, phone numbers replaced by numbers reserved for fiction, href/@schemaLocation URLs left out; a relatedEntity 'affectedProduct' pointing to the Product example added."
+}
