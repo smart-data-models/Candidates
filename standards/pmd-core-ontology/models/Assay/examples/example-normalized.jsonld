@@ -1,0 +1,89 @@
+{
+  "id": "urn:ngsi-ld:Assay:pmdao-tto-tt-S355-2",
+  "type": "Assay",
+  "name": {
+    "type": "Property",
+    "value": "Tensile test pmdao-tto-tt-S355-2 on test piece Zx2"
+  },
+  "description": {
+    "type": "Property",
+    "value": "Tensile test at room temperature (20 degC) according to DIN EN ISO 6892-1, extensometer removed after 3.9 % strain, no increase of test speed. Performed at BAM, Berlin, project PMDao-onto_1."
+  },
+  "pmdClass": {
+    "type": "Property",
+    "value": [
+      "tensile testing process"
+    ]
+  },
+  "hasSpecifiedInput": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:Object:bam-s355-testpiece-zx2"
+    ]
+  },
+  "hasSpecifiedOutput": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:MeasurementDatum:pmdao-tto-tt-S355-2-ReH",
+      "urn:ngsi-ld:MeasurementDatum:pmdao-tto-tt-S355-2-Rm",
+      "urn:ngsi-ld:MeasurementDatum:pmdao-tto-tt-S355-2-E",
+      "urn:ngsi-ld:MeasurementDatum:pmdao-tto-tt-S355-2-A",
+      "urn:ngsi-ld:MeasurementDatum:pmdao-tto-tt-S355-2-Z"
+    ]
+  },
+  "hasParticipant": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:Device:bam-instron-4505-h2486",
+      "urn:ngsi-ld:Device:bam-hbm-extensometer-28023",
+      "urn:ngsi-ld:Organization:bam"
+    ]
+  },
+  "assayMeasuresCharacteristic": {
+    "type": "Property",
+    "value": [
+      "upper yield strength",
+      "ultimate tensile strength",
+      "elastic modulus",
+      "percentage elongation after fracture",
+      "percentage reduction of area"
+    ]
+  },
+  "hasProcessAttribute": {
+    "type": "Property",
+    "value": [
+      {
+        "processAttribute": "deformation speed",
+        "hasSpecifiedNumericValue": 0.00025,
+        "hasMeasurementUnitLabel": "http://qudt.org/vocab/unit/PER-SEC"
+      }
+    ]
+  },
+  "hasFirstInstant": {
+    "type": "Property",
+    "value": "2021-02-22"
+  },
+  "hasLastInstant": {
+    "type": "Property",
+    "value": "2021-02-22"
+  },
+  "precededBy": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:ManufacturingProcess:bam-s355-testpiece-preparation"
+    ]
+  },
+  "isSubjectOf": {
+    "type": "Property",
+    "value": [
+      "DIN EN ISO 6892-1"
+    ]
+  },
+  "source": {
+    "type": "Property",
+    "value": "Real data: test piece Zx2 (process pmdao-tto-tt-S355-2) of 'Full dataset of several mechanical tests on an S355 steel sheet as reference data for digital representations', Bundesanstalt fuer Materialforschung und -pruefung (BAM), Zenodo https://doi.org/10.5281/zenodo.6778336, CC-BY-4.0 (also mapped to PMDco in https://github.com/materialdigital/tensile-test-ontology). Classes and relations from PMD Core Ontology 3.1.2, CC-BY-4.0, Plattform MaterialDigital, https://w3id.org/pmd/co"
+  },
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/pmd-core-ontology/models/Assay/context.jsonld"
+  ]
+}
