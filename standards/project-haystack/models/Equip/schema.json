@@ -1,0 +1,889 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/project-haystack/models/Equip/schema.json",
+  "modelTags": "ProjectHaystack,Haystack4,SmartBuildings,BuildingAutomation",
+  "title": "Smart Data Models - Project Haystack - Equip",
+  "description": "Equipment asset. See the Haystack 'Equips' chapter chapter. (Project Haystack 4.0.0 entity 'equip', Xeto spec ph::Equip. Tag names verbatim; marker tags in hasTag.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity. Stands for the Haystack 'id' Ref tag."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Equip"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Equip'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hasTag": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/marker"
+      },
+      "contains": {
+        "const": "equip"
+      },
+      "description": "Property. Model:'https://project-haystack.org/def/ph/4.0.0#hasTag'. The marker tags of the entity, verbatim Haystack tag names, as Haystack's own RDF export encodes markers (ph:hasTag). Must contain 'equip'. It carries the entity subtype markers (e.g. actuator, airHandlingEquip, airTerminalUnit, ates, battery, boiler), the options chosen for Haystack choices and any other marker such as his, cur, writable or hvac. Values expand to the Haystack def IRIs in JSON-LD. Documentation: https://project-haystack.org/doc/docHaystack/Rdf#instances. Marker tags that Haystack declares on equip: vfd"
+    },
+    "dis": {
+      "type": "string",
+      "description": "Property. Model:'https://project-haystack.org/def/ph/4.0.0#dis'. Display name for an entity. See the Haystack 'Ontology' chapter chapter. Documentation: https://project-haystack.org/doc/lib-ph/dis"
+    },
+    "ahuZoneDelivery": {
+      "$ref": "#/$defs/ahuZoneDelivery",
+      "description": "Property. Model:'https://project-haystack.org/def/phIoT/4.0.0#ahuZoneDelivery'. AHU delivery method of conditioned air to the zone. Haystack choice: the value is one of its options, which is also a marker tag of the entity (listed in hasTag). Values are Haystack def names; in JSON-LD they expand to the def IRIs. Applies to equip entities of type airHandlingEquip. Documentation: https://project-haystack.org/doc/lib-phIoT/ahuZoneDelivery"
+    },
+    "airRef": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://project-haystack.org/def/phIoT/4.0.0#airRef'. Air flows from the referent to this entity. Points to the entity (typically an Equip) that produces it (tagged 'air-output'). Documentation: https://project-haystack.org/doc/lib-phIoT/airRef"
+    },
+    "airVolumeAdjustability": {
+      "$ref": "#/$defs/airVolumeAdjustability",
+      "description": "Property. Model:'https://project-haystack.org/def/phIoT/4.0.0#airVolumeAdjustability'. Ability of air handling equip to adjust volume of air flow. Haystack choice: the value is one of its options, which is also a marker tag of the entity (listed in hasTag). Values are Haystack def names; in JSON-LD they expand to the def IRIs. Applies to equip entities of type airHandlingEquip. Documentation: https://project-haystack.org/doc/lib-phIoT/airVolumeAdjustability"
+    },
+    "atesDesign": {
+      "$ref": "#/$defs/atesDesign",
+      "description": "Property. Model:'https://project-haystack.org/def/phIoT/4.0.0#atesDesign'. Design type of the ATES underground system. Haystack choice: the value is one of its options, which is also a marker tag of the entity (listed in hasTag). Values are Haystack def names; in JSON-LD they expand to the def IRIs. Applies to equip entities of type ates. Documentation: https://project-haystack.org/doc/lib-phIoT/atesDesign"
+    },
+    "blowdownWaterRef": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://project-haystack.org/def/phIoT/4.0.0#blowdownWaterRef'. Blowdown water flows from the referent to this entity. Points to the entity (typically an Equip) that produces it (tagged 'blowdown-water-output'). Documentation: https://project-haystack.org/doc/lib-phIoT/blowdownWaterRef"
+    },
+    "chilledWaterRef": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://project-haystack.org/def/phIoT/4.0.0#chilledWaterRef'. Chilled water flows from the referent to this entity. Points to the entity (typically an Equip) that produces it (tagged 'chilled-water-output'). Documentation: https://project-haystack.org/doc/lib-phIoT/chilledWaterRef"
+    },
+    "chillerMechanism": {
+      "$ref": "#/$defs/chillerMechanism",
+      "description": "Property. Model:'https://project-haystack.org/def/phIoT/4.0.0#chillerMechanism'. Primary mechanism of chiller. Haystack choice: the value is one of its options, which is also a marker tag of the entity (listed in hasTag). Values are Haystack def names; in JSON-LD they expand to the def IRIs. Applies to equip entities of type chiller. Documentation: https://project-haystack.org/doc/lib-phIoT/chillerMechanism"
+    },
+    "condensateRef": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://project-haystack.org/def/phIoT/4.0.0#condensateRef'. Condensate flows from the referent to this entity. Points to the entity (typically an Equip) that produces it (tagged 'condensate-output'). Documentation: https://project-haystack.org/doc/lib-phIoT/condensateRef"
+    },
+    "condenserLoop": {
+      "$ref": "#/$defs/condenserLoop",
+      "description": "Property. Model:'https://project-haystack.org/def/phIoT/4.0.0#condenserLoop'. Open or closed loop for condenser working fluid. Haystack choice: the value is one of its options, which is also a marker tag of the entity (listed in hasTag). Values are Haystack def names; in JSON-LD they expand to the def IRIs. Applies to equip entities of type chilled-water-plant. Documentation: https://project-haystack.org/doc/lib-phIoT/condenserLoop"
+    },
+    "condenserWaterRef": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://project-haystack.org/def/phIoT/4.0.0#condenserWaterRef'. Condenser water flows from the referent to this entity. Points to the entity (typically an Equip) that produces it (tagged 'condenser-water-output'). Documentation: https://project-haystack.org/doc/lib-phIoT/condenserWaterRef"
+    },
+    "coolingCapacity": {
+      "type": "number",
+      "description": "Property. Model:'https://project-haystack.org/def/phIoT/4.0.0#coolingCapacity'. Measurement of a chiller ability to remove heat measured. Units:'kW'. (Haystack Numbers carry their own unit; prefUnit tonref, BTU/h, kW. Smart Data Models fixes the SI unit.) Applies to equip entities of type chiller. Documentation: https://project-haystack.org/doc/lib-phIoT/coolingCapacity"
+    },
+    "coolingProcess": {
+      "$ref": "#/$defs/coolingProcess",
+      "description": "Property. Model:'https://project-haystack.org/def/phIoT/4.0.0#coolingProcess'. Processed used to cool a substance. Haystack choice: the value is one of its options, which is also a marker tag of the entity (listed in hasTag). Values are Haystack def names; in JSON-LD they expand to the def IRIs. Applies to equip entities of type airHandlingEquip, chilledBeam, coolingCoil. Documentation: https://project-haystack.org/doc/lib-phIoT/coolingProcess"
+    },
+    "domesticWaterRef": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://project-haystack.org/def/phIoT/4.0.0#domesticWaterRef'. Domestic water flows from the referent to this entity. Points to the entity (typically an Equip) that produces it (tagged 'domestic-water-output'). Documentation: https://project-haystack.org/doc/lib-phIoT/domesticWaterRef"
+    },
+    "ductConfig": {
+      "$ref": "#/$defs/ductConfig",
+      "description": "Property. Model:'https://project-haystack.org/def/phIoT/4.0.0#ductConfig'. Ductwork configuration. Haystack choice: the value is one of its options, which is also a marker tag of the entity (listed in hasTag). Values are Haystack def names; in JSON-LD they expand to the def IRIs. Applies to equip entities of type airHandlingEquip, airTerminalUnit. Documentation: https://project-haystack.org/doc/lib-phIoT/ductConfig"
+    },
+    "ductDeck": {
+      "$ref": "#/$defs/ductDeck",
+      "description": "Property. Model:'https://project-haystack.org/def/phIoT/4.0.0#ductDeck'. Cold, hot, or neutral deck. Can be applied to 'ahu' equip if the AHU is part of a 'dualDuct' or 'tripleDuct' system but only serves a single deck type. Haystack choice: the value is one of its options, which is also a marker tag of the entity (listed in hasTag). Values are Haystack def names; in JSON-LD they expand to the def IRIs. Applies to equip entities of type duct, airHandlingEquip. Documentation: https://project-haystack.org/doc/lib-phIoT/ductDeck"
+    },
+    "ductSection": {
+      "$ref": "#/$defs/ductSection",
+      "description": "Property. Model:'https://project-haystack.org/def/phIoT/4.0.0#ductSection'. Equipment section of ductwork. Haystack choice: the value is one of its options, which is also a marker tag of the entity (listed in hasTag). Values are Haystack def names; in JSON-LD they expand to the def IRIs. Applies to equip entities of type duct, damper-actuator, fan-motor. Documentation: https://project-haystack.org/doc/lib-phIoT/ductSection"
+    },
+    "elecRef": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://project-haystack.org/def/phIoT/4.0.0#elecRef'. Electricity flows from the referent to this entity. Points to the entity (typically an Equip) that produces it (tagged 'elec-output'). Documentation: https://project-haystack.org/doc/lib-phIoT/elecRef"
+    },
+    "equipRef": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://project-haystack.org/def/phIoT/4.0.0#equipRef'. Reference to equip which contains this entity. Points to a Equip entity. Documentation: https://project-haystack.org/doc/lib-phIoT/equipRef"
+    },
+    "evseCableType": {
+      "$ref": "#/$defs/evseCableType",
+      "description": "Property. Model:'https://project-haystack.org/def/phIoT/4.0.0#evseCableType'. Physical type of 'evse-cable'. Values: ccs1: CCS1 charging cable; ccs2: CCS2 charging cable; chademo: CHAdeMO charging cable; saeJ3400: SAE J3400 charging cable; saeJ1772: SAE J1772 charging cable; saeJ3068: SAE J3068 charging cable; iecType2: IEC 62196 Type 2 charging cable; mcs: Megawatt Charging System charging cable; gbt: GB/T charging cable. Applies to equip entities of type evse-cable. Documentation: https://project-haystack.org/doc/lib-phIoT/evseCableType"
+    },
+    "fuelOilRef": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://project-haystack.org/def/phIoT/4.0.0#fuelOilRef'. Fuel oil flows from the referent to this entity. Points to the entity (typically an Equip) that produces it (tagged 'fuelOil-output'). Documentation: https://project-haystack.org/doc/lib-phIoT/fuelOilRef"
+    },
+    "gasolineRef": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://project-haystack.org/def/phIoT/4.0.0#gasolineRef'. Gasoline flows from the referent to this entity. Points to the entity (typically an Equip) that produces it (tagged 'gasoline-output'). Documentation: https://project-haystack.org/doc/lib-phIoT/gasolineRef"
+    },
+    "heatingProcess": {
+      "$ref": "#/$defs/heatingProcess",
+      "description": "Property. Model:'https://project-haystack.org/def/phIoT/4.0.0#heatingProcess'. Processed used to heat a substance. Haystack choice: the value is one of its options, which is also a marker tag of the entity (listed in hasTag). Values are Haystack def names; in JSON-LD they expand to the def IRIs. Applies to equip entities of type airHandlingEquip, boiler, chilledBeam, heatingCoil, radiator, radiantFloor, vav. Documentation: https://project-haystack.org/doc/lib-phIoT/heatingProcess"
+    },
+    "hotWaterRef": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://project-haystack.org/def/phIoT/4.0.0#hotWaterRef'. Hot water flows from the referent to this entity. Points to the entity (typically an Equip) that produces it (tagged 'hot-water-output'). Documentation: https://project-haystack.org/doc/lib-phIoT/hotWaterRef"
+    },
+    "makeupWaterRef": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://project-haystack.org/def/phIoT/4.0.0#makeupWaterRef'. Makeup water flows from the referent to this entity. Points to the entity (typically an Equip) that produces it (tagged 'makeup-water-output'). Documentation: https://project-haystack.org/doc/lib-phIoT/makeupWaterRef"
+    },
+    "meterScope": {
+      "$ref": "#/$defs/meterScope",
+      "description": "Property. Model:'https://project-haystack.org/def/phIoT/4.0.0#meterScope'. Classifies a meter as a main site meter or submeter. Haystack choice: the value is one of its options, which is also a marker tag of the entity (listed in hasTag). Values are Haystack def names; in JSON-LD they expand to the def IRIs. Applies to equip entities of type meter. Documentation: https://project-haystack.org/doc/lib-phIoT/meterScope"
+    },
+    "naturalGasRef": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://project-haystack.org/def/phIoT/4.0.0#naturalGasRef'. Natural gas flows from the referent to this entity. Points to the entity (typically an Equip) that produces it (tagged 'naturalGas-output'). Documentation: https://project-haystack.org/doc/lib-phIoT/naturalGasRef"
+    },
+    "phaseCount": {
+      "$ref": "#/$defs/phaseCount",
+      "description": "Property. Model:'https://project-haystack.org/def/phIoT/4.0.0#phaseCount'. Number of phases for an AC electrical power system or connected equipment: single-phase, split-phase, two-phase, or three-phase. Haystack choice: the value is one of its options, which is also a marker tag of the entity (listed in hasTag). Values are Haystack def names; in JSON-LD they expand to the def IRIs. Applies to equip entities of type ac-elec-meter, motor. Documentation: https://project-haystack.org/doc/lib-phIoT/phaseCount"
+    },
+    "pipeFluid": {
+      "$ref": "#/$defs/pipeFluid",
+      "description": "Property. Model:'https://project-haystack.org/def/phIoT/4.0.0#pipeFluid'. Type of fluid conveyed by piping. Haystack choice: the value is one of its options, which is also a marker tag of the entity (listed in hasTag). Values are Haystack def names; in JSON-LD they expand to the def IRIs. Applies to equip entities of type pipe, valve-actuator, pump-motor. Documentation: https://project-haystack.org/doc/lib-phIoT/pipeFluid"
+    },
+    "pipeSection": {
+      "$ref": "#/$defs/pipeSection",
+      "description": "Property. Model:'https://project-haystack.org/def/phIoT/4.0.0#pipeSection'. Equipment section of piping. Haystack choice: the value is one of its options, which is also a marker tag of the entity (listed in hasTag). Values are Haystack def names; in JSON-LD they expand to the def IRIs. Applies to equip entities of type pipe, valve-actuator, pump-motor. Documentation: https://project-haystack.org/doc/lib-phIoT/pipeSection"
+    },
+    "plantLoop": {
+      "$ref": "#/$defs/plantLoop",
+      "description": "Property. Model:'https://project-haystack.org/def/phIoT/4.0.0#plantLoop'. Plant piping loop: primary, secondary, or tertiary. Haystack choice: the value is one of its options, which is also a marker tag of the entity (listed in hasTag). Values are Haystack def names; in JSON-LD they expand to the def IRIs. Applies to equip entities of type pipe. Documentation: https://project-haystack.org/doc/lib-phIoT/plantLoop"
+    },
+    "refrigRef": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://project-haystack.org/def/phIoT/4.0.0#refrigRef'. Refrigerant flows from the referent to this entity. Points to the entity (typically an Equip) that produces it (tagged 'refrig-output'). Documentation: https://project-haystack.org/doc/lib-phIoT/refrigRef"
+    },
+    "siteRef": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://project-haystack.org/def/phIoT/4.0.0#siteRef'. Reference to site which contains the entity. Points to a Site entity. Documentation: https://project-haystack.org/doc/lib-phIoT/siteRef"
+    },
+    "spaceRef": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://project-haystack.org/def/phIoT/4.0.0#spaceRef'. Reference to space which contains this entity. Points to a Space entity. Documentation: https://project-haystack.org/doc/lib-phIoT/spaceRef"
+    },
+    "steamRef": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://project-haystack.org/def/phIoT/4.0.0#steamRef'. Steam flows from the referent to this entity. Points to the entity (typically an Equip) that produces it (tagged 'steam-output'). Documentation: https://project-haystack.org/doc/lib-phIoT/steamRef"
+    },
+    "submeterOf": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://project-haystack.org/def/phIoT/4.0.0#submeterOf'. Reference to parent meter which is immediately upstream of this meter. Points to a Haystack 'meter' entity (not modelled in this candidate). Applies to equip entities of type meter. Documentation: https://project-haystack.org/doc/lib-phIoT/submeterOf"
+    },
+    "systemRef": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://project-haystack.org/def/phIoT/4.0.0#systemRef'. Reference to system. Points to a System entity. Documentation: https://project-haystack.org/doc/lib-phIoT/systemRef"
+    },
+    "tankSubstance": {
+      "$ref": "#/$defs/tankSubstance",
+      "description": "Property. Model:'https://project-haystack.org/def/phIoT/4.0.0#tankSubstance'. Substance stored by a tank. Haystack choice: the value is one of its options, which is also a marker tag of the entity (listed in hasTag). Values are Haystack def names; in JSON-LD they expand to the def IRIs. Applies to equip entities of type tank. Documentation: https://project-haystack.org/doc/lib-phIoT/tankSubstance"
+    },
+    "vavAirCircuit": {
+      "$ref": "#/$defs/vavAirCircuit",
+      "description": "Property. Model:'https://project-haystack.org/def/phIoT/4.0.0#vavAirCircuit'. How does the VAV pull in air. Haystack choice: the value is one of its options, which is also a marker tag of the entity (listed in hasTag). Values are Haystack def names; in JSON-LD they expand to the def IRIs. Applies to equip entities of type vav. Documentation: https://project-haystack.org/doc/lib-phIoT/vavAirCircuit"
+    },
+    "vavModulation": {
+      "$ref": "#/$defs/vavModulation",
+      "description": "Property. Model:'https://project-haystack.org/def/phIoT/4.0.0#vavModulation'. How does VAV modulate the temp based on duct pressure. Haystack choice: the value is one of its options, which is also a marker tag of the entity (listed in hasTag). Values are Haystack def names; in JSON-LD they expand to the def IRIs. Applies to equip entities of type vav. Documentation: https://project-haystack.org/doc/lib-phIoT/vavModulation"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "hasTag"
+  ],
+  "$defs": {
+    "ahuZoneDelivery": {
+      "type": "string",
+      "enum": [
+        "chilledBeamZone",
+        "directZone",
+        "multiZone",
+        "vavZone"
+      ],
+      "description": "Options of the Haystack choice 'ahuZoneDelivery'."
+    },
+    "airVolumeAdjustability": {
+      "type": "string",
+      "enum": [
+        "constantAirVolume",
+        "variableAirVolume"
+      ],
+      "description": "Options of the Haystack choice 'airVolumeAdjustability'."
+    },
+    "atesDesign": {
+      "type": "string",
+      "enum": [
+        "atesClosedLoop",
+        "atesDoublet",
+        "atesDoubletPaired",
+        "atesMono",
+        "atesUnidirectional"
+      ],
+      "description": "Options of the Haystack choice 'atesDesign'."
+    },
+    "chillerMechanism": {
+      "type": "string",
+      "enum": [
+        "chiller-absorption",
+        "chiller-centrifugal",
+        "chiller-reciprocal",
+        "chiller-rotaryScrew"
+      ],
+      "description": "Options of the Haystack choice 'chillerMechanism'."
+    },
+    "condenserLoop": {
+      "type": "string",
+      "enum": [
+        "condenserClosedLoop",
+        "condenserOpenLoop"
+      ],
+      "description": "Options of the Haystack choice 'condenserLoop'."
+    },
+    "coolingProcess": {
+      "type": "string",
+      "enum": [
+        "airCooling",
+        "chilledWaterCooling",
+        "condenserCooling",
+        "dxCooling",
+        "waterCooling"
+      ],
+      "description": "Options of the Haystack choice 'coolingProcess'."
+    },
+    "ductConfig": {
+      "type": "string",
+      "enum": [
+        "dualDuct",
+        "singleDuct",
+        "tripleDuct"
+      ],
+      "description": "Options of the Haystack choice 'ductConfig'."
+    },
+    "ductDeck": {
+      "type": "string",
+      "enum": [
+        "coldDeck",
+        "hotDeck",
+        "neutralDeck"
+      ],
+      "description": "Options of the Haystack choice 'ductDeck'."
+    },
+    "ductSection": {
+      "type": "string",
+      "enum": [
+        "discharge",
+        "economizer",
+        "exhaust",
+        "flue",
+        "inlet",
+        "mixed",
+        "outside",
+        "return",
+        "ventilation"
+      ],
+      "description": "Options of the Haystack choice 'ductSection'."
+    },
+    "evseCableType": {
+      "type": "string",
+      "enum": [
+        "ccs1",
+        "ccs2",
+        "chademo",
+        "saeJ3400",
+        "saeJ1772",
+        "saeJ3068",
+        "iecType2",
+        "mcs",
+        "gbt"
+      ],
+      "description": "Values of the Haystack 'evseCableType' tag."
+    },
+    "heatingProcess": {
+      "type": "string",
+      "enum": [
+        "biomassHeating",
+        "coalHeating",
+        "dxHeating",
+        "elecHeating",
+        "fuelOilHeating",
+        "hotWaterHeating",
+        "naturalGasHeating",
+        "propaneHeating",
+        "steamHeating"
+      ],
+      "description": "Options of the Haystack choice 'heatingProcess'."
+    },
+    "marker": {
+      "type": "string",
+      "enum": [
+        "absorption",
+        "ac",
+        "accumulate",
+        "active",
+        "actuator",
+        "ahu",
+        "air",
+        "airCooling",
+        "airHandlingEquip",
+        "airQuality",
+        "airQualityZonePoints",
+        "airTerminalUnit",
+        "alarm",
+        "angle",
+        "apparent",
+        "ates",
+        "atesClosedLoop",
+        "atesDoublet",
+        "atesDoubletPaired",
+        "atesMono",
+        "atesUnidirectional",
+        "atmospheric",
+        "avg",
+        "bacnet",
+        "barometric",
+        "battery",
+        "biomass",
+        "biomassHeating",
+        "blowdown",
+        "bluetooth",
+        "boiler",
+        "branchSelector",
+        "bypass",
+        "cable",
+        "cav",
+        "centrifugal",
+        "ch2o",
+        "ch4",
+        "chilled",
+        "chilledBeam",
+        "chilledBeamZone",
+        "chilledWaterCooling",
+        "chiller",
+        "circ",
+        "circuit",
+        "cloudage",
+        "cmd",
+        "co",
+        "co2",
+        "co2e",
+        "coal",
+        "coalHeating",
+        "coap",
+        "coil",
+        "cold",
+        "coldDeck",
+        "compressor",
+        "computed",
+        "computedFromReciprocal",
+        "computedModel",
+        "computer",
+        "concentration",
+        "condensate",
+        "condenser",
+        "condenserClosedLoop",
+        "condenserCooling",
+        "condenserOpenLoop",
+        "conditioning",
+        "conduit",
+        "constantAirVolume",
+        "controller",
+        "controls",
+        "cool",
+        "cooling",
+        "coolingCoil",
+        "coolingOnly",
+        "coolingTower",
+        "crac",
+        "cur",
+        "current",
+        "dali",
+        "damper",
+        "dataCenter",
+        "daytime",
+        "dc",
+        "deadband",
+        "delta",
+        "demand",
+        "deprecated",
+        "design",
+        "dessicantDehumidifier",
+        "device",
+        "dewPoint",
+        "diesel",
+        "direction",
+        "directZone",
+        "discharge",
+        "dispenser",
+        "diverting",
+        "doas",
+        "docAssociations",
+        "docTaxonomy",
+        "domestic",
+        "dualDuct",
+        "duct",
+        "ductArea",
+        "dxCooling",
+        "dxHeating",
+        "economizer",
+        "economizing",
+        "effective",
+        "efficiency",
+        "elec",
+        "elecHeating",
+        "elevator",
+        "emission",
+        "enable",
+        "energy",
+        "entering",
+        "enthalpy",
+        "entity",
+        "equip",
+        "escalator",
+        "evaporator",
+        "evse",
+        "evseSession",
+        "exhaust",
+        "export",
+        "extraction",
+        "faceBypass",
+        "fan",
+        "fanPowered",
+        "fcu",
+        "feelsLike",
+        "filter",
+        "floor",
+        "flow",
+        "flowInverter",
+        "flue",
+        "fluid",
+        "flux",
+        "freezeStat",
+        "freq",
+        "ftp",
+        "fuelOil",
+        "fuelOilHeating",
+        "fumeHood",
+        "gas",
+        "gasoline",
+        "geoPlace",
+        "ground",
+        "haystack",
+        "header",
+        "heat",
+        "heatExchanger",
+        "heating",
+        "heatingCoil",
+        "heatingOnly",
+        "heatPump",
+        "heatRecovery",
+        "heatWheel",
+        "hfc",
+        "his",
+        "hisTotalized",
+        "hot",
+        "hotDeck",
+        "hotWaterHeating",
+        "http",
+        "humidifier",
+        "humidity",
+        "hvac",
+        "hvacMode",
+        "hvacZonePoints",
+        "ice",
+        "illuminance",
+        "imap",
+        "imbalance",
+        "import",
+        "indoorUnit",
+        "infiltration",
+        "inlet",
+        "input",
+        "intensity",
+        "irradiance",
+        "isolation",
+        "knx",
+        "laptop",
+        "leaving",
+        "level",
+        "light",
+        "lighting",
+        "lightingZonePoints",
+        "lineAvg",
+        "liquid",
+        "load",
+        "luminaire",
+        "luminance",
+        "luminous",
+        "magnitude",
+        "makeup",
+        "mandatory",
+        "marker",
+        "mau",
+        "max",
+        "mech",
+        "meter",
+        "min",
+        "mixed",
+        "mixing",
+        "ml",
+        "mlModel",
+        "mlVar",
+        "mobile",
+        "modbus",
+        "motor",
+        "movingWalkway",
+        "mqtt",
+        "multiZone",
+        "n2o",
+        "naturalGas",
+        "naturalGasHeating",
+        "net",
+        "network",
+        "networking",
+        "neutral",
+        "neutralDeck",
+        "nf3",
+        "nh3",
+        "no2",
+        "nodoc",
+        "noSideEffects",
+        "nosrc",
+        "notInherited",
+        "o2",
+        "o3",
+        "obix",
+        "occ",
+        "occupancy",
+        "occupants",
+        "occupied",
+        "openEnum",
+        "outdoorUnit",
+        "output",
+        "outside",
+        "panel",
+        "parallel",
+        "perimeterHeat",
+        "pf",
+        "pfc",
+        "pfDisplacement",
+        "pfDistortion",
+        "pfIec",
+        "pfIeee",
+        "pfTrue",
+        "phaseAvg",
+        "phenomenon",
+        "phone",
+        "pipe",
+        "plant",
+        "pm01",
+        "pm10",
+        "pm25",
+        "point",
+        "pointGroup",
+        "pop3",
+        "port",
+        "power",
+        "powerConverter",
+        "precipitation",
+        "pressure",
+        "pressureDependent",
+        "pressureIndependent",
+        "primaryLoop",
+        "process",
+        "propane",
+        "propaneHeating",
+        "protocol",
+        "pump",
+        "purge",
+        "quality",
+        "quantity",
+        "rack",
+        "radiantEquip",
+        "radiantFloor",
+        "radiator",
+        "rated",
+        "reactive",
+        "reciprocal",
+        "refrig",
+        "reheat",
+        "return",
+        "roof",
+        "room",
+        "rotaryScrew",
+        "router",
+        "rtu",
+        "run",
+        "secondaryLoop",
+        "sensor",
+        "series",
+        "server",
+        "serviceFactor",
+        "sf6",
+        "sim",
+        "simBaseline",
+        "simModel",
+        "simOperation",
+        "simOptimum",
+        "singleDuct",
+        "singlePhase",
+        "site",
+        "siteMeter",
+        "smtp",
+        "snmp",
+        "solar",
+        "solid",
+        "sox",
+        "sp",
+        "space",
+        "speed",
+        "splitPhase",
+        "standby",
+        "stateOfCharge",
+        "steam",
+        "steamHeating",
+        "submeter",
+        "substance",
+        "subterranean",
+        "switch",
+        "synthetic",
+        "syntheticModel",
+        "system",
+        "tablet",
+        "tank",
+        "temp",
+        "tertiaryLoop",
+        "thd",
+        "thermal",
+        "thermostat",
+        "threePhase",
+        "total",
+        "transient",
+        "transitive",
+        "tripleDuct",
+        "tvoc",
+        "twoPhase",
+        "unitVent",
+        "unocc",
+        "ups",
+        "valve",
+        "variableAirVolume",
+        "vav",
+        "vavZone",
+        "velocity",
+        "ventilation",
+        "verticalTransport",
+        "vfd",
+        "visibility",
+        "volt",
+        "volume",
+        "vrf",
+        "warm",
+        "water",
+        "waterCooling",
+        "weather",
+        "weatherCond",
+        "weatherStation",
+        "well",
+        "wetBulb",
+        "wind",
+        "wire",
+        "writable",
+        "zigbee",
+        "zone",
+        "zwave"
+      ],
+      "description": "Haystack marker tags (non-conjunct marker defs of Haystack 4.0.0)."
+    },
+    "meterScope": {
+      "type": "string",
+      "enum": [
+        "siteMeter",
+        "submeter"
+      ],
+      "description": "Options of the Haystack choice 'meterScope'."
+    },
+    "phaseCount": {
+      "type": "string",
+      "enum": [
+        "singlePhase",
+        "splitPhase",
+        "threePhase",
+        "twoPhase"
+      ],
+      "description": "Options of the Haystack choice 'phaseCount'."
+    },
+    "pipeFluid": {
+      "type": "string",
+      "enum": [
+        "air",
+        "blowdown-water",
+        "ch2o",
+        "ch4",
+        "chilled-water",
+        "co",
+        "co2",
+        "cold-water",
+        "condensate",
+        "condenser-water",
+        "cool-water",
+        "diesel",
+        "domestic-water",
+        "fuelOil",
+        "gas",
+        "gasoline",
+        "ground-water",
+        "hfc",
+        "hot-water",
+        "liquid",
+        "makeup-water",
+        "n2o",
+        "naturalGas",
+        "nf3",
+        "nh3",
+        "no2",
+        "o2",
+        "o3",
+        "pfc",
+        "propane",
+        "purge-water",
+        "refrig",
+        "sf6",
+        "steam",
+        "tvoc",
+        "warm-water",
+        "water"
+      ],
+      "description": "Options of the Haystack choice 'pipeFluid' (subtypes of 'fluid')."
+    },
+    "pipeSection": {
+      "type": "string",
+      "enum": [
+        "bypass",
+        "circ",
+        "entering",
+        "header",
+        "leaving"
+      ],
+      "description": "Options of the Haystack choice 'pipeSection'."
+    },
+    "plantLoop": {
+      "type": "string",
+      "enum": [
+        "primaryLoop",
+        "secondaryLoop",
+        "tertiaryLoop"
+      ],
+      "description": "Options of the Haystack choice 'plantLoop'."
+    },
+    "tankSubstance": {
+      "type": "string",
+      "enum": [
+        "air",
+        "biomass",
+        "blowdown-water",
+        "ch2o",
+        "ch4",
+        "chilled-water",
+        "co",
+        "co2",
+        "coal",
+        "cold-water",
+        "condensate",
+        "condenser-water",
+        "cool-water",
+        "diesel",
+        "domestic-water",
+        "fluid",
+        "fuelOil",
+        "gas",
+        "gasoline",
+        "ground-water",
+        "hfc",
+        "hot-water",
+        "ice",
+        "liquid",
+        "makeup-water",
+        "n2o",
+        "naturalGas",
+        "nf3",
+        "nh3",
+        "no2",
+        "o2",
+        "o3",
+        "pfc",
+        "pm01",
+        "pm10",
+        "pm25",
+        "propane",
+        "purge-water",
+        "refrig",
+        "sf6",
+        "solid",
+        "steam",
+        "tvoc",
+        "warm-water",
+        "water"
+      ],
+      "description": "Options of the Haystack choice 'tankSubstance' (subtypes of 'substance')."
+    },
+    "vavAirCircuit": {
+      "type": "string",
+      "enum": [
+        "vav-parallel",
+        "vav-series"
+      ],
+      "description": "Options of the Haystack choice 'vavAirCircuit'."
+    },
+    "vavModulation": {
+      "type": "string",
+      "enum": [
+        "pressureDependent",
+        "pressureIndependent"
+      ],
+      "description": "Options of the Haystack choice 'vavModulation'."
+    }
+  }
+}
