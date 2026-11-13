@@ -1,0 +1,203 @@
+{
+  "id": "urn:ngsi-ld:Service:5351",
+  "type": "Service",
+  "tmfId": {
+    "type": "Text",
+    "value": "5351"
+  },
+  "serviceType": {
+    "type": "Text",
+    "value": "Cloud"
+  },
+  "name": {
+    "type": "Text",
+    "value": "vCPE serial 1355615"
+  },
+  "description": {
+    "type": "Text",
+    "value": "Instantiation of vCPE"
+  },
+  "state": {
+    "type": "Text",
+    "value": "active"
+  },
+  "category": {
+    "type": "Text",
+    "value": "CFS"
+  },
+  "isServiceEnabled": {
+    "type": "Boolean",
+    "value": true
+  },
+  "hasStarted": {
+    "type": "Boolean",
+    "value": true
+  },
+  "startMode": {
+    "type": "Text",
+    "value": "1"
+  },
+  "isStateful": {
+    "type": "Boolean",
+    "value": true
+  },
+  "serviceDate": {
+    "type": "Text",
+    "value": "2018-01-15T12:26:11.747Z"
+  },
+  "startDate": {
+    "type": "DateTime",
+    "value": "2018-01-15T12:26:11.747Z"
+  },
+  "serviceSpecification": {
+    "type": "StructuredValue",
+    "value": {
+      "id": "1212",
+      "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v5/serviceSpecification/1212",
+      "name": "vCPE",
+      "version": "1.0.0",
+      "@type": "ServiceSpecificationRef",
+      "@referredType": "ServiceSpecification"
+    }
+  },
+  "feature": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "id": "Feat1",
+        "isEnabled": true,
+        "name": "ElasticBandwith",
+        "featureCharacteristic": [
+          {
+            "id": "45gh-fg",
+            "name": "isCapped",
+            "value": true,
+            "valueType": "boolean",
+            "@type": "BooleanCharacteristic"
+          }
+        ],
+        "@type": "Feature"
+      }
+    ]
+  },
+  "serviceCharacteristic": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "id": "452-gh6",
+        "name": "vCPE",
+        "valueType": "object",
+        "value": {
+          "@type": "VCPE",
+          "@schemaLocation": "http://my.schemas/VCPE.schema.json",
+          "vCPE_IP": "193.218.236.21",
+          "MaxTxRate": 300,
+          "TransmitPower": "11 dBm",
+          "maxTream": "OFF"
+        },
+        "@type": "ObjectCharacteristic"
+      }
+    ]
+  },
+  "serviceRelationship": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "relationshipType": "DependentOn",
+        "serviceRelationshipCharacteristic": [
+          {
+            "id": "126",
+            "name": "CrossRef",
+            "value": "44-11-h",
+            "valueType": "string",
+            "@type": "StringCharacteristic"
+          }
+        ],
+        "service": {
+          "href": "https://mycsp.com:8080/tmf-api/serviceInventory/v5/service/5645",
+          "id": "5645",
+          "@type": "ServiceRef",
+          "@referredType": "Service"
+        },
+        "@type": "ServiceRelationship"
+      }
+    ]
+  },
+  "supportingService": {
+    "type": "URL",
+    "value": [
+      "urn:ngsi-ld:Service:5885"
+    ]
+  },
+  "relatedParty": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "role": "user",
+        "partyOrPartyRole": {
+          "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/456",
+          "id": "456",
+          "@type": "PartyRef",
+          "@referredType": "Individual"
+        },
+        "@type": "RelatedPartyRefOrPartyRoleRef"
+      }
+    ]
+  },
+  "serviceOrderItem": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "serviceOrderHref": "https://mycsp.com:8080/tmf-api/serviceOrdering/v5/serviceOrder/42",
+        "serviceOrderId": "42",
+        "role": "initiator",
+        "@referredType": "ServiceOrderItem",
+        "@type": "RelatedServiceOrderItem",
+        "itemId": "1",
+        "itemAction": "add"
+      }
+    ]
+  },
+  "place": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "role": "InstallationAddress",
+        "@type": "RelatedPlaceRefOrValue",
+        "place": {
+          "href": "https://mycsp.com:8080/tmf-api/geographicAddressManagement/v5/geographicAddress/2435",
+          "id": "2435",
+          "name": "Customer primary location",
+          "@type": "GeographicAddress",
+          "@referredType": "GeographicAddress"
+        }
+      }
+    ]
+  },
+  "note": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "id": "77456",
+        "author": "customer care agent",
+        "date": "2018-01-15T12:26:11.748Z",
+        "text": "This service was installed automatically, no issues were noted in testing.",
+        "@type": "Note"
+      }
+    ]
+  },
+  "tmfType": {
+    "type": "Text",
+    "value": "Service"
+  },
+  "supportingResource": {
+    "type": "URL",
+    "value": [
+      "urn:ngsi-ld:Resource:839933ec-4c65-4fc2-987b-58ca5ba9cfab"
+    ]
+  },
+  "source": {
+    "type": "Text",
+    "value": "Adapted from the example payload 'Service_retrieve_example_response' of the TMF638 Service Inventory Management v5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names removed, phone numbers replaced by numbers reserved for fiction, href/@schemaLocation URLs left out; misspelt keys featureCharacteritic and ServiceRelationshipCharacteristic corrected; supportingResource (not in the TMF example) added, pointing to the Resource example."
+  }
+}

@@ -6718,6 +6718,57 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/simple-federated-physicalinfrastructure"
   },
   {
+    "slug": "tmforum-open-apis",
+    "title": "TM Forum Open APIs (Product, Service and Resource Inventory, Trouble Ticket, Product Ordering)",
+    "description": "The TM Forum Open APIs are a family of about 60 REST APIs for the telecom and digital-service industry, part of TM Forum's Open Digital Architecture (ODA). They are implemented by communication service providers and their IT vendors for ordering, inventory, assurance, billing, party and catalogue management. This candidate covers the inventory and assurance core: the product a customer holds (TMF637 Product), the services that realize it (TMF638 Service), the network, logical and physical resources that support those services (TMF639 Resource), the order that created it (TMF622 ProductOrder) and the trouble ticket raised when something goes wrong (TMF621 TroubleTicket). The sector is Telecom; the APIs are also used by other digital-service providers (utilities, cloud, smart-city operators).",
+    "publisher": "TM Forum",
+    "sourceUrl": "https://github.com/tmforum-apis",
+    "license": "Apache-2.0",
+    "domains": [
+      "CrossSector",
+      "SmartCities"
+    ],
+    "modelCount": 5,
+    "models": [
+      {
+        "name": "Product",
+        "title": "Smart Data Models - TM Forum Open APIs - Product",
+        "description": "A product offering procured by a customer or other interested party playing a party role. A product is realized as one or more service(s) and / or resource(s). (TM Forum TMF637 Product Inventory Management v5.0.0, OpenAPI component Product; attribute names kept verbatim except id/@type/@baseType/@schemaLocation; deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Product/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Product"
+      },
+      {
+        "name": "ProductOrder",
+        "title": "Smart Data Models - TM Forum Open APIs - ProductOrder",
+        "description": "A Product Order is a type of order which can be used to place an order between a customer and a service provider or between a service provider and a partner and vice versa, (TM Forum TMF622 Product Ordering Management v5.0.0, OpenAPI component ProductOrder; attribute names kept verbatim except id/@type/@baseType/@schemaLocation; deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ProductOrder/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ProductOrder"
+      },
+      {
+        "name": "Resource",
+        "title": "Smart Data Models - TM Forum Open APIs - Resource",
+        "description": "Resource is an abstract entity that describes the common set of attributes shared by all concrete resources (e.g. TPE, EQUIPMENT) in the inventory. (TM Forum TMF639 Resource Inventory Management v5.0.0, OpenAPI component Resource, with the attributes of its sub-classes LogicalResource, PhysicalResource, SoftwareResource, ResourceFunction flattened in; attribute names kept verbatim except id/@type/@baseType/@schemaLocation/value; deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Resource/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Resource"
+      },
+      {
+        "name": "Service",
+        "title": "Smart Data Models - TM Forum Open APIs - Service",
+        "description": "Service is a base class for defining the Service hierarchy. All Services are characterized as either being possibly visible and usable by a Customer or not. This gives rise to the two subclasses of Service: CustomerFacingService and ResourceFacingService. (TM Forum TMF638 Service Inventory Management v5.0.0, OpenAPI component Service; attribute names kept verbatim except id/@type/@baseType/@schemaLocation; deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Service/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Service"
+      },
+      {
+        "name": "TroubleTicket",
+        "title": "Smart Data Models - TM Forum Open APIs - TroubleTicket",
+        "description": "A trouble ticket is a record of an issue that is created, tracked, and managed by a trouble ticket management system (TM Forum TMF621 Trouble Ticket v5.0.1, OpenAPI component TroubleTicket; attribute names kept verbatim except id/@type/@baseType/@schemaLocation; deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/TroubleTicket/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/TroubleTicket"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis"
+  },
+  {
     "slug": "untp-v0.8.0",
     "title": "UN Transparency Protocol (UNTP) - Digital Product Passport & Product",
     "description": "The UN Transparency Protocol (UNTP) Digital Product Passport (DPP) is a B2B data standard for carrying product and sustainability information through supply chains, issued as a W3C Verifiable Credential. This candidate translates two of its published entities -- DigitalProductPassport (the credential envelope) and Product (the credentialSubject / core product data model) -- into NGSI-LD/NGSI-v2 entities. Per explicit scope instruction, only these two entities are covered; other UNTP credential types (Digital Conformity Credential, Digital Facility Record, Digital Traceability Event, Digital Identity Anchor) are out of scope.",
