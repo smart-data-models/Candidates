@@ -1,0 +1,132 @@
+title: "Elementary Multiperspective Material Ontology (EMMO)"
+publisher: "EMMC ASBL (European Materials Modelling Council), with the EMMO editorial team"
+sourceUrl: "https://github.com/emmo-repo/EMMO"
+specificationUrl: "https://emmo-repo.github.io/"
+contact: "emmo@emmc.eu (issues: https://github.com/emmo-repo/EMMO/issues)"
+sourceOntologyVersion: "1.0.4 (owl:versionIRI https://w3id.org/emmo/1.0.4/emmo), repository master at commit ad9b707 (2026-11-05)"
+sourceOntologyDownload: "https://github.com/emmo-repo/EMMO (Turtle modules, top module emmo.ttl)"
+sourceOntologyNamespace: "https://w3id.org/emmo#"
+sourceOntologyFormat: "OWL 2 DL ontology in Turtle, split into foundation, perspectives, reference and disciplines modules"
+domains:
+  - Manufacturing
+  - CrossSector
+description: >
+  EMMO is the top-level and mid-level ontology of the European Materials
+  Modelling Council for applied sciences, materials and manufacturing. It
+  rests on a mereocausal foundation (parthood and causation), a set of
+  perspectives (holistic, reductionistic, semiotic, ...) and discipline
+  modules for metrology (ISQ quantities and units), chemistry, materials,
+  manufacturing (process classes following DIN 8580), conformity
+  assessment and data. Version 1.0.4 has 1,849 classes, 221 object
+  properties, 27 datatype properties and 1,623 named individuals (mostly
+  measurement units). It is the base of the EMMO domain ontologies
+  (BattINFO, characterisation, mechanical testing, ...) used in EU
+  materials and manufacturing projects.
+license: "CC-BY-4.0"
+licenseNote: >
+  Confirmed via the repository LICENSE file (Creative Commons Attribution
+  4.0 International) and the ontology header of emmo.ttl (dcterms:license
+  <https://creativecommons.org/licenses/by/4.0/legalcode>; the abstract
+  states "EMMO is released under a Creative Commons license Attribution
+  4.0 International (CC BY 4.0)"). Attribution is given in each example's
+  `source`.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-11-13. Source row 31 of the "Level A standards not in
+  Smart Data Models" list (licence verified: Yes). All modules were loaded
+  (the *-full.ttl merges were skipped as duplicates): 41,596 triples.
+
+  SCOPE: EMMO is a foundational ontology. Most of its classes are abstract
+  (Persistence, CausalStructure, Semiosis, ...) and are not useful as
+  NGSI-LD entity types. This candidate covers the four classes that
+  materials and manufacturing instance data are about:
+    - Material             (22 classes in branch, incl. the root)
+    - Manufacturing        (131: DIN 8580 process classes such as
+                            Extrusion, Casting, PrecipitationHardening,
+                            AdditiveManufacturing, JoinManufacturing)
+    - ManufacturedProduct  (6: ManufacturedProduct, Device and its
+                            HandlingDevice, InspectionDevice,
+                            ManufacturingDevice, TransportationDevice)
+    - Measurement          (no subclasses in EMMO 1.0.4)
+  Generic entity + class enum, as in the Brick and OEO candidates: each
+  model except Measurement has an `emmoClass` attribute (array) whose
+  values are the skos:prefLabels of the classes in that branch. It is an
+  array because EMMO classifies along independent axes; a material can be
+  MetallicMaterial, CrystallineMaterial, CompactMaterial and
+  ArtificialMaterial at once. emmoClass is a Smart Data Models term
+  standing for rdf:type.
+  NOT covered yet, and possible next candidates: ConformityAssessment
+  (ISO/IEC 17000 terms; its 1.0.4 subclasses are mostly software testing),
+  Dataset / data quality, Workflow / Computation (simulation provenance),
+  and the EMMO domain ontologies (characterisation, mechanical testing,
+  BattINFO), which add the quantities missing here (e.g. YieldStrength,
+  TensileStrength and Hardness are not in the EMMO core).
+
+  NAMING: EMMO class and property IRIs are mostly opaque
+  (https://w3id.org/emmo#EMMO_<uuid>), and the names are skos:prefLabels
+  that are already PascalCase for classes and camelCase for relations
+  (Manufacturing, hasManufacturedOutput, hasMeasuredObject). Entity types,
+  attribute names, emmoClass values, quantity names and unit names are
+  these prefLabels, verbatim (including the source's "FromWorkPIecetoWorkPiece").
+  Each context.jsonld maps every term to its real EMMO IRI.
+
+  QUANTITIES ARE FLATTENED: EMMO links an object to a Quantity individual
+  through hasProperty; the quantity has a numerical part (numberValue)
+  and a measurement unit (hasMeasurementUnit). Here hasProperty is an
+  array of objects {quantity, numberValue, hasMeasurementUnit,
+  standardUncertainty}:
+    - quantity: enum of the 546 Quantity classes (ISQ-based), e.g.
+      Density, ModulusOfElasticity, CelsiusTemperature;
+    - hasMeasurementUnit: the prefLabel of one of the 1,609 EMMO
+      MeasurementUnit individuals (e.g. GigaPascal, DegreeCelsius). Not an
+      enum, to keep the schemas readable; the generator checked every unit
+      used in the examples. EMMO units also carry schema:unitCode
+      (UN/CEFACT) and ucumCode annotations, so the NGSI-LD unitCode can be
+      derived.
+  The same pattern is used for hasChemicalComposition (each item: a
+  species via hasSpeciesPart and a MassFraction, AmountFraction or
+  VolumeFraction) and for Measurement.hasDeterminedValue. These attributes
+  are "@type": "@json" in the context.
+
+  RELATIONSHIPS use EMMO relations verbatim: hasInput, hasOutput,
+  hasManufacturedOutput, hasParticipant, hasAgent, hasSubProcess
+  (Manufacturing); isInputOf, isOutputOf (Material); manufacturedBy,
+  manufacturedWith, hasPart (ManufacturedProduct); hasMeasuredObject,
+  hasParticipant, hasAgent (Measurement). hasDeterminedProperty is the
+  Quantity class name. Agents (manufacturer, laboratory) are expected to
+  be Organization entities.
+
+  NON-EMMO ADDITIONS, flagged in each description: emmoClass;
+  startDate / endDate (schema.org) on Manufacturing and dateObserved on
+  Measurement. EMMO represents time through temporal parts and has no
+  timestamp properties. The usual SDM name, description, source,
+  dataProvider, dateCreated and dateModified are added as in other
+  candidates.
+
+  EXAMPLES ARE SYNTHETIC: EMMO has no instance data. The four examples
+  form one consistent scenario: an EN AW-6061 aluminium alloy billet
+  (Material) is extruded (Manufacturing, emmoClass Extrusion) into a
+  40 x 40 x 3 mm square tube (ManufacturedProduct), whose elastic modulus
+  is then measured (Measurement). Composition and properties are typical
+  published values for 6061 (density 2,700 kg/m3, modulus 68.9 GPa,
+  thermal conductivity 167 W/(m K), expansion 23.6e-6 1/K; nominal Mg 1.0 %,
+  Si 0.6 %, Cu 0.28 %, Cr 0.2 %). The process parameters, tube mass
+  (7.19 kg for 6 m) and measured value (68.2 +/- 0.9 GPa) are illustrative
+  but physically consistent. The organizations are fictitious. Each
+  example says so in `source`.
+
+  DUPLICATION RISK:
+    - dataModel.EnergyCIM already has an entity type named Measurement
+      (CIM measurement points), with a different meaning. The EMMO
+      Measurement type name clashes with it; consider a prefix at
+      promotion time. Material is also a generic name.
+    - dataModel.ManufacturingMachine (ManufacturingMachine,
+      ManufacturingMachineOperation) and dataModel.IndustrialProcess
+      overlap in part with ManufacturedProduct (emmoClass
+      ManufacturingDevice) and Manufacturing.
+    - The battery-pass-data-model candidate's MaterialComposition and the
+      catena-x-semantic-models candidate describe product and material
+      data at a higher level; EMMO-based domain ontologies (BattINFO) are
+      an alternative semantic basis for batteries.
