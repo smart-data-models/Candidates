@@ -1,0 +1,827 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/bods/models/EntityStatement/schema.json",
+  "modelTags": "BODS,BeneficialOwnership,OpenOwnership",
+  "title": "Smart Data Models - BODS - EntityStatement",
+  "description": "Statement. A claim about a person, entity or relationship, made at a particular point in time. This entity type carries the Statements whose recordType is 'entity': Entity Record Details (Information about an entity.) Beneficial Ownership Data Standard 0.4.0, https://standard.openownership.org/en/0.4.0/_static/entity-record.json. The Statement fields and the recordDetails fields are attributes of the entity; names are kept verbatim except 'source' -> 'bodsSource'.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity (NGSI-LD): urn:ngsi-ld:EntityStatement:<recordId>. One NGSI-LD entity per BODS record; each new Statement about the record updates it."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "EntityStatement"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'EntityStatement'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "statementId": {
+      "description": "Property. Model:'https://standard.openownership.org/en/0.4.0/_static/statement.json#/$defs/Statement/properties/statementId'. Statement Identifier. A persistent globally unique identifier for this Statement. Length MUST be 32 - 64 characters (inclusive).",
+      "type": "string",
+      "minLength": 32,
+      "maxLength": 64
+    },
+    "statementDate": {
+      "description": "Property. Model:'https://standard.openownership.org/en/0.4.0/_static/statement.json#/$defs/Statement/properties/statementDate'. Statement Date. The date on which this statement was declared by the source, in full-date (YYYY-MM-DD) or date-time (e.g. YYYY-MM-DDTHH:MM:SSZ) format. See the IETF RFC3339 standard, section 5.6.",
+      "type": "string",
+      "anyOf": [
+        {
+          "format": "date"
+        },
+        {
+          "format": "date-time"
+        }
+      ]
+    },
+    "annotations": {
+      "description": "Property. Model:'https://standard.openownership.org/en/0.4.0/_static/statement.json#/$defs/Statement/properties/annotations'. Annotations. Annotations about this Statement or parts of this Statement",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Annotation"
+      }
+    },
+    "publicationDetails": {
+      "description": "Property. Model:'https://standard.openownership.org/en/0.4.0/_static/statement.json#/$defs/Statement/properties/publicationDetails'. Publication Details. Information concerning the publication of this Statement.",
+      "type": "object",
+      "properties": {
+        "publicationDate": {
+          "title": "Publication date",
+          "description": "The date on which this statement was published, in full-date (YYYY-MM-DD) or date-time (e.g. YYYY-MM-DDTHH:MM:SSZ) format. See the IETF RFC3339 standard, section 5.6.",
+          "type": "string",
+          "anyOf": [
+            {
+              "format": "date"
+            },
+            {
+              "format": "date-time"
+            }
+          ]
+        },
+        "bodsVersion": {
+          "title": "BODS Version",
+          "description": "The version of the Beneficial Ownership Data Standard to which this Statement conforms, expressed as major.minor (e.g. 0.2 or 1.0). In a published BODS dataset, all Statements MUST have the same major version number.",
+          "type": "string",
+          "pattern": "^(\\d+\\.)(\\d+)$"
+        },
+        "license": {
+          "title": "License URL",
+          "description": "A link to the license that applies to this Statement. The canonical URI of the license SHOULD be used. Publishers are encouraged to use a Public Domain Dedication or Open Definition Conformant (http://opendefinition.org/licenses/) license.",
+          "type": "string",
+          "format": "uri"
+        },
+        "publisher": {
+          "type": "object",
+          "title": "Publisher",
+          "description": "Details of the organisation or person publishing a Statement.",
+          "properties": {
+            "name": {
+              "title": "Name",
+              "description": "The name of the publisher.",
+              "type": "string"
+            },
+            "url": {
+              "title": "URL",
+              "description": "The URL where details of the full dataset, or of the publisher, can be found.",
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "anyOf": [
+            {
+              "required": [
+                "name"
+              ]
+            },
+            {
+              "required": [
+                "url"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "publicationDate",
+        "bodsVersion",
+        "publisher"
+      ]
+    },
+    "bodsSource": {
+      "description": "Property. Model:'https://standard.openownership.org/en/0.4.0/_static/statement.json#/$defs/Statement/properties/source'. Source. The source of information in this statement. Each statement SHOULD contain source information. BODS field 'source', renamed 'bodsSource' because 'source' is a Smart Data Models common property.",
+      "$ref": "#/$defs/Source"
+    },
+    "declaration": {
+      "description": "Property. Model:'https://standard.openownership.org/en/0.4.0/_static/statement.json#/$defs/Statement/properties/declaration'. Declaration Reference. An identifier or reference for a declaration within the publisher’s system. Where a Statement is a claim from a particular declaration (made at a point in time by a `source` about a `declarationSubject`) this field identifies the declaration.",
+      "type": "string"
+    },
+    "declarationSubject": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://standard.openownership.org/en/0.4.0/_static/statement.json#/$defs/Statement/properties/declarationSubject'. Declaration Subject. A `recordId` value for the subject of a beneficial ownership network (always an entity or person). Here it is the NGSI-LD id of the EntityStatement or PersonStatement record (built from its recordId)."
+    },
+    "recordId": {
+      "description": "Property. Model:'https://standard.openownership.org/en/0.4.0/_static/statement.json#/$defs/Statement/properties/recordId'. Record Identifier. A unique identifier for the record (within the publisher's system) to which this Statement relates. (A record captures information about an entity, natural person or relationship within the beneficial ownership network of a particular declaration subject.)",
+      "type": "string"
+    },
+    "recordType": {
+      "type": "string",
+      "enum": [
+        "entity"
+      ],
+      "description": "Property. Model:'https://standard.openownership.org/en/0.4.0/_static/statement.json#/$defs/Statement/properties/recordType'. Record Type. The type of record (within the publisher's system) to which this Statement relates: entity, person, or relationship. Fixed to 'entity' for this entity type. (BODS codelist recordType.csv.)"
+    },
+    "recordStatus": {
+      "description": "Property. Model:'https://standard.openownership.org/en/0.4.0/_static/statement.json#/$defs/Statement/properties/recordStatus'. Record Status. The lifecycle status of the record (within the publisher's system) to which this Statement relates, using the recordStatus codelist. (BODS codelist recordStatus.csv.)",
+      "type": "string",
+      "enum": [
+        "new",
+        "updated",
+        "closed"
+      ]
+    },
+    "isComponent": {
+      "description": "Property. Model:'https://standard.openownership.org/en/0.4.0/_static/entity-record.json#/properties/isComponent'. Is component. Whether this entity is a component in an indirect relationship. Where `isComponent` is 'true': (1) the `recordId` of this entity MUST be an element in the `componentRecords` array of that primary Relationship Statement, (2) this Entity Statement MUST come before that primary Relationship Statement in a BODS package or stream, (3) the replacement of this Entity Statement SHOULD be considered when replacing the primary Relationship Statement. The primary Relationship statement MUST have a `isComponent` value of 'false'.",
+      "type": "boolean"
+    },
+    "entityType": {
+      "type": "object",
+      "description": "Property. Model:'https://standard.openownership.org/en/0.4.0/_static/entity-record.json#/properties/entityType'. Entity Type. The form of the entity described in the Statement.",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "title": "Type",
+          "description": "The general form of the entity, using the entityType codelist. (BODS codelist entityType.csv.)",
+          "enum": [
+            "registeredEntity",
+            "legalEntity",
+            "arrangement",
+            "anonymousEntity",
+            "unknownEntity",
+            "state",
+            "stateBody"
+          ]
+        },
+        "subtype": {
+          "type": "string",
+          "title": "Subtype",
+          "description": "The particular form of the entity, where relevant, using the entitySubtype codelist. The value MUST align with the `entityType` value. (BODS codelist entitySubtype.csv.)",
+          "enum": [
+            "governmentDepartment",
+            "stateAgency",
+            "other",
+            "trust",
+            "nomination"
+          ]
+        },
+        "details": {
+          "type": "string",
+          "title": "Details",
+          "description": "This may be used to provide a local name for this type of entity, or any further information to identify the type of entity. For example, in Finland 'ministeriö' for a government department."
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "enum": [
+                  "arrangement"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "subtype": {
+                "enum": [
+                  "trust",
+                  "nomination",
+                  "other"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "enum": [
+                  "legalEntity"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "subtype": {
+                "enum": [
+                  "trust",
+                  "other"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "enum": [
+                  "stateBody"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "subtype": {
+                "enum": [
+                  "governmentDepartment",
+                  "stateAgency",
+                  "other"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "enum": [
+                  "registeredEntity",
+                  "state",
+                  "anonymousEntity",
+                  "unknownEntity"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "subtype": {
+                "enum": [
+                  "other"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "unspecifiedEntityDetails": {
+      "$ref": "#/$defs/UnspecifiedRecord",
+      "description": "Property. Model:'https://standard.openownership.org/en/0.4.0/_static/entity-record.json#/properties/unspecifiedEntityDetails'. An explanation of why an entity is anonymous or unknown."
+    },
+    "name": {
+      "description": "Property. Model:'https://standard.openownership.org/en/0.4.0/_static/entity-record.json#/properties/name'. Entity Name. The declared name of this entity.",
+      "type": "string"
+    },
+    "alternateNames": {
+      "description": "Property. Model:'https://standard.openownership.org/en/0.4.0/_static/entity-record.json#/properties/alternateNames'. Alternative Names. An array of other names this entity is known by.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "title": "Name",
+        "description": "A name this entity is known by."
+      }
+    },
+    "jurisdiction": {
+      "description": "Property. Model:'https://standard.openownership.org/en/0.4.0/_static/entity-record.json#/properties/jurisdiction'. Jurisdiction. The jurisdiction in which this entity was registered or created (for legal and registered entities, and arrangements). Or the state's jurisdiction (for states and state bodies).",
+      "$ref": "#/$defs/Jurisdiction"
+    },
+    "identifiers": {
+      "description": "Property. Model:'https://standard.openownership.org/en/0.4.0/_static/entity-record.json#/properties/identifiers'. Identifiers. One or more official identifiers for this entity. Where available, official registration numbers should be provided.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Identifier"
+      }
+    },
+    "foundingDate": {
+      "description": "Property. Model:'https://standard.openownership.org/en/0.4.0/_static/entity-record.json#/properties/foundingDate'. Founding Date. The date on which this entity was founded, created or registered. The date MUST be given in YYYY-MM-DD format. Where a precise month or date are not available, the value may be rounded to the first day of the (first) month. This rounding SHOULD be noted in accompanying guidance (such as a publication policy or data use guide).",
+      "type": "string",
+      "format": "date"
+    },
+    "dissolutionDate": {
+      "description": "Property. Model:'https://standard.openownership.org/en/0.4.0/_static/entity-record.json#/properties/dissolutionDate'. Dissolution Date. The date on which this entity was dissolved or ceased, if it is no longer active. The date MUST be given in YYYY-MM-DD format. Where a precise month or date are not available, the value may be rounded to the first day of the (first) month. This rounding SHOULD be noted in accompanying guidance (such as a publication policy or data use guide).",
+      "type": "string",
+      "format": "date"
+    },
+    "addresses": {
+      "description": "Property. Model:'https://standard.openownership.org/en/0.4.0/_static/entity-record.json#/properties/addresses'. Addresses. One or more addresses for this entity.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Address",
+        "properties": {
+          "type": {
+            "enum": [
+              "registered",
+              "business",
+              "alternative"
+            ]
+          }
+        }
+      }
+    },
+    "uri": {
+      "description": "Property. Model:'https://standard.openownership.org/en/0.4.0/_static/entity-record.json#/properties/uri'. URI. Where a persistent URI (https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) is available for this entity this should be included.",
+      "type": "string",
+      "format": "uri"
+    },
+    "publicListing": {
+      "description": "Property. Model:'https://standard.openownership.org/en/0.4.0/_static/entity-record.json#/properties/publicListing'. Public Listing. Details of a publicly listed company, its securities (shares and other tradable financial instruments related to the entity), and related regulatory filings.",
+      "$ref": "#/$defs/PublicListing"
+    },
+    "formedByStatute": {
+      "type": "object",
+      "description": "Property. Model:'https://standard.openownership.org/en/0.4.0/_static/entity-record.json#/properties/formedByStatute'. Formed by Statute. The law which mandated the formation of the entity described in the statement, where applicable. This information SHOULD be provided where a state has created an agency or other entity with specific legislation.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "Statute Name",
+          "description": "The name of the law."
+        },
+        "date": {
+          "type": "string",
+          "title": "Date",
+          "description": "The date on which the law came into force. The date MUST be given in YYYY-MM-DD format. Where a precise month or date are not available, the value may be rounded to the first day of the (first) month. This rounding SHOULD be noted in accompanying guidance (such as a publication policy or data use guide).",
+          "format": "date"
+        }
+      }
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "statementId",
+    "declarationSubject",
+    "recordId",
+    "recordType",
+    "statementDate",
+    "isComponent",
+    "entityType"
+  ],
+  "$defs": {
+    "Address": {
+      "title": "Address",
+      "description": "Semi-structured address details, suitable for processing using address-parsing algorithms. Where postal codes and country information are isolated fields in source systems, this information SHOULD be published in the dedicated fields and SHOULD NOT be published in the `address` field.",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "Type",
+          "description": "The function of the address, using the addressType codelist. (BODS codelist addressType.csv.)",
+          "type": "string",
+          "enum": [
+            "placeOfBirth",
+            "residence",
+            "registered",
+            "service",
+            "alternative",
+            "business"
+          ]
+        },
+        "address": {
+          "title": "Address",
+          "description": "The address, with each line or component separated by a line-break or comma.",
+          "type": "string"
+        },
+        "postCode": {
+          "title": "Postcode",
+          "description": "The postal code for this address.",
+          "type": "string"
+        },
+        "country": {
+          "title": "Country",
+          "description": "The country for this address.",
+          "$ref": "#/$defs/Country"
+        }
+      }
+    },
+    "Annotation": {
+      "title": "Annotation",
+      "description": "Additional information about the data contained in this Statement. Annotations can apply to a whole statement, an object or a single field. Custom properties can be included within the Annotation object to provide structured data where required.",
+      "type": "object",
+      "properties": {
+        "statementPointerTarget": {
+          "title": "Statement Fragment Pointer",
+          "description": "An RFC6901 JSON Pointer (https://tools.ietf.org/html/rfc6901) describing the target fragment of the statement that this Annotation applies to, starting from the root of the Statement. An empty string (\"\") indicates that the Annotation applies to the whole Statement.",
+          "type": "string"
+        },
+        "creationDate": {
+          "title": "Creation Date",
+          "description": "The date on which this Annotation was created, in full-date (YYYY-MM-DD) or date-time (e.g. YYYY-MM-DDTHH:MM:SSZ) format. See the IETF RFC3339 standard, section 5.6.",
+          "type": "string",
+          "anyOf": [
+            {
+              "format": "date"
+            },
+            {
+              "format": "date-time"
+            }
+          ]
+        },
+        "createdBy": {
+          "title": "Created By",
+          "description": "The person, organisation or agent that created this Annotation.",
+          "type": "object",
+          "properties": {
+            "name": {
+              "title": "Name",
+              "description": "The name of the person, organisation or agent that created this Annotation.",
+              "type": "string"
+            },
+            "uri": {
+              "title": "URI",
+              "description": "An optional URI to identify the person, organisation or agent that created this Annotation.",
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        },
+        "motivation": {
+          "title": "Motivation",
+          "description": "The reason for this Annotation, using the annotationMotivation codelist. (BODS codelist annotationMotivation.csv.)",
+          "type": "string",
+          "enum": [
+            "commenting",
+            "correcting",
+            "identifying",
+            "linking",
+            "transformation"
+          ]
+        },
+        "description": {
+          "title": "Description",
+          "description": "A free text description providing extra information about part of this Statement.",
+          "type": "string"
+        },
+        "transformedContent": {
+          "type": "string",
+          "title": "Transformed Content",
+          "description": "A representation of the Annotation target after the transformation in the `description` field has been applied. This field MUST only be used when the `motivation` is 'transformation'."
+        },
+        "url": {
+          "title": "URL",
+          "description": "A linked resource that annotates, provides context for or enhances this Statement. The content of the resource, or the relationship to the statement, MAY be described in the `description` field. This field is REQUIRED if the value of `motivation` is 'linking'.",
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "motivation": {
+                "const": "linking"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "statementPointerTarget",
+              "motivation",
+              "url"
+            ]
+          },
+          "else": {
+            "required": [
+              "statementPointerTarget",
+              "motivation"
+            ]
+          }
+        },
+        {
+          "if": {
+            "not": {
+              "properties": {
+                "motivation": {
+                  "const": "transformation"
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "transformedContent": {
+                "const": ""
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Country": {
+      "title": "Country",
+      "description": "A country MUST have a name. A country SHOULD have a 2-letter country code (ISO 3166-1)",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Name",
+          "description": "The name of the country",
+          "type": "string"
+        },
+        "code": {
+          "title": "Country Code",
+          "description": "The 2-letter country code (ISO 3166-1) for this country.",
+          "type": "string",
+          "maxLength": 2,
+          "minLength": 2
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "Identifier": {
+      "title": "Identifier",
+      "description": "An identifier that has been assigned to a person or entity. `scheme` or `schemeName` (or both) MUST be included in an Identifier object.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "description": "The identifier for a person or entity, as issued by the scheme.",
+          "type": "string"
+        },
+        "scheme": {
+          "title": "Scheme Code",
+          "description": "For entities, a code from org-id.guide (https://www.org-id.guide) for an identifier-issuing authority (e.g. 'GB-COH'). For natural persons, a value with the pattern {JURISDICTION}-{TYPE} where JURISDICTION is an ISO 3166-1 3-digit country code and TYPE is one of PASSPORT, TAXID or IDCARD.",
+          "type": "string"
+        },
+        "schemeName": {
+          "title": "Scheme Name",
+          "description": "The name of the identifier-issuing authority.",
+          "type": "string"
+        },
+        "uri": {
+          "title": "URI",
+          "description": "A canonical URI (https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) for the identifier and associated details of the person or entity, if one exists.",
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "scheme"
+          ]
+        },
+        {
+          "required": [
+            "schemeName"
+          ]
+        },
+        {
+          "required": [
+            "scheme",
+            "schemeName"
+          ]
+        }
+      ]
+    },
+    "Jurisdiction": {
+      "title": "Jurisdiction",
+      "description": "A Jurisdiction MUST have a name. A jurisdiction SHOULD have a 2-letter country code (ISO 3166-1) or a subdivision code (ISO 3166-2).",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Name",
+          "description": "The name of the jurisdiction",
+          "type": "string"
+        },
+        "code": {
+          "title": "Country or Subdivision Code",
+          "description": "The 2-letter country code (ISO 3166-1) or the subdivision code (ISO 3166-2) for the jurisdiction.",
+          "type": "string",
+          "maxLength": 6,
+          "minLength": 2
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "PublicListing": {
+      "type": "object",
+      "title": "Public Listing",
+      "description": "Details of a publicly listed company, its securities (shares and other tradable financial instruments related to the entity), and related regulatory filings.",
+      "required": [
+        "hasPublicListing"
+      ],
+      "minProperties": 1,
+      "properties": {
+        "hasPublicListing": {
+          "type": "boolean",
+          "title": "Has Public Listing",
+          "description": "Whether the entity is a publicly listed company."
+        },
+        "companyFilingsURLs": {
+          "type": "array",
+          "title": "Company Filings URLs",
+          "description": "URL or URLs where regulatory filings related to major holdings can be retrieved. URLs may point to pages maintained by regulatory bodies, stock exchanges or by the company itself.",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "securitiesListings": {
+          "type": "array",
+          "title": "Securities Listings",
+          "description": "Details of the entity's securities and the public exchanges and markets on which they are traded. All equity securities SHOULD be listed here, plus any other securities from which beneficial ownership might be derived. Where a security is traded on more than one market, there SHOULD be an entry for each market (or market segment).",
+          "items": {
+            "title": "Securities listing",
+            "description": "Details of a security and the market on which it is traded.",
+            "$ref": "#/$defs/SecuritiesListing"
+          }
+        }
+      }
+    },
+    "SecuritiesListing": {
+      "type": "object",
+      "title": "Securities Listing",
+      "description": "Details of a security and the market on which it is traded.",
+      "required": [
+        "stockExchangeJurisdiction",
+        "security",
+        "stockExchangeName"
+      ],
+      "properties": {
+        "marketIdentifierCode": {
+          "type": "string",
+          "title": "Market Identifier Code (MIC)",
+          "description": "The Market Identifier Code (MIC) of the market on which the security is traded. Where the security is traded on a segment of an exchange, this is the MIC of the segment. Where it is traded on the main exchange, this is the MIC of the main exchange and MUST match the `operatingMarketIdentifierCode`. MICs are allocated and managed under ISO standard 10383."
+        },
+        "operatingMarketIdentifierCode": {
+          "type": "string",
+          "title": "Operating Market Identifier Code (Operating MIC)",
+          "description": "The Market Identifier Code (MIC) of the main exchange or trading platform handling trades in this security. Where the security is traded on a segment of an exchange, this is the MIC of the parent exchange or trading platform. Where it is traded on the main exchange, this is the MIC of that main exchange and MUST match the `marketIdentifierCode`. MICs are allocated and managed under ISO standard 10383."
+        },
+        "stockExchangeJurisdiction": {
+          "type": "string",
+          "title": "Stock Exchange Jurisdiction",
+          "description": "The 2-letter country code (ISO 3166-1) or the subdivision code (ISO 3166-2) for the jurisdiction under which the exchange, market or trading platform is regulated.",
+          "maxLength": 6,
+          "minLength": 2
+        },
+        "stockExchangeName": {
+          "type": "string",
+          "title": "Stock Exchange Name",
+          "description": "The name of the exchange, market or trading platform on which the security is traded. If the security is traded on a segment of the exchange, then the name SHOULD include both elements. For example, 'London Stock Exchange - MTF'."
+        },
+        "security": {
+          "type": "object",
+          "title": "Security",
+          "description": "Identifying information of the stock or other security.",
+          "required": [
+            "ticker"
+          ],
+          "properties": {
+            "idScheme": {
+              "type": "string",
+              "title": "Identifier Scheme",
+              "description": "The scheme under which the security has been issued a unique, persistent identifier, using the securitiesIdentifierSchemes codelist. (BODS codelist securitiesIdentifierSchemes.csv.)",
+              "enum": [
+                "isin",
+                "figi",
+                "cusip",
+                "cins"
+              ]
+            },
+            "id": {
+              "type": "string",
+              "title": "Identifier",
+              "description": "The unique identifier of the security as issued under the `idScheme`."
+            },
+            "ticker": {
+              "type": "string",
+              "title": "Stock Ticker",
+              "description": "The stock ticker identifying this security on the named stock exchange."
+            }
+          }
+        }
+      }
+    },
+    "Source": {
+      "title": "Source",
+      "description": "Details describing an information source.",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "Source Type",
+          "description": "The types of the source, using the sourceType codelist. Include 'verified' in the array if the information in the Statement has undergone a verification process.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "selfDeclaration",
+              "officialRegister",
+              "thirdParty",
+              "primaryResearch",
+              "verified"
+            ],
+            "description": " (BODS codelist sourceType.csv.)"
+          }
+        },
+        "description": {
+          "title": "Description",
+          "description": "Additional, free text information about the source of information.",
+          "type": "string"
+        },
+        "url": {
+          "title": "Source URL",
+          "description": "The external URL from which this information was fetched, if relevant. Or, if relevant, a URL providing additional detail on how this information was sourced.",
+          "type": "string",
+          "format": "uri"
+        },
+        "retrievedAt": {
+          "title": "Retrieved At",
+          "description": "A timestamp indicating when this information was imported from an external system, in full-date (YYYY-MM-DD) or date-time (e.g. YYYY-MM-DDTHH:MM:SSZ) format. See the IETF RFC3339 standard, section 5.6.",
+          "type": "string",
+          "anyOf": [
+            {
+              "format": "date"
+            },
+            {
+              "format": "date-time"
+            }
+          ]
+        },
+        "assertedBy": {
+          "title": "Asserted By",
+          "description": "The people or organisations providing the information asserted in this Statement. This may include the declaring subject of a self-declaration, or the name of an agent making a declaration on their behalf. If this Statement has been verified, the array may include the name of the organisation providing verification.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "title": "Name",
+                "description": "The name of the agent making the assertion",
+                "type": "string"
+              },
+              "uri": {
+                "title": "URI",
+                "description": "An optional URI to identify the agent making the assertion",
+                "type": "string",
+                "format": "uri"
+              }
+            }
+          }
+        }
+      }
+    },
+    "UnspecifiedRecord": {
+      "title": "Unspecified or unknown person or entity",
+      "description": "A `reason` MUST be supplied.",
+      "type": "object",
+      "properties": {
+        "reason": {
+          "title": "Reason",
+          "description": "The reason that a person or entity cannot be specified, using the unspecifiedReason codelist. (BODS codelist unspecifiedReason.csv.)",
+          "type": "string",
+          "enum": [
+            "noBeneficialOwners",
+            "subjectUnableToConfirmOrIdentifyBeneficialOwner",
+            "interestedPartyHasNotProvidedInformation",
+            "subjectExemptFromDisclosure",
+            "interestedPartyExemptFromDisclosure",
+            "unknown",
+            "informationUnknownToPublisher"
+          ]
+        },
+        "description": {
+          "title": "Description",
+          "description": "Additional information about the absence of details for a person or entity. This field may be used to provide set phrases from a source system, or a free text explanation.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "reason"
+      ]
+    }
+  }
+}

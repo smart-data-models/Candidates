@@ -1,0 +1,147 @@
+title: "Beneficial Ownership Data Standard (BODS)"
+publisher: "Open Ownership"
+sourceUrl: "https://github.com/openownership/data-standard"
+specificationUrl: "https://standard.openownership.org/en/0.4.0/"
+contact: "https://github.com/openownership/data-standard/issues"
+sourceOntologyVersion: "BODS 0.4.0 (schema version 0.4, released 2024-05-08; published schemas https://standard.openownership.org/en/0.4.0/_static/, identical to branch 0.4.0 of the repository)"
+sourceOntologyDownload: "https://standard.openownership.org/en/0.4.0/_static/statement.json"
+sourceOntologyNamespace: "https://standard.openownership.org/en/0.4.0/_static/"
+sourceOntologyFormat: "JSON Schema (2020-12) in five files (statement, entity-record, person-record, relationship-record, components) with CSV codelists; no RDF vocabulary"
+sourceExampleUrl: "https://github.com/openownership/data-standard/blob/0.4.0/examples/plc-entity-statement.json ; https://api.gleif.org/api/v1/lei-records/PY6ZZQWO2IZFZC3IOL08"
+sourceExampleLicense: "BODS example statement: CC BY 2.0 (declared in its publicationDetails.license), Open Ownership; GLEIF LEI data: CC0 1.0"
+domains:
+  - PublicAdministration
+  - CrossSector
+description: >
+  The Beneficial Ownership Data Standard (BODS), published by Open
+  Ownership, is the open standard for publishing information about who
+  ultimately owns and controls companies and other legal entities and
+  arrangements. Data is a series of Statements, each a claim made at a
+  point in time about a record: an entity (company, trust, state body,
+  ...), a natural person, or a relationship (the interests, such as
+  shareholdings, voting rights or board appointment, that an interested
+  party holds in an entity). It is used by beneficial ownership registers,
+  public procurement and anti-corruption programmes, and by the Open
+  Ownership Register.
+license: "Apache-2.0"
+licenseNote: >
+  Confirmed via the repository LICENSE file: the schema contents of BODS
+  are Copyright (C) 2016-2026 Open Ownership and licensed under the Apache
+  License 2.0; the documentation is under the GNU Free Documentation
+  License 1.3 (attribute Open Ownership; descriptions in the schemas here
+  are taken from the Apache-2.0 schema files). The EntityStatement example
+  combines Open Ownership's AstraZeneca PLC example statement (CC BY 2.0,
+  Open Ownership) with GLEIF LEI data (CC0); the PersonStatement and
+  RelationshipStatement examples are Open Ownership's fictional example
+  data. Attribution is given in each example's `source`.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source JSON Schema to SDM candidate artifacts"
+notes: |
+  Translated on 2026-11-13 from the BODS 0.4.0 schemas (the latest
+  release; the main branch has unreleased post-0.4 fixes and was not
+  used). Source row 38 of the "Level A standards not in Smart Data
+  Models" list (sector Public administration, licence verified: Yes).
+
+  MODELS (3), one per BODS recordType, named as the 0.4 documentation
+  names the statements:
+    - EntityStatement        Statement with recordType 'entity' and the
+                             Entity Record Details (entity-record.json)
+    - PersonStatement        Statement with recordType 'person' and the
+                             Person Record Details (person-record.json)
+    - RelationshipStatement  Statement with recordType 'relationship'
+                             and the Relationship Record Details
+                             (relationship-record.json)
+  BODS has one Statement schema whose recordDetails is validated by one
+  of three record schemas depending on recordType; NGSI-LD needs one type
+  per kind of thing, so the Statement is split in three. The names
+  Entity / Person / Relationship were not used because "Relationship" is
+  an NGSI-LD core term and "Entity"/"Person" are too generic.
+
+  FLATTENING: the Statement fields (statementId, statementDate,
+  annotations, publicationDetails, source, declaration,
+  declarationSubject, recordId, recordType, recordStatus) and the
+  recordDetails fields are all attributes of the entity, so that NGSI-LD
+  queries can filter on e.g. entityType, jurisdiction or personType.
+  recordType is kept, fixed to one value per model. Nested objects keep
+  their full BODS structure (Address, Country, Jurisdiction, Identifier,
+  UnspecifiedRecord, Source, Annotation, PublicListing,
+  SecuritiesListing, Name, PepStatusDetails, Interest are defined once in
+  each schema's $defs) and are "@type": "@json" in the contexts. The
+  conditional rules of the source (entityType/subtype combinations,
+  Annotation requirements, isComponent true -> empty componentRecords)
+  are carried over.
+
+  IDENTITY: one NGSI-LD entity per BODS record, id
+  urn:ngsi-ld:<Type>:<recordId>. A new Statement about the same record
+  (recordStatus 'updated' or 'closed') updates the entity; statementId
+  and statementDate say which Statement it reflects, and earlier
+  Statements are its temporal history. recordId is unique only within a
+  publisher's system; publishers mixing sources should prefix it.
+
+  RELATIONSHIPS: the fields that hold recordIds become NGSI-LD
+  Relationships to the NGSI-LD ids of those records:
+    - declarationSubject (all models) -> EntityStatement or PersonStatement
+    - RelationshipStatement.subject -> EntityStatement
+    - RelationshipStatement.interestedParty -> EntityStatement or
+      PersonStatement
+    - RelationshipStatement.componentRecords -> any of the three
+  subject and interestedParty keep the BODS alternative: when the party
+  cannot be specified the value is the Unspecified Record object
+  ({reason, description}) instead of an id (then it is a Property).
+  Entity uri and Identifier.uri stay plain properties.
+
+  NAMING: all names verbatim, except the Statement's `source` (a BODS
+  Source object) -> `bodsSource`, because `source` is the Smart Data
+  Models common text property. Nested `type`/`id` keys (entityType.type,
+  Address.type, Interest.type, Identifier.id, security.id) keep their
+  BODS names.
+
+  CONTEXT IRIs: BODS has no RDF vocabulary. Terms map to JSON Pointer
+  IRIs into the published 0.4.0 schema files, e.g.
+  https://standard.openownership.org/en/0.4.0/_static/entity-record.json#/properties/jurisdiction
+  and .../statement.json#/$defs/Statement/properties/recordId; the
+  entity types map to the record schema files.
+
+  SCHEMA CONVERSION: the source is already JSON Schema 2020-12. $refs
+  across files (urn:components, urn:entity, ...) are made local;
+  codelist, openCodelist and propertyOrder keywords are dropped and the
+  codelist is named in each description. All BODS codelists are closed
+  and stay enums (checked against the CSV codelists: they match). BODS
+  0.4 has no deprecated fields or codes.
+
+  SOURCE NOTES:
+    - The example plc-entity-statement.json gives AstraZeneca PLC (a
+      Companies House registered company, GB-COH 02723534) entityType
+      'legalEntity'; by the entityType codelist it is a
+      'registeredEntity', which is used here.
+    - codelists/unspecifiedReason.csv (0.4.0) reads "confirm the
+      existence identify a beneficial owner" (fixed on main).
+    - Example file name typo: examples/mutilple-indirect-ownership-2.json.
+    - The published entity-record.json differs from branch 0.4.0 only by
+      whitespace.
+
+  EXAMPLES:
+    - EntityStatement is REAL: AstraZeneca PLC, from Open Ownership's BODS
+      0.4 example statement (identifiers GB-COH 02723534 and LEI
+      PY6ZZQWO2IZFZC3IOL08, jurisdiction GB, four securities listings;
+      CC BY 2.0), with the founding date (1992-06-17) and registered
+      address (1 Francis Crick Avenue, Cambridge Biomedical Campus,
+      Cambridge CB2 0AA) checked against the GLEIF LEI record (CC0). No
+      natural person is included.
+    - PersonStatement and RelationshipStatement are SYNTHETIC: Open
+      Ownership's fictional example bods-package.json (Profitech Ltd,
+      100% owned directly by a fictional person). No real person's data
+      is used. The relationship's subject (Profitech Ltd, record
+      c359f58d2977) is not one of the three examples.
+
+  DUPLICATION RISK: Smart Data Models has no beneficial ownership
+  subject. Overlap in scope with dataModel.Organization (Organization,
+  Person), dataModel.VerifiableCredentials (LegalEntity, NaturalPerson),
+  dataModel.MarineTransport Company and the gaiax-ontology-v2111
+  LegalPerson candidate; none models ownership or control interests.
+  OCDS (candidate `ocds`) can link to BODS through organization
+  identifiers.
+
+  FOLLOW-UPS: a BODS package/stream entity is not modelled; annotations
+  and publicationDetails could become separate entities if needed.
