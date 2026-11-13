@@ -1,0 +1,694 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/ocds/models/Release/schema.json",
+  "modelTags": "OCDS,OpenContracting,PublicProcurement",
+  "title": "Smart Data Models - OCDS - Release",
+  "description": "Each release provides data about a single contracting process at a particular point in time. Releases can be used to notify users of new tenders, awards, contracts and other updates. Releases may repeat or update information provided previously in this contracting process. One contracting process may have many releases. A 'record' of a contracting process follows the same structure as a release, but combines information from multiple points in time into a single summary. (Open Contracting Data Standard 1.1.5, Release: https://standard.open-contracting.org/schema/1__1__5/release-schema.json#. Field names are kept verbatim except 'id' -> 'ocdsId' and 'value' -> 'ocdsValue'.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity (NGSI-LD). Built from the OCDS identifiers, see the model notes."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Release"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Release'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "ocid": {
+      "description": "Property. Model:'https://standard.open-contracting.org/schema/1__1__5/release-schema.json#/properties/ocid'. Open Contracting ID. A globally unique identifier for this Open Contracting Process. Composed of an ocid prefix and an identifier for the contracting process. For more information see the [Open Contracting Identifier guidance](https://standard.open-contracting.org/1.1/en/schema/identifiers/)",
+      "type": "string",
+      "minLength": 1
+    },
+    "ocdsId": {
+      "description": "Property. Model:'https://standard.open-contracting.org/schema/1__1__5/release-schema.json#/properties/id'. Release ID. An identifier for this particular release of information. A release identifier must be unique within the scope of its related contracting process (defined by a common ocid). A release identifier must not contain the # character. OCDS field 'id', renamed because 'id' is reserved in NGSI-LD.",
+      "type": "string",
+      "minLength": 1
+    },
+    "date": {
+      "description": "Property. Model:'https://standard.open-contracting.org/schema/1__1__5/release-schema.json#/properties/date'. Release Date. The date on which the information contained in the release was first recorded in, or published by, any system.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "tag": {
+      "description": "Property. Model:'https://standard.open-contracting.org/schema/1__1__5/release-schema.json#/properties/tag'. Release Tag. One or more values from the closed [releaseTag](https://standard.open-contracting.org/1.1/en/schema/codelists/#release-tag) codelist. Tags can be used to filter releases and to understand the kind of information that releases might contain. (OCDS closed codelist releaseTag.csv.)",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "planning",
+          "planningUpdate",
+          "tender",
+          "tenderAmendment",
+          "tenderUpdate",
+          "tenderCancellation",
+          "award",
+          "awardUpdate",
+          "awardCancellation",
+          "contract",
+          "contractUpdate",
+          "contractAmendment",
+          "implementation",
+          "implementationUpdate",
+          "contractTermination",
+          "compiled"
+        ]
+      },
+      "minItems": 1
+    },
+    "initiationType": {
+      "description": "Property. Model:'https://standard.open-contracting.org/schema/1__1__5/release-schema.json#/properties/initiationType'. Initiation type. The type of initiation process used for this contract, from the closed [initiationType](https://standard.open-contracting.org/1.1/en/schema/codelists/#initiation-type) codelist. (OCDS closed codelist initiationType.csv.)",
+      "type": "string",
+      "enum": [
+        "tender"
+      ]
+    },
+    "parties": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://standard.open-contracting.org/schema/1__1__5/release-schema.json#/properties/parties'. Parties. Information on the parties (organizations, economic operators and other participants) who are involved in the contracting process and their roles, e.g. buyer, procuring entity, supplier etc. Organization references elsewhere in the schema are used to refer back to this entries in this list. In OCDS this is an embedded Organization; here it points to the Organization entities."
+    },
+    "buyer": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://standard.open-contracting.org/schema/1__1__5/release-schema.json#/properties/buyer'. Buyer. A buyer is an entity whose budget will be used to pay for goods, works or services related to a contract. This may be different from the procuring entity who may be specified in the tender data. In OCDS this is an embedded OrganizationReference; here it points to the Organization entity."
+    },
+    "planning": {
+      "description": "Property. Model:'https://standard.open-contracting.org/schema/1__1__5/release-schema.json#/properties/planning'. Planning. Information from the planning phase of the contracting process. This includes information related to the process of deciding what to contract, when and how.",
+      "type": "object",
+      "properties": {
+        "rationale": {
+          "title": "Rationale",
+          "description": "The rationale for the procurement provided in free text. More detail can be provided in an attached document.",
+          "type": "string"
+        },
+        "budget": {
+          "type": "object",
+          "title": "Budget",
+          "description": "Details of the budget that funds this contracting process.",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "description": "An identifier for the budget line item which provides funds for this contracting process. This identifier should be possible to cross-reference against the provided data source.",
+              "type": [
+                "string",
+                "integer"
+              ]
+            },
+            "description": {
+              "title": "Budget Source",
+              "description": "A short free text description of the budget source. May be used to provide the title of the budget line, or the programme used to fund this project.",
+              "type": "string"
+            },
+            "amount": {
+              "title": "Amount",
+              "description": "The value reserved in the budget for this contracting process. A negative value indicates anticipated income to the budget as a result of this contracting process, rather than expenditure. Where the budget is drawn from multiple sources, the budget breakdown extension can be used.",
+              "type": "object",
+              "properties": {
+                "amount": {
+                  "title": "Amount",
+                  "description": "Amount as a number.",
+                  "type": "number"
+                },
+                "currency": {
+                  "title": "Currency",
+                  "description": "The currency of the amount, from the closed [currency](https://standard.open-contracting.org/1.1/en/schema/codelists/#currency) codelist. (OCDS closed codelist currency.csv.)",
+                  "type": "string",
+                  "enum": [
+                    "ADP",
+                    "AED",
+                    "AFA",
+                    "AFN",
+                    "ALK",
+                    "ALL",
+                    "AMD",
+                    "ANG",
+                    "AOA",
+                    "AOK",
+                    "AON",
+                    "AOR",
+                    "ARA",
+                    "ARP",
+                    "ARS",
+                    "ARY",
+                    "ATS",
+                    "AUD",
+                    "AWG",
+                    "AYM",
+                    "AZM",
+                    "AZN",
+                    "BAD",
+                    "BAM",
+                    "BBD",
+                    "BDT",
+                    "BEC",
+                    "BEF",
+                    "BEL",
+                    "BGJ",
+                    "BGK",
+                    "BGL",
+                    "BGN",
+                    "BHD",
+                    "BIF",
+                    "BMD",
+                    "BND",
+                    "BOB",
+                    "BOP",
+                    "BOV",
+                    "BRB",
+                    "BRC",
+                    "BRE",
+                    "BRL",
+                    "BRN",
+                    "BRR",
+                    "BSD",
+                    "BTN",
+                    "BUK",
+                    "BWP",
+                    "BYB",
+                    "BYN",
+                    "BYR",
+                    "BZD",
+                    "CAD",
+                    "CDF",
+                    "CHC",
+                    "CHE",
+                    "CHF",
+                    "CHW",
+                    "CLF",
+                    "CLP",
+                    "CNY",
+                    "COP",
+                    "COU",
+                    "CRC",
+                    "CSD",
+                    "CSJ",
+                    "CSK",
+                    "CUC",
+                    "CUP",
+                    "CVE",
+                    "CYP",
+                    "CZK",
+                    "DDM",
+                    "DEM",
+                    "DJF",
+                    "DKK",
+                    "DOP",
+                    "DZD",
+                    "ECS",
+                    "ECV",
+                    "EEK",
+                    "EGP",
+                    "ERN",
+                    "ESA",
+                    "ESB",
+                    "ESP",
+                    "ETB",
+                    "EUR",
+                    "FIM",
+                    "FJD",
+                    "FKP",
+                    "FRF",
+                    "GBP",
+                    "GEK",
+                    "GEL",
+                    "GHC",
+                    "GHP",
+                    "GHS",
+                    "GIP",
+                    "GMD",
+                    "GNE",
+                    "GNF",
+                    "GNS",
+                    "GQE",
+                    "GRD",
+                    "GTQ",
+                    "GWE",
+                    "GWP",
+                    "GYD",
+                    "HKD",
+                    "HNL",
+                    "HRD",
+                    "HRK",
+                    "HTG",
+                    "HUF",
+                    "IDR",
+                    "IEP",
+                    "ILP",
+                    "ILR",
+                    "ILS",
+                    "INR",
+                    "IQD",
+                    "IRR",
+                    "ISJ",
+                    "ISK",
+                    "ITL",
+                    "JMD",
+                    "JOD",
+                    "JPY",
+                    "KES",
+                    "KGS",
+                    "KHR",
+                    "KMF",
+                    "KPW",
+                    "KRW",
+                    "KWD",
+                    "KYD",
+                    "KZT",
+                    "LAJ",
+                    "LAK",
+                    "LBP",
+                    "LKR",
+                    "LRD",
+                    "LSL",
+                    "LSM",
+                    "LTL",
+                    "LTT",
+                    "LUC",
+                    "LUF",
+                    "LUL",
+                    "LVL",
+                    "LVR",
+                    "LYD",
+                    "MAD",
+                    "MDL",
+                    "MGA",
+                    "MGF",
+                    "MKD",
+                    "MLF",
+                    "MMK",
+                    "MNT",
+                    "MOP",
+                    "MRO",
+                    "MRU",
+                    "MTL",
+                    "MTP",
+                    "MUR",
+                    "MVQ",
+                    "MVR",
+                    "MWK",
+                    "MXN",
+                    "MXP",
+                    "MXV",
+                    "MYR",
+                    "MZE",
+                    "MZM",
+                    "MZN",
+                    "NAD",
+                    "NGN",
+                    "NIC",
+                    "NIO",
+                    "NLG",
+                    "NOK",
+                    "NPR",
+                    "NZD",
+                    "OMR",
+                    "PAB",
+                    "PEH",
+                    "PEI",
+                    "PEN",
+                    "PES",
+                    "PGK",
+                    "PHP",
+                    "PKR",
+                    "PLN",
+                    "PLZ",
+                    "PTE",
+                    "PYG",
+                    "QAR",
+                    "RHD",
+                    "ROK",
+                    "ROL",
+                    "RON",
+                    "RSD",
+                    "RUB",
+                    "RUR",
+                    "RWF",
+                    "SAR",
+                    "SBD",
+                    "SCR",
+                    "SDD",
+                    "SDG",
+                    "SDP",
+                    "SEK",
+                    "SGD",
+                    "SHP",
+                    "SIT",
+                    "SKK",
+                    "SLL",
+                    "SOS",
+                    "SRD",
+                    "SRG",
+                    "SSP",
+                    "STD",
+                    "STN",
+                    "SUR",
+                    "SVC",
+                    "SYP",
+                    "SZL",
+                    "THB",
+                    "TJR",
+                    "TJS",
+                    "TMM",
+                    "TMT",
+                    "TND",
+                    "TOP",
+                    "TPE",
+                    "TRL",
+                    "TRY",
+                    "TTD",
+                    "TWD",
+                    "TZS",
+                    "UAH",
+                    "UAK",
+                    "UGS",
+                    "UGW",
+                    "UGX",
+                    "USD",
+                    "USN",
+                    "USS",
+                    "UYI",
+                    "UYN",
+                    "UYP",
+                    "UYU",
+                    "UYW",
+                    "UZS",
+                    "VEB",
+                    "VEF",
+                    "VES",
+                    "VNC",
+                    "VND",
+                    "VUV",
+                    "WST",
+                    "XAF",
+                    "XAG",
+                    "XAU",
+                    "XBA",
+                    "XBB",
+                    "XBC",
+                    "XBD",
+                    "XCD",
+                    "XDR",
+                    "XEU",
+                    "XFO",
+                    "XFU",
+                    "XOF",
+                    "XPD",
+                    "XPF",
+                    "XPT",
+                    "XRE",
+                    "XSU",
+                    "XTS",
+                    "XUA",
+                    "XXX",
+                    "YDD",
+                    "YER",
+                    "YUD",
+                    "YUM",
+                    "YUN",
+                    "ZAL",
+                    "ZAR",
+                    "ZMK",
+                    "ZMW",
+                    "ZRN",
+                    "ZRZ",
+                    "ZWC",
+                    "ZWD",
+                    "ZWL",
+                    "ZWN",
+                    "ZWR"
+                  ]
+                }
+              }
+            },
+            "project": {
+              "title": "Project title",
+              "description": "The name of the project through which this contracting process is funded (if applicable). Some organizations maintain a registry of projects, and the data should use the name by which the project is known in that registry. No translation option is offered for this string, as translated values can be provided in third-party data, linked from the data source above.",
+              "type": "string"
+            },
+            "projectID": {
+              "title": "Project identifier",
+              "description": "An external identifier for the project that this contracting process forms part of, or is funded via (if applicable). Some organizations maintain a registry of projects, and the data should use the identifier from the relevant registry of projects.",
+              "type": [
+                "string",
+                "integer"
+              ]
+            },
+            "uri": {
+              "title": "Linked budget information",
+              "description": "A URI pointing directly to a machine-readable record about the budget line-item or line-items that fund this contracting process. Information can be provided in a range of formats, including using IATI, the Open Fiscal Data Standard or any other standard which provides structured data on budget sources. Human readable documents can be included using the planning.documents block.",
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        },
+        "documents": {
+          "title": "Documents",
+          "description": "A list of documents related to the planning process.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "title": "Document",
+            "description": "Links to, or descriptions of, external documents can be attached at various locations within the standard. Documents can be supporting information, formal notices, downloadable forms, or any other kind of resource that ought to be made public as part of full open contracting.",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "title": "ID",
+                "description": "A local, unique identifier for this document. This field is used to keep track of multiple revisions of a document through the compilation from release to record mechanism.",
+                "type": [
+                  "string",
+                  "integer"
+                ],
+                "minLength": 1
+              },
+              "documentType": {
+                "title": "Document type",
+                "description": "A classification of the document described, using the open [documentType](https://standard.open-contracting.org/1.1/en/schema/codelists/#document-type) codelist. (OCDS open codelist documentType.csv.)",
+                "type": "string"
+              },
+              "title": {
+                "title": "Title",
+                "description": "The document title.",
+                "type": "string"
+              },
+              "description": {
+                "title": "Description",
+                "description": "A short description of the document. Descriptions are recommended to not exceed 250 words. In the event the document is not accessible online, the description field can be used to describe arrangements for obtaining a copy of the document.",
+                "type": "string"
+              },
+              "url": {
+                "title": "URL",
+                "description": "A direct link to the document or attachment. The server providing access to this document ought to be configured to correctly report the document mime type.",
+                "type": "string",
+                "format": "uri"
+              },
+              "datePublished": {
+                "title": "Date published",
+                "description": "The date on which the document was first published. This is particularly important for legally important documents such as notices of a tender.",
+                "type": "string",
+                "format": "date-time"
+              },
+              "dateModified": {
+                "title": "Date modified",
+                "description": "Date that the document was last modified",
+                "type": "string",
+                "format": "date-time"
+              },
+              "format": {
+                "title": "Format",
+                "description": "The format of the document, using the open [IANA Media Types](http://www.iana.org/assignments/media-types/) codelist (see the values in the 'Template' column), or using the 'offline/print' code if the described document is published offline. For example, web pages have a format of 'text/html'.",
+                "type": "string"
+              },
+              "language": {
+                "title": "Language",
+                "description": "The language of the linked document using either two-letter [ISO639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes), or extended [BCP47 language tags](http://www.w3.org/International/articles/language-tags/). The use of lowercase two-letter codes from [ISO639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) is recommended unless there is a clear user need for distinguishing the language subtype.",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "milestones": {
+          "title": "Planning milestones",
+          "description": "A list of milestones associated with the planning stage.",
+          "type": "array",
+          "items": {
+            "title": "Milestone",
+            "description": "The milestone block can be used to represent a wide variety of events in the lifetime of a contracting process.",
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "title": "ID",
+                "description": "A local identifier for this milestone, unique within this block. This field is used to keep track of multiple revisions of a milestone through the compilation from release to record mechanism.",
+                "type": [
+                  "string",
+                  "integer"
+                ],
+                "minLength": 1
+              },
+              "title": {
+                "title": "Title",
+                "description": "Milestone title",
+                "type": "string"
+              },
+              "type": {
+                "title": "Milestone type",
+                "description": "The nature of the milestone, using the open [milestoneType](https://standard.open-contracting.org/1.1/en/schema/codelists/#milestone-type) codelist. (OCDS open codelist milestoneType.csv.)",
+                "type": "string"
+              },
+              "description": {
+                "title": "Description",
+                "description": "A description of the milestone.",
+                "type": "string"
+              },
+              "code": {
+                "title": "Milestone code",
+                "description": "Milestone codes can be used to track specific events that take place for a particular kind of contracting process. For example, a code of 'approvalLetter' can be used to allow applications to understand this milestone represents the date an approvalLetter is due or signed.",
+                "type": "string"
+              },
+              "dueDate": {
+                "title": "Due date",
+                "description": "The date the milestone is due.",
+                "type": "string",
+                "format": "date-time"
+              },
+              "dateMet": {
+                "format": "date-time",
+                "title": "Date met",
+                "description": "The date on which the milestone was met.",
+                "type": "string"
+              },
+              "dateModified": {
+                "title": "Date modified",
+                "description": "The date the milestone was last reviewed or modified and the status was altered or confirmed to still be correct.",
+                "type": "string",
+                "format": "date-time"
+              },
+              "status": {
+                "title": "Status",
+                "description": "The status that was realized on the date provided in `dateModified`, from the closed [milestoneStatus](https://standard.open-contracting.org/1.1/en/schema/codelists/#milestone-status) codelist. (OCDS closed codelist milestoneStatus.csv.)",
+                "type": "string",
+                "enum": [
+                  "scheduled",
+                  "met",
+                  "notMet",
+                  "partiallyMet"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "tender": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://standard.open-contracting.org/schema/1__1__5/release-schema.json#/properties/tender'. Tender. The activities undertaken in order to enter into a contract. In OCDS this is an embedded Tender; here it points to the Tender entity."
+    },
+    "awards": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://standard.open-contracting.org/schema/1__1__5/release-schema.json#/properties/awards'. Awards. Information from the award phase of the contracting process. There can be more than one award per contracting process e.g. because the contract is split among different providers, or because it is a standing offer. In OCDS this is an embedded Award; here it points to the Award entities."
+    },
+    "contracts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://standard.open-contracting.org/schema/1__1__5/release-schema.json#/properties/contracts'. Contracts. Information from the contract creation phase of the procurement process. In OCDS this is an embedded Contract; here it points to the Contract entities."
+    },
+    "language": {
+      "description": "Property. Model:'https://standard.open-contracting.org/schema/1__1__5/release-schema.json#/properties/language'. Release language. The default language of the data using either two-letter [ISO639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes), or extended [BCP47 language tags](http://www.w3.org/International/articles/language-tags/). The use of lowercase two-letter codes from [ISO639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) is recommended.",
+      "type": "string",
+      "default": "en"
+    },
+    "relatedProcesses": {
+      "uniqueItems": true,
+      "items": {
+        "description": "A reference to a related contracting process: generally one preceding or following on from the current process.",
+        "type": "object",
+        "title": "Related Process",
+        "properties": {
+          "id": {
+            "title": "Relationship ID",
+            "description": "A local identifier for this relationship, unique within this array.",
+            "type": "string"
+          },
+          "relationship": {
+            "items": {
+              "type": "string"
+            },
+            "description": "The type of relationship, using the open [relatedProcess](https://standard.open-contracting.org/1.1/en/schema/codelists/#related-process) codelist. (OCDS open codelist relatedProcess.csv.)",
+            "title": "Relationship",
+            "type": "array"
+          },
+          "title": {
+            "description": "The title of the related process, where referencing an open contracting process, this field should match the tender/title field in the related process.",
+            "title": "Related process title",
+            "type": "string"
+          },
+          "scheme": {
+            "title": "Scheme",
+            "description": "The identification scheme used by this cross-reference, using the open [relatedProcessScheme](https://standard.open-contracting.org/1.1/en/schema/codelists/#related-process-scheme) codelist. (OCDS open codelist relatedProcessScheme.csv.)",
+            "type": "string"
+          },
+          "identifier": {
+            "description": "The identifier of the related process. If the scheme is 'ocid', this must be an Open Contracting ID (ocid).",
+            "title": "Identifier",
+            "type": "string"
+          },
+          "uri": {
+            "format": "uri",
+            "description": "A URI pointing to a machine-readable document, release or record package containing the identified related process.",
+            "title": "Related process URI",
+            "type": "string"
+          }
+        }
+      },
+      "description": "Property. Model:'https://standard.open-contracting.org/schema/1__1__5/release-schema.json#/properties/relatedProcesses'. Related processes. The details of related processes: for example, if this process follows on from one or more other processes, represented under a separate open contracting identifier (ocid). This is commonly used to relate mini-competitions to their parent frameworks or individual tenders to a broader planning process.",
+      "type": "array"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "ocid",
+    "ocdsId",
+    "date",
+    "tag",
+    "initiationType"
+  ]
+}
