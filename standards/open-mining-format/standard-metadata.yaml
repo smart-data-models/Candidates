@@ -1,0 +1,187 @@
+title: "Open Mining Format (OMF)"
+publisher: "Global Mining Guidelines Group (GMG)"
+sourceUrl: "https://github.com/gmggroup/omf-rust"
+specificationUrl: "https://gmggroup.github.io/omf-rust/format.html"
+contact: "https://github.com/gmggroup/omf/issues"
+sourceOntologyVersion: "OMF file format 2.0-beta.1 (omf.schema.json title 'Open Mining Format 2.0-beta.1'; omf-rust crate 0.2.0-beta.1, main branch at commit 64d305790b3415618a01f00a94cd914acd0b80ba of 2025-05-15; schema file last changed in commit e3b724cb of 2024-05-29). OMF 2 is pre-release; the latest stable release is OMF 1.0.1 (Python package omf on PyPI, https://omf.readthedocs.io/)."
+sourceOntologyDownload: "https://raw.githubusercontent.com/gmggroup/omf-rust/64d305790b3415618a01f00a94cd914acd0b80ba/omf.schema.json"
+sourceOntologyNamespace: "https://github.com/gmggroup/omf-rust/blob/main/omf.schema.json#/"
+sourceOntologyFormat: "JSON Schema (draft 2019-09) of the OMF 2 JSON index, with generated HTML documentation (https://gmggroup.github.io/omf-rust/schema_index.html); no RDF vocabulary"
+sourceExampleUrl: "https://github.com/gmggroup/omf-rust/blob/main/tests/one_of_everything.omf.json"
+sourceExampleLicense: "MIT, Copyright (c) 2023 Global Mining Guidelines Group"
+domains:
+  - Industry4.0
+  - CrossSector
+description: >
+  The Open Mining Format (OMF) is an open file format and library, backed
+  by the Global Mining Guidelines Group, for exchanging 3D geoscience and
+  mining data between applications (geological modelling, mine planning,
+  resource estimation). An OMF file holds a project with a list of
+  elements; each element has one geometry (point set, line set,
+  triangulated surface, grid surface, block model with optional regular,
+  octree or free-form sub-blocks, or a composite of other elements) and a
+  list of attributes attached to its vertices, primitives, sub-blocks or
+  sub-elements (numbers, dates, vectors, text, categories with
+  sub-attributes, booleans, colors and textures). OMF 2 stores a
+  gzip-compressed JSON index, specified by a JSON Schema, plus the bulk
+  arrays as Apache Parquet files and images as PNG/JPEG, all in one ZIP
+  archive.
+license: "MIT"
+licenseNote: >
+  Verified from the primary sources: the LICENSE files of
+  github.com/gmggroup/omf-rust (the OMF 2 specification, JSON Schema and
+  library) and github.com/gmggroup/omf (OMF 1) are the MIT License,
+  "Copyright (c) 2023 Global Mining Guidelines Group", and the workspace
+  Cargo.toml declares license = "MIT". MIT allows reuse, modification and
+  redistribution; keep the copyright and permission notice
+  (attribution to the Global Mining Guidelines Group). The examples are
+  translated from the MIT-licensed OMF reference test file (attributed in
+  `source`).
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source JSON Schema to SDM candidate artifacts"
+notes: |
+  Translated on 2026-11-13. Source row 34 of the "Level A standards not in
+  Smart Data Models" list (sector Mining, licence marked "Yes"; verified:
+  MIT).
+
+  VERSION: OMF 2 (gmggroup/omf-rust) is the only OMF version with a
+  machine-readable schema (omf.schema.json) and the one GMG documents as
+  "the format" (gmggroup.github.io/omf-rust/format.html), so it is the
+  source here. It is still labelled pre-release: schema title
+  "2.0-beta.1", crate 0.2.0-beta.1, no GitHub release or tag; on PyPI the
+  omf package's latest stable version is 1.0.1 (OMF 1, Python `properties`
+  classes, no JSON Schema) and 2.0.0a0 is an alpha. The models follow
+  OMF 2 because OMF 1 has no block-model sub-blocks, composites or
+  boolean/category sub-attributes, and OMF 2 can read OMF 1 files. OMF 1
+  correspondences: Project = omf.Project; Element with geometry PointSet /
+  LineSet / Surface / GridSurface / BlockModel = PointSetElement /
+  LineSetElement / SurfaceElement (SurfaceGeometry, SurfaceGridGeometry) /
+  VolumeElement (VolumeGridGeometry); Attribute = the OMF 1 *Data
+  classes. Re-check against OMF 2.0 final when it is released.
+
+  MODELS (3), named as the OMF JSON Schema objects:
+    - Project    root object (10 OMF fields: name, description,
+                 application, author, coordinate_reference_system, date,
+                 metadata, origin, units, elements)
+    - Element    one object or shape (name, description, color, metadata,
+                 geometry, attributes)
+    - Attribute  data attached to an element (name, description, units,
+                 metadata, omfLocation, data)
+  These are the three OMF objects with identity (a name, metadata and a
+  place in the project tree). Geometry (PointSet, LineSet, Surface,
+  GridSurface, BlockModel, Composite) is a value object of exactly one
+  element, so it stays nested in Element.geometry with its full OMF
+  structure (Grid2/Grid3 regular or tensor, Orient2/Orient3, Subblocks
+  regular or free-form with SubblockMode). AttributeData (Number, Vector,
+  Text, Category, Boolean, Color, MappedTexture, ProjectedTexture) with
+  NumberColormap/NumberRange stays nested in Attribute.data. Both are
+  defined in each schema's $defs and are "@type": "@json" in the
+  contexts.
+
+  ARRAYS: OMF keeps every bulk array (vertices, triangles, segments,
+  heights, tensor cell sizes, sub-blocks, attribute values, colormap
+  gradients, category names) in Parquet files, and images in PNG/JPEG
+  files, inside the .omf ZIP archive; the JSON index refers to them with
+  an Array object {filename, item_count}. The models do the same: they
+  carry the Array references, not the data. Brokers therefore hold the
+  structure and metadata of an OMF project (what is in it, where, which
+  attributes, units, colormaps) while the numbers stay in the file.
+
+  NAMING: every attribute keeps its OMF field name verbatim, including
+  the snake_case coordinate_reference_system, with one rename:
+    - Attribute `location` (enum Vertices, Primitives, Subblocks,
+      Elements, Projected, Categories) -> `omfLocation`, because location
+      is reserved in NGSI-LD for the GeoProperty.
+  The entity type names Project, Element and Attribute are generic:
+  Project already exists in dataModel.SDG and Attribute in
+  dataModel.SmartDataModels (the meta-model of Smart Data Models
+  attributes). They are kept verbatim as the OMF names; a prefix
+  (e.g. OmfProject) could be considered at promotion time.
+
+  MAPPING:
+    - The containment lists become Relationships (arrays of URNs):
+      Project.elements -> Element entities, Element.attributes ->
+      Attribute entities. Inside the nested JSON, Composite.elements and
+      Category.attributes are also arrays of Element / Attribute URNs
+      instead of nested objects (Smart Data Models adaptation, so that
+      each element and attribute is one entity).
+    - Vectors (origin, color) and all nested objects (metadata, geometry,
+      data) are "@type": "@json", which keeps the order of 3D vectors.
+    - Project.date is an xsd:dateTime.
+    - Element.color: OMF allows null; NGSI-LD attributes cannot be null, so
+      the attribute is left out instead. Inside the nested JSON literals
+      null stays allowed as in OMF (heights, subblocks, colormap,
+      gradient, mode).
+    - Non-standard JSON Schema formats of the source (double, uint8,
+      uint32, uint64, int64) are dropped; the min/max constraints stay.
+    - Context IRIs: entity types map to their page in the generated
+      schema documentation (https://gmggroup.github.io/omf-rust/schema/
+      <Name>.html); attributes map to JSON pointers in the schema's own $id
+      (https://github.com/gmggroup/omf-rust/blob/main/omf.schema.json#/
+      properties/<field> for Project, #/definitions/<Object>/properties/
+      <field> otherwise). Descriptions come from the schema documentation
+      (the JSON Schema itself has none).
+  NON-OMF ADDITIONS:
+    - Element.geometryType: copy of geometry.type (PointSet, LineSet,
+      Surface, GridSurface, BlockModel, Composite), so elements can be
+      filtered by kind in NGSI-LD queries (geometry is a JSON literal).
+    - Project.location: optional GeoJSON Point (or footprint Polygon) in
+      WGS84. OMF coordinates are in a project coordinate reference system
+      (coordinate_reference_system, EPSG code or PROJ string, often a
+      projected or local mine grid), relative to the project origin plus
+      each geometry's origin. A GeoJSON location is only possible when the
+      project gives a CRS that can be transformed to WGS84; mine-grid or
+      empty CRSs cannot be placed, and then location is left out (as in
+      the example, whose CRS is empty).
+    - The common Smart Data Models attributes (dateCreated, dateModified,
+      source, dataProvider).
+
+  SOURCE NOTES (OMF 2.0-beta.1 documentation and schema):
+    - Version label: format.html says "The current version is 2.0"
+      while the schema title, README and crate say 2.0-beta.1, and there
+      is no tagged release.
+    - BlockModel's "Attribute Locations" section names a location
+      "Blocks" for parent-block centroids; the Location enum has no
+      Blocks value: it is "Primitives" (whose own description says "for
+      sub-blocked block models that means parent blocks"). The models use
+      the enum.
+    - Subblocks documentation describes "the parents and corners arrays"
+      and "subblock_count", while the schema has a single `subblocks`
+      Array (RegularSubblock / FreeformSubblock Parquet types holding
+      parent indices and corners) and a `count` field.
+    - NumberColormap.Discrete: "Values above the last boundary use
+      end_color", but there is no end_color field (the extra last color of
+      gradient is used); and `boundaries` is described as "storing the
+      smooth color gradient" (copy-paste from Continuous).
+    - AttributeData.Category.attributes documentation contains an
+      unrendered rustdoc link "Categories[crate::Location::Categories]"
+      (cleaned here).
+    - Array, Composite.elements and the variant `type` tags have no
+      description; descriptions were written for Array.
+    - The schema declares draft 2019-09 but uses `definitions` and
+      non-standard formats (double, uint32, ...).
+
+  EXAMPLES: translated from the OMF 2 reference test file "One of
+  everything" (tests/one_of_everything.omf.json in gmggroup/omf-rust, MIT,
+  GMG), the JSON index of an OMF 2 file "containing roughly one of every
+  different type". Project = that project (10 elements, its date
+  1970-01-01T00:00:00Z and test metadata kept as published; its author
+  field, a person's name, is left out); Element = its "Regular
+  block model" (2 x 2 x 2 blocks of 1 x 1 x 1, origin [-1, -1, -1]);
+  Attribute = that block model's "Filter" Boolean attribute on
+  Primitives (parent blocks), whose 8 values are in 21.parquet. No real
+  mining dataset with an open licence was found in OMF 2 form; the test
+  file is the spec's own example, not mining data. It has no CRS, so no
+  location is given.
+
+  DUPLICATION RISK: Smart Data Models has no mining, geology or block-model
+  subject (dataModel.OpenStreetMap OSMGeological covers mapped geological
+  features, not 3D models). Name clashes only: Project (dataModel.SDG) and
+  Attribute (dataModel.SmartDataModels), different scope. The cityjson-v2
+  candidate covers 3D city geometry, not subsurface models.
+
+  FOLLOW-UPS: one model per geometry kind (e.g. BlockModel, Surface,
+  PointSet as Element subtypes) if typed queries need it; back-references
+  (Attribute -> Element, Element -> Project); an RDF vocabulary for OMF
+  at GMG; re-sync with OMF 2.0 final.
