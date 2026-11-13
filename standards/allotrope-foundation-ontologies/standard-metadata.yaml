@@ -1,0 +1,160 @@
+title: "Allotrope Foundation Ontologies (AFO)"
+publisher: "Allotrope Foundation"
+sourceUrl: "https://purl.allotrope.org/"
+specificationUrl: "https://www.allotrope.org/"
+contact: "https://www.allotrope.org/ (Allotrope Foundation)"
+sourceOntologyVersion: "REC/2026/09 (owl:versionInfo REC/2026/09, owl:versionIRI http://purl.allotrope.org/voc/afo/REC/2026/09/afo, dct:issued 2026-10-01), the latest Recommendation release on the Allotrope PURL service"
+sourceOntologyDownload: "https://purl.allotrope.org/voc/afo/REC/2026/09/afo.ttl (imports aft.ttl, relation.ttl, curation.ttl, the perspective modules under https://purl.allotrope.org/voc/afo/perspective/REC/2026/09/, BFO 2.0 https://purl.allotrope.org/voc/bfo/REC/2018/04/bfo-2-0.ttl, and the QUDT extension https://purl.allotrope.org/voc/qudt/REC/2026/09/qudt-ext.ttl)"
+sourceOntologyNamespace: "http://purl.allotrope.org/ontologies/ (modules equipment#AFE_, material#AFM_, process#AFP_, result#AFR_, role#AFRL_, property#AFX_, quality#AFQ_ ...), plus imported OBO terms (BFO, RO, IAO, OBI, CHMO)"
+sourceOntologyFormat: "OWL 2 ontology in Turtle (also RDF/XML), BFO 2.0 based, with SKOS annotations"
+domains:
+  - Manufacturing
+  - Industry4.0
+  - CrossSector
+description: >
+  The Allotrope Foundation Ontologies (AFO) are the controlled vocabulary
+  and semantic model of the Allotrope Framework for analytical laboratory
+  data in the pharmaceutical, biotech and chemical industries. AFO is built
+  on the Basic Formal Ontology (BFO 2.0) and reuses OBO terms (RO, IAO, OBI,
+  CHMO); it describes laboratory equipment (instruments, detectors,
+  containers), materials and samples, the roles they play (sample,
+  standard, analyte, solvent...), analytical processes (chromatography,
+  spectroscopy, weighing, titration...), results and their quantity values,
+  with units from QUDT and an Allotrope QUDT extension. It is the vocabulary
+  behind the Allotrope Data Format (ADF) and the Allotrope Simple Model
+  (ASM) JSON schemas. Release REC/2026/09 loads as about 28,000 triples:
+  3,125 classes (about 2,400 in the Allotrope namespaces), 281 object
+  properties and 24 datatype properties.
+license: "CC-BY-4.0"
+licenseNote: >
+  Verified in the ontology files themselves (afo.ttl, aft.ttl, relation.ttl,
+  curation.ttl, qudt-ext.ttl of REC/2026/09): dct:license
+  <http://purl.allotrope.org/voc/creative-commons-attribution-license>,
+  whose dct:description reads "This work is licensed under a Creative
+  Commons Attribution 4.0 International License
+  http://creativecommons.org/licenses/by/4.0/ ... Copyright (c) 2015-2026
+  Allotrope Foundation". Attribution: Allotrope Foundation, Allotrope
+  Foundation Ontologies REC/2026/09, CC BY 4.0, https://purl.allotrope.org/
+  (given in each example's `source`). The AFO rights statement
+  (voc/attribution) also notes third-party material: NCBO/Cell Ontology,
+  ChEBI, QUDT (CC BY-SA 3.0 US) and DCMI (CC BY 4.0). Some AFO terms carry
+  an additional dct:license <voc/iupac-license> ("Reproduced by permission
+  of International Union of Pure and Applied Chemistry"); the definitions
+  of those terms (here: 'assay result') are NOT copied into this candidate,
+  only their names and IRIs. The ontologies are publicly downloadable
+  without login from the Allotrope PURL service; BioPortal (API key) was not
+  used. The Allotrope Data Format (ADF) specification and libraries and the
+  ASM schemas have their own licence terms and are NOT part of this
+  candidate, which is why the source sheet marks the licence as "Partial".
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-11-13. Source row 58 of the "Level A standards not in
+  Smart Data Models" list (sector Chemicals and lab, licence marked
+  "Partial": the ontologies are CC BY 4.0; ADF/ASM are not used). All
+  REC/2026/09 modules, BFO 2.0 and the QUDT extension (QUDT 1.1 unit,
+  quantity and schema files as distributed by Allotrope, 867 units) were
+  loaded. Generator: gen_allotrope-foundation-ontologies.py (scratchpad).
+
+  SCOPE: AFO is a BFO-based ontology of ~3,000 classes. This candidate
+  covers the five things analytical laboratory data is about, following
+  the same generic-entity pattern as the EMMO, Brick and Open Energy
+  Ontology candidates (one entity per branch plus an `afoClass` attribute):
+    - PortionOfMaterial  CHMO 'portion of material' (57 classes in branch:
+                         solution, suspension, chemical substance, gas...)
+                         = samples, standards, reagents
+    - Device             AFO 'device' AFE_0000354 (132: liquid
+                         chromatograph, balance, spectrophotometer,
+                         detectors, containers...) = instruments/equipment
+    - PlannedProcess     OBI 'planned process' (89: liquid chromatography,
+                         weighing, titration-like measurings, sample
+                         preparation, calibration...) = measurement/assay run
+    - AssayResult        AFO 'assay result' AFR_0000207 (24: chromatography
+                         result, weighing result, titration result...)
+    - AnalyticalMethod   AFO 'analytical method' AFR_0000895 (no subclasses)
+  Branches include classes that AFO defines only through
+  owl:equivalentClass [intersectionOf (parent, restriction)]; no class in
+  them is deprecated. NOT covered yet (possible follow-ups): AFO qualities
+  and functions as separate entities, organization/person (privacy), the
+  data-cube and peak/spectrum structures of ADF, and per-technique result
+  documents as in the ASM schemas (not used: separate licence).
+
+  NAMING: AFO IRIs are opaque (AFE_0000354, AFX_0000696) and the names are
+  lower-case skos:prefLabels with spaces ("portion of material", "has
+  material input"). Spaces cannot appear in a schema `$id` path or be used
+  sensibly as NGSI-LD terms, so, as in the OEO candidate, entity types are
+  the PascalCase form of the prefLabel (PortionOfMaterial, Device,
+  PlannedProcess, AssayResult, AnalyticalMethod) and attributes the
+  camelCase form (hasMaterialInput, sampleIdentifier, quantifiedBy,
+  isAbout). Every context.jsonld maps each term to the real AFO / OBO / QUDT
+  IRI. Enum values (afoClass, hasRole, quantity) are the prefLabels
+  verbatim, spaces included ("liquid chromatograph", "sample role",
+  "mass concentration"). No NGSI-LD reserved term clashed, so nothing was
+  renamed for that reason.
+
+  MAPPING:
+    - Relationships are AFO/RO/IAO relations: hasMaterialInput,
+      hasMaterialOutput, hasParticipant, hasDataOutput, hasPrescription
+      (PlannedProcess); materialInputOf, materialOutputOf, hasIngredient,
+      containedIn (PortionOfMaterial); hasComponent, componentOf, contains,
+      participatesIn (Device); dataOutputOf, isAbout (AssayResult).
+    - Identifiers, names, versions and times are AFO "facet" classes
+      (sample identifier, batch identifier, equipment serial number,
+      measurement time, start time, method name...). AFO attaches them as
+      individuals via has identifier / has facet; here they are flattened
+      to literal attributes named after the class and mapped to the class
+      IRI, as the Allotrope Simple Model JSON does. This is a pragmatic
+      approximation (class IRI used as a property IRI).
+    - Quantity values are flattened: quantifiedBy (PortionOfMaterial,
+      AFX_0002684), processQuantifiedBy (PlannedProcess, AFX_0002686) and
+      hasFacet (AssayResult, AFX_0002803) are arrays of {quantity,
+      numericValue, unit, standardUncertainty}; quantity is an enum of the
+      179 'quantification facet' class labels (the 'unit of measure'
+      subclass is left out), numericValue / unit / standardUncertainty are
+      the QUDT 1.1 properties AFO uses, and unit is the IRI of a QUDT 1.1 or
+      Allotrope qudt-ext unit individual (checked by the generator). These
+      attributes are "@type": "@json".
+    - hasRole (RO_0000087) lists role class labels (179 in the AFO 'role'
+      branch), e.g. 'sample role', 'reference sample role'.
+    - afoClass is a Smart Data Models term (https://smartdatamodels.org/
+      dataModel.AFO/afoClass) standing for rdf:type.
+  NON-AFO ADDITIONS: afoClass and the usual SDM name, description, source,
+  dataProvider, dateCreated, dateModified. No timestamps were invented: AFO
+  has start time, end time and measurement time classes.
+
+  SOURCE NOTES: several AFO definitions do not match their label: 'analytical
+  method' is defined as "An analysis method is...", 'sample identifier' as
+  "Sample id is...", 'scalar float datum' reuses the 'scalar double
+  datum' text, and 'vector string datum' / 'vector timestamp datum' say "A
+  vector boolean datum is..."; 'has facet' reads "...
+  that is covers ...". 'is about' (IAO) has no definition in the AFO
+  distribution, only an example. 'quantification facet' has 'unit of
+  measure' as a subclass. AFO still uses the QUDT 1.1 namespaces
+  (http://qudt.org/schema/qudt#, http://qudt.org/vocab/unit#), not QUDT 2.
+  The http:// AFO IRIs redirect to https://purl.allotrope.org/ontologies/
+  <module> and resolve with content negotiation (Turtle or HTML); the
+  default curl Accept header got a 404.
+
+  EXAMPLES ARE SYNTHETIC (AFO has no instance data; no open ASM/ADF data
+  set under a clear licence was used). One consistent pharmaceutical QC
+  scenario: an acetaminophen 500 mg tablet test solution (PortionOfMaterial,
+  sample role, 0.1 mg/mL) is injected (10 uL, 1.0 mL/min, 30 degC, 243 nm)
+  in a liquid chromatography run (PlannedProcess) on HPLC system LC-QC-03
+  (Device, afoClass 'liquid chromatograph'), prescribed by method
+  AM-HPLC-APAP-003 (AnalyticalMethod), giving a chromatography result
+  (AssayResult) of 0.0998 +/- 0.0006 mg/mL, i.e. 499 mg per tablet. The
+  manufacturer, serial and model numbers are fictitious; the analyst is a
+  pseudonymous id. Every class, role, quantity and unit used was checked
+  against the source by the generator. Each example says so in `source`.
+
+  DUPLICATION RISK:
+    - Device is also an entity type in dataModel.Device (IoT devices) and
+      in the saref4ener and gaiax-ontology-v2111 candidates; rename (e.g.
+      LabDevice) or reconcile before promotion.
+    - The emmo candidate (Material, Measurement, ManufacturedProduct with
+      emmoClass InspectionDevice) covers similar ground for materials
+      testing with another foundation ontology; dataModel.IndustrialProcess
+      (ProcessChemicalAnalysis) and dataModel.EnergyCIM Measurement are
+      partial overlaps. No Smart Data Models subject covers analytical
+      laboratory data today.

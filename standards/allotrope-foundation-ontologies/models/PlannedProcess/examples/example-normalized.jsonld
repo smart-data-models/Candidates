@@ -1,0 +1,84 @@
+{
+  "id": "urn:ngsi-ld:PlannedProcess:meas-2026-1112-0457-01",
+  "type": "PlannedProcess",
+  "name": {
+    "type": "Property",
+    "value": "Assay of acetaminophen, injection 1 of SMP-2026-0457-A"
+  },
+  "afoClass": {
+    "type": "Property",
+    "value": [
+      "liquid chromatography"
+    ]
+  },
+  "measurementIdentifier": {
+    "type": "Property",
+    "value": "MEAS-2026-1112-0457-01"
+  },
+  "startTime": {
+    "type": "Property",
+    "value": "2026-11-12T09:15:00Z"
+  },
+  "endTime": {
+    "type": "Property",
+    "value": "2026-11-12T09:23:00Z"
+  },
+  "analyst": {
+    "type": "Property",
+    "value": "analyst-07"
+  },
+  "hasMaterialInput": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:PortionOfMaterial:smp-2026-0457-a"
+    ]
+  },
+  "hasParticipant": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:Device:lc-qc-03"
+    ]
+  },
+  "hasDataOutput": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:AssayResult:ad-2026-1112-0457-01"
+    ]
+  },
+  "hasPrescription": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:AnalyticalMethod:am-hplc-apap-003"
+  },
+  "processQuantifiedBy": {
+    "type": "Property",
+    "value": [
+      {
+        "quantity": "flow rate",
+        "numericValue": 1.0,
+        "unit": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilliliterPerMinute"
+      },
+      {
+        "quantity": "compartment temperature",
+        "numericValue": 30,
+        "unit": "http://qudt.org/vocab/unit#DegreeCelsius"
+      },
+      {
+        "quantity": "dispensed volume",
+        "numericValue": 10,
+        "unit": "http://purl.allotrope.org/ontology/qudt-ext/unit#Microliter"
+      },
+      {
+        "quantity": "wavelength",
+        "numericValue": 243,
+        "unit": "http://purl.allotrope.org/ontology/qudt-ext/unit#Nanometer"
+      }
+    ]
+  },
+  "source": {
+    "type": "Property",
+    "value": "Synthetic example (not real laboratory data; AFO has no instance data). Classes, relations, quantities and units from the Allotrope Foundation Ontologies REC/2026/09, CC-BY-4.0, Copyright 2015-2026 Allotrope Foundation, https://purl.allotrope.org/"
+  },
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/allotrope-foundation-ontologies/models/PlannedProcess/context.jsonld"
+  ]
+}

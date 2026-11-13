@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/allotrope-foundation-ontologies/models/AnalyticalMethod/schema.json",
+  "modelTags": "AFO,Allotrope,Laboratory,Method,AnalyticalMethod",
+  "title": "Smart Data Models - Allotrope Foundation Ontologies - AnalyticalMethod",
+  "description": "An analysis method is a plan specification that specifies an analysis. [Allotrope] (AFO REC/2026/09 class 'analytical method', http://purl.allotrope.org/ontologies/result#AFR_0000895. The entity type is the PascalCase form of the AFO skos:prefLabel; attribute names are the camelCase form of the prefLabels of the AFO relations and facet classes they stand for.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "AnalyticalMethod"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'AnalyticalMethod'"
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/name'. The name of this item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://schema.org/description'. A description of this item."
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "analyticalMethodIdentifier": {
+      "type": "string",
+      "description": "Property. Model:'http://purl.allotrope.org/ontologies/result#AFR_0001978'. AFO class 'analytical method identifier': An analytical method identifier is an identifier that identifies the analytical method used in a measurement. [Allotrope] Flattened: the AFO facet individual is replaced by its literal value, as in the Allotrope Simple Model (ASM) JSON."
+    },
+    "methodName": {
+      "type": "string",
+      "description": "Property. Model:'http://purl.allotrope.org/ontologies/result#AFR_0001606'. AFO class 'method name': A method name is a name that denotes a plan specification (method). [Allotrope] Flattened: the AFO facet individual is replaced by its literal value, as in the Allotrope Simple Model (ASM) JSON."
+    },
+    "methodVersion": {
+      "type": "string",
+      "description": "Property. Model:'http://purl.allotrope.org/ontologies/result#AFR_0002837'. AFO class 'method version': A method version is a version number that identifies a method. [Allotrope] Flattened: the AFO facet individual is replaced by its literal value, as in the Allotrope Simple Model (ASM) JSON."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "analyticalMethodIdentifier"
+  ]
+}
