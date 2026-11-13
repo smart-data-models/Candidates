@@ -1,0 +1,226 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/mds/models/Telemetry/schema.json",
+  "modelTags": "MDS,OpenMobilityFoundation,SharedMobility,Micromobility,MobilityRegulation",
+  "title": "Smart Data Models - Mobility Data Specification (MDS) - Telemetry",
+  "description": "A standard point of MDS vehicle telemetry (GPS/GNSS position and sensor data) during or outside a trip. (MDS 2.1.0, data-types.md section 'Telemetry'; field names kept verbatim; MDS timestamps are integer milliseconds since the Unix epoch.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Telemetry:<telemetry_id>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Telemetry"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Telemetry'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "device_id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#telemetry/device_id'. A unique device ID in UUID format. Points to Vehicle entities (urn:ngsi-ld:Vehicle:<MDS UUID>)."
+    },
+    "provider_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#telemetry/provider_id'. A UUID for the Provider, unique within MDS. See MDS provider list."
+    },
+    "data_provider_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#telemetry/data_provider_id'. If different than 'provider_id', a UUID for the data solution provider managing the data feed in this endpoint. See MDS provider list which includes both service operators and data solution providers."
+    },
+    "telemetry_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#telemetry/telemetry_id'. ID used for uniquely-identifying a Telemetry entry."
+    },
+    "timestamp": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#telemetry/timestamp'. Date/time that event occurred. Based on GPS or GNSS clock. Units:'milliseconds since the Unix epoch (MDS Timestamp)'."
+    },
+    "publication_time": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#telemetry/publication_time'. Date/time that telemetry data became available through the telemetry endpoint. Units:'milliseconds since the Unix epoch (MDS Timestamp)'."
+    },
+    "trip_ids": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#telemetry/trip_ids'. If telemetry occurred during a trip, the ID of the trip(s). If not in a trip, 'null'. Points to Trip entities (urn:ngsi-ld:Trip:<MDS UUID>)."
+    },
+    "journey_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uuid",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#telemetry/journey_id'. If telemetry occurred during a trip and journeys are used for the mode, the ID of the journey. If not in a trip, 'null'."
+    },
+    "stop_id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#telemetry/stop_id'. Stop that the vehicle is currently located at. See Stops. (Required if Applicable.) Points to Stop entities (urn:ngsi-ld:Stop:<MDS UUID>)."
+    },
+    "mdsLocation": {
+      "$ref": "#/$defs/GPS",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#telemetry/location'. Telemetry position data."
+    },
+    "location_type": {
+      "type": "string",
+      "enum": [
+        "street",
+        "sidewalk",
+        "crosswalk",
+        "garage",
+        "bike_lane"
+      ],
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#telemetry/location_type'. If detectable and known, what type of location the device is on or in. One of 'street', 'sidewalk', 'crosswalk', 'garage', 'bike_lane'. (Required if Known.)"
+    },
+    "battery_percent": {
+      "type": "integer",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#telemetry/battery_percent'. Percent battery charge of vehicle, expressed between 0 and 100. (Required if Applicable.) Units:'percent'."
+    },
+    "fuel_percent": {
+      "type": "integer",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#telemetry/fuel_percent'. Percent fuel in vehicle, expressed between 0 and 100. (Required if Applicable.) Units:'percent'."
+    },
+    "tipped_over": {
+      "type": "boolean",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#telemetry/tipped_over'. If detectable and known, is the device tipped over or not? Default is 'false'. (Required if Known.)"
+    },
+    "gtfs_stop_id": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#telemetry/gtfs_stop_id'. A unique stop ID to be recorded when a vehicle makes a stop event at a location. Matches GTFS 'stop_id'."
+    },
+    "incident_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#telemetry/incident_ids'. Array of one or more Incident IDs that are connected to this telemetry data point. Points to Incident entities (urn:ngsi-ld:Incident:<MDS UUID>)."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. Not an MDS field (Smart Data Models addition): a GeoJSON Point built from lng/lat of the MDS GPS object (mdsLocation), so that NGSI-LD geo-queries work. The MDS object is kept unchanged.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array"
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "device_id",
+    "provider_id",
+    "telemetry_id",
+    "timestamp",
+    "trip_ids",
+    "journey_id",
+    "mdsLocation"
+  ],
+  "$defs": {
+    "GPS": {
+      "type": "object",
+      "properties": {
+        "lat": {
+          "type": "number",
+          "description": "Latitude of the location.",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "lng": {
+          "type": "number",
+          "description": "Longitude of the location.",
+          "minimum": -180,
+          "maximum": 180
+        },
+        "altitude": {
+          "type": "number",
+          "description": "Altitude above mean sea level in meters. (Required if Available.) Units:'meters'."
+        },
+        "heading": {
+          "type": "number",
+          "description": "Degrees - clockwise starting at 0 degrees at true North. (Required if Available.) Units:'degrees'."
+        },
+        "speed": {
+          "type": "number",
+          "description": "Estimated speed in meters / sec as reported by the GPS chipset. (Required if Available.) Units:'meters per second'."
+        },
+        "horizontal_accuracy": {
+          "type": "number",
+          "description": "Horizontal accuracy, in meters. (Required if Available.) Units:'meters'."
+        },
+        "vertical_accuracy": {
+          "type": "number",
+          "description": "Vertical accuracy, in meters. (Required if Available.) Units:'meters'."
+        },
+        "satellites": {
+          "type": "integer",
+          "description": "Number of GPS or GNSS satellites. (Required if Available.)"
+        },
+        "accelerometer_x": {
+          "type": "number",
+          "description": "The x-axis acceleration in G's (gravitational force). (Required if Available.) Units:'g'."
+        },
+        "accelerometer_y": {
+          "type": "number",
+          "description": "The y-axis acceleration in G's (gravitational force). (Required if Available.) Units:'g'."
+        },
+        "accelerometer_z": {
+          "type": "number",
+          "description": "The z-axis acceleration in G's (gravitational force). (Required if Available.) Units:'g'."
+        }
+      },
+      "required": [
+        "lat",
+        "lng"
+      ],
+      "description": "GPS / GNSS position and sensor data (MDS GPS Data object). WGS 84 decimal degrees."
+    }
+  }
+}

@@ -1,0 +1,429 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/mds/models/Policy/schema.json",
+  "modelTags": "MDS,OpenMobilityFoundation,SharedMobility,Micromobility,MobilityRegulation",
+  "title": "Smart Data Models - Mobility Data Specification (MDS) - Policy",
+  "description": "An MDS policy: rules published by a public agency for mobility providers (fleet caps, speed limits, time or distance limits, fees and incentives), each rule applying to geographies, vehicle states and vehicle types. (MDS 2.1.0, policy/README.md section 'Policy'; field names kept verbatim; MDS timestamps are integer milliseconds since the Unix epoch.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Policy:<policy_id>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Policy"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Policy'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/policy/README.md#policy/name'. Name of policy."
+    },
+    "mode_id": {
+      "type": "string",
+      "enum": [
+        "micromobility",
+        "passenger-services",
+        "car-share",
+        "delivery-robots"
+      ],
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/policy/README.md#policy/mode_id'. Mode this rule should apply, see MDS mode list for options. Default 'micromobility' for backwards compatibility (this default will likely be removed in a subsequent MDS release)"
+    },
+    "policy_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/policy/README.md#policy/policy_id'. Unique ID of policy."
+    },
+    "provider_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/policy/README.md#policy/provider_ids'. Providers for whom this policy is applicable; empty arrays and 'null'/absent implies all Providers. See MDS provider list."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/policy/README.md#policy/description'. Description of policy."
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/policy/README.md#policy/currency'. An ISO 4217 Alphabetic Currency Code representing the currency of all Rules with a 'rate_amount'."
+    },
+    "start_date": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/policy/README.md#policy/start_date'. Beginning date/time of policy enforcement. In order to give providers sufficient time to poll, 'start_date' must be at least 20 minutes after 'published_date'. Units:'milliseconds since the Unix epoch (MDS Timestamp)'."
+    },
+    "end_date": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/policy/README.md#policy/end_date'. End date/time of policy enforcement. Units:'milliseconds since the Unix epoch (MDS Timestamp)'."
+    },
+    "published_date": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/policy/README.md#policy/published_date'. Timestamp that the policy was published. Units:'milliseconds since the Unix epoch (MDS Timestamp)'."
+    },
+    "prev_policies": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/policy/README.md#policy/prev_policies'. Unique IDs of prior policies replaced by this one. Points to Policy entities (urn:ngsi-ld:Policy:<MDS UUID>)."
+    },
+    "rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/Rule"
+      },
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/policy/README.md#policy/rules'. List of applicable Rule objects."
+    },
+    "external_references": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ExternalReference"
+      },
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/policy/README.md#policy/external_references'. One or more references impacting or related to this Policy."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "name",
+    "mode_id",
+    "policy_id",
+    "description",
+    "start_date",
+    "published_date",
+    "rules"
+  ],
+  "$defs": {
+    "ExternalReference": {
+      "type": "object",
+      "properties": {
+        "reference_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "A web-accessible identifier URL for the source of the publicly or privately accessible data feed, document, website, etc. This MUST be a full HTTPS URL pointing to a location which contains more information impacting or explaining the location, event, or policy, etc."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the data source for reference. E.g. \"WZDx\", \"CWZ\", \"CDS\", \"GBFS\", \"GTFS\", \"MDS\"."
+        },
+        "public": {
+          "type": "boolean",
+          "description": "Is this data source able to be viewed with out any sort of authentication? If 'true', the 'reference_url' is public. If 'false', the 'reference_url' requires some sort of authentication, authorization, or API key to access. This is an informational field to set access expectations for the data source user, and does not provide any credentials directly unless explicitly contained in the 'reference_url'."
+        },
+        "identifier_name": {
+          "type": "string",
+          "description": "The name of the data field identifier or object that is referenced by the unique 'ids'. E.g. \"id\", \"report_id\", \"trip_id\", \"vehicle_id\", \"RoadEventFeature\", etc, if relevant and available in 'reference_url'."
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "An array of one or more ids from the data sources that impacts the use of or relationship to part of MDS, e.g. Trips, Events, Stops, etc. The ids and their details are be found in the referenced 'reference_url'."
+        }
+      },
+      "required": [
+        "reference_url"
+      ]
+    },
+    "Rule": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of rule."
+        },
+        "rule_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Unique ID of the rule."
+        },
+        "rule_type": {
+          "type": "string",
+          "enum": [
+            "count",
+            "time",
+            "distance",
+            "speed",
+            "user"
+          ],
+          "description": "Type of policy (see Rule Types)"
+        },
+        "geographies": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": "List of Geography UUIDs (non-overlapping) specifying the covered geography."
+        },
+        "states": {
+          "type": "object",
+          "propertyNames": {
+            "enum": [
+              "removed",
+              "available",
+              "non_operational",
+              "reserved",
+              "on_trip",
+              "stopped",
+              "non_contactable",
+              "missing",
+              "elsewhere"
+            ]
+          },
+          "additionalProperties": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": [
+                "agency_drop_off",
+                "agency_pick_up",
+                "battery_charged",
+                "battery_low",
+                "changed_geographies",
+                "charging_end",
+                "charging_start",
+                "comms_lost",
+                "comms_restored",
+                "compliance_pick_up",
+                "customer_cancellation",
+                "decommissioned",
+                "driver_cancellation",
+                "fueling_end",
+                "fueling_start",
+                "located",
+                "maintenance",
+                "maintenance_end",
+                "maintenance_pick_up",
+                "not_located",
+                "off_hours",
+                "on_hours",
+                "order_drop_off",
+                "order_pick_up",
+                "passenger_cancellation",
+                "provider_cancellation",
+                "provider_drop_off",
+                "rebalance_pick_up",
+                "recommission",
+                "remote_end",
+                "remote_start",
+                "reservation_cancel",
+                "reservation_start",
+                "reservation_stop",
+                "service_end",
+                "service_start",
+                "system_resume",
+                "system_suspend",
+                "trip_cancel",
+                "trip_end",
+                "trip_enter_jurisdiction",
+                "trip_leave_jurisdiction",
+                "trip_pause",
+                "trip_resume",
+                "trip_start",
+                "trip_stop",
+                "unspecified"
+              ]
+            }
+          },
+          "description": "Vehicle state to which this rule applies. Optionally provide a list of specific vehicle events as a subset of a given status for the rule to apply to. An empty list or 'null'/absent defaults to \"all\"."
+        },
+        "rule_units": {
+          "type": "string",
+          "enum": [
+            "seconds",
+            "minutes",
+            "hours",
+            "days",
+            "km",
+            "miles",
+            "mph",
+            "kph",
+            "devices"
+          ],
+          "description": "Measured units of policy (see Rule Units) (Conditionally Required.)"
+        },
+        "accessibility_options": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "adaptive",
+              "wheelchair_accessible",
+              "audio_cue",
+              "visual_cue",
+              "remote_open"
+            ]
+          },
+          "description": "Applicable vehicle accessibility options, default any (or none)"
+        },
+        "vehicle_types": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "bicycle",
+              "bus",
+              "cargo_bicycle",
+              "car",
+              "delivery_robot",
+              "moped",
+              "motorcycle",
+              "scooter",
+              "scooter_standing",
+              "scooter_seated",
+              "truck",
+              "van",
+              "freight",
+              "other"
+            ]
+          },
+          "description": "Applicable vehicle types, default \"all\"."
+        },
+        "propulsion_types": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "human",
+              "electric_assist",
+              "electric",
+              "combustion",
+              "combustion_diesel",
+              "hybrid",
+              "hydrogen_fuel_cell",
+              "plug_in_hybrid"
+            ]
+          },
+          "description": "Applicable vehicle propulsion types, default \"all\"."
+        },
+        "minimum": {
+          "type": "integer",
+          "description": "Minimum value, if applicable (default 0)"
+        },
+        "maximum": {
+          "type": "integer",
+          "description": "Maximum value, if applicable (default unlimited)"
+        },
+        "inclusive_minimum": {
+          "type": "boolean",
+          "description": "Whether the rule 'minimum' is considered in-bounds (default 'true')"
+        },
+        "inclusive_maximum": {
+          "type": "boolean",
+          "description": "Whether the rule 'maximum' is considered in-bounds (default 'true')"
+        },
+        "rate_amount": {
+          "type": "integer",
+          "description": "Amount of the rate (see Rate Amounts)"
+        },
+        "rate_recurrence": {
+          "type": "string",
+          "enum": [
+            "once_on_match",
+            "once_on_unmatch",
+            "each_time_unit",
+            "per_complete_time_unit"
+          ],
+          "description": "Recurrence of the rate (see Rate Recurrences)"
+        },
+        "rate_applies_when": {
+          "type": "string",
+          "enum": [
+            "in_bounds",
+            "out_of_bounds"
+          ],
+          "description": "Specifies when a rate is applied to a rule (see Rate Applies When) (defaults to 'out_of_bounds')"
+        },
+        "start_time": {
+          "type": "string",
+          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$",
+          "description": "Beginning time-of-day when the rule is in effect (default 00:00:00)."
+        },
+        "end_time": {
+          "type": "string",
+          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$",
+          "description": "Ending time-of-day when the rule is in effect (default 23:59:59)."
+        },
+        "days": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "sun",
+              "mon",
+              "tue",
+              "wed",
+              "thu",
+              "fri",
+              "sat"
+            ]
+          },
+          "description": "Days '[\"sun\", \"mon\", \"tue\", \"wed\", \"thu\", \"fri\", \"sat\"]' when the rule is in effect (default all)"
+        },
+        "messages": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Message to rider user, if desired, in various languages, keyed by language tag (see Messages)"
+        },
+        "value_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to an API endpoint that can provide dynamic information for the measured value (see Value URL)"
+        }
+      },
+      "required": [
+        "name",
+        "rule_id",
+        "rule_type",
+        "geographies",
+        "states"
+      ]
+    }
+  }
+}

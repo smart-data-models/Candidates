@@ -1,0 +1,407 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/mds/models/Stop/schema.json",
+  "modelTags": "MDS,OpenMobilityFoundation,SharedMobility,Micromobility,MobilityRegulation",
+  "title": "Smart Data Models - Mobility Data Specification (MDS) - Stop",
+  "description": "An MDS stop: a pre-designated physical place where trips start and end (docking station, corral, suggested parking area), with capacity and availability per vehicle type. (MDS 2.1.0, data-types.md section 'Stops'; field names kept verbatim; MDS timestamps are integer milliseconds since the Unix epoch.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Stop:<stop_id>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Stop"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Stop'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "stop_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#stops/stop_id'. Unique ID for stop."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#stops/name'. Name of stop."
+    },
+    "last_updated": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#stops/last_updated'. Date/Time that the stop was last updated. Units:'milliseconds since the Unix epoch (MDS Timestamp)'."
+    },
+    "mdsLocation": {
+      "$ref": "#/$defs/GPS",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#stops/location'. Simple centerpoint location of the Stop. The use of the optional 'geography_id' is recommended to provide more detail."
+    },
+    "status": {
+      "$ref": "#/$defs/StopStatus",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#stops/status'. Object representing the status of the Stop. See Stop Status."
+    },
+    "capacity": {
+      "type": "object",
+      "propertyNames": {
+        "enum": [
+          "bicycle",
+          "bus",
+          "cargo_bicycle",
+          "car",
+          "delivery_robot",
+          "moped",
+          "motorcycle",
+          "scooter",
+          "scooter_standing",
+          "scooter_seated",
+          "truck",
+          "van",
+          "freight",
+          "other"
+        ]
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#stops/capacity'. Number of total places per vehicle_type."
+    },
+    "num_vehicles_available": {
+      "type": "object",
+      "propertyNames": {
+        "enum": [
+          "bicycle",
+          "bus",
+          "cargo_bicycle",
+          "car",
+          "delivery_robot",
+          "moped",
+          "motorcycle",
+          "scooter",
+          "scooter_standing",
+          "scooter_seated",
+          "truck",
+          "van",
+          "freight",
+          "other"
+        ]
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#stops/num_vehicles_available'. How many vehicles are available per vehicle_type at this stop?"
+    },
+    "num_vehicles_disabled": {
+      "type": "object",
+      "propertyNames": {
+        "enum": [
+          "bicycle",
+          "bus",
+          "cargo_bicycle",
+          "car",
+          "delivery_robot",
+          "moped",
+          "motorcycle",
+          "scooter",
+          "scooter_standing",
+          "scooter_seated",
+          "truck",
+          "van",
+          "freight",
+          "other"
+        ]
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#stops/num_vehicles_disabled'. How many vehicles are unavailable/reserved per vehicle_type at this stop?"
+    },
+    "provider_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#stops/provider_id'. UUID for the Provider managing this stop. Null/undefined if managed by an Agency. See MDS provider list."
+    },
+    "data_provider_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#stops/data_provider_id'. UUID for the data provider managing the data coming from this stop. Null/undefined if managed by an agency or a provider. See MDS provider list."
+    },
+    "geography_id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#stops/geography_id'. Pointer to the Geography that represents the Stop geospatially via Polygon or MultiPolygon. Points to Geography entities (urn:ngsi-ld:Geography:<MDS UUID>)."
+    },
+    "region_id": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#stops/region_id'. ID of the region where station is located, see GBFS Station Information."
+    },
+    "short_name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#stops/short_name'. Abbreviated stop name."
+    },
+    "address": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#stops/address'. Postal address (useful for directions)"
+    },
+    "post_code": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#stops/post_code'. Postal code (e.g. '10036')"
+    },
+    "rental_methods": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#stops/rental_methods'. List of payment methods accepted at stop, see GBFS Rental Methods."
+    },
+    "cross_street": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#stops/cross_street'. Cross street of where the station is located."
+    },
+    "num_places_available": {
+      "type": "object",
+      "propertyNames": {
+        "enum": [
+          "bicycle",
+          "bus",
+          "cargo_bicycle",
+          "car",
+          "delivery_robot",
+          "moped",
+          "motorcycle",
+          "scooter",
+          "scooter_standing",
+          "scooter_seated",
+          "truck",
+          "van",
+          "freight",
+          "other"
+        ]
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#stops/num_places_available'. How many places are free to be populated with vehicles at this stop? Required if the program has station based availability requirements or service level agreements pertaining to stations. (Conditionally Required.)"
+    },
+    "num_places_disabled": {
+      "type": "object",
+      "propertyNames": {
+        "enum": [
+          "bicycle",
+          "bus",
+          "cargo_bicycle",
+          "car",
+          "delivery_robot",
+          "moped",
+          "motorcycle",
+          "scooter",
+          "scooter_standing",
+          "scooter_seated",
+          "truck",
+          "van",
+          "freight",
+          "other"
+        ]
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#stops/num_places_disabled'. How many places are disabled and unable to accept vehicles at this stop? Required if the program has station based availability requirements or service level agreements pertaining to stations. (Conditionally Required.)"
+    },
+    "parent_stop": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#stops/parent_stop'. Describe a basic hierarchy of stops (e.g.a stop inside of a greater stop) Points to Stop entities (urn:ngsi-ld:Stop:<MDS UUID>)."
+    },
+    "devices": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#stops/devices'. List of device_ids for vehicles which are currently at this stop. Required if the program has station based availability requirements or service level agreements pertaining to stations. (Conditionally Required.) Points to Vehicle entities (urn:ngsi-ld:Vehicle:<MDS UUID>)."
+    },
+    "image_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#stops/image_url'. Link to an image, photo, or diagram of the stop. Could be used by providers to help riders find or use the stop."
+    },
+    "external_references": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ExternalReference"
+      },
+      "description": "Property. Model:'https://github.com/openmobilityfoundation/mobility-data-specification/blob/2.1.0/data-types.md#stops/external_references'. One or more references impacting or related to this Stop."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. Not an MDS field (Smart Data Models addition): a GeoJSON Point built from lng/lat of the MDS GPS object (mdsLocation), so that NGSI-LD geo-queries work. The MDS object is kept unchanged.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array"
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "stop_id",
+    "name",
+    "last_updated",
+    "mdsLocation",
+    "status",
+    "capacity",
+    "num_vehicles_available",
+    "num_vehicles_disabled"
+  ],
+  "$defs": {
+    "ExternalReference": {
+      "type": "object",
+      "properties": {
+        "reference_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "A web-accessible identifier URL for the source of the publicly or privately accessible data feed, document, website, etc. This MUST be a full HTTPS URL pointing to a location which contains more information impacting or explaining the location, event, or policy, etc."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the data source for reference. E.g. \"WZDx\", \"CWZ\", \"CDS\", \"GBFS\", \"GTFS\", \"MDS\"."
+        },
+        "public": {
+          "type": "boolean",
+          "description": "Is this data source able to be viewed with out any sort of authentication? If 'true', the 'reference_url' is public. If 'false', the 'reference_url' requires some sort of authentication, authorization, or API key to access. This is an informational field to set access expectations for the data source user, and does not provide any credentials directly unless explicitly contained in the 'reference_url'."
+        },
+        "identifier_name": {
+          "type": "string",
+          "description": "The name of the data field identifier or object that is referenced by the unique 'ids'. E.g. \"id\", \"report_id\", \"trip_id\", \"vehicle_id\", \"RoadEventFeature\", etc, if relevant and available in 'reference_url'."
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "An array of one or more ids from the data sources that impacts the use of or relationship to part of MDS, e.g. Trips, Events, Stops, etc. The ids and their details are be found in the referenced 'reference_url'."
+        }
+      },
+      "required": [
+        "reference_url"
+      ]
+    },
+    "GPS": {
+      "type": "object",
+      "properties": {
+        "lat": {
+          "type": "number",
+          "description": "Latitude of the location.",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "lng": {
+          "type": "number",
+          "description": "Longitude of the location.",
+          "minimum": -180,
+          "maximum": 180
+        },
+        "altitude": {
+          "type": "number",
+          "description": "Altitude above mean sea level in meters. (Required if Available.) Units:'meters'."
+        },
+        "heading": {
+          "type": "number",
+          "description": "Degrees - clockwise starting at 0 degrees at true North. (Required if Available.) Units:'degrees'."
+        },
+        "speed": {
+          "type": "number",
+          "description": "Estimated speed in meters / sec as reported by the GPS chipset. (Required if Available.) Units:'meters per second'."
+        },
+        "horizontal_accuracy": {
+          "type": "number",
+          "description": "Horizontal accuracy, in meters. (Required if Available.) Units:'meters'."
+        },
+        "vertical_accuracy": {
+          "type": "number",
+          "description": "Vertical accuracy, in meters. (Required if Available.) Units:'meters'."
+        },
+        "satellites": {
+          "type": "integer",
+          "description": "Number of GPS or GNSS satellites. (Required if Available.)"
+        },
+        "accelerometer_x": {
+          "type": "number",
+          "description": "The x-axis acceleration in G's (gravitational force). (Required if Available.) Units:'g'."
+        },
+        "accelerometer_y": {
+          "type": "number",
+          "description": "The y-axis acceleration in G's (gravitational force). (Required if Available.) Units:'g'."
+        },
+        "accelerometer_z": {
+          "type": "number",
+          "description": "The z-axis acceleration in G's (gravitational force). (Required if Available.) Units:'g'."
+        }
+      },
+      "required": [
+        "lat",
+        "lng"
+      ],
+      "description": "GPS / GNSS position and sensor data (MDS GPS Data object). WGS 84 decimal degrees."
+    },
+    "StopStatus": {
+      "type": "object",
+      "properties": {
+        "is_installed": {
+          "type": "boolean",
+          "description": "See GBFS station_status.json."
+        },
+        "is_renting": {
+          "type": "boolean",
+          "description": "See GBFS station_status.json."
+        },
+        "is_returning": {
+          "type": "boolean",
+          "description": "See GBFS station_status.json."
+        }
+      },
+      "required": [
+        "is_installed",
+        "is_renting",
+        "is_returning"
+      ]
+    }
+  }
+}

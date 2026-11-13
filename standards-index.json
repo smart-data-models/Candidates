@@ -3536,6 +3536,78 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/madrid-accidentes-trafico"
   },
   {
+    "slug": "mds",
+    "title": "Mobility Data Specification (MDS)",
+    "description": "The Mobility Data Specification (MDS), a project of the Open Mobility Foundation, is the data standard used by cities and other public agencies to manage and regulate mobility services that operate in the public right of way: shared micromobility (scooters, bikes, mopeds), car share and fleets, delivery robots and passenger services (taxis, TNCs, robotaxis). Operators share vehicles, trips, vehicle events, telemetry, stops, incidents and aggregated reports through the Provider and Agency APIs; agencies publish geographies, policies (fleet caps, speed limits, fees) and data requirements. MDS 2.0 introduced multiple modes; MDS 2.1 adds incidents and enforcement, external references, GTFS links, statistical areas, vehicle commissioning dates and accelerometer data.",
+    "publisher": "Open Mobility Foundation (OMF)",
+    "sourceUrl": "https://github.com/openmobilityfoundation/mobility-data-specification",
+    "license": "CC-BY-4.0",
+    "domains": [
+      "Transportation",
+      "SmartCities"
+    ],
+    "modelCount": 8,
+    "models": [
+      {
+        "name": "Event",
+        "title": "Smart Data Models - Mobility Data Specification (MDS) - Event",
+        "description": "An MDS vehicle event: a change of vehicle state (vehicle_state) caused by one or more event types, with the position where it happened. (MDS 2.1.0, data-types.md section 'Events'; field names kept verbatim; MDS timestamps are integer milliseconds since the Unix epoch.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/mds/models/Event/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/mds/models/Event"
+      },
+      {
+        "name": "Geography",
+        "title": "Smart Data Models - Mobility Data Specification (MDS) - Geography",
+        "description": "An MDS geography: an immutable, versioned GeoJSON area published by an agency (municipal boundary, policy zone, stop area, district, ...) that policies, events and reports refer to. (MDS 2.1.0, geography/README.md section 'Geography Fields'; field names kept verbatim; MDS timestamps are integer milliseconds since the Unix epoch.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/mds/models/Geography/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/mds/models/Geography"
+      },
+      {
+        "name": "Incident",
+        "title": "Smart Data Models - Mobility Data Specification (MDS) - Incident",
+        "description": "An MDS incident (new in MDS 2.1): a safety, enforcement or operational occurrence (crash, tip over, near miss, vandalism, violation, remote takeover, ...) reported by an operator, on or off a trip. (MDS 2.1.0, data-types.md section 'Incidents'; field names kept verbatim; MDS timestamps are integer milliseconds since the Unix epoch.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/mds/models/Incident/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/mds/models/Incident"
+      },
+      {
+        "name": "Policy",
+        "title": "Smart Data Models - Mobility Data Specification (MDS) - Policy",
+        "description": "An MDS policy: rules published by a public agency for mobility providers (fleet caps, speed limits, time or distance limits, fees and incentives), each rule applying to geographies, vehicle states and vehicle types. (MDS 2.1.0, policy/README.md section 'Policy'; field names kept verbatim; MDS timestamps are integer milliseconds since the Unix epoch.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/mds/models/Policy/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/mds/models/Policy"
+      },
+      {
+        "name": "Stop",
+        "title": "Smart Data Models - Mobility Data Specification (MDS) - Stop",
+        "description": "An MDS stop: a pre-designated physical place where trips start and end (docking station, corral, suggested parking area), with capacity and availability per vehicle type. (MDS 2.1.0, data-types.md section 'Stops'; field names kept verbatim; MDS timestamps are integer milliseconds since the Unix epoch.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/mds/models/Stop/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/mds/models/Stop"
+      },
+      {
+        "name": "Telemetry",
+        "title": "Smart Data Models - Mobility Data Specification (MDS) - Telemetry",
+        "description": "A standard point of MDS vehicle telemetry (GPS/GNSS position and sensor data) during or outside a trip. (MDS 2.1.0, data-types.md section 'Telemetry'; field names kept verbatim; MDS timestamps are integer milliseconds since the Unix epoch.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/mds/models/Telemetry/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/mds/models/Telemetry"
+      },
+      {
+        "name": "Trip",
+        "title": "Smart Data Models - Mobility Data Specification (MDS) - Trip",
+        "description": "An MDS trip: a journey taken by a mobility-as-a-service customer (or an operator movement) with a start and end point, duration, distance and cost. (MDS 2.1.0, data-types.md section 'Trips'; field names kept verbatim; MDS timestamps are integer milliseconds since the Unix epoch.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/mds/models/Trip/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/mds/models/Trip"
+      },
+      {
+        "name": "Vehicle",
+        "title": "Smart Data Models - Mobility Data Specification (MDS) - Vehicle",
+        "description": "A vehicle (device) registered by a mobility provider in MDS: identity, vehicle type, propulsion and capabilities. (MDS 2.1.0, data-types.md section 'Vehicles'; field names kept verbatim; MDS timestamps are integer milliseconds since the Unix epoch.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/mds/models/Vehicle/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/mds/models/Vehicle"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/mds"
+  },
+  {
     "slug": "ocds",
     "title": "Open Contracting Data Standard (OCDS)",
     "description": "OCDS is the open data standard for publishing information on public contracting: planning, tender, award, contract and implementation. Data is published as releases (notices about one stage of a contracting process, identified by its ocid) that can be compiled into records. It is used by more than 50 governments and many cities, including the UK Find a Tender and Contracts Finder services, and is the basis of the OCDS for EU profile used for eForms.",
