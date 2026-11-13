@@ -1,0 +1,316 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/mtconnect/models/File/schema.json",
+  "modelTags": "MTConnect,Manufacturing,MachineTool,Industry40,Asset,File",
+  "title": "Smart Data Models - MTConnect - File",
+  "description": "AbstractFile type that provides information about the File instance and its URL. (MTConnect 2.8, SysML model class File; JSON Schema MTConnectAssets_2.8.schema.json; property names kept verbatim, deprecated properties and codes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity, urn:ngsi-ld:File:<...>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "File"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'File'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "assetId": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Files/File/#assetId'. Unique identifier for an Asset.",
+      "type": "string"
+    },
+    "deviceUuid": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Files/File/#deviceUuid'. Associated piece of equipment's UUID that supplied the Asset's data. It references to Device::uuid defined in Device Information Model.",
+      "type": "string"
+    },
+    "removed": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Files/File/#removed'. Indicator that the Asset has been removed from the piece of equipment.",
+      "type": "boolean"
+    },
+    "timestamp": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Files/File/#timestamp'. Time the Asset data was last modified.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "hash": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Files/File/#hash'. Condensed message digest from a secure one-way hash function. FIPS PUB 180-4",
+      "type": "string"
+    },
+    "Description": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Files/File/#Description'. Textual description for Asset.",
+      "type": "string"
+    },
+    "model": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Files/File/#model'.",
+      "type": "string"
+    },
+    "serialNumber": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Files/File/#serialNumber'.",
+      "type": "string"
+    },
+    "station": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Files/File/#station'.",
+      "type": "string"
+    },
+    "name": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Files/File/#name'. Name of the file.",
+      "type": "string"
+    },
+    "mediaType": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Files/File/#mediaType'. Mime type of the file.",
+      "type": "string"
+    },
+    "applicationCategory": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Files/File/#applicationCategory'. Category of application that will use this file.",
+      "type": "string",
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "ASSEMBLY",
+            "DEVICE",
+            "HANDLING",
+            "MAINTENANCE",
+            "PART",
+            "PROCESS",
+            "INSPECTION",
+            "SETUP"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "applicationType": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Files/File/#applicationType'. Type of application that will use this file.",
+      "type": "string",
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "DESIGN",
+            "DATA",
+            "DOCUMENTATION",
+            "INSTRUCTIONS",
+            "LOG",
+            "PRODUCTION_PROGRAM"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "size": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Files/File/#size'. Size of the file in bytes. Units:'byte'",
+      "type": "integer"
+    },
+    "versionId": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Files/File/#versionId'. Version identifier of the file.",
+      "type": "string"
+    },
+    "state": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Files/File/#state'. State of the file.",
+      "type": "string",
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "EXPERIMENTAL",
+            "PRODUCTION",
+            "REVISION"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "Signature": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Files/File/#Signature'. Secure hash of the file.",
+      "type": "string"
+    },
+    "PublicKey": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Files/File/#PublicKey'. Public key used to verify the signature.",
+      "type": "string"
+    },
+    "CreationTime": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Files/File/#CreationTime'. Time the file was created.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "ModificationTime": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Files/File/#ModificationTime'. Time the file was modified.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "FileLocation": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Files/FileLocation/'. URL reference to the file location.",
+      "$ref": "#/$defs/FileLocation"
+    },
+    "manufacturers": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Files/File/#manufacturers'.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "Destinations": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Files/File/#hasDestination'. Destination entities: target Devices for this File.",
+      "type": "object",
+      "properties": {
+        "Destination": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Destination"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "FileProperties": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Files/AbstractFile/#hasFileProperty'. FileProperty entities: key-value metadata about the File.",
+      "type": "object",
+      "properties": {
+        "FileProperty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FileProperty"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "FileComments": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Files/AbstractFile/#hasFileComment'. FileComment entities: remarks for human interpretation associated with the File.",
+      "type": "object",
+      "properties": {
+        "FileComment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FileComment"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "isAssetOf": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Asset/#isAssetOf'. Device that supplied the data of this Asset (the Device whose uuid is deviceUuid). Reference to a Device entity."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "assetId",
+    "timestamp",
+    "name",
+    "mediaType",
+    "applicationCategory",
+    "applicationType",
+    "size",
+    "versionId",
+    "state",
+    "CreationTime",
+    "FileLocation"
+  ],
+  "$defs": {
+    "FileLocation": {
+      "type": "object",
+      "description": "URL reference to the file location.",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "URL reference to the file. href is of type xlink:href from the W3C XLink specification."
+        },
+        "xlink:type": {
+          "type": "string",
+          "description": "Type of href for the xlink href type. MUST be locator referring to a URL ."
+        }
+      },
+      "required": [
+        "href"
+      ],
+      "additionalProperties": false
+    },
+    "Destination": {
+      "type": "object",
+      "description": "Reference to the target Device for this File.",
+      "properties": {
+        "deviceUuid": {
+          "type": "string",
+          "description": "Uuid of the target device or application."
+        }
+      },
+      "required": [
+        "deviceUuid"
+      ],
+      "additionalProperties": false
+    },
+    "FileProperty": {
+      "type": "object",
+      "description": "Key-value pair providing additional metadata about a File.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the FileProperty."
+        },
+        "value": {
+          "type": "string",
+          "description": "The value of the FileProperty."
+        }
+      },
+      "required": [
+        "name",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "FileComment": {
+      "type": "object",
+      "description": "Remark or interpretation for human interpretation associated with a File or FileArchetype.",
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "description": "Time the comment was made."
+        },
+        "value": {
+          "type": "string",
+          "description": "Text of the comment about the file."
+        }
+      },
+      "required": [
+        "timestamp",
+        "value"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
