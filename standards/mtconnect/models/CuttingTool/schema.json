@@ -1,0 +1,2415 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/mtconnect/models/CuttingTool/schema.json",
+  "modelTags": "MTConnect,Manufacturing,MachineTool,Industry40,Asset,CuttingTool",
+  "title": "Smart Data Models - MTConnect - CuttingTool",
+  "description": "Asset that physically removes the material from the workpiece by shear deformation. (MTConnect 2.8, SysML model class CuttingTool; JSON Schema MTConnectAssets_2.8.schema.json; property names kept verbatim, deprecated properties and codes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity, urn:ngsi-ld:CuttingTool:<...>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "CuttingTool"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'CuttingTool'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "assetId": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/CuttingTool/CuttingTool/#assetId'. Unique identifier for an Asset.",
+      "type": "string"
+    },
+    "deviceUuid": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/CuttingTool/CuttingTool/#deviceUuid'. Associated piece of equipment's UUID that supplied the Asset's data. It references to Device::uuid defined in Device Information Model.",
+      "type": "string"
+    },
+    "removed": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/CuttingTool/CuttingTool/#removed'. Indicator that the Asset has been removed from the piece of equipment.",
+      "type": "boolean"
+    },
+    "timestamp": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/CuttingTool/CuttingTool/#timestamp'. Time the Asset data was last modified.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "hash": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/CuttingTool/CuttingTool/#hash'. Condensed message digest from a secure one-way hash function. FIPS PUB 180-4",
+      "type": "string"
+    },
+    "Description": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/CuttingTool/CuttingTool/#Description'. Textual description for Asset.",
+      "type": "string"
+    },
+    "model": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/CuttingTool/CuttingTool/#model'.",
+      "type": "string"
+    },
+    "serialNumber": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/CuttingTool/CuttingTool/#serialNumber'. Unique identifier for this assembly.",
+      "type": "string"
+    },
+    "station": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/CuttingTool/CuttingTool/#station'.",
+      "type": "string"
+    },
+    "toolId": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/CuttingTool/CuttingTool/#toolId'. Identifier for a class of cutting tools.",
+      "type": "string"
+    },
+    "CuttingToolLifeCycle": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/CuttingTool/CuttingTool/#hasCuttingToolLifeCycle'. Data regarding the application or use of the tool. This data is provided by various pieces of equipment (i.e. machine tool, presetter) and statistical process control applications. Life cycle data will not remain static, but will change periodically when a tool is used or measured.",
+      "$ref": "#/$defs/CuttingToolLifeCycle"
+    },
+    "CuttingToolArchetypeReference": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/CuttingTool/CuttingTool/#hasCuttingToolArchetypeReference'. Reference information about the Asset::assetId and/or the URL of the data source of CuttingToolArchetype.",
+      "$ref": "#/$defs/CuttingToolArchetypeReference"
+    },
+    "CuttingToolDefinition": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/CuttingTool/CuttingTool/#hasCuttingToolDefinition'. Detailed structure of the cutting tool which is static during its lifecycle. ISO 13399.",
+      "$ref": "#/$defs/CuttingToolDefinition"
+    },
+    "manufacturers": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/CuttingTool/CuttingTool/#manufacturers'.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "isAssetOf": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://model.mtconnect.org/Version2.8/AssetInformationModel/Asset/#isAssetOf'. Device that supplied the data of this Asset (the Device whose uuid is deviceUuid). Reference to a Device entity."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "assetId",
+    "timestamp",
+    "serialNumber",
+    "toolId"
+  ],
+  "$defs": {
+    "CuttingToolLifeCycle": {
+      "type": "object",
+      "description": "Data regarding the application or use of the tool. This data is provided by various pieces of equipment (i.e. machine tool, presetter) and statistical process control applications. Life cycle data will not remain static, but will change periodically when a tool is used or measured.",
+      "properties": {
+        "CutterStatus": {
+          "type": "object",
+          "properties": {
+            "Status": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Status"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "CuttingItems": {
+          "$ref": "#/$defs/CuttingItems"
+        },
+        "ConnectionCodeMachineSide": {
+          "type": "string",
+          "description": "Identifier for the capability to connect any component of the cutting tool together, except Assembly Items, on the machine side. Code: CCMS"
+        },
+        "ProgramToolGroup": {
+          "type": "string",
+          "description": "Tool group this tool is assigned in the part program."
+        },
+        "ProgramToolNumber": {
+          "type": "string",
+          "description": "Number of the tool as referenced in the part program."
+        },
+        "ProcessFeedRate": {
+          "$ref": "#/$defs/ProcessFeedRate"
+        },
+        "ToolLife": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ToolLife"
+          }
+        },
+        "ProcessSpindleSpeed": {
+          "$ref": "#/$defs/ProcessSpindleSpeed"
+        },
+        "ReconditionCount": {
+          "$ref": "#/$defs/ReconditionCount"
+        },
+        "Location": {
+          "$ref": "#/$defs/Location"
+        },
+        "Measurements": {
+          "type": "object",
+          "properties": {
+            "FunctionalLength": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/FunctionalLength"
+              }
+            },
+            "CuttingReferencePoint": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/CuttingReferencePoint"
+              }
+            },
+            "CuttingEdgeLength": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/CuttingEdgeLength"
+              }
+            },
+            "DriveAngle": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/DriveAngle"
+              }
+            },
+            "FlangeDiameter": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/FlangeDiameter"
+              }
+            },
+            "FunctionalWidth": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/FunctionalWidth"
+              }
+            },
+            "IncribedCircleDiameter": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/IncribedCircleDiameter"
+              }
+            },
+            "PointAngle": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/PointAngle"
+              }
+            },
+            "ToolCuttingEdgeAngle": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ToolCuttingEdgeAngle"
+              }
+            },
+            "ToolLeadAngle": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ToolLeadAngle"
+              }
+            },
+            "ToolOrientation": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ToolOrientation"
+              }
+            },
+            "StepDiameterLength": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/StepDiameterLength"
+              }
+            },
+            "StepIncludedAngle": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/StepIncludedAngle"
+              }
+            },
+            "WiperEdgeLength": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/WiperEdgeLength"
+              }
+            },
+            "CuttingDiameter": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/CuttingDiameter"
+              }
+            },
+            "CuttingHeight": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/CuttingHeight"
+              }
+            },
+            "CornerRadius": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/CornerRadius"
+              }
+            },
+            "Weight": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Weight"
+              }
+            },
+            "ChamferFlatLength": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ChamferFlatLength"
+              }
+            },
+            "ChamferWidth": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ChamferWidth"
+              }
+            },
+            "InsertWidth": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/InsertWidth"
+              }
+            },
+            "BodyDiameterMax": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/BodyDiameterMax"
+              }
+            },
+            "BodyLengthMax": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/BodyLengthMax"
+              }
+            },
+            "DepthOfCutMax": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/DepthOfCutMax"
+              }
+            },
+            "CuttingDiameterMax": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/CuttingDiameterMax"
+              }
+            },
+            "FlangeDiameterMax": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/FlangeDiameterMax"
+              }
+            },
+            "OverallToolLength": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/OverallToolLength"
+              }
+            },
+            "ShankDiameter": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ShankDiameter"
+              }
+            },
+            "ShankHeight": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ShankHeight"
+              }
+            },
+            "ShankLength": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ShankLength"
+              }
+            },
+            "UsableLengthMax": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/UsableLengthMax"
+              }
+            },
+            "ProtrudingLength": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ProtrudingLength"
+              }
+            }
+          },
+          "patternProperties": {
+            "^[a-ln-zA-LN-Z]:[A-Za-z_][A-Za-z0-9_]*$": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ToolingMeasurement"
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "Status": {
+      "type": "object",
+      "description": "Status of the cutting tool.",
+      "properties": {
+        "value": {
+          "$ref": "#/$defs/CutterStatusTypeEnum",
+          "description": "Status value of the cutting tool."
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "CutterStatusTypeEnum": {
+      "oneOf": [
+        {
+          "type": "string",
+          "description": "Enumeration for CutterStatus values.",
+          "enum": [
+            "NEW",
+            "AVAILABLE",
+            "UNAVAILABLE",
+            "ALLOCATED",
+            "UNALLOCATED",
+            "MEASURED",
+            "RECONDITIONED",
+            "USED",
+            "EXPIRED",
+            "BROKEN",
+            "NOT_REGISTERED",
+            "UNKNOWN"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "CuttingItems": {
+      "type": "object",
+      "description": "CuttingItems groups one or more CuttingItem entities. See CuttingItem and Cutting Item for more detail.",
+      "properties": {
+        "CuttingItem": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CuttingItem"
+          }
+        },
+        "count": {
+          "type": "integer",
+          "description": "Number of CuttingItem organized by CuttingItems."
+        }
+      },
+      "required": [
+        "count"
+      ],
+      "additionalProperties": false
+    },
+    "CuttingItem": {
+      "type": "object",
+      "description": "Part of of the tool that physically removes the material from the workpiece by shear deformation.",
+      "properties": {
+        "CutterStatus": {
+          "type": "object",
+          "properties": {
+            "Status": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Status"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "Description": {
+          "type": "string",
+          "description": "Free-form description of the cutting item."
+        },
+        "grade": {
+          "type": "string",
+          "description": "Material composition for this cutting item."
+        },
+        "indices": {
+          "type": "string"
+        },
+        "itemId": {
+          "type": "string",
+          "description": "Manufacturer identifier of this cutting item."
+        },
+        "Locus": {
+          "type": "string",
+          "description": "Free form description of the location on the cutting tool. For clarity, the words FLUTE, INSERT, and CARTRIDGE SHOULD be used to assist in noting the location of a CuttingItem. CuttingItem::Locus MAY be any free form string, but SHOULD adhere to the following rules: The location numbering SHOULD start at the furthest CuttingItem and work it’s way back to the CuttingItem closest to the gauge line. Flutes SHOULD be identified as such using the word FLUTE:. For example: FLUTE: 1, INSERT: 2 - would indicate the first flute and the second furthest insert from the end of the tool on that flute. * Other designations such as CARTRIDGE MAY be included, but should be identified using upper case and followed by a colon (:)."
+        },
+        "ProgramToolGroup": {
+          "type": "string",
+          "description": "Tool group this item is assigned in the part program."
+        },
+        "ItemLife": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ItemLife"
+          },
+          "description": "The tool life measured in tool wear."
+        },
+        "Measurements": {
+          "type": "object",
+          "properties": {
+            "FunctionalLength": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/FunctionalLength"
+              }
+            },
+            "CuttingReferencePoint": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/CuttingReferencePoint"
+              }
+            },
+            "CuttingEdgeLength": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/CuttingEdgeLength"
+              }
+            },
+            "DriveAngle": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/DriveAngle"
+              }
+            },
+            "FlangeDiameter": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/FlangeDiameter"
+              }
+            },
+            "FunctionalWidth": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/FunctionalWidth"
+              }
+            },
+            "IncribedCircleDiameter": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/IncribedCircleDiameter"
+              }
+            },
+            "PointAngle": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/PointAngle"
+              }
+            },
+            "ToolCuttingEdgeAngle": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ToolCuttingEdgeAngle"
+              }
+            },
+            "ToolLeadAngle": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ToolLeadAngle"
+              }
+            },
+            "ToolOrientation": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ToolOrientation"
+              }
+            },
+            "StepDiameterLength": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/StepDiameterLength"
+              }
+            },
+            "StepIncludedAngle": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/StepIncludedAngle"
+              }
+            },
+            "WiperEdgeLength": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/WiperEdgeLength"
+              }
+            },
+            "CuttingDiameter": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/CuttingDiameter"
+              }
+            },
+            "CuttingHeight": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/CuttingHeight"
+              }
+            },
+            "CornerRadius": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/CornerRadius"
+              }
+            },
+            "Weight": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Weight"
+              }
+            },
+            "ChamferFlatLength": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ChamferFlatLength"
+              }
+            },
+            "ChamferWidth": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ChamferWidth"
+              }
+            },
+            "InsertWidth": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/InsertWidth"
+              }
+            },
+            "BodyDiameterMax": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/BodyDiameterMax"
+              }
+            },
+            "BodyLengthMax": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/BodyLengthMax"
+              }
+            },
+            "DepthOfCutMax": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/DepthOfCutMax"
+              }
+            },
+            "CuttingDiameterMax": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/CuttingDiameterMax"
+              }
+            },
+            "FlangeDiameterMax": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/FlangeDiameterMax"
+              }
+            },
+            "OverallToolLength": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/OverallToolLength"
+              }
+            },
+            "ShankDiameter": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ShankDiameter"
+              }
+            },
+            "ShankHeight": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ShankHeight"
+              }
+            },
+            "ShankLength": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ShankLength"
+              }
+            },
+            "UsableLengthMax": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/UsableLengthMax"
+              }
+            },
+            "ProtrudingLength": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ProtrudingLength"
+              }
+            }
+          },
+          "patternProperties": {
+            "^[a-ln-zA-LN-Z]:[A-Za-z_][A-Za-z0-9_]*$": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ToolingMeasurement"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "manufacturers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ItemLife": {
+      "type": "object",
+      "description": "Life of a CuttingItem.",
+      "properties": {
+        "countDirection": {
+          "$ref": "#/$defs/CountDirectionTypeEnum",
+          "description": "Indicates if the item life counts from zero to maximum or maximum to zero."
+        },
+        "initial": {
+          "type": "number",
+          "description": "Initial life of the item when it is new."
+        },
+        "limit": {
+          "type": "number",
+          "description": "End of life limit for this item."
+        },
+        "type": {
+          "$ref": "#/$defs/ToolLifeEnum",
+          "description": "Type of item life being accumulated."
+        },
+        "warning": {
+          "type": "number",
+          "description": "Point at which a item life warning will be raised."
+        },
+        "value": {
+          "type": "number",
+          "description": "Value of ItemLife."
+        }
+      },
+      "required": [
+        "countDirection",
+        "type",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "CountDirectionTypeEnum": {
+      "oneOf": [
+        {
+          "type": "string",
+          "description": "Enumeration for countDirection types.",
+          "enum": [
+            "UP",
+            "DOWN"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "ToolLifeEnum": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "MINUTES",
+            "PART_COUNT",
+            "WEAR"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "FunctionalLength": {
+      "type": "object",
+      "description": "Distance from the gauge plane or from the end of the shank of the cutting tool, if a gauge plane does not exist, to the cutting reference point determined by the main function of the tool. This measurement will be with reference to the cutting tool and MUST NOT exist without a cutting tool.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "MILLIMETER"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "LFx"
+        }
+      },
+      "additionalProperties": false
+    },
+    "NativeUnitEnum": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "CENTIPOISE",
+            "DEGREE/MINUTE",
+            "FAHRENHEIT",
+            "FOOT",
+            "FOOT/MINUTE",
+            "FOOT/SECOND",
+            "FOOT/SECOND^2",
+            "FOOT_3D",
+            "GALLON/MINUTE",
+            "HOUR",
+            "INCH",
+            "INCH/MINUTE",
+            "INCH/SECOND",
+            "INCH/SECOND^2",
+            "INCH_POUND",
+            "INCH_3D",
+            "KELVIN",
+            "KILOWATT",
+            "KILOWATT_HOUR",
+            "LITER/MINUTE",
+            "MILLIMETER/MINUTE",
+            "MINUTE",
+            "OTHER",
+            "POUND",
+            "POUND/INCH^2",
+            "RADIAN",
+            "RADIAN/MINUTE",
+            "RADIAN/SECOND",
+            "RADIAN/SECOND^2",
+            "BAR",
+            "TORR",
+            "MILLIMETER_MERCURY",
+            "PASCAL/MINUTE",
+            "GRAVITATIONAL_FORCE",
+            "GRAVITATIONAL_ACCELERATION",
+            "AMPERE_HOUR",
+            "CUBIC_FOOT/HOUR",
+            "CUBIC_FOOT/MINUTE",
+            "SQUARE_INCH",
+            "CUBIC_FOOT",
+            "INCH/REVOLUTION",
+            "MICROMETER",
+            "RANKINE",
+            "MICROTORR",
+            "COUNT/MILLION",
+            "COUNT/TRILLION"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "UnitEnum": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "AMPERE",
+            "CELSIUS",
+            "COUNT",
+            "DECIBEL",
+            "DEGREE",
+            "DEGREE_3D",
+            "DEGREE/SECOND",
+            "DEGREE/SECOND^2",
+            "HERTZ",
+            "JOULE",
+            "KILOGRAM",
+            "LITER",
+            "LITER/SECOND",
+            "MICRO_RADIAN",
+            "MILLIMETER",
+            "MILLIMETER_3D",
+            "MILLIMETER/REVOLUTION",
+            "MILLIMETER/SECOND",
+            "MILLIMETER/SECOND^2",
+            "NEWTON",
+            "NEWTON_METER",
+            "OHM",
+            "PASCAL",
+            "PASCAL_SECOND",
+            "PERCENT",
+            "PH",
+            "REVOLUTION/MINUTE",
+            "SECOND",
+            "SIEMENS/METER",
+            "VOLT",
+            "VOLT_AMPERE",
+            "VOLT_AMPERE_REACTIVE",
+            "WATT",
+            "WATT_SECOND",
+            "GRAM/CUBIC_METER",
+            "CUBIC_MILLIMETER",
+            "CUBIC_MILLIMETER/SECOND",
+            "CUBIC_MILLIMETER/SECOND^2",
+            "MILLIGRAM",
+            "MILLIGRAM/CUBIC_MILLIMETER",
+            "MILLILITER",
+            "COUNT/SECOND",
+            "PASCAL/SECOND",
+            "UNIT_VECTOR_3D",
+            "REVOLUTION/SECOND^2",
+            "REVOLUTION/SECOND",
+            "GRAM",
+            "METER/SECOND^2",
+            "COULOMB",
+            "CUBIC_METER",
+            "SQUARE_MILLIMETER",
+            "OHM_METER",
+            "MILLIGRAM/LITER",
+            "METER"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "CodeEnum": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "BDX",
+            "LBX",
+            "APMX",
+            "DC",
+            "DF",
+            "OAL",
+            "DMM",
+            "H",
+            "LS",
+            "LUX",
+            "LPR",
+            "WT",
+            "LF",
+            "CRP",
+            "L",
+            "DRVA",
+            "WF",
+            "IC",
+            "SIG",
+            "KAPR",
+            "PSIR",
+            "N/A",
+            "BS",
+            "SDLx",
+            "STAx",
+            "DCx",
+            "HF",
+            "RE",
+            "LFx",
+            "BCH",
+            "CHW",
+            "W1"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "CuttingReferencePoint": {
+      "type": "object",
+      "description": "Theoretical sharp point of the cutting tool from which the major functional dimensions are taken.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "MILLIMETER"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "CRP"
+        }
+      },
+      "additionalProperties": false
+    },
+    "CuttingEdgeLength": {
+      "type": "object",
+      "description": "Theoretical length of the cutting edge of a cutting item over sharp corners.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "MILLIMETER"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "L"
+        }
+      },
+      "additionalProperties": false
+    },
+    "DriveAngle": {
+      "type": "object",
+      "description": "Angle between the driving mechanism locator on a tool item and the main cutting edge.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "DEGREE"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "DRVA"
+        }
+      },
+      "additionalProperties": false
+    },
+    "FlangeDiameter": {
+      "type": "object",
+      "description": "Dimension between two parallel tangents on the outside edge of a flange.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "MILLIMETER"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "DF"
+        }
+      },
+      "additionalProperties": false
+    },
+    "FunctionalWidth": {
+      "type": "object",
+      "description": "Distance between the cutting reference point and the rear backing surface of a turning tool or the axis of a boring bar.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "MILLIMETER"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "WF"
+        }
+      },
+      "additionalProperties": false
+    },
+    "IncribedCircleDiameter": {
+      "type": "object",
+      "description": "Diameter of a circle to which all edges of a equilateral and round regular insert are tangential.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "MILLIMETER"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "IC"
+        }
+      },
+      "additionalProperties": false
+    },
+    "PointAngle": {
+      "type": "object",
+      "description": "Angle between the major cutting edge and the same cutting edge rotated by 180 degrees about the tool axis.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "DEGREE"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "SIG"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolCuttingEdgeAngle": {
+      "type": "object",
+      "description": "Angle between the tool cutting edge plane and the tool feed plane measured in a plane parallel the xy-plane.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "DEGREE"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "KAPR"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolLeadAngle": {
+      "type": "object",
+      "description": "Angle between the tool cutting edge plane and a plane perpendicular to the tool feed plane measured in a plane parallel the xy-plane.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "DEGREE"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "PSIR"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolOrientation": {
+      "type": "object",
+      "description": "Angle of the tool with respect to the workpiece for a given process. The value is application specific.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "DEGREE"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "N/A"
+        }
+      },
+      "additionalProperties": false
+    },
+    "StepDiameterLength": {
+      "type": "object",
+      "description": "Length of a portion of a stepped tool that is related to a corresponding cutting diameter measured from the cutting reference point of that cutting diameter to the point on the next cutting edge at which the diameter starts to change.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "MILLIMETER"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "SDLx"
+        }
+      },
+      "additionalProperties": false
+    },
+    "StepIncludedAngle": {
+      "type": "object",
+      "description": "Angle between a major edge on a step of a stepped tool and the same cutting edge rotated 180 degrees about its tool axis.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "DEGREE"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "STAx"
+        }
+      },
+      "additionalProperties": false
+    },
+    "WiperEdgeLength": {
+      "type": "object",
+      "description": "Measure of the length of a wiper edge of a cutting item.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "MILLIMETER"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "BS"
+        }
+      },
+      "additionalProperties": false
+    },
+    "CuttingDiameter": {
+      "type": "object",
+      "description": "Diameter of a circle on which the defined point Pk located on this cutting tool. The normal of the machined peripheral surface points towards the axis of the cutting tool.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "MILLIMETER"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "DCx"
+        }
+      },
+      "additionalProperties": false
+    },
+    "CuttingHeight": {
+      "type": "object",
+      "description": "Distance from the basal plane of the tool item to the cutting point.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "MILLIMETER"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "HF"
+        }
+      },
+      "additionalProperties": false
+    },
+    "CornerRadius": {
+      "type": "object",
+      "description": "Nominal radius of a rounded corner measured in the X Y-plane.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "MILLIMETER"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "RE"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Weight": {
+      "type": "object",
+      "description": "Total weight of the cutting tool in grams. The force exerted by the mass of the cutting tool.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "GRAM"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "WT"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ChamferFlatLength": {
+      "type": "object",
+      "description": "Flat length of a chamfer.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "MILLIMETER"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "BCH"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ChamferWidth": {
+      "type": "object",
+      "description": "Width of the chamfer.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "MILLIMETER"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "CHW"
+        }
+      },
+      "additionalProperties": false
+    },
+    "InsertWidth": {
+      "type": "object",
+      "description": "W1 is used for the insert width when an inscribed circle diameter is not practical.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "MILLIMETER"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "W1"
+        }
+      },
+      "additionalProperties": false
+    },
+    "BodyDiameterMax": {
+      "type": "object",
+      "description": "Largest diameter of the body of a tool item.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "MILLIMETER"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "BDX"
+        }
+      },
+      "additionalProperties": false
+    },
+    "BodyLengthMax": {
+      "type": "object",
+      "description": "Distance measured along the X axis from that point of the item closest to the workpiece, including the cutting item for a tool item but excluding a protruding locking mechanism for an adaptive item, to either the front of the flange on a flanged body or the beginning of the connection interface feature on the machine side for cylindrical or prismatic shanks.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "MILLIMETER"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "LBX"
+        }
+      },
+      "additionalProperties": false
+    },
+    "DepthOfCutMax": {
+      "type": "object",
+      "description": "Maximum engagement of the cutting edge or edges with the workpiece measured perpendicular to the feed motion.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "MILLIMETER"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "APMX"
+        }
+      },
+      "additionalProperties": false
+    },
+    "CuttingDiameterMax": {
+      "type": "object",
+      "description": "Maximum diameter of a circle on which the defined point Pk of each of the master inserts is located on a tool item. The normal of the machined peripheral surface points towards the axis of the cutting tool.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "MILLIMETER"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "DC"
+        }
+      },
+      "additionalProperties": false
+    },
+    "FlangeDiameterMax": {
+      "type": "object",
+      "description": "Dimension between two parallel tangents on the outside edge of a flange.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "MILLIMETER"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "DF"
+        }
+      },
+      "additionalProperties": false
+    },
+    "OverallToolLength": {
+      "type": "object",
+      "description": "Largest length dimension of the cutting tool including the master insert where applicable.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "MILLIMETER"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "OAL"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ShankDiameter": {
+      "type": "object",
+      "description": "Dimension of the diameter of a cylindrical portion of a tool item or an adaptive item that can participate in a connection.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "MILLIMETER"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "DMM"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ShankHeight": {
+      "type": "object",
+      "description": "Dimension of the height of the shank.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "MILLIMETER"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "H"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ShankLength": {
+      "type": "object",
+      "description": "Dimension of the length of the shank.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "MILLIMETER"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "LS"
+        }
+      },
+      "additionalProperties": false
+    },
+    "UsableLengthMax": {
+      "type": "object",
+      "description": "Maximum length of a cutting tool that can be used in a particular cutting operation including the non-cutting portions of the tool.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "MILLIMETER"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "LUX"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ProtrudingLength": {
+      "type": "object",
+      "description": "Dimension from the yz-plane to the furthest point of the tool item or adaptive item measured in the -X direction.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "default": "MILLIMETER"
+        },
+        "value": {
+          "type": "number"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeEnum",
+          "default": "LPR"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolingMeasurement": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Measurement"
+        },
+        {
+          "type": "object",
+          "description": "Constrained scalar value associated with a cutting tool.",
+          "properties": {
+            "code": {
+              "$ref": "#/$defs/CodeEnum",
+              "description": "Shop specific code for the measurement. ISO 13399 codes MAY be used for these codes as well. See Cutting Tool Measurement Subtypes and Cutting Item Measurement Subtypes for details on Measurement types and their respective Measurement::code values."
+            }
+          }
+        }
+      ]
+    },
+    "Measurement": {
+      "type": "object",
+      "description": "Constrained scalar value associated with an Asset",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for the measurement."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for the measurement."
+        },
+        "nativeUnits": {
+          "$ref": "#/$defs/NativeUnitEnum",
+          "description": "Units the measurement was originally recorded in. See Device Information Model for the complete list of DataItem::nativeUnits."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "As advertised value for the measurement."
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "Number of significant digits in the reported value."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "description": "Units for the measurements. See Device Information Model for the complete list of DataItem::units."
+        },
+        "value": {
+          "type": "number"
+        }
+      }
+    },
+    "ProcessFeedRate": {
+      "type": "object",
+      "description": "Constrained process feed rate for the tool in mm/s. The ProcessFeedRate::value MAY contain the nominal process target feed rate if available. If ProcessFeedRate is provided, at least one value of ProcessFeedRate::maximum, ProcessFeedRate::nominal, or ProcessFeedRate::minimum MUST be specified.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Upper bound for the tool’s process target feedrate."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Lower bound for the tool's feedrate."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "Nominal feedrate the tool is designed to operate at."
+        },
+        "value": {
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolLife": {
+      "type": "object",
+      "description": "Cutting tool life as related to the assembly.",
+      "properties": {
+        "countDirection": {
+          "$ref": "#/$defs/CountDirectionTypeEnum",
+          "description": "Indicates if the tool life counts from zero to maximum or maximum to zero."
+        },
+        "initial": {
+          "type": "number",
+          "description": "Initial life of the tool when it is new."
+        },
+        "limit": {
+          "type": "number",
+          "description": "End of life limit for the tool."
+        },
+        "type": {
+          "$ref": "#/$defs/ToolLifeEnum",
+          "description": "Type of tool life being accumulated."
+        },
+        "warning": {
+          "type": "number",
+          "description": "Point at which a tool life warning will be raised."
+        },
+        "value": {
+          "type": "number",
+          "description": "Value of ToolLife."
+        }
+      },
+      "required": [
+        "countDirection",
+        "type",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "ProcessSpindleSpeed": {
+      "type": "object",
+      "description": "Constrained process spindle speed for the tool in revolutions/minute. The ProcessSpindleSpeed::value MAY contain the nominal process target spindle speed if available. If ProcessSpindleSpeed is provided, at least one value of ProcessSpindleSpeed::maximum, ProcessSpindleSpeed::nominal, or ProcessSpindleSpeed::minimum MUST be specified.",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "Upper bound for the tool’s target spindle speed."
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Lower bound for the tools spindle speed."
+        },
+        "nominal": {
+          "type": "number",
+          "description": "Nominal speed the tool is designed to operate at."
+        },
+        "value": {
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ReconditionCount": {
+      "type": "object",
+      "description": "Number of times the cutter has been reconditioned.",
+      "properties": {
+        "maximumCount": {
+          "type": "integer",
+          "description": "Maximum number of times the tool may be reconditioned."
+        },
+        "value": {
+          "type": "integer",
+          "description": "ReconditionCount::value MUST be provided for CuttingTool::CuttingToolLifeCycle and MUST NOT be provided for the CuttingToolArchetype::CuttingToolLifeCycle."
+        }
+      },
+      "additionalProperties": false
+    },
+    "Location": {
+      "type": "object",
+      "description": "Location of the pot or spindle the cutting tool currently resides in. If Location::negativeOverlap or Location::positiveOverlap is provided, the tool reserves additional locations on either side, otherwise if they are not given, no additional locations are required for this tool. If the pot occupies the first or last location, a rollover to the beginning or the end of the indexable values may occur. For example, if there are 64 pots and the tool is in pot 64 with a Location::positiveOverlap of 1, the first pot MAY be occupied as well.",
+      "properties": {
+        "negativeOverlap": {
+          "type": "integer",
+          "description": "Number of locations at lower index values from this location."
+        },
+        "positiveOverlap": {
+          "type": "integer",
+          "description": "Number of locations at higher index value from this location."
+        },
+        "type": {
+          "$ref": "#/$defs/LocationTypeEnum",
+          "description": "Type of location being identified. When a POT or STATION type is used, Location::valueMUST be a numeric value."
+        },
+        "turret": {
+          "type": "string",
+          "description": "Turret associated with a tool."
+        },
+        "toolMagazine": {
+          "type": "string",
+          "description": "Tool magazine associated with a tool."
+        },
+        "toolBar": {
+          "type": "string",
+          "description": "Tool bar associated with a tool."
+        },
+        "toolRack": {
+          "type": "string",
+          "description": "Tool rack associated with a tool."
+        },
+        "automaticToolChanger": {
+          "type": "string",
+          "description": "Automatic tool changer associated with a tool."
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "LocationTypeEnum": {
+      "oneOf": [
+        {
+          "type": "string",
+          "description": "Enumeration for Location types",
+          "enum": [
+            "POT",
+            "STATION",
+            "CRIB",
+            "SPINDLE",
+            "TRANSFER_POT",
+            "RETURN_POT",
+            "STAGING_POT",
+            "REMOVAL_POT",
+            "EXPIRED_POT",
+            "END_EFFECTOR"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "CuttingToolArchetypeReference": {
+      "type": "object",
+      "description": "Reference information about the Asset::assetId and/or the URL of the data source of CuttingToolArchetype.",
+      "properties": {
+        "source": {
+          "type": "string",
+          "description": "URL of the CuttingToolArchetype information model."
+        },
+        "value": {
+          "type": "string",
+          "description": "AssetId of the related CuttingToolArchetype."
+        }
+      },
+      "additionalProperties": false
+    },
+    "CuttingToolDefinition": {
+      "type": "object",
+      "description": "Detailed structure of the cutting tool which is static during its lifecycle. ISO 13399.",
+      "properties": {
+        "format": {
+          "$ref": "#/$defs/FormatTypeEnum",
+          "description": "Identifies the expected representation of the enclosed data.",
+          "default": "XML"
+        },
+        "value": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "FormatTypeEnum": {
+      "oneOf": [
+        {
+          "type": "string",
+          "description": "Enumeration for CuttingToolDefinition format values.",
+          "enum": [
+            "EXPRESS",
+            "TEXT",
+            "UNDEFINED",
+            "XML"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    }
+  }
+}

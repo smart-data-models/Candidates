@@ -1,0 +1,706 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/mtconnect/models/Observation/schema.json",
+  "modelTags": "MTConnect,Manufacturing,MachineTool,Industry40,Observation,Telemetry",
+  "title": "Smart Data Models - MTConnect - Observation",
+  "description": "Abstract entity that provides telemetry data for a DataItem at a point in time. (MTConnect 2.8, SysML model class Observation / Sample / Event / Condition; JSON Schema MTConnectStreams_2.8.schema.json; property names kept verbatim, deprecated properties and codes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity, urn:ngsi-ld:Observation:<...>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Observation"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Observation'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "result": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/ObservationInformationModel/Observation/#result'. MTConnect 'value' (renamed because 'value' is reserved in NGSI-LD). Observation of the Observation entity. The default value type for Observation::result is string. Note 1 to entry: in XML the Observation::result is the CDATA of the Observation element. Note 2 to entry: in JSON the Observation::result is the member value of the Observation object.",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "array"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "assetType": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/mtconnect/schema/master/MTConnectStreams_2.8.schema.json#/$defs/Observation/properties/assetType'.",
+      "type": "string"
+    },
+    "count": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/mtconnect/schema/master/MTConnectStreams_2.8.schema.json#/$defs/Observation/properties/count'.",
+      "type": "integer"
+    },
+    "compositionId": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/ObservationInformationModel/Observation/#compositionId'. Identifier of the Composition entity defined in the MTConnectDevices Response Document associated with the data reported for the Observation.",
+      "type": "string"
+    },
+    "dataItemId": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/ObservationInformationModel/Observation/#dataItemId'. Unique identifier of the DataItem associated with this Observation. Observation::dataItemId MUST match the associated DataItem::id defined in the MTConnectDevices Response Document.",
+      "type": "string"
+    },
+    "name": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/ObservationInformationModel/Observation/#name'. Name of the DataItem associated with this Observation. Observation::name MUST match the associated DataItem::name defined in the MTConnectDevices Response Document.",
+      "type": "string"
+    },
+    "sequence": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/ObservationInformationModel/Observation/#sequence'. Number representing the sequential position of an occurrence of an observation in the data buffer of an agent. Observation::sequence MUST have a value represented as an unsigned 64-bit value from 1 to 2^{64}-1 .",
+      "type": "integer"
+    },
+    "subType": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/ObservationInformationModel/Observation/#subType'. Subtype of the DataItem associated with this Observation. Observation::subType MUST match the associated DataItem::subType defined in the MTConnectDevices Response Document.",
+      "type": "string",
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "ABSOLUTE",
+            "ACTION",
+            "ACTUAL",
+            "ALL",
+            "A_SCALE",
+            "AUXILIARY",
+            "BAD",
+            "BRINELL",
+            "B_SCALE",
+            "COMMANDED",
+            "CONSUMED",
+            "CONTROL",
+            "C_SCALE",
+            "DELAY",
+            "DRY_RUN",
+            "D_SCALE",
+            "EXPIRATION",
+            "FIRST_USE",
+            "GOOD",
+            "INCREMENTAL",
+            "JOG",
+            "LATERAL",
+            "LEEB",
+            "LENGTH",
+            "LINEAR",
+            "LOADED",
+            "MACHINE_AXIS_LOCK",
+            "MAIN",
+            "MAINTENANCE",
+            "MANUAL_UNCLAMP",
+            "MANUFACTURE",
+            "MAXIMUM",
+            "MINIMUM",
+            "MOHS",
+            "MOTION",
+            "NO_SCALE",
+            "OPERATING",
+            "OPERATOR",
+            "OPTIONAL_STOP",
+            "OVERRIDE",
+            "POWERED",
+            "PRIMARY",
+            "PROBE",
+            "PROCESS",
+            "PROGRAMMED",
+            "RADIAL",
+            "RAPID",
+            "REMAINING",
+            "ROCKWELL",
+            "ROTARY",
+            "SCHEDULE",
+            "SET_UP",
+            "SHORE",
+            "SINGLE_BLOCK",
+            "STANDARD",
+            "START",
+            "SWITCHED",
+            "TARGET",
+            "TARGET_COMPLETION",
+            "TOOL_CHANGE_STOP",
+            "USEABLE",
+            "VERTICAL",
+            "VICKERS",
+            "WORKING",
+            "IPV4_ADDRESS",
+            "IPV6_ADDRESS",
+            "GATEWAY",
+            "SUBNET_MASK",
+            "VLAN_ID",
+            "MAC_ADDRESS",
+            "WIRELESS",
+            "LICENSE",
+            "VERSION",
+            "RELEASE_DATE",
+            "INSTALL_DATE",
+            "MANUFACTURER",
+            "UUID",
+            "SERIAL_NUMBER",
+            "RAW_MATERIAL",
+            "LOT",
+            "BATCH",
+            "HEAT_TREAT",
+            "PART_FAMILY",
+            "PART_NAME",
+            "PROCESS_STEP",
+            "PROCESS_PLAN",
+            "ORDER_NUMBER",
+            "PROCESS_NAME",
+            "ISO_STEP_EXECUTABLE",
+            "COMPLETE",
+            "ACTIVE",
+            "FAILED",
+            "ABORTED",
+            "ENDED",
+            "WASTE",
+            "PART",
+            "REQUEST",
+            "RESPONSE",
+            "ACTIVITY",
+            "SEGMENT",
+            "RECIPE",
+            "OPERATION",
+            "BINARY",
+            "BOOLEAN",
+            "ENUMERATED",
+            "DETECT",
+            "MODEL",
+            "MEASURED",
+            "GAS",
+            "LIQUID",
+            "SOLID",
+            "ELECTRODE",
+            "FILLER",
+            "PLUNGE",
+            "PECK",
+            "CUT",
+            "LAYER",
+            "MEAN_SEA_LEVEL",
+            "GROUND_LEVEL"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "timestamp": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/ObservationInformationModel/Observation/#timestamp'. Most accurate time available to a piece of equipment that represents the point in time that the data reported was measured.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "observationType": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/ObservationInformationModel/Observation/#type'. MTConnect 'type' (renamed because 'type' is reserved in NGSI-LD). Type of the DataItem associated with this Observation. Observation::type MUST match the associated DataItem::type defined in the MTConnectDevices Response Document.",
+      "type": "string",
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "ACCELERATION",
+            "ACCUMULATED_TIME",
+            "ANGLE",
+            "ANGULAR_ACCELERATION",
+            "ANGULAR_VELOCITY",
+            "AXIS_FEEDRATE",
+            "CAPACITY_FLUID",
+            "CAPACITY_SPATIAL",
+            "CONCENTRATION",
+            "CONDUCTIVITY",
+            "CUTTING_SPEED",
+            "DENSITY",
+            "DEPOSITION_ACCELERATION_VOLUMETRIC",
+            "DEPOSITION_DENSITY",
+            "DEPOSITION_MASS",
+            "DEPOSITION_RATE_VOLUMETRIC",
+            "DEPOSITION_VOLUME",
+            "DISPLACEMENT",
+            "ELECTRICAL_ENERGY",
+            "EQUIPMENT_TIMER",
+            "FILL_LEVEL",
+            "FLOW",
+            "FREQUENCY",
+            "LENGTH",
+            "LINEAR_FORCE",
+            "LOAD",
+            "MASS",
+            "PATH_FEEDRATE",
+            "PATH_FEEDRATE_PER_REVOLUTION",
+            "PATH_POSITION",
+            "PH",
+            "POSITION",
+            "POWER_FACTOR",
+            "PRESSURE",
+            "PROCESS_TIMER",
+            "RESISTANCE",
+            "ROTARY_VELOCITY",
+            "SOUND_LEVEL",
+            "STRAIN",
+            "TEMPERATURE",
+            "TENSION",
+            "TILT",
+            "TORQUE",
+            "VELOCITY",
+            "VISCOSITY",
+            "VOLT_AMPERE",
+            "VOLT_AMPERE_REACTIVE",
+            "VOLUME_FLUID",
+            "VOLUME_SPATIAL",
+            "WATTAGE",
+            "AMPERAGE_AC",
+            "AMPERAGE_DC",
+            "VOLTAGE_AC",
+            "VOLTAGE_DC",
+            "X_DIMENSION",
+            "Y_DIMENSION",
+            "Z_DIMENSION",
+            "DIAMETER",
+            "ORIENTATION",
+            "HUMIDITY_RELATIVE",
+            "HUMIDITY_ABSOLUTE",
+            "HUMIDITY_SPECIFIC",
+            "OBSERVATION_UPDATE_RATE",
+            "ASSET_UPDATE_RATE",
+            "PRESSURIZATION_RATE",
+            "DECELERATION",
+            "ANGULAR_DECELERATION",
+            "PRESSURE_ABSOLUTE",
+            "OPENNESS",
+            "DEW_POINT",
+            "GRAVITATIONAL_FORCE",
+            "GRAVITATIONAL_ACCELERATION",
+            "BATTERY_CAPACITY",
+            "DISCHARGE_RATE",
+            "CHARGE_RATE",
+            "BATTERY_CHARGE",
+            "SETTLING_ERROR",
+            "FOLLOWING_ERROR",
+            "SETTLING_ERROR_LINEAR",
+            "SETTLING_ERROR_ANGULAR",
+            "FOLLOWING_ERROR_LINEAR",
+            "FOLLOWING_ERROR_ANGULAR",
+            "DISPLACEMENT_LINEAR",
+            "DISPLACEMENT_ANGULAR",
+            "POSITION_CARTESIAN",
+            "RESISTIVITY",
+            "FILL_HEIGHT",
+            "PARTICLE_COUNT",
+            "PARTICLE_SIZE",
+            "WATER_HARDNESS",
+            "ELEVATION",
+            "ACTIVE_AXES",
+            "ACTUATOR_STATE",
+            "ASSET_CHANGED",
+            "ASSET_REMOVED",
+            "AVAILABILITY",
+            "AXIS_COUPLING",
+            "AXIS_FEEDRATE_OVERRIDE",
+            "AXIS_INTERLOCK",
+            "AXIS_STATE",
+            "BLOCK",
+            "BLOCK_COUNT",
+            "CHUCK_INTERLOCK",
+            "CHUCK_STATE",
+            "COMPOSITION_STATE",
+            "CONTROLLER_MODE",
+            "CONTROLLER_MODE_OVERRIDE",
+            "COUPLED_AXES",
+            "DATE_CODE",
+            "DEVICE_UUID",
+            "DIRECTION",
+            "DOOR_STATE",
+            "EMERGENCY_STOP",
+            "END_OF_BAR",
+            "EQUIPMENT_MODE",
+            "EXECUTION",
+            "FUNCTIONAL_MODE",
+            "HARDNESS",
+            "LINE_LABEL",
+            "LINE_NUMBER",
+            "MATERIAL",
+            "MATERIAL_LAYER",
+            "MESSAGE",
+            "OPERATOR_ID",
+            "PALLET_ID",
+            "PART_COUNT",
+            "PART_DETECT",
+            "PART_ID",
+            "PATH_FEEDRATE_OVERRIDE",
+            "PATH_MODE",
+            "POWER_STATE",
+            "PROCESS_TIME",
+            "PROGRAM",
+            "PROGRAM_COMMENT",
+            "PROGRAM_EDIT",
+            "PROGRAM_EDIT_NAME",
+            "PROGRAM_HEADER",
+            "PROGRAM_LOCATION",
+            "PROGRAM_LOCATION_TYPE",
+            "PROGRAM_NEST_LEVEL",
+            "ROTARY_MODE",
+            "ROTARY_VELOCITY_OVERRIDE",
+            "SERIAL_NUMBER",
+            "SPINDLE_INTERLOCK",
+            "TOOL_ASSET_ID",
+            "TOOL_GROUP",
+            "TOOL_NUMBER",
+            "TOOL_OFFSET",
+            "USER",
+            "VARIABLE",
+            "WAIT_STATE",
+            "WIRE",
+            "WORKHOLDING_ID",
+            "WORK_OFFSET",
+            "OPERATING_SYSTEM",
+            "FIRMWARE",
+            "APPLICATION",
+            "LIBRARY",
+            "HARDWARE",
+            "NETWORK",
+            "ROTATION",
+            "TRANSLATION",
+            "DEVICE_ADDED",
+            "DEVICE_REMOVED",
+            "DEVICE_CHANGED",
+            "CONNECTION_STATUS",
+            "ADAPTER_SOFTWARE_VERSION",
+            "ADAPTER_URI",
+            "MTCONNECT_VERSION",
+            "SENSOR_ATTACHMENT",
+            "PART_STATUS",
+            "PROCESS_OCCURRENCE_ID",
+            "PROCESS_AGGREGATE_ID",
+            "PROCESS_KIND_ID",
+            "PART_GROUP_ID",
+            "PART_KIND_ID",
+            "PART_UNIQUE_ID",
+            "LOAD_COUNT",
+            "UNLOAD_COUNT",
+            "TRANSFER_COUNT",
+            "ACTIVATION_COUNT",
+            "DEACTIVATION_COUNT",
+            "CYCLE_COUNT",
+            "VALVE_STATE",
+            "LOCK_STATE",
+            "PROCESS_STATE",
+            "PART_PROCESSING_STATE",
+            "OPERATING_MODE",
+            "ASSET_COUNT",
+            "MAINTENANCE_LIST",
+            "FIXTURE_ID",
+            "PART_COUNT_TYPE",
+            "CLOCK_TIME",
+            "HOST_NAME",
+            "NETWORK_PORT",
+            "LEAK_DETECT",
+            "BATTERY_STATE",
+            "FEATURE_PERSISTENT_ID",
+            "SENSOR_STATE",
+            "COMPONENT_DATA",
+            "WORK_OFFSETS",
+            "TOOL_OFFSETS",
+            "FEATURE_MEASUREMENT",
+            "CHARACTERISTIC_PERSISTENT_ID",
+            "MEASUREMENT_TYPE",
+            "MEASUREMENT_VALUE",
+            "MEASUREMENT_UNITS",
+            "CHARACTERISTIC_STATUS",
+            "UNCERTAINTY_TYPE",
+            "UNCERTAINTY",
+            "SPECIFICATION_LIMITS",
+            "CONTROL_LIMITS",
+            "ALARM_LIMITS",
+            "TOOL_CUTTING_ITEM",
+            "LOCATION_ADDRESS",
+            "ACTIVE_POWER_SOURCE",
+            "LOCATION_NARRATIVE",
+            "THICKNESS",
+            "LOCATION_SPATIAL_GEOGRAPHIC",
+            "PART_INDEX",
+            "ASSOCIATED_ASSET_ID",
+            "ASSET_ADDED",
+            "TASK_ASSET_ID",
+            "BINDING_STATE",
+            "SWING_ANGLE",
+            "SWING_RADIUS",
+            "SWING_DIAMETER",
+            "DEPTH",
+            "FIXTURE_ASSET_ID",
+            "COMMUNICATIONS",
+            "DATA_RANGE",
+            "LOGIC_PROGRAM",
+            "MOTION_PROGRAM",
+            "SYSTEM",
+            "ACTUATOR"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "units": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/ObservationInformationModel/Observation/#units'. Units of the DataItem associated with this Observation. Observation::units MUST match the associated DataItem::units defined in the MTConnectDevices Response Document.",
+      "type": "string",
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "AMPERE",
+            "CELSIUS",
+            "COUNT",
+            "DECIBEL",
+            "DEGREE",
+            "DEGREE_3D",
+            "DEGREE/SECOND",
+            "DEGREE/SECOND^2",
+            "HERTZ",
+            "JOULE",
+            "KILOGRAM",
+            "LITER",
+            "LITER/SECOND",
+            "MICRO_RADIAN",
+            "MILLIMETER",
+            "MILLIMETER_3D",
+            "MILLIMETER/REVOLUTION",
+            "MILLIMETER/SECOND",
+            "MILLIMETER/SECOND^2",
+            "NEWTON",
+            "NEWTON_METER",
+            "OHM",
+            "PASCAL",
+            "PASCAL_SECOND",
+            "PERCENT",
+            "PH",
+            "REVOLUTION/MINUTE",
+            "SECOND",
+            "SIEMENS/METER",
+            "VOLT",
+            "VOLT_AMPERE",
+            "VOLT_AMPERE_REACTIVE",
+            "WATT",
+            "WATT_SECOND",
+            "GRAM/CUBIC_METER",
+            "CUBIC_MILLIMETER",
+            "CUBIC_MILLIMETER/SECOND",
+            "CUBIC_MILLIMETER/SECOND^2",
+            "MILLIGRAM",
+            "MILLIGRAM/CUBIC_MILLIMETER",
+            "MILLILITER",
+            "COUNT/SECOND",
+            "PASCAL/SECOND",
+            "UNIT_VECTOR_3D",
+            "REVOLUTION/SECOND^2",
+            "REVOLUTION/SECOND",
+            "GRAM",
+            "METER/SECOND^2",
+            "COULOMB",
+            "CUBIC_METER",
+            "SQUARE_MILLIMETER",
+            "OHM_METER",
+            "MILLIGRAM/LITER",
+            "METER"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "isUnavailable": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/ObservationInformationModel/Observation/#isUnavailable'. When true, Observation::result is indeterminate. Note 1 to entry: In XML, when isUnavailable is true, the XML CDATA of the Observation MUST be UNAVAILABLE. xml <Execution dataItemId=\"...\" ...>UNAVAILABLE</Execution> Note 2 to entry: In JSON, when isUnavailable is true, the JSON value of the Observation MUST be UNAVAILABLE. json \"Execution\" : [ { \"dataItemId\": \"...\" ..., \"value\": \"UNAVAILABLE\" } ]",
+      "type": "boolean",
+      "default": true
+    },
+    "quality": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/ObservationInformationModel/Observation/#quality'. Indicates if the Observation is verifiable and is in accordance with the normative definitions within the MTConnect Standard.",
+      "type": "string",
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "VALID",
+            "UNVERIFIABLE",
+            "INVALID"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "deprecated": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/ObservationInformationModel/Observation/#deprecated'. Indicates if the Observation has any property or controlled vocabulary that has been deprecated in the MTConnect Standard.",
+      "type": "boolean",
+      "default": false
+    },
+    "extended": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/ObservationInformationModel/Observation/#extended'. Indicates if the Observation has any property or controlled vocabulary that has been extended and cannot be validated.",
+      "type": "boolean",
+      "default": false
+    },
+    "duration": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/ObservationInformationModel/Sample/#duration'. Time-period over which the data was collected. Sample::duration MUST be provided when the DataItem::statistic is defined in the MTConnectDevices Response Document. Units:'second'",
+      "type": "number"
+    },
+    "resetTriggered": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/ObservationInformationModel/Sample/#resetTriggered'. Identifies when a reported value has been reset and what has caused that reset to occur for those DataItem entities that may be periodically reset to an initial value. resetTriggered MUST only be provided for the specific occurrence of a DataItem reported in the MTConnectStreams Response Document when the reset occurred.",
+      "type": "string",
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "ACTION_COMPLETE",
+            "ANNUAL",
+            "DAY",
+            "MAINTENANCE",
+            "MANUAL",
+            "MONTH",
+            "POWER_ON",
+            "SHIFT",
+            "WEEK"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "sampleRate": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/ObservationInformationModel/Sample/#sampleRate'. Rate at which successive samples of the value are recorded.",
+      "type": "number"
+    },
+    "statistic": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/ObservationInformationModel/Sample/#statistic'. Condition::statistic provides additional information describing the meaning of the Condition entity. Condition::statistic MUST match the DataItem::statistic defined in the MTConnectDevices Response Document.",
+      "type": "string",
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "AVERAGE",
+            "MAXIMUM",
+            "MEDIAN",
+            "MINIMUM",
+            "MODE",
+            "RANGE",
+            "ROOT_MEAN_SQUARE",
+            "STANDARD_DEVIATION"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "nativeCode": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/ObservationInformationModel/Condition/#nativeCode'. Native code is the proprietary identifier designating a specific alarm, fault or warning code provided by the piece of equipment.",
+      "type": "string"
+    },
+    "nativeSeverity": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/ObservationInformationModel/Condition/#nativeSeverity'. Severity information to a client software application if the piece of equipment designates a severity level to a fault.",
+      "type": "string"
+    },
+    "qualifier": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/ObservationInformationModel/Condition/#qualifier'. Additional information regarding a condition state associated with the measured value of a process variable. Condition::qualifier defines whether the condition state represented indicates a measured value that is above or below an expected value of a process variable.",
+      "type": "string",
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "HIGH",
+            "LOW"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "xsLang": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/ObservationInformationModel/Condition/#xs:lang'. MTConnect 'xs:lang' (renamed because 'xs:lang' is reserved in NGSI-LD). Specifies the language of the Observation::result returned for the Condition. See IETF RFC 4646 (http://www.ietf.org/rfc/rfc4646.txt).",
+      "type": "string"
+    },
+    "state": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/ObservationInformationModel/Condition/#state'. Condition state of the piece of equipment or Component.",
+      "type": "string",
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "Normal",
+            "Warning",
+            "Fault"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "conditionId": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/ObservationInformationModel/Condition/#conditionId'. Identifier of an individual condition activation provided by a piece of equipment. Condition::conditionId MUST be unique for all concurrent condition activations. Condition::conditionId MUST be maintained for all state transitions related to the same condition activation. Multiple Condition::conditionIds MAY exist for the same nativeCode. If Condition::conditionId is not given, the value is the Condition::nativeCode. If Condition::nativeCode and Condition::conditionId are not given, Condition::conditionId MUST be generated.",
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "SAMPLE",
+        "EVENT",
+        "CONDITION"
+      ],
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/DeviceInformationModel/DataItems/DataItem/#category'. Smart Data Models addition: kind of Observation (Sample, Event or Condition, i.e. the category of its DataItem). In MTConnect documents this is given by the Samples / Events / Condition container of the Observation."
+    },
+    "madeForDataItem": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://model.mtconnect.org/Version2.8/ObservationInformationModel/Observation/#madeForDataItem'. DataItem this Observation is reported for (the one whose id is dataItemId). Reference to a DataItem entity."
+    },
+    "madeByComponent": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://model.mtconnect.org/Version2.8/ObservationInformationModel/Observation/#madeByComponent'. Component or Device that made this Observation. Reference to a Component or Device entity."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "dataItemId",
+    "sequence",
+    "timestamp",
+    "category"
+  ]
+}

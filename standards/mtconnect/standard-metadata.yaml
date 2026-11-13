@@ -1,0 +1,183 @@
+title: "MTConnect"
+publisher: "MTConnect Institute / AMT - The Association For Manufacturing Technology"
+sourceUrl: "https://github.com/mtconnect/schema"
+specificationUrl: "https://model.mtconnect.org/Version2.8/"
+contact: "info@MTConnect.org"
+sourceOntologyVersion: "2.8 (SysML model v2.8, the latest version listed at https://model.mtconnect.org/; JSON Schemas MTConnectDevices/Streams/Assets_2.8.schema.json; deprecated codes cross-checked with the 2.7 XSDs)"
+sourceOntologyDownload: "https://raw.githubusercontent.com/mtconnect/schema/master/MTConnectDevices_2.8.schema.json"
+sourceOntologyNamespace: "https://model.mtconnect.org/Version2.8/"
+sourceOntologyFormat: "JSON Schema 2020-12 generated from the normative SysML model (also XML Schema up to 2.7); no RDF vocabulary"
+domains:
+  - Manufacturing
+  - Industry4
+description: >
+  MTConnect is an open, royalty-free standard (ANSI/MTC1.4-2018 and later
+  versions) for reading data from manufacturing equipment: machine tools,
+  robots, additive manufacturing machines and their peripherals. An
+  MTConnect Agent publishes a Device Information Model (probe: Devices
+  made of Components that expose DataItems of category SAMPLE, EVENT or
+  CONDITION), an Observation Information Model (current / sample: the
+  timestamped values of those DataItems) and an Asset Information Model
+  (cutting tools, files, raw material, fixtures, pallets, QIF documents,
+  ...). The normative information model is a SysML model, published as
+  documentation at model.mtconnect.org and as XML and JSON Schemas.
+license: "Apache-2.0"
+licenseNote: >
+  The licence is split, as the "Partial" mark in the source sheet says.
+  (1) The schema files used here, in github.com/mtconnect/schema, are
+  under the Apache License 2.0 (repository LICENSE.TXT). The XSDs in that
+  repository also carry a BSD-3-Clause-style notice, "Copyright (c)
+  2008-2019, AMT ... Redistribution and use in source and binary forms,
+  with or without modification, are permitted provided that ..." (keep the
+  copyright notice, do not use the AMT name to endorse derived products),
+  plus a disclaimer of warranty. Both allow derived works, so this
+  candidate is a derived work of those schemas: their structure, names,
+  code lists and the definitions they contain. Attribution: MTConnect
+  schemas, (c) AMT - The Association For Manufacturing Technology,
+  Apache-2.0. (2) The MTConnect specification documents and the SysML
+  model documentation at model.mtconnect.org are under a different
+  licence: "AMT grants to you a non-exclusive, non-transferable,
+  revocable, non-sublicensable, fully-paid-up copyright license to
+  reproduce, copy and redistribute this MTConnect Specification or
+  Material, provided that you may only copy or redistribute ... in the
+  form in which you received it, without modifications". Implementing the
+  standard in a product also needs the MTConnect Specification
+  Implementer License Agreement or the IP Policy (patents). So nothing
+  here is copied from the documents or the model website: the
+  context.jsonld only LINKS to its property anchors. MTConnect is a
+  trademark of AMT. A human check of this licence split is recommended
+  before promotion.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source JSON Schemas to SDM candidate artifacts"
+notes: |
+  Translated on 2026-11-13. Source row 57 ("MTConnect", MTConnect
+  Institute, sector Manufacturing, licence marked "Partial") of the
+  "Level A standards not in Smart Data Models" list. See licenseNote for
+  the licence split.
+
+  SCOPE: MTConnect defines hundreds of classes. This candidate covers its
+  core, the things with identity and state that an NGSI-LD broker would
+  hold for a shop floor:
+    - Device       a piece of equipment (MTConnect Device; 11 source
+                   attributes)
+    - Component    any part of a Device (Linear and Rotary axes,
+                   Controller, Path, Spindle, Door, Coolant, ...; one
+                   generic model with componentType, 119 types)
+    - DataItem     the definition of a data point of a Component or
+                   Device (category SAMPLE / EVENT / CONDITION, type,
+                   subType, units, ...)
+    - Observation  the latest reported value of a DataItem (the union of
+                   Observation, Sample, Event and Condition); its history
+                   is kept with the NGSI-LD temporal API
+    - CuttingTool  the CuttingTool asset (with its life cycle and
+                   measurements nested)
+    - File         the File asset (part programs, documents, ...)
+  FOLLOW-UPS: the other assets (RawMaterial, Fixture, Pallet,
+  ComponentConfigurationParameters, QIFDocumentWrapper, Process /
+  ProcessArchetype, CuttingToolArchetype, FileArchetype), the Agent
+  device type (a Device subclass for the agent itself) and the
+  Interfaces (BarFeederInterface, DoorInterface, ...) with their
+  request/response states.
+
+  NAMING: class and attribute names are MTConnect's, verbatim, including
+  the capitalised element names (Description, Configuration,
+  Compositions, CuttingToolLifeCycle, FileLocation, CreationTime, ...).
+  Renames, all forced by NGSI-LD reserved terms:
+    - id    -> mtconnectId      (Device, Component, DataItem)
+    - type  -> dataItemType     (DataItem)
+    - type  -> observationType  (Observation)
+    - value -> result           (Observation; "result" is the SysML name,
+                                 "value" is only its JSON serialisation)
+    - xs:lang -> xsLang         (Observation, from Condition; a term with
+                                 a colon would be read as a compact IRI,
+                                 and "lang" is reserved in NGSI-LD)
+  NGSI-LD ids: urn:ngsi-ld:<Type>:<device uuid>:<MTConnect id> for
+  Component, DataItem and Observation (MTConnect ids are only unique
+  within an agent), urn:ngsi-ld:Device:<uuid>, and
+  urn:ngsi-ld:<AssetType>:<assetId> for assets.
+
+  MAPPING:
+    - Containment (Device/Component -> Components -> DataItems) is not
+      nested: each child points to its parent with the SysML association
+      names, as Relationships: Component.isComponentOf,
+      DataItem.isDataItemOf, Observation.madeForDataItem and
+      madeByComponent, CuttingTool/File.isAssetOf (the Device whose uuid
+      is deviceUuid). The source string keys (dataItemId, deviceUuid) are
+      kept too.
+    - Smart Data Models additions: componentType (the Component element
+      name; Component is an abstract class and its 119 concrete
+      subclasses add no attributes, so they are one model; the abstract
+      Interface, Auxiliary, Axis, Resource, System, Process and Part are
+      left out of the enum), Observation.category (SAMPLE / EVENT /
+      CONDITION, from the container the observation comes in) and the
+      relationships above.
+    - Code lists keep MTConnect's form: oneOf [the enum, the extension
+      pattern ^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$] because MTConnect allows
+      namespaced extension codes (e.g. x:MY_TYPE). Code lists used by
+      top-level attributes are inline, the others in $defs.
+      dataItemType / observationType is the union of SampleEnum,
+      EventEnum and ConditionEnum (235 codes), because the 2.8
+      DataItemTypeEnum is declared as a plain string.
+    - Deprecated attributes left out: Component/Device.sampleRate,
+      Device.iso841Class, DataItem.coordinateSystem (and the same in
+      nested definitions). Deprecated codes left out (marked DEPRECATED in
+      the 2.7 XSDs, since the 2.8 JSON Schemas do not mark codes): ALARM,
+      ALARM_LIMIT, ALTERNATING, AMPERAGE, CODE, CONTROL_LIMIT, DIRECT,
+      DISCRETE, GLOBAL_POSITION, KURTOSIS, LEVEL, LINE, PART_NUMBER,
+      POWER_STATUS, SPECIFICATION_LIMIT, SPINDLE_SPEED, TOOL_ID, VOLTAGE.
+    - Nested definitions (Description, Configuration, Compositions,
+      Source, Constraints, Definition, Filters, Relationships,
+      CuttingToolLifeCycle, CuttingToolDefinition, FileLocation, ...) keep
+      their full MTConnect structure in $defs and are "@type": "@json" in
+      the contexts.
+    - Timestamps (timestamp, CreationTime, ModificationTime, ...) are typed
+      date-time; the JSON Schemas only say string.
+    - Descriptions: the definitions in the Apache-2.0 JSON Schemas, with
+      their {{block()}}/{{term()}} markup and markdown removed.
+  CONTEXT IRIs: MTConnect has no RDF vocabulary. Classes map to their page
+  in the normative model documentation (e.g.
+  https://model.mtconnect.org/Version2.8/DeviceInformationModel/DataItems/DataItem/)
+  and attributes to the property anchor on that page (#category,
+  #hasConfiguration, ...). Three attributes have no anchor there and map
+  to a JSON pointer into the 2.8 JSON Schema: Component.hash,
+  Observation.assetType and Observation.count.
+
+  SOURCE NOTES (worth reporting upstream, mtconnect/schema):
+    - MTConnectAssets_2.8.schema.json: File lacks Destinations
+      (File::hasDestination) and the FileProperties / FileComments of
+      AbstractFile, which are in the SysML model; they are added here from
+      the Destination / FileProperty / FileComment definitions.
+    - Unit codes are markdown-escaped in the enums ("DEGREE/SECOND\^2");
+      the real codes (DEGREE/SECOND^2, ...) are used here.
+    - Boolean defaults are given as strings ("false", "true") for
+      DataItem.discrete and Observation.isUnavailable / deprecated /
+      extended; they are booleans here.
+    - DataItemTypeEnum is a plain string (no code list) in 2.8.
+    - Leaf Component types (Fan, Motor, Pump, ...) carry two extra
+      properties hasComponent / hasComposition (UML association ends
+      exported as properties); they are left out.
+    - Component::hasReference (References) is in the model but not in the
+      JSON Schema; not included.
+    - 2.8 has no XSD and is not yet on schemas.mtconnect.org (which has up
+      to 2.7), although the model site lists 2.8 as the latest version and
+      the public demo agent already serves 2.8.
+
+  EXAMPLES ARE SYNTHETIC: the public demo agent (demo.mtconnect.org)
+  serves real 2.8 probe/current data but states no licence for it, so it
+  was not copied. The six examples describe one fictitious 3-axis
+  vertical machining centre (uuid 3f6e2b9a-...): the Device, its X Linear
+  axis Component, the Xact POSITION ACTUAL DataItem in MILLIMETER, its
+  latest Observation (212.4371 mm), a 10 mm end mill CuttingTool in pot
+  12 with tool life and measurements, and a part program File on
+  example.com. Each example says so in `source`.
+
+  DUPLICATION RISK: high for names, moderate for scope.
+    - Device: dataModel.Device (IoT device) and the gaiax-ontology-v2111
+      and saref4ener candidates use the same type name with a different
+      meaning; dataModel.ManufacturingMachine and dataModel.OPCUA
+      (MachineTool) cover machines on the shop floor;
+      dataModel.PredictiveMaintenance has MachineComponent;
+      dataModel.SDMX has Observation (statistical). Renaming to
+      MTConnectDevice / MTConnectObservation, or merging with
+      ManufacturingMachine, is a decision for review.

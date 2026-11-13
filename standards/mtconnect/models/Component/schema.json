@@ -1,0 +1,1178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/mtconnect/models/Component/schema.json",
+  "modelTags": "MTConnect,Manufacturing,MachineTool,Industry40,Component",
+  "title": "Smart Data Models - MTConnect - Component",
+  "description": "Logical or physical entity that provides a capability. (MTConnect 2.8, SysML model class Component; JSON Schema MTConnectDevices_2.8.schema.json; property names kept verbatim, deprecated properties and codes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity, urn:ngsi-ld:Component:<...>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Component"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Component'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hash": {
+      "description": "Property. Model:'https://raw.githubusercontent.com/mtconnect/schema/master/MTConnectDevices_2.8.schema.json#/$defs/Component/properties/hash'.",
+      "type": "string"
+    },
+    "mtconnectId": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/DeviceInformationModel/Components/Component/#id'. MTConnect 'id' (renamed because 'id' is reserved in NGSI-LD). Unique identifier for the Component.",
+      "type": "string"
+    },
+    "name": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/DeviceInformationModel/Components/Component/#name'. Name of the Component. When provided, Component::name MUST be unique for all child Component entities of a parent Component.",
+      "type": "string"
+    },
+    "nativeName": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/DeviceInformationModel/Components/Component/#nativeName'. Common name associated with Component.",
+      "type": "string"
+    },
+    "sampleInterval": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/DeviceInformationModel/Components/Component/#sampleInterval'. Interval in milliseconds between the completion of the reading of the data associated with the Component until the beginning of the next sampling of that data. This information may be used by client software applications to understand how often information from a Component is expected to be refreshed. The refresh rate for data from all child Component entities will be the same as for the parent Component element unless specifically overridden by another Component::sampleInterval provided for the child Component. Units:'millisecond'",
+      "type": "number"
+    },
+    "uuid": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/DeviceInformationModel/Components/Component/#uuid'. Universally unique identifier for the Component.",
+      "type": "string"
+    },
+    "Description": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/DeviceInformationModel/Components/Component/#hasDescription'. Descriptive content.",
+      "$ref": "#/$defs/Description"
+    },
+    "Configuration": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/DeviceInformationModel/Components/Component/#hasConfiguration'. Technical information about an entity describing its physical layout, functional characteristics, and relationships with other entities.",
+      "$ref": "#/$defs/Configuration"
+    },
+    "coordinateSystemIdRef": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/DeviceInformationModel/Components/Component/#coordinateSystemIdRef'. Specifies the CoordinateSystem for this Component and its children.",
+      "type": "string"
+    },
+    "Compositions": {
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/DeviceInformationModel/Components/Component/#hasComposition'.",
+      "type": "object",
+      "properties": {
+        "Composition": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Composition"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "componentType": {
+      "type": "string",
+      "enum": [
+        "Door",
+        "Environmental",
+        "Path",
+        "Power",
+        "Sensor",
+        "Structure",
+        "Adapter",
+        "Lock",
+        "Chuck",
+        "Fan",
+        "Spreader",
+        "Pulley",
+        "TransferPot",
+        "PowerSupply",
+        "Drain",
+        "Ballscrew",
+        "Compressor",
+        "Chute",
+        "Switch",
+        "Tensioner",
+        "Water",
+        "Wire",
+        "SensingElement",
+        "CoolingTower",
+        "RemovalPot",
+        "Gripper",
+        "StagingPot",
+        "Brake",
+        "Station",
+        "Hopper",
+        "Belt",
+        "TransferArm",
+        "Reel",
+        "Filter",
+        "ReturnPot",
+        "Chain",
+        "Amplifier",
+        "Vat",
+        "ExpiredPot",
+        "Oil",
+        "Table",
+        "Chopper",
+        "Valve",
+        "Pot",
+        "Transformer",
+        "ExposureUnit",
+        "Tank",
+        "Encoder",
+        "StorageBattery",
+        "CircuitBreaker",
+        "Motor",
+        "ExtrusionUnit",
+        "Galvanomotor",
+        "Pump",
+        "Clamp",
+        "LinearPositionFeedback",
+        "Workpiece",
+        "Structures",
+        "Interfaces",
+        "Auxiliaries",
+        "Systems",
+        "Adapters",
+        "Resources",
+        "Axes",
+        "Processes",
+        "Parts",
+        "Requester",
+        "Responder",
+        "BarFeederInterface",
+        "MaterialHandlerInterface",
+        "DoorInterface",
+        "ChuckInterface",
+        "Agent",
+        "Deposition",
+        "Loader",
+        "ToolingDelivery",
+        "WasteDisposal",
+        "Electrode",
+        "CuttingTorch",
+        "Linear",
+        "Rotary",
+        "Spindle",
+        "Material",
+        "Personnel",
+        "Thermostat",
+        "Vibration",
+        "Actuator",
+        "Controller",
+        "Coolant",
+        "Dielectric",
+        "Electric",
+        "Enclosure",
+        "EndEffector",
+        "Feeder",
+        "Lubrication",
+        "ProcessPower",
+        "Protective",
+        "Heating",
+        "Vacuum",
+        "Cooling",
+        "Pressure",
+        "WorkEnvelope",
+        "AirHandler",
+        "ToolHolder",
+        "PinTool",
+        "Link",
+        "ProcessOccurrence",
+        "PartOccurrence",
+        "Materials",
+        "BarFeeder",
+        "GangToolBar",
+        "AutomaticToolChanger",
+        "ToolMagazine",
+        "ToolRack",
+        "Turret",
+        "Stock",
+        "Hydraulic",
+        "Pneumatic",
+        "FeatureOccurrence"
+      ],
+      "description": "Property. Model:'https://model.mtconnect.org/Version2.8/DeviceInformationModel/Components/ComponentTypes/'. Smart Data Models addition: the MTConnect Component type, i.e. the element name of the Component in an MTConnectDevices document (Linear, Rotary, Controller, Path, Door, Spindle, ...). The abstract types (Interface, Auxiliary, Axis, Resource, System, Process, Part) are left out."
+    },
+    "isComponentOf": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://model.mtconnect.org/Version2.8/DeviceInformationModel/Components/Component/#isComponentOf'. Parent Component or Device of this Component (in MTConnect documents, the element that contains it in its Components). Reference to a Component or Device entity."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "mtconnectId",
+    "componentType"
+  ],
+  "$defs": {
+    "Description": {
+      "type": "object",
+      "description": "Descriptive content.",
+      "properties": {
+        "manufacturer": {
+          "type": "string",
+          "description": "Name of the manufacturer of the physical or logical part of a piece of equipment represented by this element."
+        },
+        "model": {
+          "type": "string",
+          "description": "Model description of the physical part or logical function of a piece of equipment represented by this element."
+        },
+        "serialNumber": {
+          "type": "string",
+          "description": "Serial number associated with a piece of equipment."
+        },
+        "station": {
+          "type": "string",
+          "description": "Identifier where a manufacturing function takes place."
+        },
+        "value": {
+          "type": "string",
+          "description": "Description of the element."
+        }
+      },
+      "additionalProperties": false
+    },
+    "Configuration": {
+      "type": "object",
+      "description": "Technical information about an entity describing its physical layout, functional characteristics, and relationships with other entities.",
+      "properties": {
+        "SolidModel": {
+          "$ref": "#/$defs/SolidModel"
+        },
+        "SensorConfiguration": {
+          "$ref": "#/$defs/SensorConfiguration"
+        },
+        "Motion": {
+          "$ref": "#/$defs/Motion"
+        },
+        "Relationships": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/ConfigurationRelationship"
+            }
+          }
+        },
+        "CoordinateSystems": {
+          "type": "object",
+          "properties": {
+            "CoordinateSystem": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/CoordinateSystem"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "Specifications": {
+          "type": "object",
+          "properties": {
+            "Specification": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Specification"
+              }
+            },
+            "ProcessSpecification": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ProcessSpecification"
+              }
+            }
+          },
+          "patternProperties": {
+            "^[a-ln-zA-LN-Z]:[A-Za-z_][A-Za-z0-9_]*$": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Specification"
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "SolidModel": {
+      "type": "object",
+      "description": "References to a file with the three-dimensional geometry of the Component or Composition.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for this element."
+        },
+        "Transformation": {
+          "$ref": "#/$defs/Transformation"
+        },
+        "Scale": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "solidModelIdRef": {
+          "type": "string",
+          "description": "Associated model file if an item reference is used."
+        },
+        "href": {
+          "type": "string",
+          "description": "URL giving the location of the SolidModel. If not present, the model referenced in the SolidModel::solidModelIdRef is used. SolidModel::href is of type xlink:href from the W3C XLink specification."
+        },
+        "itemRef": {
+          "type": "string",
+          "description": "Reference to the item within the model within the related geometry. A SolidModel::solidModelIdRef MUST be given. Note: Item defined in ASME Y14.100 - A nonspecific term used to denote any unit or product, including materials, parts, assemblies, equipment, accessories, and computer software."
+        },
+        "mediaType": {
+          "$ref": "#/$defs/MediaTypeEnum",
+          "description": "Format of the referenced document."
+        },
+        "coordinateSystemIdRef": {
+          "type": "string",
+          "description": "Reference to the coordinate system for this SolidModel."
+        },
+        "nativeUnits": {
+          "type": "string",
+          "description": "Same as DataItem::nativeUnits. See DataItem."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "description": "Same as DataItem::units. See DataItem."
+        }
+      },
+      "required": [
+        "id",
+        "mediaType"
+      ],
+      "additionalProperties": false
+    },
+    "Transformation": {
+      "type": "object",
+      "description": "Process of transforming to the origin position of the coordinate system from a parent coordinate system using Translation and Rotation.",
+      "properties": {
+        "Translation": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "Rotation": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        }
+      },
+      "additionalProperties": false
+    },
+    "MediaTypeEnum": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "STEP",
+            "STL",
+            "GDML",
+            "OBJ",
+            "COLLADA",
+            "IGES",
+            "3DS",
+            "ACIS",
+            "X_T",
+            "QIF_MBD"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "UnitEnum": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "AMPERE",
+            "CELSIUS",
+            "COUNT",
+            "DECIBEL",
+            "DEGREE",
+            "DEGREE_3D",
+            "DEGREE/SECOND",
+            "DEGREE/SECOND^2",
+            "HERTZ",
+            "JOULE",
+            "KILOGRAM",
+            "LITER",
+            "LITER/SECOND",
+            "MICRO_RADIAN",
+            "MILLIMETER",
+            "MILLIMETER_3D",
+            "MILLIMETER/REVOLUTION",
+            "MILLIMETER/SECOND",
+            "MILLIMETER/SECOND^2",
+            "NEWTON",
+            "NEWTON_METER",
+            "OHM",
+            "PASCAL",
+            "PASCAL_SECOND",
+            "PERCENT",
+            "PH",
+            "REVOLUTION/MINUTE",
+            "SECOND",
+            "SIEMENS/METER",
+            "VOLT",
+            "VOLT_AMPERE",
+            "VOLT_AMPERE_REACTIVE",
+            "WATT",
+            "WATT_SECOND",
+            "GRAM/CUBIC_METER",
+            "CUBIC_MILLIMETER",
+            "CUBIC_MILLIMETER/SECOND",
+            "CUBIC_MILLIMETER/SECOND^2",
+            "MILLIGRAM",
+            "MILLIGRAM/CUBIC_MILLIMETER",
+            "MILLILITER",
+            "COUNT/SECOND",
+            "PASCAL/SECOND",
+            "UNIT_VECTOR_3D",
+            "REVOLUTION/SECOND^2",
+            "REVOLUTION/SECOND",
+            "GRAM",
+            "METER/SECOND^2",
+            "COULOMB",
+            "CUBIC_METER",
+            "SQUARE_MILLIMETER",
+            "OHM_METER",
+            "MILLIGRAM/LITER",
+            "METER"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "SensorConfiguration": {
+      "type": "object",
+      "description": "Configuration for a Sensor.",
+      "properties": {
+        "CalibrationDate": {
+          "type": "string",
+          "description": "Date upon which the sensor unit was last calibrated."
+        },
+        "CalibrationInitials": {
+          "type": "string",
+          "description": "The initials of the person verifying the validity of the calibration data."
+        },
+        "FirmwareVersion": {
+          "type": "string",
+          "description": "Version number for the sensor unit as specified by the manufacturer."
+        },
+        "NextCalibrationDate": {
+          "type": "string",
+          "description": "Date upon which the sensor unit is next scheduled to be calibrated."
+        },
+        "Channels": {
+          "type": "object",
+          "properties": {
+            "Channel": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Channel"
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "FirmwareVersion"
+      ],
+      "additionalProperties": false
+    },
+    "Channel": {
+      "type": "object",
+      "description": "Sensing element of a Sensor.",
+      "properties": {
+        "CalibrationDate": {
+          "type": "string",
+          "description": "Date upon which the sensor unit was last calibrated to the sensor element."
+        },
+        "CalibrationInitials": {
+          "type": "string",
+          "description": "The initials of the person verifying the validity of the calibration data."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the specific sensing element."
+        },
+        "NextCalibrationDate": {
+          "type": "string",
+          "description": "Date upon which the sensor element is next scheduled to be calibrated with the sensor unit."
+        },
+        "number": {
+          "type": "string",
+          "description": "Unique identifier that will only refer to a specific sensing element."
+        },
+        "Description": {
+          "type": "string",
+          "description": "Textual description for Channel."
+        }
+      },
+      "required": [
+        "number"
+      ],
+      "additionalProperties": false
+    },
+    "Motion": {
+      "type": "object",
+      "description": "Movement of the component relative to a coordinate system.",
+      "properties": {
+        "actuation": {
+          "$ref": "#/$defs/MotionActuationTypeEnum",
+          "description": "Describes if this component is actuated directly or indirectly as a result of other motion."
+        },
+        "coordinateSystemIdRef": {
+          "type": "string",
+          "description": "Coordinate system within which the kinematic motion occurs."
+        },
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for this element."
+        },
+        "parentIdRef": {
+          "type": "string",
+          "description": "Pointer to the Motion::id. The kinematic chain connects all components using the parent relations. All motion is connected to the motion of the parent. The first node in the chain will not have a parent."
+        },
+        "type": {
+          "$ref": "#/$defs/MotionTypeEnum",
+          "description": "Type of motion."
+        },
+        "Axis": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "Origin": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "Transformation": {
+          "$ref": "#/$defs/Transformation"
+        },
+        "Description": {
+          "type": "string",
+          "description": "Textual description for Motion."
+        }
+      },
+      "required": [
+        "actuation",
+        "coordinateSystemIdRef",
+        "id",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "MotionActuationTypeEnum": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "VIRTUAL",
+            "NONE"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "MotionTypeEnum": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "PRISMATIC",
+            "CONTINUOUS",
+            "REVOLUTE",
+            "FIXED"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "ConfigurationRelationship": {
+      "type": "object",
+      "description": "Association between two pieces of equipment or assets that may function independently but together perform a manufacturing operation.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name associated with this ConfigurationRelationship."
+        },
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for this ConfigurationRelationship."
+        },
+        "type": {
+          "$ref": "#/$defs/RelationshipTypeEnum",
+          "description": "Defines the authority that this piece of equipment has relative to the associated piece of equipment."
+        },
+        "criticality": {
+          "$ref": "#/$defs/CriticalityTypeEnum",
+          "description": "Defines whether the services or functions provided by the associated piece of equipment is required for the operation of this piece of equipment."
+        }
+      },
+      "required": [
+        "id",
+        "type"
+      ]
+    },
+    "RelationshipTypeEnum": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "PARENT",
+            "CHILD",
+            "PEER"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "CriticalityTypeEnum": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "CRITICAL",
+            "NONCRITICAL"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "CoordinateSystem": {
+      "type": "object",
+      "description": "Reference system that associates a unique set of n parameters with each point in an n-dimensional space. ISO 10303-218:2004",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the coordinate system."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the coordinate system."
+        },
+        "nativeName": {
+          "type": "string",
+          "description": "Manufacturer's name or users name for the coordinate system."
+        },
+        "parentIdRef": {
+          "type": "string",
+          "description": "Pointer to the CoordinateSystem::id."
+        },
+        "Origin": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "Transformation": {
+          "$ref": "#/$defs/Transformation"
+        },
+        "type": {
+          "$ref": "#/$defs/CoordinateSystemTypeEnum",
+          "description": "Type of coordinate system."
+        },
+        "uuid": {
+          "type": "string",
+          "description": "UUID for the coordinate system."
+        },
+        "Description": {
+          "type": "string",
+          "description": "Natural language description of the CoordinateSystem."
+        }
+      },
+      "required": [
+        "id",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "CoordinateSystemTypeEnum": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "WORLD",
+            "BASE",
+            "OBJECT",
+            "TASK",
+            "MECHANICAL_INTERFACE",
+            "TOOL",
+            "MOBILE_PLATFORM",
+            "MACHINE",
+            "CAMERA"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "Specification": {
+      "type": "object",
+      "description": "Design characteristics for a piece of equipment.",
+      "properties": {
+        "type": {
+          "$ref": "#/$defs/DataItemTypeEnum",
+          "description": "Same as DataItem::type. See DataItem Types."
+        },
+        "subType": {
+          "$ref": "#/$defs/DataItemSubTypeEnum",
+          "description": "Same as DataItem::subType. See DataItem."
+        },
+        "dataItemIdRef": {
+          "type": "string",
+          "description": "Reference to the DataItem::id associated with this entity."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "description": "Same as DataItem::units. See DataItem."
+        },
+        "compositionIdRef": {
+          "type": "string",
+          "description": "Reference to the Composition::id associated with this entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Specification::name provides additional meaning and differentiates between Specification entities."
+        },
+        "coordinateSystemIdRef": {
+          "type": "string",
+          "description": "References the CoordinateSystem for geometric Specification elements."
+        },
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for this Specification."
+        },
+        "originator": {
+          "$ref": "#/$defs/OriginatorEnum",
+          "description": "Reference to the creator of the Specification.",
+          "default": "MANUFACTURER"
+        },
+        "Maximum": {
+          "type": "number"
+        },
+        "UpperLimit": {
+          "type": "number"
+        },
+        "LowerWarning": {
+          "type": "number"
+        },
+        "LowerLimit": {
+          "type": "number"
+        },
+        "UpperWarning": {
+          "type": "number"
+        },
+        "Nominal": {
+          "type": "number"
+        },
+        "Minimum": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "DataItemTypeEnum": {
+      "type": "string"
+    },
+    "DataItemSubTypeEnum": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "ABSOLUTE",
+            "ACTION",
+            "ACTUAL",
+            "ALL",
+            "A_SCALE",
+            "AUXILIARY",
+            "BAD",
+            "BRINELL",
+            "B_SCALE",
+            "COMMANDED",
+            "CONSUMED",
+            "CONTROL",
+            "C_SCALE",
+            "DELAY",
+            "DRY_RUN",
+            "D_SCALE",
+            "EXPIRATION",
+            "FIRST_USE",
+            "GOOD",
+            "INCREMENTAL",
+            "JOG",
+            "LATERAL",
+            "LEEB",
+            "LENGTH",
+            "LINEAR",
+            "LOADED",
+            "MACHINE_AXIS_LOCK",
+            "MAIN",
+            "MAINTENANCE",
+            "MANUAL_UNCLAMP",
+            "MANUFACTURE",
+            "MAXIMUM",
+            "MINIMUM",
+            "MOHS",
+            "MOTION",
+            "NO_SCALE",
+            "OPERATING",
+            "OPERATOR",
+            "OPTIONAL_STOP",
+            "OVERRIDE",
+            "POWERED",
+            "PRIMARY",
+            "PROBE",
+            "PROCESS",
+            "PROGRAMMED",
+            "RADIAL",
+            "RAPID",
+            "REMAINING",
+            "ROCKWELL",
+            "ROTARY",
+            "SCHEDULE",
+            "SET_UP",
+            "SHORE",
+            "SINGLE_BLOCK",
+            "STANDARD",
+            "START",
+            "SWITCHED",
+            "TARGET",
+            "TARGET_COMPLETION",
+            "TOOL_CHANGE_STOP",
+            "USEABLE",
+            "VERTICAL",
+            "VICKERS",
+            "WORKING",
+            "IPV4_ADDRESS",
+            "IPV6_ADDRESS",
+            "GATEWAY",
+            "SUBNET_MASK",
+            "VLAN_ID",
+            "MAC_ADDRESS",
+            "WIRELESS",
+            "LICENSE",
+            "VERSION",
+            "RELEASE_DATE",
+            "INSTALL_DATE",
+            "MANUFACTURER",
+            "UUID",
+            "SERIAL_NUMBER",
+            "RAW_MATERIAL",
+            "LOT",
+            "BATCH",
+            "HEAT_TREAT",
+            "PART_FAMILY",
+            "PART_NAME",
+            "PROCESS_STEP",
+            "PROCESS_PLAN",
+            "ORDER_NUMBER",
+            "PROCESS_NAME",
+            "ISO_STEP_EXECUTABLE",
+            "COMPLETE",
+            "ACTIVE",
+            "FAILED",
+            "ABORTED",
+            "ENDED",
+            "WASTE",
+            "PART",
+            "REQUEST",
+            "RESPONSE",
+            "ACTIVITY",
+            "SEGMENT",
+            "RECIPE",
+            "OPERATION",
+            "BINARY",
+            "BOOLEAN",
+            "ENUMERATED",
+            "DETECT",
+            "MODEL",
+            "MEASURED",
+            "GAS",
+            "LIQUID",
+            "SOLID",
+            "ELECTRODE",
+            "FILLER",
+            "PLUNGE",
+            "PECK",
+            "CUT",
+            "LAYER",
+            "MEAN_SEA_LEVEL",
+            "GROUND_LEVEL"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "OriginatorEnum": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "MANUFACTURER",
+            "USER"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "ProcessSpecification": {
+      "type": "object",
+      "description": "Specification that provides information used to assess the conformance of a variable to process requirements.",
+      "properties": {
+        "type": {
+          "$ref": "#/$defs/DataItemTypeEnum",
+          "description": "Same as DataItem::type. See DataItem Types."
+        },
+        "subType": {
+          "$ref": "#/$defs/DataItemSubTypeEnum",
+          "description": "Same as DataItem::subType. See DataItem."
+        },
+        "dataItemIdRef": {
+          "type": "string",
+          "description": "Reference to the DataItem::id associated with this entity."
+        },
+        "units": {
+          "$ref": "#/$defs/UnitEnum",
+          "description": "Same as DataItem::units. See DataItem."
+        },
+        "compositionIdRef": {
+          "type": "string",
+          "description": "Reference to the Composition::id associated with this entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Specification::name provides additional meaning and differentiates between Specification entities."
+        },
+        "coordinateSystemIdRef": {
+          "type": "string",
+          "description": "References the CoordinateSystem for geometric Specification elements."
+        },
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for this Specification."
+        },
+        "originator": {
+          "$ref": "#/$defs/OriginatorEnum",
+          "description": "Reference to the creator of the Specification.",
+          "default": "MANUFACTURER"
+        },
+        "Maximum": {
+          "type": "number"
+        },
+        "UpperLimit": {
+          "type": "number"
+        },
+        "LowerWarning": {
+          "type": "number"
+        },
+        "LowerLimit": {
+          "type": "number"
+        },
+        "UpperWarning": {
+          "type": "number"
+        },
+        "Nominal": {
+          "type": "number"
+        },
+        "Minimum": {
+          "type": "number"
+        },
+        "SpecificationLimits": {
+          "$ref": "#/$defs/SpecificationLimits"
+        },
+        "ControlLimits": {
+          "$ref": "#/$defs/ControlLimits"
+        },
+        "AlarmLimits": {
+          "$ref": "#/$defs/AlarmLimits"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "SpecificationLimits": {
+      "type": "object",
+      "description": "Set of limits that define a range of values designating acceptable performance for a variable.",
+      "additionalProperties": false
+    },
+    "ControlLimits": {
+      "type": "object",
+      "description": "Set of limits that is used to indicate whether a process variable is stable and in control.",
+      "additionalProperties": false
+    },
+    "AlarmLimits": {
+      "type": "object",
+      "description": "Set of limits that is used to trigger warning or alarm indicators.",
+      "additionalProperties": false
+    },
+    "Composition": {
+      "type": "object",
+      "description": "Functional part of a piece of equipment contained within a Component.",
+      "properties": {
+        "Description": {
+          "$ref": "#/$defs/Description"
+        },
+        "Configuration": {
+          "$ref": "#/$defs/Configuration"
+        },
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Composition element."
+        },
+        "type": {
+          "$ref": "#/$defs/CompositionTypeEnum",
+          "description": "Type of Composition."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the Composition element."
+        },
+        "uuid": {
+          "type": "string",
+          "description": "Universally unique identifier for the Composition."
+        }
+      },
+      "required": [
+        "id",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "CompositionTypeEnum": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "ACTUATOR",
+            "AMPLIFIER",
+            "BALLSCREW",
+            "BELT",
+            "BRAKE",
+            "CHAIN",
+            "CHOPPER",
+            "CHUCK",
+            "CHUTE",
+            "CIRCUIT_BREAKER",
+            "CLAMP",
+            "COMPRESSOR",
+            "DOOR",
+            "DRAIN",
+            "ENCODER",
+            "EXPOSURE_UNIT",
+            "EXTRUSION_UNIT",
+            "FAN",
+            "FILTER",
+            "GALVANOMOTOR",
+            "GRIPPER",
+            "HOPPER",
+            "LINEAR_POSITION_FEEDBACK",
+            "MOTOR",
+            "OIL",
+            "POWER_SUPPLY",
+            "PULLEY",
+            "PUMP",
+            "REEL",
+            "SENSING_ELEMENT",
+            "SPREADER",
+            "STORAGE_BATTERY",
+            "SWITCH",
+            "TABLE",
+            "TANK",
+            "TENSIONER",
+            "TRANSFORMER",
+            "VALVE",
+            "VAT",
+            "WATER",
+            "WIRE",
+            "WORKPIECE",
+            "COOLING_TOWER",
+            "POT",
+            "STATION",
+            "TRANSFER_ARM",
+            "TRANSFER_POT",
+            "RETURN_POT",
+            "STAGING_POT",
+            "REMOVAL_POT",
+            "EXPIRED_POT"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-ln-zA-LN-Z]:[A-Z_][A-Z0-9_]*$"
+        }
+      ]
+    }
+  }
+}
