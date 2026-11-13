@@ -3461,6 +3461,58 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/gs1-web-vocabulary"
   },
   {
+    "slug": "hsds",
+    "title": "Human Services Data Specification (HSDS), Open Referral",
+    "description": "The Human Services Data Specification (HSDS, also called \"the Open Referral format\") is an exchange format for publishing machine-readable directory data about health, human and social services (food assistance, job training, child care, counselling, ...): the services themselves, the organizations that provide them and the locations where they are delivered, with their contacts, phones, schedules, service areas, eligibility, fees, languages, accessibility and taxonomy terms. It is used by governments, 211 / information-and-referral providers and community organizations to publish community resource directories as open data, and comes with an API specification and a tabular (CSV Data Package) serialization.",
+    "publisher": "Open Referral (stewarded with fiscal sponsorship from Aspiration)",
+    "sourceUrl": "https://github.com/openreferral/specification",
+    "license": "CC-BY-SA-4.0",
+    "domains": [
+      "SmartCities",
+      "PublicAdministration",
+      "CrossSector"
+    ],
+    "modelCount": 5,
+    "models": [
+      {
+        "name": "Location",
+        "title": "Smart Data Models - HSDS - Location",
+        "description": "The locations where organizations operate. Locations may be virtual, and one organization may have many locations. (Human Services Data Specification 3.3.1, object 'location': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/location.json. Field names are kept verbatim (snake_case) except 'id' -> 'hsdsId'.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/hsds/models/Location/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/hsds/models/Location"
+      },
+      {
+        "name": "Organization",
+        "title": "Smart Data Models - HSDS - Organization",
+        "description": "The details about each organization delivering services. Each service should be linked to the organization responsible for its delivery. One organization may deliver many services. (Human Services Data Specification 3.3.1, object 'organization': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/organization.json. Field names are kept verbatim (snake_case) except 'id' -> 'hsdsId'.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/hsds/models/Organization/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/hsds/models/Organization"
+      },
+      {
+        "name": "Program",
+        "title": "Smart Data Models - HSDS - Program",
+        "description": "The details of collections of related services. (Human Services Data Specification 3.3.1, object 'program': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/program.json. Field names are kept verbatim (snake_case) except 'id' -> 'hsdsId'.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/hsds/models/Program/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/hsds/models/Program"
+      },
+      {
+        "name": "Service",
+        "title": "Smart Data Models - HSDS - Service",
+        "description": "The details of the services provided by organizations to a range of different groups. (Human Services Data Specification 3.3.1, object 'service': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json. Field names are kept verbatim (snake_case) except 'id' -> 'hsdsId'.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/hsds/models/Service/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/hsds/models/Service"
+      },
+      {
+        "name": "ServiceAtLocation",
+        "title": "Smart Data Models - HSDS - ServiceAtLocation",
+        "description": "A link between a service and a specific location. (Human Services Data Specification 3.3.1, object 'service_at_location': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service_at_location.json. Field names are kept verbatim (snake_case) except 'id' -> 'hsdsId'.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/hsds/models/ServiceAtLocation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/hsds/models/ServiceAtLocation"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/hsds"
+  },
+  {
     "slug": "madrid-accidentes-trafico",
     "title": "Accidentes de Tráfico de la Ciudad de Madrid (Traffic Accidents in the City of Madrid)",
     "description": "Traffic accidents in the City of Madrid with victims and/or municipal property damage, registered by Policía Municipal. Sourced from a PDF field specification (in Spanish) rather than a formal ontology -- this candidate was built directly from that specification and cross-checked against the real, published CSV dataset for the year 2023.",

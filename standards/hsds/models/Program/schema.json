@@ -1,0 +1,332 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/hsds/models/Program/schema.json",
+  "modelTags": "HSDS,OpenReferral,HumanServices,SocialServices",
+  "title": "Smart Data Models - HSDS - Program",
+  "description": "The details of collections of related services. (Human Services Data Specification 3.3.1, object 'program': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/program.json. Field names are kept verbatim (snake_case) except 'id' -> 'hsdsId'.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity (NGSI-LD): urn:ngsi-ld:Program:<HSDS id>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Program"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Program'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hsdsId": {
+      "type": "string",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/program.json#/properties/id'. The identifier for the program. Each program must have a unique identifier. HSDS field 'id', renamed because 'id' is reserved in NGSI-LD.",
+      "format": "uuid"
+    },
+    "organization_id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/program.json#/properties/organization_id'. The identifier for the organization which the program belongs to. Each program must belong to a single organization, and the identifier for that organization should be given here. In HSDS this is an HSDS identifier (uuid); here it holds the URN of the Organization entity (urn:ngsi-ld:Organization:<HSDS id>)."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/program.json#/properties/name'. The name of the program."
+    },
+    "alternate_name": {
+      "type": "string",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/program.json#/properties/alternate_name'. The (optional) alternative name for the program."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/program.json#/properties/description'. A free text description of the program"
+    },
+    "attributes": {
+      "type": "array",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/program.json#/properties/attributes'. A link between a service and one or more classifications that describe the nature of the service provided.",
+      "items": {
+        "$ref": "#/$defs/attribute"
+      }
+    },
+    "metadata": {
+      "type": "array",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/program.json#/properties/metadata'. A record of the changes that have been made to the data in order to maintain provenance information.",
+      "items": {
+        "$ref": "#/$defs/metadata"
+      }
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "hsdsId",
+    "name",
+    "description",
+    "organization_id"
+  ],
+  "$defs": {
+    "attribute": {
+      "title": "attribute",
+      "description": "A link between a service and one or more classifications that describe the nature of the service provided. (HSDS object 'attribute': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/attribute.json)",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Identifier",
+          "description": "The identifier of the attribute entry. Each attribute entry should have a unique identifier.",
+          "format": "uuid"
+        },
+        "link_id": {
+          "type": "string",
+          "title": "Link Identifier",
+          "description": "The identifier of the entity to which this taxonomy term applies.",
+          "format": "uuid"
+        },
+        "taxonomy_term_id": {
+          "type": "string",
+          "title": "Taxonomy Term Identifier",
+          "description": "The identifier of this taxonomy term from the taxonomy table.",
+          "format": "uuid"
+        },
+        "link_type": {
+          "type": "string",
+          "title": "Link Type",
+          "description": "A code taken from an enumerated open codelist to indicate what the taxonomy term describes, e.g. the service eligibility or intended audience."
+        },
+        "link_entity": {
+          "type": "string",
+          "title": "Link Entity",
+          "description": "The table of the Link Identifier."
+        },
+        "value": {
+          "type": "string",
+          "title": "Value",
+          "description": "The value (if any) of an attribute."
+        },
+        "taxonomy_term": {
+          "title": "Taxonomy Term",
+          "description": "Each service can be categorized according to one or more taxonomy terms. The taxonomy_term object contains a list of taxonomy terms, their names, and, for hierarchical taxonomies, their structure.",
+          "$ref": "#/$defs/taxonomy_term"
+        },
+        "metadata": {
+          "type": "array",
+          "title": "Metadata",
+          "description": "A record of the changes that have been made to the data in order to maintain provenance information.",
+          "items": {
+            "$ref": "#/$defs/metadata"
+          }
+        },
+        "label": {
+          "type": "string",
+          "title": "Label",
+          "description": "A free text label of the attribute."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "metadata": {
+      "title": "metadata",
+      "description": "A record of the changes that have been made to the data in order to maintain provenance information. (HSDS object 'metadata': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/metadata.json)",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Identifier",
+          "description": "The identifier for this metadata. Each entry must have a unique identifier.",
+          "format": "uuid"
+        },
+        "resource_id": {
+          "type": "string",
+          "title": "Resource Identifier",
+          "description": "The identifier of the resource (service, program, location, address, or contact) that this metadata describes.",
+          "format": "uuid"
+        },
+        "resource_type": {
+          "type": "string",
+          "title": "Resource Type",
+          "description": "The type of entity being referenced."
+        },
+        "last_action_date": {
+          "type": "string",
+          "title": "Last Action Date",
+          "description": "The date when data was changed. (HSDS tabular type: date.)"
+        },
+        "last_action_type": {
+          "type": "string",
+          "title": "Last Action Type",
+          "description": "The kind of change made to the data."
+        },
+        "field_name": {
+          "type": "string",
+          "title": "Field Name",
+          "description": "The name of field that has been modified."
+        },
+        "previous_value": {
+          "type": "string",
+          "title": "Previous Value",
+          "description": "The previous value of the field that has been modified."
+        },
+        "replacement_value": {
+          "type": "string",
+          "title": "Replacement Value",
+          "description": "The new value of the field that has been modified."
+        },
+        "updated_by": {
+          "type": "string",
+          "title": "Updated By",
+          "description": "The name of the person who modified the field."
+        }
+      },
+      "required": [
+        "id",
+        "last_action_date",
+        "last_action_type",
+        "field_name",
+        "previous_value",
+        "replacement_value",
+        "updated_by"
+      ]
+    },
+    "taxonomy": {
+      "title": "taxonomy",
+      "description": "The taxonomies from which taxonomy terms are taken. (HSDS object 'taxonomy': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/taxonomy.json)",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Identifier",
+          "description": "The identifier of the taxonomy. Each entry must have a unique identifier",
+          "format": "uuid"
+        },
+        "name": {
+          "type": "string",
+          "title": "Name",
+          "description": "The name of the taxonomy from which terms are sourced."
+        },
+        "description": {
+          "type": "string",
+          "title": "Description",
+          "description": "A free text description of the taxonomy."
+        },
+        "uri": {
+          "type": "string",
+          "title": "URI",
+          "description": "The URI of the taxonomy.",
+          "format": "uri"
+        },
+        "version": {
+          "type": "string",
+          "title": "Version",
+          "description": "The version of the taxonomy."
+        },
+        "metadata": {
+          "type": "array",
+          "title": "Metadata",
+          "description": "A record of the changes that have been made to the data in order to maintain provenance information.",
+          "items": {
+            "$ref": "#/$defs/metadata"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description"
+      ]
+    },
+    "taxonomy_term": {
+      "title": "taxonomy_term",
+      "description": "Each service can be categorized according to one or more taxonomy terms. The taxonomy_term object contains a list of taxonomy terms, their names, and, for hierarchical taxonomies, their structure. (HSDS object 'taxonomy_term': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/taxonomy_term.json)",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Identifier",
+          "description": "The identifier for this taxonomy term. Each taxonomy term must have a unique identifier, within the scope of the dataset.",
+          "format": "uuid"
+        },
+        "code": {
+          "type": "string",
+          "title": "Code",
+          "description": "The term identfier as used in the taxonomy. This and the taxonomy_id combined define the term."
+        },
+        "name": {
+          "type": "string",
+          "title": "Name",
+          "description": "The taxonomy term itself."
+        },
+        "description": {
+          "type": "string",
+          "title": "Description",
+          "description": "A free text description of the term."
+        },
+        "parent_id": {
+          "type": "string",
+          "title": "Parent Identifier",
+          "description": "If this is a child term in a hierarchical taxonomy, give the identifier of the parent category. For top-level categories, this is not required.",
+          "format": "uuid"
+        },
+        "taxonomy": {
+          "type": "string",
+          "title": "Taxonomy",
+          "description": "If this is an established taxonomy, a free text description of which taxonomy is in use. If possible, provide a URI."
+        },
+        "taxonomy_detail": {
+          "title": "Taxonomy",
+          "description": "Taxonomies from which taxonomy terms are taken",
+          "$ref": "#/$defs/taxonomy"
+        },
+        "language": {
+          "type": "string",
+          "title": "Language",
+          "description": "An ISO 639-1, ISO 639-2, or ISO 639-3 [language code](http://www.loc.gov/standards/iso639-2/php/code_list.php) to represent the language of the term. The three-letter codes from ISO 639-2 and ISO 639-3 provide greater accuracy when describing variants of languages, which may be relevant to particular communities."
+        },
+        "taxonomy_id": {
+          "type": "string",
+          "title": "Taxonomy Identifier",
+          "description": "The identifier of the taxonomy containing the term.",
+          "format": "uuid"
+        },
+        "term_uri": {
+          "type": "string",
+          "title": "Term URI",
+          "description": "URI of the term.",
+          "format": "uri"
+        },
+        "metadata": {
+          "type": "array",
+          "title": "Metadata",
+          "description": "A record of the changes that have been made to the data in order to maintain provenance information.",
+          "items": {
+            "$ref": "#/$defs/metadata"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description"
+      ]
+    }
+  }
+}
