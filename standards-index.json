@@ -103,6 +103,43 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/battery-pass-data-model"
   },
   {
+    "slug": "bods",
+    "title": "Beneficial Ownership Data Standard (BODS)",
+    "description": "The Beneficial Ownership Data Standard (BODS), published by Open Ownership, is the open standard for publishing information about who ultimately owns and controls companies and other legal entities and arrangements. Data is a series of Statements, each a claim made at a point in time about a record: an entity (company, trust, state body, ...), a natural person, or a relationship (the interests, such as shareholdings, voting rights or board appointment, that an interested party holds in an entity). It is used by beneficial ownership registers, public procurement and anti-corruption programmes, and by the Open Ownership Register.",
+    "publisher": "Open Ownership",
+    "sourceUrl": "https://github.com/openownership/data-standard",
+    "license": "Apache-2.0",
+    "domains": [
+      "PublicAdministration",
+      "CrossSector"
+    ],
+    "modelCount": 3,
+    "models": [
+      {
+        "name": "EntityStatement",
+        "title": "Smart Data Models - BODS - EntityStatement",
+        "description": "Statement. A claim about a person, entity or relationship, made at a particular point in time. This entity type carries the Statements whose recordType is 'entity': Entity Record Details (Information about an entity.) Beneficial Ownership Data Standard 0.4.0, https://standard.openownership.org/en/0.4.0/_static/entity-record.json. The Statement fields and the recordDetails fields are attributes of the entity; names are kept verbatim except 'source' -> 'bodsSource'.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/bods/models/EntityStatement/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/bods/models/EntityStatement"
+      },
+      {
+        "name": "PersonStatement",
+        "title": "Smart Data Models - BODS - PersonStatement",
+        "description": "Statement. A claim about a person, entity or relationship, made at a particular point in time. This entity type carries the Statements whose recordType is 'person': Person Record Details (Information about a natural person.) Beneficial Ownership Data Standard 0.4.0, https://standard.openownership.org/en/0.4.0/_static/person-record.json. The Statement fields and the recordDetails fields are attributes of the entity; names are kept verbatim except 'source' -> 'bodsSource'.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/bods/models/PersonStatement/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/bods/models/PersonStatement"
+      },
+      {
+        "name": "RelationshipStatement",
+        "title": "Smart Data Models - BODS - RelationshipStatement",
+        "description": "Statement. A claim about a person, entity or relationship, made at a particular point in time. This entity type carries the Statements whose recordType is 'relationship': Relationship Record Details (Information about the interests that an interested party (a person or entity) holds in the subject (an entity).) Beneficial Ownership Data Standard 0.4.0, https://standard.openownership.org/en/0.4.0/_static/relationship-record.json. The Statement fields and the recordDetails fields are attributes of the entity; names are kept verbatim except 'source' -> 'bodsSource'.",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/bods/models/RelationshipStatement/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/bods/models/RelationshipStatement"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/bods"
+  },
+  {
     "slug": "brick-schema",
     "title": "Brick Schema",
     "description": "Uniform metadata schema for buildings: a vocabulary for describing the points (sensors, setpoints, commands, statuses, alarms), equipment (AHUs, chillers, pumps, VAVs, network devices, etc.), and their relationships (hasPoint/isPointOf, hasPart/isPartOf, feeds/isFedBy, hasUnit via QUDT) in building automation and IoT deployments. Widely used in the building controls / smart buildings community.",
@@ -3367,7 +3404,7 @@
   {
     "slug": "gs1-web-vocabulary",
     "title": "GS1 Web Vocabulary",
-    "description": "The GS1 Web Vocabulary is GS1's RDF vocabulary for publishing product, organization, location and offer data on the web, linked to GS1 identifiers (GTIN, GLN) and GS1 Digital Link. It builds on schema.org and covers the master data of GS1 standards (GDSN attributes): product descriptions, net content and dimensions, packaging, allergens, ingredients, nutrition, certifications, apparel and footwear attributes, organizations and their roles, places, and offers with prices and discounts. Version 1.18 has 120 classes, 557 properties and about 1,400 code-list members.",
+    "description": "The GS1 Web Vocabulary is GS1's RDF vocabulary for publishing product, organization, location and offer data on the web, linked to GS1 identifiers (GTIN, GLN) and GS1 Digital Link. It builds on schema.org and covers the master data of GS1 standards (GDSN attributes): product descriptions, net content and dimensions, packaging, allergens, ingredients, nutrition, certifications, apparel and footwear attributes, organizations and their roles, places, and offers with prices and discounts. Version 1.18 has 120 classes, 557 properties and 63 code lists with 1,861 members.",
     "publisher": "GS1 AISBL",
     "sourceUrl": "https://github.com/gs1/WebVoc",
     "license": "Apache-2.0",
