@@ -1,0 +1,162 @@
+title: "Human Services Data Specification (HSDS), Open Referral"
+publisher: "Open Referral (stewarded with fiscal sponsorship from Aspiration)"
+sourceUrl: "https://github.com/openreferral/specification"
+specificationUrl: "https://docs.openreferral.org/en/v3.3.1/"
+contact: "https://github.com/openreferral/specification/issues"
+sourceOntologyVersion: "HSDS 3.3.1 (GitHub release v3.3.1, 2026-09-09), the latest release"
+sourceOntologyDownload: "https://github.com/openreferral/specification/archive/refs/tags/v3.3.1.tar.gz"
+sourceOntologyNamespace: "https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/"
+sourceOntologyFormat: "JSON Schema, one file per HSDS object (schema/*.json, with Frictionless Data Package hints), plus an OpenAPI template; no RDF vocabulary"
+domains:
+  - SmartCities
+  - PublicAdministration
+  - CrossSector
+description: >
+  The Human Services Data Specification (HSDS, also called "the Open
+  Referral format") is an exchange format for publishing machine-readable
+  directory data about health, human and social services (food assistance,
+  job training, child care, counselling, ...): the services themselves,
+  the organizations that provide them and the locations where they are
+  delivered, with their contacts, phones, schedules, service areas,
+  eligibility, fees, languages, accessibility and taxonomy terms. It is
+  used by governments, 211 / information-and-referral providers and
+  community organizations to publish community resource directories as
+  open data, and comes with an API specification and a tabular (CSV Data
+  Package) serialization.
+license: "CC-BY-SA-4.0"
+licenseNote: >
+  Verified in the repository LICENSE file of release v3.3.1 and in the
+  documentation page about/license.md: "The content of this documentation
+  site, the HSDS schema files, and associated artefacts found in the
+  specification repository are released under the CC-BY-SA 4.0 license."
+  Attribution, in the form preferred by the publisher: "Human Services Data
+  Specification: an Open Referral resource (https://openreferral.org/)".
+  SHARE-ALIKE: these candidate models are adapted material derived from
+  the HSDS schemas (and the examples are adapted from the HSDS example
+  data), so they must be distributed under CC-BY-SA 4.0 (or a compatible
+  licence), with attribution and an indication of the changes made (see
+  notes). HSDS 1.0 was also available under CC0; 3.x is not.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source JSON Schemas to SDM candidate artifacts"
+notes: |
+  Translated on 2026-11-13. Source row 39 ("Human Services Data
+  Specification (HSDS)", Open Referral, sector Public administration) of
+  the "Level A standards not in Smart Data Models" list (licence marked
+  "Yes"; verified as CC-BY-SA 4.0, share-alike, see licenseNote).
+
+  SCOPE / MODELS (5): HSDS has 25 objects. HSDS designates four of them as
+  "core" (organization, service, location, service_at_location); these,
+  plus program (which groups services of one organization), are the
+  objects with their own identity and life cycle, and they are the
+  objects the HSDS API exposes as resources. They are the five entities:
+    - Organization       (HSDS object organization)
+    - Service            (HSDS object service)
+    - Location           (HSDS object location)
+    - ServiceAtLocation  (HSDS object service_at_location)
+    - Program            (HSDS object program)
+  All other objects (phone, contact, schedule, address, accessibility,
+  language, funding, cost_option, required_document, service_area,
+  service_capacity, unit, url, organization_identifier, attribute,
+  taxonomy_term, taxonomy, metadata) stay nested exactly as HSDS nests them
+  in its JSON form, defined once per model in $defs and "@type": "@json"
+  in the contexts. meta_table_description (dataset-level metadata) is not
+  used. Follow-ups: TaxonomyTerm / Taxonomy as entities (shared
+  classification terms referenced from attribute), and Contact / Phone /
+  Schedule as entities if implementers need them shared across services.
+
+  NAMING: HSDS names its objects in snake_case (organization,
+  service_at_location), which are also its file and CSV table names; the
+  JSON schema files have no title. The entity types use the names of the
+  HSDS documentation headings in PascalCase (Organization, Service,
+  Location, ServiceAtLocation, Program) because (a) the snake_case object
+  name "location" cannot be an entity type here: it expands to the
+  NGSI-LD core term https://uri.etsi.org/ngsi-ld/location, which these
+  models also use for their GeoProperty, and (b) one naming style across
+  the five types reads better. Every property name is HSDS's own,
+  verbatim, in snake_case (alternate_name, organization_id,
+  service_at_locations, eligibility_description, ...), as are all nested
+  field names. One rename: id -> hsdsId (the HSDS uuid; the NGSI-LD id is
+  urn:ngsi-ld:<Type>:<HSDS id>).
+
+  MAPPING:
+    - Relationships (values are NGSI-LD URNs of the other entities, not the
+      bare HSDS uuids): organization_id (Service, Location, Program),
+      parent_organization_id (Organization), program_id (Service),
+      service_id and location_id (ServiceAtLocation), and the arrays of
+      embedded core objects Organization.locations, Organization.programs
+      and Service.service_at_locations (arrays of URNs).
+    - Left out because the *_id Relationship carries the same link: the
+      embedded single objects Service.organization, Service.program and
+      ServiceAtLocation.location (the latter would also clash with the
+      NGSI-LD location GeoProperty).
+    - Deprecated fields left out: organization.tax_status,
+      organization.tax_id, service.wait_time, service.fees,
+      service.licenses, and service.schedules (deprecated in 3.3 in favour
+      of operating_hours and events; schedules is NOT deprecated on
+      location and service_at_location and is kept there).
+    - required: id, type, hsdsId plus the HSDS JSON "required" fields, plus
+      the foreign keys HSDS marks "tabular_required" (Service and Program:
+      organization_id; ServiceAtLocation: service_id, location_id), since
+      the flat table form is the HSDS serialization closest to an NGSI-LD
+      entity.
+    - Enums as in the source: location_type, service status, and nested
+      address_type, schedule wkst / freq.
+    - Frictionless hints (name, constraints, core, datapackage_type) and
+      the HSDS "example" values were removed from the schemas; the tabular
+      type (date, time, datetime) is kept as a note in the description.
+      Units: minimum_age / maximum_age in years.
+    - SMART DATA MODELS ADDITION: `location` GeoProperty (GeoJSON Point
+      [longitude, latitude]) on Location, built from its HSDS latitude /
+      longitude (WGS84), and on ServiceAtLocation, copied from the linked
+      Location, so that services can be found with NGSI-LD geo-queries.
+
+  CONTEXT IRIs: HSDS has no RDF vocabulary. Each term maps to the
+  property's JSON pointer in the version-pinned JSON schema file of release
+  v3.3.1, e.g.
+  https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/eligibility_description,
+  and each entity type to the object's schema file.
+
+  SOURCE NOTES (worth reporting upstream):
+    - Many "example" values in the schemas have the wrong JSON type
+      (numbers given as strings: latitude "100", longitude "101",
+      year_incorporated "2011", minimum_age "12", schedule interval /
+      count / timezone, phone extension, cost_option amount,
+      service_capacity available / maximum).
+    - The example latitude/longitude (100, 101) are out of range for WGS84.
+    - The example data quote the phone number inside the string
+      ("\"+44 1234 234567\""), and pair a US country code with a UK-style
+      postcode.
+    - schedule.valid_from's description ends with a stray comma.
+    - The OpenAPI file in schema/ is a template with placeholder info
+      ("REQUIRED -- TITLE OF YOUR API HERE").
+
+  EXAMPLES ARE SYNTHETIC: the HSDS release ships no real reference
+  dataset, and no openly licensed HSDS 3.x production feed was identified
+  for this translation (not searched exhaustively; a real feed could
+  replace these examples later). The examples are adapted from the HSDS 3.3.1 example data
+  (examples/service_full.json, CC-BY-SA 4.0): the fictitious "Example
+  Organization Inc.", its "Community Mental Health Support" program, the
+  "Community Counselling" service and the "MyCity Civic Center" location,
+  with the HSDS example uuids. Changes: deprecated fields removed,
+  placeholder values replaced ("extent", "wait_time"), coordinates
+  replaced with an illustrative in-range point, phone numbers from the UK
+  Ofcom range reserved for drama (01632 960xxx), e-mails under
+  example.org, and the names of persons (contact "Ann Persona",
+  address attention, metadata updated_by) removed. Each example says so in
+  `source`.
+
+  DUPLICATION RISK: high on Organization (dataModel.Organization,
+  dataModel.CPSV-AP PublicOrganization, dataModel.Hl7 Organization, and
+  the Organization candidates of edint-organizaciones,
+  edint-infraestructura, gs1-web-vocabulary, ocds and realestatecore).
+  Service overlaps dataModel.CPSV-AP PublicService (the EU Core Public
+  Service Vocabulary), the PublicService candidates of
+  edint-servicios-publicos and saref4city, and the Open311 services of
+  dataModel.IssueTracking. Location overlaps dataModel.PointOfInterest and
+  the Location candidates of edint-turismo and
+  simple-federated-physicalinfrastructure. HSDS's distinctive parts are
+  ServiceAtLocation and the human-service details (eligibility, fees,
+  schedules, service areas, languages, accessibility). Before promotion,
+  consider a dedicated subject (e.g. dataModel.HumanServices) and a
+  mapping to CPSV-AP.

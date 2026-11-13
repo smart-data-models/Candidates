@@ -1,0 +1,1309 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/hsds/models/Service/schema.json",
+  "modelTags": "HSDS,OpenReferral,HumanServices,SocialServices",
+  "title": "Smart Data Models - HSDS - Service",
+  "description": "The details of the services provided by organizations to a range of different groups. (Human Services Data Specification 3.3.1, object 'service': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json. Field names are kept verbatim (snake_case) except 'id' -> 'hsdsId'.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity (NGSI-LD): urn:ngsi-ld:Service:<HSDS id>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Service"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Service'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "hsdsId": {
+      "type": "string",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/id'. The identifier for the service. Each service must have a unique identifier. HSDS field 'id', renamed because 'id' is reserved in NGSI-LD.",
+      "format": "uuid"
+    },
+    "organization_id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/organization_id'. The identifier of the organization that provides this service. In HSDS this is an HSDS identifier (uuid); here it holds the URN of the Organization entity (urn:ngsi-ld:Organization:<HSDS id>)."
+    },
+    "program_id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/program_id'. The identifier of the program this service is delivered under. In HSDS this is an HSDS identifier (uuid); here it holds the URN of the Program entity (urn:ngsi-ld:Program:<HSDS id>)."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/name'. The official or public name of the service."
+    },
+    "alternate_name": {
+      "type": "string",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/alternate_name'. An (optional) alternative name for this service."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/description'. A free text description of the service."
+    },
+    "url": {
+      "type": "string",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/url'. URL of the service",
+      "format": "uri"
+    },
+    "additional_urls": {
+      "type": "array",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/additional_urls'. The details of additional URLs for the service",
+      "items": {
+        "$ref": "#/$defs/url"
+      }
+    },
+    "email": {
+      "type": "string",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/email'. An email address which can be used to contact the service provider.",
+      "format": "email"
+    },
+    "status": {
+      "type": "string",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/status'. The current status of the service which can be active, inactive, defunct, or temporarily closed.",
+      "enum": [
+        "active",
+        "inactive",
+        "defunct",
+        "temporarily closed"
+      ]
+    },
+    "interpretation_services": {
+      "type": "string",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/interpretation_services'. A free text description of any interpretation services available for accessing this service."
+    },
+    "application_process": {
+      "type": "string",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/application_process'. A free text description of the steps needed to access this service."
+    },
+    "fees_description": {
+      "type": "string",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/fees_description'. A free text description of any charges for service users to access this service."
+    },
+    "accreditations": {
+      "type": "string",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/accreditations'. A free text description of any accreditations. Accreditation is the formal evaluation of an organization or program against best practice standards set by an accrediting organization."
+    },
+    "eligibility_description": {
+      "type": "string",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/eligibility_description'. A free text description of the type of person for whom this service is intended."
+    },
+    "minimum_age": {
+      "type": "number",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/minimum_age'. The minimum age of a person required to meet this eligibility requirement. Units:'years'."
+    },
+    "maximum_age": {
+      "type": "number",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/maximum_age'. The maximum age of a person required to meet this eligibility requirement. Units:'years'."
+    },
+    "assured_date": {
+      "type": "string",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/assured_date'. The date that the information about the service was last checked. (HSDS tabular type: date.)"
+    },
+    "assurer_email": {
+      "type": "string",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/assurer_email'. The contact e-mail address for the person or organization which last assured the service.",
+      "format": "email"
+    },
+    "alert": {
+      "type": "string",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/alert'. A description of any short term alerts concerning the service."
+    },
+    "last_modified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/last_modified'. The datetime when the service, or any related information about the service, has changed. Should have millisecond accuracy. (HSDS tabular type: datetime.)"
+    },
+    "phones": {
+      "type": "array",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/phones'. The details of the telephone numbers used to contact organizations, services, and locations.",
+      "items": {
+        "$ref": "#/$defs/phone"
+      }
+    },
+    "operating_hours": {
+      "type": "array",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/operating_hours'. An array of `Schedule` objects which detail when a service operates",
+      "items": {
+        "$ref": "#/$defs/schedule"
+      }
+    },
+    "events": {
+      "type": "array",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/events'. An array of `Schedule` objects which give details of events associated with the Service. These may or may not be aligned with the Service's regular operating hours.",
+      "items": {
+        "$ref": "#/$defs/schedule"
+      }
+    },
+    "service_areas": {
+      "type": "array",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/service_areas'. The details of the geographic area for which a service is available.",
+      "items": {
+        "$ref": "#/$defs/service_area"
+      }
+    },
+    "service_at_locations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/service_at_locations'. A link between a service and a specific location. In HSDS this is embedded HSDS objects; here it holds the URN of the ServiceAtLocation entities (urn:ngsi-ld:ServiceAtLocation:<HSDS id>)."
+    },
+    "languages": {
+      "type": "array",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/languages'. The details of the languages that are spoken at locations or services. This does not include languages which can only be used with interpretation.",
+      "items": {
+        "$ref": "#/$defs/language"
+      }
+    },
+    "funding": {
+      "type": "array",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/funding'. The sources of funding for a service or organization.",
+      "items": {
+        "$ref": "#/$defs/funding"
+      }
+    },
+    "cost_options": {
+      "type": "array",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/cost_options'. The costs of a service at certain points in time. This is an LGA Extension table. This table provides a structured version of the text information contained in the 'fees' field of the 'service' table.",
+      "items": {
+        "$ref": "#/$defs/cost_option"
+      }
+    },
+    "required_documents": {
+      "type": "array",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/required_documents'. The details of any documents that are required in order to access or use services.",
+      "items": {
+        "$ref": "#/$defs/required_document"
+      }
+    },
+    "contacts": {
+      "type": "array",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/contacts'. The details of the named contacts for services and organizations.",
+      "items": {
+        "$ref": "#/$defs/contact"
+      }
+    },
+    "capacities": {
+      "type": "array",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/capacities'. The details of capacities of this service. See `service_capacity`.",
+      "items": {
+        "$ref": "#/$defs/service_capacity"
+      }
+    },
+    "attributes": {
+      "type": "array",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/attributes'. A link between a service and one or more classifications that describe the nature of the service provided.",
+      "items": {
+        "$ref": "#/$defs/attribute"
+      }
+    },
+    "metadata": {
+      "type": "array",
+      "description": "Property. Model:'https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service.json#/properties/metadata'. A record of the changes that have been made to the data in order to maintain provenance information.",
+      "items": {
+        "$ref": "#/$defs/metadata"
+      }
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "hsdsId",
+    "name",
+    "status",
+    "organization_id"
+  ],
+  "$defs": {
+    "attribute": {
+      "title": "attribute",
+      "description": "A link between a service and one or more classifications that describe the nature of the service provided. (HSDS object 'attribute': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/attribute.json)",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Identifier",
+          "description": "The identifier of the attribute entry. Each attribute entry should have a unique identifier.",
+          "format": "uuid"
+        },
+        "link_id": {
+          "type": "string",
+          "title": "Link Identifier",
+          "description": "The identifier of the entity to which this taxonomy term applies.",
+          "format": "uuid"
+        },
+        "taxonomy_term_id": {
+          "type": "string",
+          "title": "Taxonomy Term Identifier",
+          "description": "The identifier of this taxonomy term from the taxonomy table.",
+          "format": "uuid"
+        },
+        "link_type": {
+          "type": "string",
+          "title": "Link Type",
+          "description": "A code taken from an enumerated open codelist to indicate what the taxonomy term describes, e.g. the service eligibility or intended audience."
+        },
+        "link_entity": {
+          "type": "string",
+          "title": "Link Entity",
+          "description": "The table of the Link Identifier."
+        },
+        "value": {
+          "type": "string",
+          "title": "Value",
+          "description": "The value (if any) of an attribute."
+        },
+        "taxonomy_term": {
+          "title": "Taxonomy Term",
+          "description": "Each service can be categorized according to one or more taxonomy terms. The taxonomy_term object contains a list of taxonomy terms, their names, and, for hierarchical taxonomies, their structure.",
+          "$ref": "#/$defs/taxonomy_term"
+        },
+        "metadata": {
+          "type": "array",
+          "title": "Metadata",
+          "description": "A record of the changes that have been made to the data in order to maintain provenance information.",
+          "items": {
+            "$ref": "#/$defs/metadata"
+          }
+        },
+        "label": {
+          "type": "string",
+          "title": "Label",
+          "description": "A free text label of the attribute."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "contact": {
+      "title": "contact",
+      "description": "The details of the named contacts for services and organizations. (HSDS object 'contact': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/contact.json)",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Identifier",
+          "description": "The identifier for the contact. Each contact must have a unique identifier.",
+          "format": "uuid"
+        },
+        "organization_id": {
+          "type": "string",
+          "title": "Organization Identifier",
+          "description": "The identifier of the organization for which this is a contact.",
+          "format": "uuid"
+        },
+        "service_id": {
+          "type": "string",
+          "title": "Service Identifier",
+          "description": "The identifier of the service for which this is a contact.",
+          "format": "uuid"
+        },
+        "service_at_location_id": {
+          "type": "string",
+          "title": "Service At Location Identifier",
+          "format": "uuid",
+          "description": "The identifier of the ‘service at location’ entry, when this contact is specific to a service in a particular location."
+        },
+        "location_id": {
+          "type": "string",
+          "title": "Location Identifier",
+          "format": "uuid",
+          "description": "The identifier for the location of the contact."
+        },
+        "name": {
+          "type": "string",
+          "title": "Name",
+          "description": "The name of the contact."
+        },
+        "title": {
+          "type": "string",
+          "title": "Title",
+          "description": "The job title of the contact."
+        },
+        "department": {
+          "type": "string",
+          "title": "Department",
+          "description": "The department that the contact is a part of."
+        },
+        "email": {
+          "type": "string",
+          "title": "Email",
+          "description": "The email address of the contact.",
+          "format": "email"
+        },
+        "phones": {
+          "type": "array",
+          "title": "Phones",
+          "description": "The details of the telephone numbers used to contact organizations, services, and locations.",
+          "items": {
+            "$ref": "#/$defs/phone"
+          }
+        },
+        "attributes": {
+          "type": "array",
+          "title": "Attributes",
+          "description": "A link between a service and one or more classifications that describe the nature of the service provided.",
+          "items": {
+            "$ref": "#/$defs/attribute"
+          }
+        },
+        "metadata": {
+          "type": "array",
+          "title": "Metadata",
+          "description": "A record of the changes that have been made to the data in order to maintain provenance information.",
+          "items": {
+            "$ref": "#/$defs/metadata"
+          }
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "cost_option": {
+      "title": "cost_option",
+      "description": "The costs of a service at certain points in time. This is an LGA Extension. This object provides a structured version of the text information contained in the 'fees' field of the 'service' object. (HSDS object 'cost_option': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/cost_option.json)",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Identifier",
+          "description": "The identifier for the cost option. Each entry must have a unique identifier",
+          "format": "uuid"
+        },
+        "service_id": {
+          "type": "string",
+          "title": "Service Identifier",
+          "description": "The identifier of the services for which the entry describes the cost.",
+          "format": "uuid"
+        },
+        "valid_from": {
+          "type": "string",
+          "title": "Valid From",
+          "description": "The date when this price is valid from. (HSDS tabular type: date.)"
+        },
+        "valid_to": {
+          "type": "string",
+          "title": "Valid To",
+          "description": "The date when this price is valid to. (HSDS tabular type: date.)"
+        },
+        "option": {
+          "type": "string",
+          "title": "Option",
+          "description": "Conditions associated with the cost option."
+        },
+        "currency": {
+          "type": "string",
+          "title": "Currency",
+          "description": "The 3 letter currency code of this cost option (expected to be gbp by Open Referral UK)."
+        },
+        "amount": {
+          "type": "number",
+          "title": "Amount",
+          "description": "The cost of the option, expressed as an amount."
+        },
+        "amount_description": {
+          "type": "string",
+          "title": "Amount Description",
+          "description": "Specific details qualifying the cost amount."
+        },
+        "attributes": {
+          "type": "array",
+          "title": "Attributes",
+          "description": "A link between a service and one or more classifications that describe the nature of the service provided.",
+          "items": {
+            "$ref": "#/$defs/attribute"
+          }
+        },
+        "metadata": {
+          "type": "array",
+          "title": "Metadata",
+          "description": "A record of the changes that have been made to the data in order to maintain provenance information.",
+          "items": {
+            "$ref": "#/$defs/metadata"
+          }
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "funding": {
+      "title": "funding",
+      "description": "The sources of funding for a service or organization. (HSDS object 'funding': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/funding.json)",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Identifier",
+          "description": "The identifier for the funding. Each entry must have a unique identifier.",
+          "format": "uuid"
+        },
+        "organization_id": {
+          "type": "string",
+          "title": "Organization Identifier",
+          "description": "The identifier of the organization in receipt of this funding.",
+          "format": "uuid"
+        },
+        "service_id": {
+          "type": "string",
+          "title": "Service Identifier",
+          "format": "uuid",
+          "description": "The identifier of the service in receipt of this funding."
+        },
+        "source": {
+          "type": "string",
+          "title": "Source",
+          "description": "A free text description of the source of funds for this organization or service."
+        },
+        "attributes": {
+          "type": "array",
+          "title": "Attributes",
+          "description": "A link between a service and one or more classifications that describe the nature of the service provided.",
+          "items": {
+            "$ref": "#/$defs/attribute"
+          }
+        },
+        "metadata": {
+          "type": "array",
+          "title": "Metadata",
+          "description": "A record of the changes that have been made to the data in order to maintain provenance information.",
+          "items": {
+            "$ref": "#/$defs/metadata"
+          }
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "language": {
+      "title": "language",
+      "description": "The languages that are spoken at locations or services. This does not include languages which can only be used with interpretation. (HSDS object 'language': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/language.json)",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Identifier",
+          "description": "The identifier for the language. Each entry must have a unique identifier.",
+          "format": "uuid"
+        },
+        "service_id": {
+          "type": "string",
+          "title": "Service Identifier",
+          "description": "The identifier of the service for which the entry describes the languages in which services are delivered.",
+          "format": "uuid"
+        },
+        "location_id": {
+          "type": "string",
+          "title": "Location Identifier",
+          "description": "The identifier of the location for which the entry describes the languages in which services are delivered.",
+          "format": "uuid"
+        },
+        "phone_id": {
+          "type": "string",
+          "title": "Phone Identifier",
+          "format": "uuid",
+          "description": "The identifier of the phone for which the entry describes the languages in which services delivered."
+        },
+        "name": {
+          "type": "string",
+          "title": "Name",
+          "description": "The name of the language in which the service is delivered."
+        },
+        "code": {
+          "type": "string",
+          "title": "Code",
+          "description": "The ISO 639-1 or ISO 639-3 code for the language."
+        },
+        "note": {
+          "type": "string",
+          "title": "Note",
+          "description": "A free text description of any additional context or services provided for this language."
+        },
+        "attributes": {
+          "type": "array",
+          "title": "Attributes",
+          "description": "A link between a service and one or more classifications that describe the nature of the service provided.",
+          "items": {
+            "$ref": "#/$defs/attribute"
+          }
+        },
+        "metadata": {
+          "type": "array",
+          "title": "Metadata",
+          "description": "A record of the changes that have been made to the data in order to maintain provenance information.",
+          "items": {
+            "$ref": "#/$defs/metadata"
+          }
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "metadata": {
+      "title": "metadata",
+      "description": "A record of the changes that have been made to the data in order to maintain provenance information. (HSDS object 'metadata': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/metadata.json)",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Identifier",
+          "description": "The identifier for this metadata. Each entry must have a unique identifier.",
+          "format": "uuid"
+        },
+        "resource_id": {
+          "type": "string",
+          "title": "Resource Identifier",
+          "description": "The identifier of the resource (service, program, location, address, or contact) that this metadata describes.",
+          "format": "uuid"
+        },
+        "resource_type": {
+          "type": "string",
+          "title": "Resource Type",
+          "description": "The type of entity being referenced."
+        },
+        "last_action_date": {
+          "type": "string",
+          "title": "Last Action Date",
+          "description": "The date when data was changed. (HSDS tabular type: date.)"
+        },
+        "last_action_type": {
+          "type": "string",
+          "title": "Last Action Type",
+          "description": "The kind of change made to the data."
+        },
+        "field_name": {
+          "type": "string",
+          "title": "Field Name",
+          "description": "The name of field that has been modified."
+        },
+        "previous_value": {
+          "type": "string",
+          "title": "Previous Value",
+          "description": "The previous value of the field that has been modified."
+        },
+        "replacement_value": {
+          "type": "string",
+          "title": "Replacement Value",
+          "description": "The new value of the field that has been modified."
+        },
+        "updated_by": {
+          "type": "string",
+          "title": "Updated By",
+          "description": "The name of the person who modified the field."
+        }
+      },
+      "required": [
+        "id",
+        "last_action_date",
+        "last_action_type",
+        "field_name",
+        "previous_value",
+        "replacement_value",
+        "updated_by"
+      ]
+    },
+    "phone": {
+      "title": "phone",
+      "description": "The details of the telephone numbers used to contact organizations, services, and locations. (HSDS object 'phone': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/phone.json)",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Identifier",
+          "description": "The identifier for the phone number. Each entry must have a unique identifier.",
+          "format": "uuid"
+        },
+        "location_id": {
+          "type": "string",
+          "title": "Location Identifier",
+          "description": "The identifier of the location where this phone number is located.",
+          "format": "uuid"
+        },
+        "service_id": {
+          "type": "string",
+          "title": "Service Identifier",
+          "description": "The identifier of the service for which this is the phone number.",
+          "format": "uuid"
+        },
+        "organization_id": {
+          "type": "string",
+          "title": "Organization Identifier",
+          "description": "The identifier of the organization for which this is the phone number.",
+          "format": "uuid"
+        },
+        "contact_id": {
+          "type": "string",
+          "title": "Contact Identifier",
+          "description": "The identifier of the contact for which this is the phone number.",
+          "format": "uuid"
+        },
+        "service_at_location_id": {
+          "type": "string",
+          "title": "Service At Location Identifier",
+          "description": "The identifier of the ‘service at location’ table entry, when this phone number is specific to a service in a particular location.",
+          "format": "uuid"
+        },
+        "number": {
+          "type": "string",
+          "title": "Number",
+          "description": "The phone number."
+        },
+        "extension": {
+          "type": "number",
+          "title": "Extension",
+          "description": "The extension of the phone number."
+        },
+        "type": {
+          "type": "string",
+          "title": "Type",
+          "description": "Indicates the type of phone service, drawing from the RFC6350 list of types (text (for SMS), voice, fax, cell, video, pager, textphone)."
+        },
+        "description": {
+          "type": "string",
+          "title": "Description",
+          "description": "A free text description providing extra information about the phone service"
+        },
+        "languages": {
+          "type": "array",
+          "title": "Languages",
+          "description": "The details of the languages that are spoken at locations or services. This does not include languages which can only be used with interpretation.",
+          "items": {
+            "$ref": "#/$defs/language"
+          }
+        },
+        "attributes": {
+          "type": "array",
+          "title": "Attributes",
+          "description": "A link between a service and one or more classifications that describe the nature of the service provided.",
+          "items": {
+            "$ref": "#/$defs/attribute"
+          }
+        },
+        "metadata": {
+          "type": "array",
+          "title": "Metadata",
+          "description": "A record of the changes that have been made to the data in order to maintain provenance information.",
+          "items": {
+            "$ref": "#/$defs/metadata"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "number"
+      ]
+    },
+    "required_document": {
+      "title": "required_document",
+      "description": "The details of any documents that are required in order to access or use services. (HSDS object 'required_document': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/required_document.json)",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Identifier",
+          "description": "The identifier for the document. Each document must have a unique identifier.",
+          "format": "uuid"
+        },
+        "service_id": {
+          "type": "string",
+          "title": "Service Identifier",
+          "description": "The identifier of the service for which this entry describes the required document.",
+          "format": "uuid"
+        },
+        "document": {
+          "type": "string",
+          "title": "Document",
+          "description": "A free text description of the document required to apply for or receive the service."
+        },
+        "uri": {
+          "type": "string",
+          "title": "URI",
+          "description": "A web link to the document.",
+          "format": "uri"
+        },
+        "attributes": {
+          "type": "array",
+          "title": "Attributes",
+          "description": "A link between a service and one or more classifications that describe the nature of the service provided.",
+          "items": {
+            "$ref": "#/$defs/attribute"
+          }
+        },
+        "metadata": {
+          "type": "array",
+          "title": "Metadata",
+          "description": "A record of the changes that have been made to the data in order to maintain provenance information.",
+          "items": {
+            "$ref": "#/$defs/metadata"
+          }
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "schedule": {
+      "title": "schedule",
+      "description": "The details of when a service or location is open. Entries are RFC 5545 RRULES. (HSDS object 'schedule': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/schedule.json)",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Identifier",
+          "description": "The identifier for the schedule. Each entry must have a unique identifier.",
+          "format": "uuid"
+        },
+        "service_id": {
+          "type": "string",
+          "title": "Service Identifier",
+          "description": "The identifier of the service for which this is the regular schedule",
+          "format": "uuid"
+        },
+        "location_id": {
+          "type": "string",
+          "title": "Location Identifier",
+          "description": "The identifier of the location for which this is the regular schedule",
+          "format": "uuid"
+        },
+        "service_at_location_id": {
+          "type": "string",
+          "title": "Service At Location Identifier",
+          "description": "The identifier of the ‘service at location’ table entry, when this schedule is specific to a service in a particular location.",
+          "format": "uuid"
+        },
+        "valid_from": {
+          "type": "string",
+          "title": "Valid From",
+          "description": "The date from which the schedule information is valid. It must be in the ISO 8601 format of YYYY-MM-DD, (HSDS tabular type: date.)"
+        },
+        "valid_to": {
+          "type": "string",
+          "title": "Valid To",
+          "description": "The last date on which the schedule information is valid. It must be in the ISO 8601 format of YYYY-MM-DD. (HSDS tabular type: date.)"
+        },
+        "dtstart": {
+          "type": "string",
+          "title": "Date Start",
+          "description": "iCal - The date of the first event is the schedule. Necessary when using the ‘interval’ feature, optional otherwise. (HSDS tabular type: date.)"
+        },
+        "timezone": {
+          "type": "number",
+          "title": "Timezone",
+          "description": "The timezone that all dates are expressed as, expressed as a UTC offset. Dates are assumed to be UTC otherwise."
+        },
+        "until": {
+          "type": "string",
+          "title": "Until",
+          "description": "iCal - The date of the last occurrence of the recurring event. (HSDS tabular type: date.)"
+        },
+        "count": {
+          "type": "number",
+          "title": "Count",
+          "description": "iCal - The number of times that the event occurs. Use this instead of ‘until’, if appropriate."
+        },
+        "wkst": {
+          "type": "string",
+          "title": "Week Start",
+          "description": "iCal - The two-letter code for the day on which the week starts: `MO`, `TU`, `WE`, `TH`, `FR`, `FR`, `SA`, `SU`",
+          "enum": [
+            "MO",
+            "TU",
+            "WE",
+            "TH",
+            "FR",
+            "SA",
+            "SU"
+          ]
+        },
+        "freq": {
+          "type": "string",
+          "title": "Frequency",
+          "description": "iCal - How often the frequency repeats. Values can be `WEEKLY` or `MONTHLY`",
+          "enum": [
+            "WEEKLY",
+            "MONTHLY"
+          ]
+        },
+        "interval": {
+          "type": "number",
+          "title": "Interval",
+          "description": "iCal - How often the frequency repeats. For example, and Interval of 2 for a WEEKLY Frequency would represent fortnightly."
+        },
+        "byday": {
+          "type": "string",
+          "title": "By Day",
+          "description": "iCal - Comma separated days of the week. Where freq is MONTHLY each part can be preceded by a positive or negative integer to represent which occurrence in a month; e.g. 2MO is the second Monday in a month. -1FR is the last Friday"
+        },
+        "byweekno": {
+          "type": "string",
+          "title": "By Week Number",
+          "description": "iCal - Comma separated numeric weeks of the year, where freq is WEEKLY. Can be negative to represent weeks before the end of the year; e.g. -5 is the 5th to last week in a year."
+        },
+        "bymonthday": {
+          "type": "string",
+          "title": "By Month Day",
+          "description": "iCal - Comma separated numeric days of the month, where frequency is MONTHLY. Can be negative to represent days before the end of the month; e.g. -5 is the 5th to last day in a month."
+        },
+        "byyearday": {
+          "type": "string",
+          "title": "By Year Day",
+          "description": "iCal - Comma separated numeric days of the month, where frequency is YEARLY. Can be negative to represent days before the end of the year; e.g. -1 is the last day in a year."
+        },
+        "description": {
+          "type": "string",
+          "title": "Description",
+          "description": "A free text description of the availability of the service."
+        },
+        "opens_at": {
+          "type": "string",
+          "title": "Opens At",
+          "description": "The time when a service or location opens. This should use HH:MM format and should include timezone information, either adding the suffix ‘Z’ when the date is in UTC, or including an offset from UTC (e.g. 09:00-05:00 for 9am EST.) (HSDS tabular type: time.)"
+        },
+        "closes_at": {
+          "type": "string",
+          "title": "Closes At",
+          "description": "The time when a service or location closes. This should use HH:MM format and should include timezone information, either adding the suffix ‘Z’ when the date is in UTC, or including an offset from UTC (e.g. 09:00-05:00 for 9am EST.). (HSDS tabular type: time.)"
+        },
+        "schedule_link": {
+          "type": "string",
+          "title": "Schedule Link",
+          "description": "URL of a link for the schedule which may show each individual session and may provide a booking facility.",
+          "format": "uri"
+        },
+        "attending_type": {
+          "type": "string",
+          "title": "Attending Type",
+          "description": "A free text description of how to attend this service."
+        },
+        "notes": {
+          "type": "string",
+          "title": "Notes",
+          "description": "Free text notes on the schedule."
+        },
+        "group": {
+          "type": "string",
+          "title": "Group",
+          "description": "A string label acting as a group identifier, allowing different schedules to be grouped together. For example, two schedules with the group `regular-hours` would be grouped separately from two schedules with the label `holiday-schedule`. The value of this field does not need to be readable or meaningful to humans, but it is recommended to make it so."
+        },
+        "attributes": {
+          "type": "array",
+          "title": "Attributes",
+          "description": "A link between a service and one or more classifications that describe the nature of the service provided.",
+          "items": {
+            "$ref": "#/$defs/attribute"
+          }
+        },
+        "metadata": {
+          "type": "array",
+          "title": "Metadata",
+          "description": "A record of the changes that have been made to the data in order to maintain provenance information.",
+          "items": {
+            "$ref": "#/$defs/metadata"
+          }
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "service_area": {
+      "title": "service_area",
+      "description": "The details of the geographic area for which a service is available. (HSDS object 'service_area': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service_area.json)",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Identifier",
+          "description": "The identifier for the service area. Each service area must have a unique identifier.",
+          "format": "uuid"
+        },
+        "service_id": {
+          "type": "string",
+          "title": "Service Identifier",
+          "description": "The identifier of the service for which this entry describes the service area",
+          "format": "uuid"
+        },
+        "service_at_location_id": {
+          "type": "string",
+          "title": "Service At Location Identifier",
+          "description": "The identifier of the service at location object linked to this object.",
+          "format": "uuid"
+        },
+        "name": {
+          "type": "string",
+          "title": "Name",
+          "description": "A free text geographic area where a service is available."
+        },
+        "description": {
+          "type": "string",
+          "title": "Description",
+          "description": "A more detailed free text description of this service area. Used to provide any additional information that cannot be communicated using the structured area and geometry fields."
+        },
+        "extent": {
+          "type": "string",
+          "title": "Extent",
+          "description": "A definition of the polygon defining the area."
+        },
+        "extent_type": {
+          "type": "string",
+          "title": "Extent Type",
+          "description": "The format of the extent field populated from an enum of \"geojson\", \"topojson\", \"kml\",and (for legacy systems or early state during transformation) \"text\"."
+        },
+        "uri": {
+          "type": "string",
+          "title": "URI",
+          "description": "A URI which acts as a persistent identifier to identify an area."
+        },
+        "attributes": {
+          "type": "array",
+          "title": "Attributes",
+          "description": "A link between a service and one or more classifications that describe the nature of the service provided.",
+          "items": {
+            "$ref": "#/$defs/attribute"
+          }
+        },
+        "metadata": {
+          "type": "array",
+          "title": "Metadata",
+          "description": "A record of the changes that have been made to the data in order to maintain provenance information.",
+          "items": {
+            "$ref": "#/$defs/metadata"
+          }
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "service_capacity": {
+      "title": "service_capacity",
+      "description": "The details of service capacities for services. (HSDS object 'service_capacity': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/service_capacity.json)",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Identifier",
+          "type": "string",
+          "format": "uuid",
+          "description": "The identifier for the service_capacity object. Each service_capacity must have a unique identifier."
+        },
+        "service_id": {
+          "title": "Service Identifier",
+          "type": "string",
+          "format": "uuid",
+          "description": "The identifier for the Service object associated with this service capacity object. Only required in the tabular representation."
+        },
+        "unit": {
+          "$ref": "#/$defs/unit"
+        },
+        "unit_id": {
+          "title": "Unit ID",
+          "type": "string",
+          "format": "uuid",
+          "description": "The identifier for the unit object."
+        },
+        "available": {
+          "title": "Available",
+          "type": "number",
+          "description": "The number of units available as of the last update."
+        },
+        "maximum": {
+          "title": "Maximum",
+          "type": "number",
+          "description": "The maximum number of units that can be available for this service, if applicable"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string",
+          "description": "A Human-Friendly description of this service capacity e.g. “Beds available for people experiencing homelessness”"
+        },
+        "updated": {
+          "title": "Date Updated",
+          "type": "string",
+          "format": "date-time",
+          "description": "The datetime when this service_capacit y object was last updated or changed. Should have millisecond accuracy. (HSDS tabular type: datetime.)"
+        },
+        "attributes": {
+          "type": "array",
+          "title": "Attributes",
+          "description": "A link between a service and one or more classifications that describe the nature of the service provided.",
+          "items": {
+            "$ref": "#/$defs/attribute"
+          }
+        },
+        "metadata": {
+          "type": "array",
+          "title": "Metadata",
+          "description": "A record of the changes that have been made to the data in order to maintain provenance information.",
+          "items": {
+            "$ref": "#/$defs/metadata"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "unit",
+        "available",
+        "updated"
+      ]
+    },
+    "taxonomy": {
+      "title": "taxonomy",
+      "description": "The taxonomies from which taxonomy terms are taken. (HSDS object 'taxonomy': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/taxonomy.json)",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Identifier",
+          "description": "The identifier of the taxonomy. Each entry must have a unique identifier",
+          "format": "uuid"
+        },
+        "name": {
+          "type": "string",
+          "title": "Name",
+          "description": "The name of the taxonomy from which terms are sourced."
+        },
+        "description": {
+          "type": "string",
+          "title": "Description",
+          "description": "A free text description of the taxonomy."
+        },
+        "uri": {
+          "type": "string",
+          "title": "URI",
+          "description": "The URI of the taxonomy.",
+          "format": "uri"
+        },
+        "version": {
+          "type": "string",
+          "title": "Version",
+          "description": "The version of the taxonomy."
+        },
+        "metadata": {
+          "type": "array",
+          "title": "Metadata",
+          "description": "A record of the changes that have been made to the data in order to maintain provenance information.",
+          "items": {
+            "$ref": "#/$defs/metadata"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description"
+      ]
+    },
+    "taxonomy_term": {
+      "title": "taxonomy_term",
+      "description": "Each service can be categorized according to one or more taxonomy terms. The taxonomy_term object contains a list of taxonomy terms, their names, and, for hierarchical taxonomies, their structure. (HSDS object 'taxonomy_term': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/taxonomy_term.json)",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Identifier",
+          "description": "The identifier for this taxonomy term. Each taxonomy term must have a unique identifier, within the scope of the dataset.",
+          "format": "uuid"
+        },
+        "code": {
+          "type": "string",
+          "title": "Code",
+          "description": "The term identfier as used in the taxonomy. This and the taxonomy_id combined define the term."
+        },
+        "name": {
+          "type": "string",
+          "title": "Name",
+          "description": "The taxonomy term itself."
+        },
+        "description": {
+          "type": "string",
+          "title": "Description",
+          "description": "A free text description of the term."
+        },
+        "parent_id": {
+          "type": "string",
+          "title": "Parent Identifier",
+          "description": "If this is a child term in a hierarchical taxonomy, give the identifier of the parent category. For top-level categories, this is not required.",
+          "format": "uuid"
+        },
+        "taxonomy": {
+          "type": "string",
+          "title": "Taxonomy",
+          "description": "If this is an established taxonomy, a free text description of which taxonomy is in use. If possible, provide a URI."
+        },
+        "taxonomy_detail": {
+          "title": "Taxonomy",
+          "description": "Taxonomies from which taxonomy terms are taken",
+          "$ref": "#/$defs/taxonomy"
+        },
+        "language": {
+          "type": "string",
+          "title": "Language",
+          "description": "An ISO 639-1, ISO 639-2, or ISO 639-3 [language code](http://www.loc.gov/standards/iso639-2/php/code_list.php) to represent the language of the term. The three-letter codes from ISO 639-2 and ISO 639-3 provide greater accuracy when describing variants of languages, which may be relevant to particular communities."
+        },
+        "taxonomy_id": {
+          "type": "string",
+          "title": "Taxonomy Identifier",
+          "description": "The identifier of the taxonomy containing the term.",
+          "format": "uuid"
+        },
+        "term_uri": {
+          "type": "string",
+          "title": "Term URI",
+          "description": "URI of the term.",
+          "format": "uri"
+        },
+        "metadata": {
+          "type": "array",
+          "title": "Metadata",
+          "description": "A record of the changes that have been made to the data in order to maintain provenance information.",
+          "items": {
+            "$ref": "#/$defs/metadata"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description"
+      ]
+    },
+    "unit": {
+      "title": "unit",
+      "description": "The details of units which are used to measure service capacity. (HSDS object 'unit': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/unit.json)",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "title": "Identifier",
+          "description": "The identifier for the unit object. Each unit must have a unique identifier."
+        },
+        "name": {
+          "type": "string",
+          "title": "Name",
+          "description": "The human-readable name for this unit e.g. “Bed” or “Hours”"
+        },
+        "scheme": {
+          "type": "string",
+          "title": "Scheme",
+          "description": "The scheme which formalizes the unit, if applicable e.g. “SI” for Standard International Units such as Kilogram, Litre, etc."
+        },
+        "identifier": {
+          "type": "string",
+          "title": "Unit Identifier",
+          "description": "The identifier of the unit taken from the scheme if applicable e.g. `kgm` for Kilogram."
+        },
+        "uri": {
+          "type": "string",
+          "format": "uri",
+          "title": "URI",
+          "description": "The URI to the definition of the unit, if applicable"
+        },
+        "attributes": {
+          "type": "array",
+          "title": "Attributes",
+          "description": "A link between a service and one or more classifications that describe the nature of the service provided.",
+          "items": {
+            "$ref": "#/$defs/attribute"
+          }
+        },
+        "metadata": {
+          "type": "array",
+          "title": "Metadata",
+          "description": "A record of the changes that have been made to the data in order to maintain provenance information.",
+          "items": {
+            "$ref": "#/$defs/metadata"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "url": {
+      "title": "url",
+      "description": "A URL with a label (HSDS object 'url': https://raw.githubusercontent.com/openreferral/specification/v3.3.1/schema/url.json)",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Identifier",
+          "description": "The identifier for the URL object. Each URL must have a unique identifier.",
+          "format": "uuid"
+        },
+        "label": {
+          "type": "string",
+          "title": "Label",
+          "description": "The human-readable label for this url e.g. “Twitter” or “Website”."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "title": "URL",
+          "description": "The URL for this URL object. This must be formatted as a valid URI."
+        },
+        "organization_id": {
+          "type": "string",
+          "format": "uuid",
+          "title": "Organization Identifier",
+          "description": "The identifier for the organization associated with this URL object"
+        },
+        "service_id": {
+          "type": "string",
+          "format": "uuid",
+          "title": "Service Identifier",
+          "description": "The identifier for the service associated with this URL object"
+        },
+        "attributes": {
+          "type": "array",
+          "title": "Attributes",
+          "description": "A link between a service and one or more classifications that describe the nature of the service provided.",
+          "items": {
+            "$ref": "#/$defs/attribute"
+          }
+        },
+        "metadata": {
+          "type": "array",
+          "title": "Metadata",
+          "description": "A record of the changes that have been made to the data in order to maintain provenance information.",
+          "items": {
+            "$ref": "#/$defs/metadata"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "url"
+      ]
+    }
+  }
+}
