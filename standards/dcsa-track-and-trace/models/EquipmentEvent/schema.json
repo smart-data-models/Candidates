@@ -1,0 +1,714 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/dcsa-track-and-trace/models/EquipmentEvent/schema.json",
+  "modelTags": "DCSA,TrackAndTrace,ContainerShipping,Logistics,Maritime",
+  "title": "Smart Data Models - DCSA Track & Trace - EquipmentEvent",
+  "description": "The equipment event entity is a specialization of the event entity to support specification of data that only applies to an equipment event. (DCSA Track & Trace 2.2.0, OpenAPI component equipmentEvent; field names kept verbatim; deprecated fields left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:EquipmentEvent:<eventID>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "EquipmentEvent"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'EquipmentEvent'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "eventID": {
+      "type": "string",
+      "description": "Property. Model:'https://api.swaggerhub.com/apis/dcsaorg/DCSA_TNT/2.2.0#/components/schemas/eventID'. The unique identifier for the event (the message - not the source). NB: This field should be considered Metadata",
+      "format": "uuid",
+      "examples": [
+        "3cecb101-7a1a-43a4-9d62-e88a131651e2"
+      ]
+    },
+    "eventCreatedDateTime": {
+      "type": "string",
+      "description": "Property. Model:'https://api.swaggerhub.com/apis/dcsaorg/DCSA_TNT/2.2.0#/components/schemas/eventCreatedDateTime'. The timestamp of when the event was created. NB: This field should be considered Metadata",
+      "format": "date-time",
+      "examples": [
+        "2021-01-09T14:12:56+01:00"
+      ]
+    },
+    "eventType": {
+      "type": "string",
+      "description": "Property. Model:'https://api.swaggerhub.com/apis/dcsaorg/DCSA_TNT/2.2.0#/components/schemas/eventType'. The Event Type of the object - to be used as a discriminator. NB: This field should be considered Metadata",
+      "examples": [
+        "EQUIPMENT"
+      ],
+      "enum": [
+        "EQUIPMENT"
+      ]
+    },
+    "eventClassifierCode": {
+      "type": "string",
+      "description": "Property. Model:'https://api.swaggerhub.com/apis/dcsaorg/DCSA_TNT/2.2.0#/components/schemas/eventClassifierCode'. Code for the event classifier can be - PLN (Planned) - ACT (Actual) - EST (Estimated)",
+      "examples": [
+        "EST"
+      ],
+      "enum": [
+        "PLN",
+        "ACT",
+        "EST"
+      ]
+    },
+    "eventDateTime": {
+      "type": "string",
+      "description": "Property. Model:'https://api.swaggerhub.com/apis/dcsaorg/DCSA_TNT/2.2.0#/components/schemas/eventDateTime'. The local date and time, where the event took place or when the event will take place, in ISO 8601 format.",
+      "format": "date-time",
+      "examples": [
+        "2019-11-12T07:41:00+08:30"
+      ]
+    },
+    "equipmentEventTypeCode": {
+      "type": "string",
+      "description": "Property. Model:'https://api.swaggerhub.com/apis/dcsaorg/DCSA_TNT/2.2.0#/components/schemas/equipmentEventTypeCode'. Unique identifier for equipmentEventTypeCode. - LOAD (Loaded) - DISC (Discharged) - GTIN (Gated in) - GTOT (Gated out) - STUF (Stuffed) - STRP (Stripped) - PICK (Pick-up) - DROP (Drop-off) - INSP (Inspected) - RSEA (Resealed) - RMVD (Removed) More details can be found on GitHub",
+      "examples": [
+        "LOAD"
+      ],
+      "enum": [
+        "LOAD",
+        "DISC",
+        "GTIN",
+        "GTOT",
+        "STUF",
+        "STRP",
+        "PICK",
+        "DROP",
+        "INSP",
+        "RSEA",
+        "RMVD"
+      ]
+    },
+    "equipmentReference": {
+      "maxLength": 15,
+      "type": "string",
+      "description": "Property. Model:'https://api.swaggerhub.com/apis/dcsaorg/DCSA_TNT/2.2.0#/components/schemas/equipmentReference'. The unique identifier for the equipment, which should follow the BIC ISO Container Identification Number where possible. According to ISO 6346, a container identification code consists of a 4-letter prefix and a 7-digit number (composed of a 3-letter owner code, a category identifier, a serial number, and a check-digit). If a container does not comply with ISO 6346, it is suggested to follow Recommendation #2 “Container with non-ISO identification” from SMDG.",
+      "examples": [
+        "APZU4812090"
+      ]
+    },
+    "ISOEquipmentCode": {
+      "maxLength": 4,
+      "type": "string",
+      "description": "Property. Model:'https://api.swaggerhub.com/apis/dcsaorg/DCSA_TNT/2.2.0#/components/schemas/ISOEquipmentCode'. Unique code for the different equipment size/type used for transporting commodities. The code is a concatenation of ISO Equipment Size Code and ISO Equipment Type Code A and follows the ISO 6346 standard.",
+      "examples": [
+        "22GP"
+      ]
+    },
+    "emptyIndicatorCode": {
+      "type": "string",
+      "description": "Property. Model:'https://api.swaggerhub.com/apis/dcsaorg/DCSA_TNT/2.2.0#/components/schemas/emptyIndicatorCode'. Code to denote whether the equipment is empty or laden.",
+      "examples": [
+        "EMPTY"
+      ],
+      "enum": [
+        "EMPTY",
+        "LADEN"
+      ]
+    },
+    "eventLocation": {
+      "type": "object",
+      "properties": {
+        "locationName": {
+          "maxLength": 100,
+          "type": "string",
+          "description": "The name of the location.",
+          "examples": [
+            "Eiffel Tower"
+          ]
+        },
+        "latitude": {
+          "maxLength": 10,
+          "type": "string",
+          "description": "Geographic coordinate that specifies the north–south position of a point on the Earth's surface.",
+          "examples": [
+            "48.8585500"
+          ]
+        },
+        "longitude": {
+          "maxLength": 11,
+          "type": "string",
+          "description": "Geographic coordinate that specifies the east–west position of a point on the Earth's surface.",
+          "examples": [
+            "2.294492036"
+          ]
+        },
+        "UNLocationCode": {
+          "maxLength": 5,
+          "type": "string",
+          "description": "The UN Location code specifying where the place is located.",
+          "examples": [
+            "FRPAR"
+          ]
+        },
+        "facilityCode": {
+          "maxLength": 6,
+          "type": "string",
+          "description": "The code used for identifying the specific facility. This code does not include the UN Location Code.",
+          "examples": [
+            "ADT"
+          ]
+        },
+        "facilityCodeListProvider": {
+          "type": "string",
+          "description": "The provider used for identifying the facility Code",
+          "examples": [
+            "SMDG"
+          ],
+          "enum": [
+            "BIC",
+            "SMDG"
+          ]
+        },
+        "address": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "maxLength": 100,
+              "type": "string",
+              "description": "Name of the address",
+              "examples": [
+                "Henrik"
+              ]
+            },
+            "street": {
+              "maxLength": 100,
+              "type": "string",
+              "description": "The name of the street of the party’s address.",
+              "examples": [
+                "Kronprincessegade"
+              ]
+            },
+            "streetNumber": {
+              "maxLength": 50,
+              "type": "string",
+              "description": "The number of the street of the party’s address.",
+              "examples": [
+                "54"
+              ]
+            },
+            "floor": {
+              "maxLength": 50,
+              "type": "string",
+              "description": "The floor of the party’s street number.",
+              "examples": [
+                "5. sal"
+              ]
+            },
+            "postCode": {
+              "maxLength": 10,
+              "type": "string",
+              "description": "The post code of the party’s address.",
+              "examples": [
+                "1306"
+              ]
+            },
+            "city": {
+              "maxLength": 65,
+              "type": "string",
+              "description": "The city name of the party’s address.",
+              "examples": [
+                "København"
+              ]
+            },
+            "stateRegion": {
+              "maxLength": 65,
+              "type": "string",
+              "description": "The state/region of the party’s address.",
+              "examples": [
+                "N/A"
+              ]
+            },
+            "country": {
+              "maxLength": 75,
+              "type": "string",
+              "description": "The country of the party’s address.",
+              "examples": [
+                "Denmark"
+              ]
+            }
+          },
+          "description": "Address related information"
+        }
+      },
+      "description": "Property. Model:'https://api.swaggerhub.com/apis/dcsaorg/DCSA_TNT/2.2.0#/components/schemas/equipmentEvent/properties/eventLocation'. generally used to capture location-related data, also for locations without UN Location Codes."
+    },
+    "transportCall": {
+      "type": "object",
+      "properties": {
+        "transportCallID": {
+          "maxLength": 100,
+          "type": "string",
+          "description": "The unique identifier for a transport call",
+          "examples": [
+            "123e4567-e89b-12d3-a456-426614174000"
+          ]
+        },
+        "carrierServiceCode": {
+          "maxLength": 5,
+          "type": "string",
+          "description": "The code of the service for which the schedule details are published.",
+          "examples": [
+            "FE1"
+          ]
+        },
+        "exportVoyageNumber": {
+          "maxLength": 50,
+          "type": "string",
+          "description": "The vessel operator-specific identifier of the export Voyage.",
+          "examples": [
+            "2103S"
+          ]
+        },
+        "importVoyageNumber": {
+          "maxLength": 50,
+          "type": "string",
+          "description": "The vessel operator-specific identifier of the import Voyage.",
+          "examples": [
+            "2103N"
+          ]
+        },
+        "transportCallSequenceNumber": {
+          "type": "integer",
+          "description": "Transport operator's key that uniquely identifies each individual call. This key is essential to distinguish between two separate calls at the same location within one voyage.",
+          "examples": [
+            2
+          ]
+        },
+        "UNLocationCode": {
+          "maxLength": 5,
+          "type": "string",
+          "description": "The UN Location code specifying where the place is located.",
+          "examples": [
+            "FRPAR"
+          ]
+        },
+        "facilityCode": {
+          "maxLength": 6,
+          "type": "string",
+          "description": "The code used for identifying the specific facility. This code does not include the UN Location Code.",
+          "examples": [
+            "ADT"
+          ]
+        },
+        "facilityCodeListProvider": {
+          "type": "string",
+          "description": "The provider used for identifying the facility Code",
+          "examples": [
+            "SMDG"
+          ],
+          "enum": [
+            "BIC",
+            "SMDG"
+          ]
+        },
+        "facilityTypeCode": {
+          "type": "string",
+          "description": "A specialized version of the facilityCode to be used in TransportCalls. The code to identify the specific type of facility. - BOCR (Border crossing) - CLOC (Customer location) - COFS (Container freight station) - COYA (Deprecated - use OFFD intead) - OFFD (Off dock storage) - DEPO (Depot) - INTE (Inland terminal) - POTE (Port terminal) - RAMP (Ramp)",
+          "examples": [
+            "POTE"
+          ],
+          "enum": [
+            "BOCR",
+            "CLOC",
+            "COFS",
+            "COYA",
+            "OFFD",
+            "DEPO",
+            "INTE",
+            "POTE",
+            "RAMP"
+          ]
+        },
+        "otherFacility": {
+          "maxLength": 50,
+          "type": "string",
+          "description": "An alternative way to capture the facility when no standardized DCSA facility code can be found.",
+          "examples": [
+            "Depot location or address"
+          ]
+        },
+        "modeOfTransport": {
+          "type": "string",
+          "description": "The mode of transport as defined by DCSA.",
+          "enum": [
+            "VESSEL",
+            "RAIL",
+            "TRUCK",
+            "BARGE"
+          ]
+        },
+        "location": {
+          "type": "object",
+          "properties": {
+            "locationName": {
+              "maxLength": 100,
+              "type": "string",
+              "description": "The name of the location.",
+              "examples": [
+                "Eiffel Tower"
+              ]
+            },
+            "latitude": {
+              "maxLength": 10,
+              "type": "string",
+              "description": "Geographic coordinate that specifies the north–south position of a point on the Earth's surface.",
+              "examples": [
+                "48.8585500"
+              ]
+            },
+            "longitude": {
+              "maxLength": 11,
+              "type": "string",
+              "description": "Geographic coordinate that specifies the east–west position of a point on the Earth's surface.",
+              "examples": [
+                "2.294492036"
+              ]
+            },
+            "UNLocationCode": {
+              "maxLength": 5,
+              "type": "string",
+              "description": "The UN Location code specifying where the place is located.",
+              "examples": [
+                "FRPAR"
+              ]
+            },
+            "facilityCode": {
+              "maxLength": 6,
+              "type": "string",
+              "description": "The code used for identifying the specific facility. This code does not include the UN Location Code.",
+              "examples": [
+                "ADT"
+              ]
+            },
+            "facilityCodeListProvider": {
+              "type": "string",
+              "description": "The provider used for identifying the facility Code",
+              "examples": [
+                "SMDG"
+              ],
+              "enum": [
+                "BIC",
+                "SMDG"
+              ]
+            },
+            "address": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "maxLength": 100,
+                  "type": "string",
+                  "description": "Name of the address",
+                  "examples": [
+                    "Henrik"
+                  ]
+                },
+                "street": {
+                  "maxLength": 100,
+                  "type": "string",
+                  "description": "The name of the street of the party’s address.",
+                  "examples": [
+                    "Kronprincessegade"
+                  ]
+                },
+                "streetNumber": {
+                  "maxLength": 50,
+                  "type": "string",
+                  "description": "The number of the street of the party’s address.",
+                  "examples": [
+                    "54"
+                  ]
+                },
+                "floor": {
+                  "maxLength": 50,
+                  "type": "string",
+                  "description": "The floor of the party’s street number.",
+                  "examples": [
+                    "5. sal"
+                  ]
+                },
+                "postCode": {
+                  "maxLength": 10,
+                  "type": "string",
+                  "description": "The post code of the party’s address.",
+                  "examples": [
+                    "1306"
+                  ]
+                },
+                "city": {
+                  "maxLength": 65,
+                  "type": "string",
+                  "description": "The city name of the party’s address.",
+                  "examples": [
+                    "København"
+                  ]
+                },
+                "stateRegion": {
+                  "maxLength": 65,
+                  "type": "string",
+                  "description": "The state/region of the party’s address.",
+                  "examples": [
+                    "N/A"
+                  ]
+                },
+                "country": {
+                  "maxLength": 75,
+                  "type": "string",
+                  "description": "The country of the party’s address.",
+                  "examples": [
+                    "Denmark"
+                  ]
+                }
+              },
+              "description": "Address related information"
+            }
+          },
+          "description": "Location of the facility. Can often be omitted when it is just repeating the contents of the UNLocationCode field.",
+          "examples": [
+            null
+          ]
+        },
+        "vessel": {
+          "type": "object",
+          "properties": {
+            "vesselIMONumber": {
+              "maxLength": 7,
+              "type": "string",
+              "description": "The unique reference for a registered Vessel. The reference is the International Maritime Organisation (IMO) number, also sometimes known as the Lloyd's register code, which does not change during the lifetime of the vessel",
+              "examples": [
+                "9321483"
+              ]
+            },
+            "vesselName": {
+              "maxLength": 35,
+              "type": "string",
+              "description": "The name of the Vessel given by the Vessel Operator and registered with IMO.",
+              "examples": [
+                "King of the Seas"
+              ]
+            },
+            "vesselFlag": {
+              "maxLength": 2,
+              "type": "string",
+              "description": "The flag of the nation whose laws the vessel is registered under. This is the ISO 3166 two-letter country code",
+              "examples": [
+                "DE"
+              ]
+            },
+            "vesselCallSignNumber": {
+              "maxLength": 10,
+              "type": "string",
+              "description": "A unique alphanumeric identity that belongs to the vessel and is assigned by the International Telecommunication Union (ITU). It consists of a threeletter alphanumeric prefix that indicates nationality, followed by one to four characters to identify the individual vessel. For instance, vessels registered under Denmark are assigned the prefix ranges 5PA-5QZ, OUAOZZ, and XPA-XPZ. The Call Sign changes whenever a vessel changes its flag.",
+              "examples": [
+                "NCVV"
+              ]
+            },
+            "vesselOperatorCarrierCode": {
+              "maxLength": 10,
+              "type": "string",
+              "description": "The carrier who is in charge of the vessel operation based on either the SMDG or SCAC code lists",
+              "examples": [
+                "MAEU"
+              ]
+            },
+            "vesselOperatorCarrierCodeListProvider": {
+              "type": "string",
+              "description": "Identifies the code list provider used for the operator and partner carriercodes.",
+              "examples": [
+                "NMFTA"
+              ],
+              "enum": [
+                "SMDG",
+                "NMFTA"
+              ]
+            }
+          },
+          "required": [
+            "vesselIMONumber"
+          ],
+          "description": "describes a floating, sea going structure (mother vessels and feeder vessels) with either an internal or external mode of propulsion designed for the transport of cargo and/or passengers. Ocean vessels are uniquely identified by an IMO number consisting of 7 digits, or alternatively by their AIS signal with an MMSI number."
+        }
+      },
+      "required": [
+        "modeOfTransport",
+        "transportCallID"
+      ],
+      "description": "Property. Model:'https://api.swaggerhub.com/apis/dcsaorg/DCSA_TNT/2.2.0#/components/schemas/transportCall'. "
+    },
+    "documentReferences": {
+      "type": "array",
+      "description": "Property. Model:'https://api.swaggerhub.com/apis/dcsaorg/DCSA_TNT/2.2.0#/components/schemas/documentReferences'. An optional list of key-value (documentReferenceType-documentReferenceValue) pairs representing links to objects relevant to the event. The documentReferenceType-field is used to describe where the documentReferenceValue-field is pointing to.",
+      "examples": [
+        [
+          {
+            "documentReferenceType": "BKG",
+            "documentReferenceValue": "ABC123123123"
+          },
+          {
+            "documentReferenceType": "TRD",
+            "documentReferenceValue": "85943567-eedb-98d3-f4ed-aed697474ed4"
+          }
+        ]
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "documentReferenceType": {
+            "type": "string",
+            "description": "Describes where the documentReferenceValue is pointing to (BKG = Booking, TRD = Transport Document.)",
+            "examples": [
+              "BKG"
+            ],
+            "enum": [
+              "BKG",
+              "TRD"
+            ]
+          },
+          "documentReferenceValue": {
+            "type": "string",
+            "description": "The value of the identifier the documentReferenceType is describing",
+            "examples": [
+              "123e4567-e89b-12d3-a456-426614174000"
+            ]
+          }
+        }
+      }
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "referenceType": {
+            "type": "string",
+            "description": "The reference type codes defined by DCSA. - FF (Freight Forwarder’s Reference) - SI (Shipper’s Reference) - PO (Purchase Order Reference) - CR (Customer’s Reference) - AAO (Consignee’s Reference) - EQ (Equipment Reference)",
+            "examples": [
+              "FF"
+            ],
+            "enum": [
+              "FF",
+              "SI",
+              "PO",
+              "CR",
+              "AAO",
+              "EQ"
+            ]
+          },
+          "referenceValue": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "The actual value of the reference."
+          }
+        },
+        "required": [
+          "referenceType",
+          "referenceValue"
+        ],
+        "description": "references provided by the shipper or freight forwarder at the time of booking or at the time of providing shipping instruction. Carriers share it back when providing track and trace event updates, some are also printed on the B/L. Customers can use these references to track shipments in their internal systems."
+      },
+      "description": "Property. Model:'https://api.swaggerhub.com/apis/dcsaorg/DCSA_TNT/2.2.0#/components/schemas/references'. "
+    },
+    "seals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sealNumber": {
+            "maxLength": 15,
+            "type": "string",
+            "description": "Identifies a seal affixed to the container."
+          },
+          "sealSource": {
+            "type": "string",
+            "description": "The source of the seal, namely who has affixed the seal. This attribute links to the Seal Source ID defined in the Seal Source reference data entity. - CAR (Carrier) - SHI (Shipper) - PHY (Phytosanitary) - VET (Veterinary) - CUS (Customs)",
+            "examples": [
+              "CUS"
+            ],
+            "enum": [
+              "CAR",
+              "SHI",
+              "PHY",
+              "VET",
+              "CUS"
+            ]
+          },
+          "sealType": {
+            "type": "string",
+            "description": "The type of seal. This attribute links to the Seal Type ID defined in the Seal Type reference data entity. - KLP (Keyless padlock) - BLT (Bolt) - WIR (Wire)",
+            "examples": [
+              "WIR"
+            ],
+            "enum": [
+              "KLP",
+              "BLT",
+              "WIR"
+            ]
+          }
+        },
+        "required": [
+          "sealNumber",
+          "sealType"
+        ],
+        "description": "addresses the seal-related information associated with the shipment equipment. A seal is put on a shipment equipment once it is loaded. This seal is meant to stay on until the shipment equipment reaches its final destination."
+      },
+      "description": "Property. Model:'https://api.swaggerhub.com/apis/dcsaorg/DCSA_TNT/2.2.0#/components/schemas/seals'. "
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. Not a DCSA field (Smart Data Models addition): a GeoJSON Point built from the latitude/longitude strings of the DCSA location of the event (eventLocation, or transportCall.location), so that NGSI-LD geo-queries work. The DCSA object is kept unchanged.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "eventClassifierCode",
+    "eventDateTime",
+    "eventType",
+    "eventCreatedDateTime",
+    "emptyIndicatorCode",
+    "equipmentEventTypeCode"
+  ]
+}

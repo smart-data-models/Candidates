@@ -1,0 +1,111 @@
+title: "DCSA Track & Trace (Digital Container Shipping Association)"
+publisher: "Digital Container Shipping Association (DCSA)"
+sourceUrl: "https://app.swaggerhub.com/apis/dcsaorg/DCSA_TNT/2.2.0"
+specificationUrl: "https://dcsa.org/standards/track-and-trace"
+contact: "info@dcsa.org"
+sourceOntologyVersion: "Track & Trace 2.2.0 (OpenAPI, SwaggerHub dcsaorg/DCSA_TNT/2.2.0), DCSA Information Model 3.3"
+sourceOntologyDownload: "https://api.swaggerhub.com/apis/dcsaorg/DCSA_TNT/2.2.0?resolved=true"
+sourceOntologyNamespace: "https://api.swaggerhub.com/apis/dcsaorg/DCSA_TNT/2.2.0#/components/schemas/"
+sourceOntologyFormat: "OpenAPI 3.0 specification (JSON/YAML); no RDF vocabulary"
+domains:
+  - SmartLogistics
+  - Transportation
+description: >
+  DCSA, the association of the major container carriers, publishes open
+  digital standards for container shipping (Track & Trace, Booking,
+  electronic Bill of Lading, Operational Vessel Schedules, Commercial
+  Schedules, Just-in-Time Port Call, ...). Track & Trace defines the
+  events that carriers publish about a container shipment: shipment events
+  (status of a booking or transport document), transport events (arrival
+  and departure of a vessel, barge, rail or truck at a transport call) and
+  equipment events (gate in/out, loading, discharge, stuffing, stripping
+  and inspection of a container). It is offered as a polling and
+  subscription (push) API and is implemented by the major ocean carriers.
+license: "Apache-2.0"
+licenseNote: >
+  The OpenAPI specification declares info.license "Apache 2.0"
+  (http://www.apache.org/licenses/LICENSE-2.0.html), and DCSA's GitHub
+  repositories (DCSA-TNT reference implementation, DCSA-Code-Lists) are
+  Apache-2.0. The sheet pointed to github.com/dcsaorg/DCSA-OpenAPI, which
+  no longer exists; DCSA now publishes its specifications on SwaggerHub.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source OpenAPI specification to SDM candidate artifacts"
+notes: |
+  Translated on 2026-11-13. Source row 20 ("DCSA standards") of the "Level
+  A standards not in Smart Data Models" list (licence verified: Yes).
+
+  SCOPE: "DCSA standards" is a family of about 30 APIs. This candidate
+  covers Track & Trace 2.2.0, the most widely implemented one and the one
+  that fits NGSI-LD best (events about containers, vessels and
+  shipments). Newer DCSA APIs (Port Call / JIT 2.0, Operational Vessel
+  Schedules, Booking 2.0, eBL 3.0, Arrival Notice, VGM) are possible next
+  candidates; JIT Port Call and Operational Vessel Schedules overlap with
+  dataModel.MarineTransport.
+
+  MODELS (3), one per event type. Entity names are the DCSA Information
+  Model entity names (the OpenAPI component keys are lower camel case:
+  shipmentEvent, transportEvent, equipmentEvent):
+    - ShipmentEvent   eventType SHIPMENT  (booking / document status: received,
+                                           confirmed, issued, surrendered, ...)
+    - TransportEvent  eventType TRANSPORT (ARRI / DEPA at a transport call)
+    - EquipmentEvent  eventType EQUIPMENT (LOAD, DISC, GTIN, GTOT, STUF, STRP,
+                                           PICK, DROP, INSP, RSEA, RMVD)
+  The NGSI-LD id is urn:ngsi-ld:<Type>:<eventID> (DCSA eventID is a UUID).
+
+  NAMING: every field name is DCSA's, verbatim (eventID,
+  eventClassifierCode, equipmentReference, ISOEquipmentCode,
+  UNLocationCode, ...). None clashes with NGSI-LD reserved terms at entity
+  level (transportCall.location is nested).
+
+  STRUCTURE: the OpenAPI schemas were resolved (all $refs and allOf
+  merged) and converted to JSON Schema 2020-12: nullable dropped, example
+  -> examples, HTML markup removed from descriptions. Nested objects
+  (transportCall with its vessel and location, eventLocation, seals,
+  references, documentReferences) keep their full DCSA structure and are
+  "@type": "@json" in the contexts. Code lists defined by DCSA are enums,
+  as in the source.
+  Deprecated fields are left out: eventTypeCode (all three), the top-level
+  transportCallID, transportCall.carrierVoyageNumber (replaced by
+  exportVoyageNumber / importVoyageNumber), vesselScheduleChangeRemark
+  (replaced by changeRemark), shipmentID and shipmentInformationTypeCode
+  (replaced by documentID / documentTypeCode).
+
+  CONTEXT IRIs: DCSA has no RDF vocabulary. Each term maps to its OpenAPI
+  component on SwaggerHub (DCSA defines most fields as their own
+  component, e.g. #/components/schemas/equipmentReference), otherwise to
+  the property path inside the event component.
+
+  NON-DCSA ADDITION: `location` (GeoProperty, GeoJSON Point) on
+  TransportEvent and EquipmentEvent, built from the latitude/longitude
+  strings of the DCSA location (eventLocation or transportCall.location)
+  so that NGSI-LD geo-queries work. The DCSA objects are kept unchanged.
+
+  SOURCE ISSUES (handled here, worth reporting upstream):
+    - documentReferences[].documentReferenceType enumerates "BKG (Booking)"
+      and "TRD (Transport Document)", but the specification's own examples
+      (and the reference implementation) use "BKG" and "TRD". The enum here
+      is ["BKG", "TRD"].
+    - ShipmentEvent.eventDateTime is redefined with only a description
+      ("must be the same value as eventCreatedDateTime") and no type; it is
+      typed here as a date-time string, as in the other events.
+
+  EXAMPLES ARE SYNTHETIC: DCSA publishes no open event data, carriers'
+  Track & Trace APIs require accounts, and the test data in the DCSA-TNT
+  reference implementation is placeholder content (e.g. location "Eiffel
+  Tower" with UN/LOCODE USNYC), so it was not used. The three examples
+  describe one consistent, fictitious shipment: booking BKG2611000123 is
+  confirmed (ShipmentEvent CONF), container CSQU3054383 (the sample number
+  of ISO 6346, type 22G1) is loaded, laden and sealed, at the Port of
+  Rotterdam (EquipmentEvent LOAD), and the vessel "EXAMPLE EXPRESS"
+  (fictitious; IMO 9999993 has a valid check digit but is not a real ship)
+  departs on export voyage 0461W, delayed by weather (TransportEvent
+  DEPA, SMDG delay reason WEA). Codes (NLRTM, POTE, ACT, LADEN, BLT, CAR)
+  are real DCSA / UN / SMDG values; coordinates are approximate for
+  Maasvlakte. Each example says so in `source`.
+
+  DUPLICATION RISK: dataModel.MarineTransport already has Vessel,
+  PortCall, Booking, Terminal and EdiCodeco (EDIFACT CODECO container
+  gate-in/gate-out reports, which overlap with EquipmentEvent GTIN/GTOT).
+  The SIMPLE logistics candidates also describe logistics events. Check
+  these before promotion.
