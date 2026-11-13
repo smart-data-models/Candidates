@@ -1,0 +1,2346 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gs1-web-vocabulary/models/Product/schema.json",
+  "modelTags": "GS1,GS1WebVocabulary,Retail,ProductData",
+  "title": "Smart Data Models - GS1 Web Vocabulary - Product",
+  "description": "Any item (product or service) upon which there is a need to retrieve pre-defined information and that may be priced, or ordered, or invoiced at any point in any supply chain. (GS1 Web Vocabulary 1.18 class gs1:Product. Property names verbatim.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Product"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Product'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "additionalProductClassification": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AdditionalProductClassificationDetails"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AdditionalProductClassificationDetails"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/additionalProductClassification'. Relates to a set of additional product classification details"
+    },
+    "additionalProductDescription": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/additionalProductDescription'. Additional variants necessary to communicate to the industry to help define the product. Multiple variants can be established for each GTIN for e.g. Style, Colour, and Fragrance ."
+    },
+    "additive": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AdditiveDetails"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AdditiveDetails"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/additive'. Relates to details about any additives that a product may contain."
+    },
+    "audioFile": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ReferencedFileDetails"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReferencedFileDetails"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/audioFile'. Link to a file containing an audio clip which is relevant to the product. Examples are commercials, or instructional/ how to use audio files."
+    },
+    "authenticity": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AuthenticityDetails"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AuthenticityDetails"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/authenticity'. Links to details of covert/overt security markings that may be used to check authenticity of a product instance."
+    },
+    "awardPrize": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AwardPrizeDetails"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AwardPrizeDetails"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/awardPrize'. An award or prize given to the product."
+    },
+    "bestBeforeDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://ref.gs1.org/voc/bestBeforeDate'. Best before date on the label or package signifies the end of the period under which the product will retain specific quality attributes or claims even though the product may continue to retain positive quality attributes after this date. Best before date is primarily used for consumer information and may be a regulatory requirement."
+    },
+    "brand": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Brand"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Brand"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/brand'. The brand of the product that appears on the consumer package."
+    },
+    "brandOwner": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/brandOwner'. The brand owner of the product. The organization that is responsible for allocating the GTIN to the product. Points to Organization entities."
+    },
+    "colourCode": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ColourCodeDetails"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ColourCodeDetails"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/colourCode'. Relates to a set of details about the colour code for a product"
+    },
+    "colourDescription": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/colourDescription'. A description of the colour of an object."
+    },
+    "compulsoryAdditionalInformation": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/CompulsoryAdditionalInformation"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CompulsoryAdditionalInformation"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/compulsoryAdditionalInformation'. The legally required/compulsory additional label information as stated on the product packaging or label."
+    },
+    "consumerHandlingStorage": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ReferencedFileDetails"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReferencedFileDetails"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/consumerHandlingStorage'. Link to a website, file, or image containing the manufacturer's recommendations for how the consumer or end user should store and handle the product."
+    },
+    "consumerPackageDisclaimer": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/consumerPackageDisclaimer'. Additional information that should be used in advertising and in displaying."
+    },
+    "consumerProductVariant": {
+      "type": "string",
+      "description": "Property. Model:'https://ref.gs1.org/voc/consumerProductVariant'. The consumer product variant may be used to distinguish one variant of a retail consumer trade item from another if the change does not require the allocation of a different Global Trade Item Number (per the GTIN Management Standard), but communication between trading partners is required to support consumers. The brand owner is responsible for assigning the consumer product variant."
+    },
+    "consumerRecyclingInstructions": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/consumerRecyclingInstructions'. Expresses in text the consumer recycling instructions which are normally held on the label or accompanying the product. Instructions may refer to the 'how' the consumer is supposed to sort the product and packaging materials for recycling."
+    },
+    "consumerSafetyInformation": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/consumerSafetyInformation'. Information on consumer safety regarding the product."
+    },
+    "consumerSalesCondition": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ConsumerSalesConditionsCode"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ConsumerSalesConditionsCode"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/consumerSalesCondition'. A code indicating restrictions imposed on the product regarding how it can be sold to the consumer for example Prescription Required. Values are GS1 code-list members as compact IRIs (gs1:<Code>); deprecated codes are left out."
+    },
+    "consumerStorageInstructions": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/consumerStorageInstructions'. Expresses in text the consumer storage instructions of a product which are normally held on the label or accompanying the product. This information may or may not be labelled on the pack."
+    },
+    "consumerUsageInstructions": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/consumerUsageInstructions'. Free text containing the usage instructions of a product, which are normally held on the label or accompanying the product. This information may or may not be labelled on the pack."
+    },
+    "countryOfAssembly": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Country"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Country"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/countryOfAssembly'. The place where product is assembled."
+    },
+    "countryOfLastProcessing": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Country"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Country"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/countryOfLastProcessing'. The place where the product or ingredient was last processed and tested before importation."
+    },
+    "countryOfOrigin": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Country"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Country"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/countryOfOrigin'. Code indicating the country of origin of the product."
+    },
+    "countryOfOriginStatement": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/countryOfOriginStatement'. A description of the geographic area the item may have originated from or has been processed."
+    },
+    "customerSupportCentre": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/customerSupportCentre'. The organization which provides product support to the trading partner organization to which merchandise is sold. Points to Organization entities."
+    },
+    "dependentProprietaryProduct": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/dependentProprietaryProduct'. Dependent products are products which are required to make the current product functional. Points to Product entities."
+    },
+    "descriptiveSize": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/descriptiveSize'. An alphanumeric size factor the brand owner wishes to communicate to the consumer. IE Jumbo, Capri, Full Length, Maxi."
+    },
+    "dueDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://ref.gs1.org/voc/dueDate'. The date by which an invoice should be paid. This data element represents an attribute of a payment slip reference number, AI (8020), and a Global Location Number (GLN) of the invoicing party."
+    },
+    "equivalentProduct": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/equivalentProduct'. A product which can be substituted for the product based on supplier-defined functional equivalence to the product. Points to Product entities."
+    },
+    "expirationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://ref.gs1.org/voc/expirationDate'. The expiration date is the date that determines the limit of consumption or use of a product/coupon. Its meaning is determined based on the trade item context (e.g., for food, the date will indicate the possibility of a direct health risk resulting from use of the product after the date, for pharmaceutical products, it will indicate the possibility of an indirect health risk resulting from the ineffectiveness of the product after the date). It is often referred to as 'use by date' or 'maximum durability date'."
+    },
+    "expirationDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://ref.gs1.org/voc/expirationDateTime'. The manufacturer determines the expiration date and time, which is relevant only for short duration and for items that will not be sent on long distances and not outside of the time zone. A typical application of AI (7003) is in hospitals or public pharmacies for special, customised, products which may have a 'life duration' shorter than one single day. The life duration varies according the pharmaceutical substances used in the treatment. The precise expiration date and time is defined at the end of the manufacturing process, and can be barcoded on the product label as an attribute to the item's GTIN. Where there is no business requirement to express the expiration date to the nearest hour (or less), AI (17) Expiration date should be used."
+    },
+    "firstFreezeDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://ref.gs1.org/voc/firstFreezeDate'. The first freeze date is applicable to products that are frozen directly after slaughtering, harvesting, catching or after initial processing of the product. Examples include fresh meat, meat products or fishery products. The first freeze date is determined by the organisation conducting the freezing."
+    },
+    "functionalName": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/functionalName'. Describes use of the product or service by the consumer. Should help clarify the product classification associated with the GTIN."
+    },
+    "gpcCategoryCode": {
+      "type": "string",
+      "description": "Property. Model:'https://ref.gs1.org/voc/gpcCategoryCode'. 8-digit code (GPC Brick Value) specifying a product category according to the GS1 Global Product Classification (GPC) standard. For more information see https://www.gs1.org/gpc"
+    },
+    "gpcCategoryDescription": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/gpcCategoryDescription'. A description of the code specifying a product category according to the GS1 Global Product Classification (GPC) standard."
+    },
+    "grossArea": {
+      "$ref": "#/$defs/QuantitativeValue",
+      "description": "Property. Model:'https://ref.gs1.org/voc/grossArea'. The overall area of the item including packaging. This can be given using a number of different AI ranges that depend on the units in which the area is measured."
+    },
+    "grossVolume": {
+      "$ref": "#/$defs/QuantitativeValue",
+      "description": "Property. Model:'https://ref.gs1.org/voc/grossVolume'. The overall volume of the item including packaging. This can be given using a number of different AI ranges that depend on the units in which the volume is measured."
+    },
+    "grossWeight": {
+      "$ref": "#/$defs/QuantitativeValue",
+      "description": "Property. Model:'https://ref.gs1.org/voc/grossWeight'. Used to identify the gross weight of the product. The gross weight includes all packaging materials of the product. At pallet level the productGrossWeight includes the weight of the pallet itself. For example, 200 GRM, value - total pounds, total grams, etc."
+    },
+    "growingMethod": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/GrowingMethodCode"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/GrowingMethodCode"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/growingMethod'. The process through which fresh produce is grown and cultivated. Values are GS1 code-list members as compact IRIs (gs1:<Code>); deprecated codes are left out."
+    },
+    "gtin": {
+      "type": "string",
+      "description": "Property. Model:'https://ref.gs1.org/voc/gtin'. A Global Trade Item Number (GTIN) is the 14 digit GS1 Identification Key used to identify products. The key comprises a GS1 Company Prefix followed by an Item Reference Number and a Check Digit. See https://www.gs1.org/gtin for more details."
+    },
+    "harvestDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://ref.gs1.org/voc/harvestDate'. The harvest date. For example, the harvest date can be the date when an animal was slaughtered or killed, a fish has been harvested, or a crop was harvested. This date is determined by the organisation conducting the harvesting. Different organisations may use more specific terminology when referring to their specific needs and use terms such as: Date of catch or slaughter date."
+    },
+    "harvestDateEnd": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://ref.gs1.org/voc/harvestDateEnd'. The harvest end date. For example, the harvest end date can be the date when an animal was slaughtered or killed, a fish has been harvested, or a crop was harvested. This end date is determined by the organisation conducting the harvesting. Different organisations may use more specific terminology when referring to their specific needs and use terms such as: Date of catch or slaughter date. When referring to animals the date range refers to the whole animal and all meat or fish cuts derived from this animal."
+    },
+    "harvestDateStart": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://ref.gs1.org/voc/harvestDateStart'. The harvest start date. For example, the harvest start date can be the date when an animal was slaughtered or killed, a fish has been harvested, or a crop was harvested. This start date is determined by the organisation conducting the harvesting. Different organisations may use more specific terminology when referring to their specific needs and use terms such as: Date of catch or slaughter date. When referring to animals the date range refers to the whole animal and all meat or fish cuts derived from this animal."
+    },
+    "hasBatchLotNumber": {
+      "type": "string",
+      "description": "Property. Model:'https://ref.gs1.org/voc/hasBatchLotNumber'. The batch or lot number associates an item with information the manufacturer considers relevant for traceability of the trade item to which the element string is applied. The data may refer to the trade item itself or to items contained. The number may be, for example, a production lot number, a shift number, a machine number, a time, or an internal production code. In cases where the same product is manufactured in different locations the brand owner and the manufacturer are responsible for ensuring the non-duplication of batch/lot numbers for a GTIN. For the re-use of batch/lot numbers with a GTIN, sector-specific constraints need to be considered."
+    },
+    "hasSerialNumber": {
+      "type": "string",
+      "description": "Property. Model:'https://ref.gs1.org/voc/hasSerialNumber'. A serial number is assigned to an entity for its lifetime. When combined with a GTIN, a serial number uniquely identifies an individual item. The serial number field is alphanumeric and may include all characters contained in figure 7.11-1. The brand owner and the manufacturer are responsible for ensuring the non-duplication of serial numbers for a GTIN. For the re-use of serial numbers with a GTIN, sector-specific constraints need to be considered."
+    },
+    "hasThirdPartyControlledSerialNumber": {
+      "type": "string",
+      "description": "Property. Model:'https://ref.gs1.org/voc/hasThirdPartyControlledSerialNumber'. This identifier is assigned to an entity for its lifetime. When combined with a GTIN, a TPX uniquely identifies an individual item and forms a unit pack Unique Identifier (upUI) for tobacco traceability per EU 2018/574. The serial number field is alphanumeric and may include all characters contained in figure 7.11-1. The Third Party determines the TPX, but the TPX shall begin with the ID Issuer Unique Identification Code (UIC), followed by GS1 UIC Extension 1, and GS1 UIC Extension 2."
+    },
+    "healthClaimDescription": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/healthClaimDescription'. A description of health claims according to regulations of the target market."
+    },
+    "image": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ReferencedFileDetails"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReferencedFileDetails"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/image'. Link to a file containing a visual representation of the product."
+    },
+    "includedAccessories": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/includedAccessories'. Any included object or device not part of the core product itself but which adds to its functionality or use."
+    },
+    "inPackageDepth": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/QuantitativeValue"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/QuantitativeValue"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/inPackageDepth'. The depth of the product in its packaging, as measured according to the GS1 Package Measurement Rules. See https://www.gs1.org/package-measurement-rules-implementation-guide for more details."
+    },
+    "inPackageDiameter": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/QuantitativeValue"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/QuantitativeValue"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/inPackageDiameter'. The measurement of the diameter of the product in its package at its largest point. For example, 165 MMT."
+    },
+    "inPackageHeight": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/QuantitativeValue"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/QuantitativeValue"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/inPackageHeight'. The height of the product in the package, as measured according to the GS1 Package Measurement Rules. See https://www.gs1.org/package-measurement-rules-implementation-guide for more details."
+    },
+    "inPackageWidth": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/QuantitativeValue"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/QuantitativeValue"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/inPackageWidth'. The width of the product in the package, as measured according to the GS1 Package Measurement Rules. See https://www.gs1.org/package-measurement-rules-implementation-guide for more details."
+    },
+    "instructionsForUse": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ReferencedFileDetails"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReferencedFileDetails"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/instructionsForUse'. Link to a file containing the Instructions For Use."
+    },
+    "isProductRecalled": {
+      "type": "boolean",
+      "description": "Property. Model:'https://ref.gs1.org/voc/isProductRecalled'. An indicator for the product to determine if the Manufacturer or Supplier has recalled the product."
+    },
+    "jws": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://ref.gs1.org/voc/jws'. A link to a JSON Web Signature"
+    },
+    "manufacturer": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/manufacturer'. The organization that produces the item. Points to Organization entities."
+    },
+    "manufacturersWarranty": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/WarrantyPromise"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/WarrantyPromise"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/manufacturersWarranty'. The warranty associated with the product."
+    },
+    "manufacturingPlant": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/manufacturingPlant'. A physical location consisting of one or more buildings with facilities for manufacturing. Points to Organization entities."
+    },
+    "massPerUnitArea": {
+      "$ref": "#/$defs/QuantitativeValue",
+      "description": "Property. Model:'https://ref.gs1.org/voc/massPerUnitArea'. The mass per unit area of the item. This can be given using a number of different AI ranges that depend on the units in which the mass and area are measured."
+    },
+    "netArea": {
+      "$ref": "#/$defs/QuantitativeValue",
+      "description": "Property. Model:'https://ref.gs1.org/voc/netArea'. The net area of the item. This can be given using a number of different AI ranges that depend on the units in which the area is measured."
+    },
+    "netContent": {
+      "$ref": "#/$defs/QuantitativeValue",
+      "description": "Property. Model:'https://ref.gs1.org/voc/netContent'. The quantity of the product contained by a package, usually as claimed on the label. Indicates the net content of the total product. For fixed value products use the value claimed on the package, to avoid variable fill rate issue that arises with some product which are sold by volume or weight, and whose actual content may vary slightly from batch to batch."
+    },
+    "netWeight": {
+      "$ref": "#/$defs/QuantitativeValue",
+      "description": "Property. Model:'https://ref.gs1.org/voc/netWeight'. Used to identify the net weight of the product. Net Weight excludes all packaging material, including the packaging material of all lower-level GTINs. Example:11.5 kgm."
+    },
+    "organicClaim": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/OrganicClaimDetails"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OrganicClaimDetails"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/organicClaim'. Relates to an organic claim about the product"
+    },
+    "outOfPackageDepth": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/QuantitativeValue"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/QuantitativeValue"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/outOfPackageDepth'. The depth of the product out of its packaging, as measured according to the GS1 Package Measurement Rules. See https://www.gs1.org/package-measurement-rules-implementation-guide for more details."
+    },
+    "outOfPackageDiameter": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/QuantitativeValue"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/QuantitativeValue"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/outOfPackageDiameter'. The measurement of the diameter of the product out of its package at its largest point. For example, 165 MMT."
+    },
+    "outOfPackageHeight": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/QuantitativeValue"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/QuantitativeValue"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/outOfPackageHeight'. The height of the product out of the package, as measured according to the GS1 Package Measurement Rules. See https://www.gs1.org/package-measurement-rules-implementation-guide for more details."
+    },
+    "outOfPackageWidth": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/QuantitativeValue"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/QuantitativeValue"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/outOfPackageWidth'. The width of the product out of the package, as measured according to the GS1 Package Measurement Rules. See https://www.gs1.org/package-measurement-rules-implementation-guide for more details."
+    },
+    "packaging": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PackagingDetails"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PackagingDetails"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/packaging'. Details on the packaging for a product including type, weight and materials."
+    },
+    "packagingDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://ref.gs1.org/voc/packagingDate'. The packaging date is the date when the goods were packed as determined by the packager. The date may refer to the trade item itself or to items contained."
+    },
+    "packagingMarkedLabelAccreditation": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PackagingMarkedLabelAccreditationCode"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PackagingMarkedLabelAccreditationCode"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/packagingMarkedLabelAccreditation'. A marking that the product received recognition, endorsement, certification by following guidelines by the label issuing agency. This does not represent claims for regulatory purposes on products such as free from markings. Values are GS1 code-list members as compact IRIs (gs1:<Code>); deprecated codes are left out."
+    },
+    "primaryAlternateProduct": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/primaryAlternateProduct'. A product that is similar to the current product but is not exact match. Same form fit function, e.g. same product different colour, different package size, better quality. Points to Product entities."
+    },
+    "productDescription": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/productDescription'. An understandable and useable description of a product using brand and other descriptors. This attribute is filled with as little abbreviation as possible, while keeping to a reasonable length. This should be a meaningful description of the product with full spelling to facilitate message processing. Retailers can use this description as the base to fully understand the brand, flavour, scent etc. of the specific product, in order to accurately create a product description as needed for their internal systems. Examples: XYZ Brand Base Invisible Solid Deodorant AP Stick Spring Breeze."
+    },
+    "productFeatureBenefit": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/productFeatureBenefit'. Element for consumer facing marketing content to describe the key features or benefits of the style suitable for display purposes."
+    },
+    "productFormDescription": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/productFormDescription'. The physical form or shape of the product. Used, for example, in pharmaceutical industry to indicate the formulation of the product. Defines the form the product takes and is distinct from the form of the packaging."
+    },
+    "productID": {
+      "type": "string",
+      "description": "Property. Model:'https://ref.gs1.org/voc/productID'. Additional means to the Global Trade Item Number to identify a product."
+    },
+    "productionDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://ref.gs1.org/voc/productionDate'. The production date is the production or assembly date determined by the manufacturer. The date may refer to the trade item itself or to items contained."
+    },
+    "productionDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://ref.gs1.org/voc/productionDateTime'. The date and time of production (or assembly). The date and time of production is determined by the manufacturer. The date and time may refer to the trade item itself or to the items contained."
+    },
+    "productionVariantDescription": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/productionVariantDescription'. Free text assigned by the manufacturer to describe the production variant. Examples are: package series X, package series Y."
+    },
+    "productionVariantEffectiveDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://ref.gs1.org/voc/productionVariantEffectiveDateTime'. The start date of a production variant. The variant applies to products having a date mark (a best before date or expiration date) on the package that comes on or after the effective date."
+    },
+    "productMarketingMessage": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/productMarketingMessage'. Marketing message associated with the product. Consumer-friendly marketing detailed description of the product."
+    },
+    "productName": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/productName'. Consumer friendly short description of the product suitable for compact presentation."
+    },
+    "productRange": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/productRange'. A name, used by a Brand Owner, that span multiple consumer categories or uses. E.g. (Waist Watchers)."
+    },
+    "productSustainabilityInfo": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://ref.gs1.org/voc/productSustainabilityInfo'. This term has been deprecated. Please use gs1:sustainabilityInfo instead."
+    },
+    "provenanceStatement": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/provenanceStatement'. Free text description of the region or place the product originates from. This is to be specifically used to specify areas such as cities, mountain ranges, regions. Examples: Made in the Thuringen Mountains, Made in Paris, From the Napa Valley."
+    },
+    "referencedFile": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ReferencedFileDetails"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReferencedFileDetails"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/referencedFile'. Link to a file or website containing additional information on product."
+    },
+    "regulatedProductName": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/regulatedProductName'. The prescribed, regulated or generic product name or denomination that describes the true nature of the product. For example for a food product in order to distinguish it from other foods according to country specific regulations."
+    },
+    "replacedByProduct": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/replacedByProduct'. The product which permanently replaces the current product. This product is sent in the record for the original item that is being replaced. Points to Product entities."
+    },
+    "replacedProduct": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/replacedProduct'. Indicates the product identification of an item that is being permanently replaced by this product. Points to Product entities."
+    },
+    "sellByDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://ref.gs1.org/voc/sellByDate'. The date specified by the manufacturer as the last date the retailer is to offer the product for sale to the consumer. The product should not be merchandised after this date."
+    },
+    "sizeCode": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SizeCodeDetails"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SizeCodeDetails"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/sizeCode'. Links a product to one or more groupings of gs1:SizeCodeDetails representing the size value from a specified code list."
+    },
+    "supplierSpecifiedMinimumConsumerStorageDays": {
+      "type": "integer",
+      "description": "Property. Model:'https://ref.gs1.org/voc/supplierSpecifiedMinimumConsumerStorageDays'. Represents the number of days between a product's sell by date and its use by date."
+    },
+    "targetMarket": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/TargetMarketDetails"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TargetMarketDetails"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/targetMarket'. Relates to a set of target market details (product release date and associated countries)"
+    },
+    "variantDescription": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/variantDescription'. Free text field used to identify the variant of the product. Variants are the distinguishing characteristics that differentiate products with the same brand and size including such things as the particular flavour, fragrance, taste."
+    },
+    "warningCopyDescription": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/warningCopyDescription'. Warning information is additional information that outlines special requirements, warning and caution information printed on the package."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ],
+  "$defs": {
+    "AdditionalProductClassificationDetails": {
+      "type": "object",
+      "description": "GS1 AdditionalProductClassificationDetails.",
+      "properties": {
+        "additionalProductClassificationCode": {
+          "type": "string",
+          "description": "Code specifying the applied additional product classification scheme."
+        },
+        "additionalProductClassificationCodeDescription": {
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "description": "A description related to the additional product classification code value."
+        },
+        "additionalProductClassificationValue": {
+          "type": "string",
+          "description": "Code specifying an additional product classification other than the GS1 Global Product Classification. The applied classification scheme is specified as additional information together with the classification value."
+        }
+      }
+    },
+    "AdditiveDetails": {
+      "type": "object",
+      "description": "GS1 AdditiveDetails.",
+      "properties": {
+        "additiveLevelOfContainment": {
+          "$ref": "#/$defs/LevelOfContainmentCode",
+          "description": "Code indicating the level of presence of the additive."
+        },
+        "additiveName": {
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "description": "The name of any additive or genetic modification contained or not contained in the product ."
+        }
+      }
+    },
+    "AuthenticityDetails": {
+      "type": "object",
+      "description": "GS1 AuthenticityDetails.",
+      "properties": {
+        "authenticitySecurityFeatureInstructions": {
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "description": "Provides human-readable instructions about how to locate a physical security marking and read a value from it."
+        },
+        "authenticitySecurityFeatureInstructionsURL": {
+          "type": "string",
+          "format": "uri",
+          "description": "Links to online instructions about how to locate a physical security marking and read a value from it."
+        },
+        "authenticitySecurityFeatureRegularExpression": {
+          "type": "string",
+          "description": "Links to a regular expression to be used to perform syntax validation (plausibility checking) of a string value read from a physical security marking."
+        },
+        "authenticitySecurityFeatureType": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SecurityMarking"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/SecurityMarking"
+              }
+            }
+          ],
+          "description": "Links to a URI code value indicating a particular type of physical security marking."
+        },
+        "authenticitySecurityFeatureValue": {
+          "type": "string",
+          "description": "Links to a string value read from a physical security marking."
+        }
+      }
+    },
+    "AwardPrizeDetails": {
+      "type": "object",
+      "description": "GS1 AwardPrizeDetails.",
+      "properties": {
+        "awardPrizeCode": {
+          "type": "string",
+          "description": "Indicates the achievement of the product in relation to a prize or award, e.g. winner, runner-up, shortlisted."
+        },
+        "awardPrizeCountryCode": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Country"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Country"
+              }
+            }
+          ],
+          "description": "An ISO standard code identifying the country in which a prize or award is given. It is recommended to populate this property with an ISO 3166-1 country code."
+        },
+        "awardPrizeDescription": {
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "description": "Text that describes the awards won."
+        },
+        "awardPrizeJury": {
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "description": "Free text listing members of the jury that awarded the prize."
+        },
+        "awardPrizeName": {
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "description": "The name of a prize or award which the product has received."
+        },
+        "awardPrizeYear": {
+          "type": "string",
+          "pattern": "^[0-9]{4}$",
+          "description": "The year in which a prize or award was given."
+        }
+      }
+    },
+    "Brand": {
+      "type": "object",
+      "description": "GS1 Brand.",
+      "properties": {
+        "brandName": {
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "description": "The brand name of the product that appears on the consumer package."
+        },
+        "subBrandName": {
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "description": "Second level of brand. Can be a trademark. It is the primary differentiating factor that a brand owner wants to communicate to the consumer or buyer. E.g. Yummy-Cola Classic. In this example Yummy-Cola is the brand and Classic is the sub-brand."
+        }
+      }
+    },
+    "ColourCodeDetails": {
+      "type": "object",
+      "description": "GS1 ColourCodeDetails.",
+      "properties": {
+        "colourCodeList": {
+          "$ref": "#/$defs/ColourCodeListCode",
+          "description": "The parties controlling the colour code lists. Dependent on colour code value."
+        },
+        "colourCodeValue": {
+          "type": "string",
+          "description": "A code indicating the colour of an object according to a specific code list. The applied code list is specified as additional information together with the colour code."
+        }
+      }
+    },
+    "ColourCodeListCode": {
+      "type": "string",
+      "enum": [
+        "gs1:ColourCodeList-BUYER",
+        "gs1:ColourCodeList-IFPS",
+        "gs1:ColourCodeList-NCS",
+        "gs1:ColourCodeList-NRF",
+        "gs1:ColourCodeList-PANTONE_HEXACHROME",
+        "gs1:ColourCodeList-PANTONE_MATCHING",
+        "gs1:ColourCodeList-PANTONE_PROCESS_COLOUR",
+        "gs1:ColourCodeList-PANTONE_TEXTILE",
+        "gs1:ColourCodeList-RAL",
+        "gs1:ColourCodeList-SELLER",
+        "gs1:ColourCodeList-WWS"
+      ],
+      "description": "GS1 code list ColourCodeListCode: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "CompulsoryAdditionalInformation": {
+      "type": "object",
+      "description": "GS1 CompulsoryAdditionalInformation.",
+      "properties": {
+        "compulsoryAdditionalLabelInformation": {
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "description": "The legally required/compulsory additional label information as stated on the product packaging or label."
+        },
+        "compulsoryAdditionalLabelInformationType": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CompulsoryAdditionalLabelInformationTypeCode"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/CompulsoryAdditionalLabelInformationTypeCode"
+              }
+            }
+          ],
+          "description": "The code indicating the type of the legally required/compulsory additional information that is stated on the product packaging label."
+        }
+      }
+    },
+    "CompulsoryAdditionalLabelInformationTypeCode": {
+      "type": "string",
+      "enum": [
+        "gs1:CompulsoryAdditionalLabelInformationTypeCode-CAFFEINE",
+        "gs1:CompulsoryAdditionalLabelInformationTypeCode-MEAT_POULTRY_WATER_RETENTION",
+        "gs1:CompulsoryAdditionalLabelInformationTypeCode-PREBIOTIC",
+        "gs1:CompulsoryAdditionalLabelInformationTypeCode-PROBIOTICS",
+        "gs1:CompulsoryAdditionalLabelInformationTypeCode-SUPPLEMENTED_FOODS_CAUTION",
+        "gs1:CompulsoryAdditionalLabelInformationTypeCode-SWEETENERS"
+      ],
+      "description": "GS1 code list CompulsoryAdditionalLabelInformationTypeCode: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "ConsumerSalesConditionsCode": {
+      "type": "string",
+      "enum": [
+        "gs1:ConsumerSalesConditionsCode-BTC",
+        "gs1:ConsumerSalesConditionsCode-OTC",
+        "gs1:ConsumerSalesConditionsCode-PRESCRIPTION_REQUIRED",
+        "gs1:ConsumerSalesConditionsCode-RESTRICTED_TO_SELL_16",
+        "gs1:ConsumerSalesConditionsCode-RESTRICTED_TO_SELL_18",
+        "gs1:ConsumerSalesConditionsCode-RESTRICTED_TO_SELL_21"
+      ],
+      "description": "GS1 code list ConsumerSalesConditionsCode: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "Country": {
+      "type": "object",
+      "description": "GS1 Country.",
+      "properties": {
+        "countryCode": {
+          "type": "string",
+          "description": "A short text string code (see values defined in ISO 3166) specifying the country in which a processing or other activity is performed, for example processing, bottling, manufacturing."
+        },
+        "countrySubdivisionCode": {
+          "type": "string",
+          "description": "A short text string code (see values defined in ISO 3166_2) specifying the country subdivision in which an activity is performed, for example processing, bottling, manufacturing."
+        }
+      }
+    },
+    "GrowingMethodCode": {
+      "type": "string",
+      "enum": [
+        "gs1:GrowingMethodCode-CAGE_FREE",
+        "gs1:GrowingMethodCode-CLONED_FOODS",
+        "gs1:GrowingMethodCode-CONVENTIONAL",
+        "gs1:GrowingMethodCode-FARM_RAISED",
+        "gs1:GrowingMethodCode-FIELD_GROWN",
+        "gs1:GrowingMethodCode-FLY_FREE",
+        "gs1:GrowingMethodCode-FREE_RANGE",
+        "gs1:GrowingMethodCode-GRASS_FED",
+        "gs1:GrowingMethodCode-GREENHOUSE",
+        "gs1:GrowingMethodCode-HUMANELY_RAISED",
+        "gs1:GrowingMethodCode-HYDROPONIC",
+        "gs1:GrowingMethodCode-INTEGRATED_PEST_MANAGEMENT",
+        "gs1:GrowingMethodCode-ORGANIC",
+        "gs1:GrowingMethodCode-SHADE_GROWN",
+        "gs1:GrowingMethodCode-SUSTAINABLE",
+        "gs1:GrowingMethodCode-WILD"
+      ],
+      "description": "GS1 code list GrowingMethodCode: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "LevelOfContainmentCode": {
+      "type": "string",
+      "enum": [
+        "gs1:LevelOfContainmentCode-CONTAINS",
+        "gs1:LevelOfContainmentCode-FREE_FROM",
+        "gs1:LevelOfContainmentCode-MAY_CONTAIN"
+      ],
+      "description": "GS1 code list LevelOfContainmentCode: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "OrganicClaimAgencyCode": {
+      "type": "string",
+      "enum": [
+        "gs1:OrganicClaimAgencyCode-1",
+        "gs1:OrganicClaimAgencyCode-10",
+        "gs1:OrganicClaimAgencyCode-11",
+        "gs1:OrganicClaimAgencyCode-12",
+        "gs1:OrganicClaimAgencyCode-13",
+        "gs1:OrganicClaimAgencyCode-14",
+        "gs1:OrganicClaimAgencyCode-15",
+        "gs1:OrganicClaimAgencyCode-16",
+        "gs1:OrganicClaimAgencyCode-17",
+        "gs1:OrganicClaimAgencyCode-19",
+        "gs1:OrganicClaimAgencyCode-2",
+        "gs1:OrganicClaimAgencyCode-20",
+        "gs1:OrganicClaimAgencyCode-21",
+        "gs1:OrganicClaimAgencyCode-22",
+        "gs1:OrganicClaimAgencyCode-23",
+        "gs1:OrganicClaimAgencyCode-24",
+        "gs1:OrganicClaimAgencyCode-25",
+        "gs1:OrganicClaimAgencyCode-26",
+        "gs1:OrganicClaimAgencyCode-27",
+        "gs1:OrganicClaimAgencyCode-28",
+        "gs1:OrganicClaimAgencyCode-29",
+        "gs1:OrganicClaimAgencyCode-3",
+        "gs1:OrganicClaimAgencyCode-30",
+        "gs1:OrganicClaimAgencyCode-31",
+        "gs1:OrganicClaimAgencyCode-32",
+        "gs1:OrganicClaimAgencyCode-33",
+        "gs1:OrganicClaimAgencyCode-34",
+        "gs1:OrganicClaimAgencyCode-4",
+        "gs1:OrganicClaimAgencyCode-5",
+        "gs1:OrganicClaimAgencyCode-6",
+        "gs1:OrganicClaimAgencyCode-7",
+        "gs1:OrganicClaimAgencyCode-8",
+        "gs1:OrganicClaimAgencyCode-9",
+        "gs1:OrganicClaimAgencyCode-999"
+      ],
+      "description": "GS1 code list OrganicClaimAgencyCode: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "OrganicClaimDetails": {
+      "type": "object",
+      "description": "GS1 OrganicClaimDetails.",
+      "properties": {
+        "organicClaimAgency": {
+          "$ref": "#/$defs/OrganicClaimAgencyCode",
+          "description": "A governing body that creates and maintains standards related to organic products."
+        },
+        "organicPercentClaim": {
+          "type": "number",
+          "description": "The percent of actual organic materials per weight of the product. This is usually claimed on the product."
+        }
+      }
+    },
+    "PackagingDetails": {
+      "type": "object",
+      "description": "GS1 PackagingDetails.",
+      "properties": {
+        "hasReturnablePackageDeposit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ReturnablePackageDepositDetails"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ReturnablePackageDepositDetails"
+              }
+            }
+          ],
+          "description": "links to details of amounts refunded for returnable package in a specified region."
+        },
+        "packagingFeature": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PackagingFeatureCode"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/PackagingFeatureCode"
+              }
+            }
+          ],
+          "description": "Code indicating a feature that facilitates the usage of the product by the consumer, for example a handle. Packaging features do not affect the core composition of the packaging type nor modify its usage."
+        },
+        "packagingFunction": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PackagingFunctionCode"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/PackagingFunctionCode"
+              }
+            }
+          ],
+          "description": "Code indicating specific functionality for packaging resulting from specific processes or features present in the packaging type,for example, ANTI_TAMPERING."
+        },
+        "packagingMaterial": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PackagingMaterialDetails"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/PackagingMaterialDetails"
+              }
+            }
+          ],
+          "description": "links to details about packaging material type, quantity and thickness"
+        },
+        "packagingRecyclingProcessType": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PackagingRecyclingProcessTypeCode"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/PackagingRecyclingProcessTypeCode"
+              }
+            }
+          ],
+          "description": "The process the packaging could undertake for recyclable & sustainability programs. Examples COMPOSTABLE, ENERGY_RECOVERABLE, REUSABLE."
+        },
+        "packagingRecyclingScheme": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PackagingRecyclingSchemeCode"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/PackagingRecyclingSchemeCode"
+              }
+            }
+          ],
+          "description": "A code indicating the recycling scheme the packaging of this product will fall within when recycled. Applies to recyclable packaging with or without deposit."
+        },
+        "packagingShape": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PackagingShapeCode"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/PackagingShapeCode"
+              }
+            }
+          ],
+          "description": "A code depicting the shape of a package for example CONE."
+        },
+        "packagingType": {
+          "type": "string",
+          "description": "The dominant means used to transport, store, handle or display the product as defined by the data source. This packaging is not used to describe any manufacturing process.Recommend to use UNECE Rec 21 codes."
+        }
+      }
+    },
+    "PackagingFeatureCode": {
+      "type": "string",
+      "enum": [
+        "gs1:PackagingFeatureCode-BASE",
+        "gs1:PackagingFeatureCode-BEAM",
+        "gs1:PackagingFeatureCode-BUNG_SEAL",
+        "gs1:PackagingFeatureCode-CAP",
+        "gs1:PackagingFeatureCode-CARRIER",
+        "gs1:PackagingFeatureCode-CONSUMPTION_UTENSIL",
+        "gs1:PackagingFeatureCode-CORE",
+        "gs1:PackagingFeatureCode-CREEL",
+        "gs1:PackagingFeatureCode-EDGE_PROTECTION",
+        "gs1:PackagingFeatureCode-HANDLE",
+        "gs1:PackagingFeatureCode-INNER_CONTAINER",
+        "gs1:PackagingFeatureCode-INTERNAL_DIVIDER",
+        "gs1:PackagingFeatureCode-LABEL",
+        "gs1:PackagingFeatureCode-LID",
+        "gs1:PackagingFeatureCode-LINER",
+        "gs1:PackagingFeatureCode-LUG",
+        "gs1:PackagingFeatureCode-NESTING_EDGE",
+        "gs1:PackagingFeatureCode-PEG",
+        "gs1:PackagingFeatureCode-PULL_OFF_TAB",
+        "gs1:PackagingFeatureCode-RING_HOLDER",
+        "gs1:PackagingFeatureCode-RIVET",
+        "gs1:PackagingFeatureCode-SLEEVE",
+        "gs1:PackagingFeatureCode-SPOUT",
+        "gs1:PackagingFeatureCode-TAG",
+        "gs1:PackagingFeatureCode-WICKER_OUTER_CONTAINER",
+        "gs1:PackagingFeatureCode-WRAP"
+      ],
+      "description": "GS1 code list PackagingFeatureCode: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "PackagingFunctionCode": {
+      "type": "string",
+      "enum": [
+        "gs1:PackagingFunctionCode-ANTISEPTIC",
+        "gs1:PackagingFunctionCode-ANTI_TAMPERING",
+        "gs1:PackagingFunctionCode-COATED",
+        "gs1:PackagingFunctionCode-COMPRESSED",
+        "gs1:PackagingFunctionCode-DISPENSER",
+        "gs1:PackagingFunctionCode-GIFT_WRAPPED",
+        "gs1:PackagingFunctionCode-ISOTHERMIC",
+        "gs1:PackagingFunctionCode-MODIFIED_ATMOSPHERE",
+        "gs1:PackagingFunctionCode-OXYGEN_INFUSED",
+        "gs1:PackagingFunctionCode-PEEL_OFF",
+        "gs1:PackagingFunctionCode-PINPACK",
+        "gs1:PackagingFunctionCode-PROTECTED",
+        "gs1:PackagingFunctionCode-REINFORCED",
+        "gs1:PackagingFunctionCode-SIFT_PROOF",
+        "gs1:PackagingFunctionCode-TAMPER_EVIDENT",
+        "gs1:PackagingFunctionCode-WATER_RESISTANT"
+      ],
+      "description": "GS1 code list PackagingFunctionCode: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "PackagingMarkedLabelAccreditationCode": {
+      "type": "string",
+      "enum": [
+        "gs1:PackagingMarkedLabelAccreditationCode-AMA_ORGANIC_SEAL",
+        "gs1:PackagingMarkedLabelAccreditationCode-AUS_KAUP_ESTONIA",
+        "gs1:PackagingMarkedLabelAccreditationCode-BDIH_LOGO",
+        "gs1:PackagingMarkedLabelAccreditationCode-BETER_LEVEN_1_STER",
+        "gs1:PackagingMarkedLabelAccreditationCode-BETER_LEVEN_2_STER",
+        "gs1:PackagingMarkedLabelAccreditationCode-BETER_LEVEN_3_STER",
+        "gs1:PackagingMarkedLabelAccreditationCode-BIO_AUSTRIA_LABEL",
+        "gs1:PackagingMarkedLabelAccreditationCode-BIO_LABEL_GERMAN",
+        "gs1:PackagingMarkedLabelAccreditationCode-BIO_SUISSE_BUD_SEAL",
+        "gs1:PackagingMarkedLabelAccreditationCode-BLUE_ANGEL",
+        "gs1:PackagingMarkedLabelAccreditationCode-BORD_BIA_APPROVED",
+        "gs1:PackagingMarkedLabelAccreditationCode-BORD_BIA_APPROVED_MEAT",
+        "gs1:PackagingMarkedLabelAccreditationCode-BRA_MILJOVAL_LABEL_SWEDISH",
+        "gs1:PackagingMarkedLabelAccreditationCode-CROSSED_GRAIN_SYMBOL",
+        "gs1:PackagingMarkedLabelAccreditationCode-DEMETER_LABEL",
+        "gs1:PackagingMarkedLabelAccreditationCode-ECOCERT_CERTIFICATE",
+        "gs1:PackagingMarkedLabelAccreditationCode-ECO_LABEL_LADYBUG",
+        "gs1:PackagingMarkedLabelAccreditationCode-EC_NATIONAL_HEALTH_MARK",
+        "gs1:PackagingMarkedLabelAccreditationCode-EESTI_OKOMARK",
+        "gs1:PackagingMarkedLabelAccreditationCode-EESTI_PARIM_TOIDUAINE",
+        "gs1:PackagingMarkedLabelAccreditationCode-EKO",
+        "gs1:PackagingMarkedLabelAccreditationCode-EU_ECO_LABEL",
+        "gs1:PackagingMarkedLabelAccreditationCode-EU_ORGANIC_FARMING",
+        "gs1:PackagingMarkedLabelAccreditationCode-FAIR_TRADE_MARK",
+        "gs1:PackagingMarkedLabelAccreditationCode-FALKEN",
+        "gs1:PackagingMarkedLabelAccreditationCode-FINNISH_HEART_SYMBOL",
+        "gs1:PackagingMarkedLabelAccreditationCode-FOREST_STEWARDSHIP_COUNCIL_LABEL",
+        "gs1:PackagingMarkedLabelAccreditationCode-GMO_MARKED",
+        "gs1:PackagingMarkedLabelAccreditationCode-GOODS_FROM_FINLAND_BLUE_SWAN",
+        "gs1:PackagingMarkedLabelAccreditationCode-GREEN_DOT",
+        "gs1:PackagingMarkedLabelAccreditationCode-GREEN_RESTAURANT_ASSOCIATION_ENDORSED",
+        "gs1:PackagingMarkedLabelAccreditationCode-GREEN_SEAL_CERTIFIED",
+        "gs1:PackagingMarkedLabelAccreditationCode-GUARANTEED_IRISH",
+        "gs1:PackagingMarkedLabelAccreditationCode-KRAV_MARK",
+        "gs1:PackagingMarkedLabelAccreditationCode-LABEL_OF_THE_ALLERGY_AND_ASTHMA_FEDERATION",
+        "gs1:PackagingMarkedLabelAccreditationCode-LEAPING_BUNNY",
+        "gs1:PackagingMarkedLabelAccreditationCode-LOODUSSOBRALIK_TOODE_ESTONIA",
+        "gs1:PackagingMarkedLabelAccreditationCode-LOVE_IRISH_FOOD",
+        "gs1:PackagingMarkedLabelAccreditationCode-MADE_IN_FINLAND_FLAG_WITH_KEY",
+        "gs1:PackagingMarkedLabelAccreditationCode-MARINE_STEWARDSHIP_COUNCIL_LABEL",
+        "gs1:PackagingMarkedLabelAccreditationCode-MAX_HAVELAAR",
+        "gs1:PackagingMarkedLabelAccreditationCode-NATRUE_LABEL",
+        "gs1:PackagingMarkedLabelAccreditationCode-NYCKELHALET",
+        "gs1:PackagingMarkedLabelAccreditationCode-OEKO_TEX_LABEL",
+        "gs1:PackagingMarkedLabelAccreditationCode-OFFICIAL_ECO_LABEL_SUN",
+        "gs1:PackagingMarkedLabelAccreditationCode-PEFC",
+        "gs1:PackagingMarkedLabelAccreditationCode-PROTECTED_DESIGNATION_OF_ORIGIN",
+        "gs1:PackagingMarkedLabelAccreditationCode-PROTECTED_GEOGRAPHICAL_INDICATION",
+        "gs1:PackagingMarkedLabelAccreditationCode-PROTECTED_HARVEST_CERTIFIED",
+        "gs1:PackagingMarkedLabelAccreditationCode-QUALITY_MARK_IRELAND",
+        "gs1:PackagingMarkedLabelAccreditationCode-RAINFOREST_ALLIANCE",
+        "gs1:PackagingMarkedLabelAccreditationCode-SCHARRELVLEES",
+        "gs1:PackagingMarkedLabelAccreditationCode-SOIL_ASSOCIATION_ORGANIC_SYMBOL",
+        "gs1:PackagingMarkedLabelAccreditationCode-SUSTAINABLE_PALM_OIL_RSPO",
+        "gs1:PackagingMarkedLabelAccreditationCode-SVANEN",
+        "gs1:PackagingMarkedLabelAccreditationCode-SWEDISH_SEAL_OF_QUALITY",
+        "gs1:PackagingMarkedLabelAccreditationCode-TRADITIONAL_SPECIALTY_GUARANTEED",
+        "gs1:PackagingMarkedLabelAccreditationCode-TUNNUSTATUD_EESTI_MAITSE",
+        "gs1:PackagingMarkedLabelAccreditationCode-TUNNUSTATUD_MAITSE",
+        "gs1:PackagingMarkedLabelAccreditationCode-UNIQUELY_FINNISH",
+        "gs1:PackagingMarkedLabelAccreditationCode-USDA",
+        "gs1:PackagingMarkedLabelAccreditationCode-UTZ_CERTIFIED",
+        "gs1:PackagingMarkedLabelAccreditationCode-VAELG_FULDKORN_FORST",
+        "gs1:PackagingMarkedLabelAccreditationCode-WWF_PANDA_LABEL"
+      ],
+      "description": "GS1 code list PackagingMarkedLabelAccreditationCode: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "PackagingMaterialDetails": {
+      "type": "object",
+      "description": "GS1 PackagingMaterialDetails.",
+      "properties": {
+        "packagingMaterialCompositionQuantity": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/QuantitativeValue"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/QuantitativeValue"
+              }
+            }
+          ],
+          "description": "The quantity of the packaging material of the product. Can be weight, volume or surface, can vary by country."
+        },
+        "packagingMaterialThickness": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/QuantitativeValue"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/QuantitativeValue"
+              }
+            }
+          ],
+          "description": "The thickness of a packaging material."
+        },
+        "packagingMaterialType": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PackagingMaterialTypeCode"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/PackagingMaterialTypeCode"
+              }
+            }
+          ],
+          "description": "The materials used for the packaging of the product for example glass or plastic."
+        }
+      }
+    },
+    "PackagingMaterialTypeCode": {
+      "type": "string",
+      "enum": [
+        "gs1:PackagingMaterialTypeCode-BAMBOO",
+        "gs1:PackagingMaterialTypeCode-CELLULOSE_HYDRATE",
+        "gs1:PackagingMaterialTypeCode-CERAMIC",
+        "gs1:PackagingMaterialTypeCode-CLOTH_OR_FABRIC",
+        "gs1:PackagingMaterialTypeCode-COMPOSITE",
+        "gs1:PackagingMaterialTypeCode-CORK_NATURAL",
+        "gs1:PackagingMaterialTypeCode-CORRUGATED_BOARD_DOUBLE_WALL",
+        "gs1:PackagingMaterialTypeCode-CORRUGATED_BOARD_OTHER",
+        "gs1:PackagingMaterialTypeCode-CORRUGATED_BOARD_SINGLE_WALL",
+        "gs1:PackagingMaterialTypeCode-CORRUGATED_BOARD_TRIPLE_WALL",
+        "gs1:PackagingMaterialTypeCode-FIBRE_BURLAP",
+        "gs1:PackagingMaterialTypeCode-FIBRE_COTTON",
+        "gs1:PackagingMaterialTypeCode-FIBRE_FLAX",
+        "gs1:PackagingMaterialTypeCode-FIBRE_HEMP",
+        "gs1:PackagingMaterialTypeCode-FIBRE_JUTE",
+        "gs1:PackagingMaterialTypeCode-FIBRE_OTHER",
+        "gs1:PackagingMaterialTypeCode-FOAM",
+        "gs1:PackagingMaterialTypeCode-GLASS",
+        "gs1:PackagingMaterialTypeCode-GLASS_BOROSILICATE",
+        "gs1:PackagingMaterialTypeCode-GLASS_COLOURED",
+        "gs1:PackagingMaterialTypeCode-GLASS_CRYSTAL",
+        "gs1:PackagingMaterialTypeCode-LAMINATED_CARTON",
+        "gs1:PackagingMaterialTypeCode-METAL_ALUMINUM",
+        "gs1:PackagingMaterialTypeCode-METAL_BRASS",
+        "gs1:PackagingMaterialTypeCode-METAL_COMPOSITE",
+        "gs1:PackagingMaterialTypeCode-METAL_IRON",
+        "gs1:PackagingMaterialTypeCode-METAL_LEAD",
+        "gs1:PackagingMaterialTypeCode-METAL_OTHER",
+        "gs1:PackagingMaterialTypeCode-METAL_STAINLESS_STEEL",
+        "gs1:PackagingMaterialTypeCode-METAL_STEEL",
+        "gs1:PackagingMaterialTypeCode-METAL_TIN",
+        "gs1:PackagingMaterialTypeCode-METAL_ZAMAC",
+        "gs1:PackagingMaterialTypeCode-MINERAL_CALCIUM_CARBONATE",
+        "gs1:PackagingMaterialTypeCode-MINERAL_OTHER",
+        "gs1:PackagingMaterialTypeCode-MINERAL_TALC",
+        "gs1:PackagingMaterialTypeCode-NATURAL_RUBBER",
+        "gs1:PackagingMaterialTypeCode-OTHER",
+        "gs1:PackagingMaterialTypeCode-PAPER_CORRUGATED",
+        "gs1:PackagingMaterialTypeCode-PAPER_KRAFT",
+        "gs1:PackagingMaterialTypeCode-PAPER_KRAFT_WET_STRENGTH",
+        "gs1:PackagingMaterialTypeCode-PAPER_MOLDED_PULP",
+        "gs1:PackagingMaterialTypeCode-PAPER_OTHER",
+        "gs1:PackagingMaterialTypeCode-PAPER_PAPER",
+        "gs1:PackagingMaterialTypeCode-PAPER_PAPERBOARD",
+        "gs1:PackagingMaterialTypeCode-PAPER_RAYON",
+        "gs1:PackagingMaterialTypeCode-PLANT_LEAVES",
+        "gs1:PackagingMaterialTypeCode-PLASTIC_BIOPLASTIC",
+        "gs1:PackagingMaterialTypeCode-PLASTIC_OTHER",
+        "gs1:PackagingMaterialTypeCode-PLASTIC_THERMOPLASTICS",
+        "gs1:PackagingMaterialTypeCode-POLYMER_APET",
+        "gs1:PackagingMaterialTypeCode-POLYMER_BOPP",
+        "gs1:PackagingMaterialTypeCode-POLYMER_CELLULOSE_ACETATE",
+        "gs1:PackagingMaterialTypeCode-POLYMER_CPET",
+        "gs1:PackagingMaterialTypeCode-POLYMER_EPE",
+        "gs1:PackagingMaterialTypeCode-POLYMER_EPOXY",
+        "gs1:PackagingMaterialTypeCode-POLYMER_EPS",
+        "gs1:PackagingMaterialTypeCode-POLYMER_EVA",
+        "gs1:PackagingMaterialTypeCode-POLYMER_EVOH",
+        "gs1:PackagingMaterialTypeCode-POLYMER_HDPE",
+        "gs1:PackagingMaterialTypeCode-POLYMER_IONOMER",
+        "gs1:PackagingMaterialTypeCode-POLYMER_LDPE",
+        "gs1:PackagingMaterialTypeCode-POLYMER_LLDPE",
+        "gs1:PackagingMaterialTypeCode-POLYMER_MDPE",
+        "gs1:PackagingMaterialTypeCode-POLYMER_MIX",
+        "gs1:PackagingMaterialTypeCode-POLYMER_NYLON",
+        "gs1:PackagingMaterialTypeCode-POLYMER_OPP",
+        "gs1:PackagingMaterialTypeCode-POLYMER_OTHER",
+        "gs1:PackagingMaterialTypeCode-POLYMER_PA",
+        "gs1:PackagingMaterialTypeCode-POLYMER_PAN",
+        "gs1:PackagingMaterialTypeCode-POLYMER_PC",
+        "gs1:PackagingMaterialTypeCode-POLYMER_PCL",
+        "gs1:PackagingMaterialTypeCode-POLYMER_PE",
+        "gs1:PackagingMaterialTypeCode-POLYMER_PEN",
+        "gs1:PackagingMaterialTypeCode-POLYMER_PET",
+        "gs1:PackagingMaterialTypeCode-POLYMER_PETG",
+        "gs1:PackagingMaterialTypeCode-POLYMER_PHA",
+        "gs1:PackagingMaterialTypeCode-POLYMER_PLA",
+        "gs1:PackagingMaterialTypeCode-POLYMER_PMMA",
+        "gs1:PackagingMaterialTypeCode-POLYMER_POM",
+        "gs1:PackagingMaterialTypeCode-POLYMER_PP",
+        "gs1:PackagingMaterialTypeCode-POLYMER_PS",
+        "gs1:PackagingMaterialTypeCode-POLYMER_PU",
+        "gs1:PackagingMaterialTypeCode-POLYMER_PVA",
+        "gs1:PackagingMaterialTypeCode-POLYMER_PVC",
+        "gs1:PackagingMaterialTypeCode-POLYMER_PVDC",
+        "gs1:PackagingMaterialTypeCode-POLYMER_SAN",
+        "gs1:PackagingMaterialTypeCode-POLYMER_SILICONE",
+        "gs1:PackagingMaterialTypeCode-POLYMER_TPS",
+        "gs1:PackagingMaterialTypeCode-POLYMER_XPS",
+        "gs1:PackagingMaterialTypeCode-RUBBER",
+        "gs1:PackagingMaterialTypeCode-VINYL",
+        "gs1:PackagingMaterialTypeCode-WOOD_HARDBOARD",
+        "gs1:PackagingMaterialTypeCode-WOOD_HARDWOOD",
+        "gs1:PackagingMaterialTypeCode-WOOD_MEDIUM_DENSITY_FIBREBOARD",
+        "gs1:PackagingMaterialTypeCode-WOOD_ORIENTED_STRANDBOARD",
+        "gs1:PackagingMaterialTypeCode-WOOD_OTHER",
+        "gs1:PackagingMaterialTypeCode-WOOD_PARTICLE_BOARD",
+        "gs1:PackagingMaterialTypeCode-WOOD_PLYWOOD",
+        "gs1:PackagingMaterialTypeCode-WOOD_SOFTWOOD"
+      ],
+      "description": "GS1 code list PackagingMaterialTypeCode: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "PackagingRecyclingProcessTypeCode": {
+      "type": "string",
+      "enum": [
+        "gs1:PackagingRecyclingProcessTypeCode-COMPOSTABLE",
+        "gs1:PackagingRecyclingProcessTypeCode-ENERGY_RECOVERABLE",
+        "gs1:PackagingRecyclingProcessTypeCode-RECYCLABLE",
+        "gs1:PackagingRecyclingProcessTypeCode-REUSABLE"
+      ],
+      "description": "GS1 code list PackagingRecyclingProcessTypeCode: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "PackagingRecyclingSchemeCode": {
+      "type": "string",
+      "enum": [
+        "gs1:PackagingRecyclingSchemeCode-ALKO",
+        "gs1:PackagingRecyclingSchemeCode-A_PULLO",
+        "gs1:PackagingRecyclingSchemeCode-EKO_PULLO",
+        "gs1:PackagingRecyclingSchemeCode-PALPA"
+      ],
+      "description": "GS1 code list PackagingRecyclingSchemeCode: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "PackagingShapeCode": {
+      "type": "string",
+      "enum": [
+        "gs1:PackagingShapeCode-BAR",
+        "gs1:PackagingShapeCode-COIL",
+        "gs1:PackagingShapeCode-CONE",
+        "gs1:PackagingShapeCode-CYLINDRICAL",
+        "gs1:PackagingShapeCode-POLYGON",
+        "gs1:PackagingShapeCode-RECTANGULAR",
+        "gs1:PackagingShapeCode-SPHERICAL",
+        "gs1:PackagingShapeCode-TABLET",
+        "gs1:PackagingShapeCode-UNSPECIFIED"
+      ],
+      "description": "GS1 code list PackagingShapeCode: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "PriceSpecification": {
+      "type": "object",
+      "description": "GS1 PriceSpecification.",
+      "properties": {
+        "dutyFeeTaxAmount": {
+          "type": "number",
+          "description": "The current tax or duty or fee amount applicable to the product, expressed as a floating-point numeric value that is qualified by the corresponding currency. See also gs1:priceCurrency."
+        },
+        "dutyFeeTaxDescription": {
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "description": "A description of tax type for example Taxes sure les supports audio."
+        },
+        "dutyFeeTaxRate": {
+          "type": "number",
+          "description": "The current tax or duty rate percentage applicable to the product."
+        },
+        "maxPrice": {
+          "type": "number",
+          "description": "Provides a maximum price value as a floating-point numeric value that is qualified by the corresponding currency. See also gs1:priceCurrency"
+        },
+        "minPrice": {
+          "type": "number",
+          "description": "Provides a minimum price value as a floating-point numeric value that is qualified by the corresponding currency. See also gs1:priceCurrency"
+        },
+        "price": {
+          "type": "number",
+          "description": "Provides a price value as a floating-point numeric value that is qualified by the corresponding currency. See also gs1:priceCurrency. The price value indicates the unit price unless the property gs1:eligibleQuantity is specified and indicates multiple units"
+        },
+        "priceCurrency": {
+          "type": "string",
+          "description": "A string value indicating a currency from ISO 4217 for example USD ."
+        },
+        "validFrom": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The effective start date of the price ."
+        },
+        "validThrough": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The effective end date of the price ."
+        }
+      }
+    },
+    "QuantitativeValue": {
+      "type": "object",
+      "description": "GS1 QuantitativeValue.",
+      "properties": {
+        "unitCode": {
+          "type": "string",
+          "description": "A string value indicating a Measurement Unit from UN/ECE Recommendation 20, Units of Measure used in International Trade e.g. GRM = gram - see http://www.unece.org/fileadmin/DAM/cefact/recommendations/rec20/rec20_rev3_Annex3e.pdf"
+        },
+        "value": {
+          "type": "number",
+          "description": "A floating-point numeric value that is qualified by the corresponding measurement unit code - see gs1:unitCode"
+        }
+      }
+    },
+    "ReferencedFileDetails": {
+      "type": "object",
+      "description": "GS1 ReferencedFileDetails.",
+      "properties": {
+        "fileLanguageCode": {
+          "type": "string",
+          "description": "The specified language to which the digital asset is targeted. It is recommended to use the ISO 639-1 language code."
+        },
+        "filePixelHeight": {
+          "type": "integer",
+          "description": "The number of pixels along the vertical axis of the image."
+        },
+        "filePixelWidth": {
+          "type": "integer",
+          "description": "The number of pixels along the horizontal axis of the image."
+        },
+        "referencedFileEffectiveEndDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date upon which the target of this external link ceases to be effective for use."
+        },
+        "referencedFileEffectiveStartDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date upon which the target of this external link begins to be effective for use."
+        },
+        "referencedFileSize": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/QuantitativeValue"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/QuantitativeValue"
+              }
+            }
+          ],
+          "description": "The size of the file as it is stored in an uncompressed format."
+        },
+        "referencedFileType": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ReferencedFileTypeCode"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ReferencedFileTypeCode"
+              }
+            }
+          ],
+          "description": "A code indicating the purpose or role of file (not a MIME type) that is being referenced, for example PRODUCT_LABEL_IMAGE. This code is used when the purpose of a file is not specified in the property."
+        },
+        "referencedFileURL": {
+          "type": "string",
+          "format": "uri",
+          "description": "Simple text string that refers to a resource on the internet, URLs may refer to documents, resources, people, etc."
+        }
+      }
+    },
+    "ReferencedFileTypeCode": {
+      "type": "string",
+      "enum": [
+        "gs1:ReferencedFileTypeCode-360_DEGREE_IMAGE",
+        "gs1:ReferencedFileTypeCode-AMBIENCE_MOOD_IMAGE",
+        "gs1:ReferencedFileTypeCode-APPLICATION_IMAGE",
+        "gs1:ReferencedFileTypeCode-ASSEMBLY_INSTRUCTIONS",
+        "gs1:ReferencedFileTypeCode-AUDIO",
+        "gs1:ReferencedFileTypeCode-AWARD_CERTIFICATE",
+        "gs1:ReferencedFileTypeCode-BARCODE",
+        "gs1:ReferencedFileTypeCode-CERTIFICATION",
+        "gs1:ReferencedFileTypeCode-CHEMICAL_ASSESSMENT_SUMMARY",
+        "gs1:ReferencedFileTypeCode-CHEMICAL_SAFETY_REPORT",
+        "gs1:ReferencedFileTypeCode-CHILD_NUTRITION_LABEL",
+        "gs1:ReferencedFileTypeCode-CLEANING_DISINFECTION_STERILISATION_INSTRUCTIONS",
+        "gs1:ReferencedFileTypeCode-CLINICIAN_MEDICINE_INFORMATION",
+        "gs1:ReferencedFileTypeCode-CONSUMER_HANDLING_AND_STORAGE",
+        "gs1:ReferencedFileTypeCode-CONTENT_TEXTURE_IMAGE",
+        "gs1:ReferencedFileTypeCode-CROSSSECTION_VIEW",
+        "gs1:ReferencedFileTypeCode-DECLARATION_OF_CONFORMITY",
+        "gs1:ReferencedFileTypeCode-DIET_CERTIFICATE",
+        "gs1:ReferencedFileTypeCode-DISPOSAL_INSTRUCTIONS",
+        "gs1:ReferencedFileTypeCode-DOCUMENT",
+        "gs1:ReferencedFileTypeCode-DOP_SHEET",
+        "gs1:ReferencedFileTypeCode-DRUG_FACT_LABEL",
+        "gs1:ReferencedFileTypeCode-ECOLOGICAL_FACT_SHEET",
+        "gs1:ReferencedFileTypeCode-ENERGY_LABEL",
+        "gs1:ReferencedFileTypeCode-FOOD_CONTACT_CONFORMITY_CERTIFICATE",
+        "gs1:ReferencedFileTypeCode-GROUP_CHARACTERISTIC_SHEET",
+        "gs1:ReferencedFileTypeCode-HAZARDOUS_SUBSTANCES_DATA",
+        "gs1:ReferencedFileTypeCode-IFU",
+        "gs1:ReferencedFileTypeCode-IFU_INCLUDING_CLEANING_DISINFECTION_STERILISATION_INSTRUCTIONS",
+        "gs1:ReferencedFileTypeCode-INGREDIENTS_LABEL",
+        "gs1:ReferencedFileTypeCode-INTERNAL_VIEW",
+        "gs1:ReferencedFileTypeCode-LIGHTING_FACT_LABEL",
+        "gs1:ReferencedFileTypeCode-LOGO",
+        "gs1:ReferencedFileTypeCode-MARKETING_INFORMATION",
+        "gs1:ReferencedFileTypeCode-MATERIAL_SAMPLES",
+        "gs1:ReferencedFileTypeCode-MOBILE_DEVICE_IMAGE",
+        "gs1:ReferencedFileTypeCode-MOBILE_READY_HERO_IMAGE",
+        "gs1:ReferencedFileTypeCode-MONTAGE_IMAGE",
+        "gs1:ReferencedFileTypeCode-NUTRITION_FACT_LABEL",
+        "gs1:ReferencedFileTypeCode-NUTRITION_FACT_LABEL_WITH_INGREDIENTS",
+        "gs1:ReferencedFileTypeCode-OPTIMIZED_PACK_IMAGE",
+        "gs1:ReferencedFileTypeCode-ORGANIC_CERTIFICATE",
+        "gs1:ReferencedFileTypeCode-OTHER_EXTERNAL_INFORMATION",
+        "gs1:ReferencedFileTypeCode-OUT_OF_PACKAGE_IMAGE",
+        "gs1:ReferencedFileTypeCode-PACKAGING_ARTWORK",
+        "gs1:ReferencedFileTypeCode-PATIENT_INFORMATION_LEAFLET",
+        "gs1:ReferencedFileTypeCode-PETFOOD_FEEDING_INSTRUCTIONS",
+        "gs1:ReferencedFileTypeCode-PLANOGRAM",
+        "gs1:ReferencedFileTypeCode-PREPARATION_INSTRUCTIONS",
+        "gs1:ReferencedFileTypeCode-PRODUCT_FORMULATION_STATEMENT",
+        "gs1:ReferencedFileTypeCode-PRODUCT_IMAGE",
+        "gs1:ReferencedFileTypeCode-PRODUCT_IMAGE_FORMED",
+        "gs1:ReferencedFileTypeCode-PRODUCT_LABEL_IMAGE",
+        "gs1:ReferencedFileTypeCode-PRODUCT_WEBSITE",
+        "gs1:ReferencedFileTypeCode-QR_CODE",
+        "gs1:ReferencedFileTypeCode-QUALITY_CONTROL_PLAN",
+        "gs1:ReferencedFileTypeCode-RECIPE_WEBSITE",
+        "gs1:ReferencedFileTypeCode-RECYCLABILITY_ASSESSMENT_CERTIFICATE",
+        "gs1:ReferencedFileTypeCode-REGULATORY_INSPECTION_AUDIT",
+        "gs1:ReferencedFileTypeCode-RISK_ANALYSIS_DOCUMENT",
+        "gs1:ReferencedFileTypeCode-SAFETY_DATA_SHEET",
+        "gs1:ReferencedFileTypeCode-SAFETY_SUMMARY_SHEET",
+        "gs1:ReferencedFileTypeCode-SAMPLE_SHIPPING_ORDER",
+        "gs1:ReferencedFileTypeCode-SIDEKICK_IMAGE",
+        "gs1:ReferencedFileTypeCode-SOCIAL_MEDIA_IMAGE",
+        "gs1:ReferencedFileTypeCode-SUMMARY_OF_PRODUCT_CHARACTERISTICS",
+        "gs1:ReferencedFileTypeCode-SUPPLEMENT_FACT_LABEL",
+        "gs1:ReferencedFileTypeCode-TECHNICAL_DATA_SHEET",
+        "gs1:ReferencedFileTypeCode-TECHNICAL_DRAWING",
+        "gs1:ReferencedFileTypeCode-TESTING_METHODOLOGY_RESULTS",
+        "gs1:ReferencedFileTypeCode-TRADE_ITEM_DESCRIPTION",
+        "gs1:ReferencedFileTypeCode-TRADE_ITEM_IMAGE_WITH_DIMENSIONS",
+        "gs1:ReferencedFileTypeCode-VIDEO",
+        "gs1:ReferencedFileTypeCode-VISUAL_VERIFICATION_IMAGE",
+        "gs1:ReferencedFileTypeCode-WARRANTY_INFORMATION",
+        "gs1:ReferencedFileTypeCode-WEBSITE",
+        "gs1:ReferencedFileTypeCode-ZOOM_VIEW"
+      ],
+      "description": "GS1 code list ReferencedFileTypeCode: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "ReturnablePackageDepositDetails": {
+      "type": "object",
+      "description": "GS1 ReturnablePackageDepositDetails.",
+      "properties": {
+        "returnablePackageDepositAmount": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PriceSpecification"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/PriceSpecification"
+              }
+            }
+          ],
+          "description": "The monetary amount for the individual returnable package."
+        },
+        "returnablePackageDepositRegion": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Country"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Country"
+              }
+            }
+          ],
+          "description": "The geographic region associated with the returnable package deposit amount."
+        }
+      }
+    },
+    "SecurityMarking": {
+      "type": "string",
+      "enum": [
+        "gs1:SecurityMarking-HOLOGRAM",
+        "gs1:SecurityMarking-MICROPRINTING",
+        "gs1:SecurityMarking-UVINK",
+        "gs1:SecurityMarking-WATERMARK"
+      ],
+      "description": "GS1 code list SecurityMarking: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "SizeCodeDetails": {
+      "type": "object",
+      "description": "GS1 SizeCodeDetails.",
+      "properties": {
+        "sizeCodeListCode": {
+          "type": "string",
+          "description": "Code specifying a size code list. Allowed code values are specified in GS1 Code List SizeCodeListCode ."
+        },
+        "sizeCodeValue": {
+          "type": "string",
+          "description": "A code indicating the size of an object according to a specific code list. The applied code list is specified as additional information together with the size code."
+        }
+      }
+    },
+    "TargetMarketDetails": {
+      "type": "object",
+      "description": "GS1 TargetMarketDetails.",
+      "properties": {
+        "consumerFirstAvailabilityDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The first date/time that the buyer is allowed to sell the product to consumers. Usually related to a specific geography. ISO 8601 date format CCYY-MM-DDTHH:MM:SS."
+        },
+        "targetMarketCountries": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Country"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Country"
+              }
+            }
+          ],
+          "description": "List of countries representing the target market for a particular release date indicated by gs1:consumerFirstAvailabilityDateTime"
+        }
+      }
+    },
+    "WarrantyPromise": {
+      "type": "object",
+      "description": "GS1 WarrantyPromise.",
+      "properties": {
+        "durationOfWarranty": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/QuantitativeValue"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/QuantitativeValue"
+              }
+            }
+          ],
+          "description": "The time period that the warranty is valid within."
+        },
+        "warrantyScopeDescription": {
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "description": "The description of warranty available for the product. Allows for the representation of the same value in different languages but not for multiple values."
+        }
+      }
+    }
+  }
+}

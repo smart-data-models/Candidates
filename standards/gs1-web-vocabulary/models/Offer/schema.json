@@ -1,0 +1,843 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gs1-web-vocabulary/models/Offer/schema.json",
+  "modelTags": "GS1,GS1WebVocabulary,Retail,ProductData",
+  "title": "Smart Data Models - GS1 Web Vocabulary - Offer",
+  "description": "An offer to transfer some rights to an item or to provide a service,for example, an offer to sell tickets to an event, to rent the DVD of a movie, to stream a TV show over the internet, to repair a motorcycle, or to loan a book. (GS1 Web Vocabulary 1.18 class gs1:Offer. Property names verbatim.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Offer"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Offer'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "acceptedPaymentMethod": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PaymentMethod"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PaymentMethod"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/acceptedPaymentMethod'. Code indicating a means of payment, for example, BANK_CHEQUE, CASH, etc. Values are GS1 code-list members as compact IRIs (gs1:<Code>); deprecated codes are left out."
+    },
+    "availabilityEnds": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://ref.gs1.org/voc/availabilityEnds'. The date from which the product is no longer available from the information provider, including seasonal or temporary product and services ."
+    },
+    "availabilityStarts": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://ref.gs1.org/voc/availabilityStarts'. The date from which the product is available from the information provider, including seasonal or temporary product and services."
+    },
+    "availableAtOrFrom": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/availableAtOrFrom'. The location the offered product or service is available from. Points to Place entities."
+    },
+    "itemOffered": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/itemOffered'. The product included in the offer. Points to Product entities."
+    },
+    "offerDescription": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/offerDescription'. A description of the offer including goods or services offered for sale or use."
+    },
+    "offerDiscount": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Discount"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Discount"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/offerDiscount'. A discount associated with an offer."
+    },
+    "offerRedemptionURL": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ReferencedFileDetails"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReferencedFileDetails"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/offerRedemptionURL'. The URL where the offer seeker will need to go in order to redeem the offer for an online redemption."
+    },
+    "paymentTerms": {
+      "type": "string",
+      "description": "Property. Model:'https://ref.gs1.org/voc/paymentTerms'. The type of payment term expressed as a code, for example Discount."
+    },
+    "priceSpecification": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PriceSpecification"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PriceSpecification"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/priceSpecification'. The price related to an offer. If the offer is a multi-buy offer for a quantity of product greater than one unit, this should be indicated using the property gs1:eligibleQuantity"
+    },
+    "seeker": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/seeker'. The organization seeking an offer. Points to Organization entities."
+    },
+    "seller": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/seller'. The organization seeking to sell a product or service. Points to Organization entities."
+    },
+    "warranty": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/WarrantyPromise"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/WarrantyPromise"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/warranty'. The warranty associated with the product, as provided by the manufacturer."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ],
+  "$defs": {
+    "AdditionalProductClassificationDetails": {
+      "type": "object",
+      "description": "GS1 AdditionalProductClassificationDetails.",
+      "properties": {
+        "additionalProductClassificationCode": {
+          "type": "string",
+          "description": "Code specifying the applied additional product classification scheme."
+        },
+        "additionalProductClassificationCodeDescription": {
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "description": "A description related to the additional product classification code value."
+        },
+        "additionalProductClassificationValue": {
+          "type": "string",
+          "description": "Code specifying an additional product classification other than the GS1 Global Product Classification. The applied classification scheme is specified as additional information together with the classification value."
+        }
+      }
+    },
+    "Discount": {
+      "type": "object",
+      "description": "GS1 Discount.",
+      "properties": {
+        "discountRepeatsPerMultipleMinimum": {
+          "type": "boolean",
+          "description": "If specified and set to true, the discount is available for each time the minimum qualifying criteria are met. This can be used to express '$10 off each $50 spend', which is distinct from a 20% discount because it is quantized in units of spending."
+        },
+        "discountType": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DiscountTypeCode"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/DiscountTypeCode"
+              }
+            }
+          ],
+          "description": "A code that specifies the type of payment discount applicable to an offer, for example BOGO."
+        },
+        "eligibleTradeChannel": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TradeChannelCode"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/TradeChannelCode"
+              }
+            }
+          ],
+          "description": "A code determining the location where a user can redeem the offer, for example ONLINE_ONLY."
+        },
+        "exactDiscountAmount": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PriceSpecification"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/PriceSpecification"
+              }
+            }
+          ],
+          "description": "Links to a gs1:PriceSpecification that indicates in terms of an amount and specified currency, the exact discount on the sales price associated with a particular gs1:Discount. This property can be used to express '$10 off'."
+        },
+        "exactDiscountPercentage": {
+          "type": "number",
+          "description": "A floating-point value indicating an exact percentage discount on the sales price associated with a particular gs1:Discount. This property can be used to express '15% discount'."
+        },
+        "exclusionDescription": {
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "description": "A text description of any products, brands, or categories that cannot be used with the offer"
+        },
+        "isOnlyAvailableThroughRetailer": {
+          "type": "boolean",
+          "description": "If specified and set to true, the discount is only available through the retailer making the offer."
+        },
+        "isOnlyWithMailingListSignup": {
+          "type": "boolean",
+          "description": "If specified and set to true, the discount is only available for customers who have signed up to the retailer's mailing list."
+        },
+        "isOnlyWithPaymentCard": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PaymentMethod"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/PaymentMethod"
+              }
+            }
+          ],
+          "description": "If specified, the discount is only available when purchasing using one of the specified payment card types."
+        },
+        "isOnlyWithRetailerLoyaltyCard": {
+          "type": "boolean",
+          "description": "If specified and set to true, the discount is only available for holders of the retailer's own loyalty card."
+        },
+        "isOnlyWithRetailerPaymentCard": {
+          "type": "boolean",
+          "description": "If specified and set to true, the discount is only available for holders of the retailer's own store payment card."
+        },
+        "isPromoterExclusiveOffer": {
+          "type": "boolean",
+          "description": "Determines whether the offer is only provided by the promoter"
+        },
+        "maximumDiscountAmount": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PriceSpecification"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/PriceSpecification"
+              }
+            }
+          ],
+          "description": "Links to a gs1:PriceSpecification that indicates in terms of an amount and specified currency, the maximum discount on the sales price associated with a particular gs1:Discount. This property can be used to express 'up to $10 off'."
+        },
+        "maximumDiscountPercentage": {
+          "type": "number",
+          "description": "A floating-point value indicating a maximum percentage discount on the sales price associated with a particular gs1:Discount. This property can be used to express 'up to 15% discount'."
+        },
+        "maximumQualifyingItems": {
+          "type": "integer",
+          "description": "Specifies the maximum number of items that qualify for a particular gs1:Discount. This property can be used to express 'maximum N items per customer'."
+        },
+        "maximumQualifyingSpend": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PriceSpecification"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/PriceSpecification"
+              }
+            }
+          ],
+          "description": "Links to a gs1:PriceSpecification that indicates in terms of an amount and specified currency, the maximum spend that qualifies for a particular gs1:Discount. This property can be used to express 'for purchases of up to $100'."
+        },
+        "minimumDiscountAmount": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PriceSpecification"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/PriceSpecification"
+              }
+            }
+          ],
+          "description": "Links to a gs1:PriceSpecification that indicates in terms of an amount and specified currency, the minimum discount on the sales price associated with a particular gs1:Discount. This property can be used to express 'at least $10 off'."
+        },
+        "minimumDiscountPercentage": {
+          "type": "number",
+          "description": "A floating-point value indicating a minimum percentage discount on the sales price associated with a particular gs1:Discount. This property can be used to express 'at least 15% discount'."
+        },
+        "minimumQualifyingItems": {
+          "type": "integer",
+          "description": "Specifies the minimum number of items that must be purchased to qualify for a particular gs1:Discount. This property can be used to express 'if you buy at least N items'."
+        },
+        "minimumQualifyingSpend": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PriceSpecification"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/PriceSpecification"
+              }
+            }
+          ],
+          "description": "Links to a gs1:PriceSpecification that indicates in terms of an amount and specified currency, the minimum spend required to qualify for a particular gs1:Discount. This property can be used to express 'if you spend at least $100'."
+        },
+        "offerRedemptionType": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/OfferRedemptionTypeCode"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/OfferRedemptionTypeCode"
+              }
+            }
+          ],
+          "description": "A code indicating the type of redemptions that apply to the offer, for example single use."
+        },
+        "offerRestrictionDescription": {
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "description": "A description of what the offer is restricted to, relative to all other offerings by the issuer, for example payment restrictions, subscription required, new customers only."
+        },
+        "qualifyingBrandName": {
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "description": "If specified, the discount is only available when purchasing a product from one of the brand names specified via this property."
+        },
+        "qualifyingGPCs": {
+          "type": "string",
+          "description": "If specified, the discount is only available when purchasing a product whose Global Product Classification (GPC) brick value appears in the list specified via this property."
+        },
+        "qualifyingProductCategoryDescription": {
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "description": "If specified, the discount is only available when purchasing a product from categories specified in this free-form text field."
+        },
+        "qualifyingProductClassificationCode": {
+          "$ref": "#/$defs/AdditionalProductClassificationDetails",
+          "description": "If specified, the discount is only available when purchasing a product whose product classification (other than GPC) appears in the list specified via this property. This property specifies a product classification other than GPC."
+        },
+        "qualifyingProductGTINs": {
+          "type": "string",
+          "description": "If specified, the discount is only available when purchasing a product whose GTIN appears in the list specified via this property."
+        },
+        "qualifyingSubBrandName": {
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "description": "If specified, the discount is only available when purchasing a product from one of the sub-brand names (specified product ranges for a given brand) specified via this property."
+        },
+        "selectedProductsOnly": {
+          "type": "boolean",
+          "description": "If specified and set to true, the discount only applies to specific products selected by the retailer or offer promoter - not to all items in that product category. This property should be asserted and set to true for offers that say 'on selected products'."
+        }
+      }
+    },
+    "DiscountTypeCode": {
+      "type": "string",
+      "enum": [
+        "gs1:DiscountTypeCode-BOGO",
+        "gs1:DiscountTypeCode-DISCOUNTED_ITEM",
+        "gs1:DiscountTypeCode-FREE_GIFT",
+        "gs1:DiscountTypeCode-FREE_SHIPPING",
+        "gs1:DiscountTypeCode-OTHER",
+        "gs1:DiscountTypeCode-PERCENTAGE_OFF"
+      ],
+      "description": "GS1 code list DiscountTypeCode: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "OfferRedemptionTypeCode": {
+      "type": "string",
+      "enum": [
+        "gs1:OfferRedemptionTypeCode-COUPON_CODE",
+        "gs1:OfferRedemptionTypeCode-GIFT_CARD",
+        "gs1:OfferRedemptionTypeCode-REBATE",
+        "gs1:OfferRedemptionTypeCode-SALE",
+        "gs1:OfferRedemptionTypeCode-SINGLE_USE_CODE"
+      ],
+      "description": "GS1 code list OfferRedemptionTypeCode: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "PaymentMethod": {
+      "type": "string",
+      "enum": [
+        "gs1:PaymentMethod-BANKERS_DRAFT",
+        "gs1:PaymentMethod-BANK_CHEQUE",
+        "gs1:PaymentMethod-BANK_GIRO",
+        "gs1:PaymentMethod-BOOKENTRY_CREDIT",
+        "gs1:PaymentMethod-BOOKENTRY_DEBIT",
+        "gs1:PaymentMethod-BOP",
+        "gs1:PaymentMethod-CASH",
+        "gs1:PaymentMethod-CERTIFIED_CHEQUE",
+        "gs1:PaymentMethod-CHEQUE",
+        "gs1:PaymentMethod-CREDIT_CARD",
+        "gs1:PaymentMethod-CREDIT_CARD_AMEX",
+        "gs1:PaymentMethod-CREDIT_CARD_DINERS_CLUB",
+        "gs1:PaymentMethod-CREDIT_CARD_DISCOVER",
+        "gs1:PaymentMethod-CREDIT_CARD_MASTERCARD",
+        "gs1:PaymentMethod-CREDIT_CARD_VISA",
+        "gs1:PaymentMethod-DEBIT_CARD",
+        "gs1:PaymentMethod-DEBIT_CARD_MAESTRO",
+        "gs1:PaymentMethod-DEBIT_CARD_MASTERCARD",
+        "gs1:PaymentMethod-DEBIT_CARD_VISA",
+        "gs1:PaymentMethod-DEBIT_CARD_VISA_ELECTRON",
+        "gs1:PaymentMethod-ELECTRONIC_CREDIT_ACH",
+        "gs1:PaymentMethod-ELECTRONIC_DEBIT_ACH",
+        "gs1:PaymentMethod-FED_WIRE_NON_REPETITIVE",
+        "gs1:PaymentMethod-FED_WIRE_REPETITIVE",
+        "gs1:PaymentMethod-INTERNATIONAL_WIRE",
+        "gs1:PaymentMethod-LETTER_OF_CREDIT",
+        "gs1:PaymentMethod-ONLINE_PAYMENT",
+        "gs1:PaymentMethod-ONLINE_PAYMENT_APPLE_PAY",
+        "gs1:PaymentMethod-ONLINE_PAYMENT_GOOGLE_WALLET",
+        "gs1:PaymentMethod-ONLINE_PAYMENT_PAYPAL",
+        "gs1:PaymentMethod-POSTGIRO",
+        "gs1:PaymentMethod-WIRE_TRANSFER_CREDIT",
+        "gs1:PaymentMethod-WIRE_TRANSFER_DEBIT"
+      ],
+      "description": "GS1 code list PaymentMethod: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "PriceSpecification": {
+      "type": "object",
+      "description": "GS1 PriceSpecification.",
+      "properties": {
+        "dutyFeeTaxAmount": {
+          "type": "number",
+          "description": "The current tax or duty or fee amount applicable to the product, expressed as a floating-point numeric value that is qualified by the corresponding currency. See also gs1:priceCurrency."
+        },
+        "dutyFeeTaxDescription": {
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "description": "A description of tax type for example Taxes sure les supports audio."
+        },
+        "dutyFeeTaxRate": {
+          "type": "number",
+          "description": "The current tax or duty rate percentage applicable to the product."
+        },
+        "maxPrice": {
+          "type": "number",
+          "description": "Provides a maximum price value as a floating-point numeric value that is qualified by the corresponding currency. See also gs1:priceCurrency"
+        },
+        "minPrice": {
+          "type": "number",
+          "description": "Provides a minimum price value as a floating-point numeric value that is qualified by the corresponding currency. See also gs1:priceCurrency"
+        },
+        "price": {
+          "type": "number",
+          "description": "Provides a price value as a floating-point numeric value that is qualified by the corresponding currency. See also gs1:priceCurrency. The price value indicates the unit price unless the property gs1:eligibleQuantity is specified and indicates multiple units"
+        },
+        "priceCurrency": {
+          "type": "string",
+          "description": "A string value indicating a currency from ISO 4217 for example USD ."
+        },
+        "validFrom": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The effective start date of the price ."
+        },
+        "validThrough": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The effective end date of the price ."
+        }
+      }
+    },
+    "QuantitativeValue": {
+      "type": "object",
+      "description": "GS1 QuantitativeValue.",
+      "properties": {
+        "unitCode": {
+          "type": "string",
+          "description": "A string value indicating a Measurement Unit from UN/ECE Recommendation 20, Units of Measure used in International Trade e.g. GRM = gram - see http://www.unece.org/fileadmin/DAM/cefact/recommendations/rec20/rec20_rev3_Annex3e.pdf"
+        },
+        "value": {
+          "type": "number",
+          "description": "A floating-point numeric value that is qualified by the corresponding measurement unit code - see gs1:unitCode"
+        }
+      }
+    },
+    "ReferencedFileDetails": {
+      "type": "object",
+      "description": "GS1 ReferencedFileDetails.",
+      "properties": {
+        "fileLanguageCode": {
+          "type": "string",
+          "description": "The specified language to which the digital asset is targeted. It is recommended to use the ISO 639-1 language code."
+        },
+        "filePixelHeight": {
+          "type": "integer",
+          "description": "The number of pixels along the vertical axis of the image."
+        },
+        "filePixelWidth": {
+          "type": "integer",
+          "description": "The number of pixels along the horizontal axis of the image."
+        },
+        "referencedFileEffectiveEndDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date upon which the target of this external link ceases to be effective for use."
+        },
+        "referencedFileEffectiveStartDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date upon which the target of this external link begins to be effective for use."
+        },
+        "referencedFileSize": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/QuantitativeValue"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/QuantitativeValue"
+              }
+            }
+          ],
+          "description": "The size of the file as it is stored in an uncompressed format."
+        },
+        "referencedFileType": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ReferencedFileTypeCode"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ReferencedFileTypeCode"
+              }
+            }
+          ],
+          "description": "A code indicating the purpose or role of file (not a MIME type) that is being referenced, for example PRODUCT_LABEL_IMAGE. This code is used when the purpose of a file is not specified in the property."
+        },
+        "referencedFileURL": {
+          "type": "string",
+          "format": "uri",
+          "description": "Simple text string that refers to a resource on the internet, URLs may refer to documents, resources, people, etc."
+        }
+      }
+    },
+    "ReferencedFileTypeCode": {
+      "type": "string",
+      "enum": [
+        "gs1:ReferencedFileTypeCode-360_DEGREE_IMAGE",
+        "gs1:ReferencedFileTypeCode-AMBIENCE_MOOD_IMAGE",
+        "gs1:ReferencedFileTypeCode-APPLICATION_IMAGE",
+        "gs1:ReferencedFileTypeCode-ASSEMBLY_INSTRUCTIONS",
+        "gs1:ReferencedFileTypeCode-AUDIO",
+        "gs1:ReferencedFileTypeCode-AWARD_CERTIFICATE",
+        "gs1:ReferencedFileTypeCode-BARCODE",
+        "gs1:ReferencedFileTypeCode-CERTIFICATION",
+        "gs1:ReferencedFileTypeCode-CHEMICAL_ASSESSMENT_SUMMARY",
+        "gs1:ReferencedFileTypeCode-CHEMICAL_SAFETY_REPORT",
+        "gs1:ReferencedFileTypeCode-CHILD_NUTRITION_LABEL",
+        "gs1:ReferencedFileTypeCode-CLEANING_DISINFECTION_STERILISATION_INSTRUCTIONS",
+        "gs1:ReferencedFileTypeCode-CLINICIAN_MEDICINE_INFORMATION",
+        "gs1:ReferencedFileTypeCode-CONSUMER_HANDLING_AND_STORAGE",
+        "gs1:ReferencedFileTypeCode-CONTENT_TEXTURE_IMAGE",
+        "gs1:ReferencedFileTypeCode-CROSSSECTION_VIEW",
+        "gs1:ReferencedFileTypeCode-DECLARATION_OF_CONFORMITY",
+        "gs1:ReferencedFileTypeCode-DIET_CERTIFICATE",
+        "gs1:ReferencedFileTypeCode-DISPOSAL_INSTRUCTIONS",
+        "gs1:ReferencedFileTypeCode-DOCUMENT",
+        "gs1:ReferencedFileTypeCode-DOP_SHEET",
+        "gs1:ReferencedFileTypeCode-DRUG_FACT_LABEL",
+        "gs1:ReferencedFileTypeCode-ECOLOGICAL_FACT_SHEET",
+        "gs1:ReferencedFileTypeCode-ENERGY_LABEL",
+        "gs1:ReferencedFileTypeCode-FOOD_CONTACT_CONFORMITY_CERTIFICATE",
+        "gs1:ReferencedFileTypeCode-GROUP_CHARACTERISTIC_SHEET",
+        "gs1:ReferencedFileTypeCode-HAZARDOUS_SUBSTANCES_DATA",
+        "gs1:ReferencedFileTypeCode-IFU",
+        "gs1:ReferencedFileTypeCode-IFU_INCLUDING_CLEANING_DISINFECTION_STERILISATION_INSTRUCTIONS",
+        "gs1:ReferencedFileTypeCode-INGREDIENTS_LABEL",
+        "gs1:ReferencedFileTypeCode-INTERNAL_VIEW",
+        "gs1:ReferencedFileTypeCode-LIGHTING_FACT_LABEL",
+        "gs1:ReferencedFileTypeCode-LOGO",
+        "gs1:ReferencedFileTypeCode-MARKETING_INFORMATION",
+        "gs1:ReferencedFileTypeCode-MATERIAL_SAMPLES",
+        "gs1:ReferencedFileTypeCode-MOBILE_DEVICE_IMAGE",
+        "gs1:ReferencedFileTypeCode-MOBILE_READY_HERO_IMAGE",
+        "gs1:ReferencedFileTypeCode-MONTAGE_IMAGE",
+        "gs1:ReferencedFileTypeCode-NUTRITION_FACT_LABEL",
+        "gs1:ReferencedFileTypeCode-NUTRITION_FACT_LABEL_WITH_INGREDIENTS",
+        "gs1:ReferencedFileTypeCode-OPTIMIZED_PACK_IMAGE",
+        "gs1:ReferencedFileTypeCode-ORGANIC_CERTIFICATE",
+        "gs1:ReferencedFileTypeCode-OTHER_EXTERNAL_INFORMATION",
+        "gs1:ReferencedFileTypeCode-OUT_OF_PACKAGE_IMAGE",
+        "gs1:ReferencedFileTypeCode-PACKAGING_ARTWORK",
+        "gs1:ReferencedFileTypeCode-PATIENT_INFORMATION_LEAFLET",
+        "gs1:ReferencedFileTypeCode-PETFOOD_FEEDING_INSTRUCTIONS",
+        "gs1:ReferencedFileTypeCode-PLANOGRAM",
+        "gs1:ReferencedFileTypeCode-PREPARATION_INSTRUCTIONS",
+        "gs1:ReferencedFileTypeCode-PRODUCT_FORMULATION_STATEMENT",
+        "gs1:ReferencedFileTypeCode-PRODUCT_IMAGE",
+        "gs1:ReferencedFileTypeCode-PRODUCT_IMAGE_FORMED",
+        "gs1:ReferencedFileTypeCode-PRODUCT_LABEL_IMAGE",
+        "gs1:ReferencedFileTypeCode-PRODUCT_WEBSITE",
+        "gs1:ReferencedFileTypeCode-QR_CODE",
+        "gs1:ReferencedFileTypeCode-QUALITY_CONTROL_PLAN",
+        "gs1:ReferencedFileTypeCode-RECIPE_WEBSITE",
+        "gs1:ReferencedFileTypeCode-RECYCLABILITY_ASSESSMENT_CERTIFICATE",
+        "gs1:ReferencedFileTypeCode-REGULATORY_INSPECTION_AUDIT",
+        "gs1:ReferencedFileTypeCode-RISK_ANALYSIS_DOCUMENT",
+        "gs1:ReferencedFileTypeCode-SAFETY_DATA_SHEET",
+        "gs1:ReferencedFileTypeCode-SAFETY_SUMMARY_SHEET",
+        "gs1:ReferencedFileTypeCode-SAMPLE_SHIPPING_ORDER",
+        "gs1:ReferencedFileTypeCode-SIDEKICK_IMAGE",
+        "gs1:ReferencedFileTypeCode-SOCIAL_MEDIA_IMAGE",
+        "gs1:ReferencedFileTypeCode-SUMMARY_OF_PRODUCT_CHARACTERISTICS",
+        "gs1:ReferencedFileTypeCode-SUPPLEMENT_FACT_LABEL",
+        "gs1:ReferencedFileTypeCode-TECHNICAL_DATA_SHEET",
+        "gs1:ReferencedFileTypeCode-TECHNICAL_DRAWING",
+        "gs1:ReferencedFileTypeCode-TESTING_METHODOLOGY_RESULTS",
+        "gs1:ReferencedFileTypeCode-TRADE_ITEM_DESCRIPTION",
+        "gs1:ReferencedFileTypeCode-TRADE_ITEM_IMAGE_WITH_DIMENSIONS",
+        "gs1:ReferencedFileTypeCode-VIDEO",
+        "gs1:ReferencedFileTypeCode-VISUAL_VERIFICATION_IMAGE",
+        "gs1:ReferencedFileTypeCode-WARRANTY_INFORMATION",
+        "gs1:ReferencedFileTypeCode-WEBSITE",
+        "gs1:ReferencedFileTypeCode-ZOOM_VIEW"
+      ],
+      "description": "GS1 code list ReferencedFileTypeCode: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "TradeChannelCode": {
+      "type": "string",
+      "enum": [
+        "gs1:TradeChannelCode-INSTORE_ONLY",
+        "gs1:TradeChannelCode-OMNICHANNEL",
+        "gs1:TradeChannelCode-ONLINE_ONLY"
+      ],
+      "description": "GS1 code list TradeChannelCode: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "WarrantyPromise": {
+      "type": "object",
+      "description": "GS1 WarrantyPromise.",
+      "properties": {
+        "durationOfWarranty": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/QuantitativeValue"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/QuantitativeValue"
+              }
+            }
+          ],
+          "description": "The time period that the warranty is valid within."
+        },
+        "warrantyScopeDescription": {
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "description": "The description of warranty available for the product. Allows for the representation of the same value in different languages but not for multiple values."
+        }
+      }
+    }
+  }
+}

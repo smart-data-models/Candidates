@@ -1,0 +1,764 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gs1-web-vocabulary/models/Organization/schema.json",
+  "modelTags": "GS1,GS1WebVocabulary,Retail,ProductData",
+  "title": "Smart Data Models - GS1 Web Vocabulary - Organization",
+  "description": "An Organization is any legal or physical entity involved at any point in any supply chain and upon which there is a need to retrieve predefined information. An Organization is uniquely identified by a Global Location Number (GLN). (GS1 Web Vocabulary 1.18 class gs1:Organization. Property names verbatim.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Organization"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Organization'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "additionalOrganizationID": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/OrganizationID_Details"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OrganizationID_Details"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/additionalOrganizationID'. Party/organisation identifiers assigned and managed by government bodies, trade organisations, and other entities."
+    },
+    "additionalOrganizationIdentificationTypeValue": {
+      "type": "string",
+      "description": "Property. Model:'https://ref.gs1.org/voc/additionalOrganizationIdentificationTypeValue'. The value associated with the Additional Organization Identification Type Value."
+    },
+    "affiliatedTo": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/affiliatedTo'. Method for associating an organisation/party affiliated to the identified organisation e.g., when engaged in an agent relationship (insurance, shipping, etc). Points to Organization entities."
+    },
+    "businessEntity": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/BusinessEntityType"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BusinessEntityType"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/businessEntity'. Method for noting business structure (e.g., Limited liability company, not for profit). Expects a repeatable value from gs1:BusinessEntityType code list. Values are GS1 code-list members as compact IRIs (gs1:<Code>); deprecated codes are left out."
+    },
+    "companyFilingURL": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://ref.gs1.org/voc/companyFilingURL'. A URI value linking to information related to organisation filing details."
+    },
+    "csrAffiliation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://ref.gs1.org/voc/csrAffiliation'. A URI value linking to information related to social responsibility activities and associations that an organisation/party is involved with."
+    },
+    "department": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/department'. The name of a division of an organization dealing with a specific activity"
+    },
+    "franchiseeOf": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/franchiseeOf'. Method for associating the franchisor organisation to the franchisee. Points to Organization entities."
+    },
+    "franchisorOf": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/franchisorOf'. Method for associating franchisee organisation(s) to the franchisor. Points to Organization entities."
+    },
+    "hasPrimaryLocation": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/hasPrimaryLocation'. Links to the place(s) that this organisation designates as their primary location(s). Points to Place entities."
+    },
+    "lesseeOf": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/lesseeOf'. Links to the place(s) for which this organisation is the lessee (i.e., this organisation leases those places from another organisation, the lessor). Points to Place entities."
+    },
+    "lessorFor": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/lessorFor'. Links to the place(s) for which this organisation is the lessor (i.e., this organisation leases those places to others). Points to Place entities."
+    },
+    "gs1Location": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/location'. The place(s) associated with an organization. GS1 property 'location', renamed because 'location' is reserved in NGSI-LD for the GeoProperty. Points to Place entities."
+    },
+    "makesOffer": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/makesOffer'. An offer made by an organization. Points to Offer entities."
+    },
+    "manages": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/manages'. Links to the place(s) or organisation(s) that this organisation manages, on behalf of the owner or another organisation. Points to Organization or Place entities."
+    },
+    "occupies": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/occupies'. Links to the place(s) that this organisation occupies. Points to Place entities."
+    },
+    "organizationClassification": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/OrganizationClassificationDetails"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OrganizationClassificationDetails"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/organizationClassification'. Links to one or more instances of gs1:OrganizationClassificationDetails for expresing the classification of the economic activities of an organisation."
+    },
+    "organizationFormationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://ref.gs1.org/voc/organizationFormationDate'. Date in which an organisation was formed or otherwise established. Note that this is NOT the date when a GLN was allocated to identify the organisation. To designate when organisation was terminated, see gs1:organizationTerminationDate"
+    },
+    "organizationHistory": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/OrganizationStatusHistory"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OrganizationStatusHistory"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/organizationHistory'. Provides details on if and when an organisation/party is active or inactive."
+    },
+    "organizationLegalName": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/organizationLegalName'. The legal name used by an organisation for official purposes. There may be more than one legal name, particularly in countries with more than one official language. In such cases the language of the string should be identified. To specify a general name, see gs1:organizationName. For trade name, see gs1:organizationTradingName. To specify the name of a function, see gs1:department."
+    },
+    "organizationRole": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/OrganizationRoleType"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OrganizationRoleType"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/organizationRole'. The role and/or purpose of a party (i.e. legal entity or function). Multiple values from gs1:OrganizationRoleType code list may be associated to a single organisation/party. Values are GS1 code-list members as compact IRIs (gs1:<Code>); deprecated codes are left out."
+    },
+    "organizationTerminationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://ref.gs1.org/voc/organizationTerminationDate'. Date in which an organisation was disbanded or otherwise ended. Note that this is NOT the date when a GLN was deactivated. To designate when organisation formed, see gs1:organizationFormationDate."
+    },
+    "organizationTradingName": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/organizationTradingName'. A trading name or alternative forms of a legal entity's name as recognised by some jurisdictions. To specify a general name, see gs1:organizationName. For legal name, see gs1:organizationLegalName. To specify the name of a function, see gs1:department."
+    },
+    "owns": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/owns'. Links to the place(s) or organisation(s) that this organisation owns. Points to Organization or Place entities."
+    },
+    "parentOrganization": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/parentOrganization'. Designates the legal entity or function directly above the organisation/party being identified in a hierarchy. This is not defaulted to the highest-level entity in the hierarchy. Only one parent organisation SHALL be associated to a single GLN. To specify other affiliated organisations, see gs1:affiliatedTo, gs1:managedBy, gs1:franchiseeOf, gs1:ownedBy. To specify an organisation/party lower in the hierarchy, see gs1:subOrganization. Points to Organization entities."
+    },
+    "partyGLN": {
+      "type": "string",
+      "description": "Property. Model:'https://ref.gs1.org/voc/partyGLN'. 13-digit GLN that is being used to identify a legal entity or function. If gs1:glnType is present, gs1:partyGLN SHALL only be used when gs1:GLN_TypeCode includes LEGAL_ENTITY and/or FUNCTION"
+    },
+    "replacedByOrganization": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/replacedByOrganization'. Links to the successor organisation that is used in place of a previous organisation Points to Organization entities."
+    },
+    "replacedOrganization": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/replacedOrganization'. Links to the previous organisation that this organisation replaces Points to Organization entities."
+    },
+    "responsibleForLocation": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/responsibleForLocation'. Links to the place(s) for which this organisation is responsible. Points to Place entities."
+    },
+    "subOrganization": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/subOrganization'. Designates a legal entity or function directly below the organisation/party being identified in a hierarchy. There may be multiple sub-organisations associated to a single GLN. To specify other affiliated organisations, see gs1:manages, gs1:franchisorOf, gs1:owns. To specify a parent organisation, see gs1:parentOrganization. Points to Organization entities."
+    },
+    "usesManagedLocation": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/usesManagedLocation'. Links to the place(s) that this organisation uses as a managed space. Points to Place entities."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ],
+  "$defs": {
+    "BusinessEntityType": {
+      "type": "string",
+      "enum": [
+        "gs1:BusinessEntityType-CORPORATION",
+        "gs1:BusinessEntityType-FOR_PROFIT",
+        "gs1:BusinessEntityType-GOVERNMENT_AGENCY",
+        "gs1:BusinessEntityType-HOLDING_COMPANY",
+        "gs1:BusinessEntityType-INDIVIDUALLY_OWNED_ENTERPRISE",
+        "gs1:BusinessEntityType-JOINT_VENTURE",
+        "gs1:BusinessEntityType-LLC",
+        "gs1:BusinessEntityType-NOT_FOR_PROFIT",
+        "gs1:BusinessEntityType-PRIVATE_ENTERPRISE",
+        "gs1:BusinessEntityType-SOE"
+      ],
+      "description": "GS1 code list BusinessEntityType: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "OrganizationClassificationDetails": {
+      "type": "object",
+      "description": "GS1 OrganizationClassificationDetails.",
+      "properties": {
+        "organizationClassificationID": {
+          "type": "string",
+          "description": "Classification value that is administered by an organisation. This value SHALL follow rules set forth by the system indicated by the code value of gs1:organizationClassificationType."
+        },
+        "organizationClassificationType": {
+          "$ref": "#/$defs/OrganizationClassificationType",
+          "description": "Classification system name associated with gs1:organizationClassificationID."
+        }
+      }
+    },
+    "OrganizationClassificationType": {
+      "type": "string",
+      "enum": [
+        "gs1:OrganizationClassificationType-GICS",
+        "gs1:OrganizationClassificationType-ICB",
+        "gs1:OrganizationClassificationType-ISIC",
+        "gs1:OrganizationClassificationType-NACE",
+        "gs1:OrganizationClassificationType-NAICS",
+        "gs1:OrganizationClassificationType-SIC"
+      ],
+      "description": "GS1 code list OrganizationClassificationType: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "OrganizationID_Details": {
+      "type": "object",
+      "description": "GS1 OrganizationID_Details.",
+      "properties": {
+        "organizationID": {
+          "type": "string",
+          "description": "Identifier value associated to an organisation/party. This value SHALL follow rules set forth by the administrating organisation designated in gs1:OrganizationID_Type."
+        },
+        "organizationID_Qualifier": {
+          "type": "string",
+          "description": "Secondary qualifier to supplement gs1:organizationID_Type meaning. May be used with proprietary ID code values to define identifier administrator."
+        },
+        "organizationID_Type": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/OrganizationID_Type"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/OrganizationID_Type"
+              }
+            }
+          ],
+          "description": "Organisation that administers the gs1:organizationID or the name of the ID itself. Value from gs1:OrganizationID_Type code list."
+        },
+        "organizationID_URI": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI that links to information about the gs1:organizationID."
+        }
+      }
+    },
+    "OrganizationID_Type": {
+      "type": "string",
+      "enum": [
+        "gs1:OrganizationID_Type-AU_ABN",
+        "gs1:OrganizationID_Type-AU_ACN",
+        "gs1:OrganizationID_Type-CRD_PARTNER_CODE",
+        "gs1:OrganizationID_Type-CRN",
+        "gs1:OrganizationID_Type-DID",
+        "gs1:OrganizationID_Type-DUNS",
+        "gs1:OrganizationID_Type-DUNS_PLUS_FOUR",
+        "gs1:OrganizationID_Type-EORI",
+        "gs1:OrganizationID_Type-EO_ID",
+        "gs1:OrganizationID_Type-EU_VAT_IDENTIFICATION_NUMBER",
+        "gs1:OrganizationID_Type-FR_RCS",
+        "gs1:OrganizationID_Type-FR_SIREN",
+        "gs1:OrganizationID_Type-IMO_COMPANY_NUMBER",
+        "gs1:OrganizationID_Type-LEI",
+        "gs1:OrganizationID_Type-NL_KVK_NUMBER",
+        "gs1:OrganizationID_Type-NL_OIN_NUMBER",
+        "gs1:OrganizationID_Type-NZ_GST_NUMBER",
+        "gs1:OrganizationID_Type-NZ_IRD_NUMBER",
+        "gs1:OrganizationID_Type-ORG_FOR_INTERNAL_USE_1",
+        "gs1:OrganizationID_Type-ORG_FOR_INTERNAL_USE_10",
+        "gs1:OrganizationID_Type-ORG_FOR_INTERNAL_USE_2",
+        "gs1:OrganizationID_Type-ORG_FOR_INTERNAL_USE_3",
+        "gs1:OrganizationID_Type-ORG_FOR_INTERNAL_USE_4",
+        "gs1:OrganizationID_Type-ORG_FOR_INTERNAL_USE_5",
+        "gs1:OrganizationID_Type-ORG_FOR_INTERNAL_USE_6",
+        "gs1:OrganizationID_Type-ORG_FOR_INTERNAL_USE_7",
+        "gs1:OrganizationID_Type-ORG_FOR_INTERNAL_USE_8",
+        "gs1:OrganizationID_Type-ORG_FOR_INTERNAL_USE_9",
+        "gs1:OrganizationID_Type-PHYTOSANITARY_REGISTRATION_NUMBER",
+        "gs1:OrganizationID_Type-TIN",
+        "gs1:OrganizationID_Type-UK_CRN",
+        "gs1:OrganizationID_Type-US_498_ID",
+        "gs1:OrganizationID_Type-US_499_FILER_ID",
+        "gs1:OrganizationID_Type-US_BEA_ID",
+        "gs1:OrganizationID_Type-US_CAGE",
+        "gs1:OrganizationID_Type-US_CID",
+        "gs1:OrganizationID_Type-US_CRD",
+        "gs1:OrganizationID_Type-US_DEA",
+        "gs1:OrganizationID_Type-US_DODAAC",
+        "gs1:OrganizationID_Type-US_EIN",
+        "gs1:OrganizationID_Type-US_EPA_ID",
+        "gs1:OrganizationID_Type-US_FCC_FRN",
+        "gs1:OrganizationID_Type-US_FDIC",
+        "gs1:OrganizationID_Type-US_FHFA_ID",
+        "gs1:OrganizationID_Type-US_FMC_ID",
+        "gs1:OrganizationID_Type-US_GIIN",
+        "gs1:OrganizationID_Type-US_LAB_ID",
+        "gs1:OrganizationID_Type-US_LIC",
+        "gs1:OrganizationID_Type-US_MFG_ID",
+        "gs1:OrganizationID_Type-US_MIC",
+        "gs1:OrganizationID_Type-US_NPI",
+        "gs1:OrganizationID_Type-US_RN",
+        "gs1:OrganizationID_Type-US_RSSD_ID",
+        "gs1:OrganizationID_Type-US_SCAC",
+        "gs1:OrganizationID_Type-US_UEI"
+      ],
+      "description": "GS1 code list OrganizationID_Type: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "OrganizationRoleType": {
+      "type": "string",
+      "enum": [
+        "gs1:OrganizationRoleType-ACCEPTING_PARTY",
+        "gs1:OrganizationRoleType-ACCOUNTS_DEPARTMENT",
+        "gs1:OrganizationRoleType-AGRICULTURAL_COOPERATIVE",
+        "gs1:OrganizationRoleType-AIRPORT_OPERATOR",
+        "gs1:OrganizationRoleType-AREA_HEALTH_SERVICE",
+        "gs1:OrganizationRoleType-ARRIVING_GOODS_PARTY",
+        "gs1:OrganizationRoleType-BILL_OF_LADING_RECIPIENT",
+        "gs1:OrganizationRoleType-BILL_TO",
+        "gs1:OrganizationRoleType-BRANCH",
+        "gs1:OrganizationRoleType-BRAND_OWNER",
+        "gs1:OrganizationRoleType-BREEDER",
+        "gs1:OrganizationRoleType-BROKER_AGENT",
+        "gs1:OrganizationRoleType-BUYER",
+        "gs1:OrganizationRoleType-BUYERS_AGENT_REPRESENTATIVE",
+        "gs1:OrganizationRoleType-BUYING_DEPARTMENT",
+        "gs1:OrganizationRoleType-CENTRAL_PAYMENT_SERVICE",
+        "gs1:OrganizationRoleType-CHECKING_PARTY",
+        "gs1:OrganizationRoleType-CHECK_ORDER",
+        "gs1:OrganizationRoleType-CLINICAL_TRIAL_SPONSOR",
+        "gs1:OrganizationRoleType-COMPLIANCE_AUTHORITY_OR_AGENCY",
+        "gs1:OrganizationRoleType-CONFORMITY_ASSESSMENT_BODY",
+        "gs1:OrganizationRoleType-CONSIGNEE",
+        "gs1:OrganizationRoleType-CONSIGNOR",
+        "gs1:OrganizationRoleType-CONSOLIDATOR",
+        "gs1:OrganizationRoleType-CONSUMER",
+        "gs1:OrganizationRoleType-CORPORATE_IDENTITY",
+        "gs1:OrganizationRoleType-COUNTRY_ORGANIZATION",
+        "gs1:OrganizationRoleType-CUSTOMS_AUTHORITY",
+        "gs1:OrganizationRoleType-CUSTOMS_BROKER",
+        "gs1:OrganizationRoleType-CUTTER",
+        "gs1:OrganizationRoleType-DATA_CONSUMER",
+        "gs1:OrganizationRoleType-DATA_PROVIDER",
+        "gs1:OrganizationRoleType-DECLARANTS_AGENT_REPRESENTATIVE",
+        "gs1:OrganizationRoleType-DELIVERY_RECIPIENT_PARTY",
+        "gs1:OrganizationRoleType-DESIGNER",
+        "gs1:OrganizationRoleType-DISPATCH_PARTY",
+        "gs1:OrganizationRoleType-DISTRIBUTION_MANAGEMENT_ENTITY_PROVIDER",
+        "gs1:OrganizationRoleType-DISTRIBUTOR",
+        "gs1:OrganizationRoleType-EMERGENCY_DEPARTMENT",
+        "gs1:OrganizationRoleType-EMPTY_EQUIPMENT_DISPATCH_PARTY",
+        "gs1:OrganizationRoleType-EMPTY_EQUIPMENT_RETURN_PARTY",
+        "gs1:OrganizationRoleType-EQUIPMENT_OWNER",
+        "gs1:OrganizationRoleType-EXPORTER",
+        "gs1:OrganizationRoleType-E_TAILER",
+        "gs1:OrganizationRoleType-FACILITIES_MAINTENANCE_DEPARTMENT",
+        "gs1:OrganizationRoleType-FACTOR",
+        "gs1:OrganizationRoleType-FARM_OPERATOR",
+        "gs1:OrganizationRoleType-FATTENER",
+        "gs1:OrganizationRoleType-FISHING_OPERATOR",
+        "gs1:OrganizationRoleType-FOODSERVICE_DISTRIBUTOR",
+        "gs1:OrganizationRoleType-FOODSERVICE_OPERATOR",
+        "gs1:OrganizationRoleType-FREIGHT_FORWARDER",
+        "gs1:OrganizationRoleType-GOODS_OWNER",
+        "gs1:OrganizationRoleType-GOVERNMENT_AGENCY",
+        "gs1:OrganizationRoleType-GOVERNMENT_DEPARTMENT_OR_MINISTRY",
+        "gs1:OrganizationRoleType-GROWER",
+        "gs1:OrganizationRoleType-HARVESTER",
+        "gs1:OrganizationRoleType-HEALTHCARE_PROVIDER",
+        "gs1:OrganizationRoleType-HOSPITAL_ORGANIZATION",
+        "gs1:OrganizationRoleType-HOSPITAL_PHARMACY_OPERATOR",
+        "gs1:OrganizationRoleType-IMPORTER",
+        "gs1:OrganizationRoleType-INFORMATION_PROVIDER",
+        "gs1:OrganizationRoleType-INSURER",
+        "gs1:OrganizationRoleType-INTERMEDIARY_BANK",
+        "gs1:OrganizationRoleType-INTERMEDIARY_BANK_1",
+        "gs1:OrganizationRoleType-INTERMEDIARY_BANK_2",
+        "gs1:OrganizationRoleType-INVENTORY_CONTROLLER",
+        "gs1:OrganizationRoleType-INVENTORY_REPORTING_PARTY",
+        "gs1:OrganizationRoleType-INVOICEE",
+        "gs1:OrganizationRoleType-ISSUER_OF_INVOICE",
+        "gs1:OrganizationRoleType-LOGISTICS_SERVICE_PROVIDER",
+        "gs1:OrganizationRoleType-MANUFACTURER_OF_FINISHED_GOODS",
+        "gs1:OrganizationRoleType-MANUFACTURER_OF_UNFINISHED_GOODS",
+        "gs1:OrganizationRoleType-MARKETING_DEPARTMENT",
+        "gs1:OrganizationRoleType-MARKETPLACE_OPERATOR",
+        "gs1:OrganizationRoleType-MARK_FOR",
+        "gs1:OrganizationRoleType-MENTAL_HEALTH_SERVICE",
+        "gs1:OrganizationRoleType-MESSAGE_FROM",
+        "gs1:OrganizationRoleType-MESSAGE_RECIPIENT",
+        "gs1:OrganizationRoleType-MINCER",
+        "gs1:OrganizationRoleType-OPERATING_DIVISION",
+        "gs1:OrganizationRoleType-OPERATOR",
+        "gs1:OrganizationRoleType-ORDERING_PARTY",
+        "gs1:OrganizationRoleType-OWNER_OF_EQUIPMENT",
+        "gs1:OrganizationRoleType-OWNER_OF_MEANS_OF_TRANSPORT",
+        "gs1:OrganizationRoleType-PACKER",
+        "gs1:OrganizationRoleType-PARTY_DECLARING_THE_VALUE_ADDED_TAX",
+        "gs1:OrganizationRoleType-PARTY_FOR_WHOM_ITEM_IS_ULTIMATELY_INTENDED",
+        "gs1:OrganizationRoleType-PARTY_RECEIVING_PRIVATE_DATA",
+        "gs1:OrganizationRoleType-PARTY_RECOVERING_THE_VALUE_ADDED_TAX",
+        "gs1:OrganizationRoleType-PARTY_TO_RECEIVE_ALL_DOCUMENTS",
+        "gs1:OrganizationRoleType-PARTY_TO_RECEIVE_COMMERCIAL_INVOICE",
+        "gs1:OrganizationRoleType-PARTY_TO_RECEIVE_ELECTRONIC_MEMO_OF_INVOICE",
+        "gs1:OrganizationRoleType-PARTY_TO_RECEIVE_FREIGHT_BILL",
+        "gs1:OrganizationRoleType-PARTY_TO_RECEIVE_REFUND",
+        "gs1:OrganizationRoleType-PAYEE",
+        "gs1:OrganizationRoleType-PAYER",
+        "gs1:OrganizationRoleType-PORT_OPERATOR",
+        "gs1:OrganizationRoleType-PRICE_LOCATION_PARTY",
+        "gs1:OrganizationRoleType-PROXY",
+        "gs1:OrganizationRoleType-PURCHASE_ORDER_RECEIVER",
+        "gs1:OrganizationRoleType-RECALL_RECIPIENT",
+        "gs1:OrganizationRoleType-RECALL_SPONSOR",
+        "gs1:OrganizationRoleType-REGIONAL_ORGANIZATION",
+        "gs1:OrganizationRoleType-REGISTERED_AGENT",
+        "gs1:OrganizationRoleType-REMIT_TO",
+        "gs1:OrganizationRoleType-REPACKER",
+        "gs1:OrganizationRoleType-RETAILER",
+        "gs1:OrganizationRoleType-RETAIL_PHARMACY_OPERATOR",
+        "gs1:OrganizationRoleType-SALES_DEPARTMENT",
+        "gs1:OrganizationRoleType-SELLER",
+        "gs1:OrganizationRoleType-SERVICE_PROVIDER",
+        "gs1:OrganizationRoleType-SHIPPER",
+        "gs1:OrganizationRoleType-SHIP_FROM_PARTY",
+        "gs1:OrganizationRoleType-SHIP_TO_PARTY",
+        "gs1:OrganizationRoleType-SLAUGHTERER",
+        "gs1:OrganizationRoleType-STORAGE_AND_HANDLING_PARTY",
+        "gs1:OrganizationRoleType-SUBSTITUTE_SUPPLIER",
+        "gs1:OrganizationRoleType-SUPPLIER",
+        "gs1:OrganizationRoleType-SUPPLY_CHAIN",
+        "gs1:OrganizationRoleType-TECHNICAL_SUPPORT_DEPARTMENT",
+        "gs1:OrganizationRoleType-TRADER_FINANCIAL",
+        "gs1:OrganizationRoleType-TRADER_GOODS",
+        "gs1:OrganizationRoleType-TRANSPORTATION_CARRIER",
+        "gs1:OrganizationRoleType-WAREHOUSE_KEEPER",
+        "gs1:OrganizationRoleType-WHOLESALER"
+      ],
+      "description": "GS1 code list OrganizationRoleType: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "OrganizationStatusHistory": {
+      "type": "object",
+      "description": "GS1 OrganizationStatusHistory.",
+      "properties": {
+        "organizationStatus": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/StatusType"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/StatusType"
+              }
+            }
+          ],
+          "description": "Designation of active/inactive status of an organisation/party."
+        }
+      }
+    },
+    "StatusType": {
+      "type": "string",
+      "enum": [
+        "gs1:StatusType-ACTIVE",
+        "gs1:StatusType-INACTIVE"
+      ],
+      "description": "GS1 code list StatusType: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    }
+  }
+}
