@@ -1,0 +1,167 @@
+title: "AIXM - Aeronautical Information Exchange Model"
+publisher: "EUROCONTROL and the US Federal Aviation Administration (FAA), under the global AIXM Change Control Board"
+sourceUrl: "https://aixm.aero/page/aixm-52"
+specificationUrl: "https://aixm.aero/page/aixm-52-specification"
+contact: "https://aixm.aero/page/support"
+sourceOntologyVersion: "AIXM 5.2 (XML Schema version 5.2.0, 17 January 2025)"
+sourceOntologyDownload: "https://aixm.aero/sites/default/files/imce/library/aixm_5_2_0_xsd.zip"
+sourceOntologyNamespace: "http://www.aixm.aero/schema/5.2"
+sourceOntologyFormat: "UML model (Sparx EA / XMI) and GML 3.2 application schema (XSD); no RDF vocabulary. Definitions taken from aixm_5_2_0_annotated.zip; context IRIs point to the AIXM 5.2 UML navigator (https://aixm.aero/sites/default/files/imce/AIXM52HTML/index.html)"
+sourceExampleUrl: "https://github.com/aixm/Donlon_2025"
+sourceExampleLicense: "BSD licence, Copyright (c) 2025 EUROCONTROL & FAA (fictitious sample data set, not for operational use)"
+domains:
+  - Transportation
+description: >
+  AIXM is the global standard for the digital exchange of aeronautical
+  information (the content of the AIP, aerodrome data, navaids, airspace,
+  routes, procedures, obstacles and Digital NOTAM). It is developed by
+  EUROCONTROL and the FAA, maintained by the international AIXM Change
+  Control Board, and it underpins the ICAO PANS-AIM data sets and the EU
+  aeronautical data quality rules. AIXM 5 is a UML model and a GML 3.2
+  XML Schema with about 170 features and their <<object>> types. Every
+  feature is temporal: its values are carried by TimeSlices (BASELINE,
+  PERMDELTA, TEMPDELTA, SNAPSHOT) with a validity period.
+license: "BSD-3-Clause"
+licenseNote: >
+  Verified in the AIXM 5.2 XML Schema files themselves (header of
+  AIXM_Features.xsd, AIXM_DataTypes.xsd, AIXM_AbstractGML_ObjectTypes.xsd
+  in aixm_5_2_0_xsd.zip): "Copyright (c) 2025, EUROCONTROL & FAA. All rights
+  reserved. Redistribution and use in source and binary forms, with or
+  without modification, are permitted provided that ..." the copyright
+  notice, conditions and disclaimer are retained and the names of
+  EUROCONTROL or FAA are not used to endorse derived products; the
+  editorial note says it is an instance of the OSI BSD licence template
+  (3-clause). aixm.aero has no separate licence page. Attribution: these
+  candidate models are derived from the AIXM 5.2 specification, Copyright
+  (c) 2025 EUROCONTROL & FAA, BSD licence; EUROCONTROL and FAA do not
+  endorse them. The examples come from the Donlon 2025 sample data set
+  (github.com/aixm/Donlon_2025), same BSD terms (README and file headers:
+  Copyright (c) 2025 EUROCONTROL & FAA; the repository LICENSE file is the
+  BSD-2-Clause text).
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from the AIXM 5.2 XML Schema to SDM candidate artifacts"
+notes: |
+  Translated on 2026-11-13. Source row 68 ("AIXM (Aeronautical Information
+  Exchange Model)", EUROCONTROL and FAA, sector Aviation) of the "Level A
+  standards not in Smart Data Models" list. The sheet marked the licence as
+  not verified; it was verified here (BSD, see licenseNote).
+
+  VERSION: AIXM 5.2 (XSD 5.2.0, January 2025) is the latest released
+  version and is used for the models. AIXM 5.1.1 is still the version used
+  for the ICAO AIP / obstacle / aerodrome mapping data sets and Digital
+  NOTAM, and the official sample data are 5.1.1 (see EXAMPLES).
+
+  SCOPE: AIXM 5.2 has about 170 features. This candidate covers 7 core
+  static (AIP) features that have identity, state and, mostly, a position,
+  i.e. what other domains link to:
+    - AirportHeliport    aerodrome / heliport (ARP, elevation, ICAO/IATA codes)
+    - Runway             runway or FATO of an aerodrome
+    - RunwayDirection    one landing/take-off direction of a runway (09L, 27R)
+    - Navaid             radio navigation aid (VOR, DME, NDB, ILS, ...),
+                         composed of NavaidEquipment
+    - DesignatedPoint    named waypoint / significant point
+    - Airspace           FIR, CTR, TMA, restricted / danger areas, ...
+    - VerticalStructure  obstacle (buildings, masts, cranes, wind farms)
+  Possible follow-ups: NavaidEquipment subtypes (VOR, DME, NDB, Localizer,
+  Glidepath, TACAN, MarkerBeacon), RunwayCentrelinePoint, RunwayElement,
+  Taxiway, Apron, AircraftStand, Route / RouteSegment, OrganisationAuthority
+  and Unit, the instrument procedures (SID, STAR, InstrumentApproachProcedure)
+  and the Digital NOTAM Event extension (TEMPDELTA timeslices).
+
+  TIMESLICE MAPPING: one NGSI-LD entity per AIXM feature;
+  id = urn:ngsi-ld:<Feature>:<gml:identifier UUID>, the UUID being also kept
+  in `identifier`. The entity carries the properties of ONE TimeSlice,
+  normally the current BASELINE (or a SNAPSHOT), flattened at entity level
+  with their AIXM names. The TimeSlice's own properties are kept as
+  attributes: validTime and featureLifetime (gml:TimePeriod as a nested
+  object {beginPosition, endPosition}; endPosition absent = indeterminate
+  "unknown", i.e. until further notice), interpretation, sequenceNumber
+  and correctionNumber. A new BASELINE becomes an update of the entity
+  (its history is available through the NGSI-LD temporal API); TEMPDELTA
+  timeslices (temporary changes, Digital NOTAM) are not represented and are
+  a follow-up. gml:id, featureMetadata, timeSliceMetadata (ISO 19115) and
+  extension elements are not represented.
+
+  NAMING: entity types and attribute names are the AIXM 5.2 feature and
+  property names, verbatim. Renamed because they are reserved in NGSI-LD at
+  entity level: `type` -> `aixmType` (AirportHeliport, Runway, Navaid,
+  DesignatedPoint, Airspace, VerticalStructure) and `location` ->
+  `aixmLocation` (Navaid, DesignatedPoint; the AIXM location is an
+  ElevatedPoint / Point object with more than a GeoJSON geometry). Nested
+  names are not renamed.
+
+  MAPPING:
+    - Associations to other AIXM features (xlink:href) are Relationships
+      (URN urn:ngsi-ld:<Feature>:<UUID>, "@type": "@id"), also when the
+      target feature is not one of the 7 models (OrganisationAuthority,
+      RunwayElement, TouchDownLiftOff, Route, NavaidEquipment, ...). Inside
+      nested objects they are URN strings.
+    - AIXM <<object>> types (City, ContactInformation, Note, Timesheet,
+      AirportHeliportAvailability, AirspaceVolume, VerticalStructurePart,
+      ...) are nested objects with their full AIXM 5.2 structure, defined
+      once in each schema's $defs, "@type": "@json" in the contexts.
+    - Data types: Code* types are enums with the AIXM rule that any value
+      may also be OTHER or OTHER:<free text> (JSON Schema anyOf enum /
+      pattern); Text*/Date*/No* types keep their XSD patterns and lengths.
+      Val* types with a unit or accuracy are objects {value, uom, accuracy}
+      (the XML element text and its uom / accuracy attributes); without
+      them they are plain values. ValDistanceVertical values are a number
+      or UNL, GND, FLOOR, CEILING. The XML nilReason (xsi:nil) is not
+      represented: an absent attribute means not provided.
+    - Geometries (Point, ElevatedPoint, Curve, ElevatedCurve, Surface,
+      ElevatedSurface) are objects whose `geometry` member is the GML
+      geometry encoded as GeoJSON (lon, lat order; the GML is EPSG:4326 in
+      lat, lon order), plus the AIXM properties of the geometry
+      (horizontalAccuracy, elevation, geoidUndulation, verticalDatum).
+      Arcs and circles must be densified into positions.
+    - NON-AIXM ADDITION: `location` GeoProperty (GeoJSON) on
+      AirportHeliport (copy of ARP), Navaid and DesignatedPoint (copy of
+      aixmLocation), Airspace (horizontal projections of the geometry
+      components; the BASE/UNION/SUBTR/INTERS aggregation is not computed)
+      and VerticalStructure (horizontal projection of the first part).
+      Runway and RunwayDirection have no geometry of their own in AIXM
+      (it lies in RunwayElement / RunwayCentrelinePoint).
+    - required: id, type, identifier, validTime, interpretation (AIXM
+      requires validTime and interpretation in each TimeSlice; every AIXM
+      feature property is optional).
+
+  SOURCE NOTES:
+    - The annotated XSD (aixm_5_2_0_annotated.zip, used for definitions)
+      is labelled "DRAFT, unverified" on aixm.aero. The generator checked
+      that, for the 7 features, it declares exactly the same properties,
+      types and cardinalities as the normative aixm_5_2_0_xsd.zip.
+    - The AIXM 5.2 specification page still lists the Temporality Concept
+      and the GML guidance for 5.2 as "update in progress".
+    - Typo in AIXM_AbstractGML_ObjectTypes.xsd ("The efffectivity of the
+      TimeSlice"), kept in the validTime description.
+    - Donlon_2025's LICENSE file is the BSD-2-Clause text ("Copyright (c)
+      2025, aixm") while its README and data file headers state the BSD
+      licence with Copyright (c) 2025 EUROCONTROL (& FAA) and the
+      no-endorsement clause.
+
+  EXAMPLES ARE REAL AIXM SAMPLE DATA, NOT REAL-WORLD DATA: all 7 examples
+  are converted from the official EUROCONTROL Donlon 2025 data set
+  (fictitious State of Donlon in the Atlantic; must never be used
+  operationally), file "DONLON original files/Donlon_ALL_Baseline.xml",
+  BASELINE timeslices, one consistent set: Donlon International airport
+  EADD, runway 09L/27R, runway direction 09L, ILS/DME OSL serving 09L,
+  waypoint ABOLA, DONLON TMA and the glide path mast OBST-EADD-1015 that
+  hosts the OSL glide path. Donlon is AIXM 5.1.1, so the generator maps it
+  to 5.2: *Accuracy elements (fieldElevationAccuracy, lengthAccuracy,
+  verticalAccuracy, ...) become the accuracy attribute of the value (same
+  unit, checked), precisionApproachGuidance ILS_PRECISION_CAT_II becomes
+  approachGuidance PRECISION_CAT_II, and AirportHeliport.altimeterSource
+  (a feature reference in 5.1.1, an <<object>> in 5.2) is left out. Real
+  operational AIXM data exist (FAA NASR AIXM, US public domain; EAD data
+  for registered users) and could replace them.
+
+  DUPLICATION RISK: dataModel.Aeronautics has Airport (codeIATA, codeICAO,
+  location), Aircraft, Airline and Flight; dataModel.ACRIS (ACI airport
+  community model) has AirportFacility, AirportLocation, AirportElevation;
+  dataModel.OpenStreetMap has OSMAeroway (aerodrome, runway, taxiway);
+  dataModel.UnmannedAerialVehicle deals with UTM flight messages and could
+  use Airspace. AirportHeliport overlaps Airport and ACRIS; Runway overlaps
+  OSMAeroway. Official subjects use the domain "SmartAeronautics", not
+  used yet by the candidates (Transportation is used here). No other
+  candidate defines these types.

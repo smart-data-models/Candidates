@@ -37,6 +37,70 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/agrovoc"
   },
   {
+    "slug": "aixm",
+    "title": "AIXM - Aeronautical Information Exchange Model",
+    "description": "AIXM is the global standard for the digital exchange of aeronautical information (the content of the AIP, aerodrome data, navaids, airspace, routes, procedures, obstacles and Digital NOTAM). It is developed by EUROCONTROL and the FAA, maintained by the international AIXM Change Control Board, and it underpins the ICAO PANS-AIM data sets and the EU aeronautical data quality rules. AIXM 5 is a UML model and a GML 3.2 XML Schema with about 170 features and their <<object>> types. Every feature is temporal: its values are carried by TimeSlices (BASELINE, PERMDELTA, TEMPDELTA, SNAPSHOT) with a validity period.",
+    "publisher": "EUROCONTROL and the US Federal Aviation Administration (FAA), under the global AIXM Change Control Board",
+    "sourceUrl": "https://aixm.aero/page/aixm-52",
+    "license": "BSD-3-Clause",
+    "domains": [
+      "Transportation"
+    ],
+    "modelCount": 7,
+    "models": [
+      {
+        "name": "AirportHeliport",
+        "title": "Smart Data Models - AIXM - AirportHeliport",
+        "description": "A defined area on land or water (including any buildings, installations and equipment) intended to be used either wholly or in part for the arrival, departure and surface movement of aircraft/helicopters. (AIXM 5.2 feature AirportHeliport. One NGSI-LD entity per AIXM feature; its attributes are the properties of one TimeSlice, normally the current BASELINE, flattened at entity level, with validTime and the other TimeSlice properties kept as attributes. Property names kept verbatim; nested AIXM <<object>> types keep their structure.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/aixm/models/AirportHeliport/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/aixm/models/AirportHeliport"
+      },
+      {
+        "name": "Airspace",
+        "title": "Smart Data Models - AIXM - Airspace",
+        "description": "A defined three dimensional region of space relevant to air traffic. (AIXM 5.2 feature Airspace. One NGSI-LD entity per AIXM feature; its attributes are the properties of one TimeSlice, normally the current BASELINE, flattened at entity level, with validTime and the other TimeSlice properties kept as attributes. Property names kept verbatim; nested AIXM <<object>> types keep their structure.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/aixm/models/Airspace/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/aixm/models/Airspace"
+      },
+      {
+        "name": "DesignatedPoint",
+        "title": "Smart Data Models - AIXM - DesignatedPoint",
+        "description": "A geographical location not marked by the site of a radio navigation aid, used in defining an ATS route, the flight path of an aircraft or for other navigation or ATS purposes. (AIXM 5.2 feature DesignatedPoint. One NGSI-LD entity per AIXM feature; its attributes are the properties of one TimeSlice, normally the current BASELINE, flattened at entity level, with validTime and the other TimeSlice properties kept as attributes. Property names kept verbatim; nested AIXM <<object>> types keep their structure.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/aixm/models/DesignatedPoint/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/aixm/models/DesignatedPoint"
+      },
+      {
+        "name": "Navaid",
+        "title": "Smart Data Models - AIXM - Navaid",
+        "description": "A service providing guidance information or position data for the efficient and safe operation of aircraft supported by one or more radio navigation aids. (AIXM 5.2 feature Navaid. One NGSI-LD entity per AIXM feature; its attributes are the properties of one TimeSlice, normally the current BASELINE, flattened at entity level, with validTime and the other TimeSlice properties kept as attributes. Property names kept verbatim; nested AIXM <<object>> types keep their structure.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/aixm/models/Navaid/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/aixm/models/Navaid"
+      },
+      {
+        "name": "Runway",
+        "title": "Smart Data Models - AIXM - Runway",
+        "description": "<font color=\"#333333\">A defined rectangular area on a land or a water aerodrome/heliport prepared for the landing and take-off of aircraft. Note: this includes the concept of Final Approach and Take-Off Area (FATO) for helicopters.</font> (AIXM 5.2 feature Runway. One NGSI-LD entity per AIXM feature; its attributes are the properties of one TimeSlice, normally the current BASELINE, flattened at entity level, with validTime and the other TimeSlice properties kept as attributes. Property names kept verbatim; nested AIXM <<object>> types keep their structure.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/aixm/models/Runway/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/aixm/models/Runway"
+      },
+      {
+        "name": "RunwayDirection",
+        "title": "Smart Data Models - AIXM - RunwayDirection",
+        "description": "One of the two landing and take-off directions of a runway or a Final Approach and Takeoff Area (FATO). (AIXM 5.2 feature RunwayDirection. One NGSI-LD entity per AIXM feature; its attributes are the properties of one TimeSlice, normally the current BASELINE, flattened at entity level, with validTime and the other TimeSlice properties kept as attributes. Property names kept verbatim; nested AIXM <<object>> types keep their structure.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/aixm/models/RunwayDirection/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/aixm/models/RunwayDirection"
+      },
+      {
+        "name": "VerticalStructure",
+        "title": "Smart Data Models - AIXM - VerticalStructure",
+        "description": "All fixed and mobile objects, or parts thereof that extend above the surface of the Earth. Those objects are considered obstacles and are located on an area intended for the surface movement of aircraft or extend above a defined surface intended to protect aircraft in flight. (AIXM 5.2 feature VerticalStructure. One NGSI-LD entity per AIXM feature; its attributes are the properties of one TimeSlice, normally the current BASELINE, flattened at entity level, with validTime and the other TimeSlice properties kept as attributes. Property names kept verbatim; nested AIXM <<object>> types keep their structure.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/aixm/models/VerticalStructure/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/aixm/models/VerticalStructure"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/aixm"
+  },
+  {
     "slug": "battery-pass-data-model",
     "title": "Battery Pass Data Model",
     "description": "Data model for the EU battery passport required by the Battery Regulation (EU) 2023/1542, developed by the Battery Pass consortium and aligned with DIN DKE SPEC 99100 (\"Requirements for data attributes of the battery passport\"). It is split into seven SAMM aspect models: general product information, carbon footprint, circularity (dismantling, spare parts, recycled and renewable content, safety, end of life), labels and declaration of conformity, material composition (chemistry, critical raw materials, hazardous substances), performance and durability (rated technical properties and the dynamic battery condition, i.e. state of health), and supply chain due diligence.",

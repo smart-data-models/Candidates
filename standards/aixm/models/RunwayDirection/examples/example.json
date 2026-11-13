@@ -1,0 +1,320 @@
+{
+  "id": "urn:ngsi-ld:RunwayDirection:c8455a6b-9319-4bb7-b797-08e644342d64",
+  "type": "RunwayDirection",
+  "identifier": "c8455a6b-9319-4bb7-b797-08e644342d64",
+  "validTime": {
+    "beginPosition": "2025-11-01T00:00:00Z"
+  },
+  "interpretation": "BASELINE",
+  "sequenceNumber": 1,
+  "correctionNumber": 0,
+  "featureLifetime": {
+    "beginPosition": "2009-01-01T00:00:00Z"
+  },
+  "designator": "09L",
+  "trueBearing": {
+    "value": 84.28,
+    "accuracy": 0.01
+  },
+  "magneticBearing": {
+    "value": 86.23
+  },
+  "patternVFR": "LEFT",
+  "slopeTDZ": {
+    "value": -0.5
+  },
+  "elevationTDZ": {
+    "value": 29.25,
+    "uom": "M",
+    "accuracy": 0.25
+  },
+  "approachMarkingType": "PRECISION",
+  "approachMarkingCondition": "GOOD",
+  "classLightingJAR": "FALS",
+  "approachGuidance": "PRECISION_CAT_II",
+  "usedRunway": "urn:ngsi-ld:Runway:9e51668f-bf8a-4f5b-ba6e-27087972b9b8",
+  "startingElement": "urn:ngsi-ld:RunwayElement:861e2544-30ad-40c0-80e7-d596fd0dc9aa",
+  "annotation": [
+    {
+      "propertyName": "magneticBearing",
+      "purpose": "REMARK",
+      "translatedNote": [
+        {
+          "note": {
+            "value": "Magnetic bearing value calculated for year 2025",
+            "lang": "ENG"
+          }
+        }
+      ]
+    }
+  ],
+  "availability": [
+    {
+      "operationalStatus": "NORMAL",
+      "usage": [
+        {
+          "type": "PERMIT",
+          "selection": {
+            "timeInterval": [
+              {
+                "timeReference": "UTC",
+                "day": "ANY",
+                "dayTil": "ANY",
+                "startTime": "00:00",
+                "endTime": "00:00",
+                "daylightSavingAdjust": "YES",
+                "excluded": "NO"
+              }
+            ],
+            "logicalOperator": "AND",
+            "subCondition": [
+              {
+                "logicalOperator": "OR",
+                "weather": [
+                  {
+                    "flightConditions": "VMC"
+                  },
+                  {
+                    "flightConditions": "IMC",
+                    "runwayVisualRange": {
+                      "value": 350,
+                      "uom": "M"
+                    },
+                    "runwayVisualRangeInterpretation": "AT_OR_ABOVE"
+                  }
+                ]
+              },
+              {
+                "logicalOperator": "OR",
+                "aircraft": [
+                  {
+                    "aircraftLandingCategory": "A"
+                  },
+                  {
+                    "aircraftLandingCategory": "B"
+                  },
+                  {
+                    "aircraftLandingCategory": "C"
+                  },
+                  {
+                    "aircraftLandingCategory": "D"
+                  }
+                ]
+              },
+              {
+                "logicalOperator": "OR",
+                "flight": [
+                  {
+                    "purpose": "SCHEDULED"
+                  },
+                  {
+                    "purpose": "NON_SCHEDULED"
+                  },
+                  {
+                    "purpose": "PRIVATE"
+                  }
+                ]
+              }
+            ]
+          },
+          "operation": "ALL"
+        },
+        {
+          "type": "FORBID",
+          "selection": {
+            "timeInterval": [
+              {
+                "timeReference": "UTC",
+                "day": "ANY",
+                "dayTil": "ANY",
+                "startTime": "18:00",
+                "endTime": "06:00",
+                "daylightSavingAdjust": "YES",
+                "excluded": "NO"
+              },
+              {
+                "timeReference": "UTC",
+                "day": "SUN",
+                "dayTil": "MON",
+                "startTime": "00:00",
+                "endTime": "00:00",
+                "daylightSavingAdjust": "NO",
+                "excluded": "NO"
+              },
+              {
+                "timeReference": "UTC",
+                "day": "HOL",
+                "dayTil": "AFT_HOL",
+                "startTime": "00:00",
+                "endTime": "00:00",
+                "daylightSavingAdjust": "NO",
+                "excluded": "NO"
+              }
+            ],
+            "specialDateAuthority": [
+              "urn:ngsi-ld:OrganisationAuthority:709c64da-44e4-47c7-9d57-326a04cbdd3c"
+            ],
+            "logicalOperator": "NONE",
+            "flight": [
+              {
+                "purpose": "AIR_TRAINING"
+              }
+            ]
+          },
+          "annotation": [
+            {
+              "propertyName": "priorPermission",
+              "purpose": "DESCRIPTION",
+              "translatedNote": [
+                {
+                  "note": {
+                    "value": "Permission will not be granted for school and training flights within the these periods: 1800–0600 (1700–0500) and on Sundays and legal holidays",
+                    "lang": "ENG"
+                  }
+                }
+              ]
+            }
+          ],
+          "operation": "TAKEOFF"
+        },
+        {
+          "type": "CONDITIONAL",
+          "selection": {
+            "timeInterval": [
+              {
+                "timeReference": "UTC",
+                "day": "ANY",
+                "startTime": "06:00",
+                "endTime": "18:00",
+                "daylightSavingAdjust": "YES",
+                "excluded": "NO"
+              }
+            ],
+            "specialDateAuthority": [
+              "urn:ngsi-ld:OrganisationAuthority:709c64da-44e4-47c7-9d57-326a04cbdd3c"
+            ],
+            "logicalOperator": "NONE",
+            "flight": [
+              {
+                "purpose": "AIR_TRAINING"
+              }
+            ]
+          },
+          "annotation": [
+            {
+              "propertyName": "priorPermission",
+              "purpose": "DESCRIPTION",
+              "translatedNote": [
+                {
+                  "note": {
+                    "value": "School and training flights must only be made after permission has been obtained from ATS",
+                    "lang": "ENG"
+                  }
+                }
+              ]
+            }
+          ],
+          "operation": "TAKEOFF"
+        },
+        {
+          "type": "FORBID",
+          "selection": {
+            "timeInterval": [
+              {
+                "timeReference": "UTC",
+                "day": "ANY",
+                "dayTil": "ANY",
+                "startTime": "18:00",
+                "endTime": "06:00",
+                "daylightSavingAdjust": "YES",
+                "excluded": "NO"
+              },
+              {
+                "timeReference": "UTC",
+                "day": "SUN",
+                "dayTil": "MON",
+                "startTime": "00:00",
+                "endTime": "00:00",
+                "daylightSavingAdjust": "NO",
+                "excluded": "NO"
+              },
+              {
+                "timeReference": "UTC",
+                "day": "HOL",
+                "dayTil": "AFT_HOL",
+                "startTime": "00:00",
+                "endTime": "00:00",
+                "daylightSavingAdjust": "NO",
+                "excluded": "NO"
+              }
+            ],
+            "specialDateAuthority": [
+              "urn:ngsi-ld:OrganisationAuthority:709c64da-44e4-47c7-9d57-326a04cbdd3c"
+            ],
+            "logicalOperator": "NONE",
+            "flight": [
+              {
+                "purpose": "AIR_TRAINING"
+              }
+            ]
+          },
+          "annotation": [
+            {
+              "propertyName": "priorPermission",
+              "purpose": "DESCRIPTION",
+              "translatedNote": [
+                {
+                  "note": {
+                    "value": "Permission will not be granted for school and training flights within the these periods: 1800–0600 (1700–0500) and on Sundays and legal holidays",
+                    "lang": "ENG"
+                  }
+                }
+              ]
+            }
+          ],
+          "operation": "LANDING"
+        },
+        {
+          "type": "CONDITIONAL",
+          "selection": {
+            "timeInterval": [
+              {
+                "timeReference": "UTC",
+                "day": "ANY",
+                "startTime": "06:00",
+                "endTime": "18:00",
+                "daylightSavingAdjust": "YES",
+                "excluded": "NO"
+              }
+            ],
+            "specialDateAuthority": [
+              "urn:ngsi-ld:OrganisationAuthority:709c64da-44e4-47c7-9d57-326a04cbdd3c"
+            ],
+            "logicalOperator": "NONE",
+            "flight": [
+              {
+                "purpose": "AIR_TRAINING"
+              }
+            ]
+          },
+          "annotation": [
+            {
+              "propertyName": "priorPermission",
+              "purpose": "DESCRIPTION",
+              "translatedNote": [
+                {
+                  "note": {
+                    "value": "School and training flights must only be made after permission has been obtained from ATS",
+                    "lang": "ENG"
+                  }
+                }
+              ]
+            }
+          ],
+          "operation": "LANDING"
+        }
+      ]
+    }
+  ],
+  "source": "EUROCONTROL Donlon 2025 sample data set (https://github.com/aixm/Donlon_2025, file 'DONLON original files/Donlon_ALL_Baseline.xml', RunwayDirection c8455a6b-9319-4bb7-b797-08e644342d64, BASELINE TimeSlice), BSD licence, Copyright (c) 2025 EUROCONTROL & FAA. Fictitious data (the State of Donlon does not exist): NOT FOR OPERATIONAL USE. Converted from AIXM 5.1.1 to AIXM 5.2 and to JSON by the Smart Data Models translator."
+}

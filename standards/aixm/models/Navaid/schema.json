@@ -1,0 +1,1107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/aixm/models/Navaid/schema.json",
+  "modelTags": "AIXM,Aviation,AeronauticalInformation,Navigation",
+  "title": "Smart Data Models - AIXM - Navaid",
+  "description": "A service providing guidance information or position data for the efficient and safe operation of aircraft supported by one or more radio navigation aids. (AIXM 5.2 feature Navaid. One NGSI-LD entity per AIXM feature; its attributes are the properties of one TimeSlice, normally the current BASELINE, flattened at entity level, with validTime and the other TimeSlice properties kept as attributes. Property names kept verbatim; nested AIXM <<object>> types keep their structure.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Navaid:<gml:identifier UUID>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Navaid"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Navaid'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "identifier": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Other_AIXMFeature.html#identifier'. gml:identifier of the AIXM feature (codeSpace urn:uuid:): a UUID that stays the same in every TimeSlice of the feature. The NGSI-LD id is urn:ngsi-ld:<feature>:<identifier>."
+    },
+    "validTime": {
+      "type": "object",
+      "properties": {
+        "beginPosition": {
+          "type": "string",
+          "format": "date-time",
+          "description": "gml:beginPosition of the gml:TimePeriod."
+        },
+        "endPosition": {
+          "type": "string",
+          "format": "date-time",
+          "description": "gml:endPosition of the gml:TimePeriod. Absent when the end is indeterminate (indeterminatePosition='unknown'), i.e. until further notice."
+        }
+      },
+      "required": [
+        "beginPosition"
+      ],
+      "additionalProperties": false,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Other_AIXMFeatureTimeSlice.html#validTime'. gml:validTime of the TimeSlice whose properties are carried by this entity: the period during which these values are effective. The efffectivity of the TimeSlice."
+    },
+    "interpretation": {
+      "type": "string",
+      "enum": [
+        "BASELINE",
+        "SNAPSHOT",
+        "TEMPDELTA",
+        "PERMDELTA"
+      ],
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Other_AIXMFeatureTimeSlice.html#interpretation'. Property indicating how the timeslice is to be interpreted. See the AIXM Temporality model for details. Normally BASELINE (or SNAPSHOT) for an NGSI-LD entity, which carries the full state of the feature."
+    },
+    "sequenceNumber": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Other_AIXMFeatureTimeSlice.html#sequenceNumber'. Used for the identification of the Time Slice concerned. See the AIXM Temporality model for details."
+    },
+    "correctionNumber": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Other_AIXMFeatureTimeSlice.html#correctionNumber'. Used for indicating the order of the corrections of a Time Slice. See the AIXM Temporality model for details."
+    },
+    "featureLifetime": {
+      "type": "object",
+      "properties": {
+        "beginPosition": {
+          "type": "string",
+          "format": "date-time",
+          "description": "gml:beginPosition of the gml:TimePeriod."
+        },
+        "endPosition": {
+          "type": "string",
+          "format": "date-time",
+          "description": "gml:endPosition of the gml:TimePeriod. Absent when the end is indeterminate (indeterminatePosition='unknown'), i.e. until further notice."
+        }
+      },
+      "required": [
+        "beginPosition"
+      ],
+      "additionalProperties": false,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Other_AIXMFeatureTimeSlice.html#featureLifetime'. The start and end of life of the feature. See the AIXM Temporality model for details."
+    },
+    "aixmType": {
+      "type": "string",
+      "anyOf": [
+        {
+          "enum": [
+            "VOR",
+            "DME",
+            "NDB",
+            "TACAN",
+            "MKR",
+            "ILS",
+            "ILS_DME",
+            "MLS",
+            "MLS_DME",
+            "VORTAC",
+            "VOR_DME",
+            "NDB_DME",
+            "TLS",
+            "LOC",
+            "LOC_DME",
+            "NDB_MKR",
+            "DF",
+            "SDF"
+          ]
+        },
+        {
+          "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+        }
+      ],
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Navaid.html#type'. AIXM property 'type', renamed to aixmType (NGSI-LD reserved term). Type of the navaid service such as ILS, MLS, VORTAC, VOR/DME, etc. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+    },
+    "designator": {
+      "type": "string",
+      "pattern": "^(?:([A-Z]|\\d)*)$",
+      "minLength": 1,
+      "maxLength": 4,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Navaid.html#designator'. The coded identifier given to the navaid system."
+    },
+    "name": {
+      "type": "string",
+      "pattern": "^(?:([A-Z]|[a-z]|[0-9]|[, !\"&#$%'\\(\\)\\*\\+\\-\\./:;<=>\\?@\\[\\\\\\]\\^_\\|\\{\\}])*)$",
+      "minLength": 1,
+      "maxLength": 60,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Navaid.html#name'. The long name given to the composite navaid."
+    },
+    "flightChecked": {
+      "type": "string",
+      "anyOf": [
+        {
+          "enum": [
+            "YES",
+            "NO"
+          ]
+        },
+        {
+          "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+        }
+      ],
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Navaid.html#flightChecked'. Indicates if the navaid has been flight checked. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+    },
+    "purpose": {
+      "type": "string",
+      "anyOf": [
+        {
+          "enum": [
+            "TERMINAL",
+            "ENROUTE",
+            "ALL"
+          ]
+        },
+        {
+          "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+        }
+      ],
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Navaid.html#purpose'. Indication of the intended usage of the navaid (enroute or terminal) Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+    },
+    "signalPerformance": {
+      "type": "string",
+      "anyOf": [
+        {
+          "enum": [
+            "I",
+            "II",
+            "III",
+            "IIIA",
+            "IIIB",
+            "IIIC"
+          ]
+        },
+        {
+          "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+        }
+      ],
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Navaid.html#signalPerformance'. The signal performance level indicating the precision of an ILS or MLS system. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+    },
+    "courseQuality": {
+      "type": "string",
+      "anyOf": [
+        {
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "T"
+          ]
+        },
+        {
+          "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+        }
+      ],
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Navaid.html#courseQuality'. An indication of the signal quality of the ILS course structure based on the location the precision signal is usable to. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+    },
+    "integrityLevel": {
+      "type": "string",
+      "anyOf": [
+        {
+          "enum": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ]
+        },
+        {
+          "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+        }
+      ],
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Navaid.html#integrityLevel'. That quality which relates to the trust which can be placed in the correctness of the information supplied by the ILS facility. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+    },
+    "touchDownLiftOff": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Navaid.html#touchDownLiftOff'. Indicates that the navaid is installed at a particular landing area. Reference to the AIXM feature TouchDownLiftOff: urn:ngsi-ld:<feature type>:<gml:identifier UUID>."
+    },
+    "navaidEquipment": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/NavaidComponent"
+      },
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Navaid.html#navaidEquipment'. the component of the navaid system"
+    },
+    "aixmLocation": {
+      "$ref": "#/$defs/ElevatedPoint",
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Navaid.html#location'. AIXM property 'location', renamed to aixmLocation (NGSI-LD reserved term). This is the location used when the navaid acts as a significant point. This location is usually the location of one of the navaid equipments."
+    },
+    "runwayDirection": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Navaid.html#runwayDirection'. Indicates that the navaid is installed at a particular landing area. Typically used for ILS and MLS systems. Reference to the AIXM feature RunwayDirection: urn:ngsi-ld:<feature type>:<gml:identifier UUID>."
+    },
+    "servedAirport": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Navaid.html#servedAirport'. Indicates that the Navaid is used for homing at a particular AirportHeliport. Reference to the AIXM feature AirportHeliport: urn:ngsi-ld:<feature type>:<gml:identifier UUID>."
+    },
+    "availability": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/NavaidOperationalStatus"
+      },
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Navaid.html#availability'. The operational status of the navaid."
+    },
+    "annotation": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Note"
+      },
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Navaid.html#annotation'."
+    },
+    "codeICAOCountry": {
+      "type": "string",
+      "pattern": "^(?:([A-Z]|\\d)*)$",
+      "maxLength": 2,
+      "description": "Property. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Navaid.html#codeICAOCountry'. A code derived from the International Civil Aviation Organization (ICAO) list of nationality letters in Document 7910, which represents a State or a sub-region of that State where the point is located."
+    },
+    "location": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "Point"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 3,
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "LineString"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 3,
+                "items": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "Polygon"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "minItems": 4,
+                "items": {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 3,
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "MultiPolygon"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "minItems": 4,
+                  "items": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 3,
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "MultiLineString"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "minItems": 2,
+                "items": {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 3,
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ]
+        }
+      ],
+      "description": "GeoProperty. Geojson reference to the item. Not an AIXM property (Smart Data Models addition): GeoJSON copy of the AIXM location (renamed aixmLocation), in longitude/latitude order, so that NGSI-LD geo-queries work. The AIXM property is kept unchanged."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "identifier",
+    "validTime",
+    "interpretation"
+  ],
+  "$defs": {
+    "ElevatedPoint": {
+      "type": "object",
+      "description": "AIXM geometry ElevatedPoint. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_ElevatedPoint.html'. A zero-dimensional object that specifies geometric location which includes elevation and vertical extent and is used in obstacles, navaids, etc.",
+      "properties": {
+        "geometry": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "Point"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 3,
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ],
+          "description": "The GML geometry of the AIXM ElevatedPoint (gml:pos / gml:posList, EPSG:4326) encoded as GeoJSON (longitude, latitude order). Smart Data Models encoding of the GML part; arcs and circles (ArcByCenterPoint, CircleByCenterPoint) must be densified to positions."
+        },
+        "elevation": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string",
+                  "enum": [
+                    "UNL",
+                    "GND",
+                    "FLOOR",
+                    "CEILING"
+                  ]
+                }
+              ]
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "FT",
+                    "M",
+                    "FL",
+                    "SM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a vertical distance. For example, Flight Level, metres, feet."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The vertical distance of the point measured from Mean Sea Level (MSL). Units: given by uom."
+        },
+        "geoidUndulation": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "NM",
+                    "KM",
+                    "M",
+                    "FT",
+                    "MI",
+                    "CM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The distance of the geoid above (positive) or below (negative) the mathematical reference ellipsoid at the location of the point. Units: given by uom."
+        },
+        "verticalDatum": {
+          "type": "string",
+          "pattern": "^(?:([A-Z]|[a-z]|[0-9]|[, !\"&#$%'\\(\\)\\*\\+\\-\\./:;<=>\\?@\\[\\\\\\]\\^_\\|\\{\\}])*)$",
+          "minLength": 1,
+          "maxLength": 60,
+          "description": "The set of reference points or a mathematical model of the Earth's surface (a datum) against which vertical position measurements of a point, are made as basis for measuring elevations."
+        },
+        "horizontalAccuracy": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "NM",
+                    "KM",
+                    "M",
+                    "FT",
+                    "MI",
+                    "CM"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for a horizontal distance. For example, metres, feet, nautical miles, kilometres, etc..."
+            },
+            "accuracy": {
+              "type": "number",
+              "minimum": 0,
+              "description": "XML attribute accuracy: The degree of conformance (expressed as a maximum difference) between the estimated or measured value and the true value, based on the confidence level specified for the corresponding property in the ICAO PANS-AIM."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The difference between the recorded horizontal coordinates of a point and its true position referenced to the same geodetic datum expressed as a circular error corresponding to the confidence level specified in the ICAO PANS-AIM (DOC 10066) for the specific subject/property. Units: given by uom."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        }
+      },
+      "required": [
+        "geometry"
+      ],
+      "additionalProperties": false
+    },
+    "LinguisticNote": {
+      "type": "object",
+      "description": "AIXM <<object>> LinguisticNote. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_LinguisticNote.html'. The note content expressed in a specific language. As a minimum, all Notes shall be expressed in English.",
+      "properties": {
+        "note": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 10000
+            },
+            "lang": {
+              "type": "string",
+              "description": "XML attribute lang"
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The text of the Note, in a specific language."
+        }
+      },
+      "additionalProperties": false
+    },
+    "NavaidComponent": {
+      "type": "object",
+      "description": "AIXM <<object>> NavaidComponent. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_NavaidComponent.html'. Indicates navigation use of a NavaidEquipment as a component of the navigation service provided by a Navaid. For example the DME NavaidEquipment is a NavaidComponent of an ILS system. The DME may be collocated with the Localizer and the DME may provide the navigable location for the Navaid service.",
+      "properties": {
+        "collocationGroup": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "An indication that the NavaidEquipment is collocated with one or more other NavaidEquipments (that have the same collocation number)."
+        },
+        "markerPosition": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "OUTER",
+                "MIDDLE",
+                "INNER",
+                "BACKCOURSE"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "A code indicating the position, in a navaid landing system, of the markers situated on the centreline of a runway. For example: outer, middle, etc.. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "providesNavigableLocation": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "YES",
+                "NO"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "Indicates the navaid equipment used to specify the navigable location of the Navaid when the navaid is used as significant point Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        },
+        "theNavaidEquipment": {
+          "type": "string",
+          "format": "uri",
+          "description": "Reference to the AIXM feature NavaidEquipment: urn:ngsi-ld:<feature type>:<gml:identifier UUID>."
+        }
+      },
+      "additionalProperties": false
+    },
+    "NavaidOperationalStatus": {
+      "type": "object",
+      "description": "AIXM <<object>> NavaidOperationalStatus. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_NavaidOperationalStatus.html'. Navaid operational status information.",
+      "properties": {
+        "timeInterval": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Timesheet"
+          },
+          "description": "A component of the schedule."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        },
+        "specialDateAuthority": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          },
+          "description": "Indicates that the SpecialDates associated with the related OrganisationAuthority are applicable to the schedule definition. Reference to the AIXM feature OrganisationAuthority: urn:ngsi-ld:<feature type>:<gml:identifier UUID>."
+        },
+        "operationalStatus": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "OPERATIONAL",
+                "UNSERVICEABLE",
+                "ONTEST",
+                "INTERRUPT",
+                "PARTIAL",
+                "CONDITIONAL",
+                "FALSE_INDICATION",
+                "FALSE_POSSIBLE",
+                "DISPLACED",
+                "IN_CONSTRUCTION",
+                "UNRELIABLE",
+                "RAIM_NOT_AVBL"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "Indicates the state of the navaid. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "signalType": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "AZIMUTH",
+                "DISTANCE",
+                "BEAM",
+                "VOICE",
+                "DATALINK"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "The type of signal that is affected by the operational status. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        }
+      },
+      "additionalProperties": false
+    },
+    "Note": {
+      "type": "object",
+      "description": "AIXM <<object>> Note. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Note.html'. A general text note for a feature or for one of its properties.",
+      "properties": {
+        "propertyName": {
+          "type": "string",
+          "pattern": "^(?:[A-Za-z\\-_]*)$",
+          "minLength": 1,
+          "maxLength": 60,
+          "description": "The name of the feature property for which this note is relevant, if applicable. If no propertyName is specified, then the Note is relevant for the feature as a whole."
+        },
+        "purpose": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "DESCRIPTION",
+                "REMARK",
+                "WARNING",
+                "DISCLAIMER"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indication of the goal which led to the provision of the free text note. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "translatedNote": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LinguisticNote"
+          },
+          "description": "The Note written linguistically."
+        }
+      },
+      "additionalProperties": false
+    },
+    "Timesheet": {
+      "type": "object",
+      "description": "AIXM <<object>> Timesheet. Model:'https://aixm.aero/sites/default/files/imce/AIXM52HTML/AIXM/Class_Timesheet.html'. The definition of a single time interval, that occurs repeatedly as part of a schedule.",
+      "properties": {
+        "timeReference": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "UTC",
+                "UTC-12",
+                "UTC-11",
+                "UTC-10",
+                "UTC-9",
+                "UTC-8",
+                "UTC-7",
+                "UTC-6",
+                "UTC-5",
+                "UTC-4",
+                "UTC-3",
+                "UTC-2",
+                "UTC-1",
+                "UTC+1",
+                "UTC+2",
+                "UTC+3",
+                "UTC+4",
+                "UTC+5",
+                "UTC+6",
+                "UTC+7",
+                "UTC+8",
+                "UTC+9",
+                "UTC+10",
+                "UTC+11",
+                "UTC+12",
+                "UTC+13",
+                "UTC+14",
+                "UTC-9:30",
+                "UTC-3:30",
+                "UTC-2:30",
+                "UTC+4:30",
+                "UTC+5:30",
+                "UTC+5:45",
+                "UTC+6:30",
+                "UTC+8:45",
+                "UTC:+9:30",
+                "UTC+10:30",
+                "UTC+12:45"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indicator of the time reference system or reference system offset (for example, Coordinated Universal Time (UTC), or UTC minus 7 hours), applied to the time, day and date values specified in the timesheet. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "startDate": {
+          "type": "string",
+          "pattern": "^(?:(((0[1-9])|(1[0-9])|(2[0-9]))\\-((0[1-9])|10|11|12))|(30\\-(01|03|04|05|06|07|08|09|10|11|12))|(31\\-(01|03|05|07|08|10|12))|SDLST|EDLST)$",
+          "description": "The start date of the validity of a timesheet. Used together with a timesheet's 'EndDate' to express repetitive time periods like 15 May to 15 November."
+        },
+        "endDate": {
+          "type": "string",
+          "pattern": "^(?:(((0[1-9])|(1[0-9])|(2[0-9]))\\-((0[1-9])|10|11|12))|(30\\-(01|03|04|05|06|07|08|09|10|11|12))|(31\\-(01|03|05|07|08|10|12))|SDLST|EDLST)$",
+          "description": "The end date of the validity of a timesheet. Used together with a timesheet's 'StartDate' to express repetitive time periods like 15 May to 15 November."
+        },
+        "day": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "MON",
+                "TUE",
+                "WED",
+                "THU",
+                "FRI",
+                "SAT",
+                "SUN",
+                "WORK_DAY",
+                "BEF_WORK_DAY",
+                "AFT_WORK_DAY",
+                "HOL",
+                "BEF_HOL",
+                "AFT_HOL",
+                "ANY",
+                "BUSY_FRI",
+                "MON_FRI",
+                "SUN_THU",
+                "SAT_WED",
+                "SAT_THU"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indicator of the day the timesheet is referring to. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "dayTil": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "MON",
+                "TUE",
+                "WED",
+                "THU",
+                "FRI",
+                "SAT",
+                "SUN",
+                "WORK_DAY",
+                "BEF_WORK_DAY",
+                "AFT_WORK_DAY",
+                "HOL",
+                "BEF_HOL",
+                "AFT_HOL",
+                "ANY",
+                "BUSY_FRI",
+                "MON_FRI",
+                "SUN_THU",
+                "SAT_WED",
+                "SAT_THU"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indicator of the days affected by a timesheet, as follows: if the value of this attribute is left blank, the 'EndTime', 'EndEvent', 'EndTimeRelativeEvent' and 'endEventInterpretation' values of a timesheet must be considered as occurring on the day specified. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "startTime": {
+          "type": "string",
+          "pattern": "^(?:(([0-1][0-9]|2[0-3]):[0-5][0-9])|(24:00))$",
+          "description": "The time of the day (specified in the timesheet's 'day' attribute) when the period described in the timesheet starts."
+        },
+        "startEvent": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "SR",
+                "SS",
+                "BMCT",
+                "EECT"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "A reference to an event (like sunset or sunrise), the occurrence of which indicates when the period described in a timesheet starts. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "startTimeRelativeEvent": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "HR",
+                    "MIN",
+                    "SEC"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for time. For example, seconds, minutes, hours"
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The number of minutes before or after the event referred to by the timesheet's 'StartEvent' when the period described in the timesheet starts. Units: given by uom."
+        },
+        "startEventInterpretation": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "EARLIEST",
+                "LATEST"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "When both the 'StartTime' and 'StartEvent' values of a timesheet are not blank, this explains how the combination of the two values should be interpreted, i.e. which of the two moments in time is the beginning of the period described by the timesheet. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "endTime": {
+          "type": "string",
+          "pattern": "^(?:(([0-1][0-9]|2[0-3]):[0-5][0-9])|(24:00))$",
+          "description": "The time of the day when the period described in the timesheet ends."
+        },
+        "endEvent": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "SR",
+                "SS",
+                "BMCT",
+                "EECT"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "A reference to an event (like sunset or sunrise), the occurrence of which indicates when the period described in a timesheet ends. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "endTimeRelativeEvent": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "uom": {
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "HR",
+                    "MIN",
+                    "SEC"
+                  ]
+                },
+                {
+                  "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+                }
+              ],
+              "description": "XML attribute uom: Unit of measurement A unit of measurement for time. For example, seconds, minutes, hours"
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false,
+          "description": "The number of minutes before or after an event, referred to by the timesheet's 'EndEvent', when the period described in the timesheet ends. Units: given by uom."
+        },
+        "endEventInterpretation": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "EARLIEST",
+                "LATEST"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "When both the 'EndTime' and 'EndEvent' values of a timesheet are not blank, this attribute explains how the combination of the two attributes should be interpreted, i.e. which of the two moments in time is the end of the period described by the timesheet. Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "daylightSavingAdjust": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "YES",
+                "NO"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "Indicates that the 'StartTime' and 'EndTime' values of a timesheet have to be decreased by one hour when Daylight Saving is in force (summer time). Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "excluded": {
+          "type": "string",
+          "anyOf": [
+            {
+              "enum": [
+                "YES",
+                "NO"
+              ]
+            },
+            {
+              "pattern": "^(?:OTHER(:(\\w|_){1,58})?)$"
+            }
+          ],
+          "description": "An indicator that the time block indicated by a timesheet is excluded (subtracted) from the total time interval(s) defined by one or more additional timesheet(s). Code list value, or OTHER[:free text] for values not in the list (AIXM rule)."
+        },
+        "annotation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "annotation"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
