@@ -1,0 +1,161 @@
+title: "OSDU Data Definitions (The Open Group OSDU Forum)"
+publisher: "The Open Group OSDU Forum (Open Subsurface Data Universe)"
+sourceUrl: "https://community.opengroup.org/osdu/data/data-definitions"
+specificationUrl: "https://osduforum.org/"
+contact: "https://community.opengroup.org/osdu/data/data-definitions/-/issues"
+sourceOntologyVersion: "data-definitions v0.30.1 (Git tag of 2026-10-05, latest release). Kinds: osdu:wks:master-data--Organisation:1.2.0, master-data--Field:1.1.0, master-data--Well:1.5.0, master-data--Wellbore:1.5.1, work-product-component--WellboreTrajectory:1.4.0, work-product-component--WellLog:1.5.0 (all PUBLISHED in Generated/SchemaStatus.json)"
+sourceOntologyDownload: "https://community.opengroup.org/api/v4/projects/91/repository/archive.tar.gz?sha=v0.30.1&path=Generated"
+sourceOntologyNamespace: "https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/"
+sourceOntologyFormat: "JSON Schema draft-07 (one schema per OSDU kind, with shared abstract schemas referenced by relative $ref); no RDF vocabulary"
+sourceExampleUrl: "https://community.opengroup.org/osdu/data/open-test-data/-/tree/master/rc--3.0.0/4-instances/TNO"
+sourceExampleLicense: "Apache-2.0 (OSDU open-test-data repository); the underlying TNO data come from NLOG (www.nlog.nl), whose disclaimer claims no rights on the information and allows copying and redistribution"
+domains:
+  - Energy
+description: >
+  OSDU (Open Subsurface Data Universe), a forum of The Open Group, publishes
+  an open, vendor-neutral data platform for the energy industry. Its Data
+  Definitions are the JSON schemas of the platform's records ("kinds"):
+  master data (wells, wellbores, fields, basins, organisations, rigs, ...),
+  work-product components (well logs, trajectories, markers, seismic,
+  reservoir models, documents, ...), reference data (code lists) and
+  datasets. Every record has a common envelope (id, kind, acl, legal,
+  ancestry, meta, tags, system audit fields) and a `data` block with the
+  domain attributes, built from shared abstract schemas (common resources,
+  master, facility, work-product component, spatial location, vertical
+  measurements, ...). Many attributes come from PPDM, Energistics and
+  other industry standards.
+license: "Apache-2.0"
+licenseNote: >
+  Verified from the primary source: the LICENSE file of
+  community.opengroup.org/osdu/data/data-definitions at tag v0.30.1 is the
+  Apache License 2.0 ("Copyright 2024 Open Subsurface Data Universe
+  Software / Data Definitions and Services"), and every schema file carries
+  x-osdu-license "Copyright 2026, The Open Group. Licensed under the Apache
+  License, Version 2.0". Derived works are allowed; keep the copyright and
+  licence notice (attribution: The Open Group / OSDU Forum). The repository
+  is a public mirror of the members-only data-definitions GitLab; only the
+  public mirror was used.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source JSON Schemas to SDM candidate artifacts"
+notes: |
+  Translated on 2026-11-13. Source row 69 ("OSDU Data Definitions", The Open
+  Group OSDU Forum, sector Oil and gas) of the "Level A standards not in Smart
+  Data Models" list. The sheet marked the licence as not verified; it is
+  Apache-2.0 (see licenseNote).
+
+  SCOPE: OSDU defines about 600 kinds. This candidate takes the well-centric
+  core, the records with identity and state that most OSDU deployments load
+  first and that the OSDU open test data cover:
+    - Organisation         master-data--Organisation:1.2.0
+    - Field                master-data--Field:1.1.0
+    - Well                 master-data--Well:1.5.0
+    - Wellbore             master-data--Wellbore:1.5.1
+    - WellboreTrajectory   work-product-component--WellboreTrajectory:1.4.0
+    - WellLog              work-product-component--WellLog:1.5.0
+  Version: the latest PUBLISHED version of each kind in data-definitions
+  v0.30.1 (Generated/SchemaStatus.json). Possible next candidates: Basin,
+  GeoPoliticalEntity, WellboreMarkerSet, WellPlanningWell, Rig, HoleSection,
+  WellboreIntervalSet, SeismicAcquisitionSurvey, Document, the production
+  kinds (ProductionFlowNetwork, ...) and the reference-data kinds as code
+  lists.
+
+  MAPPING OF THE OSDU RECORD:
+    - `data` block: flattened; each attribute of the record's data (including
+      those inherited from AbstractCommonResources, AbstractMaster,
+      AbstractFacility, AbstractWPCGroupType, AbstractWorkProductComponent)
+      becomes an entity attribute with its OSDU name verbatim
+      (FacilityName, VerticalMeasurements, SpatialLocation, Curves, ...).
+      ExtensionProperties is kept (free object).
+    - envelope kept: `id` -> osduId (renamed, NGSI-LD reserved term), `kind`
+      (required, as in OSDU), `tags`, `ancestry`, `meta` (the frame of
+      reference: units and CRS of numeric/coordinate attributes, needed to
+      interpret values), `legal` (optional here: legal tags are assigned by
+      the OSDU compliance service).
+    - envelope left out: `acl` (platform access control groups, replaced by
+      the broker's own security), `version` (platform record version),
+      createTime/modifyTime (their role is that of dateCreated/dateModified)
+      and createUser/modifyUser (user e-mails; personal data).
+    - NGSI-LD id: urn:ngsi-ld:<Type>:<namespace>:<code> from the OSDU id
+      <namespace>:<group>--<Type>:<code>, e.g. osdu:master-data--Well:1013 ->
+      urn:ngsi-ld:Well:osdu:1013. Reversible; the OSDU id is kept in osduId.
+    - Relationships: OSDU "...ID" attributes whose x-osdu-relationship points
+      only to a kind of this candidate are NGSI-LD Relationships with the
+      target's NGSI-LD id: InitialOperatorID, CurrentOperatorID,
+      DataSourceOrganisationID, ParentOrganisationID, ServiceCompanyID,
+      CompanyID (-> Organisation), WellID (-> Well), KickOffWellbore,
+      WellboreID (-> Wellbore), DefinitiveTrajectoryID (->
+      WellboreTrajectory). Names kept verbatim.
+    - Reference data and links to kinds outside this candidate (e.g.
+      FacilityTypeID, TrajectoryTypeID, VerticalCRSID, GeoPoliticalEntityID,
+      Datasets) stay Properties holding OSDU record ids with the OSDU id
+      pattern. They are not enums: the namespace part of a reference-data id
+      is deployment-specific and most lists are OPEN or LOCAL (extensible by
+      operators). Values are listed in ReferenceValues/Manifests of the
+      source repository. Ids inside nested objects are not converted either.
+    - Nested objects keep their full OSDU structure. The OSDU abstract
+      schemas they use (AbstractSpatialLocation, AbstractFeatureCollection,
+      AbstractAnyCrsFeatureCollection, AbstractFacilityVerticalMeasurement,
+      ...) are converted once into $defs of each schema (named after the
+      abstract file, e.g. "AbstractSpatialLocation.1.1.0"); internal
+      "#/definitions/x" become "$defs/<file>--x". They are "@type": "@json"
+      in the contexts.
+    - Conversion draft-07 -> 2020-12: example -> examples; x-osdu-* keywords
+      dropped (relationship targets stay visible in the id patterns, units in
+      the descriptions: "Unit of measure given by the record's meta[] frame
+      of reference (UOM:length)").
+    - Deprecated attributes (description starting with "DEPRECATED") are
+      left out, at entity level and nested: e.g. TechnicalAssuranceID,
+      TechnicalAssuranceTypeID, FacilityNameAliases / FieldNameAliases /
+      OrganisationNameAliases (replaced by NameAliases), Wellbore
+      PrimaryMaterialID and WellboreTrajectoryTypeID, about 15 WellLog
+      attributes moved to WellLogAcquisitionDetails or SamplingStart/Stop
+      (TopMeasuredDepth, BottomMeasuredDepth, ServiceCompanyID, LogRun, ...),
+      Curves[].TopDepth/BaseDepth.
+    - Spatial: SMART DATA MODELS ADDITION `location` (GeoProperty) = geometry
+      of the first feature of SpatialLocation.Wgs84Coordinates (master data)
+      or SpatialPoint/SpatialArea.Wgs84Coordinates (work-product
+      components), so that NGSI-LD geo-queries work. The OSDU structures,
+      including AsIngestedCoordinates in the original CRS, are kept.
+    - Context IRIs: OSDU has no RDF vocabulary. Each term maps to a JSON
+      pointer into the published schema file at tag v0.30.1, in the file that
+      defines it (e.g. Generated/abstract/AbstractFacility.1.1.0.json#/properties/FacilityName,
+      Generated/master-data/Wellbore.1.5.1.json#/properties/data/allOf/3/properties/WellID).
+      The schemas' own $id (schema.osdu.opengroup.org) does not resolve.
+    - Name clashes: none with NGSI-LD reserved terms in `data`. Note that
+      OSDU `Source` (data.Source) and SDM `source`, and OSDU `Tags` (WPC
+      data.Tags) and envelope `tags`, differ only by case; both are kept.
+
+  SOURCE NOTES:
+    - The schemas' $id URLs (https://schema.osdu.opengroup.org/json/...) do
+      not resolve.
+    - In the open test data (TNO manifests, schema 1.0.0 era): FieldName
+      and OrganisationName values are percent-encoded ("Hemrik%20%28Akkrum%2011%29");
+      work-product components carry surrogate keys instead of ids; Wellbore
+      uses the now deprecated PrimaryMaterialID; WellLog uses the deprecated
+      TopMeasuredDepth/BottomMeasuredDepth and Curves[].TopDepth/BaseDepth;
+      FacilityEvents date-times have no UTC offset.
+
+  EXAMPLES ARE REAL OPEN DATA: well AKM-11 (Oudega-Akkrum-11, onshore
+  Friesland, NL, spudded 1978, UWI 1013) from the TNO dataset that OSDU
+  prepared in community.opengroup.org/osdu/data/open-test-data
+  (rc--3.0.0/4-instances/TNO, Apache-2.0; data originally from NLOG, which
+  allows redistribution): its Well, Wellbore, WellboreTrajectory and WellLog
+  (the 1978 composite LAS log), field "Hemrik (Akkrum 11)" and the current
+  operator Tulip Oil Netherlands B.V. (a company). Records were migrated to
+  the current kind versions by the generator: kind updated, percent-encoded
+  names decoded, deprecated attributes moved to their replacements as the
+  schemas instruct (PrimaryMaterialID MaterialType:Gas ->
+  PrimaryProductTypeID WellProductType:Gas; Top/BottomMeasuredDepth ->
+  SamplingStart/SamplingStop with ReferenceCurveID DEPT), UTC "Z" added to
+  FacilityEvents date-times, work-product component ids and dataset ids
+  derived from the file names (OSDU assigns them at ingestion), and the
+  operator's acl e-mail groups dropped. Each example's `source` lists the
+  changes. The Field record of the test data has only a name.
+
+  DUPLICATION RISK: no Well/Wellbore/WellLog/Field models exist in Smart
+  Data Models or in the other candidates. Organisation overlaps with
+  dataModel.Organization/Organization and the Organization candidates of
+  other standards (OCDS, GS1, HSDS, RealEstateCore, EDINT); it is kept here
+  because OSDU links operators and service companies to it. dataModel.Energy
+  / EnergyCIM do not cover subsurface data.

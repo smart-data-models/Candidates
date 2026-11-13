@@ -1,0 +1,2600 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/osdu-data-definitions/models/WellboreTrajectory/schema.json",
+  "modelTags": "OSDU,OpenGroup,OilAndGas,Subsurface,WellboreTrajectory,DirectionalSurvey,WorkProductComponent",
+  "title": "Smart Data Models - OSDU Data Definitions - WellboreTrajectory",
+  "description": "Work Product Component describing an individual instance of a wellbore trajectory data object. Also called a directional or deviation survey, wellbore trajectory is data that is used to calculate the position and spatial uncertainty of a planned or actual wellbore in 2-dimensional and 3-dimensional space. (OSDU kind osdu:wks:work-product-component--WellboreTrajectory:1.4.0, OSDU Data Definitions v0.30.1. The attributes of the record's `data` block are entity attributes, with their OSDU names verbatim; the record envelope keeps osduId (OSDU `id`), kind, tags, ancestry, meta and legal; acl, version and the system audit fields are left out. OSDU abstract schemas used by nested attributes are in $defs.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:WellboreTrajectory:<namespace>:<code>, built from the OSDU record id <namespace>:work-product-component--WellboreTrajectory:<code> (kept in osduId)."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "WellboreTrajectory"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'WellboreTrajectory'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp. It may correspond to the OSDU system property createTime."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification. It may correspond to the OSDU system property modifyTime."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data (not to be confused with the OSDU attribute `Source`)."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "osduId": {
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/id'. OSDU record id (renamed from `id`, an NGSI-LD reserved term). Previously called ResourceID or SRN which identifies this OSDU resource object without version.",
+      "title": "Entity ID",
+      "type": "string",
+      "pattern": "^[\\w\\-\\.]+:work-product-component\\-\\-WellboreTrajectory:[\\w\\-\\.\\:\\%]+$",
+      "examples": [
+        "namespace:work-product-component--WellboreTrajectory:606f224a-ef1f-5690-9843-d26cd7e33e10"
+      ]
+    },
+    "kind": {
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/kind'. The schema identification for the OSDU resource object following the pattern {Namespace}:{Source}:{Type}:{VersionMajor}.{VersionMinor}.{VersionPatch}. The versioning scheme follows the semantic versioning, https://semver.org/. For this model: osdu:wks:work-product-component--WellboreTrajectory:1.4.0 (or another version of the same kind).",
+      "title": "Entity Kind",
+      "type": "string",
+      "pattern": "^[\\w\\-\\.]+:[\\w\\-\\.]+:[\\w\\-\\.]+:[0-9]+.[0-9]+.[0-9]+$",
+      "examples": [
+        "osdu:wks:work-product-component--WellboreTrajectory:1.4.0"
+      ]
+    },
+    "tags": {
+      "title": "Tag Dictionary",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/tags'. A generic dictionary of string keys mapping to string value. Only strings are permitted as keys and values.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "examples": [
+        {
+          "NameOfKey": "String value"
+        }
+      ]
+    },
+    "ancestry": {
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/ancestry'. The links to data, which constitute the inputs, from which this record instance is derived.",
+      "title": "Ancestry",
+      "$ref": "#/$defs/AbstractLegalParentList.1.0.0"
+    },
+    "meta": {
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/meta'. The Frame of Reference meta data section linking the named properties to self-contained definitions.",
+      "title": "Frame of Reference Meta Data",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AbstractMetaItem.1.0.0"
+      }
+    },
+    "legal": {
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/legal'. The entity's legal tags and compliance status. The actual contents associated with the legal tags is managed by the Compliance Service.",
+      "title": "Legal Tags",
+      "$ref": "#/$defs/AbstractLegalTags.1.0.0"
+    },
+    "ResourceHomeRegionID": {
+      "type": "string",
+      "title": "Resource Home Region ID",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/abstract/AbstractCommonResources.1.0.0.json#/properties/ResourceHomeRegionID'. The name of the home [cloud environment] region for this OSDU resource object.",
+      "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-OSDURegion:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+    },
+    "ResourceHostRegionIDs": {
+      "type": "array",
+      "title": "Resource Host Region ID",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/abstract/AbstractCommonResources.1.0.0.json#/properties/ResourceHostRegionIDs'. The name of the host [cloud environment] region(s) for this OSDU resource object.",
+      "items": {
+        "type": "string",
+        "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-OSDURegion:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+      }
+    },
+    "ResourceCurationStatus": {
+      "type": "string",
+      "title": "Resource Curation Status",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/abstract/AbstractCommonResources.1.0.0.json#/properties/ResourceCurationStatus'. Describes the current Curation status.",
+      "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-ResourceCurationStatus:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+    },
+    "ResourceLifecycleStatus": {
+      "type": "string",
+      "title": "Resource Lifecycle Status",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/abstract/AbstractCommonResources.1.0.0.json#/properties/ResourceLifecycleStatus'. Describes the current Resource Lifecycle status.",
+      "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-ResourceLifecycleStatus:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+    },
+    "ResourceSecurityClassification": {
+      "type": "string",
+      "title": "Resource Security Classification",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/abstract/AbstractCommonResources.1.0.0.json#/properties/ResourceSecurityClassification'. Classifies the security level of the resource.",
+      "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-ResourceSecurityClassification:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+    },
+    "Source": {
+      "type": "string",
+      "title": "Data Source",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/abstract/AbstractCommonResources.1.0.0.json#/properties/Source'. The entity that produced the record, or from which it is received; could be an organization, agency, system, internal team, or individual. For informational purposes only, the list of sources is not governed."
+    },
+    "ExistenceKind": {
+      "type": "string",
+      "title": "Existence Kind",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/abstract/AbstractCommonResources.1.0.0.json#/properties/ExistenceKind'. Where does this data resource sit in the cradle-to-grave span of its existence?",
+      "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-ExistenceKind:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+    },
+    "Datasets": {
+      "type": "array",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/abstract/AbstractWPCGroupType.1.2.0.json#/properties/Datasets'. The record id, which identifies this OSDU File or dataset resource.",
+      "items": {
+        "type": "string",
+        "pattern": "^[\\w\\-\\.]+:dataset\\-\\-[\\w\\-\\.]+:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+      }
+    },
+    "DDMSDatasets": {
+      "type": "array",
+      "title": "DDMS Datasets",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/abstract/AbstractWPCGroupType.1.2.0.json#/properties/DDMSDatasets'. An array of references to content in Domain Data Management Services represented by this work-product-component. The references are formed as URI following https://www.rfc-editor.org/rfc/rfc3986#page-16. This property is exclusively populated by DDMSs. If a work-product-component is represented in more than one DDMS, DDMSs are obliged to find the specific reference by inspecting the URI's authority values matching the DDMS id.",
+      "examples": [
+        [
+          "urn://wddms-3/uuid:20840361-adc0-4842-999b-5639bd07bb38",
+          "eml://rddms-1/dataspace('demo/Volve')/resqml20.obj_ContinuousProperty(1615d8d2-2a2d-482c-885e-14225b89e90c)"
+        ]
+      ],
+      "items": {
+        "pattern": "^(([^:/?#]+):)(\\/\\/([^/?#]+))(\\/[^?#]+)(\\?([^#]*))?(#(.*))?",
+        "type": "string"
+      }
+    },
+    "Artefacts": {
+      "type": "array",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/abstract/AbstractWPCGroupType.1.2.0.json#/properties/Artefacts'. An array of Artefacts - each artefact has a Role, Resource tuple. An artefact is distinct from the file, in the sense certain valuable information is generated during loading process (Artefact generation process). Examples include retrieving location data, performing an OCR which may result in the generation of artefacts which need to be preserved distinctly",
+      "items": {
+        "type": "object",
+        "title": "Artefacts",
+        "description": "An array of Artefacts - each artefact has a Role, Resource tuple. An artefact is distinct from the file, in the sense certain valuable information is generated during loading process (Artefact generation process). Examples include retrieving location data, performing an OCR which may result in the generation of artefacts which need to be preserved distinctly",
+        "properties": {
+          "RoleID": {
+            "type": "string",
+            "description": "The record id of this artefact's role.",
+            "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-ArtefactRole:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+          },
+          "ResourceKind": {
+            "type": "string",
+            "description": "The kind or schema ID of the artefact. Resolvable with the Schema Service.",
+            "pattern": "^[\\w\\-\\.]+:[\\w\\-\\.]+:[\\w\\-\\.]+:[0-9]+.[0-9]+.[0-9]+$"
+          },
+          "ResourceID": {
+            "type": "string",
+            "description": "The SRN which identifies this OSDU Artefact resource.",
+            "pattern": "^[\\w\\-\\.]+:dataset\\-\\-[\\w\\-\\.]+:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+          }
+        }
+      }
+    },
+    "IsExtendedLoad": {
+      "type": "boolean",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/abstract/AbstractWPCGroupType.1.2.0.json#/properties/IsExtendedLoad'. A flag that indicates if the work product component is undergoing an extended load.  It reflects the fact that the work product component is in an early stage and may be updated before finalization."
+    },
+    "IsDiscoverable": {
+      "type": "boolean",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/abstract/AbstractWPCGroupType.1.2.0.json#/properties/IsDiscoverable'. A flag that indicates if the work product component is searchable, which means covered in the search index."
+    },
+    "TechnicalAssurances": {
+      "type": "array",
+      "title": "Technical Assurances",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/abstract/AbstractWPCGroupType.1.2.0.json#/properties/TechnicalAssurances'. Describes a record's overall suitability for general business consumption based on data quality. Clarifications: Since Certified is the highest classification of suitable quality, any further change or versioning of a Certified record should be carefully considered and justified. If a Technical Assurance value is not populated then one can assume the data has not been evaluated or its quality is unknown (=Unevaluated). Technical Assurance values are not intended to be used for the identification of a single \"preferred\" or \"definitive\" record by comparison with other records.",
+      "items": {
+        "$ref": "#/$defs/AbstractTechnicalAssurance.1.2.0"
+      }
+    },
+    "NameAliases": {
+      "type": "array",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/abstract/AbstractWPCGroupType.1.2.0.json#/properties/NameAliases'. Alternative names, including historical, by which this work-product-component is/has been known (it should include all the identifiers).",
+      "items": {
+        "$ref": "#/$defs/AbstractAliasNames.1.0.0"
+      }
+    },
+    "Name": {
+      "type": "string",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/abstract/AbstractWorkProductComponent.1.1.0.json#/properties/Name'. Name"
+    },
+    "Description": {
+      "type": "string",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/abstract/AbstractWorkProductComponent.1.1.0.json#/properties/Description'. Description.  Summary of the work product component.  Not the same as Remark which captures thoughts of creator about the wpc."
+    },
+    "CreationDateTime": {
+      "type": "string",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/abstract/AbstractWorkProductComponent.1.1.0.json#/properties/CreationDateTime'. Date that a resource (work  product component here) is formed outside of OSDU before loading (e.g. publication date).",
+      "format": "date-time"
+    },
+    "Tags": {
+      "type": "array",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/abstract/AbstractWorkProductComponent.1.1.0.json#/properties/Tags'. Array of key words to identify the work product, especially to help in search.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "SpatialPoint": {
+      "$ref": "#/$defs/AbstractSpatialLocation.1.1.0",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/abstract/AbstractWorkProductComponent.1.1.0.json#/properties/SpatialPoint'. A centroid point that reflects the locale of the content of the work product component (location of the subject matter)."
+    },
+    "SpatialArea": {
+      "$ref": "#/$defs/AbstractSpatialLocation.1.1.0",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/abstract/AbstractWorkProductComponent.1.1.0.json#/properties/SpatialArea'. A polygon boundary that reflects the locale of the content of the work product component (location of the subject matter)."
+    },
+    "GeoContexts": {
+      "type": "array",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/abstract/AbstractWorkProductComponent.1.1.0.json#/properties/GeoContexts'. List of geographic entities which provide context to the WPC.  This may include multiple types or multiple values of the same type.",
+      "items": {
+        "$ref": "#/$defs/AbstractGeoContext.1.0.0"
+      }
+    },
+    "SubmitterName": {
+      "type": "string",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/abstract/AbstractWorkProductComponent.1.1.0.json#/properties/SubmitterName'. Name of the person that first submitted the work product component to OSDU."
+    },
+    "BusinessActivities": {
+      "type": "array",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/abstract/AbstractWorkProductComponent.1.1.0.json#/properties/BusinessActivities'. Array of business processes/workflows that the work product component has been through (ex. well planning, exploration).",
+      "items": {
+        "type": "string"
+      }
+    },
+    "AuthorIDs": {
+      "type": "array",
+      "title": "Author IDs",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/abstract/AbstractWorkProductComponent.1.1.0.json#/properties/AuthorIDs'. Array of Authors' names of the work product component.  Could be a person or company entity.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "LineageAssertions": {
+      "type": "array",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/abstract/AbstractWorkProductComponent.1.1.0.json#/properties/LineageAssertions'. Defines relationships with other objects (any kind of Resource) upon which this work product component depends.  The assertion is directed only from the asserting WPC to ancestor objects, not children.  It should not be used to refer to files or artefacts within the WPC -- the association within the WPC is sufficient and Artefacts are actually children of the main WPC file. They should be recorded in the data.Artefacts[] array.",
+      "items": {
+        "type": "object",
+        "title": "LineageAssertion",
+        "description": "Defines relationships with other objects (any kind of Resource) upon which this work product component depends.  The assertion is directed only from the asserting WPC to ancestor objects, not children.  It should not be used to refer to files or artefacts within the WPC -- the association within the WPC is sufficient and Artefacts are actually children of the main WPC file. They should be recorded in the data.Artefacts[] array.",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "description": "The object reference identifying the DIRECT, INDIRECT, REFERENCE dependency.",
+            "pattern": "^[\\w\\-\\.]+:[\\w\\-\\.]+:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+          },
+          "LineageRelationshipType": {
+            "type": "string",
+            "description": "Used by LineageAssertion to describe the nature of the line of descent of a work product component from a prior Resource, such as DIRECT, INDIRECT, REFERENCE.  It is not for proximity (number of nodes away), it is not to cover all the relationships in a full ontology or graph, and it is not to describe the type of activity that created the asserting WPC.  LineageAssertion does not encompass a full provenance, process history, or activity model.",
+            "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-LineageRelationshipType:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+          }
+        }
+      }
+    },
+    "ServiceCompanyID": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/ServiceCompanyID'. Name of the Survey Company. In OSDU this is a record id matching ^[\\w\\-\\.]+:master-data\\-\\-Organisation:[\\w\\-\\.\\:\\%]+:[0-9]*$; here it is the NGSI-LD id of the Organisation entity (urn:ngsi-ld:Organisation:<namespace>:<code>)."
+    },
+    "WellboreID": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/WellboreID'. A unique name, code or number designated to the Wellbore. In OSDU this is a record id matching ^[\\w\\-\\.]+:master-data\\-\\-Wellbore:[\\w\\-\\.\\:\\%]+:[0-9]*$; here it is the NGSI-LD id of the Wellbore entity (urn:ngsi-ld:Wellbore:<namespace>:<code>)."
+    },
+    "TopDepthMeasuredDepth": {
+      "type": "number",
+      "title": "Survey Top Measured Depth",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/TopDepthMeasuredDepth'. Measured depth in the wellbore where the directional survey starts. This should equal the minimum station measured depth for this directional survey, regardless of whether the surveyed station represents an actual surveyed MD or not. Unit of measure given by the record's meta[] frame of reference (UOM:length).",
+      "examples": [
+        "0 m"
+      ]
+    },
+    "AzimuthReferenceType": {
+      "type": "string",
+      "title": "Azimuth Reference Type",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/AzimuthReferenceType'. The North reference of the trajectory used to define the azimuth angular measurement values. For example, True North, Grid North, Magnetic North.",
+      "examples": [
+        "namespace:reference-data--AzimuthReferenceType:Grid:"
+      ],
+      "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-AzimuthReferenceType:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+    },
+    "CalculationMethodType": {
+      "type": "string",
+      "title": "Calculation Method Type",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/CalculationMethodType'. Calculation Method used to calculate the Wellpath Trajectory from the directional survey data including TVD, X OFFSET, Y OFFSET and DOG LEG SEVERITY. Examples include Minimum Curvature, Radius of Curvature, Balanced Tangential, etc.",
+      "examples": [
+        "namespace:reference-data--CalculationMethodType:MinumumCurvature:"
+      ],
+      "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-CalculationMethodType:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+    },
+    "ProjectedCRSID": {
+      "type": "string",
+      "title": "Projected Coordinate Reference System ID",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/ProjectedCRSID'. Coordinate Reference System defining the Projection of the station EASTING and NORTHING values. If  type is \"Grid North\" and EASTING and NORTHING attributes are stored, clearly identifying their projection is required.",
+      "examples": [
+        "namespace:reference-data--CoordinateReferenceSystem:Projected:EPSG::32615:"
+      ],
+      "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-CoordinateReferenceSystem:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+    },
+    "ActiveIndicator": {
+      "type": "boolean",
+      "title": "Active Survey Indicator",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/ActiveIndicator'. A flag indicating if the survey is currently active or valid within his lifecycle stage, not necessarily the definitive survey.",
+      "examples": [
+        false
+      ]
+    },
+    "SurveyType": {
+      "type": "string",
+      "title": "Directional Survey Type",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/SurveyType'. The type of this directional survey.  For example a \"Directional Survey\" where MD, Inclination and Azimuth are all measured or a \"Position Log\" where Inclination and Azimuth are both null and only MD, TVD and X/Y Offsets are available) - or \"Full Survey\" where everything is fully filled-up, depth-inclination-azimuth.",
+      "examples": [
+        "Full Survey"
+      ]
+    },
+    "AcquisitionDate": {
+      "type": "string",
+      "title": "Effective Date",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/AcquisitionDate'. The date that the survey data was acquired on the field.",
+      "format": "date-time",
+      "examples": [
+        "2023-03-05T00:00:00+0000"
+      ]
+    },
+    "GeographicCRSID": {
+      "type": "string",
+      "title": "Geographic Coordinate Reference System",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/GeographicCRSID'. Coordinate Reference System defining the Geodetic Datum of the station LATITUDE and LONGITUDE values. If LATITUDE and LONGITUDE attributes are stored, clearly identifying their Datum is required.",
+      "examples": [
+        "namespace:reference-data--CoordinateReferenceSystem:Geographic2D:EPSG::4326:"
+      ],
+      "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-CoordinateReferenceSystem:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+    },
+    "AcquisitionRemark": {
+      "type": "string",
+      "title": "Survey Remark",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/AcquisitionRemark'. Remarks related to acquisition context which is not the same as Description which is a summary of the work-product-component.",
+      "examples": [
+        "Vendor final survey"
+      ]
+    },
+    "SurveyReferenceIdentifier": {
+      "type": "string",
+      "title": "Survey Reference Identifier",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/SurveyReferenceIdentifier'. Unique or Distinctive Survey Reference Number, Job Number, File Number, Identifier, Label, Name, etc. as indicated on a directional survey report, file, etc.  Use this attribute to allow correlation of the data in this Directional Survey back to the original source document, file, etc.",
+      "examples": [
+        "SLB-DS150"
+      ]
+    },
+    "SurveyToolTypeID": {
+      "type": "string",
+      "title": "Type of the Survey Tool",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/SurveyToolTypeID'. The type of tool or equipment used to acquire this Directional Survey.  For example, gyroscopic, magnetic, MWD, TOTCO, acid bottle, etc. Follow OWSG reference data and support the ISCWSA survey tool definitions.",
+      "examples": [
+        "namespace:reference-data--SurveyToolType:Magnetic:"
+      ],
+      "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-SurveyToolType:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+    },
+    "SurveyVersion": {
+      "type": "string",
+      "title": "Survey Version",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/SurveyVersion'. The version of the wellbore survey deliverable received from the service provider - as given by this provider",
+      "examples": [
+        "1"
+      ]
+    },
+    "ExtrapolatedMeasuredDepth": {
+      "type": "number",
+      "title": "Extrapolated Measured Depth",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/ExtrapolatedMeasuredDepth'. The measured depth to which the survey segment was extrapolated. Unit of measure given by the record's meta[] frame of reference (UOM:length).",
+      "examples": [
+        "2790 m"
+      ]
+    },
+    "ExtrapolatedMeasuredDepthRemark": {
+      "type": "string",
+      "title": "Extrapolated Measured Depth Remark",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/ExtrapolatedMeasuredDepthRemark'. Comment/Annotation made to WellboreTrajectory describing the projected MD Base or Bottomhole, e.g., listing the Depth Reference Name, Elevation and Bottomhole MD. This can be used for comparison against the survey at a later date.",
+      "examples": [
+        "TD@2790m bDFE@32.5m"
+      ]
+    },
+    "BaseDepthMeasuredDepth": {
+      "type": "number",
+      "title": "Survey Base Measured Depth",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/BaseDepthMeasuredDepth'. Measured depth within the wellbore of the LAST surveyed station with recorded data.  If a stored survey has been extrapolated to a deeper depth than the last surveyed station then that is the extrapolated measured depth and not the survey base depth. Unit of measure given by the record's meta[] frame of reference (UOM:length).",
+      "examples": [
+        "2790 m"
+      ]
+    },
+    "TieMeasuredDepth": {
+      "type": "number",
+      "title": "Tie Measured Depth",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/TieMeasuredDepth'. Tie-point depth measured along the wellbore from the measurement reference datum to the survey station - where tie point is the place on the originating survey where the current survey intersect it. Unit of measure given by the record's meta[] frame of reference (UOM:length).",
+      "examples": [
+        "0 m"
+      ]
+    },
+    "TieTrueVerticalDepth": {
+      "type": "number",
+      "title": "Tie True Vertical Depth",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/TieTrueVerticalDepth'. True Vertical Depth of the TieMeasuredDepth Unit of measure given by the record's meta[] frame of reference (UOM:length).",
+      "examples": [
+        "0 m"
+      ]
+    },
+    "VerticalMeasurement": {
+      "$ref": "#/$defs/AbstractFacilityVerticalMeasurement.1.0.0",
+      "title": "Vertical Measurement",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/VerticalMeasurement'. References an entry in the Vertical Measurement array for the Wellbore identified by WellboreID, which defines the vertical reference datum for all survey station measured depths.",
+      "examples": [
+        {
+          "VerticalReferenceEntityID": "namespace:master-data--Wellbore:11000091175501:",
+          "VerticalReferenceID": "DFE"
+        }
+      ]
+    },
+    "AvailableTrajectoryStationProperties": {
+      "type": "array",
+      "title": "Available Trajectory Station Properties",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/AvailableTrajectoryStationProperties'. The array of TrajectoryStationProperty definitions describing the available properties for this instance of WellboreTrajectory.",
+      "items": {
+        "type": "object",
+        "title": "Curve",
+        "description": "A set of properties describing a trajectory station property which is available for this instance of a WellboreTrajectory.",
+        "properties": {
+          "TrajectoryStationPropertyTypeID": {
+            "type": "string",
+            "title": "Trajectory Station Property Type ID",
+            "description": "The reference to a trajectory station property type - or if interpreted as channels, the curve or channel name type, identifying e.g. MD, Inclination, Azimuth. This is a relationship to a reference-data--TrajectoryStationPropertyType record id.",
+            "examples": [
+              "partition-id:reference-data--TrajectoryStationPropertyType:AzimuthTN:"
+            ],
+            "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-TrajectoryStationPropertyType:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+          },
+          "StationPropertyUnitID": {
+            "type": "string",
+            "title": "Station Property Unit ID",
+            "description": "Unit of Measure for the station properties of type TrajectoryStationPropertyType.",
+            "examples": [
+              "partition-id:reference-data--UnitOfMeasure:dega:"
+            ],
+            "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-UnitOfMeasure:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+          },
+          "Name": {
+            "type": "string",
+            "title": "Name",
+            "description": "The name of the curve (e.g. column in a CSV document) as originally found. If absent The name of the TrajectoryStationPropertyType is intended to be used.",
+            "examples": [
+              "AzimuthTN"
+            ]
+          }
+        }
+      }
+    },
+    "AppliedOperations": {
+      "type": "array",
+      "title": "Applied Operations",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/AppliedOperations'. The audit trail of operations applied to the station coordinates from the original state to the current state. The list may contain operations applied prior to ingestion as well as the operations applied to produce the Wgs84Coordinates. The text elements refer to ESRI style CRS and Transformation names, which may have to be translated to EPSG standard names.",
+      "examples": [
+        [
+          "SSP QA/QC"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "AppliedOperationsDateTime": {
+      "type": "string",
+      "title": "Applied Operations Date Time",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/AppliedOperationsDateTime'. Date/time when the directional Survey QA/QC was performed.",
+      "format": "date-time",
+      "examples": [
+        "2023-03-15T00:00:00+0000"
+      ]
+    },
+    "AppliedOperationsUser": {
+      "type": "string",
+      "title": "Applied Operations User",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/AppliedOperationsUser'. Name of Borehole Survey specialist who performed the QA/QC work",
+      "examples": [
+        "Joe Bloggs"
+      ]
+    },
+    "AppliedOperationsRemarks": {
+      "type": "string",
+      "title": "Applied Operations Remarks",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/AppliedOperationsRemarks'. Any comments captured by the Borehole Survey specialist when performing the QA/QC work.",
+      "examples": [
+        "Final survey SSP corrected. Mag corrections within tolerance. Meets QA/QC criteria."
+      ]
+    },
+    "StartDateTime": {
+      "type": "string",
+      "title": "Start DateTime",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/StartDateTime'. The date and time capturing when the first survey station was measured.",
+      "format": "date-time",
+      "examples": [
+        "2023-01-15T00:00:00+0000"
+      ]
+    },
+    "EndDateTime": {
+      "type": "string",
+      "title": "End DateTime",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/EndDateTime'. The date and time capturing when the last survey station was measured.",
+      "format": "date-time",
+      "examples": [
+        "2023-02-27T00:00:00+0000"
+      ]
+    },
+    "CompanyID": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/CompanyID'. The relationship to company who engaged the service company (ServiceCompanyID) to perform the surveying. In OSDU this is a record id matching ^[\\w\\-\\.]+:master-data\\-\\-Organisation:[\\w\\-\\.\\:\\%]+:[0-9]*$; here it is the NGSI-LD id of the Organisation entity (urn:ngsi-ld:Organisation:<namespace>:<code>)."
+    },
+    "SurfaceGridConvergence": {
+      "type": "number",
+      "title": "Grid Convergence at Surface",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/SurfaceGridConvergence'. The Grid Convergence angle computed at the surface position, which was used for the WellboreTrajectory True North to Grid North Azimuths corrections. Only populated for projected CRSs. Recommended sign convention: Gauss-Bomford. Unit of measure given by the record's meta[] frame of reference (UOM:plane angle).",
+      "examples": [
+        0.0057596
+      ]
+    },
+    "SurfaceScaleFactor": {
+      "type": "number",
+      "title": "Scale Factor at Surface",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/SurfaceScaleFactor'. The Scale Factor computed for the wellbore's surface position used for calculating projected Map Coordinates from survey data in WellboreTrajectory. Unit of measure given by the record's meta[] frame of reference (UOM:dimensionless).",
+      "examples": [
+        1.003
+      ]
+    },
+    "Tortuosity": {
+      "type": "number",
+      "title": "Tortuosity",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/Tortuosity'. The calculated average Tortuosity for the WellboreTrajectory. Unit of measure given by the record's meta[] frame of reference (UOM:angle per length).",
+      "examples": [
+        0.00019
+      ]
+    },
+    "VerticalSectionAzimuth": {
+      "type": "number",
+      "title": "Vertical Section Azimuth",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/VerticalSectionAzimuth'. Azimuth angle used for vertical section projection/computations of the survey stations. Unit of measure given by the record's meta[] frame of reference (UOM:plane angle).",
+      "examples": [
+        "45 dega"
+      ]
+    },
+    "GeoMagneticModelID": {
+      "type": "string",
+      "title": "Geomagnetic Model ID",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/GeoMagneticModelID'. Geomagnetic Model Name including the applicable year used to calculate Geomagnetic field for a given date, coordinate and measured depth (when calculated down the wellbore).",
+      "examples": [
+        "namespace:reference-data--GeoMagneticModel:BGGM2023:"
+      ],
+      "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-GeoMagneticModel:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+    },
+    "MagneticFieldCalculationDate": {
+      "type": "string",
+      "title": "MagneticFieldCalculationDate",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/MagneticFieldCalculationDate'. Date against Geomagnetic field calculated",
+      "format": "date-time",
+      "examples": [
+        "2023-01-01T00:00:00+0000"
+      ]
+    },
+    "MagneticDeclinationUsed": {
+      "type": "number",
+      "title": "Magnetic Declination Used",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/MagneticDeclinationUsed'. Calculated magnetic declination used to correct a Magnetic North referenced azimuth to a True North azimuth. Magnetic declination angles are measured positive clockwise from True North to Magnetic North (or negative in the anti-clockwise direction). To convert a Magnetic azimuth to a True North azimuth, the magnetic declination should be added. Starting value if stations have individual values. Unit of measure given by the record's meta[] frame of reference (UOM:plane angle).",
+      "examples": [
+        "1.76 dega"
+      ]
+    },
+    "MagneticDeclinationUncertainty": {
+      "type": "number",
+      "title": "Magnetic Declination Uncertainty",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/MagneticDeclinationUncertainty'. Survey tool declination uncertainty. Unit of measure given by the record's meta[] frame of reference (UOM:plane angle).",
+      "examples": [
+        "0.10 dega"
+      ]
+    },
+    "MagneticDipAngleReference": {
+      "type": "number",
+      "title": "Magnetic Dip Angle Reference",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/MagneticDipAngleReference'. Calculated magnetic dip angle theoretical / reference value. Unit of measure given by the record's meta[] frame of reference (UOM:plane angle).",
+      "examples": [
+        "57.01 dega"
+      ]
+    },
+    "MagneticDipAngleUncertainty": {
+      "type": "number",
+      "title": "Magnetic Dip Angle Uncertainty",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/MagneticDipAngleUncertainty'. Survey tool dip angle uncertainty. Unit of measure given by the record's meta[] frame of reference (UOM:plane angle).",
+      "examples": [
+        "0.5 dega"
+      ]
+    },
+    "TotalMagneticFieldStrength": {
+      "type": "number",
+      "title": "Total Magnetic Field Strength",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/TotalMagneticFieldStrength'. Calculated geomagnetic field theoretical/reference value. Unit of measure given by the record's meta[] frame of reference (UOM:magnetic flux density).",
+      "examples": [
+        "45165 nT"
+      ]
+    },
+    "TotalMagneticFieldStrengthUncertainty": {
+      "type": "number",
+      "title": "Total Magnetic Field Strength Uncertainty",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/TotalMagneticFieldStrengthUncertainty'. Survey tool magnetic uncertainty. Unit of measure given by the record's meta[] frame of reference (UOM:magnetic flux density).",
+      "examples": [
+        "250 nT"
+      ]
+    },
+    "GravityModelID": {
+      "type": "string",
+      "title": "Gravity Model ID",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/GravityModelID'. Identifier of the Gravity Model in use for the survey.",
+      "examples": [
+        "namespace:reference-data--GravityModel:GARM:"
+      ],
+      "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-GravityModel:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+    },
+    "TotalGravityFieldStrength": {
+      "type": "number",
+      "title": "Total Gravity Field Strength",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/TotalGravityFieldStrength'. Calculated total gravity field. Unit of measure given by the record's meta[] frame of reference (UOM:linear acceleration).",
+      "examples": [
+        "980.665 Gal"
+      ]
+    },
+    "TotalGravityFieldStrengthUncertainty": {
+      "type": "number",
+      "title": "Total Gravity Field Strength Uncertainty",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/TotalGravityFieldStrengthUncertainty'. Survey tool gravity uncertainty. Unit of measure given by the record's meta[] frame of reference (UOM:linear acceleration).",
+      "examples": [
+        "5 Gal"
+      ]
+    },
+    "VerticalSectionOriginNS": {
+      "type": "number",
+      "title": "Vertical Section Origin N/-S",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/VerticalSectionOriginNS'. Vertical Section Origin North / -South relative to the Well SHL Projected CRS 0, 0 origin. 0 where Vertical Section Projection originates from the wellhead. Unit of measure given by the record's meta[] frame of reference (UOM:length).",
+      "examples": [
+        "0 m"
+      ]
+    },
+    "VerticalSectionOriginEW": {
+      "type": "number",
+      "title": "Vertical Section Origin E/-W",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/VerticalSectionOriginEW'. Vertical Section Origin East / -West relative to the Well SHL Projected CRS 0, 0 origin. 0 where Vertical Section Projection originates from the wellhead. Unit of measure given by the record's meta[] frame of reference (UOM:length).",
+      "examples": [
+        "0 m"
+      ]
+    },
+    "IsDefinitive": {
+      "type": "boolean",
+      "title": "Definitive",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/IsDefinitive'. True indicates that this trajectory is definitive for this wellbore as provided by the survey contractor. False or not given indicates otherwise. There can only be one trajectory per wellbore with definitive=true and it must define the geometry of the whole wellbore (surface to TD). The definitive trajectory may represent a composite of survey data from one or more other trajectories.",
+      "examples": [
+        true
+      ]
+    },
+    "IsMemory": {
+      "type": "boolean",
+      "title": "Memory",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/IsMemory'. Is trajectory a result of a memory dump from a tool?",
+      "examples": [
+        false
+      ]
+    },
+    "IsFinal": {
+      "type": "boolean",
+      "title": "Final",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/3/properties/IsFinal'. From the survey contractors perspective providing the survey to the Operator is the trajectory final (true) or intermediate/preliminary (false)? Does not mean that the trajectory cannot be worked on further by the Operator.",
+      "examples": [
+        true
+      ]
+    },
+    "ExtensionProperties": {
+      "type": "object",
+      "description": "Property. Model:'https://community.opengroup.org/osdu/data/data-definitions/-/raw/v0.30.1/Generated/work-product-component/WellboreTrajectory.1.4.0.json#/properties/data/allOf/4/properties/ExtensionProperties'."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. Not an OSDU attribute (Smart Data Models addition): the GeoJSON geometry of the first feature of the OSDU WGS 84 coordinates (SpatialPoint (or SpatialArea).Wgs84Coordinates), copied so that NGSI-LD geo-queries work. The OSDU structure is kept unchanged in SpatialPoint (or SpatialArea).",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point",
+            "LineString",
+            "Polygon",
+            "MultiPoint",
+            "MultiLineString",
+            "MultiPolygon"
+          ]
+        },
+        "coordinates": {
+          "type": "array"
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "kind",
+    "WellboreID",
+    "TopDepthMeasuredDepth",
+    "BaseDepthMeasuredDepth",
+    "VerticalMeasurement"
+  ],
+  "$defs": {
+    "AbstractAliasNames.1.0.0": {
+      "title": "AbstractAliasNames",
+      "description": "A list of alternative names for an object.  The preferred name is in a separate, scalar property.  It may or may not be repeated in the alias list, though a best practice is to include it if the list is present, but to omit the list if there are no other names.  Note that the abstract entity is an array so the $ref to it is a simple property reference.",
+      "type": "object",
+      "properties": {
+        "AliasName": {
+          "type": "string",
+          "description": "Alternative Name value of defined name type for an object."
+        },
+        "AliasNameTypeID": {
+          "type": "string",
+          "description": "A classification of alias names such as by role played or type of source, such as regulatory name, regulatory code, company code, international standard name, etc.",
+          "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-AliasNameType:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        },
+        "DefinitionOrganisationID": {
+          "type": "string",
+          "description": "The StandardsOrganisation (reference-data) or Organisation (master-data) that provided the name (the source).",
+          "pattern": "^[\\w\\-\\.]+:(reference-data\\-\\-StandardsOrganisation|master-data\\-\\-Organisation):[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        },
+        "EffectiveDateTime": {
+          "type": "string",
+          "description": "The date and time when an alias name becomes effective.",
+          "format": "date-time"
+        },
+        "TerminationDateTime": {
+          "type": "string",
+          "description": "The data and time when an alias name is no longer in effect.",
+          "format": "date-time"
+        }
+      }
+    },
+    "AbstractAnyCrsFeatureCollection.1.1.0": {
+      "title": "AbstractAnyCrsFeatureCollection",
+      "description": "A schema like GeoJSON FeatureCollection with a non-WGS 84 CRS context; based on https://geojson.org/schema/FeatureCollection.json. Attention: the coordinate order is fixed: Longitude/Easting/Westing/X first, followed by Latitude/Northing/Southing/Y, optionally height as third coordinate.",
+      "type": "object",
+      "required": [
+        "type",
+        "persistableReferenceCrs",
+        "features"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "AnyCrsFeatureCollection"
+          ]
+        },
+        "CoordinateReferenceSystemID": {
+          "title": "Coordinate Reference System ID",
+          "description": "The CRS reference into the CoordinateReferenceSystem catalog.",
+          "type": "string",
+          "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-CoordinateReferenceSystem:[\\w\\-\\.\\:\\%]+:[0-9]*$",
+          "examples": [
+            "namespace:reference-data--CoordinateReferenceSystem:BoundProjected:EPSG::32021_EPSG::15851:"
+          ]
+        },
+        "VerticalCoordinateReferenceSystemID": {
+          "title": "Vertical Coordinate Reference System ID",
+          "description": "The explicit VerticalCRS reference into the CoordinateReferenceSystem catalog. This property stays empty for 2D geometries. Absent or empty values for 3D geometries mean the context may be provided by a CompoundCRS in 'CoordinateReferenceSystemID' or implicitly EPSG:5714 MSL height",
+          "type": "string",
+          "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-CoordinateReferenceSystem:[\\w\\-\\.\\:\\%]+:[0-9]*$",
+          "examples": [
+            "namespace:reference-data--CoordinateReferenceSystem:Vertical:EPSG::5714:"
+          ]
+        },
+        "VerticalUnitID": {
+          "title": "Vertical Unit ID",
+          "description": "The explicit vertical unit ID, referring to a reference-data--UnitOfMeasure record; this is only required for features containing 3-dimensional coordinates and undefined vertical CoordinateReferenceSystems; if a VerticalCoordinateReferenceSystemID is populated, the VerticalUnitID is given by the VerticalCoordinateReferenceSystemID's data.CoordinateSystem.VerticalAxisUnitID. The VerticalUnitID definition overrides any self-contained definition in persistableReferenceUnitZ.",
+          "type": "string",
+          "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-UnitOfMeasure:[\\w\\-\\.\\:\\%]+:[0-9]*$",
+          "examples": [
+            "namespace:reference-data--UnitOfMeasure:m:"
+          ]
+        },
+        "persistableReferenceCrs": {
+          "type": "string",
+          "title": "CRS Reference",
+          "description": "The CRS reference as persistableReference string. If populated, the CoordinateReferenceSystemID takes precedence.",
+          "examples": [
+            "{\"authCode\":{\"auth\":\"OSDU\",\"code\":\"32021079\"},\"lateBoundCRS\":{\"authCode\":{\"auth\":\"EPSG\",\"code\":\"32021\"},\"name\":\"NAD_1927_StatePlane_North_Dakota_South_FIPS_3302\",\"type\":\"LBC\",\"ver\":\"PE_10_9_1\",\"wkt\":\"PROJCS[\\\"NAD_1927_StatePlane_North_Dakota_South_FIPS_3302\\\",GEOGCS[\\\"GCS_North_American_1927\\\",DATUM[\\\"D_North_American_1927\\\",SPHEROID[\\\"Clarke_1866\\\",6378206.4,294.9786982]],PRIMEM[\\\"Greenwich\\\",0.0],UNIT[\\\"Degree\\\",0.0174532925199433]],PROJECTION[\\\"Lambert_Conformal_Conic\\\"],PARAMETER[\\\"False_Easting\\\",2000000.0],PARAMETER[\\\"False_Northing\\\",0.0],PARAMETER[\\\"Central_Meridian\\\",-100.5],PARAMETER[\\\"Standard_Parallel_1\\\",46.18333333333333],PARAMETER[\\\"Standard_Parallel_2\\\",47.48333333333333],PARAMETER[\\\"Latitude_Of_Origin\\\",45.66666666666666],UNIT[\\\"Foot_US\\\",0.3048006096012192],AUTHORITY[\\\"EPSG\\\",32021]]\"},\"name\":\"NAD27 * OGP-Usa Conus / North Dakota CS27 South zone [32021,15851]\",\"singleCT\":{\"authCode\":{\"auth\":\"EPSG\",\"code\":\"15851\"},\"name\":\"NAD_1927_To_WGS_1984_79_CONUS\",\"type\":\"ST\",\"ver\":\"PE_10_9_1\",\"wkt\":\"GEOGTRAN[\\\"NAD_1927_To_WGS_1984_79_CONUS\\\",GEOGCS[\\\"GCS_North_American_1927\\\",DATUM[\\\"D_North_American_1927\\\",SPHEROID[\\\"Clarke_1866\\\",6378206.4,294.9786982]],PRIMEM[\\\"Greenwich\\\",0.0],UNIT[\\\"Degree\\\",0.0174532925199433]],GEOGCS[\\\"GCS_WGS_1984\\\",DATUM[\\\"D_WGS_1984\\\",SPHEROID[\\\"WGS_1984\\\",6378137.0,298.257223563]],PRIMEM[\\\"Greenwich\\\",0.0],UNIT[\\\"Degree\\\",0.0174532925199433]],METHOD[\\\"NADCON\\\"],PARAMETER[\\\"Dataset_conus\\\",0.0],OPERATIONACCURACY[5.0],AUTHORITY[\\\"EPSG\\\",15851]]\"},\"type\":\"EBC\",\"ver\":\"PE_10_9_1\"}"
+          ]
+        },
+        "persistableReferenceVerticalCrs": {
+          "type": "string",
+          "title": "Vertical CRS Reference",
+          "description": "The VerticalCRS reference as persistableReference string. If populated, the VerticalCoordinateReferenceSystemID takes precedence. The property is null or empty for 2D geometries. For 3D geometries and absent or null persistableReferenceVerticalCrs the vertical CRS is either provided via persistableReferenceCrs's CompoundCRS or it is implicitly defined as EPSG:5714 MSL height.",
+          "examples": [
+            "{\"authCode\":{\"auth\":\"EPSG\",\"code\":\"5714\"},\"name\":\"MSL_Height\",\"type\":\"LBC\",\"ver\":\"PE_10_9_1\",\"wkt\":\"VERTCS[\\\"MSL_Height\\\",VDATUM[\\\"Mean_Sea_Level\\\"],PARAMETER[\\\"Vertical_Shift\\\",0.0],PARAMETER[\\\"Direction\\\",1.0],UNIT[\\\"Meter\\\",1.0],AUTHORITY[\\\"EPSG\\\",5714]]\"}"
+          ]
+        },
+        "persistableReferenceUnitZ": {
+          "type": "string",
+          "title": "Z-Unit Reference",
+          "description": "The unit of measure for the Z-axis (only for 3-dimensional coordinates, where the CRS does not describe the vertical unit). Note that the direction is upwards positive, i.e. Z means height.",
+          "examples": [
+            "{\"scaleOffset\":{\"scale\":1.0,\"offset\":0.0},\"symbol\":\"m\",\"baseMeasurement\":{\"ancestry\":\"Length\",\"type\":\"UM\"},\"type\":\"USO\"}"
+          ]
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "title": "AnyCrsGeoJSON Feature",
+            "type": "object",
+            "required": [
+              "type",
+              "properties",
+              "geometry"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "AnyCrsFeature"
+                ]
+              },
+              "properties": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object"
+                  }
+                ]
+              },
+              "geometry": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "title": "AnyCrsGeoJSON Point",
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "coordinates"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "AnyCrsPoint"
+                        ]
+                      },
+                      "coordinates": {
+                        "type": "array",
+                        "minItems": 2,
+                        "items": {
+                          "type": "number"
+                        }
+                      },
+                      "bbox": {
+                        "type": "array",
+                        "minItems": 4,
+                        "items": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "title": "AnyCrsGeoJSON LineString",
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "coordinates"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "AnyCrsLineString"
+                        ]
+                      },
+                      "coordinates": {
+                        "type": "array",
+                        "minItems": 2,
+                        "items": {
+                          "type": "array",
+                          "minItems": 2,
+                          "items": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "bbox": {
+                        "type": "array",
+                        "minItems": 4,
+                        "items": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "title": "AnyCrsGeoJSON Polygon",
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "coordinates"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "AnyCrsPolygon"
+                        ]
+                      },
+                      "coordinates": {
+                        "type": "array",
+                        "items": {
+                          "type": "array",
+                          "minItems": 4,
+                          "items": {
+                            "type": "array",
+                            "minItems": 2,
+                            "items": {
+                              "type": "number"
+                            }
+                          }
+                        }
+                      },
+                      "bbox": {
+                        "type": "array",
+                        "minItems": 4,
+                        "items": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "title": "AnyCrsGeoJSON MultiPoint",
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "coordinates"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "AnyCrsMultiPoint"
+                        ]
+                      },
+                      "coordinates": {
+                        "type": "array",
+                        "items": {
+                          "type": "array",
+                          "minItems": 2,
+                          "items": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "bbox": {
+                        "type": "array",
+                        "minItems": 4,
+                        "items": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "title": "AnyCrsGeoJSON MultiLineString",
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "coordinates"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "AnyCrsMultiLineString"
+                        ]
+                      },
+                      "coordinates": {
+                        "type": "array",
+                        "items": {
+                          "type": "array",
+                          "minItems": 2,
+                          "items": {
+                            "type": "array",
+                            "minItems": 2,
+                            "items": {
+                              "type": "number"
+                            }
+                          }
+                        }
+                      },
+                      "bbox": {
+                        "type": "array",
+                        "minItems": 4,
+                        "items": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "title": "AnyCrsGeoJSON MultiPolygon",
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "coordinates"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "AnyCrsMultiPolygon"
+                        ]
+                      },
+                      "coordinates": {
+                        "type": "array",
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "type": "array",
+                            "minItems": 4,
+                            "items": {
+                              "type": "array",
+                              "minItems": 2,
+                              "items": {
+                                "type": "number"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "bbox": {
+                        "type": "array",
+                        "minItems": 4,
+                        "items": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "title": "AnyCrsGeoJSON GeometryCollection",
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "geometries"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "AnyCrsGeometryCollection"
+                        ]
+                      },
+                      "geometries": {
+                        "type": "array",
+                        "items": {
+                          "oneOf": [
+                            {
+                              "title": "AnyCrsGeoJSON Point",
+                              "type": "object",
+                              "required": [
+                                "type",
+                                "coordinates"
+                              ],
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "AnyCrsPoint"
+                                  ]
+                                },
+                                "coordinates": {
+                                  "type": "array",
+                                  "minItems": 2,
+                                  "items": {
+                                    "type": "number"
+                                  }
+                                },
+                                "bbox": {
+                                  "type": "array",
+                                  "minItems": 4,
+                                  "items": {
+                                    "type": "number"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "title": "AnyCrsGeoJSON LineString",
+                              "type": "object",
+                              "required": [
+                                "type",
+                                "coordinates"
+                              ],
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "AnyCrsLineString"
+                                  ]
+                                },
+                                "coordinates": {
+                                  "type": "array",
+                                  "minItems": 2,
+                                  "items": {
+                                    "type": "array",
+                                    "minItems": 2,
+                                    "items": {
+                                      "type": "number"
+                                    }
+                                  }
+                                },
+                                "bbox": {
+                                  "type": "array",
+                                  "minItems": 4,
+                                  "items": {
+                                    "type": "number"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "title": "AnyCrsGeoJSON Polygon",
+                              "type": "object",
+                              "required": [
+                                "type",
+                                "coordinates"
+                              ],
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "AnyCrsPolygon"
+                                  ]
+                                },
+                                "coordinates": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "array",
+                                    "minItems": 4,
+                                    "items": {
+                                      "type": "array",
+                                      "minItems": 2,
+                                      "items": {
+                                        "type": "number"
+                                      }
+                                    }
+                                  }
+                                },
+                                "bbox": {
+                                  "type": "array",
+                                  "minItems": 4,
+                                  "items": {
+                                    "type": "number"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "title": "AnyCrsGeoJSON MultiPoint",
+                              "type": "object",
+                              "required": [
+                                "type",
+                                "coordinates"
+                              ],
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "AnyCrsMultiPoint"
+                                  ]
+                                },
+                                "coordinates": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "array",
+                                    "minItems": 2,
+                                    "items": {
+                                      "type": "number"
+                                    }
+                                  }
+                                },
+                                "bbox": {
+                                  "type": "array",
+                                  "minItems": 4,
+                                  "items": {
+                                    "type": "number"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "title": "AnyCrsGeoJSON MultiLineString",
+                              "type": "object",
+                              "required": [
+                                "type",
+                                "coordinates"
+                              ],
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "AnyCrsMultiLineString"
+                                  ]
+                                },
+                                "coordinates": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "array",
+                                    "minItems": 2,
+                                    "items": {
+                                      "type": "array",
+                                      "minItems": 2,
+                                      "items": {
+                                        "type": "number"
+                                      }
+                                    }
+                                  }
+                                },
+                                "bbox": {
+                                  "type": "array",
+                                  "minItems": 4,
+                                  "items": {
+                                    "type": "number"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "title": "AnyCrsGeoJSON MultiPolygon",
+                              "type": "object",
+                              "required": [
+                                "type",
+                                "coordinates"
+                              ],
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "AnyCrsMultiPolygon"
+                                  ]
+                                },
+                                "coordinates": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "array",
+                                      "minItems": 4,
+                                      "items": {
+                                        "type": "array",
+                                        "minItems": 2,
+                                        "items": {
+                                          "type": "number"
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "bbox": {
+                                  "type": "array",
+                                  "minItems": 4,
+                                  "items": {
+                                    "type": "number"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "bbox": {
+                        "type": "array",
+                        "minItems": 4,
+                        "items": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "bbox": {
+                "type": "array",
+                "minItems": 4,
+                "items": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        },
+        "bbox": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "AbstractContact.1.1.0": {
+      "title": "Abstract Contact",
+      "description": "An object with properties that describe a specific person or other point-of-contact (like an email distribution list) that is relevant in this context (like a given data set or business project). The contact specified may be either internal or external to the organisation (something denoted via the Organisation object that is referenced). Note that some properties contain personally identifiable information, so it might not be appropriate to populate all properties in all scenarios.",
+      "type": "object",
+      "properties": {
+        "EmailAddress": {
+          "type": "string",
+          "title": "Email Address",
+          "description": "Contact email address. Property may be left empty where it is inappropriate to provide personally identifiable information.",
+          "examples": [
+            "support@company.com"
+          ]
+        },
+        "PhoneNumber": {
+          "type": "string",
+          "title": "Phone Number",
+          "description": "Contact phone number. Property may be left empty where it is inappropriate to provide personally identifiable information.",
+          "examples": [
+            "1-555-281-5555"
+          ]
+        },
+        "RoleTypeID": {
+          "type": "string",
+          "title": "Role Type ID",
+          "description": "The identifier of a reference value for the role of the contact within the associated organisation, such as Account owner, Sales Representative, Technical Support, Project Manager, Party Chief, Client Representative, Senior Observer.",
+          "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-ContactRoleType:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        },
+        "DataGovernanceRoleTypeID": {
+          "type": "string",
+          "title": "DataGovernanceRoleTypeID",
+          "description": "The data governance role assigned to this contact if and only if the context has a data governance role (in context of TechnicalAssurance). The value is kept absent in all other cases.",
+          "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-DataGovernanceRoleType:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        },
+        "WorkflowPersonaTypeID": {
+          "type": "string",
+          "title": "WorkflowPersonaTypeID",
+          "description": "The persona in context of workflows associated with this contact, as used in TechnicalAssurance.",
+          "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-WorkflowPersonaType:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        },
+        "Comment": {
+          "type": "string",
+          "title": "Comment",
+          "description": "Additional information about the contact"
+        },
+        "OrganisationID": {
+          "type": "string",
+          "title": "Organisation ID",
+          "description": "Reference to the company the contact is associated with.",
+          "pattern": "^[\\w\\-\\.]+:master-data\\-\\-Organisation:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        },
+        "Name": {
+          "type": "string",
+          "title": "Name",
+          "description": "Name of the individual contact. Property may be left empty where it is inappropriate to provide personally identifiable information."
+        }
+      }
+    },
+    "AbstractFacilityVerticalMeasurement.1.0.0": {
+      "title": "AbstractFacilityVerticalMeasurement",
+      "description": "A location along a wellbore, _usually_ associated with some aspect of the drilling of the wellbore, but not with any intersecting _subsurface_ natural surfaces.",
+      "type": "object",
+      "properties": {
+        "EffectiveDateTime": {
+          "type": "string",
+          "description": "The date and time at which a vertical measurement instance becomes effective.",
+          "format": "date-time"
+        },
+        "VerticalMeasurement": {
+          "type": "number",
+          "description": "The value of the elevation or depth. Depth is positive downwards from a vertical reference or geodetic datum along a path, which can be vertical; elevation is positive upwards from a geodetic datum along a vertical path. Either can be negative."
+        },
+        "TerminationDateTime": {
+          "type": "string",
+          "description": "The date and time at which a vertical measurement instance is no longer in effect.",
+          "format": "date-time"
+        },
+        "VerticalMeasurementTypeID": {
+          "type": "string",
+          "description": "Specifies the type of vertical measurement (TD, Plugback, Kickoff, Drill Floor, Rotary Table...).",
+          "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-VerticalMeasurementType:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        },
+        "VerticalMeasurementPathID": {
+          "type": "string",
+          "description": "Specifies Measured Depth, True Vertical Depth, or Elevation.",
+          "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-VerticalMeasurementPath:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        },
+        "VerticalMeasurementSourceID": {
+          "type": "string",
+          "description": "Specifies Driller vs Logger.",
+          "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-VerticalMeasurementSource:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        },
+        "WellboreTVDTrajectoryID": {
+          "type": "string",
+          "description": "Specifies what directional survey or wellpath was used to calculate the TVD.",
+          "pattern": "^[\\w\\-\\.]+:work-product-component\\-\\-WellboreTrajectory:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        },
+        "VerticalMeasurementUnitOfMeasureID": {
+          "type": "string",
+          "description": "The unit of measure for the vertical measurement. If a unit of measure and a vertical CRS are provided, the unit of measure provided is taken over the unit of measure from the CRS.",
+          "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-UnitOfMeasure:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        },
+        "VerticalCRSID": {
+          "type": "string",
+          "description": "A vertical coordinate reference system defines the origin for height or depth values. It is expected that either VerticalCRSID or VerticalReferenceID reference is provided in a given vertical measurement array object, but not both.",
+          "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-CoordinateReferenceSystem:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        },
+        "VerticalReferenceID": {
+          "type": "string",
+          "description": "The reference point from which the relative vertical measurement is made. This is only populated if the measurement has no VerticalCRSID specified. The value entered must match the VerticalMeasurementID for another vertical measurement array element in Wellbore or Well or in a related parent facility. The relationship should be  declared explicitly in VerticalReferenceEntityID. Any chain of measurements must ultimately resolve to a Vertical CRS. It is expected that a VerticalCRSID or a VerticalReferenceID is provided in a given vertical measurement array object, but not both."
+        },
+        "VerticalReferenceEntityID": {
+          "type": "string",
+          "description": "This relationship identifies the entity (aka record) in which the VerticalReferenceID is found; It could be a different OSDU entity or a self-reference. For example, a Wellbore VerticalMeasurement may reference a member of a VerticalMeasurements[] array in its parent Well record. Alternatively, VerticalReferenceEntityID may be populated with the ID of its own Wellbore record to make explicit that VerticalReferenceID is intended to be found in this record, not another.",
+          "pattern": "^[\\w\\-\\.]+:(master-data\\-\\-Wellbore|master-data\\-\\-Well|master-data\\-\\-Rig):[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        },
+        "VerticalMeasurementDescription": {
+          "type": "string",
+          "description": "Text which describes a vertical measurement in detail."
+        }
+      }
+    },
+    "AbstractFeatureCollection.1.0.0": {
+      "description": "GeoJSON feature collection as originally published in https://geojson.org/schema/FeatureCollection.json. Attention: the coordinate order is fixed: Longitude first, followed by Latitude, optionally height above MSL (EPSG:5714) as third coordinate.",
+      "title": "GeoJSON FeatureCollection",
+      "type": "object",
+      "required": [
+        "type",
+        "features"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "FeatureCollection"
+          ]
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "title": "GeoJSON Feature",
+            "type": "object",
+            "required": [
+              "type",
+              "properties",
+              "geometry"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "Feature"
+                ]
+              },
+              "properties": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object"
+                  }
+                ]
+              },
+              "geometry": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "title": "GeoJSON Point",
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "coordinates"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "Point"
+                        ]
+                      },
+                      "coordinates": {
+                        "type": "array",
+                        "minItems": 2,
+                        "items": {
+                          "type": "number"
+                        }
+                      },
+                      "bbox": {
+                        "type": "array",
+                        "minItems": 4,
+                        "items": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "title": "GeoJSON LineString",
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "coordinates"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "LineString"
+                        ]
+                      },
+                      "coordinates": {
+                        "type": "array",
+                        "minItems": 2,
+                        "items": {
+                          "type": "array",
+                          "minItems": 2,
+                          "items": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "bbox": {
+                        "type": "array",
+                        "minItems": 4,
+                        "items": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "title": "GeoJSON Polygon",
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "coordinates"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "Polygon"
+                        ]
+                      },
+                      "coordinates": {
+                        "type": "array",
+                        "items": {
+                          "type": "array",
+                          "minItems": 4,
+                          "items": {
+                            "type": "array",
+                            "minItems": 2,
+                            "items": {
+                              "type": "number"
+                            }
+                          }
+                        }
+                      },
+                      "bbox": {
+                        "type": "array",
+                        "minItems": 4,
+                        "items": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "title": "GeoJSON MultiPoint",
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "coordinates"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "MultiPoint"
+                        ]
+                      },
+                      "coordinates": {
+                        "type": "array",
+                        "items": {
+                          "type": "array",
+                          "minItems": 2,
+                          "items": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "bbox": {
+                        "type": "array",
+                        "minItems": 4,
+                        "items": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "title": "GeoJSON MultiLineString",
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "coordinates"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "MultiLineString"
+                        ]
+                      },
+                      "coordinates": {
+                        "type": "array",
+                        "items": {
+                          "type": "array",
+                          "minItems": 2,
+                          "items": {
+                            "type": "array",
+                            "minItems": 2,
+                            "items": {
+                              "type": "number"
+                            }
+                          }
+                        }
+                      },
+                      "bbox": {
+                        "type": "array",
+                        "minItems": 4,
+                        "items": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "title": "GeoJSON MultiPolygon",
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "coordinates"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "MultiPolygon"
+                        ]
+                      },
+                      "coordinates": {
+                        "type": "array",
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "type": "array",
+                            "minItems": 4,
+                            "items": {
+                              "type": "array",
+                              "minItems": 2,
+                              "items": {
+                                "type": "number"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "bbox": {
+                        "type": "array",
+                        "minItems": 4,
+                        "items": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "title": "GeoJSON GeometryCollection",
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "geometries"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "GeometryCollection"
+                        ]
+                      },
+                      "geometries": {
+                        "type": "array",
+                        "items": {
+                          "oneOf": [
+                            {
+                              "title": "GeoJSON Point",
+                              "type": "object",
+                              "required": [
+                                "type",
+                                "coordinates"
+                              ],
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "Point"
+                                  ]
+                                },
+                                "coordinates": {
+                                  "type": "array",
+                                  "minItems": 2,
+                                  "items": {
+                                    "type": "number"
+                                  }
+                                },
+                                "bbox": {
+                                  "type": "array",
+                                  "minItems": 4,
+                                  "items": {
+                                    "type": "number"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "title": "GeoJSON LineString",
+                              "type": "object",
+                              "required": [
+                                "type",
+                                "coordinates"
+                              ],
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "LineString"
+                                  ]
+                                },
+                                "coordinates": {
+                                  "type": "array",
+                                  "minItems": 2,
+                                  "items": {
+                                    "type": "array",
+                                    "minItems": 2,
+                                    "items": {
+                                      "type": "number"
+                                    }
+                                  }
+                                },
+                                "bbox": {
+                                  "type": "array",
+                                  "minItems": 4,
+                                  "items": {
+                                    "type": "number"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "title": "GeoJSON Polygon",
+                              "type": "object",
+                              "required": [
+                                "type",
+                                "coordinates"
+                              ],
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "Polygon"
+                                  ]
+                                },
+                                "coordinates": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "array",
+                                    "minItems": 4,
+                                    "items": {
+                                      "type": "array",
+                                      "minItems": 2,
+                                      "items": {
+                                        "type": "number"
+                                      }
+                                    }
+                                  }
+                                },
+                                "bbox": {
+                                  "type": "array",
+                                  "minItems": 4,
+                                  "items": {
+                                    "type": "number"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "title": "GeoJSON MultiPoint",
+                              "type": "object",
+                              "required": [
+                                "type",
+                                "coordinates"
+                              ],
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "MultiPoint"
+                                  ]
+                                },
+                                "coordinates": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "array",
+                                    "minItems": 2,
+                                    "items": {
+                                      "type": "number"
+                                    }
+                                  }
+                                },
+                                "bbox": {
+                                  "type": "array",
+                                  "minItems": 4,
+                                  "items": {
+                                    "type": "number"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "title": "GeoJSON MultiLineString",
+                              "type": "object",
+                              "required": [
+                                "type",
+                                "coordinates"
+                              ],
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "MultiLineString"
+                                  ]
+                                },
+                                "coordinates": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "array",
+                                    "minItems": 2,
+                                    "items": {
+                                      "type": "array",
+                                      "minItems": 2,
+                                      "items": {
+                                        "type": "number"
+                                      }
+                                    }
+                                  }
+                                },
+                                "bbox": {
+                                  "type": "array",
+                                  "minItems": 4,
+                                  "items": {
+                                    "type": "number"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "title": "GeoJSON MultiPolygon",
+                              "type": "object",
+                              "required": [
+                                "type",
+                                "coordinates"
+                              ],
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "MultiPolygon"
+                                  ]
+                                },
+                                "coordinates": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "array",
+                                      "minItems": 4,
+                                      "items": {
+                                        "type": "array",
+                                        "minItems": 2,
+                                        "items": {
+                                          "type": "number"
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "bbox": {
+                                  "type": "array",
+                                  "minItems": 4,
+                                  "items": {
+                                    "type": "number"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "bbox": {
+                        "type": "array",
+                        "minItems": 4,
+                        "items": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "bbox": {
+                "type": "array",
+                "minItems": 4,
+                "items": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        },
+        "bbox": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "AbstractGeoBasinContext.1.0.0": {
+      "title": "AbstractGeoBasinContext",
+      "description": "A single, typed basin entity reference, which is 'abstracted' to AbstractGeoContext and then aggregated by GeoContexts properties.",
+      "type": "object",
+      "properties": {
+        "BasinID": {
+          "type": "string",
+          "description": "Reference to Basin.",
+          "pattern": "^[\\w\\-\\.]+:master-data\\-\\-Basin:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        },
+        "GeoTypeID": {
+          "type": "string",
+          "description": "The BasinType reference of the Basin (via BasinID) for application convenience.",
+          "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-BasinType:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        }
+      }
+    },
+    "AbstractGeoContext.1.0.0": {
+      "title": "AbstractGeoContext",
+      "description": "A geographic context to an entity. It can be either a reference to a GeoPoliticalEntity, Basin, Field, Play or Prospect.",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/AbstractGeoPoliticalContext.1.0.0"
+        },
+        {
+          "$ref": "#/$defs/AbstractGeoBasinContext.1.0.0"
+        },
+        {
+          "$ref": "#/$defs/AbstractGeoFieldContext.1.0.0"
+        },
+        {
+          "$ref": "#/$defs/AbstractGeoPlayContext.1.0.0"
+        },
+        {
+          "$ref": "#/$defs/AbstractGeoProspectContext.1.0.0"
+        }
+      ]
+    },
+    "AbstractGeoFieldContext.1.0.0": {
+      "title": "AbstractGeoFieldContext",
+      "description": "A single, typed field entity reference, which is 'abstracted' to AbstractGeoContext and then aggregated by GeoContexts properties.",
+      "type": "object",
+      "properties": {
+        "FieldID": {
+          "type": "string",
+          "description": "Reference to Field.",
+          "pattern": "^[\\w\\-\\.]+:master-data\\-\\-Field:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        },
+        "GeoTypeID": {
+          "type": "string",
+          "const": "Field",
+          "description": "The fixed type 'Field' for this AbstractGeoFieldContext."
+        }
+      }
+    },
+    "AbstractGeoPlayContext.1.0.0": {
+      "title": "AbstractGeoPlayContext",
+      "description": "A single, typed Play entity reference, which is 'abstracted' to AbstractGeoContext and then aggregated by GeoContexts properties.",
+      "type": "object",
+      "properties": {
+        "PlayID": {
+          "type": "string",
+          "description": "Reference to the play.",
+          "pattern": "^[\\w\\-\\.]+:master-data\\-\\-Play:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        },
+        "GeoTypeID": {
+          "type": "string",
+          "description": "The PlayType reference of the Play (via PlayID) for application convenience.",
+          "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-PlayType:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        }
+      }
+    },
+    "AbstractGeoPoliticalContext.1.0.0": {
+      "title": "AbstractGeoPoliticalContext",
+      "description": "A single, typed geo-political entity reference, which is 'abstracted' to AbstractGeoContext and then aggregated by GeoContexts properties.",
+      "type": "object",
+      "properties": {
+        "GeoPoliticalEntityID": {
+          "type": "string",
+          "description": "Reference to GeoPoliticalEntity.",
+          "pattern": "^[\\w\\-\\.]+:master-data\\-\\-GeoPoliticalEntity:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        },
+        "GeoTypeID": {
+          "type": "string",
+          "description": "The GeoPoliticalEntityType reference of the GeoPoliticalEntity (via GeoPoliticalEntityID) for application convenience.",
+          "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-GeoPoliticalEntityType:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        }
+      }
+    },
+    "AbstractGeoProspectContext.1.0.0": {
+      "title": "AbstractGeoProspectContext",
+      "description": "A single, typed Prospect entity reference, which is 'abstracted' to AbstractGeoContext and then aggregated by GeoContexts properties.",
+      "type": "object",
+      "properties": {
+        "ProspectID": {
+          "type": "string",
+          "description": "Reference to the prospect.",
+          "pattern": "^[\\w\\-\\.]+:master-data\\-\\-Prospect:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        },
+        "GeoTypeID": {
+          "type": "string",
+          "description": "The ProspectType reference of the Prospect (via ProspectID) for application convenience.",
+          "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-ProspectType:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        }
+      }
+    },
+    "AbstractLegalParentList.1.0.0": {
+      "title": "Parent List",
+      "description": "A list of entity id:version references to record instances recorded in the data platform, from which the current record is derived and from which the legal tags must be derived. This structure is included by the SystemProperties \"ancestry\", which is part of all OSDU records. Not extensible.",
+      "type": "object",
+      "properties": {
+        "parents": {
+          "description": "An array of none, one or many entity references of 'direct parents' in the data platform, which mark the current record as a derivative. In contrast to other relationships, the source record version is required. During record creation or update the ancestry.parents[] relationships are used to collect the legal tags from the sources and aggregate them in the legal.legaltags[] array. As a consequence, should e.g., one or more of the legal tags of the source data expire, the access to the derivatives is also terminated. For details, see ComplianceService tutorial, 'Creating derivative Records'.",
+          "items": {
+            "type": "string",
+            "pattern": "^[\\w\\-\\.]+:[\\w\\-\\.]+:[\\w\\-\\.\\:\\%]+:[0-9]+$"
+          },
+          "examples": [
+            []
+          ],
+          "title": "Parents",
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "AbstractLegalTags.1.0.0": {
+      "title": "Legal Meta Data",
+      "description": "Legal meta data like legal tags, relevant other countries, legal status. This structure is included by the SystemProperties \"legal\", which is part of all OSDU records. Not extensible.",
+      "type": "object",
+      "properties": {
+        "legaltags": {
+          "title": "Legal Tags",
+          "description": "The list of legal tags, which resolve to legal properties (like country of origin, export classification code, etc.) and rules with the help of the Compliance Service.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "otherRelevantDataCountries": {
+          "title": "Other Relevant Data Countries",
+          "description": "The list of other relevant data countries as an array of two-letter country codes, see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z]{2}$"
+          }
+        },
+        "status": {
+          "title": "Legal Status",
+          "description": "The legal status. Set by the system after evaluation against the compliance rules associated with the \"legaltags\" using the Compliance Service.",
+          "type": "string",
+          "pattern": "^(compliant|uncompliant)$"
+        }
+      },
+      "required": [
+        "legaltags",
+        "otherRelevantDataCountries"
+      ],
+      "additionalProperties": false
+    },
+    "AbstractMetaItem.1.0.0": {
+      "title": "Frame of Reference Meta Data Item",
+      "description": "A meta data item, which allows the association of named properties or property values to a Unit/Measurement/CRS/Azimuth/Time context.",
+      "oneOf": [
+        {
+          "title": "FrameOfReferenceUOM",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "title": "UOM Reference Kind",
+              "type": "string",
+              "description": "The kind of reference, 'Unit' for FrameOfReferenceUOM.",
+              "const": "Unit"
+            },
+            "name": {
+              "title": "UOM Unit Symbol",
+              "description": "The unit symbol or name of the unit.",
+              "type": "string",
+              "examples": [
+                "ft[US]"
+              ]
+            },
+            "persistableReference": {
+              "title": "UOM Persistable Reference",
+              "description": "The self-contained, persistable reference string uniquely identifying the Unit.",
+              "type": "string",
+              "examples": [
+                "{\"abcd\":{\"a\":0.0,\"b\":1200.0,\"c\":3937.0,\"d\":0.0},\"symbol\":\"ft[US]\",\"baseMeasurement\":{\"ancestry\":\"L\",\"type\":\"UM\"},\"type\":\"UAD\"}"
+              ]
+            },
+            "unitOfMeasureID": {
+              "description": "SRN to unit of measure reference.",
+              "type": "string",
+              "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-UnitOfMeasure:[\\w\\-\\.\\:\\%]+:[0-9]*$",
+              "examples": [
+                "namespace:reference-data--UnitOfMeasure:ftUS:"
+              ]
+            },
+            "propertyNames": {
+              "title": "UOM Property Names",
+              "description": "The list of property names, to which this meta data item provides Unit context to. A full path like \"StructureA.PropertyB\" is required to define a unique context; \"data\" is omitted since frame-of reference normalization only applies to the data block.",
+              "type": "array",
+              "examples": [
+                [
+                  "HorizontalDeflection.EastWest",
+                  "HorizontalDeflection.NorthSouth"
+                ]
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "kind",
+            "persistableReference"
+          ]
+        },
+        {
+          "title": "FrameOfReferenceCRS",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "title": "CRS Reference Kind",
+              "type": "string",
+              "description": "The kind of reference, constant 'CRS' for FrameOfReferenceCRS.",
+              "const": "CRS"
+            },
+            "name": {
+              "title": "CRS Name",
+              "description": "The name of the CRS.",
+              "type": "string",
+              "examples": [
+                "WGS 84 / UTM zone 15N"
+              ]
+            },
+            "persistableReference": {
+              "title": "CRS Persistable Reference",
+              "description": "The self-contained, persistable reference string uniquely identifying the CRS.",
+              "type": "string",
+              "examples": [
+                "{\"authCode\":{\"auth\":\"EPSG\",\"code\":\"32615\"},\"name\":\"WGS_1984_UTM_Zone_15N\",\"type\":\"LBC\",\"ver\":\"PE_10_9_1\",\"wkt\":\"PROJCS[\\\"WGS_1984_UTM_Zone_15N\\\",GEOGCS[\\\"GCS_WGS_1984\\\",DATUM[\\\"D_WGS_1984\\\",SPHEROID[\\\"WGS_1984\\\",6378137.0,298.257223563]],PRIMEM[\\\"Greenwich\\\",0.0],UNIT[\\\"Degree\\\",0.0174532925199433]],PROJECTION[\\\"Transverse_Mercator\\\"],PARAMETER[\\\"False_Easting\\\",500000.0],PARAMETER[\\\"False_Northing\\\",0.0],PARAMETER[\\\"Central_Meridian\\\",-93.0],PARAMETER[\\\"Scale_Factor\\\",0.9996],PARAMETER[\\\"Latitude_Of_Origin\\\",0.0],UNIT[\\\"Meter\\\",1.0],AUTHORITY[\\\"EPSG\\\",32615]]\"}"
+              ]
+            },
+            "coordinateReferenceSystemID": {
+              "description": "SRN to CRS reference.",
+              "type": "string",
+              "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-CoordinateReferenceSystem:[\\w\\-\\.\\:\\%]+:[0-9]*$",
+              "examples": [
+                "namespace:reference-data--CoordinateReferenceSystem:Projected:EPSG::32615:"
+              ]
+            },
+            "propertyNames": {
+              "title": "CRS Property Names",
+              "description": "The list of property names, to which this meta data item provides CRS context to. A full path like \"StructureA.PropertyB\" is required to define a unique context; \"data\" is omitted since frame-of reference normalization only applies to the data block.",
+              "type": "array",
+              "examples": [
+                [
+                  "KickOffPosition.X",
+                  "KickOffPosition.Y"
+                ]
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "kind",
+            "persistableReference"
+          ]
+        },
+        {
+          "title": "FrameOfReferenceDateTime",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "title": "DateTime Reference Kind",
+              "type": "string",
+              "description": "The kind of reference, constant 'DateTime', for FrameOfReferenceDateTime.",
+              "const": "DateTime"
+            },
+            "name": {
+              "title": "DateTime Name",
+              "description": "The name of the DateTime format and reference.",
+              "type": "string",
+              "examples": [
+                "UTC"
+              ]
+            },
+            "persistableReference": {
+              "title": "DateTime Persistable Reference",
+              "description": "The self-contained, persistable reference string uniquely identifying DateTime reference.",
+              "type": "string",
+              "examples": [
+                "{\"format\":\"yyyy-MM-ddTHH:mm:ssZ\",\"timeZone\":\"UTC\",\"type\":\"DTM\"}"
+              ]
+            },
+            "propertyNames": {
+              "title": "DateTime Property Names",
+              "description": "The list of property names, to which this meta data item provides DateTime context to. A full path like \"StructureA.PropertyB\" is required to define a unique context; \"data\" is omitted since frame-of reference normalization only applies to the data block.",
+              "type": "array",
+              "examples": [
+                [
+                  "Acquisition.StartTime",
+                  "Acquisition.EndTime"
+                ]
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "kind",
+            "persistableReference"
+          ]
+        },
+        {
+          "title": "FrameOfReferenceAzimuthReference",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "title": "AzimuthReference Reference Kind",
+              "type": "string",
+              "description": "The kind of reference, constant 'AzimuthReference', for FrameOfReferenceAzimuthReference.",
+              "const": "AzimuthReference"
+            },
+            "name": {
+              "title": "AzimuthReference Name",
+              "description": "The name of the CRS or the symbol/name of the unit.",
+              "type": "string",
+              "examples": [
+                "TrueNorth"
+              ]
+            },
+            "persistableReference": {
+              "title": "AzimuthReference Persistable Reference",
+              "description": "The self-contained, persistable reference string uniquely identifying AzimuthReference.",
+              "type": "string",
+              "examples": [
+                "{\"code\":\"TrueNorth\",\"type\":\"AZR\"}"
+              ]
+            },
+            "propertyNames": {
+              "title": "AzimuthReference Property Names",
+              "description": "The list of property names, to which this meta data item provides AzimuthReference context to. A full path like \"StructureA.PropertyB\" is required to define a unique context; \"data\" is omitted since frame-of reference normalization only applies to the data block.",
+              "type": "array",
+              "examples": [
+                [
+                  "Bearing"
+                ]
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "kind",
+            "persistableReference"
+          ]
+        }
+      ]
+    },
+    "AbstractSpatialLocation.1.1.0": {
+      "title": "AbstractSpatialLocation",
+      "description": "A geographic object which can be described by a set of points.",
+      "type": "object",
+      "properties": {
+        "SpatialLocationCoordinatesDate": {
+          "type": "string",
+          "description": "Date when coordinates were measured or retrieved.",
+          "format": "date-time"
+        },
+        "QuantitativeAccuracyBandID": {
+          "type": "string",
+          "description": "An approximate quantitative assessment of the quality of a location (accurate to > 500 m (i.e. not very accurate)), to < 1 m, etc.",
+          "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-QuantitativeAccuracyBand:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        },
+        "QualitativeSpatialAccuracyTypeID": {
+          "type": "string",
+          "description": "A qualitative description of the quality of a spatial location, e.g. unverifiable, not verified, basic validation.",
+          "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-QualitativeSpatialAccuracyType:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        },
+        "CoordinateQualityCheckPerformedBy": {
+          "type": "string",
+          "description": "The user who performed the Quality Check."
+        },
+        "CoordinateQualityCheckDateTime": {
+          "type": "string",
+          "description": "The date of the Quality Check.",
+          "format": "date-time"
+        },
+        "CoordinateQualityCheckRemarks": {
+          "type": "array",
+          "description": "Freetext remarks on Quality Check.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "AsIngestedCoordinates": {
+          "$ref": "#/$defs/AbstractAnyCrsFeatureCollection.1.1.0",
+          "title": "As Ingested Coordinates",
+          "description": "The original or 'as ingested' coordinates (Point, MultiPoint, LineString, MultiLineString, Polygon or MultiPolygon). The name 'AsIngestedCoordinates' was chosen to contrast it to 'OriginalCoordinates', which carries the uncertainty whether any coordinate operations took place before ingestion. In cases where the original CRS is different from the as-ingested CRS, the AppliedOperations can also contain the list of operations applied to the coordinate prior to ingestion. The data structure is similar to GeoJSON FeatureCollection, however in a CRS context explicitly defined within the AbstractAnyCrsFeatureCollection. The coordinate sequence follows GeoJSON standard, i.e. 'eastward/longitude', 'northward/latitude' {, 'upward/height' unless overridden by an explicit direction in the AsIngestedCoordinates.VerticalCoordinateReferenceSystemID}."
+        },
+        "Wgs84Coordinates": {
+          "$ref": "#/$defs/AbstractFeatureCollection.1.0.0",
+          "title": "WGS 84 Coordinates",
+          "description": "The normalized coordinates (Point, MultiPoint, LineString, MultiLineString, Polygon or MultiPolygon) based on WGS 84 (EPSG:4326 for 2-dimensional coordinates, EPSG:4326 + EPSG:5714 (MSL) for 3-dimensional coordinates). This derived coordinate representation is intended for global discoverability only. The schema of this substructure is identical to the GeoJSON FeatureCollection https://geojson.org/schema/FeatureCollection.json. The coordinate sequence follows GeoJSON standard, i.e. longitude, latitude {, height}"
+        },
+        "AppliedOperations": {
+          "type": "array",
+          "title": "Operations Applied",
+          "description": "The audit trail of operations applied to the coordinates from the original state to the current state. The list may contain operations applied prior to ingestion as well as the operations applied to produce the Wgs84Coordinates. The text elements refer to ESRI style CRS and Transformation names, which may have to be translated to EPSG standard names.",
+          "examples": [
+            [
+              "conversion from ED_1950_UTM_Zone_31N to GCS_European_1950; 1 points converted",
+              "transformation GCS_European_1950 to GCS_WGS_1984 using ED_1950_To_WGS_1984_24; 1 points successfully transformed"
+            ]
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "SpatialParameterTypeID": {
+          "type": "string",
+          "description": "A type of spatial representation of an object, often general (e.g. an Outline, which could be applied to Field, Reservoir, Facility, etc.) or sometimes specific (e.g. Onshore Outline, State Offshore Outline, Federal Offshore Outline, 3 spatial representations that may be used by Countries).",
+          "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-SpatialParameterType:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        },
+        "SpatialGeometryTypeID": {
+          "type": "string",
+          "description": "Indicates the expected look of the SpatialParameterType, e.g. Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon. The value constrains the type of geometries in the GeoJSON Wgs84Coordinates and AsIngestedCoordinates.",
+          "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-SpatialGeometryType:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        }
+      }
+    },
+    "AbstractTechnicalAssurance.1.2.0": {
+      "title": "AbstractTechnicalAssurance",
+      "description": "Describes a record's overall suitability for general business consumption based on level of trust.",
+      "type": "object",
+      "properties": {
+        "TechnicalAssuranceTypeID": {
+          "type": "string",
+          "title": "Technical Assurance Type ID",
+          "description": "Describes a record's overall suitability for general business consumption based on data quality. Clarifications: Since Certified is the highest classification of suitable quality, any further change or versioning of a Certified record should be carefully considered and justified. If a Technical Assurance value is not populated then one can assume the data has not been evaluated or its quality is unknown (=Unevaluated). Technical Assurance values are not intended to be used for the identification of a single \"preferred\" or \"definitive\" record by comparison with other records.",
+          "examples": [
+            "namespace:reference-data--TechnicalAssuranceType:Trusted:"
+          ],
+          "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-TechnicalAssuranceType:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+        },
+        "Reviewers": {
+          "type": "array",
+          "title": "Reviewers",
+          "description": "The individuals, or roles, that reviewed and determined the technical assurance value",
+          "examples": [
+            [
+              {
+                "RoleTypeID": "namespace:reference-data--ContactRoleType:AccountOwner:",
+                "DataGovernanceRoleTypeID": "namespace:reference-data--DataGovernanceRoleType:SME:",
+                "WorkflowPersonaTypeID": "namespace:reference-data--WorkflowPersonaType:SeismicProcessor:",
+                "OrganisationID": "namespace:master-data--Organisation:SomeUniqueOrganisationID:",
+                "Name": "John Smith"
+              }
+            ]
+          ],
+          "items": {
+            "$ref": "#/$defs/AbstractContact.1.1.0"
+          }
+        },
+        "AcceptableUsage": {
+          "type": "array",
+          "title": "Acceptable Usage",
+          "description": "List of workflows and/or personas that the technical assurance value is valid for (e.g., This data is trusted for Seismic Processing)",
+          "examples": [
+            [
+              {
+                "WorkflowUsageTypeID": "namespace:reference-data--WorkflowUsageType:SeismicProcessing:",
+                "WorkflowPersonaTypeID": "namespace:reference-data--WorkflowPersonaType:SeismicProcessor:",
+                "DataQualityRuleSetID": "namespace:reference-data--DataQualityRuleSet:SeismicProcessingQCRuleSet:",
+                "DataQualityID": "namespace:work-product-component--DataQuality:6a433d16-07c8-4f4d-9ddc-5608e2ec4234:1562066077849221",
+                "ValueChainStatusTypeID": "namespace:reference-data--ValueChainStatusType:Exploration:"
+              }
+            ]
+          ],
+          "items": {
+            "type": "object",
+            "title": "AcceptableUsage",
+            "description": "Describes the workflows and/or personas that the technical assurance value is valid for (e.g., This data has a technical assurance property of \"trusted\" and it is suitable for Seismic Interpretation).",
+            "properties": {
+              "WorkflowUsageTypeID": {
+                "type": "string",
+                "title": "Workflow Usage Type ID",
+                "description": "Name of the business activities, processes, and/or workflows that the record's technical assurance value is valid for.",
+                "examples": [
+                  "namespace:reference-data--WorkflowUsageType:SeismicProcessing:"
+                ],
+                "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-WorkflowUsageType:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+              },
+              "WorkflowPersonaTypeID": {
+                "type": "string",
+                "title": "Workflow Persona Type ID",
+                "description": "Name of the role or personas that the record's technical assurance value is valid for.",
+                "examples": [
+                  "namespace:reference-data--WorkflowPersonaType:SeismicProcessor:"
+                ],
+                "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-WorkflowPersonaType:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+              },
+              "DataQualityRuleSetID": {
+                "type": "string",
+                "title": "Data Quality Rule Set ID",
+                "description": "The DataQualityRuleSet, which had to pass successfully to achieve this level of technical assurance.",
+                "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-DataQualityRuleSet:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+              },
+              "DataQualityID": {
+                "type": "string",
+                "title": "data Quality ID",
+                "description": "The relationship to a work-product-component--DataQuality assessment record, which was used as the basis for this decision.",
+                "pattern": "^[\\w\\-\\.]+:work-product-component\\-\\-DataQuality:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+              },
+              "ValueChainStatusTypeID": {
+                "type": "string",
+                "title": "Value Chain Status Type ID",
+                "description": "The stage of business where the record is acceptable for workflow usage.",
+                "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-ValueChainStatusType:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+              }
+            }
+          }
+        },
+        "UnacceptableUsage": {
+          "type": "array",
+          "title": "Unacceptable Usage",
+          "description": "List of workflows and/or personas that the technical assurance value is not valid for (e.g., This data is not trusted for seismic interpretation)",
+          "examples": [
+            [
+              {
+                "WorkflowUsageTypeID": "namespace:reference-data--WorkflowUsageType:SeismicInterpretation:",
+                "WorkflowPersonaTypeID": "namespace:reference-data--WorkflowPersonaType:SeismicInterpreter:",
+                "DataQualityRuleSetID": "namespace:reference-data--DataQualityRuleSet:SeismicInterpretationQCRuleSet:",
+                "DataQualityID": "namespace:work-product-component--DataQuality:d79bf97c-ff7c-4b82-89b5-c88520c15017:1562066009929332",
+                "ValueChainStatusTypeID": "namespace:reference-data--ValueChainStatusType:FieldDevelopment:"
+              }
+            ]
+          ],
+          "items": {
+            "type": "object",
+            "title": "UnacceptableUsage",
+            "description": "Describes the workflows and/or personas that the technical assurance value is not valid for (e.g., This data has a technical assurance property of \"trusted\", but it is not suitable for Seismic Interpretation).",
+            "properties": {
+              "WorkflowUsageTypeID": {
+                "type": "string",
+                "title": "Workflow Usage Type ID",
+                "description": "Name of the business activities, processes, and/or workflows that the record's technical assurance value is not valid for.",
+                "examples": [
+                  "namespace:reference-data--WorkflowUsageType:SeismicProcessing:"
+                ],
+                "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-WorkflowUsageType:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+              },
+              "WorkflowPersonaTypeID": {
+                "type": "string",
+                "title": "Workflow Persona Type ID",
+                "description": "Name of the role or personas that the record is technical assurance value is not valid for.",
+                "examples": [
+                  "namespace:reference-data--WorkflowPersonaType:SeismicProcessor:"
+                ],
+                "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-WorkflowPersonaType:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+              },
+              "DataQualityRuleSetID": {
+                "type": "string",
+                "title": "Data Quality Rule Set ID",
+                "description": "The DataQualityRuleSet, which did not pass successfully to achieve this level of technical assurance.",
+                "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-DataQualityRuleSet:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+              },
+              "DataQualityID": {
+                "type": "string",
+                "title": "data Quality ID",
+                "description": "The relationship to a work-product-component--DataQuality assessment record, which was used as the basis for this decision.",
+                "pattern": "^[\\w\\-\\.]+:work-product-component\\-\\-DataQuality:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+              },
+              "ValueChainStatusTypeID": {
+                "type": "string",
+                "title": "Value Chain Status Type ID",
+                "description": "The stage of business where the record is not acceptable for workflow usage.",
+                "pattern": "^[\\w\\-\\.]+:reference-data\\-\\-ValueChainStatusType:[\\w\\-\\.\\:\\%]+:[0-9]*$"
+              }
+            }
+          }
+        },
+        "EffectiveDate": {
+          "type": "string",
+          "title": "Effective Date",
+          "description": "Date when the technical assurance determination for this record has taken place",
+          "format": "date",
+          "examples": [
+            "2020-02-13"
+          ]
+        },
+        "Comment": {
+          "type": "string",
+          "title": "Comment",
+          "description": "Any additional context to support the determination of technical assurance",
+          "examples": [
+            "This is free form text from reviewer, e.g. restrictions on use"
+          ]
+        }
+      },
+      "required": [
+        "TechnicalAssuranceTypeID"
+      ]
+    }
+  }
+}
