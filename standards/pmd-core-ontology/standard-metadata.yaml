@@ -1,0 +1,176 @@
+title: "PMD Core Ontology (PMDco)"
+publisher: "Plattform MaterialDigital (PMD), with the PMDco editorial team (BAM, Fraunhofer and partner institutions)"
+sourceUrl: "https://github.com/materialdigital/core-ontology"
+specificationUrl: "https://materialdigital.github.io/core-ontology/docs/"
+contact: "https://github.com/materialdigital/core-ontology/issues"
+sourceOntologyVersion: "3.1.2 (owl:versionIRI https://w3id.org/pmd/co/3.1.2, dcterms:created 2026-10-21), release tag v3.1.2"
+sourceOntologyDownload: "https://raw.githubusercontent.com/materialdigital/core-ontology/v3.1.2/pmdco-full.ttl"
+sourceOntologyNamespace: "https://w3id.org/pmd/co/"
+sourceOntologyFormat: "OWL 2 ontology in Turtle and RDF/XML (base, minimal, simple and full releases); aligned with BFO 2020 (ISO/IEC 21838-2) and reusing RO, IAO, OBI and COB"
+sourceExampleUrl: "https://doi.org/10.5281/zenodo.6778336"
+sourceExampleLicense: "CC-BY-4.0, Bundesanstalt fuer Materialforschung und -pruefung (BAM)"
+domains:
+  - Manufacturing
+  - CrossSector
+description: >
+  The Platform MaterialDigital Core Ontology (PMDco) is a mid-level
+  ontology for materials science and engineering, built on the Basic
+  Formal Ontology (BFO) and reusing RO, IAO, OBI and COB. It follows the
+  processing - structure - properties paradigm: manufacturing,
+  characterisation (assay) and simulation processes; materials, portions
+  of matter, objects and devices; and material properties and qualities
+  with their value specifications. It is the common semantic basis of the
+  German MaterialDigital initiative and of its application ontologies
+  (tensile test, hardness test, ...). Release 3.1.2 (full) has 1,426
+  classes (1,191 in the PMDco namespace), 112 object properties and 9
+  datatype properties.
+license: "CC-BY-4.0"
+licenseNote: >
+  Confirmed via the repository LICENSE.txt at tag v3.1.2 (Creative Commons
+  Attribution 4.0 International, also reported by the GitHub licence API)
+  and the ontology header of pmdco-full.ttl (dcterms:license
+  <https://creativecommons.org/licenses/by/4.0/>). Attribution is given in
+  each example's `source`. The example data come from a BAM dataset on
+  Zenodo (DOI 10.5281/zenodo.6778336), also CC-BY-4.0, attributed in
+  `source`.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source ontology to SDM candidate artifacts"
+notes: |
+  Translated on 2026-11-13 from PMDco 3.1.2 (latest release, tag v3.1.2,
+  2026-10-21; pmdco-full.ttl, 18,632 triples). Source row 32 of the
+  "Level A standards not in Smart Data Models" list (licence verified:
+  Yes; checked again, see licenseNote).
+
+  MODELS (6). Each is a generic entity for one PMDco/BFO branch, with a
+  `pmdClass` attribute (array) for the specific class, constrained to an
+  enum of the English rdfs:labels of all non-deprecated classes in that
+  branch. This is the approach of the EMMO, Brick and OEO candidates.
+    - Material              pmd:PMD_0000000 'material' (181 classes:
+                            metals, steels, alloys, ceramics, glasses,
+                            polymers, ...)
+    - Object                obo:BFO_0000030 'object' (27 classes without
+                            the device branch: ingot, billet, slab/plate,
+                            sheet, bar, tube, tensile testpiece, crystal...)
+    - Device                pmd:PMD_0000602 'device' (107: testing
+                            machines, microscopes, furnaces, saws, ...)
+    - ManufacturingProcess  pmd:PMD_0000833 'manufacturing process' (68,
+                            DIN 8580 groups: primary shaping, forming,
+                            separating, joining, coating, changing
+                            properties of material)
+    - Assay                 obo:OBI_0000070 'assay' (62: tensile, hardness,
+                            fatigue, creep testing, microscopy,
+                            spectroscopy, DSC, ...)
+    - MeasurementDatum      obo:IAO_0000109 'measurement datum'
+  Specimens are not a PMDco class: a test piece is an Object (e.g.
+  'tensile testpiece') that bears an 'evaluant role' or 'sample role'
+  (hasRole). Agents (manufacturer, laboratory) are expected to be
+  Organization entities; PMDco only has the OBI 'organization' and
+  'manufacturer' classes without attributes.
+  NOT covered yet (follow-ups): computing / simulation processes and
+  workflows (PMDco 'computing process', 'workflow run', 'workflow node'),
+  portion of matter / chemical substances as their own entities, plan and
+  material specifications (requirement values), process chains as
+  entities, and the application ontologies built on PMDco (tensile test
+  TTO, hardness test, ...), which add test-specific quantities.
+
+  CLASS HIERARCHY: many PMDco classes (e.g. metal, steel, yield stress,
+  saw) are attached to their parents only through owl:intersectionOf in
+  rdfs:subClassOf / owl:equivalentClass axioms. The generator reads the
+  named members of these intersections as superclasses; without this,
+  metals and steels would be missing from the Material enum. Deprecated
+  classes (owl:deprecated or labels starting DEPRECATED/OBSOLETE) are left
+  out.
+
+  NAMING: PMDco IRIs are opaque (PMD_0000833, OBI_0000293) and the names
+  are lower-case English rdfs:labels with spaces (German labels exist
+  too). As in the OEO candidate, entity types are the PascalCase form of
+  the label (manufacturing process -> ManufacturingProcess) and attribute
+  names the camelCase form of the property label (has specified input ->
+  hasSpecifiedInput, is_manufactured_by -> isManufacturedBy, has
+  measurement unit label -> hasMeasurementUnitLabel). Enum values (class
+  names) are the English labels verbatim, spaces included. Each
+  context.jsonld maps every term to its PMDco, BFO, RO, IAO or OBI IRI.
+  No NGSI-LD reserved term clashed, so nothing was renamed. `Object`
+  (BFO object) is a very generic type name; consider a prefix at
+  promotion time.
+
+  MAPPING / FLATTENING, following the PMDco patterns (patterns/ folder):
+    - hasCharacteristic (RO has characteristic): each item gives the
+      characteristic class (enum of the 415 specifically dependent
+      continuant classes), hasSpecifiedNumericValue and
+      hasMeasurementUnitLabel, i.e. the quality and its scalar value
+      specification folded into one object.
+    - hasRelationalProperty (Material; 'chemical composition' pattern):
+      fraction class (mass fraction, ...), towards (portion of <element>),
+      number and unit.
+    - hasProcessAttribute (processes): process attribute class (heating
+      rate, deformation speed, ...), number and unit.
+    - MeasurementDatum: isAbout (the measured entity), isQualityMeasurementOf
+      (characteristic class) and hasValueSpecification {number, unit,
+      specifiesValueOf}, as in the 'measurement' pattern.
+    - denotedBy (Object, Device; 'device identifier' pattern):
+      identifier / symbol / textual entity with hasValue.
+    - hasFirstInstant / hasLastInstant ('temporal region' pattern): the
+      process's temporal interval flattened to two ISO 8601 date(-time)s.
+    - isSubjectOf: the directive information entity (test standard, plan
+      specification) flattened to its title.
+    - Units: PMDco defines no units; hasMeasurementUnitLabel takes a unit
+      IRI, QUDT recommended (the examples use http://qudt.org/vocab/unit/).
+    - Links between entities are Relationships: hasSpecifiedInput /
+      hasSpecifiedOutput and their inverses, hasParticipant /
+      participatesIn, hasPart, precedes / precededBy, isManufacturedBy,
+      isAbout.
+  NON-PMDco ADDITIONS: pmdClass and the class-name keys inside the
+  flattened objects (characteristic, processAttribute,
+  relationalProperty, identifierClass), all standing for rdf:type; plus
+  the usual name, description, source, dataProvider, dateCreated,
+  dateModified.
+
+  SOURCE NOTES (upstream issues found):
+    - patterns/measurement/shape-data.ttl binds the prefix
+      tensile_testing_process: to PMD_0000638, which is 'fatigue testing
+      process' (tensile testing process is PMD_0000974),
+      and declares has_measurement_value (IAO_0000004), which is not in
+      PMDco.
+    - Copy-paste definitions: 'pipe' is defined as "A tube is ..." and
+      'foil' as "A plate is ...".
+    - Typos in labels: 'expriment designing process', 'interstitital solid
+      solution', 'continous transport', 'self-diffusion in crystaline
+      solid'.
+    - Several classes have no asserted named superclass (only
+      intersections), see CLASS HIERARCHY.
+    - The tensile-test-ontology README links S355_data_tto.ttl, but the
+      file is S355_data_tto_pmdco3.ttl.
+
+  EXAMPLES: REAL, except ManufacturingProcess. They describe one test of
+  the BAM "Full dataset of several mechanical tests on an S355 steel sheet
+  as reference data for digital representations" (Zenodo
+  10.5281/zenodo.6778336, CC-BY-4.0), row pmdao-tto-tt-S355-2 of
+  S355_data.csv as republished in materialdigital/tensile-test-ontology:
+  the S355 (1.0577) sheet (Material), test piece Zx2 E6x20x60 with mean
+  thickness 5.991 mm, width 20.103 mm, S0 120.444 mm2, L0 60 mm (Object),
+  the Instron 4505 machine, serial h2486 (Device), the tensile test of
+  2021-02-22 to DIN EN ISO 6892-1 at strain rate 0.00025 1/s, mapped to
+  the process attribute 'deformation speed' (Assay), and its tensile
+  strength Rm = 504 MPa (MeasurementDatum). The operator's name in the
+  dataset is left out. The ManufacturingProcess example (machining of the
+  test pieces from the sheet) is illustrative: the dataset only says the
+  pieces were taken in rolling direction, so the class 'machining
+  geometrically defined' is assumed; its `source` says so. The
+  Organization and extensometer ids are references only.
+
+  DUPLICATION RISK:
+    - Device: dataModel.Device (Device, DeviceModel) and the
+      gaiax-ontology-v2111, project-haystack and saref4ener candidates use
+      the same type name with an IoT meaning.
+    - Material: the emmo candidate and dataModel.ZEB (building material)
+      use the same name; the emmo candidate covers the same scope
+      (Material, Manufacturing, Measurement) on a different foundation
+      (EMMO vs BFO). Choose or align before promotion.
+    - ManufacturingProcess overlaps with emmo Manufacturing,
+      dataModel.ManufacturingMachine (ManufacturingMachineOperation) and
+      dataModel.IndustrialProcess. MeasurementDatum / Assay overlap with
+      emmo Measurement and the Measurement types of dataModel.EnergyCIM and
+      dataModel.OCF (different meaning).
+    - Object is a generic BFO name with no current SDM clash.
