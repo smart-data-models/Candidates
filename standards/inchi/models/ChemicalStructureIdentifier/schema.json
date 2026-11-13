@@ -1,0 +1,269 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/inchi/models/ChemicalStructureIdentifier/schema.json",
+  "modelTags": "InChI,InChIKey,IUPAC,Chemistry,ChemicalIdentifier",
+  "title": "Smart Data Models - InChI - ChemicalStructureIdentifier",
+  "description": "The InChI (IUPAC International Chemical Identifier) of one chemical structure: the InChI string, its InChIKey, the optional AuxInfo line, the InChI layers parsed out of the string (formula, connections, H atoms, charge, protons, stereo, isotopic, fixed-H, reconnected, polymer) and the options used to generate it. InChI is an identifier and a layered string format, not a data model: this entity is a Smart Data Models record of that identifier (InChI Technical Manual and User Guide, InChI Software v1.07.5).",
+  "type": "object",
+  "$defs": {
+    "stereo": {
+      "type": "object",
+      "description": "Stereochemical layer (TechMan III.d.3 and Figure 2): /b double bond (sp2, Z/E) stereo, /t tetrahedral (sp3) stereo and allenes, /m inversion flag of sp3 stereo, /s stereo type. Values are the segment contents without the '/letter' prefix.",
+      "properties": {
+        "dbond": {
+          "type": "string",
+          "description": "Segment /b{stereo:dbond}: double bond (sp2, Z/E) stereo parities."
+        },
+        "sp3": {
+          "type": "string",
+          "description": "Segment /t{stereo:sp3}: tetrahedral (sp3) stereo parities; '?' marks undefined or unknown, 'u' unknown with option SLUUD."
+        },
+        "sp3_inverted": {
+          "type": "string",
+          "description": "Segment /m{stereo:sp3:inverted}: 0 if the actual structure is the one with the given /t parities, 1 if it is the inverted one ('.' for a component without sp3 stereo)."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "1",
+            "2",
+            "3"
+          ],
+          "description": "Segment /s{stereo:type}: 1 = absolute, 2 = relative, 3 = racemic stereo."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:ChemicalStructureIdentifier:<InChIKey>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ChemicalStructureIdentifier"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ChemicalStructureIdentifier'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "InChI": {
+      "type": "string",
+      "pattern": "^InChI=1[SB]?/",
+      "description": "Property. Model:'http://semanticscience.org/resource/CHEMINF_000113'. The InChI string: the IUPAC International Chemical Identifier of the structure, a series of characters derived by applying a set of rules to a chemical structure, made of the version prefix followed by '/'-separated layers in a strictly defined order (TechMan III.a-e). 'InChI=1S/' marks a standard InChI, 'InChI=1/' a non-standard one, 'InChI=1B/' one produced with experimental features (polymers, large molecules).",
+      "examples": [
+        "InChI=1S/C8H10N4O2/c1-10-4-9-6-5(10)7(13)12(3)8(14)11(6)2/h4H,1-3H3"
+      ]
+    },
+    "InChIKey": {
+      "type": "string",
+      "pattern": "^[A-Z]{14}-[A-Z]{8}[SN][A-Z]-[A-Z]$",
+      "description": "Property. Model:'http://semanticscience.org/resource/CHEMINF_000059'. The InChIKey: fixed-length (27 characters) hashed representation of the InChI string, AAAAAAAAAAAAAA-BBBBBBBBFV-P, made of a 14-character hash of the main (mobile-H) layer, an 8-character hash of the remaining layers, the standard/non-standard flag, the version character and the protonation indicator (TechMan V.b). Truncated SHA-256, base-26 encoded.",
+      "examples": [
+        "RYYVLZVUVIJVGH-UHFFFAOYSA-N"
+      ]
+    },
+    "AuxInfo": {
+      "type": "string",
+      "pattern": "^AuxInfo=",
+      "description": "Property. Model:'https://github.com/IUPAC-InChI/InChI/blob/v1.07.5/INCHI-1-DOC/InChI_TechMan.pdf#page=15&term=AuxInfo'. Auxiliary Information line that may accompany the Identifier (TechMan III.e, Figure 2a): mapping of canonical numbers on original atom numbers (/N:), constitutional equivalence of atoms and mobile-H groups (/E:, /gE:), stereo of the inverted structure (/it:, /iN:), isotopic and fixed-H counterparts (/I:, /F:) and reversibility information (/CRV:, /rA:, /rB:, /rC:). It depends on the input atom order, so it is not an identifier."
+    },
+    "version": {
+      "type": "string",
+      "enum": [
+        "1"
+      ],
+      "description": "Property. Model:'https://github.com/IUPAC-InChI/InChI/blob/v1.07.5/INCHI-1-DOC/InChI_TechMan.pdf#page=14&term=version'. {InChI version}: the Identifier version number that follows 'InChI=' (always a whole number; the current version of the Identifier is 1)."
+    },
+    "identifierKind": {
+      "type": "string",
+      "enum": [
+        "standard",
+        "non-standard",
+        "beta"
+      ],
+      "description": "Property. Model:'https://github.com/IUPAC-InChI/InChI/blob/v1.07.5/INCHI-1-DOC/InChI_TechMan.pdf#page=15&term=identifierKind'. Kind of Identifier given by the character after the version number: 'S' = standard InChI (fixed options; tautomer-invariant connectivity, absolute or no stereo, no bonds to metal), none = non-standard InChI (produced with creation options such as FixedH, RecMet, SUU, SRel), 'B' = experimental features (polymers, more than 1024 atoms). Smart Data Models name for the standard / non-standard distinction of TechMan III.f."
+    },
+    "formula": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/IUPAC-InChI/InChI/blob/v1.07.5/INCHI-1-DOC/InChI_TechMan.pdf#page=11&term=formula'. Main layer, chemical formula sublayer /{formula}: the Hill-sorted elemental formula; for several components, the formulas of the components sorted and separated by dots, with multipliers for identical components (e.g. 2H2O).",
+      "examples": [
+        "C8H10N4O2"
+      ]
+    },
+    "connections": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/IUPAC-InChI/InChI/blob/v1.07.5/INCHI-1-DOC/InChI_TechMan.pdf#page=11&term=connections'. Main layer, connections sublayer /c{connections}: the bonds between the atoms other than those to non-bridging H atoms, as canonical atom numbers; components separated by ';'."
+    },
+    "H_atoms": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/IUPAC-InChI/InChI/blob/v1.07.5/INCHI-1-DOC/InChI_TechMan.pdf#page=11&term=H_atoms'. Main layer, hydrogen sublayer /h{H_atoms}: the immobile (fixed) H atoms and, in parentheses, the groups of atoms sharing mobile H atoms (tautomerism)."
+    },
+    "charge": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/IUPAC-InChI/InChI/blob/v1.07.5/INCHI-1-DOC/InChI_TechMan.pdf#page=11&term=charge'. Charge layer, component charge /q{charge}: net charge of each component (surplus of protons over electrons); independent of the other layers."
+    },
+    "protons": {
+      "type": "string",
+      "pattern": "^[+-]\\d+$",
+      "description": "Property. Model:'https://github.com/IUPAC-InChI/InChI/blob/v1.07.5/INCHI-1-DOC/InChI_TechMan.pdf#page=12&term=protons'. Charge layer, protons /p{protons}: number of protons removed from (-) or added to (+) the substance so that a component may be represented without regard to its degree of protonation. Not hashed in the InChIKey: it gives the protonation indicator."
+    },
+    "polymer": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/IUPAC-InChI/InChI/blob/v1.07.5/INCHI-1-DOC/InChI_TechMan.pdf#page=58&term=polymer'. Experimental polymer layer /z (InChI Software v1.05+, 'InChI=1B/'): describes polymer structural repeating units; built 'above' the other layers without changing them (TechMan III.d.6 and IV.f)."
+    },
+    "stereo": {
+      "$ref": "#/$defs/stereo",
+      "description": "Property. Model:'https://github.com/IUPAC-InChI/InChI/blob/v1.07.5/INCHI-1-DOC/InChI_TechMan.pdf#page=12&term=stereo'. Stereochemical layer of the main layer: /b, /t, /m, /s segments (TechMan III.d.3)."
+    },
+    "isotopic": {
+      "type": "object",
+      "description": "Property. Model:'https://github.com/IUPAC-InChI/InChI/blob/v1.07.5/INCHI-1-DOC/InChI_TechMan.pdf#page=13&term=isotopic'. Isotopic layer (MI) /i: isotopically labelled atoms (/i{isotopic:atoms}), exchangeable isotopic H (/h{isotopic:exchangeable_H}, e.g. D, T) and the stereo changes caused by isotopes. Segments identical to the non-isotopic ones are omitted (TechMan Appendix 2).",
+      "properties": {
+        "atoms": {
+          "type": "string",
+          "description": "Segment /i{isotopic:atoms}: canonical atom number with mass shift or isotopic H (e.g. 1D3)."
+        },
+        "exchangeable_H": {
+          "type": "string",
+          "description": "Segment /h{isotopic:exchangeable_H}: exchangeable isotopic hydrogen atoms."
+        },
+        "stereo": {
+          "$ref": "#/$defs/stereo"
+        }
+      },
+      "additionalProperties": false
+    },
+    "fixed_H": {
+      "type": "object",
+      "description": "Property. Model:'https://github.com/IUPAC-InChI/InChI/blob/v1.07.5/INCHI-1-DOC/InChI_TechMan.pdf#page=14&term=fixed_H'. Fixed-H layer (F) /f, non-standard InChI only (option FixedH): binds the potentially mobile H atoms to the atoms of the input structure (tautomers distinguished), with its own formula, fixed H, charge, stereo and isotopic (FI) segments and the transposition /o of components. Earlier layers are not affected.",
+      "properties": {
+        "formula": {
+          "type": "string",
+          "description": "Segment /f{fixed_H:formula} (empty = same as the main formula)."
+        },
+        "H_fixed": {
+          "type": "string",
+          "description": "Segment /h{fixed_H:H_fixed}: locations of the fixed H atoms."
+        },
+        "charge": {
+          "type": "string",
+          "description": "Segment /q{fixed_H:charge}."
+        },
+        "stereo": {
+          "$ref": "#/$defs/stereo"
+        },
+        "isotopic": {
+          "type": "object",
+          "description": "Fixed-H isotopic part (FI): /i{fixed_H:isotopic:atoms} and its stereo.",
+          "properties": {
+            "atoms": {
+              "type": "string"
+            },
+            "stereo": {
+              "$ref": "#/$defs/stereo"
+            }
+          },
+          "additionalProperties": false
+        },
+        "transposition": {
+          "type": "string",
+          "description": "Segment /o{transposition}: order of components in the fixed-H layer when it differs from the main layer."
+        }
+      },
+      "additionalProperties": false
+    },
+    "reconnected": {
+      "type": "string",
+      "pattern": "^/r",
+      "description": "Property. Model:'https://github.com/IUPAC-InChI/InChI/blob/v1.07.5/INCHI-1-DOC/InChI_TechMan.pdf#page=93&term=reconnected'. Reconnected layer /r (non-standard InChI only, option RecMet): the complete Identifier of the structure with the bonds to metal atoms restored, kept as the '/r...' string (TechMan Appendix 3)."
+    },
+    "InChIKeyFirstBlock": {
+      "type": "string",
+      "pattern": "^[A-Z]{14}$",
+      "description": "Property. Model:'https://github.com/IUPAC-InChI/InChI/blob/v1.07.5/INCHI-1-DOC/InChI_TechMan.pdf#page=70&term=InChIKeyFirstBlock'. First block of the InChIKey: 14-character hash of the basic (mobile-H) InChI layer; it encodes the molecular skeleton (connectivity) and is the same for all stereoisomers, isotopologues and protonation states of a skeleton."
+    },
+    "InChIKeySecondBlock": {
+      "type": "string",
+      "pattern": "^[A-Z]{8}$",
+      "description": "Property. Model:'https://github.com/IUPAC-InChI/InChI/blob/v1.07.5/INCHI-1-DOC/InChI_TechMan.pdf#page=70&term=InChIKeySecondBlock'. Second block of the InChIKey: 8-character hash of the remaining layers except /p (stereochemistry and isotopic substitution; in a non-standard InChIKey also fixed tautomeric H)."
+    },
+    "InChIKeyFlag": {
+      "type": "string",
+      "enum": [
+        "S",
+        "N"
+      ],
+      "description": "Property. Model:'https://github.com/IUPAC-InChI/InChI/blob/v1.07.5/INCHI-1-DOC/InChI_TechMan.pdf#page=71&term=InChIKeyFlag'. Flag character of the InChIKey: 'S' standard InChIKey (from a standard InChI), 'N' non-standard."
+    },
+    "InChIKeyVersion": {
+      "type": "string",
+      "pattern": "^[A-Z]$",
+      "description": "Property. Model:'https://github.com/IUPAC-InChI/InChI/blob/v1.07.5/INCHI-1-DOC/InChI_TechMan.pdf#page=71&term=InChIKeyVersion'. Version character of the InChIKey: 'A' for InChI version 1, 'B' for version 2, etc."
+    },
+    "InChIKeyProtonation": {
+      "type": "string",
+      "pattern": "^[A-Z]$",
+      "description": "Property. Model:'https://github.com/IUPAC-InChI/InChI/blob/v1.07.5/INCHI-1-DOC/InChI_TechMan.pdf#page=71&term=InChIKeyProtonation'. Protonation indicator, last character of the InChIKey: N = neutral (0 protons), M/L/K... = -1/-2/-3..., O/P/Q... = +1/+2/+3..., up to B = -12 and Z = +12; A = fewer than -12 or more than +12."
+    },
+    "options": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "SNon",
+          "NEWPSOFF",
+          "DoNotAddH",
+          "LooseTSACheck",
+          "SRel",
+          "SRac",
+          "SUCF",
+          "SUU",
+          "SLUUD",
+          "RecMet",
+          "FixedH",
+          "KET",
+          "15T",
+          "LargeMolecules",
+          "Polymers",
+          "Polymers105",
+          "FoldCRU",
+          "NoFrameShift",
+          "NPZz",
+          "SAtZz"
+        ]
+      },
+      "description": "Property. Model:'https://github.com/IUPAC-InChI/InChI/blob/v1.07.5/INCHI-1-DOC/UserGuide/InChI_UserGuide.md#inchi-software-options'. InChI Software options used to produce the Identifier (User Guide, Tables 1-4, without the '-' or '/' prefix). Structure perception options (SNon, NEWPSOFF, DoNotAddH, LooseTSACheck) keep a standard InChI; stereo interpretation (SRel, SRac, SUCF), creation (SUU, SLUUD, RecMet, FixedH) and experimental options produce a non-standard or beta InChI. Empty or absent = defaults (standard InChI). Output and I/O options are not listed."
+    },
+    "softwareVersion": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/IUPAC-InChI/InChI/releases'. Version of the InChI Software (library or executable) that produced the Identifier, e.g. 1.07.5. Smart Data Models addition for provenance: the Identifier itself only carries the Identifier version (1)."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "InChI"
+  ]
+}
