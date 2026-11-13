@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/open-mining-format/models/Project/schema.json",
+  "modelTags": "OMF,OpenMiningFormat,GMG,Mining,Geology,BlockModel,3D",
+  "title": "Smart Data Models - Open Mining Format - Project",
+  "description": "Root object of an OMF file. This is the root element of an OMF file, holding global metadata and a list of Elements that describe the objects or shapes within the file. (OMF 2.0-beta.1 JSON index (omf.schema.json, GMG omf-rust); field names kept verbatim; the elements are separate Element entities.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Project:<identifier>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Project"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Project'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/gmggroup/omf-rust/blob/main/omf.schema.json#/properties/name'. Project name."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/gmggroup/omf-rust/blob/main/omf.schema.json#/properties/description'. Optional project description."
+    },
+    "application": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/gmggroup/omf-rust/blob/main/omf.schema.json#/properties/application'. Optional name and version of the application that created the file, default empty."
+    },
+    "author": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/gmggroup/omf-rust/blob/main/omf.schema.json#/properties/author'. Optional name or email address of the person that created the file, default empty. (Do not publish personal e-mail addresses of private individuals in open data.)"
+    },
+    "coordinate_reference_system": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/gmggroup/omf-rust/blob/main/omf.schema.json#/properties/coordinate_reference_system'. Optional EPSG or PROJ local transformation string, default empty. Exactly what is supported depends on the application reading the file."
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/gmggroup/omf-rust/blob/main/omf.schema.json#/properties/date'. File or data creation date. Defaults to the current date and time on creation."
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Property. Model:'https://github.com/gmggroup/omf-rust/blob/main/omf.schema.json#/properties/metadata'. Arbitrary metadata. This is the place to put anything that doesn't fit in the other fields. Application-specific data should use a prefix that identifies the application, like \"lf-something\" for Leapfrog."
+    },
+    "origin": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "maxItems": 3,
+      "minItems": 3,
+      "description": "Property. Model:'https://github.com/gmggroup/omf-rust/blob/main/omf.schema.json#/properties/origin'. Optional project origin, default [0, 0, 0]. Most geometries also have their own origin field. To get the real location add this origin and the geometry origin to all locations within each element. Units:'the project units (field units), or those of the coordinate reference system'."
+    },
+    "units": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/gmggroup/omf-rust/blob/main/omf.schema.json#/properties/units'. Optional unit for distances and locations within the file. Typically \"meters\", \"metres\", \"feet\", or empty because the coordinate reference system defines it. If both are empty then applications may assume meters."
+    },
+    "elements": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/gmggroup/omf-rust/blob/main/omf.schema.json#/properties/elements'. List of elements: the Element entities of this project, by URN. In OMF the elements are nested in the project; here each one is an Element entity."
+    },
+    "location": {
+      "type": "object",
+      "description": "GeoProperty. Geojson reference to the item. Not an OMF field (Smart Data Models addition): the project origin as a WGS84 GeoJSON Point (or the footprint of the project as a Polygon), for NGSI-LD geo-queries. OMF coordinates are in a project coordinate reference system (coordinate_reference_system, often a projected or mine-local grid), so this can only be filled when that CRS is known and can be transformed to WGS84; leave it out otherwise.",
+      "oneOf": [
+        {
+          "title": "GeoJSON Point",
+          "type": "object",
+          "required": [
+            "type",
+            "coordinates"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "Point"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        {
+          "title": "GeoJSON Polygon",
+          "type": "object",
+          "required": [
+            "type",
+            "coordinates"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "Polygon"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "minItems": 4,
+                "items": {
+                  "type": "array",
+                  "minItems": 2,
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "date"
+  ]
+}

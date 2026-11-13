@@ -3637,6 +3637,43 @@
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/open-energy-ontology"
   },
   {
+    "slug": "open-mining-format",
+    "title": "Open Mining Format (OMF)",
+    "description": "The Open Mining Format (OMF) is an open file format and library, backed by the Global Mining Guidelines Group, for exchanging 3D geoscience and mining data between applications (geological modelling, mine planning, resource estimation). An OMF file holds a project with a list of elements; each element has one geometry (point set, line set, triangulated surface, grid surface, block model with optional regular, octree or free-form sub-blocks, or a composite of other elements) and a list of attributes attached to its vertices, primitives, sub-blocks or sub-elements (numbers, dates, vectors, text, categories with sub-attributes, booleans, colors and textures). OMF 2 stores a gzip-compressed JSON index, specified by a JSON Schema, plus the bulk arrays as Apache Parquet files and images as PNG/JPEG, all in one ZIP archive.",
+    "publisher": "Global Mining Guidelines Group (GMG)",
+    "sourceUrl": "https://github.com/gmggroup/omf-rust",
+    "license": "MIT",
+    "domains": [
+      "Industry4.0",
+      "CrossSector"
+    ],
+    "modelCount": 3,
+    "models": [
+      {
+        "name": "Attribute",
+        "title": "Smart Data Models - Open Mining Format - Attribute",
+        "description": "Describes data attached to an Element. Each Element can have zero or more attributes, each attached to different parts of the element and each containing different types of data. On a set of points, one attribute might contain gold assay results and another rock-type classifications. (OMF 2.0-beta.1 JSON index (omf.schema.json, GMG omf-rust); field names kept verbatim; OMF 'location' renamed omfLocation.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/open-mining-format/models/Attribute/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/open-mining-format/models/Attribute"
+      },
+      {
+        "name": "Element",
+        "title": "Smart Data Models - Open Mining Format - Element",
+        "description": "Defines a single \"object\" or \"shape\" within the OMF file. Each shape has a name plus other optional metadata, a \"geometry\" that describes a point-set, surface, etc., and a list of attributes that that exist on that geometry. (OMF 2.0-beta.1 JSON index (omf.schema.json, GMG omf-rust); field names kept verbatim; the attributes are separate Attribute entities.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/open-mining-format/models/Element/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/open-mining-format/models/Element"
+      },
+      {
+        "name": "Project",
+        "title": "Smart Data Models - Open Mining Format - Project",
+        "description": "Root object of an OMF file. This is the root element of an OMF file, holding global metadata and a list of Elements that describe the objects or shapes within the file. (OMF 2.0-beta.1 JSON index (omf.schema.json, GMG omf-rust); field names kept verbatim; the elements are separate Element entities.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/open-mining-format/models/Project/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/open-mining-format/models/Project"
+      }
+    ],
+    "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/open-mining-format"
+  },
+  {
     "slug": "realestatecore",
     "title": "RealEstateCore (REC)",
     "description": "Domain ontology for the real estate and smart buildings industry. It covers the spatial hierarchy of property (Region, Site, Building, Level, Room, Zone), building elements, assets placed in buildings (furniture, ICT and sensor equipment), administrative collections (real estate, portfolio, premises, apartment, campus), agents (organizations, persons), and events (leases, warranties, point observations). Since v4 it is co-designed with Brick Schema: Brick supplies the equipment and point taxonomy, and REC supplies the real estate and location layer. Brick has deprecated its own Location classes in favour of REC's.",

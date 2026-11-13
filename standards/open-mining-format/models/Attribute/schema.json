@@ -1,0 +1,492 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/open-mining-format/models/Attribute/schema.json",
+  "modelTags": "OMF,OpenMiningFormat,GMG,Mining,Geology,BlockModel,3D",
+  "title": "Smart Data Models - Open Mining Format - Attribute",
+  "description": "Describes data attached to an Element. Each Element can have zero or more attributes, each attached to different parts of the element and each containing different types of data. On a set of points, one attribute might contain gold assay results and another rock-type classifications. (OMF 2.0-beta.1 JSON index (omf.schema.json, GMG omf-rust); field names kept verbatim; OMF 'location' renamed omfLocation.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Attribute:<identifier>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Attribute"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Attribute'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/gmggroup/omf-rust/blob/main/omf.schema.json#/definitions/Attribute/properties/name'. Attribute name. Should be unique within the containing element."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/gmggroup/omf-rust/blob/main/omf.schema.json#/definitions/Attribute/properties/description'. Optional attribute description."
+    },
+    "units": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/gmggroup/omf-rust/blob/main/omf.schema.json#/definitions/Attribute/properties/units'. Optional unit of the attribute data, default empty. OMF does not currently attempt to standardize the strings you can use here, but our recommendations are: Use full names, so \"kilometers\" rather than \"km\". The abbreviations for non-metric units aren't consistent and complex units can be confusing. Use plurals, so \"feet\" rather than \"foot\". Avoid ambiguity, so \"long tons\" rather than just \"tons\". Accept American and British spellings, so \"meter\" and \"metre\" are the same."
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Property. Model:'https://github.com/gmggroup/omf-rust/blob/main/omf.schema.json#/definitions/Attribute/properties/metadata'. Attribute metadata."
+    },
+    "data": {
+      "$ref": "#/$defs/AttributeData",
+      "description": "Property. Model:'https://github.com/gmggroup/omf-rust/blob/main/omf.schema.json#/definitions/Attribute/properties/data'. The attribute data: Number, Vector, Text, Category, Boolean, Color, MappedTexture or ProjectedTexture, with the OMF structure. The values themselves stay in Parquet (or PNG/JPEG) files of the .omf archive and are referenced by filename and item_count."
+    },
+    "omfLocation": {
+      "type": "string",
+      "enum": [
+        "Vertices",
+        "Primitives",
+        "Subblocks",
+        "Elements",
+        "Projected",
+        "Categories"
+      ],
+      "description": "Property. Model:'https://github.com/gmggroup/omf-rust/blob/main/omf.schema.json#/definitions/Attribute/properties/location'. Selects which part of the element the attribute is attached to. See the documentation for each Geometry variant for a list of what locations are valid. Values: Vertices: The attribute contains one value for each point, vertex, or block corner. Primitives: The attribute contains one value for each line segment, triangle, or block. For sub-blocked block models that means parent blocks. Subblocks: The attribute contains one value for each sub-block in a block model. Elements: The attribute contains one value for each sub-element in a Composite. Projected: Used by projected texture attributes. The texture is projected onto the element Categories: Used for category sub-attributes. The attribute contains one value for each category. (OMF field 'location', renamed omfLocation because location is reserved in NGSI-LD for the GeoProperty.)"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "data",
+    "omfLocation",
+    "name"
+  ],
+  "$defs": {
+    "AttributeData": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "values"
+          ],
+          "properties": {
+            "colormap": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/NumberColormap"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Optional colormap. If absent then the importing application should invent one. Make sure the colormap uses the same number type as values."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "Number"
+              ]
+            },
+            "values": {
+              "$ref": "#/$defs/Array",
+              "description": "Array with Number type storing the attribute values."
+            }
+          },
+          "description": "Number data with flexible type. Values can be stored as 32 or 64-bit signed integers, 32 or 64-bit floating point, date, or date-time. Valid dates are approximately ±262,000 years from the common era. Date-time values are written with microsecond accuracy, and times are always in UTC."
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "values"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "Vector"
+              ]
+            },
+            "values": {
+              "$ref": "#/$defs/Array",
+              "description": "Array with Vector type storing the attribute values."
+            }
+          },
+          "description": "2D or 3D vector data."
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "values"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "Text"
+              ]
+            },
+            "values": {
+              "$ref": "#/$defs/Array",
+              "description": "Array with Text type storing the attribute values."
+            }
+          },
+          "description": "Text data."
+        },
+        {
+          "type": "object",
+          "required": [
+            "names",
+            "type",
+            "values"
+          ],
+          "properties": {
+            "attributes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "uri"
+              },
+              "description": "Additional attributes that use the same indices. This could be used to store the density of rock types in a lithology attribute for example. The location field of these attributes must be Categories. They must have the same length as names. In OMF they are nested Attribute objects; in this model each sub-attribute is an Attribute entity and is referenced here by its URN (Smart Data Models adaptation)."
+            },
+            "gradient": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Optional array with Gradient type storing category colors. If present, must be the same length as names. If absent then the importing application should invent colors."
+            },
+            "names": {
+              "$ref": "#/$defs/Array",
+              "description": "Array with Name type storing category names."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "Category"
+              ]
+            },
+            "values": {
+              "$ref": "#/$defs/Array",
+              "description": "Array with Index type storing the category indices. Values are indices into the names array, colors array, and any sub-attributes, and must be within range for them."
+            }
+          },
+          "description": "Category data. A name is required for each category, a color is optional, and other values can be attached as sub-attributes."
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "values"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "Boolean"
+              ]
+            },
+            "values": {
+              "$ref": "#/$defs/Array",
+              "description": "Array with Boolean type storing the attribute values. These values may be true, false, or null. Applications that don't support three-valued logic may treat null as false."
+            }
+          },
+          "description": "Boolean or filter data."
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "values"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "Color"
+              ]
+            },
+            "values": {
+              "$ref": "#/$defs/Array",
+              "description": "Array with Color type storing the attribute values. Null values may be replaced by the element color, or a default color as the application prefers."
+            }
+          },
+          "description": "Color data."
+        },
+        {
+          "type": "object",
+          "required": [
+            "image",
+            "texcoords",
+            "type"
+          ],
+          "properties": {
+            "image": {
+              "$ref": "#/$defs/Array",
+              "description": "Array with Image type storing the texture image."
+            },
+            "texcoords": {
+              "$ref": "#/$defs/Array",
+              "description": "Array with Texcoord type storing the UV texture coordinates. Each item is a normalized (U, V) pair. For values outside [0, 1] the texture wraps."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "MappedTexture"
+              ]
+            }
+          },
+          "description": "A texture applied with UV mapping. Typically applied to surface vertices. Applications may ignore other locations."
+        },
+        {
+          "type": "object",
+          "required": [
+            "height",
+            "image",
+            "orient",
+            "type",
+            "width"
+          ],
+          "properties": {
+            "height": {
+              "type": "number",
+              "description": "Height of the image projection in space."
+            },
+            "image": {
+              "$ref": "#/$defs/Array",
+              "description": "Array with Image type storing the texture image."
+            },
+            "orient": {
+              "$ref": "#/$defs/Orient2",
+              "description": "Orientation of the image."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "ProjectedTexture"
+              ]
+            },
+            "width": {
+              "type": "number",
+              "description": "Width of the image projection in space."
+            }
+          },
+          "description": "A texture defined as a rectangle in space projected along its normal. Behavior of the texture outside the projected rectangle is not defined. The texture might repeat, clip the element, or itself be clipped to reveal the flat color of the element. The attribute location must be Projected."
+        }
+      ],
+      "description": "The various types of data that can be attached to an Attribute."
+    },
+    "NumberColormap": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "gradient",
+            "range",
+            "type"
+          ],
+          "properties": {
+            "gradient": {
+              "$ref": "#/$defs/Array",
+              "description": "Array with Gradient type storing the smooth color gradient."
+            },
+            "range": {
+              "$ref": "#/$defs/NumberRange",
+              "description": "Value range."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "Continuous"
+              ]
+            }
+          },
+          "description": "A continuous colormap linearly samples a color gradient within a defined range. A value X% of way between min and max should use the color from X% way down gradient. When that X doesn't land directly on a color use the average of the colors on either side, inverse-weighted by the distance to each. Values below the minimum use the first color in the gradient array. Values above the maximum use the last."
+        },
+        {
+          "type": "object",
+          "required": [
+            "boundaries",
+            "gradient",
+            "type"
+          ],
+          "properties": {
+            "boundaries": {
+              "$ref": "#/$defs/Array",
+              "description": "Array with Boundary type storing the smooth color gradient, containing the value and inclusiveness of each boundary. Values must increase along the array. Boundary values type should match the type of the number array."
+            },
+            "gradient": {
+              "$ref": "#/$defs/Array",
+              "description": "Array with Gradient type storing the colors of the discrete ranges. Length must be one more than boundaries, with the extra color used for values above the last boundary."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "Discrete"
+              ]
+            }
+          },
+          "description": "A discrete colormap divides the number line into adjacent but non-overlapping ranges and gives a flat color to each range. Values above the last boundary use end_color."
+        }
+      ],
+      "description": "Describes a mapping of floating-point value to colors."
+    },
+    "NumberRange": {
+      "anyOf": [
+        {
+          "type": "object",
+          "required": [
+            "max",
+            "min"
+          ],
+          "properties": {
+            "max": {
+              "type": "number"
+            },
+            "min": {
+              "type": "number"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "max",
+            "min"
+          ],
+          "properties": {
+            "max": {
+              "type": "integer"
+            },
+            "min": {
+              "type": "integer"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "max",
+            "min"
+          ],
+          "properties": {
+            "max": {
+              "type": "string",
+              "format": "date"
+            },
+            "min": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "max",
+            "min"
+          ],
+          "properties": {
+            "max": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "min": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        }
+      ],
+      "description": "Value range of a continuous colormap: float, integer, date or date-time minimum and maximum, matching the number type of the attribute values."
+    },
+    "Orient2": {
+      "type": "object",
+      "required": [
+        "origin"
+      ],
+      "properties": {
+        "origin": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "description": "Origin point relative to the project origin and coordinate reference."
+        },
+        "u": {
+          "default": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "description": "The direction of the U axis of the plane. Must be a unit vector. Default [1, 0, 0]. Must also be perpendicular to the 'v' in grid surfaces."
+        },
+        "v": {
+          "default": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "description": "The direction of the V axis of the plane. Must be a unit vector. Default [0, 1, 0]. Must also be perpendicular to the 'u' in grid surfaces."
+        }
+      },
+      "description": "Defines the position and orientation of a 2D plane in 3D space."
+    },
+    "Array": {
+      "type": "object",
+      "required": [
+        "filename",
+        "item_count"
+      ],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "description": "Name of the Parquet, PNG or JPEG file inside the OMF archive."
+        },
+        "item_count": {
+          "type": "integer",
+          "minimum": 0.0,
+          "description": "Number of items in the array (0 for images)."
+        }
+      },
+      "description": "Reference to an array or image file stored inside the .omf ZIP archive (Apache Parquet for arrays, PNG or JPEG for images). The array data itself is not carried by this model."
+    }
+  }
+}

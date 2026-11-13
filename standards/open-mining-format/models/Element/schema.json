@@ -1,0 +1,631 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/open-mining-format/models/Element/schema.json",
+  "modelTags": "OMF,OpenMiningFormat,GMG,Mining,Geology,BlockModel,3D",
+  "title": "Smart Data Models - Open Mining Format - Element",
+  "description": "Defines a single \"object\" or \"shape\" within the OMF file. Each shape has a name plus other optional metadata, a \"geometry\" that describes a point-set, surface, etc., and a list of attributes that that exist on that geometry. (OMF 2.0-beta.1 JSON index (omf.schema.json, GMG omf-rust); field names kept verbatim; the attributes are separate Attribute entities.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Element:<identifier>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Element"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Element'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/gmggroup/omf-rust/blob/main/omf.schema.json#/definitions/Element/properties/name'. The element name. Names should be non-empty and unique."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/gmggroup/omf-rust/blob/main/omf.schema.json#/definitions/Element/properties/description'. Optional element description."
+    },
+    "color": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "maximum": 255.0,
+        "minimum": 0.0
+      },
+      "maxItems": 4,
+      "minItems": 4,
+      "description": "Property. Model:'https://github.com/gmggroup/omf-rust/blob/main/omf.schema.json#/definitions/Element/properties/color'. Optional solid color, as [red, green, blue, alpha], each 0-255."
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Property. Model:'https://github.com/gmggroup/omf-rust/blob/main/omf.schema.json#/definitions/Element/properties/metadata'. Arbitrary metadata."
+    },
+    "geometry": {
+      "$ref": "#/$defs/Geometry",
+      "description": "Property. Model:'https://github.com/gmggroup/omf-rust/blob/main/omf.schema.json#/definitions/Element/properties/geometry'. The geometry of the element: one of PointSet, LineSet, Surface, GridSurface, BlockModel or Composite, with the OMF structure. Large arrays (vertices, triangles, segments, heights, tensor cell sizes, sub-blocks) are not embedded: they stay in Parquet files of the .omf archive and are referenced by filename and item_count. Coordinates are in the project coordinate reference system, relative to the project origin plus the geometry origin."
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/gmggroup/omf-rust/blob/main/omf.schema.json#/definitions/Element/properties/attributes'. List of attributes, if any: the Attribute entities attached to this element, by URN. In OMF they are nested in the element."
+    },
+    "geometryType": {
+      "type": "string",
+      "enum": [
+        "PointSet",
+        "LineSet",
+        "Surface",
+        "GridSurface",
+        "BlockModel",
+        "Composite"
+      ],
+      "description": "Property. Model:'https://smartdatamodels.org/dataModel.OpenMiningFormat/geometryType'. Not an OMF field (Smart Data Models addition): copy of geometry.type, so that elements can be filtered by geometry kind with NGSI-LD queries (the geometry itself is a JSON literal)."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "geometry",
+    "name"
+  ],
+  "$defs": {
+    "Geometry": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "vertices"
+          ],
+          "properties": {
+            "origin": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 3,
+              "minItems": 3,
+              "description": "Origin of the points relative to the project coordinate reference system."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "PointSet"
+              ]
+            },
+            "vertices": {
+              "$ref": "#/$defs/Array",
+              "description": "Array with Vertex type storing the vertex locations. Add origin and the project origin to get the locations relative to the project coordinate reference system."
+            }
+          },
+          "description": "Point set geometry. Attribute locations: Vertices puts attribute values on the points."
+        },
+        {
+          "type": "object",
+          "required": [
+            "segments",
+            "type",
+            "vertices"
+          ],
+          "properties": {
+            "origin": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 3,
+              "minItems": 3,
+              "description": "Origin of the lines relative to the project coordinate reference system."
+            },
+            "segments": {
+              "$ref": "#/$defs/Array",
+              "description": "Array with Segment type storing each segment as a pair of indices into vertices."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "LineSet"
+              ]
+            },
+            "vertices": {
+              "$ref": "#/$defs/Array",
+              "description": "Array with Vertex type storing the vertex locations. Add origin and the project origin to get the locations relative to the project coordinate reference system."
+            }
+          },
+          "description": "A set of line segments. Attribute locations: Vertices puts attribute values on the vertices. Primitives puts attribute values on the line segments."
+        },
+        {
+          "type": "object",
+          "required": [
+            "triangles",
+            "type",
+            "vertices"
+          ],
+          "properties": {
+            "origin": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 3,
+              "minItems": 3,
+              "description": "Origin of the surface relative to the project coordinate reference system."
+            },
+            "triangles": {
+              "$ref": "#/$defs/Array",
+              "description": "Array with Triangle type storing each triangle as a triple of indices into vertices. Triangle winding should be counter-clockwise around an outward-pointing normal."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "Surface"
+              ]
+            },
+            "vertices": {
+              "$ref": "#/$defs/Array",
+              "description": "Array with Vertex type storing the vertex locations. Add origin and the project origin to get the locations relative to the project coordinate reference system."
+            }
+          },
+          "description": "A surface made up of triangles. Attribute locations: Vertices puts attribute values on the vertices. Primitives puts attribute values on the triangles."
+        },
+        {
+          "type": "object",
+          "required": [
+            "grid",
+            "orient",
+            "type"
+          ],
+          "properties": {
+            "grid": {
+              "$ref": "#/$defs/Grid2",
+              "description": "2D grid definition, which can be regular or tensor."
+            },
+            "heights": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Array with Scalar type storing the offset of each grid vertex from the place. Heights may be positive or negative. Will be absent from flat 2D grids."
+            },
+            "orient": {
+              "$ref": "#/$defs/Orient2",
+              "description": "Position and orientation of the surface."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "GridSurface"
+              ]
+            }
+          },
+          "description": "A surface defined by a 2D grid a height on each grid vertex. Attribute locations: Vertices puts attribute values on the grid vertices. Primitives puts attribute values on the grid cells."
+        },
+        {
+          "type": "object",
+          "required": [
+            "grid",
+            "orient",
+            "type"
+          ],
+          "properties": {
+            "grid": {
+              "$ref": "#/$defs/Grid3",
+              "description": "Block sizes."
+            },
+            "orient": {
+              "$ref": "#/$defs/Orient3",
+              "description": "Orientation of the block model."
+            },
+            "subblocks": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Subblocks"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Optional sub-blocks, which can be regular or free-form divisions of the parent blocks."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "BlockModel"
+              ]
+            }
+          },
+          "description": "Block model geometry with optional sub-blocks. First, the orient field defines the position and orientation of a (U, V, W) space relative to the project, which could be just an offset or a full rotation as well. Then the grid field defines the size and number of parent blocks aligned with that space and starting at (0, 0, 0). Sub-blocks can then optionally be added inside those parent blocks using a variety of layouts. While sub-blocks are supported on tensor grids it isn't a common arrangement and many applications won't load them. Attribute locations: Vertices puts attribute values on the corners of the parent blocks. If the block count is (N_0, N_1, N_2) then there must be (N_0 + 1) · (N_1 + 1) · (N_2 + 1) values. Ordering increases U first, then V, then W. Blocks puts attribute values on the centroids of the parent block. If the block count is (N_0, N_1, N_2) then there must be N_0 · N_1 · N_2 values. Ordering increases U first, then V, then W. Subblocks puts attribute values on sub-block centroids. The number and values and their ordering matches the parents and corners arrays."
+        },
+        {
+          "type": "object",
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "elements": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "uri"
+              },
+              "description": "Sub-elements of the composite. In OMF they are nested Element objects; in this model each sub-element is an Element entity and is referenced here by its URN (Smart Data Models adaptation)."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "Composite"
+              ]
+            }
+          },
+          "description": "A container for sub-elements. Attribute locations: Elements puts attribute values on elements."
+        }
+      ],
+      "description": "Selects the type of geometry in an Element from several options."
+    },
+    "Grid2": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "count",
+            "size",
+            "type"
+          ],
+          "properties": {
+            "count": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              "maxItems": 2,
+              "minItems": 2,
+              "description": "The number of cells in the U and V axes. Both must be greater than zero."
+            },
+            "size": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 2,
+              "minItems": 2,
+              "description": "The cell size in the U and V axes. Both must be greater than zero."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "Regular"
+              ]
+            }
+          },
+          "description": "Regularly spaced cells."
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "u",
+            "v"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "Tensor"
+              ]
+            },
+            "u": {
+              "$ref": "#/$defs/Array",
+              "description": "Array with Scalar type storing the size of each cell along the U axis. These sizes must be greater than zero."
+            },
+            "v": {
+              "$ref": "#/$defs/Array",
+              "description": "Array with Scalar type storing the size of each cell along the V axis. These sizes must be greater than zero."
+            }
+          },
+          "description": "Tensor cells, where each row and column can have a different size."
+        }
+      ],
+      "description": "Defines a 2D grid spacing and size."
+    },
+    "Grid3": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "count",
+            "size",
+            "type"
+          ],
+          "properties": {
+            "count": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              "maxItems": 3,
+              "minItems": 3,
+              "description": "The number of cells in the U, V, and W axes. All must be greater than zero."
+            },
+            "size": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 3,
+              "minItems": 3,
+              "description": "The block size in the U and V axes. All must be greater than zero."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "Regular"
+              ]
+            }
+          },
+          "description": "Regularly spaced cells."
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "u",
+            "v",
+            "w"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "Tensor"
+              ]
+            },
+            "u": {
+              "$ref": "#/$defs/Array",
+              "description": "Array with Scalar type storing the size of each cell along the U axis. These sizes must be greater than zero."
+            },
+            "v": {
+              "$ref": "#/$defs/Array",
+              "description": "Array with Scalar type storing the size of each cell along the V axis. These sizes must be greater than zero."
+            },
+            "w": {
+              "$ref": "#/$defs/Array",
+              "description": "Array with Scalar type storing the size of each cell along the W axis. These sizes must be greater than zero."
+            }
+          },
+          "description": "Tensor cells, where each row, column, and layer can have a different size. All sizes must be greater than zero."
+        }
+      ],
+      "description": "Defines a 3D grid spacing and size."
+    },
+    "Orient2": {
+      "type": "object",
+      "required": [
+        "origin"
+      ],
+      "properties": {
+        "origin": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "description": "Origin point relative to the project origin and coordinate reference."
+        },
+        "u": {
+          "default": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "description": "The direction of the U axis of the plane. Must be a unit vector. Default [1, 0, 0]. Must also be perpendicular to the 'v' in grid surfaces."
+        },
+        "v": {
+          "default": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "description": "The direction of the V axis of the plane. Must be a unit vector. Default [0, 1, 0]. Must also be perpendicular to the 'u' in grid surfaces."
+        }
+      },
+      "description": "Defines the position and orientation of a 2D plane in 3D space."
+    },
+    "Orient3": {
+      "type": "object",
+      "required": [
+        "origin"
+      ],
+      "properties": {
+        "origin": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "description": "Origin point relative to the project origin and coordinate reference."
+        },
+        "u": {
+          "default": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "description": "The direction of the U axis of the grid. Must be a unit vector perpendicular to v and 'w'. Default [1, 0, 0]."
+        },
+        "v": {
+          "default": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "description": "The direction of the V axis of the grid. Must be a unit vector perpendicular to u and 'w'. Default [0, 1, 0]."
+        },
+        "w": {
+          "default": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "description": "The direction of the W axis of the grid. Must be a unit vector perpendicular to u and 'v'. Default [0, 0, 1]."
+        }
+      },
+      "description": "Defines the position and orientation of a 3D sub-space."
+    },
+    "Subblocks": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "count",
+            "subblocks",
+            "type"
+          ],
+          "properties": {
+            "count": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              "maxItems": 3,
+              "minItems": 3,
+              "description": "The sub-block grid size. Must be greater than zero in all directions. If mode is octree then these must also be powers of two but they don't have to be equal."
+            },
+            "mode": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/SubblockMode"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "If present this further restricts the sub-block layout."
+            },
+            "subblocks": {
+              "$ref": "#/$defs/Array",
+              "description": "Array with RegularSubblock type storing the sub-block parent indices and corners relative to the sub-block grid within the parent."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "Regular"
+              ]
+            }
+          },
+          "description": "Divide each parent block into a regular grid of count cells. Sub-blocks each covers a non-overlapping cuboid subset of that grid. Sub-blocks are described by the parents and corners arrays. Those arrays must be the same length and matching rows in each describe the same sub-block. Each row in parents is an IJK index on the block model grid. Each row of corners is (i_{min}, j_{min}, k_{min}, i_{max}, j_{max}, k_{max}), all integers, that refer to the vertices of the sub-block grid within the parent block. For example: A block with minimum size in the corner of the parent block would be (0, 0, 0, 1, 1, 1). If the subblock_count is (5, 5, 3) then a sub-block covering the whole parent would be (0, 0, 0, 5, 5, 3). Sub-blocks must stay within their parent, must have a non-zero size in all directions, and should not overlap. Further restrictions can be applied by the mode field, see SubblockMode for details."
+        },
+        {
+          "type": "object",
+          "required": [
+            "subblocks",
+            "type"
+          ],
+          "properties": {
+            "subblocks": {
+              "$ref": "#/$defs/Array",
+              "description": "Array with FreeformSubblock type storing the sub-block parent indices and corners relative to the parent."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "Freeform"
+              ]
+            }
+          },
+          "description": "Divide each parent block into any number and arrangement of non-overlapping cuboid regions. Sub-blocks are described by the parents and corners arrays. Each row in parents is an IJK index on the block model grid. Each row of corners is (i_{min}, j_{min}, k_{min}, i_{max}, j_{max}, k_{max}) in floating-point and relative to the parent block, running from 0.0 to 1.0 across the parent. For example: A sub-block covering the whole parent will be (0.0, 0.0, 0.0, 1.0, 1.0, 1.0) no matter the size of the parent. A sub-block covering the bottom third of the parent block would be (0.0, 0.0, 0.0, 1.0, 1.0, 0.3333) and one covering the top two-thirds would be (0.0, 0.0, 0.3333, 1.0, 1.0, 1.0), again no matter the size of the parent. Sub-blocks must stay within their parent, must have a non-zero size in all directions, and shouldn't overlap."
+        }
+      ],
+      "description": "Stores sub-blocks of a block model."
+    },
+    "SubblockMode": {
+      "type": "string",
+      "enum": [
+        "Octree",
+        "Full"
+      ],
+      "description": "A optional mode for regular sub-blocks. Values: Octree: Sub-blocks form a octree-like inside the parent block. To form this structure, cut the parent block in half in all directions to create eight child blocks. Repeat that cut for some or all of those children, and continue doing that until the limit on sub-block count is reached or until the sub-blocks accurately model the inputs. The sub-block count must be a power of two in each direction. This isn't strictly an octree because the sub-block count doesn't have to be the same in all directions. For example you can have count (16, 16, 2) and blocks will stop dividing the the W direction after the first split. Full: Parent blocks are fully divided or not divided at all. Applications reading this mode may choose to merge sub-blocks with matching attributes to reduce the overall number of them."
+    },
+    "Array": {
+      "type": "object",
+      "required": [
+        "filename",
+        "item_count"
+      ],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "description": "Name of the Parquet, PNG or JPEG file inside the OMF archive."
+        },
+        "item_count": {
+          "type": "integer",
+          "minimum": 0.0,
+          "description": "Number of items in the array (0 for images)."
+        }
+      },
+      "description": "Reference to an array or image file stored inside the .omf ZIP archive (Apache Parquet for arrays, PNG or JPEG for images). The array data itself is not carried by this model."
+    }
+  }
+}
