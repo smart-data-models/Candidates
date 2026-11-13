@@ -1,0 +1,318 @@
+{
+  "@context": {
+    "Product": "https://ref.gs1.org/voc/Product",
+    "gs1": "https://ref.gs1.org/voc/",
+    "dateCreated": "https://schema.org/dateCreated",
+    "dateModified": "https://schema.org/dateModified",
+    "source": "https://purl.org/dc/terms/source",
+    "dataProvider": "https://smartdatamodels.org/dataProvider",
+    "additionalProductClassification": {
+      "@id": "https://ref.gs1.org/voc/additionalProductClassification",
+      "@type": "@json"
+    },
+    "additionalProductDescription": {
+      "@id": "https://ref.gs1.org/voc/additionalProductDescription",
+      "@container": "@language"
+    },
+    "additive": {
+      "@id": "https://ref.gs1.org/voc/additive",
+      "@type": "@json"
+    },
+    "audioFile": {
+      "@id": "https://ref.gs1.org/voc/audioFile",
+      "@type": "@json"
+    },
+    "authenticity": {
+      "@id": "https://ref.gs1.org/voc/authenticity",
+      "@type": "@json"
+    },
+    "awardPrize": {
+      "@id": "https://ref.gs1.org/voc/awardPrize",
+      "@type": "@json"
+    },
+    "bestBeforeDate": "https://ref.gs1.org/voc/bestBeforeDate",
+    "brand": {
+      "@id": "https://ref.gs1.org/voc/brand",
+      "@type": "@json"
+    },
+    "brandOwner": {
+      "@id": "https://ref.gs1.org/voc/brandOwner",
+      "@type": "@id"
+    },
+    "colourCode": {
+      "@id": "https://ref.gs1.org/voc/colourCode",
+      "@type": "@json"
+    },
+    "colourDescription": {
+      "@id": "https://ref.gs1.org/voc/colourDescription",
+      "@container": "@language"
+    },
+    "compulsoryAdditionalInformation": {
+      "@id": "https://ref.gs1.org/voc/compulsoryAdditionalInformation",
+      "@type": "@json"
+    },
+    "consumerHandlingStorage": {
+      "@id": "https://ref.gs1.org/voc/consumerHandlingStorage",
+      "@type": "@json"
+    },
+    "consumerPackageDisclaimer": {
+      "@id": "https://ref.gs1.org/voc/consumerPackageDisclaimer",
+      "@container": "@language"
+    },
+    "consumerProductVariant": "https://ref.gs1.org/voc/consumerProductVariant",
+    "consumerRecyclingInstructions": {
+      "@id": "https://ref.gs1.org/voc/consumerRecyclingInstructions",
+      "@container": "@language"
+    },
+    "consumerSafetyInformation": {
+      "@id": "https://ref.gs1.org/voc/consumerSafetyInformation",
+      "@container": "@language"
+    },
+    "consumerSalesCondition": {
+      "@id": "https://ref.gs1.org/voc/consumerSalesCondition",
+      "@type": "@vocab"
+    },
+    "consumerStorageInstructions": {
+      "@id": "https://ref.gs1.org/voc/consumerStorageInstructions",
+      "@container": "@language"
+    },
+    "consumerUsageInstructions": {
+      "@id": "https://ref.gs1.org/voc/consumerUsageInstructions",
+      "@container": "@language"
+    },
+    "countryOfAssembly": {
+      "@id": "https://ref.gs1.org/voc/countryOfAssembly",
+      "@type": "@json"
+    },
+    "countryOfLastProcessing": {
+      "@id": "https://ref.gs1.org/voc/countryOfLastProcessing",
+      "@type": "@json"
+    },
+    "countryOfOrigin": {
+      "@id": "https://ref.gs1.org/voc/countryOfOrigin",
+      "@type": "@json"
+    },
+    "countryOfOriginStatement": {
+      "@id": "https://ref.gs1.org/voc/countryOfOriginStatement",
+      "@container": "@language"
+    },
+    "customerSupportCentre": {
+      "@id": "https://ref.gs1.org/voc/customerSupportCentre",
+      "@type": "@id"
+    },
+    "dependentProprietaryProduct": {
+      "@id": "https://ref.gs1.org/voc/dependentProprietaryProduct",
+      "@type": "@id"
+    },
+    "descriptiveSize": {
+      "@id": "https://ref.gs1.org/voc/descriptiveSize",
+      "@container": "@language"
+    },
+    "dueDate": "https://ref.gs1.org/voc/dueDate",
+    "equivalentProduct": {
+      "@id": "https://ref.gs1.org/voc/equivalentProduct",
+      "@type": "@id"
+    },
+    "expirationDate": "https://ref.gs1.org/voc/expirationDate",
+    "expirationDateTime": "https://ref.gs1.org/voc/expirationDateTime",
+    "firstFreezeDate": "https://ref.gs1.org/voc/firstFreezeDate",
+    "functionalName": {
+      "@id": "https://ref.gs1.org/voc/functionalName",
+      "@container": "@language"
+    },
+    "gpcCategoryCode": "https://ref.gs1.org/voc/gpcCategoryCode",
+    "gpcCategoryDescription": {
+      "@id": "https://ref.gs1.org/voc/gpcCategoryDescription",
+      "@container": "@language"
+    },
+    "grossArea": {
+      "@id": "https://ref.gs1.org/voc/grossArea",
+      "@type": "@json"
+    },
+    "grossVolume": {
+      "@id": "https://ref.gs1.org/voc/grossVolume",
+      "@type": "@json"
+    },
+    "grossWeight": {
+      "@id": "https://ref.gs1.org/voc/grossWeight",
+      "@type": "@json"
+    },
+    "growingMethod": {
+      "@id": "https://ref.gs1.org/voc/growingMethod",
+      "@type": "@vocab"
+    },
+    "gtin": "https://ref.gs1.org/voc/gtin",
+    "harvestDate": "https://ref.gs1.org/voc/harvestDate",
+    "harvestDateEnd": "https://ref.gs1.org/voc/harvestDateEnd",
+    "harvestDateStart": "https://ref.gs1.org/voc/harvestDateStart",
+    "hasBatchLotNumber": "https://ref.gs1.org/voc/hasBatchLotNumber",
+    "hasSerialNumber": "https://ref.gs1.org/voc/hasSerialNumber",
+    "hasThirdPartyControlledSerialNumber": "https://ref.gs1.org/voc/hasThirdPartyControlledSerialNumber",
+    "healthClaimDescription": {
+      "@id": "https://ref.gs1.org/voc/healthClaimDescription",
+      "@container": "@language"
+    },
+    "image": {
+      "@id": "https://ref.gs1.org/voc/image",
+      "@type": "@json"
+    },
+    "includedAccessories": {
+      "@id": "https://ref.gs1.org/voc/includedAccessories",
+      "@container": "@language"
+    },
+    "inPackageDepth": {
+      "@id": "https://ref.gs1.org/voc/inPackageDepth",
+      "@type": "@json"
+    },
+    "inPackageDiameter": {
+      "@id": "https://ref.gs1.org/voc/inPackageDiameter",
+      "@type": "@json"
+    },
+    "inPackageHeight": {
+      "@id": "https://ref.gs1.org/voc/inPackageHeight",
+      "@type": "@json"
+    },
+    "inPackageWidth": {
+      "@id": "https://ref.gs1.org/voc/inPackageWidth",
+      "@type": "@json"
+    },
+    "instructionsForUse": {
+      "@id": "https://ref.gs1.org/voc/instructionsForUse",
+      "@type": "@json"
+    },
+    "isProductRecalled": "https://ref.gs1.org/voc/isProductRecalled",
+    "jws": "https://ref.gs1.org/voc/jws",
+    "manufacturer": {
+      "@id": "https://ref.gs1.org/voc/manufacturer",
+      "@type": "@id"
+    },
+    "manufacturersWarranty": {
+      "@id": "https://ref.gs1.org/voc/manufacturersWarranty",
+      "@type": "@json"
+    },
+    "manufacturingPlant": {
+      "@id": "https://ref.gs1.org/voc/manufacturingPlant",
+      "@type": "@id"
+    },
+    "massPerUnitArea": {
+      "@id": "https://ref.gs1.org/voc/massPerUnitArea",
+      "@type": "@json"
+    },
+    "netArea": {
+      "@id": "https://ref.gs1.org/voc/netArea",
+      "@type": "@json"
+    },
+    "netContent": {
+      "@id": "https://ref.gs1.org/voc/netContent",
+      "@type": "@json"
+    },
+    "netWeight": {
+      "@id": "https://ref.gs1.org/voc/netWeight",
+      "@type": "@json"
+    },
+    "organicClaim": {
+      "@id": "https://ref.gs1.org/voc/organicClaim",
+      "@type": "@json"
+    },
+    "outOfPackageDepth": {
+      "@id": "https://ref.gs1.org/voc/outOfPackageDepth",
+      "@type": "@json"
+    },
+    "outOfPackageDiameter": {
+      "@id": "https://ref.gs1.org/voc/outOfPackageDiameter",
+      "@type": "@json"
+    },
+    "outOfPackageHeight": {
+      "@id": "https://ref.gs1.org/voc/outOfPackageHeight",
+      "@type": "@json"
+    },
+    "outOfPackageWidth": {
+      "@id": "https://ref.gs1.org/voc/outOfPackageWidth",
+      "@type": "@json"
+    },
+    "packaging": {
+      "@id": "https://ref.gs1.org/voc/packaging",
+      "@type": "@json"
+    },
+    "packagingDate": "https://ref.gs1.org/voc/packagingDate",
+    "packagingMarkedLabelAccreditation": {
+      "@id": "https://ref.gs1.org/voc/packagingMarkedLabelAccreditation",
+      "@type": "@vocab"
+    },
+    "primaryAlternateProduct": {
+      "@id": "https://ref.gs1.org/voc/primaryAlternateProduct",
+      "@type": "@id"
+    },
+    "productDescription": {
+      "@id": "https://ref.gs1.org/voc/productDescription",
+      "@container": "@language"
+    },
+    "productFeatureBenefit": {
+      "@id": "https://ref.gs1.org/voc/productFeatureBenefit",
+      "@container": "@language"
+    },
+    "productFormDescription": {
+      "@id": "https://ref.gs1.org/voc/productFormDescription",
+      "@container": "@language"
+    },
+    "productID": "https://ref.gs1.org/voc/productID",
+    "productionDate": "https://ref.gs1.org/voc/productionDate",
+    "productionDateTime": "https://ref.gs1.org/voc/productionDateTime",
+    "productionVariantDescription": {
+      "@id": "https://ref.gs1.org/voc/productionVariantDescription",
+      "@container": "@language"
+    },
+    "productionVariantEffectiveDateTime": "https://ref.gs1.org/voc/productionVariantEffectiveDateTime",
+    "productMarketingMessage": {
+      "@id": "https://ref.gs1.org/voc/productMarketingMessage",
+      "@container": "@language"
+    },
+    "productName": {
+      "@id": "https://ref.gs1.org/voc/productName",
+      "@container": "@language"
+    },
+    "productRange": {
+      "@id": "https://ref.gs1.org/voc/productRange",
+      "@container": "@language"
+    },
+    "productSustainabilityInfo": "https://ref.gs1.org/voc/productSustainabilityInfo",
+    "provenanceStatement": {
+      "@id": "https://ref.gs1.org/voc/provenanceStatement",
+      "@container": "@language"
+    },
+    "referencedFile": {
+      "@id": "https://ref.gs1.org/voc/referencedFile",
+      "@type": "@json"
+    },
+    "regulatedProductName": {
+      "@id": "https://ref.gs1.org/voc/regulatedProductName",
+      "@container": "@language"
+    },
+    "replacedByProduct": {
+      "@id": "https://ref.gs1.org/voc/replacedByProduct",
+      "@type": "@id"
+    },
+    "replacedProduct": {
+      "@id": "https://ref.gs1.org/voc/replacedProduct",
+      "@type": "@id"
+    },
+    "sellByDate": "https://ref.gs1.org/voc/sellByDate",
+    "sizeCode": {
+      "@id": "https://ref.gs1.org/voc/sizeCode",
+      "@type": "@json"
+    },
+    "supplierSpecifiedMinimumConsumerStorageDays": "https://ref.gs1.org/voc/supplierSpecifiedMinimumConsumerStorageDays",
+    "targetMarket": {
+      "@id": "https://ref.gs1.org/voc/targetMarket",
+      "@type": "@json"
+    },
+    "variantDescription": {
+      "@id": "https://ref.gs1.org/voc/variantDescription",
+      "@container": "@language"
+    },
+    "warningCopyDescription": {
+      "@id": "https://ref.gs1.org/voc/warningCopyDescription",
+      "@container": "@language"
+    }
+  }
+}

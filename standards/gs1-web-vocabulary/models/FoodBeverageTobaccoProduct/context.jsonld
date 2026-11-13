@@ -1,0 +1,733 @@
+{
+  "@context": {
+    "FoodBeverageTobaccoProduct": "https://ref.gs1.org/voc/FoodBeverageTobaccoProduct",
+    "gs1": "https://ref.gs1.org/voc/",
+    "dateCreated": "https://schema.org/dateCreated",
+    "dateModified": "https://schema.org/dateModified",
+    "source": "https://purl.org/dc/terms/source",
+    "dataProvider": "https://smartdatamodels.org/dataProvider",
+    "gs1Class": {
+      "@id": "https://smartdatamodels.org/dataModel.GS1/gs1Class",
+      "@type": "@vocab"
+    },
+    "Beverage": "https://ref.gs1.org/voc/Beverage",
+    "FruitsVegetables": "https://ref.gs1.org/voc/FruitsVegetables",
+    "MeatPoultry": "https://ref.gs1.org/voc/MeatPoultry",
+    "MilkButterCreamYogurtCheeseEggsSubstitutes": "https://ref.gs1.org/voc/MilkButterCreamYogurtCheeseEggsSubstitutes",
+    "Seafood": "https://ref.gs1.org/voc/Seafood",
+    "additionalProductClassification": {
+      "@id": "https://ref.gs1.org/voc/additionalProductClassification",
+      "@type": "@json"
+    },
+    "additionalProductDescription": {
+      "@id": "https://ref.gs1.org/voc/additionalProductDescription",
+      "@container": "@language"
+    },
+    "additive": {
+      "@id": "https://ref.gs1.org/voc/additive",
+      "@type": "@json"
+    },
+    "allergenSpecificationAgency": {
+      "@id": "https://ref.gs1.org/voc/allergenSpecificationAgency",
+      "@container": "@language"
+    },
+    "allergenSpecificationName": {
+      "@id": "https://ref.gs1.org/voc/allergenSpecificationName",
+      "@container": "@language"
+    },
+    "allergenStatement": {
+      "@id": "https://ref.gs1.org/voc/allergenStatement",
+      "@container": "@language"
+    },
+    "audioFile": {
+      "@id": "https://ref.gs1.org/voc/audioFile",
+      "@type": "@json"
+    },
+    "authenticity": {
+      "@id": "https://ref.gs1.org/voc/authenticity",
+      "@type": "@json"
+    },
+    "awardPrize": {
+      "@id": "https://ref.gs1.org/voc/awardPrize",
+      "@type": "@json"
+    },
+    "bestBeforeDate": "https://ref.gs1.org/voc/bestBeforeDate",
+    "biotinPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/biotinPerNutrientBasis",
+      "@type": "@json"
+    },
+    "brand": {
+      "@id": "https://ref.gs1.org/voc/brand",
+      "@type": "@json"
+    },
+    "brandOwner": {
+      "@id": "https://ref.gs1.org/voc/brandOwner",
+      "@type": "@id"
+    },
+    "calciumPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/calciumPerNutrientBasis",
+      "@type": "@json"
+    },
+    "carbohydratesPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/carbohydratesPerNutrientBasis",
+      "@type": "@json"
+    },
+    "chloridePerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/chloridePerNutrientBasis",
+      "@type": "@json"
+    },
+    "cholesterolPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/cholesterolPerNutrientBasis",
+      "@type": "@json"
+    },
+    "chromiumPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/chromiumPerNutrientBasis",
+      "@type": "@json"
+    },
+    "colourCode": {
+      "@id": "https://ref.gs1.org/voc/colourCode",
+      "@type": "@json"
+    },
+    "colourDescription": {
+      "@id": "https://ref.gs1.org/voc/colourDescription",
+      "@container": "@language"
+    },
+    "compulsoryAdditionalInformation": {
+      "@id": "https://ref.gs1.org/voc/compulsoryAdditionalInformation",
+      "@type": "@json"
+    },
+    "consumerHandlingStorage": {
+      "@id": "https://ref.gs1.org/voc/consumerHandlingStorage",
+      "@type": "@json"
+    },
+    "consumerPackageDisclaimer": {
+      "@id": "https://ref.gs1.org/voc/consumerPackageDisclaimer",
+      "@container": "@language"
+    },
+    "consumerProductVariant": "https://ref.gs1.org/voc/consumerProductVariant",
+    "consumerRecyclingInstructions": {
+      "@id": "https://ref.gs1.org/voc/consumerRecyclingInstructions",
+      "@container": "@language"
+    },
+    "consumerSafetyInformation": {
+      "@id": "https://ref.gs1.org/voc/consumerSafetyInformation",
+      "@container": "@language"
+    },
+    "consumerSalesCondition": {
+      "@id": "https://ref.gs1.org/voc/consumerSalesCondition",
+      "@type": "@vocab"
+    },
+    "consumerStorageInstructions": {
+      "@id": "https://ref.gs1.org/voc/consumerStorageInstructions",
+      "@container": "@language"
+    },
+    "consumerUsageInstructions": {
+      "@id": "https://ref.gs1.org/voc/consumerUsageInstructions",
+      "@container": "@language"
+    },
+    "copperPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/copperPerNutrientBasis",
+      "@type": "@json"
+    },
+    "countryOfAssembly": {
+      "@id": "https://ref.gs1.org/voc/countryOfAssembly",
+      "@type": "@json"
+    },
+    "countryOfLastProcessing": {
+      "@id": "https://ref.gs1.org/voc/countryOfLastProcessing",
+      "@type": "@json"
+    },
+    "countryOfOrigin": {
+      "@id": "https://ref.gs1.org/voc/countryOfOrigin",
+      "@type": "@json"
+    },
+    "countryOfOriginStatement": {
+      "@id": "https://ref.gs1.org/voc/countryOfOriginStatement",
+      "@container": "@language"
+    },
+    "customerSupportCentre": {
+      "@id": "https://ref.gs1.org/voc/customerSupportCentre",
+      "@type": "@id"
+    },
+    "dependentProprietaryProduct": {
+      "@id": "https://ref.gs1.org/voc/dependentProprietaryProduct",
+      "@type": "@id"
+    },
+    "descriptiveSize": {
+      "@id": "https://ref.gs1.org/voc/descriptiveSize",
+      "@container": "@language"
+    },
+    "dietCode": {
+      "@id": "https://ref.gs1.org/voc/dietCode",
+      "@type": "@json"
+    },
+    "dietTypeDescription": {
+      "@id": "https://ref.gs1.org/voc/dietTypeDescription",
+      "@container": "@language"
+    },
+    "drainedWeight": {
+      "@id": "https://ref.gs1.org/voc/drainedWeight",
+      "@type": "@json"
+    },
+    "dueDate": "https://ref.gs1.org/voc/dueDate",
+    "energyFromFatPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/energyFromFatPerNutrientBasis",
+      "@type": "@json"
+    },
+    "energyPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/energyPerNutrientBasis",
+      "@type": "@json"
+    },
+    "equivalentProduct": {
+      "@id": "https://ref.gs1.org/voc/equivalentProduct",
+      "@type": "@id"
+    },
+    "expirationDate": "https://ref.gs1.org/voc/expirationDate",
+    "expirationDateTime": "https://ref.gs1.org/voc/expirationDateTime",
+    "fatPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/fatPerNutrientBasis",
+      "@type": "@json"
+    },
+    "fibrePerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/fibrePerNutrientBasis",
+      "@type": "@json"
+    },
+    "firstFreezeDate": "https://ref.gs1.org/voc/firstFreezeDate",
+    "fluoridePerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/fluoridePerNutrientBasis",
+      "@type": "@json"
+    },
+    "folicAcidPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/folicAcidPerNutrientBasis",
+      "@type": "@json"
+    },
+    "foodBeverageRefrigerationClaim": {
+      "@id": "https://ref.gs1.org/voc/foodBeverageRefrigerationClaim",
+      "@type": "@vocab"
+    },
+    "foodBeverageTargetUse": {
+      "@id": "https://ref.gs1.org/voc/foodBeverageTargetUse",
+      "@type": "@vocab"
+    },
+    "functionalName": {
+      "@id": "https://ref.gs1.org/voc/functionalName",
+      "@container": "@language"
+    },
+    "geneticallyModifiedDeclaration": {
+      "@id": "https://ref.gs1.org/voc/geneticallyModifiedDeclaration",
+      "@type": "@vocab"
+    },
+    "gpcCategoryCode": "https://ref.gs1.org/voc/gpcCategoryCode",
+    "gpcCategoryDescription": {
+      "@id": "https://ref.gs1.org/voc/gpcCategoryDescription",
+      "@container": "@language"
+    },
+    "grossArea": {
+      "@id": "https://ref.gs1.org/voc/grossArea",
+      "@type": "@json"
+    },
+    "grossVolume": {
+      "@id": "https://ref.gs1.org/voc/grossVolume",
+      "@type": "@json"
+    },
+    "grossWeight": {
+      "@id": "https://ref.gs1.org/voc/grossWeight",
+      "@type": "@json"
+    },
+    "growingMethod": {
+      "@id": "https://ref.gs1.org/voc/growingMethod",
+      "@type": "@vocab"
+    },
+    "gtin": "https://ref.gs1.org/voc/gtin",
+    "harvestDate": "https://ref.gs1.org/voc/harvestDate",
+    "harvestDateEnd": "https://ref.gs1.org/voc/harvestDateEnd",
+    "harvestDateStart": "https://ref.gs1.org/voc/harvestDateStart",
+    "hasAllergen": {
+      "@id": "https://ref.gs1.org/voc/hasAllergen",
+      "@type": "@json"
+    },
+    "hasBatchLotNumber": "https://ref.gs1.org/voc/hasBatchLotNumber",
+    "hasSerialNumber": "https://ref.gs1.org/voc/hasSerialNumber",
+    "hasThirdPartyControlledSerialNumber": "https://ref.gs1.org/voc/hasThirdPartyControlledSerialNumber",
+    "healthClaimDescription": {
+      "@id": "https://ref.gs1.org/voc/healthClaimDescription",
+      "@container": "@language"
+    },
+    "image": {
+      "@id": "https://ref.gs1.org/voc/image",
+      "@type": "@json"
+    },
+    "includedAccessories": {
+      "@id": "https://ref.gs1.org/voc/includedAccessories",
+      "@container": "@language"
+    },
+    "ingredient": {
+      "@id": "https://ref.gs1.org/voc/ingredient",
+      "@type": "@json"
+    },
+    "ingredientOfConcern": {
+      "@id": "https://ref.gs1.org/voc/ingredientOfConcern",
+      "@container": "@language"
+    },
+    "ingredientStatement": {
+      "@id": "https://ref.gs1.org/voc/ingredientStatement",
+      "@container": "@language"
+    },
+    "inPackageDepth": {
+      "@id": "https://ref.gs1.org/voc/inPackageDepth",
+      "@type": "@json"
+    },
+    "inPackageDiameter": {
+      "@id": "https://ref.gs1.org/voc/inPackageDiameter",
+      "@type": "@json"
+    },
+    "inPackageHeight": {
+      "@id": "https://ref.gs1.org/voc/inPackageHeight",
+      "@type": "@json"
+    },
+    "inPackageWidth": {
+      "@id": "https://ref.gs1.org/voc/inPackageWidth",
+      "@type": "@json"
+    },
+    "instructionsForUse": {
+      "@id": "https://ref.gs1.org/voc/instructionsForUse",
+      "@type": "@json"
+    },
+    "iodinePerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/iodinePerNutrientBasis",
+      "@type": "@json"
+    },
+    "ironPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/ironPerNutrientBasis",
+      "@type": "@json"
+    },
+    "irradiatedCode": {
+      "@id": "https://ref.gs1.org/voc/irradiatedCode",
+      "@type": "@vocab"
+    },
+    "isInstant": {
+      "@id": "https://ref.gs1.org/voc/isInstant",
+      "@type": "@vocab"
+    },
+    "isProductRecalled": "https://ref.gs1.org/voc/isProductRecalled",
+    "isSliced": {
+      "@id": "https://ref.gs1.org/voc/isSliced",
+      "@type": "@vocab"
+    },
+    "juiceContentPercent": "https://ref.gs1.org/voc/juiceContentPercent",
+    "jws": "https://ref.gs1.org/voc/jws",
+    "magnesiumPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/magnesiumPerNutrientBasis",
+      "@type": "@json"
+    },
+    "manganesePerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/manganesePerNutrientBasis",
+      "@type": "@json"
+    },
+    "manufacturer": {
+      "@id": "https://ref.gs1.org/voc/manufacturer",
+      "@type": "@id"
+    },
+    "manufacturersWarranty": {
+      "@id": "https://ref.gs1.org/voc/manufacturersWarranty",
+      "@type": "@json"
+    },
+    "manufacturingPlant": {
+      "@id": "https://ref.gs1.org/voc/manufacturingPlant",
+      "@type": "@id"
+    },
+    "massPerUnitArea": {
+      "@id": "https://ref.gs1.org/voc/massPerUnitArea",
+      "@type": "@json"
+    },
+    "molybdenumPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/molybdenumPerNutrientBasis",
+      "@type": "@json"
+    },
+    "monounsaturatedFatPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/monounsaturatedFatPerNutrientBasis",
+      "@type": "@json"
+    },
+    "netArea": {
+      "@id": "https://ref.gs1.org/voc/netArea",
+      "@type": "@json"
+    },
+    "netContent": {
+      "@id": "https://ref.gs1.org/voc/netContent",
+      "@type": "@json"
+    },
+    "netWeight": {
+      "@id": "https://ref.gs1.org/voc/netWeight",
+      "@type": "@json"
+    },
+    "niacinPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/niacinPerNutrientBasis",
+      "@type": "@json"
+    },
+    "numberOfServingsPerPackage": "https://ref.gs1.org/voc/numberOfServingsPerPackage",
+    "numberOfServingsPerPackageMeasurementPrecision": {
+      "@id": "https://ref.gs1.org/voc/numberOfServingsPerPackageMeasurementPrecision",
+      "@type": "@vocab"
+    },
+    "numberOfServingsRangeDescription": {
+      "@id": "https://ref.gs1.org/voc/numberOfServingsRangeDescription",
+      "@container": "@language"
+    },
+    "nutrientBasisQuantity": {
+      "@id": "https://ref.gs1.org/voc/nutrientBasisQuantity",
+      "@type": "@json"
+    },
+    "nutrientBasisQuantityType": {
+      "@id": "https://ref.gs1.org/voc/nutrientBasisQuantityType",
+      "@type": "@vocab"
+    },
+    "nutrientMeasurementPrecision": {
+      "@id": "https://ref.gs1.org/voc/nutrientMeasurementPrecision",
+      "@type": "@vocab"
+    },
+    "nutritionalClaim": {
+      "@id": "https://ref.gs1.org/voc/nutritionalClaim",
+      "@type": "@vocab"
+    },
+    "nutritionalClaimStatement": {
+      "@id": "https://ref.gs1.org/voc/nutritionalClaimStatement",
+      "@container": "@language"
+    },
+    "organicClaim": {
+      "@id": "https://ref.gs1.org/voc/organicClaim",
+      "@type": "@json"
+    },
+    "outOfPackageDepth": {
+      "@id": "https://ref.gs1.org/voc/outOfPackageDepth",
+      "@type": "@json"
+    },
+    "outOfPackageDiameter": {
+      "@id": "https://ref.gs1.org/voc/outOfPackageDiameter",
+      "@type": "@json"
+    },
+    "outOfPackageHeight": {
+      "@id": "https://ref.gs1.org/voc/outOfPackageHeight",
+      "@type": "@json"
+    },
+    "outOfPackageWidth": {
+      "@id": "https://ref.gs1.org/voc/outOfPackageWidth",
+      "@type": "@json"
+    },
+    "packaging": {
+      "@id": "https://ref.gs1.org/voc/packaging",
+      "@type": "@json"
+    },
+    "packagingDate": "https://ref.gs1.org/voc/packagingDate",
+    "packagingMarkedDietAllergenType": {
+      "@id": "https://ref.gs1.org/voc/packagingMarkedDietAllergenType",
+      "@type": "@vocab"
+    },
+    "packagingMarkedFreeFrom": {
+      "@id": "https://ref.gs1.org/voc/packagingMarkedFreeFrom",
+      "@type": "@vocab"
+    },
+    "packagingMarkedLabelAccreditation": {
+      "@id": "https://ref.gs1.org/voc/packagingMarkedLabelAccreditation",
+      "@type": "@vocab"
+    },
+    "pantothenicAcidPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/pantothenicAcidPerNutrientBasis",
+      "@type": "@json"
+    },
+    "phosphorusPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/phosphorusPerNutrientBasis",
+      "@type": "@json"
+    },
+    "polyolsPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/polyolsPerNutrientBasis",
+      "@type": "@json"
+    },
+    "polyunsaturatedFatPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/polyunsaturatedFatPerNutrientBasis",
+      "@type": "@json"
+    },
+    "potassiumPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/potassiumPerNutrientBasis",
+      "@type": "@json"
+    },
+    "preparationInformation": {
+      "@id": "https://ref.gs1.org/voc/preparationInformation",
+      "@type": "@json"
+    },
+    "preservationTechnique": {
+      "@id": "https://ref.gs1.org/voc/preservationTechnique",
+      "@type": "@vocab"
+    },
+    "primaryAlternateProduct": {
+      "@id": "https://ref.gs1.org/voc/primaryAlternateProduct",
+      "@type": "@id"
+    },
+    "productDescription": {
+      "@id": "https://ref.gs1.org/voc/productDescription",
+      "@container": "@language"
+    },
+    "productFeatureBenefit": {
+      "@id": "https://ref.gs1.org/voc/productFeatureBenefit",
+      "@container": "@language"
+    },
+    "productFormDescription": {
+      "@id": "https://ref.gs1.org/voc/productFormDescription",
+      "@container": "@language"
+    },
+    "productID": "https://ref.gs1.org/voc/productID",
+    "productionDate": "https://ref.gs1.org/voc/productionDate",
+    "productionDateTime": "https://ref.gs1.org/voc/productionDateTime",
+    "productionVariantDescription": {
+      "@id": "https://ref.gs1.org/voc/productionVariantDescription",
+      "@container": "@language"
+    },
+    "productionVariantEffectiveDateTime": "https://ref.gs1.org/voc/productionVariantEffectiveDateTime",
+    "productMarketingMessage": {
+      "@id": "https://ref.gs1.org/voc/productMarketingMessage",
+      "@container": "@language"
+    },
+    "productName": {
+      "@id": "https://ref.gs1.org/voc/productName",
+      "@container": "@language"
+    },
+    "productRange": {
+      "@id": "https://ref.gs1.org/voc/productRange",
+      "@container": "@language"
+    },
+    "productSustainabilityInfo": "https://ref.gs1.org/voc/productSustainabilityInfo",
+    "proteinPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/proteinPerNutrientBasis",
+      "@type": "@json"
+    },
+    "provenanceStatement": {
+      "@id": "https://ref.gs1.org/voc/provenanceStatement",
+      "@container": "@language"
+    },
+    "referencedFile": {
+      "@id": "https://ref.gs1.org/voc/referencedFile",
+      "@type": "@json"
+    },
+    "regulatedProductName": {
+      "@id": "https://ref.gs1.org/voc/regulatedProductName",
+      "@container": "@language"
+    },
+    "reheatingClaim": {
+      "@id": "https://ref.gs1.org/voc/reheatingClaim",
+      "@type": "@vocab"
+    },
+    "replacedByProduct": {
+      "@id": "https://ref.gs1.org/voc/replacedByProduct",
+      "@type": "@id"
+    },
+    "replacedProduct": {
+      "@id": "https://ref.gs1.org/voc/replacedProduct",
+      "@type": "@id"
+    },
+    "riboflavinPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/riboflavinPerNutrientBasis",
+      "@type": "@json"
+    },
+    "saltPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/saltPerNutrientBasis",
+      "@type": "@json"
+    },
+    "saturatedFatPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/saturatedFatPerNutrientBasis",
+      "@type": "@json"
+    },
+    "seleniumPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/seleniumPerNutrientBasis",
+      "@type": "@json"
+    },
+    "sellByDate": "https://ref.gs1.org/voc/sellByDate",
+    "servingSize": {
+      "@id": "https://ref.gs1.org/voc/servingSize",
+      "@type": "@json"
+    },
+    "servingSizeDescription": {
+      "@id": "https://ref.gs1.org/voc/servingSizeDescription",
+      "@container": "@language"
+    },
+    "servingSuggestion": {
+      "@id": "https://ref.gs1.org/voc/servingSuggestion",
+      "@container": "@language"
+    },
+    "sizeCode": {
+      "@id": "https://ref.gs1.org/voc/sizeCode",
+      "@type": "@json"
+    },
+    "sodiumPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/sodiumPerNutrientBasis",
+      "@type": "@json"
+    },
+    "sourceAnimal": {
+      "@id": "https://ref.gs1.org/voc/sourceAnimal",
+      "@type": "@vocab"
+    },
+    "starchPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/starchPerNutrientBasis",
+      "@type": "@json"
+    },
+    "sugarsPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/sugarsPerNutrientBasis",
+      "@type": "@json"
+    },
+    "supplierSpecifiedMinimumConsumerStorageDays": "https://ref.gs1.org/voc/supplierSpecifiedMinimumConsumerStorageDays",
+    "targetMarket": {
+      "@id": "https://ref.gs1.org/voc/targetMarket",
+      "@type": "@json"
+    },
+    "thiaminPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/thiaminPerNutrientBasis",
+      "@type": "@json"
+    },
+    "transFatPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/transFatPerNutrientBasis",
+      "@type": "@json"
+    },
+    "variantDescription": {
+      "@id": "https://ref.gs1.org/voc/variantDescription",
+      "@container": "@language"
+    },
+    "vitaminAPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/vitaminAPerNutrientBasis",
+      "@type": "@json"
+    },
+    "vitaminB12PerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/vitaminB12PerNutrientBasis",
+      "@type": "@json"
+    },
+    "vitaminB6PerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/vitaminB6PerNutrientBasis",
+      "@type": "@json"
+    },
+    "vitaminCPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/vitaminCPerNutrientBasis",
+      "@type": "@json"
+    },
+    "vitaminDPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/vitaminDPerNutrientBasis",
+      "@type": "@json"
+    },
+    "vitaminEPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/vitaminEPerNutrientBasis",
+      "@type": "@json"
+    },
+    "vitaminKPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/vitaminKPerNutrientBasis",
+      "@type": "@json"
+    },
+    "warningCopyDescription": {
+      "@id": "https://ref.gs1.org/voc/warningCopyDescription",
+      "@container": "@language"
+    },
+    "zincPerNutrientBasis": {
+      "@id": "https://ref.gs1.org/voc/zincPerNutrientBasis",
+      "@type": "@json"
+    },
+    "alcoholicBeverageSubregion": {
+      "@id": "https://ref.gs1.org/voc/alcoholicBeverageSubregion",
+      "@container": "@language"
+    },
+    "beverageVintage": "https://ref.gs1.org/voc/beverageVintage",
+    "isCarbonated": {
+      "@id": "https://ref.gs1.org/voc/isCarbonated",
+      "@type": "@vocab"
+    },
+    "isDecaffeinated": {
+      "@id": "https://ref.gs1.org/voc/isDecaffeinated",
+      "@type": "@vocab"
+    },
+    "isFromConcentrate": {
+      "@id": "https://ref.gs1.org/voc/isFromConcentrate",
+      "@type": "@vocab"
+    },
+    "isVintage": {
+      "@id": "https://ref.gs1.org/voc/isVintage",
+      "@type": "@vocab"
+    },
+    "percentageOfAlcoholByVolume": "https://ref.gs1.org/voc/percentageOfAlcoholByVolume",
+    "sweetnessLevelOfAlcoholicBeverage": {
+      "@id": "https://ref.gs1.org/voc/sweetnessLevelOfAlcoholicBeverage",
+      "@type": "@vocab"
+    },
+    "vintner": {
+      "@id": "https://ref.gs1.org/voc/vintner",
+      "@container": "@language"
+    },
+    "isPittedStoned": {
+      "@id": "https://ref.gs1.org/voc/isPittedStoned",
+      "@type": "@vocab"
+    },
+    "isSeedless": {
+      "@id": "https://ref.gs1.org/voc/isSeedless",
+      "@type": "@vocab"
+    },
+    "isShelledPeeled": {
+      "@id": "https://ref.gs1.org/voc/isShelledPeeled",
+      "@type": "@vocab"
+    },
+    "isWashedReadyToEat": {
+      "@id": "https://ref.gs1.org/voc/isWashedReadyToEat",
+      "@type": "@vocab"
+    },
+    "maturationMethod": {
+      "@id": "https://ref.gs1.org/voc/maturationMethod",
+      "@type": "@vocab"
+    },
+    "anatomicalForm": {
+      "@id": "https://ref.gs1.org/voc/anatomicalForm",
+      "@type": "@vocab"
+    },
+    "bonelessClaim": {
+      "@id": "https://ref.gs1.org/voc/bonelessClaim",
+      "@type": "@vocab"
+    },
+    "meatPoultryType": {
+      "@id": "https://ref.gs1.org/voc/meatPoultryType",
+      "@container": "@language"
+    },
+    "minimumMeatPoultryContent": {
+      "@id": "https://ref.gs1.org/voc/minimumMeatPoultryContent",
+      "@type": "@json"
+    },
+    "cheeseFirmness": {
+      "@id": "https://ref.gs1.org/voc/cheeseFirmness",
+      "@type": "@vocab"
+    },
+    "cheeseMaturationPeriodDescription": {
+      "@id": "https://ref.gs1.org/voc/cheeseMaturationPeriodDescription",
+      "@container": "@language"
+    },
+    "fatInMilkContent": "https://ref.gs1.org/voc/fatInMilkContent",
+    "fatpercentageInDryMatter": "https://ref.gs1.org/voc/fatpercentageInDryMatter",
+    "isHomogenised": {
+      "@id": "https://ref.gs1.org/voc/isHomogenised",
+      "@type": "@vocab"
+    },
+    "isRindEdible": {
+      "@id": "https://ref.gs1.org/voc/isRindEdible",
+      "@type": "@vocab"
+    },
+    "sharpnessOfCheese": {
+      "@id": "https://ref.gs1.org/voc/sharpnessOfCheese",
+      "@type": "@vocab"
+    },
+    "catchZone": {
+      "@id": "https://ref.gs1.org/voc/catchZone",
+      "@container": "@language"
+    },
+    "fishType": {
+      "@id": "https://ref.gs1.org/voc/fishType",
+      "@container": "@language"
+    },
+    "freshOrSeawaterFarmed": {
+      "@id": "https://ref.gs1.org/voc/freshOrSeawaterFarmed",
+      "@type": "@vocab"
+    },
+    "minimumFishContent": {
+      "@id": "https://ref.gs1.org/voc/minimumFishContent",
+      "@type": "@json"
+    }
+  }
+}

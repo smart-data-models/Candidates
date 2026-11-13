@@ -1,0 +1,119 @@
+title: "GS1 Web Vocabulary"
+publisher: "GS1 AISBL"
+sourceUrl: "https://github.com/gs1/WebVoc"
+specificationUrl: "https://ref.gs1.org/voc/"
+contact: "https://github.com/gs1/WebVoc/issues"
+sourceOntologyVersion: "1.18 (owl:versionInfo 1.18, dcterms:modified 2026-06-01); identical to the current https://ref.gs1.org/voc/data/gs1Voc.ttl"
+sourceOntologyDownload: "https://ref.gs1.org/voc/data/1.18.0/gs1Voc.ttl"
+sourceOntologyNamespace: "https://ref.gs1.org/voc/"
+sourceOntologyFormat: "RDF Schema / OWL vocabulary (Turtle and JSON-LD), extending schema.org"
+sourceExampleUrl: "https://world.openfoodfacts.org/product/3017620422003"
+sourceExampleLicense: "Open Database License (ODbL), Open Food Facts contributors"
+domains:
+  - SmartLogistics
+  - Agrifood
+  - CrossSector
+description: >
+  The GS1 Web Vocabulary is GS1's RDF vocabulary for publishing product,
+  organization, location and offer data on the web, linked to GS1
+  identifiers (GTIN, GLN) and GS1 Digital Link. It builds on schema.org and
+  covers the master data of GS1 standards (GDSN attributes): product
+  descriptions, net content and dimensions, packaging, allergens,
+  ingredients, nutrition, certifications, apparel and footwear attributes,
+  organizations and their roles, places, and offers with prices and
+  discounts. Version 1.18 has 120 classes, 557 properties and 63 code lists
+  with 1,861 members.
+license: "Apache-2.0"
+licenseNote: >
+  Confirmed via the repository LICENSE file and README ("The GS1 Web
+  vocabulary is released under an Apache 2.0 licence"), and the
+  schema:license statement in the vocabulary itself ("Copyright 2015-2019
+  GS1 AISBL. Licensed under the Apache License, Version 2.0", with GS1's IP
+  policy disclaimer). The FoodBeverageTobaccoProduct example uses one Open
+  Food Facts record (ODbL, attributed in `source`); the other examples are
+  synthetic.
+contributors:
+  - name: "Claude (sdm-translate skill)"
+    role: "automated translation from source vocabulary to SDM candidate artifacts"
+notes: |
+  Translated on 2026-11-13. Source row 21 of the "Level A standards not in
+  Smart Data Models" list (licence verified: Yes).
+
+  MODELS (6), named as the GS1 classes:
+    - Product                     gs1:Product (95 properties)
+    - FoodBeverageTobaccoProduct  gs1:FoodBeverageTobaccoProduct, with the
+                                  properties of Product and of its
+                                  subclasses Beverage, FruitsVegetables,
+                                  MeatPoultry,
+                                  MilkButterCreamYogurtCheeseEggsSubstitutes
+                                  and Seafood (201 non-deprecated properties)
+    - WearableProduct             gs1:WearableProduct, with Product's and
+                                  those of Clothing and Footwear (116)
+    - Organization                gs1:Organization (31)
+    - Place                       gs1:Place (24)
+    - Offer                       gs1:Offer (13; Discount is nested in
+                                  offerDiscount)
+  The leaf product subclasses are folded into their parent model; a
+  `gs1Class` attribute (Smart Data Models term standing for rdf:type) says
+  which GS1 class the product belongs to, and each folded property says
+  which subclass defines it. All other GS1 classes ("...Details",
+  QuantitativeValue, PriceSpecification, Brand, Country, Discount, ...)
+  are nested objects with their full GS1 structure.
+
+  NAMING: every attribute is the GS1 property's local name, verbatim,
+  except one: Organization's `location` (range Place) is renamed
+  `gs1Location`, because `location` is reserved in NGSI-LD for the
+  GeoProperty. Organization is a generic type name that already exists in
+  dataModel.Organization, dataModel.Hl7 and four candidates; Product
+  exists in the untp-v0.8.0 candidate.
+
+  MAPPING:
+    - Properties whose range is Product, Organization, Place or Offer are
+      Relationships (e.g. brandOwner, manufacturer, itemOffered, seller,
+      availableAtOrFrom, occupiedBy, hasPrimaryLocation).
+    - rdf:langString properties (productName, productDescription,
+      organizationLegalName, physicalLocationName, ...) are language maps
+      ("@container": "@language").
+    - Code-list properties take GS1 code-list members as compact IRIs
+      (e.g. gs1:AllergenTypeCode-AM, gs1:OrganizationRoleType-RETAILER),
+      with "@type": "@vocab" and the gs1 prefix in the context, so they
+      expand to the GS1 IRIs. Each code list (55 are used) is an enum in
+      the schema's $defs; deprecated codes (owl:deprecated) are left out.
+    - Nested classes are defined once in $defs and are "@type": "@json"
+      in the contexts.
+    - Cardinality: properties that GS1 declares owl:FunctionalProperty
+      take one value; the others (relationships, codes, nested objects)
+      accept one value or an array.
+    - Deprecated properties are left out.
+  NON-GS1 ADDITIONS: gs1Class (above) and `location` on Place (GeoJSON
+  Point built from the GS1 geo latitude/longitude) for NGSI-LD geo-queries.
+
+  SOURCE NOTES: several date properties (bestBeforeDate, expirationDate,
+  productionDate, sellByDate, ...) are declared owl:ObjectProperty with an
+  xsd:date range; they are treated here as dates. Some Discount properties
+  with a PriceSpecification range are declared owl:DatatypeProperty; they
+  are treated as nested objects.
+
+  EXAMPLES:
+    - FoodBeverageTobaccoProduct is REAL: Open Food Facts product
+      3017620422003 (Nutella, 400 g), ODbL. Only label facts are used:
+      names, brand, net content, allergens (milk, tree nuts, soy:
+      gs1:AllergenTypeCode-AM/AN/AY, CONTAINS), nutrition per 100 g
+      (energy 2252 kJ / 539 kcal, fat 30.9 g, saturated fat 10.6 g,
+      carbohydrates 57.5 g, sugars 56.3 g, protein 6.3 g, salt 0.107 g),
+      and the countries where Open Food Facts records it as sold (BE, DE,
+      FR, LU), used as target market. Its ingredient list in Open Food
+      Facts is incomplete, so it is not used. Units are UN/ECE Rec. 20
+      codes (GRM, KJO, E14), as GS1 uses.
+    - Organization, Place and Offer are SYNTHETIC and describe a
+      fictitious retailer, its city-centre store and its offer of that
+      product; Product (a cordless drill) and WearableProduct (a trail
+      running shoe, gs1Class Footwear) are synthetic too. All their GTINs
+      and GLNs use the GS1 prefix 950, which GS1 reserves for
+      demonstrations, with valid check digits. Each example says so in
+      `source`.
+
+  DUPLICATION RISK: Smart Data Models has no retail product subject.
+  dataModel.Organization overlaps with Organization; the untp-v0.8.0
+  candidate has a Product model (UNTP Digital Product Passport) that could
+  reference GS1 products by GTIN. Check these before promotion.

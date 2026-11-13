@@ -1,0 +1,681 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/gs1-web-vocabulary/models/Place/schema.json",
+  "modelTags": "GS1,GS1WebVocabulary,Retail,ProductData",
+  "title": "Smart Data Models - GS1 Web Vocabulary - Place",
+  "description": "Entities that have a somewhat fixed, physical location. (GS1 Web Vocabulary 1.18 class gs1:Place. Property names verbatim.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Place"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Place'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "additionalLocationID": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/LocationID_Details"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LocationID_Details"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/additionalLocationID'. Location identifiers assigned and managed by government bodies, trade organisations, and other entities."
+    },
+    "baseLocation": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/baseLocation'. A fixed physical location where a mobile location most commonly resides. If gs1:glnType is present, gs1:baseLocationGLN SHALL only be used when gs1:glnType is gs1:GLN_TypeCode-MOBILE_PHYSICAL_LOCATION Points to Place entities."
+    },
+    "containedInPlace": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/containedInPlace'. Designates the larger physical location a sub-location is located within. To specify sub-locations of a physical location, see gs1:containsPlace. Points to Place entities."
+    },
+    "containsPlace": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/containsPlace'. Designates a sub-location (e.g., floor, room, shelf) within the physical location being identified. There may be multiple sub-locations associated to a single, physical location. To specify the larger physical location the sub-location is located within, see gs1:containedInPlace Points to Place entities."
+    },
+    "digitalAddress": {
+      "type": "string",
+      "description": "Property. Model:'https://ref.gs1.org/voc/digitalAddress'. The location reference associated to a digital place. If gs1:glnType is present, SHALL only be associated if the value of gs1:glnType is gs1:GLN_TypeCode-DIGITAL_LOCATION."
+    },
+    "digitalLocationName": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/digitalLocationName'. The name of a digital place. To specify the name of a physical location, see gs1:physicalLocationName."
+    },
+    "geo": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/GeoCoordinatesOrGeoShape"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/GeoCoordinatesOrGeoShape"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/geo'. Links to information about geocoordinates or geoshapes for a place."
+    },
+    "leasedFrom": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/leasedFrom'. Links to the organisation (lessor) from which this place is leased. Points to Organization entities."
+    },
+    "leasedTo": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/leasedTo'. Links to the organisation(s) (lessee(s)) to which this place is leased. Property SHOULD be applied to a specific sub-location, rather than a main location, wherever possible. Points to Organization entities."
+    },
+    "locationDescription": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/locationDescription'. The description of a place."
+    },
+    "locationFinalClosureDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://ref.gs1.org/voc/locationFinalClosureDate'. Date in which a location was finally closed. Note that this is NOT the date when a GLN was deactivated. To designate when location opened, see gs1:locationOpeningDate."
+    },
+    "locationGLN": {
+      "type": "string",
+      "description": "Property. Model:'https://ref.gs1.org/voc/locationGLN'. 13-digit GLN that is being used to identify a physical or digital location. If gs1:glnType is present, gs1:locationGLN SHALL only be used when gs1:GLN_TypeCode includes FIXED_PHYSICAL_LOCATION, MOBILE_PHYSICAL_LOCATION, or DIGITAL_LOCATION"
+    },
+    "locationHistory": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/LocationStatusHistory"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LocationStatusHistory"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/locationHistory'. Provides details on if and when a location is active or inactive."
+    },
+    "locationOpeningDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Property. Model:'https://ref.gs1.org/voc/locationOpeningDate'. Date in which a location was opened or otherwise established. Note that this is NOT the date when a GLN was allocated to identify the location. To designate when location was finally closed, see gs1: gs1:locationFinalClosureDate"
+    },
+    "locationRole": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/LocationRoleType"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LocationRoleType"
+          }
+        }
+      ],
+      "description": "Property. Model:'https://ref.gs1.org/voc/locationRole'. A location classification based on the purpose, type of site and/or what occurs there. Repeatable value from gs1:LocationRoleType code list. Values are GS1 code-list members as compact IRIs (gs1:<Code>); deprecated codes are left out."
+    },
+    "managedFor": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/managedFor'. Links to the organisation(s) for whom this place is managed. Property SHOULD be applied to a specific sub-location, rather than a main location, wherever possible. Points to Organization entities."
+    },
+    "occupiedBy": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/occupiedBy'. Links to the organisation(s) that occupy this place. Property SHOULD be applied to a specific sub-location, rather than a main location, wherever possible. Points to Organization entities."
+    },
+    "physicalLocationName": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "description": "Property. Model:'https://ref.gs1.org/voc/physicalLocationName'. The name of a physical place. To specify the name of a digital location, see gs1:digitalLocationName."
+    },
+    "primaryLocationOf": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/primaryLocationOf'. Links to the organisation(s) that designate this place as its/their primary location. Property SHOULD be applied to a specific sub-location, rather than a main location, wherever possible. Points to Organization entities."
+    },
+    "relatedOrganization": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/relatedOrganization'. The organisation(s) associated with a place. Points to Organization entities."
+    },
+    "replacedByPlace": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/replacedByPlace'. Links to the successor location that is used in place of a previous location Points to Place entities."
+    },
+    "replacedPlace": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/replacedPlace'. Links to the previous location that this location replaces Points to Place entities."
+    },
+    "responsibleOrganization": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "Relationship. Model:'https://ref.gs1.org/voc/responsibleOrganization'. Links to the organisation that is directly responsible for this place. Points to Organization entities."
+    },
+    "siteAccessRequirements": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://ref.gs1.org/voc/siteAccessRequirements'. A URI value linking to information related to requirements for accessing or visiting a place."
+    },
+    "location": {
+      "type": "object",
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "GeoProperty. Geojson reference to the item. Not a GS1 property (Smart Data Models addition): GeoJSON Point built from the GS1 geo (GeoCoordinates latitude/longitude) so that NGSI-LD geo-queries work."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ],
+  "$defs": {
+    "GeoCoordinatesOrGeoShape": {
+      "type": "object",
+      "description": "GS1 GeoCoordinates or GeoShape.",
+      "properties": {
+        "coordinateReferenceSystem": {
+          "type": "string",
+          "format": "uri",
+          "description": "Open standard spatial reference systems or coordinate reference systems that provide coordinate-based local, regional or global system used to locate geographical entities. Values should be URIs already defined by the IOPG Geomatics Committee (https://epsg.org/), such as https://epsg.io/4326 (WGS84); https://epsg.io/4267 (NAD27); https://epsg.io/4230 (ED50); https://epsg.io/4618 (SAD69); https://epsg.io/4269 (NAD83). For elevation values, gs1:elevation SHALL be used."
+        },
+        "elevation": {
+          "type": "string",
+          "description": "The elevation of a location (WGS 84). Values may be of the form 'NUMBER UNITOFMEASUREMENT' (e.g., '1,000 m', '3,200 ft') while numbers alone SHALL be a value in meters."
+        },
+        "latitude": {
+          "type": "string",
+          "description": "Angular distance North or South from the earth's equator measured through 90 degrees."
+        },
+        "longitude": {
+          "type": "string",
+          "description": "The arc or portion of the earth's equator intersected between the meridian of a given place and the prime meridian and expressed in degrees"
+        },
+        "circle": {
+          "type": "string",
+          "description": "A circle is the circular region of a specified radius centred at a specified latitude and longitude. A circle is expressed as a pair followed by a radius in meters."
+        },
+        "line": {
+          "type": "string",
+          "description": "A line is a point-to-point path consisting of two or more point objects separated by a space. A single line segment (i.e., straight line) is expressed as two points. A multi-line path (i.e., open polygon) is expressed as a series of three or more points. For a closed shape, gs1:polygon SHALL be used."
+        },
+        "polygon": {
+          "type": "string",
+          "description": "A polygon is the area enclosed by a point-to-point path for which the starting and ending points are the same. A polygon is expressed as a series of four or more space delimited points where the first and final points are identical."
+        }
+      }
+    },
+    "LocationID_Details": {
+      "type": "object",
+      "description": "GS1 LocationID_Details.",
+      "properties": {
+        "locationID": {
+          "type": "string",
+          "description": "Identifier value associated to a location. This value SHALL follow rules set forth by the administrating organisation designated in gs1:LocationID_Type."
+        },
+        "locationID_Qualifier": {
+          "type": "string",
+          "description": "Secondary qualifier to supplement gs1:LocationID_Type meaning. May be used with proprietary ID code values to define identifier administrator."
+        },
+        "locationID_Type": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LocationID_Type"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/LocationID_Type"
+              }
+            }
+          ],
+          "description": "Organisation that administers the gs1:locationID or the name of the ID itself. Value from gs1:LocationID_Type code list."
+        },
+        "locationID_URI": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI that links to information about the gs1:locationID."
+        }
+      }
+    },
+    "LocationID_Type": {
+      "type": "string",
+      "enum": [
+        "gs1:LocationID_Type-BE_KBO_NUMBER",
+        "gs1:LocationID_Type-BIC_FACILITY",
+        "gs1:LocationID_Type-CRD_LOCATION_CODE",
+        "gs1:LocationID_Type-ENI_NUMBER",
+        "gs1:LocationID_Type-FR_SIRET",
+        "gs1:LocationID_Type-IATA_CODE",
+        "gs1:LocationID_Type-IMO_NUMBER",
+        "gs1:LocationID_Type-ISPS_CODE",
+        "gs1:LocationID_Type-ISRS_LOCATION_CODE",
+        "gs1:LocationID_Type-LOCATION_FOR_INTERNAL_USE_1",
+        "gs1:LocationID_Type-LOCATION_FOR_INTERNAL_USE_10",
+        "gs1:LocationID_Type-LOCATION_FOR_INTERNAL_USE_2",
+        "gs1:LocationID_Type-LOCATION_FOR_INTERNAL_USE_3",
+        "gs1:LocationID_Type-LOCATION_FOR_INTERNAL_USE_4",
+        "gs1:LocationID_Type-LOCATION_FOR_INTERNAL_USE_5",
+        "gs1:LocationID_Type-LOCATION_FOR_INTERNAL_USE_6",
+        "gs1:LocationID_Type-LOCATION_FOR_INTERNAL_USE_7",
+        "gs1:LocationID_Type-LOCATION_FOR_INTERNAL_USE_8",
+        "gs1:LocationID_Type-LOCATION_FOR_INTERNAL_USE_9",
+        "gs1:LocationID_Type-MMSI_NUMBER",
+        "gs1:LocationID_Type-NL_KVK_ESTABLISHMENT_UNIT_NUMBER",
+        "gs1:LocationID_Type-OPEN_LOCATION_CODE",
+        "gs1:LocationID_Type-OS_ID",
+        "gs1:LocationID_Type-SE_CFAR_NUMBER",
+        "gs1:LocationID_Type-SMDG_CODE",
+        "gs1:LocationID_Type-UN_LOCODE",
+        "gs1:LocationID_Type-US_CIF_CODE",
+        "gs1:LocationID_Type-US_EST_NUMBER",
+        "gs1:LocationID_Type-US_FEI",
+        "gs1:LocationID_Type-US_HIN_IDENTIFICATION",
+        "gs1:LocationID_Type-US_MINE_ID",
+        "gs1:LocationID_Type-US_TCN_CODE"
+      ],
+      "description": "GS1 code list LocationID_Type: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "LocationRoleType": {
+      "type": "string",
+      "enum": [
+        "gs1:LocationRoleType-AGED_CARE_SERVICE",
+        "gs1:LocationRoleType-AIRCRAFT",
+        "gs1:LocationRoleType-AIRPORT",
+        "gs1:LocationRoleType-AIRPORT_GATE",
+        "gs1:LocationRoleType-AMBIENT_STORAGE",
+        "gs1:LocationRoleType-AMBULANCE_SERVICE",
+        "gs1:LocationRoleType-AMUSEMENT_ENTERTAINMENT_GAMING",
+        "gs1:LocationRoleType-ASSEMBLY",
+        "gs1:LocationRoleType-ATM",
+        "gs1:LocationRoleType-BACKROOM",
+        "gs1:LocationRoleType-BANK",
+        "gs1:LocationRoleType-BERTH",
+        "gs1:LocationRoleType-BIRTH_AREA",
+        "gs1:LocationRoleType-BOAT",
+        "gs1:LocationRoleType-BOTTLING_SITE",
+        "gs1:LocationRoleType-BOX_CRUSHER",
+        "gs1:LocationRoleType-BRANCH_LOCATION",
+        "gs1:LocationRoleType-CASH_CARRY_STORE",
+        "gs1:LocationRoleType-CITY_CENTER_SHOP",
+        "gs1:LocationRoleType-CLINIC",
+        "gs1:LocationRoleType-CLINICAL_TRIAL_SITE",
+        "gs1:LocationRoleType-COLLECTION_CENTER",
+        "gs1:LocationRoleType-CONSOLIDATING_CENTER",
+        "gs1:LocationRoleType-CONSTRUCTION_SITE",
+        "gs1:LocationRoleType-CONTAINER_DECK",
+        "gs1:LocationRoleType-CONTROLLED_SUBSTANCE_AREA",
+        "gs1:LocationRoleType-CONVENIENCE_STORE",
+        "gs1:LocationRoleType-CONVEYOR_BELT",
+        "gs1:LocationRoleType-CORRECTION_FACILITY",
+        "gs1:LocationRoleType-CUSTOMER_PICK-UP_AREA",
+        "gs1:LocationRoleType-CUSTOMS_BORDER_CONTROL",
+        "gs1:LocationRoleType-DENTAL_HEALTH_SERVICE",
+        "gs1:LocationRoleType-DEPOT",
+        "gs1:LocationRoleType-DISPENSER",
+        "gs1:LocationRoleType-DISTRIBUTION_CENTER",
+        "gs1:LocationRoleType-DOCK",
+        "gs1:LocationRoleType-DOCTOR_OFFICE",
+        "gs1:LocationRoleType-DRUG_STORE",
+        "gs1:LocationRoleType-DUTY_FREE_STORE",
+        "gs1:LocationRoleType-EARLY_CHILDHOOD_EDUCATING_AND_CENTER",
+        "gs1:LocationRoleType-EDI_STATION",
+        "gs1:LocationRoleType-EDUCATION_FACILITY",
+        "gs1:LocationRoleType-ELECTRONICS_AREA",
+        "gs1:LocationRoleType-EMERGENCY_DEPARTMENT_AREA",
+        "gs1:LocationRoleType-END_CAP_AREA",
+        "gs1:LocationRoleType-ENTRANCE_GATE",
+        "gs1:LocationRoleType-EXIT_GATE",
+        "gs1:LocationRoleType-FARM",
+        "gs1:LocationRoleType-FEEDLOT_SITE",
+        "gs1:LocationRoleType-FIELD",
+        "gs1:LocationRoleType-FIXED_READER",
+        "gs1:LocationRoleType-FIXED_TRANSPORT_FACILITIES",
+        "gs1:LocationRoleType-FOOD_BUSINESS",
+        "gs1:LocationRoleType-FREIGHT_HUB",
+        "gs1:LocationRoleType-FREIGHT_TERMINAL",
+        "gs1:LocationRoleType-GARDEN_CENTER",
+        "gs1:LocationRoleType-GATE",
+        "gs1:LocationRoleType-GENERAL_MDSE_AREA",
+        "gs1:LocationRoleType-GOVERNMENT_DEPARTMENT_AGENCY",
+        "gs1:LocationRoleType-GREENHOUSE",
+        "gs1:LocationRoleType-GROCERY",
+        "gs1:LocationRoleType-HANDLING_AREA",
+        "gs1:LocationRoleType-HEAD_OFFICE",
+        "gs1:LocationRoleType-HOSPITAL",
+        "gs1:LocationRoleType-HOSPITAL_CAFETERIA",
+        "gs1:LocationRoleType-HOSPITAL_DEPARTMENT",
+        "gs1:LocationRoleType-HOSPITAL_PHARMACY",
+        "gs1:LocationRoleType-IMAGING_DIAGNOSTICS_AREA",
+        "gs1:LocationRoleType-IMPREST_LOCATION",
+        "gs1:LocationRoleType-INLAND_FISHERY",
+        "gs1:LocationRoleType-INLAND_PORT",
+        "gs1:LocationRoleType-INTERMODAL_TERMINAL",
+        "gs1:LocationRoleType-INTERNATIONAL_MAIL_PROCESSING_CENTER",
+        "gs1:LocationRoleType-LANE_OR_ROUTE",
+        "gs1:LocationRoleType-LAY-AWAY",
+        "gs1:LocationRoleType-LIBRARY",
+        "gs1:LocationRoleType-MAIN_RECEPTION",
+        "gs1:LocationRoleType-MANUFACTURING_PLANT",
+        "gs1:LocationRoleType-MARINE_FISHERY",
+        "gs1:LocationRoleType-MARKET",
+        "gs1:LocationRoleType-MENTAL_HEALTH_SERVICE",
+        "gs1:LocationRoleType-MILKING_SITE",
+        "gs1:LocationRoleType-MOBILE_READER",
+        "gs1:LocationRoleType-NURSE_STATION",
+        "gs1:LocationRoleType-OFFICE",
+        "gs1:LocationRoleType-ONLINE_PLATFORM",
+        "gs1:LocationRoleType-ONLINE_SHOP",
+        "gs1:LocationRoleType-OPERATING_THEATER",
+        "gs1:LocationRoleType-PACKAGING_AREA",
+        "gs1:LocationRoleType-PACKHOUSE",
+        "gs1:LocationRoleType-PALLET_WRAPPER",
+        "gs1:LocationRoleType-PATHOLOGY",
+        "gs1:LocationRoleType-PERSONAL_SERVICES",
+        "gs1:LocationRoleType-PETROL_STATION",
+        "gs1:LocationRoleType-PICK-UP_LOCATION",
+        "gs1:LocationRoleType-PICKING_AREA",
+        "gs1:LocationRoleType-POINT_OF_SALE",
+        "gs1:LocationRoleType-PRIMARY_HEALTH_SERVICE",
+        "gs1:LocationRoleType-PRINTING_ROOM",
+        "gs1:LocationRoleType-PRODUCTION_AREA",
+        "gs1:LocationRoleType-PRODUCTION_LINE",
+        "gs1:LocationRoleType-PROMOTION_AREA",
+        "gs1:LocationRoleType-PUBLIC_WAREHOUSE",
+        "gs1:LocationRoleType-QUALITY_CONTROL",
+        "gs1:LocationRoleType-QUARANTINE",
+        "gs1:LocationRoleType-RAIL_STATION",
+        "gs1:LocationRoleType-RAIL_TERMINAL",
+        "gs1:LocationRoleType-READ_POINT_VERIFICATION_SPOT",
+        "gs1:LocationRoleType-REARING_AREA",
+        "gs1:LocationRoleType-RECALLED_PRODUCT_AREA",
+        "gs1:LocationRoleType-RECEIVING_AREA",
+        "gs1:LocationRoleType-RECEIVING_LOCATION",
+        "gs1:LocationRoleType-REPACKING_FACILITY",
+        "gs1:LocationRoleType-RESEARCH_FACILITY",
+        "gs1:LocationRoleType-RESIDENCE",
+        "gs1:LocationRoleType-RETAIL_PHARMACY",
+        "gs1:LocationRoleType-RETURNABLE_ASSET_SERVICE_CENTER",
+        "gs1:LocationRoleType-RETURNS_AREA",
+        "gs1:LocationRoleType-ROAD_TERMINAL",
+        "gs1:LocationRoleType-SALES_FLOOR",
+        "gs1:LocationRoleType-SALES_FLOOR_TRANSITION_AREA",
+        "gs1:LocationRoleType-SALES_YARD",
+        "gs1:LocationRoleType-SEAPORT",
+        "gs1:LocationRoleType-SECURITY_AREA",
+        "gs1:LocationRoleType-SELF_SERVICE",
+        "gs1:LocationRoleType-SERVICE_COUNTER",
+        "gs1:LocationRoleType-SHELF",
+        "gs1:LocationRoleType-SHIPPING_AREA",
+        "gs1:LocationRoleType-SHIP_FROM_LOCATION",
+        "gs1:LocationRoleType-SHIP_TO_LOCATION",
+        "gs1:LocationRoleType-SILO",
+        "gs1:LocationRoleType-SLAUGHTER_HOUSE",
+        "gs1:LocationRoleType-SPORTS_AND_RECERATIONAL",
+        "gs1:LocationRoleType-STAGING_AREA",
+        "gs1:LocationRoleType-STATION",
+        "gs1:LocationRoleType-STORAGE_AREA",
+        "gs1:LocationRoleType-STORE",
+        "gs1:LocationRoleType-TERMINAL",
+        "gs1:LocationRoleType-TRADE_ITEM_RETURN_LOCATION",
+        "gs1:LocationRoleType-TRAIN",
+        "gs1:LocationRoleType-VENDING",
+        "gs1:LocationRoleType-VENDOR_LEASED_SPACE",
+        "gs1:LocationRoleType-VINEYARD",
+        "gs1:LocationRoleType-VISITING_ADDRESS",
+        "gs1:LocationRoleType-WARD",
+        "gs1:LocationRoleType-WAREHOUSE",
+        "gs1:LocationRoleType-WASTE_CENTER",
+        "gs1:LocationRoleType-WHARF",
+        "gs1:LocationRoleType-YARD"
+      ],
+      "description": "GS1 code list LocationRoleType: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    },
+    "LocationStatusHistory": {
+      "type": "object",
+      "description": "GS1 LocationStatusHistory.",
+      "properties": {
+        "locationStatus": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/StatusType"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/StatusType"
+              }
+            }
+          ],
+          "description": "Designation of active/inactive status of a location."
+        }
+      }
+    },
+    "StatusType": {
+      "type": "string",
+      "enum": [
+        "gs1:StatusType-ACTIVE",
+        "gs1:StatusType-INACTIVE"
+      ],
+      "description": "GS1 code list StatusType: members as compact IRIs gs1:<Code> (deprecated codes left out)."
+    }
+  }
+}
