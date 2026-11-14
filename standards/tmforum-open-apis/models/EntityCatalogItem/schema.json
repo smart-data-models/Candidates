@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/EntityCatalogItem/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - EntityCatalogItem",
+  "description": "An EntityCatalogItem is an entity that allows any ProductOffering, ServiceCandidate, ResourceCandidate, or even any object inheriting from RootEntity, to be available to a catalog. The CatalogSpecification and Policy of the catalog governs the content of the EntityCatalogItem. This API addresses only EntitySpecification items extended from RootEntity as EntityCatalogItem. The EntityCatalogItem resource (JSON format) represents a set of characteristics that define the values given by the EntityCatalogItem. (TM Forum TMF662 Entity Catalog Management 4.0.0, Swagger definition EntityCatalogItem; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:EntityCatalogItem:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "EntityCatalogItem"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'EntityCatalogItem'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/EntityCatalogItem/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:EntityCatalogItem:<tmfId>. unique identifier"
+    },
+    "href": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/EntityCatalogItem/properties/href'. Hyperlink reference"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/EntityCatalogItem/properties/description'. Description of this REST resource"
+    },
+    "lastUpdate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/EntityCatalogItem/properties/lastUpdate'. Date and time of the last update of this REST resource"
+    },
+    "lifecycleStatus": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/EntityCatalogItem/properties/lifecycleStatus'. Used to indicate the current lifecycle status of this catalog item"
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/EntityCatalogItem/properties/name'. Name given to this REST resource"
+    },
+    "version": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/EntityCatalogItem/properties/version'. EntityCatalogItem version"
+    },
+    "category": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/EntityCatalogItem/properties/category'. Reference to Entity Category object. The (entity) category resource is used to group entity catalog items in logical containers. Categories can contain other categories. Resource IDs for categories are strings and are defined by the catalog application. In TMF this is an array of EntityCategoryRef objects; here the NGSI-LD ids of the referenced EntityCategory entities (urn:ngsi-ld:EntityCategory:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "specification": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/EntityCatalogItem/properties/specification'. The specification implied by this candidate. In TMF this is a EntitySpecificationRef object; here the NGSI-LD id of the referenced EntitySpecification entity (urn:ngsi-ld:EntitySpecification:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "validFor": {
+      "$ref": "#/$defs/TimePeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/EntityCatalogItem/properties/validFor'. The period for which this REST resource is valid"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/EntityCatalogItem/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/EntityCatalogItem/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/EntityCatalogItem/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'EntityCatalogItem' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ],
+  "$defs": {
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "endDateTime": {
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ],
+          "type": "string",
+          "format": "date-time",
+          "description": "End of the time period, using IETC-RFC-3339 format"
+        },
+        "startDateTime": {
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ],
+          "type": "string",
+          "format": "date-time",
+          "description": "Start of the time period, using IETC-RFC-3339 format"
+        }
+      }
+    }
+  }
+}

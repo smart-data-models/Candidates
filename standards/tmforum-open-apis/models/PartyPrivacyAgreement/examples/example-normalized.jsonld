@@ -1,0 +1,174 @@
+{
+  "id": "urn:ngsi-ld:PartyPrivacyAgreement:6810",
+  "type": "PartyPrivacyAgreement",
+  "tmfId": {
+    "type": "Property",
+    "value": "6810"
+  },
+  "tmfType": {
+    "type": "Property",
+    "value": "PartyPrivacyAgreement"
+  },
+  "agreementType": {
+    "type": "Property",
+    "value": "commercial"
+  },
+  "description": {
+    "type": "Property",
+    "value": "This agreements is between the individual user annd the service provider ..."
+  },
+  "relatedDocument": {
+    "type": "Property",
+    "value": [
+      {
+        "@type": "RelatedDocumentRefOrValue",
+        "role": "string",
+        "document": {
+          "@type": "DocumentRef",
+          "@referredType": "Document",
+          "href": "http://serverlocation:port/document/v5/document/1999",
+          "id": "1999",
+          "name": "Agreeemnt document"
+        }
+      }
+    ]
+  },
+  "initialDate": {
+    "type": "Property",
+    "value": "2019-08-06T09:56:38.679Z"
+  },
+  "name": {
+    "type": "Property",
+    "value": "Customer mass market privacy agreement"
+  },
+  "statementOfIntent": {
+    "type": "Property",
+    "value": "Agreement on customer mass market privacy profile"
+  },
+  "status": {
+    "type": "Property",
+    "value": "initialized"
+  },
+  "version": {
+    "type": "Property",
+    "value": "1"
+  },
+  "agreementItem": {
+    "type": "Property",
+    "value": [
+      {
+        "id": "6810_988",
+        "@type": "ProductAgreementItem",
+        "productOffering": [
+          {
+            "id": "9559",
+            "href": "https://host:port/productCatalog/v5/productOffering/bundledProductOffering/7120",
+            "name": "Magic Offer",
+            "@type": "ProductOfferingRef"
+          }
+        ],
+        "termOrCondition": [
+          {
+            "id": "8905",
+            "description": "This agreement term or condition",
+            "validFor": {
+              "endDateTime": "2019-09-06T09:56:38.679Z",
+              "startDateTime": "2020-09-06T09:56:38.679Z"
+            },
+            "@type": "AgreementTermOrCondition"
+          }
+        ]
+      }
+    ]
+  },
+  "agreementPeriod": {
+    "type": "Property",
+    "value": {
+      "endDateTime": "2020-09-06T09:56:38.679Z",
+      "startDateTime": "2019-09-06T09:56:38.679Z"
+    }
+  },
+  "agreementSpecification": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:AgreementSpecification:8139"
+  },
+  "agreementRelationship": {
+    "type": "Property",
+    "value": [
+      {
+        "@type": "AgreementRelationship",
+        "id": "987654",
+        "href": "http://serverlocation:port/privacyManagement/v5/partyPrivacyAgreement/987654",
+        "name": "General Privacy Agreement",
+        "relationshipType": "addendum "
+      }
+    ]
+  },
+  "relatedParty": {
+    "type": "Property",
+    "value": [
+      {
+        "role": "customer agent",
+        "@type": "PartyRefOrPartyRoleRef",
+        "partyOrPartyRole": {
+          "id": "5467",
+          "href": "http://serverlocation:port/partyManagement/v5/individual/5467",
+          "@type": "PartyRef",
+          "@referredType": "Individual"
+        }
+      }
+    ]
+  },
+  "engagedParty": {
+    "type": "Property",
+    "value": [
+      {
+        "id": "5467",
+        "href": "http://serverLocation:port/partyManagement/v5/individual/5467",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      }
+    ]
+  },
+  "partyPrivacyProfile": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:PartyPrivacyProfile:103"
+    ]
+  },
+  "partyPrivacyProfileCharacteristic": {
+    "type": "Property",
+    "value": [
+      {
+        "@type": "partyPrivacyProfileCharacteristic",
+        "characterisitc": {
+          "id": "43",
+          "name": "emailAddress",
+          "valueType": "string",
+          "value": "Yes",
+          "@type": "StringCharacteristic"
+        },
+        "privacyUsagePurpose": "INFORMATION",
+        "relatedParty": [
+          {
+            "role": "Vendor",
+            "@type": "PartyRefOrPartyRoleRef",
+            "partyOrPartyRole": {
+              "id": "8632",
+              "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/8632",
+              "@type": "PartyRef",
+              "@referredType": "Individual"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "source": {
+    "type": "Property",
+    "value": "Adapted from the example payload 'PartyPrivacyAgreement_retrieve_example_response' of the TMF644 Privacy 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+  },
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PartyPrivacyAgreement/context.jsonld"
+  ]
+}

@@ -1,0 +1,1644 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Quote/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - Quote",
+  "description": "Quote can be used to negotiate service and product acquisition or modification between a customer and a service provider. Quote contain list of quote items, a reference to customer (partyRole), a list of productOffering and attached prices and conditions. (TM Forum TMF648 Quote 4.0.0, Swagger definition Quote; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Quote:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Quote"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Quote'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:Quote:<tmfId>. Unique identifier - attributed by quoting system"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/href'. Hyperlink to access the quote"
+    },
+    "category": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/category'. Used to categorize the quote from a business perspective that can be useful for the CRM system (e.g. \"enterprise\", \"residential\", ...)"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/description'. Description of the quote"
+    },
+    "effectiveQuoteCompletionDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/effectiveQuoteCompletionDate'. Date when the quote has been completed"
+    },
+    "expectedFulfillmentStartDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/expectedFulfillmentStartDate'. this is the date wished by the requester to have the requested quote item delivered"
+    },
+    "expectedQuoteCompletionDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/expectedQuoteCompletionDate'. This is expected date - from quote supplier - to be able to send back a response for this quote"
+    },
+    "externalId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/externalId'. ID given by the consumer and only understandable by him (to facilitate his searches afterwards)"
+    },
+    "instantSyncQuote": {
+      "type": "boolean",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/instantSyncQuote'. An indicator which when the value is \"true\" means that requester expects to get quoting result immediately in the response. If the indicator is true then the response code of 200 indicates the operation is successful otherwise a task is created with a response 201."
+    },
+    "quoteDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/quoteDate'. Date and time when the quote was created"
+    },
+    "requestedQuoteCompletionDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/requestedQuoteCompletionDate'. This is requested date - from quote requester - to get a complete response for this quote"
+    },
+    "version": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/version'. Quote version - if the customer rejected the quote but negotiations still open a new version of the quote is managed"
+    },
+    "agreement": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/agreement'. A reference to an agreement defining the context of the quote. In TMF this is an array of AgreementRef objects; here the NGSI-LD ids of the referenced Agreement entities (urn:ngsi-ld:Agreement:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "authorization": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Authorization"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/authorization'. An authorization provided for the quote"
+    },
+    "billingAccount": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/billingAccount'. A reference to a billing account to provide quote context information. In TMF this is an array of BillingAccountRef objects; here the NGSI-LD ids of the referenced BillingAccount entities (urn:ngsi-ld:BillingAccount:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "contactMedium": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ContactMedium"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/contactMedium'. Information contact related to the quote requester"
+    },
+    "note": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Note"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/note'. Free form text associated with the quote"
+    },
+    "productOfferingQualification": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ProductOfferingQualificationRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/productOfferingQualification'. A reference to a previously done product offering qualification"
+    },
+    "quoteItem": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/QuoteItem"
+      },
+      "minItems": 1,
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/quoteItem'. An item of the quote - it is used to descirbe an operation on a product to be quoted"
+    },
+    "quoteTotalPrice": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/QuotePrice"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/quoteTotalPrice'. Quote total price"
+    },
+    "relatedParty": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedParty"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/relatedParty'. A reference to a party playing a role in this quote (customer, seller, requester, etc.)"
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "rejected",
+        "pending",
+        "inProgress",
+        "cancelled",
+        "approved",
+        "accepted"
+      ],
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/state'. State of the quote : described in the state-machine diagram"
+    },
+    "validFor": {
+      "$ref": "#/$defs/TimePeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/validFor'. Quote validity period"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF648_QuoteManagement/blob/v4.0.0/TMF648-Quote-v4.0.0.swagger.json#/definitions/Quote/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'Quote' or a sub-class / extension name. When sub-classing, this defines the sub-class entity name"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "quoteItem"
+  ],
+  "$defs": {
+    "AgreementItemRef": {
+      "type": "object",
+      "description": "Agreement reference. An agreement represents a contract or arrangement, either written or verbal and sometimes enforceable by law, such as a service level agreement or a customer price agreement. An agreement involves a number of other business entities, such as products, services, and resources and/or their specifications.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of a related entity."
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the related entity."
+        },
+        "agreementItemId": {
+          "type": "string",
+          "description": "Identifier of the agreement"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "Any": {},
+    "AppointmentRef": {
+      "type": "object",
+      "description": "Refers an appointment, such as a Customer presentation or internal meeting or site visit",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The identifier of the referred appointment"
+        },
+        "href": {
+          "type": "string",
+          "description": "The reference of the appointment"
+        },
+        "description": {
+          "type": "string",
+          "description": "An explanatory text regarding the appointment made with a party"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "AttachmentRefOrValue": {
+      "type": "object",
+      "description": "An attachment by value or by reference. For AttachmentRefOrValue, the attribute type,schemaLocation and referredType are related to the contained entity and not to AttchmentRefOrValue itself",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for this particular attachment"
+        },
+        "href": {
+          "type": "string",
+          "description": "URI for this Attachment"
+        },
+        "attachmentType": {
+          "type": "string",
+          "description": "Attachment type such as video, picture"
+        },
+        "content": {
+          "type": "string",
+          "description": "The actual contents of the attachment object, if embedded, encoded as base64"
+        },
+        "description": {
+          "type": "string",
+          "description": "A narrative text describing the content of the attachment"
+        },
+        "mimeType": {
+          "type": "string",
+          "description": "Attachment mime type such as extension file for video, picture and document"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the attachment"
+        },
+        "url": {
+          "type": "string",
+          "description": "Uniform Resource Locator, is a web page address (a subset of URI)"
+        },
+        "size": {
+          "$ref": "#/$defs/Quantity",
+          "description": "The size of the attachment."
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The period of time for which the attachment is valid"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "Authorization": {
+      "type": "object",
+      "description": "If special discount or special product offering price or specific condition need an approval for ISP sale representative it is described here.",
+      "properties": {
+        "givenDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date when the authorization (approved or declined) was done"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the required authorization"
+        },
+        "requestedDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date when the authorization is requested for"
+        },
+        "signatureRepresentation": {
+          "type": "string",
+          "description": "To describe a digital or manual signature"
+        },
+        "state": {
+          "type": "string",
+          "description": "State of the authorization, such as: approved or declined"
+        },
+        "approver": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RelatedParty"
+          }
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "BillingAccountRef": {
+      "type": "object",
+      "description": "BillingAccount reference. A BillingAccount is a detailed description of a bill structure.",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the billing account"
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the billing account"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the billing account"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "Characteristic": {
+      "type": "object",
+      "description": "Describes a given characteristic of an object or entity through a name/value pair.",
+      "required": [
+        "name",
+        "value"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the characteristic"
+        },
+        "valueType": {
+          "type": "string",
+          "description": "Data type of the value of the characteristic"
+        },
+        "value": {
+          "$ref": "#/$defs/Any",
+          "description": "The value of the characteristic"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "ContactMedium": {
+      "type": "object",
+      "description": "Indicates the contact medium that could be used to contact the party.",
+      "properties": {
+        "mediumType": {
+          "type": "string",
+          "description": "Type of the contact medium, such as: email address, telephone number, postal address"
+        },
+        "preferred": {
+          "type": "boolean",
+          "description": "If true, indicates that is the preferred contact medium"
+        },
+        "characteristic": {
+          "$ref": "#/$defs/MediumCharacteristic",
+          "description": "Any additional characteristic(s) of this contact medium"
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The time period that the contact medium is valid for"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "MediumCharacteristic": {
+      "type": "object",
+      "description": "Describes the contact medium characteristics that could be used to contact a party (an individual or an organization)",
+      "properties": {
+        "city": {
+          "type": "string",
+          "description": "The city"
+        },
+        "contactType": {
+          "type": "string",
+          "description": "The type of contact, for example: phone number such as mobile, fixed home, fixed office. postal address such as shipping instalation…"
+        },
+        "country": {
+          "type": "string",
+          "description": "The country"
+        },
+        "emailAddress": {
+          "type": "string",
+          "description": "Full email address in standard format"
+        },
+        "faxNumber": {
+          "type": "string",
+          "description": "The fax number of the contact"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "The primary phone number of the contact"
+        },
+        "postCode": {
+          "type": "string",
+          "description": "Postcode"
+        },
+        "socialNetworkId": {
+          "type": "string",
+          "description": "Identifier as a member of a social network"
+        },
+        "stateOrProvince": {
+          "type": "string",
+          "description": "State or province"
+        },
+        "street1": {
+          "type": "string",
+          "description": "Describes the street"
+        },
+        "street2": {
+          "type": "string",
+          "description": "Complementary street description"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "Money": {
+      "type": "object",
+      "description": "A base / value business entity used to represent money",
+      "properties": {
+        "unit": {
+          "type": "string",
+          "description": "Currency (ISO4217 norm uses 3 letters to define the currency)"
+        },
+        "value": {
+          "type": "number",
+          "format": "float",
+          "description": "A positive floating point number"
+        }
+      }
+    },
+    "Note": {
+      "type": "object",
+      "description": "Extra information about a given entity",
+      "required": [
+        "text",
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the note within its containing entity (may or may not be globally unique, depending on provider implementation)"
+        },
+        "author": {
+          "type": "string",
+          "description": "Author of the note"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date of the note"
+        },
+        "text": {
+          "type": "string",
+          "description": "Text of the note"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "Price": {
+      "type": "object",
+      "description": "Provides all amounts (tax included, duty free, tax rate), used currency and percentage to apply for Price Alteration.",
+      "properties": {
+        "percentage": {
+          "type": "number",
+          "format": "float",
+          "description": "Percentage to apply for ProdOfferPriceAlteration"
+        },
+        "taxRate": {
+          "type": "number",
+          "format": "float",
+          "description": "Tax rate"
+        },
+        "dutyFreeAmount": {
+          "$ref": "#/$defs/Money",
+          "description": "All taxes excluded amount (expressed in the given currency)"
+        },
+        "taxIncludedAmount": {
+          "$ref": "#/$defs/Money",
+          "description": "All taxes included amount (expressed in the given currency)"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "PriceAlteration": {
+      "type": "object",
+      "description": "Is an amount, usually of money, that modifies the price charged for an order item.",
+      "required": [
+        "price",
+        "priceType"
+      ],
+      "properties": {
+        "applicationDuration": {
+          "type": "integer",
+          "description": "Duration during which the alteration applies on the order item price (for instance 2 months free of charge for the recurring charge)"
+        },
+        "description": {
+          "type": "string",
+          "description": "A narrative that explains in detail the semantics of this order item price alteration"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the order item price alteration"
+        },
+        "priceType": {
+          "type": "string",
+          "description": "A category that describes the price such as recurring, one time and usage."
+        },
+        "priority": {
+          "type": "integer",
+          "description": "Priority level for applying this alteration among all the defined alterations on the order item price"
+        },
+        "recurringChargePeriod": {
+          "type": "string",
+          "description": "Could be month, week..."
+        },
+        "unitOfMeasure": {
+          "type": "string",
+          "description": "Could be minutes, GB..."
+        },
+        "price": {
+          "$ref": "#/$defs/Price"
+        },
+        "productOfferingPrice": {
+          "$ref": "#/$defs/ProductOfferingPriceRef"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "ProductOfferingPriceRef": {
+      "type": "object",
+      "description": "ProductPriceOffering reference. An amount, usually of money, that is asked for or allowed when a ProductOffering is bought, rented, or leased",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of a related entity."
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the related entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "ProductOfferingQualificationItemRef": {
+      "type": "object",
+      "description": "It's a productOfferingQualification item that has been executed previously.",
+      "required": [
+        "id",
+        "productOfferingQualificationId"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Id of an item of a product offering qualification"
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the related entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "productOfferingQualificationHref": {
+          "type": "string",
+          "description": "Reference of the related entity."
+        },
+        "productOfferingQualificationId": {
+          "type": "string",
+          "description": "Unique identifier of a related entity."
+        },
+        "productOfferingQualificationName": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "ProductOfferingQualificationRef": {
+      "type": "object",
+      "description": "It's a productOfferingQualification that has been executed previously",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of a related entity."
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the related entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "ProductOfferingRef": {
+      "type": "object",
+      "description": "ProductOffering reference. A product offering represents entities that are orderable from the provider of the catalog, this resource includes pricing information.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of a related entity."
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the related entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "ProductPrice": {
+      "type": "object",
+      "description": "An amount, usually of money, that represents the actual price paid by a Customer for a purchase, a rent or a lease of a Product. The price is valid for a defined period of time.",
+      "required": [
+        "price",
+        "priceType"
+      ],
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "A narrative that explains in detail the semantics of this product price."
+        },
+        "name": {
+          "type": "string",
+          "description": "A short descriptive name such as \"Subscription price\"."
+        },
+        "priceType": {
+          "type": "string",
+          "description": "A category that describes the price, such as recurring, discount, allowance, penalty, and so forth."
+        },
+        "recurringChargePeriod": {
+          "type": "string",
+          "description": "Could be month, week..."
+        },
+        "unitOfMeasure": {
+          "type": "string",
+          "description": "Could be minutes, GB..."
+        },
+        "billingAccount": {
+          "$ref": "#/$defs/BillingAccountRef"
+        },
+        "price": {
+          "$ref": "#/$defs/Price"
+        },
+        "productOfferingPrice": {
+          "$ref": "#/$defs/ProductOfferingPriceRef"
+        },
+        "productPriceAlteration": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PriceAlteration"
+          }
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "ProductRefOrValue": {
+      "type": "object",
+      "description": "A product to be created defined by value or existing defined by reference. The polymorphic attributes @type, @schemaLocation & @referredType are related to the product entity and not the RelatedProductRefOrValue class itself",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the product"
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the product"
+        },
+        "description": {
+          "type": "string",
+          "description": "Is the description of the product. It could be copied from the description of the Product Offering."
+        },
+        "isBundle": {
+          "type": "boolean",
+          "description": "If true, the product is a ProductBundle which is an instantiation of a BundledProductOffering. If false, the product is a ProductComponent which is an instantiation of a SimpleProductOffering."
+        },
+        "isCustomerVisible": {
+          "type": "boolean",
+          "description": "If true, the product is visible by the customer."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the product. It could be the same as the name of the product offering"
+        },
+        "orderDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Is the date when the product was ordered"
+        },
+        "productSerialNumber": {
+          "type": "string",
+          "description": "Is the serial number for the product. This is typically applicable to tangible products e.g. Broadband Router."
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Is the date from which the product starts"
+        },
+        "terminationDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Is the date when the product was terminated"
+        },
+        "agreement": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AgreementItemRef"
+          }
+        },
+        "billingAccount": {
+          "$ref": "#/$defs/BillingAccountRef"
+        },
+        "place": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RelatedPlaceRefOrValue"
+          }
+        },
+        "product": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ProductRefOrValue"
+          }
+        },
+        "productCharacteristic": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Characteristic"
+          }
+        },
+        "productOffering": {
+          "$ref": "#/$defs/ProductOfferingRef"
+        },
+        "productOrderItem": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RelatedProductOrderItem"
+          }
+        },
+        "productPrice": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ProductPrice"
+          }
+        },
+        "productRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ProductRelationship"
+          }
+        },
+        "productSpecification": {
+          "$ref": "#/$defs/ProductSpecificationRef"
+        },
+        "productTerm": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ProductTerm"
+          }
+        },
+        "realizingResource": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResourceRef"
+          }
+        },
+        "realizingService": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ServiceRef"
+          }
+        },
+        "relatedParty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RelatedParty"
+          }
+        },
+        "status": {
+          "$ref": "#/$defs/ProductStatusType",
+          "description": "Is the lifecycle status of the product."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "ProductRelationship": {
+      "type": "object",
+      "description": "Linked products to the one instantiate, such as [bundled] if the product is a bundle and you want to describe the bundled products inside this bundle; [reliesOn] if the product needs another already owned product to rely on (e.g. an option on an already owned mobile access product) [targets] or [isTargeted] (depending on the way of expressing the link) for any other kind of links that may be useful",
+      "required": [
+        "product",
+        "relationshipType"
+      ],
+      "properties": {
+        "relationshipType": {
+          "type": "string",
+          "description": "Type of the product relationship, such as [bundled] if the product is a bundle and you want to describe the bundled products inside this bundle; [reliesOn] if the product needs another already owned product to rely on (e.g. an option on an already owned mobile access product) [targets] or [isTargeted] (depending on the way of expressing the link) for any other kind of links that may be useful"
+        },
+        "product": {
+          "$ref": "#/$defs/ProductRefOrValue"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "ProductSpecificationRef": {
+      "type": "object",
+      "description": "Product specification reference: A ProductSpecification is a detailed description of a tangible or intangible object made available externally in the form of a ProductOffering to customers or other parties playing a party role.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of a related entity."
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the related entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "version": {
+          "type": "string",
+          "description": "Version of the product specification"
+        },
+        "targetProductSchema": {
+          "$ref": "#/$defs/TargetProductSchema",
+          "description": "A target product schema reference. The reference object to the schema and type of target product which is described by product specification."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "ProductStatusType": {
+      "type": "string",
+      "description": "Possible values for the status of the product",
+      "enum": [
+        "created",
+        "pendingActive",
+        "cancelled",
+        "active",
+        "pendingTerminate",
+        "terminated",
+        "suspended",
+        "aborted"
+      ]
+    },
+    "ProductTerm": {
+      "type": "object",
+      "description": "Description of a productTerm linked to this product. This represent a commitment with a duration",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "Description of the productTerm"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the productTerm"
+        },
+        "duration": {
+          "$ref": "#/$defs/Quantity",
+          "description": "Duration of the productTerm"
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "productTerm validity period"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "Quantity": {
+      "type": "object",
+      "description": "An amount in a given unit",
+      "properties": {
+        "amount": {
+          "default": 1,
+          "type": "number",
+          "format": "float",
+          "description": "Numeric value in a given unit"
+        },
+        "units": {
+          "type": "string",
+          "description": "Unit"
+        }
+      }
+    },
+    "QuoteItem": {
+      "type": "object",
+      "description": "A quote items describe an action to be performed on a productOffering or a product in order to get pricing elements and condition.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the quote item (generally it is a sequence number 01, 02, 03, ...)"
+        },
+        "action": {
+          "type": "string",
+          "description": "Action to be performed on this quote item (add, modify, remove, etc.)"
+        },
+        "quantity": {
+          "type": "integer",
+          "description": "Quantity asked for this quote item"
+        },
+        "state": {
+          "type": "string",
+          "description": "State of the quote item : described in the state machine diagram"
+        },
+        "appointment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AppointmentRef"
+          },
+          "description": "A reference to appointment(s) associated with this quote item"
+        },
+        "attachment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AttachmentRefOrValue"
+          },
+          "description": "A reference to attachment(s) associated with this quote item"
+        },
+        "note": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          },
+          "description": "Free form text associated with the quote item"
+        },
+        "product": {
+          "$ref": "#/$defs/ProductRefOrValue"
+        },
+        "productOffering": {
+          "$ref": "#/$defs/ProductOfferingRef"
+        },
+        "productOfferingQualificationItem": {
+          "$ref": "#/$defs/ProductOfferingQualificationItemRef",
+          "description": "A reference to a previously done POQ with item specified"
+        },
+        "quoteItem": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/QuoteItem"
+          },
+          "description": "A structure to embedded quote item within quote item"
+        },
+        "quoteItemAuthorization": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Authorization"
+          },
+          "description": "Authorization related to this quote item"
+        },
+        "quoteItemPrice": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/QuotePrice"
+          },
+          "description": "Price for this quote item"
+        },
+        "quoteItemRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/QuoteItemRelationship"
+          },
+          "description": "A relationship from item within a quote"
+        },
+        "relatedParty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RelatedParty"
+          },
+          "description": "A reference to a party playing a role in this quote item"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "QuoteItemRelationship": {
+      "type": "object",
+      "description": "Used to describe relationship between quote item. These relationship could have an impact on pricing and conditions",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ID of the related order item (must be in the same quote)"
+        },
+        "relationshipType": {
+          "type": "string",
+          "description": "Relationship type as relies on, bundles, etc..."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "QuotePrice": {
+      "type": "object",
+      "description": "Description of price and discount awarded",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "Description of the quote/quote item price"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the quote /quote item price"
+        },
+        "priceType": {
+          "type": "string",
+          "description": "indicate if the price is for recurrent or no-recurrent charge"
+        },
+        "recurringChargePeriod": {
+          "type": "string",
+          "description": "Used for recurring charge to indicate period (month, week, etc..)"
+        },
+        "unitOfMeasure": {
+          "type": "string",
+          "description": "Unit of Measure if price depending on it (Gb, SMS volume, etc..)"
+        },
+        "price": {
+          "$ref": "#/$defs/Price"
+        },
+        "priceAlteration": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PriceAlteration"
+          }
+        },
+        "productOfferingPrice": {
+          "$ref": "#/$defs/ProductOfferingPriceRef",
+          "description": "An amount, usually of money, that is asked for or allowed when a ProductOffering is bought, rented, or leased. The price is valid for a defined period of time."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "RelatedParty": {
+      "type": "object",
+      "description": "Related Entity reference. A related party defines party or party role linked to a specific entity.",
+      "required": [
+        "@referredType",
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of a related entity."
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the related entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "role": {
+          "type": "string",
+          "description": "Role played by the related party"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "RelatedPlaceRefOrValue": {
+      "type": "object",
+      "description": "Related Entity reference. A related place defines a place described by reference or by value linked to a specific entity. The polymorphic attributes @type, @schemaLocation & @referredType are related to the place entity and not the RelatedPlaceRefOrValue class itself",
+      "required": [
+        "role"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the place"
+        },
+        "href": {
+          "type": "string",
+          "description": "Unique reference of the place"
+        },
+        "name": {
+          "type": "string",
+          "description": "A user-friendly name for the place, such as [Paris Store], [London Store], [Main Home]"
+        },
+        "role": {
+          "type": "string"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "RelatedProductOrderItem": {
+      "type": "object",
+      "description": "RelatedProductOrderItem (ProductOrder item) .The product order item which triggered product creation/change/termination.",
+      "required": [
+        "orderItemId",
+        "productOrderId"
+      ],
+      "properties": {
+        "orderItemAction": {
+          "type": "string",
+          "description": "Action of the order item for this product"
+        },
+        "orderItemId": {
+          "type": "string",
+          "description": "Identifier of the order item where the product was managed"
+        },
+        "productOrderHref": {
+          "type": "string",
+          "description": "Reference of the related entity."
+        },
+        "productOrderId": {
+          "type": "string",
+          "description": "Unique identifier of a related entity."
+        },
+        "role": {
+          "type": "string",
+          "description": "role of the product order item for this product"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "ResourceRef": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of a related entity."
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the related entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the resource"
+        },
+        "value": {
+          "type": "string",
+          "description": "The resource value that can be used to identify a resource with a public key (e.g.: a tel nr, an msisdn)"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "ServiceRef": {
+      "type": "object",
+      "description": "Service reference, for when Service is used by other entities",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of a related entity."
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the related entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "TargetProductSchema": {
+      "type": "object",
+      "description": "The reference object to the schema and type of target product which is described by product specification",
+      "required": [
+        "@schemaLocation",
+        "@type"
+      ],
+      "properties": {
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "This field provides a link to the schema describing the target product"
+        },
+        "@type": {
+          "type": "string",
+          "description": "Class type of the target product"
+        }
+      }
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "endDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "End of the time period, using IETC-RFC-3339 format"
+        },
+        "startDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Start of the time period, using IETC-RFC-3339 format. If you define a start, you must also define an end"
+        }
+      }
+    }
+  }
+}

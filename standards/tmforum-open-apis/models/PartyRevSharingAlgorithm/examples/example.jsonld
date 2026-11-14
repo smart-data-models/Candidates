@@ -1,0 +1,64 @@
+{
+  "id": "urn:ngsi-ld:PartyRevSharingAlgorithm:4840",
+  "type": "PartyRevSharingAlgorithm",
+  "tmfType": "PartyRevSharingAlgorithm",
+  "tmfId": "4840",
+  "name": "revenue share calculate policy for Mobile handset 2023 distribution price",
+  "description": "revenue share calculate policy for Mobile handset 2023 distribution price",
+  "policy": [
+    {
+      "@type": "PolicyRef",
+      "href": "https://mycsp.com:8080/tmf-api/PolicyManagement/v5/Policy/5840",
+      "id": "5840",
+      "name": "distribute charge revenue share calculate policy for Mobile handset 2023 distribution price",
+      "@referredType": "PolicySet",
+      "version": "1.0"
+    }
+  ],
+  "conditionVariable": [
+    {
+      "@type": "PartyRevSharingPolicyConditionVariable",
+      "id": "5010",
+      "value": "300",
+      "policyCondition": {
+        "@type": "PolicyConditionRef",
+        "href": "https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyCondition/5020",
+        "id": "5020",
+        "name": "The sold price of single handset more than 300$",
+        "@referredType": "PolicyCondition"
+      },
+      "policyConditionVariable": {
+        "@type": "PolicyVariableRef",
+        "href": "https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyVariable/5040",
+        "id": "5040",
+        "name": "sold price",
+        "@referredType": "PolicyVariable"
+      }
+    }
+  ],
+  "actionVariable": [
+    {
+      "@type": "PartyRevSharingPolicyActionVariable",
+      "id": "5011",
+      "value": "5%",
+      "policyAction": {
+        "@type": "PolicyActionRef",
+        "href": "https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyAction/5021",
+        "id": "5021",
+        "name": "The revenue share percentage of sold price is 5%",
+        "@referredType": "PolicyAction"
+      },
+      "policyActionVariable": {
+        "@type": "PolicyVariableRef",
+        "href": "https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyVariable/5041",
+        "id": "5041",
+        "name": "The revenue share percentage of sold price",
+        "@referredType": "PolicyVariable"
+      }
+    }
+  ],
+  "source": "Adapted from the example payload 'PartyRevSharingAlgorithm_partial_update_application_json_examples_response' of the TMF736 Revenue Sharing Algorithm Management 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids.",
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PartyRevSharingAlgorithm/context.jsonld"
+  ]
+}

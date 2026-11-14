@@ -1,0 +1,213 @@
+{
+  "id": "urn:ngsi-ld:PartyInteraction:123",
+  "type": "PartyInteraction",
+  "tmfId": {
+    "type": "Property",
+    "value": "123"
+  },
+  "tmfType": {
+    "type": "Property",
+    "value": "PartyInteraction"
+  },
+  "interactionDate": {
+    "type": "Property",
+    "value": {
+      "startDateTime": "2020-10-02T11:36:18.758Z",
+      "endDateTime": "2020-10-02T11:53:21.789Z"
+    }
+  },
+  "description": {
+    "type": "Property",
+    "value": "Visit to store"
+  },
+  "reason": {
+    "type": "Property",
+    "value": "The user wanted to buy TV and internet plan"
+  },
+  "status": {
+    "type": "Property",
+    "value": "ongoing"
+  },
+  "statusChangeDate": {
+    "type": "Property",
+    "value": "2020-10-02T11:53:21.789Z"
+  },
+  "direction": {
+    "type": "Property",
+    "value": "inbounds"
+  },
+  "creationDate": {
+    "type": "Property",
+    "value": "2020-10-02T11:37:08.013Z"
+  },
+  "relatedParty": {
+    "type": "Property",
+    "value": [
+      {
+        "role": "user",
+        "@type": "RelatedPartyOrPartyRole",
+        "partyOrPartyRole": {
+          "id": "999",
+          "href": "https://host:port/partyManagement/v5/individual/999",
+          "@type": "PartyRef",
+          "@referredType": "Individual"
+        }
+      },
+      {
+        "role": "agent",
+        "@type": "RelatedPartyOrPartyRole",
+        "partyOrPartyRole": {
+          "id": "888",
+          "href": "https://host:port/partyManagement/v5/individual/888",
+          "@type": "PartyRef",
+          "@referredType": "Individual"
+        }
+      }
+    ]
+  },
+  "interactionItem": {
+    "type": "Property",
+    "value": [
+      {
+        "id": "5678",
+        "reason": "The user signed up to new TV bundle and paid the decoder",
+        "@type": "InteractionItem",
+        "itemDate": {
+          "endDateTime": "2020-10-02T11:56:01.895Z",
+          "startDateTime": "2020-10-02T11:50:01.895Z"
+        },
+        "resolution": "Product order is created",
+        "creationDate": "2020-10-02T11:50:01.895Z",
+        "lastUpdateDate": "2020-11-02T11:37:08.013Z",
+        "item": {
+          "role": "interaction",
+          "@type": "RelatedEntityRefOrValue",
+          "entity": {
+            "id": "30001",
+            "href": "https://host:port/productOrderingManagement/5/productOrder/30001",
+            "name": "Product Order illustration sample by reference",
+            "@referredType": "ProductOrder",
+            "@type": "EntityRef"
+          }
+        }
+      },
+      {
+        "id": "1212",
+        "reason": "The user is purchasing unlimited internet plan",
+        "@type": "InteractionItem",
+        "itemDate": {
+          "endDateTime": "2020-10-02T11:59:01.895Z",
+          "startDateTime": "2020-10-02T11:50:01.895Z"
+        },
+        "resolution": "Product order is created",
+        "creationDate": "2020-10-02T11:50:01.895Z",
+        "item": {
+          "role": "interaction",
+          "@type": "RelatedEntityRefOrValue",
+          "entity": {
+            "id": "88",
+            "href": "https://host:port/productOrderingManagement/v5/productOrder/88",
+            "@type": "ProductOrder",
+            "productOrderItem": [
+              {
+                "id": "13219",
+                "action": "add",
+                "productOffering": {
+                  "id": "2445",
+                  "name": "Unlimited Internet Plus",
+                  "@type": "ProductOfferingRef",
+                  "@referredType": "ProductOrder"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "9999",
+        "reason": "The user paid the decoder in the store with credit card",
+        "@type": "InteractionItem",
+        "itemDate": {
+          "endDateTime": "2020-10-02T11:56:01.895Z",
+          "startDateTime": "2020-10-02T11:50:01.895Z"
+        },
+        "resolution": "TODO",
+        "creationDate": "2020-10-02T11:50:01.895Z",
+        "item": {
+          "role": "interaction",
+          "@type": "RelatedEntityRefOrValue",
+          "entity": {
+            "id": "666",
+            "href": "https://host:port/paymentManagement/5/payment/666",
+            "name": "TV bundle plus decoder payment",
+            "@type": "EntityRef",
+            "@referredType": "Payment"
+          }
+        }
+      }
+    ]
+  },
+  "relatedChannel": {
+    "type": "Property",
+    "value": [
+      {
+        "role": "interaction creation",
+        "@type": "RelatedChannel",
+        "channel": {
+          "id": "555",
+          "name": "Madrid Gran Store",
+          "@type": "ChannelRef"
+        }
+      }
+    ]
+  },
+  "attachment": {
+    "type": "Property",
+    "value": [
+      {
+        "id": "111222444",
+        "href": "https://host:port/partyInteraction/5/partyInteraction/123/attachment/111222444",
+        "name": "Some cool attachment",
+        "@type": "AttachmentRef",
+        "description": "blahblahblah",
+        "attachmentType": "receipt",
+        "mimeType": "application/pdf",
+        "size": {
+          "amount": 321321,
+          "units": "KB"
+        },
+        "URL": "https://whereverthpdfis.com"
+      }
+    ]
+  },
+  "note": {
+    "type": "Property",
+    "value": [
+      {
+        "id": "121",
+        "text": "loren ipsum ...",
+        "author": "customer care agent",
+        "date": "2020-10-02T11:36:18.758Z",
+        "@type": "Note"
+      }
+    ]
+  },
+  "interactionRelationship": {
+    "type": "Property",
+    "value": [
+      {
+        "id": "1034",
+        "href": "https://host:port/partyInteraction/v5/partyInteraction/1034",
+        "@type": "InteractionRelationship",
+        "relationshipType": "parentInteraction"
+      }
+    ]
+  },
+  "source": {
+    "type": "Property",
+    "value": "Adapted from the example payload 'PartyInteraction_retrieve_example_response' of the TMF683 Party Interaction 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+  },
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PartyInteraction/context.jsonld"
+  ]
+}

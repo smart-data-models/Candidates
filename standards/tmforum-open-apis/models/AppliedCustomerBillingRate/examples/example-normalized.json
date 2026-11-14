@@ -1,0 +1,90 @@
+{
+  "id": "urn:ngsi-ld:AppliedCustomerBillingRate:ACBR-123",
+  "type": "AppliedCustomerBillingRate",
+  "tmfId": {
+    "type": "Text",
+    "value": "ACBR-123"
+  },
+  "appliedBillingRateType": {
+    "type": "Text",
+    "value": "monthly"
+  },
+  "date": {
+    "type": "DateTime",
+    "value": "2020-01-19T13:38:18.938Z"
+  },
+  "isBilled": {
+    "type": "Boolean",
+    "value": true
+  },
+  "name": {
+    "type": "Text",
+    "value": "Rental Fee"
+  },
+  "appliedTax": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "taxCategory": "VAT",
+        "taxRate": 20,
+        "taxAmount": {
+          "unit": "EUR",
+          "value": 100
+        },
+        "@type": "AppliedBillingTaxRate"
+      }
+    ]
+  },
+  "bill": {
+    "type": "URL",
+    "value": "urn:ngsi-ld:CustomerBill:B123"
+  },
+  "billingAccount": {
+    "type": "URL",
+    "value": "urn:ngsi-ld:BillingAccount:A0815"
+  },
+  "characteristic": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "name": "message",
+        "valueType": "string",
+        "@type": "StringCharacteristic",
+        "value": "Special discount this[ month only"
+      }
+    ]
+  },
+  "periodCoverage": {
+    "type": "StructuredValue",
+    "value": {
+      "endDateTime": "2019-12-31T23:59:59.999Z",
+      "startDateTime": "2019-12-01T00:00:00.000Z"
+    }
+  },
+  "product": {
+    "type": "URL",
+    "value": "urn:ngsi-ld:Product:P-wfs-123"
+  },
+  "taxExcludedAmount": {
+    "type": "StructuredValue",
+    "value": {
+      "unit": "EUR",
+      "value": 40
+    }
+  },
+  "taxIncludedAmount": {
+    "type": "StructuredValue",
+    "value": {
+      "unit": "EUR",
+      "value": 50
+    }
+  },
+  "tmfType": {
+    "type": "Text",
+    "value": "AppliedCustomerBillingRate"
+  },
+  "source": {
+    "type": "Text",
+    "value": "Adapted from the example payload 'AppliedCustomerBillingRate_retrieve_example_response' of the TMF678 CustomerBill 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+  }
+}

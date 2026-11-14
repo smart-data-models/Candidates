@@ -1,0 +1,78 @@
+{
+  "id": "urn:ngsi-ld:ServiceProblemEventRecord:42",
+  "type": "ServiceProblemEventRecord",
+  "tmfId": {
+    "type": "Property",
+    "value": "42"
+  },
+  "recordTime": {
+    "type": "Property",
+    "value": "2016-08-08T10:45:30.0Z"
+  },
+  "eventType": {
+    "type": "Property",
+    "value": "ServiceProblemCreateEvent"
+  },
+  "eventTime": {
+    "type": "Property",
+    "value": "2016-08-08T10:45:25.0Z"
+  },
+  "notification": {
+    "type": "Property",
+    "value": {
+      "eventType": "ServiceProblemCreateEvent",
+      "eventTime": "2024-10-30T10:45:25.0Z",
+      "eventId": "92775",
+      "event": {
+        "serviceProblem": {
+          "id": "sp_001",
+          "href": "https://mycsp.com:8080/tmf-api/serviceProblemManagement/v5/serviceProblem/sp_001",
+          "category": "serviceProvider.declared",
+          "priority": 1,
+          "description": "Internet connection error",
+          "creationDate": "2024-10-28T09:00:00.000Z",
+          "lastUpdate": "2024-10-29T12:00:00.361Z",
+          "statusChangeDate": "2024-10-29T12:00:00.361Z",
+          "reason": "unknown",
+          "status": "acknowledged",
+          "originatorParty": {
+            "role": "ServiceProvider",
+            "@type": "RelatedPartyRefOrPartyRoleRef",
+            "partyOrPartyRole": {
+              "id": "SP_00001",
+              "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/party/SP_00001",
+              "name": "ABCompany",
+              "@type": "PartyRef",
+              "@referredType": "Organization"
+            }
+          },
+          "affectedService": [
+            {
+              "id": "SP00001_Service_001",
+              "href": "https://mycsp.com:8080/tmf-api/serviceInventory/v5/service/SP00001_Service_001",
+              "@type": "ServiceRef",
+              "@referredType": "Service"
+            }
+          ],
+          "@type": "ServiceProblem"
+        }
+      },
+      "@type": "ServiceProblemCreateEvent"
+    }
+  },
+  "serviceProblem": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:ServiceProblem:sp_001"
+  },
+  "tmfType": {
+    "type": "Property",
+    "value": "ServiceProblemEventRecord"
+  },
+  "source": {
+    "type": "Property",
+    "value": "Adapted from the example payload 'ServiceProblemEventRecord_retrieve_example_response' of the TMF656 Service Problem Management 5.1.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+  },
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ServiceProblemEventRecord/context.jsonld"
+  ]
+}

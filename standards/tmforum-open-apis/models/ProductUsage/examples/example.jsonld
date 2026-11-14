@@ -1,0 +1,93 @@
+{
+  "id": "urn:ngsi-ld:ProductUsage:83c780b5-517c-4e28-9924-625e3fc7b341",
+  "type": "ProductUsage",
+  "tmfType": "ProductUsage",
+  "tmfId": "83c780b5-517c-4e28-9924-625e3fc7b341",
+  "creationDate": "2023-09-11T14:35:05Z",
+  "lastUpdate": "2023-09-11T14:38:00Z",
+  "status": "rated",
+  "usageType": "InternationalVoice",
+  "usageCharacteristic": [
+    {
+      "@type": "StringCharacteristic",
+      "name": "originatingCountryCode",
+      "value": "FR"
+    },
+    {
+      "@type": "StringCharacteristic",
+      "name": "destinationCountryCode",
+      "value": "GB"
+    },
+    {
+      "@type": "StringCharacteristic",
+      "name": "destinationPhoneNumber",
+      "value": "+447700900456"
+    },
+    {
+      "@type": "StringCharacteristic",
+      "name": "originatingPhoneNumber",
+      "value": "+33199001234"
+    },
+    {
+      "@type": "StringCharacteristic",
+      "name": "callType",
+      "value": "outgoing"
+    },
+    {
+      "@type": "IntegerCharacteristic",
+      "name": "duration",
+      "value": 300
+    },
+    {
+      "@type": "StringCharacteristic",
+      "name": "startDateTime",
+      "valueType": "date-time",
+      "value": "2023-09-11T14:30:00Z"
+    },
+    {
+      "@type": "StringCharacteristic",
+      "name": "endDateTime",
+      "valueType": "date-time",
+      "value": "2023-09-11T14:35:00Z"
+    },
+    {
+      "@type": "StringCharacteristic",
+      "name": "callStatus",
+      "value": "completed"
+    }
+  ],
+  "usageProductPrice": [
+    {
+      "@type": "ProductPrice",
+      "price": {
+        "@type": "Price",
+        "dutyFreeAmount": {
+          "unit": "EUR",
+          "value": 2.5
+        },
+        "taxRate": 20
+      },
+      "productOfferingPrice": {
+        "@type": "ProductOfferingPriceRef",
+        "@referredType": "ProductOfferingPrice",
+        "href": "https://mycsp.com/tmf-api/productCatalogManagement/v5/productOffering/419ce511-dbb9-4753-8155-3391b9998cd7",
+        "id": "419ce511-dbb9-4753-8155-3391b9998cd7"
+      },
+      "priceType": "usage"
+    }
+  ],
+  "serviceUsage": [
+    {
+      "@type": "ServiceUsageRef",
+      "@referredType": "ServiceUsage",
+      "href": "https://mycsp.com/tmf-api/serviceUsageManagement/v5/serviceUsage/472999bf-1aeb-48e6-b954-1303c2c7939b",
+      "id": "472999bf-1aeb-48e6-b954-1303c2c7939b"
+    }
+  ],
+  "product": "urn:ngsi-ld:Product:05c89397-6984-4c8e-9030-7cf092754f18",
+  "usageSpecification": "urn:ngsi-ld:ProductUsageSpecification:c2d6642b-59be-4cd1-800d-f3920dd4bc7f",
+  "source": "Adapted from the example payload 'Product_Usage_retrieve_example_response' of the TMF635 Product Usage Management 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids.",
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ProductUsage/context.jsonld"
+  ]
+}

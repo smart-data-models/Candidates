@@ -1,0 +1,78 @@
+{
+  "@context": {
+    "Alarm": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm",
+    "dateCreated": "https://schema.org/dateCreated",
+    "dateModified": "https://schema.org/dateModified",
+    "source": "https://purl.org/dc/terms/source",
+    "dataProvider": "https://smartdatamodels.org/dataProvider",
+    "tmfType": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Extensible/properties/@type",
+    "tmfBaseType": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Extensible/properties/@baseType",
+    "tmfSchemaLocation": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Extensible/properties/@schemaLocation",
+    "href": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Addressable/properties/href",
+    "tmfId": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Addressable/properties/id",
+    "externalAlarmId": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/externalAlarmId",
+    "state": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/state",
+    "alarmType": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/alarmType",
+    "perceivedSeverity": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/perceivedSeverity",
+    "probableCause": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/probableCause",
+    "specificProblem": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/specificProblem",
+    "alarmedObjectType": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/alarmedObjectType",
+    "alarmedObject": {
+      "@id": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/alarmedObject",
+      "@type": "@json"
+    },
+    "reportingSystemId": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/reportingSystemId",
+    "sourceSystemId": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/sourceSystemId",
+    "alarmDetails": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/alarmDetails",
+    "alarmRaisedTime": {
+      "@id": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/alarmRaisedTime",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "alarmChangedTime": {
+      "@id": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/alarmChangedTime",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "alarmClearedTime": {
+      "@id": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/alarmClearedTime",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "alarmReportingTime": {
+      "@id": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/alarmReportingTime",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "ackState": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/ackState",
+    "ackSystemId": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/ackSystemId",
+    "ackUserId": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/ackUserId",
+    "affectedService": {
+      "@id": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/affectedService",
+      "@type": "@id"
+    },
+    "alarmEscalation": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/alarmEscalation",
+    "clearSystemId": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/clearSystemId",
+    "clearUserId": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/clearUserId",
+    "comment": {
+      "@id": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/comment",
+      "@type": "@json"
+    },
+    "correlatedAlarm": {
+      "@id": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/correlatedAlarm",
+      "@type": "@id"
+    },
+    "crossedThresholdInformation": {
+      "@id": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/crossedThresholdInformation",
+      "@type": "@json"
+    },
+    "isRootCause": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/isRootCause",
+    "parentAlarm": {
+      "@id": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/parentAlarm",
+      "@type": "@id"
+    },
+    "plannedOutageIndicator": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/plannedOutageIndicator",
+    "proposedRepairedActions": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/proposedRepairedActions",
+    "serviceAffecting": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/serviceAffecting",
+    "place": {
+      "@id": "https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/place",
+      "@type": "@json"
+    }
+  }
+}

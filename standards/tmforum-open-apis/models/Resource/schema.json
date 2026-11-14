@@ -1,10 +1,10 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$schemaVersion": "0.0.1",
+  "$schemaVersion": "0.0.2",
   "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Resource/schema.json",
   "modelTags": "TMForum,OpenAPI,ODA,Telecom",
   "title": "Smart Data Models - TM Forum Open APIs - Resource",
-  "description": "Resource is an abstract entity that describes the common set of attributes shared by all concrete resources (e.g. TPE, EQUIPMENT) in the inventory. (TM Forum TMF639 Resource Inventory Management v5.0.0, OpenAPI component Resource, with the attributes of its sub-classes LogicalResource, PhysicalResource, SoftwareResource, ResourceFunction flattened in; attribute names kept verbatim except id/@type/@baseType/@schemaLocation/value; deprecated attributes left out.)",
+  "description": "Resource is an abstract entity that describes the common set of attributes shared by all concrete resources (e.g. TPE, EQUIPMENT) in the inventory. (TM Forum TMF639 Resource Inventory Management 5.0.0, OpenAPI component Resource, with the attributes of its sub-classes LogicalResource, PhysicalResource, SoftwareResource, ResourceFunction flattened in; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
   "type": "object",
   "properties": {
     "id": {
@@ -236,8 +236,9 @@
       "description": "Property. Model:'https://github.com/tmforum-apis/TMF639_ResourceInventory/blob/v5.0.0/TMF639-Resource_Inventory_Management-v5.0.0.oas.yaml#/components/schemas/Resource/properties/attachment'. A list of references to attachments associated with this resource"
     },
     "resourceSpecification": {
-      "$ref": "#/$defs/ResourceSpecificationRef",
-      "description": "Property. Model:'https://github.com/tmforum-apis/TMF639_ResourceInventory/blob/v5.0.0/TMF639-Resource_Inventory_Management-v5.0.0.oas.yaml#/components/schemas/Resource/properties/resourceSpecification'. Resources are physical or non-physical components (or some combination of these) within an enterprise's infrastructure or inventory. They are typically consumed or used by services (for example a physical port assigned to a service) or contribute to the realization of a Product (for example, a SIM card). They can be drawn from the Application, Computing and Network domains, and include, for example, Network Elements, software, IT systems, content and information, and technology components. A ResourceSpecification is an abstract base class for representing a generic means for implementing a particular type of Resource. In essence, a ResourceSpecification defines the common attributes and relationships of a set of related Resources, while Resource defines a specific instance that is based on a particular ResourceSpecification."
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF639_ResourceInventory/blob/v5.0.0/TMF639-Resource_Inventory_Management-v5.0.0.oas.yaml#/components/schemas/Resource/properties/resourceSpecification'. Resources are physical or non-physical components (or some combination of these) within an enterprise's infrastructure or inventory. They are typically consumed or used by services (for example a physical port assigned to a service) or contribute to the realization of a Product (for example, a SIM card). They can be drawn from the Application, Computing and Network domains, and include, for example, Network Elements, software, IT systems, content and information, and technology components. A ResourceSpecification is an abstract base class for representing a generic means for implementing a particular type of Resource. In essence, a ResourceSpecification defines the common attributes and relationships of a set of related Resources, while Resource defines a specific instance that is based on a particular ResourceSpecification. In TMF this is a ResourceSpecificationRef object; here the NGSI-LD id of the referenced ResourceSpecification entity (urn:ngsi-ld:ResourceSpecification:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
     },
     "resourceVersion": {
       "type": "string",
@@ -251,8 +252,9 @@
       "description": "Property. Model:'https://github.com/tmforum-apis/TMF639_ResourceInventory/blob/v5.0.0/TMF639-Resource_Inventory_Management-v5.0.0.oas.yaml#/components/schemas/Resource/properties/activationFeature'. Configuration features; see TMF664 Resource Function Activation API"
     },
     "intent": {
-      "$ref": "#/$defs/IntentRef",
-      "description": "Property. Model:'https://github.com/tmforum-apis/TMF639_ResourceInventory/blob/v5.0.0/TMF639-Resource_Inventory_Management-v5.0.0.oas.yaml#/components/schemas/Resource/properties/intent'. Intent reference, for when Intent is used by other entities"
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF639_ResourceInventory/blob/v5.0.0/TMF639-Resource_Inventory_Management-v5.0.0.oas.yaml#/components/schemas/Resource/properties/intent'. Intent reference, for when Intent is used by other entities. In TMF this is a IntentRef object; here the NGSI-LD id of the referenced Intent entity (urn:ngsi-ld:Intent:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
     },
     "externalIdentifier": {
       "type": "array",
@@ -788,15 +790,6 @@
         }
       ]
     },
-    "IntentRef": {
-      "type": "object",
-      "description": "Intent reference, for when Intent is used by other entities",
-      "allOf": [
-        {
-          "$ref": "#/$defs/EntityRef"
-        }
-      ]
-    },
     "Note": {
       "allOf": [
         {
@@ -1205,23 +1198,6 @@
             "relationshipType": {
               "type": "string",
               "description": "Type of the resource relationship, such as [bundled] if the resource is a bundle and you want to describe the bundled resources inside this bundle; [reliesOn] if the resource needs another already owned resource to rely on (eg: an option on an already owned mobile access resource) [targets] or [isTargeted] (depending on the way of expressing the link) for any other kind of links that may be useful"
-            }
-          }
-        }
-      ]
-    },
-    "ResourceSpecificationRef": {
-      "allOf": [
-        {
-          "$ref": "#/$defs/EntityRef"
-        },
-        {
-          "type": "object",
-          "description": "Resources are physical or non-physical components (or some combination of these) within an enterprise's infrastructure or inventory. They are typically consumed or used by services (for example a physical port assigned to a service) or contribute to the realization of a Product (for example, a SIM card). They can be drawn from the Application, Computing and Network domains, and include, for example, Network Elements, software, IT systems, content and information, and technology components. A ResourceSpecification is an abstract base class for representing a generic means for implementing a particular type of Resource. In essence, a ResourceSpecification defines the common attributes and relationships of a set of related Resources, while Resource defines a specific instance that is based on a particular ResourceSpecification.",
-          "properties": {
-            "version": {
-              "type": "string",
-              "description": "Resource Specification version"
             }
           }
         }

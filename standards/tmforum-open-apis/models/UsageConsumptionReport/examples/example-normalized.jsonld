@@ -1,0 +1,74 @@
+{
+  "id": "urn:ngsi-ld:UsageConsumptionReport:ucr0001",
+  "type": "UsageConsumptionReport",
+  "tmfId": {
+    "type": "Property",
+    "value": "ucr0001"
+  },
+  "name": {
+    "type": "Property",
+    "value": "Usage consumption report ucr0001"
+  },
+  "description": {
+    "type": "Property",
+    "value": "Usage consumption Report for Jane Doe smartphone"
+  },
+  "product": {
+    "type": "Property",
+    "value": [
+      {
+        "id": "product1",
+        "href": "https://serverRoot/tmf-api/productInventory/v5/product/product1",
+        "name": "Jane Doe smartphone",
+        "consumptionSummary": [
+          {
+            "counterType": "outOfBucket",
+            "level": "global",
+            "value": {
+              "amount": 20,
+              "units": "USD"
+            },
+            "valueName": "20 USD",
+            "consumptionPeriod": {
+              "startDateTime": "2018-03-01T00:00:00Z",
+              "endDateTime": "2018-03-15T00:00:00Z"
+            },
+            "user": {
+              "role": "user",
+              "@type": "RelatedPartyRefOrPartyRoleRef",
+              "partyOrPartyRole": {
+                "id": "usr1",
+                "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/usr1",
+                "@type": "PartyRef",
+                "@referredType": "Individual"
+              }
+            },
+            "@type": "ConsumptionSummary"
+          }
+        ],
+        "@type": "ProductRef"
+      }
+    ]
+  },
+  "bucket": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:Bucket:bkt001",
+      "urn:ngsi-ld:Bucket:bkt002",
+      "urn:ngsi-ld:Bucket:bkt003",
+      "urn:ngsi-ld:Bucket:bkt004",
+      "urn:ngsi-ld:Bucket:bkt005"
+    ]
+  },
+  "tmfType": {
+    "type": "Property",
+    "value": "UsageConsumptionReport"
+  },
+  "source": {
+    "type": "Property",
+    "value": "Adapted from the example payload 'retrieve_UsageConsumptionReport_example_response' of the TMF677 Usage Consumption 5.1.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+  },
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/UsageConsumptionReport/context.jsonld"
+  ]
+}

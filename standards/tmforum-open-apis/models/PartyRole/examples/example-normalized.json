@@ -1,0 +1,84 @@
+{
+  "id": "urn:ngsi-ld:PartyRole:7321-7c0d",
+  "type": "PartyRole",
+  "tmfType": {
+    "type": "Text",
+    "value": "PartyRole"
+  },
+  "tmfId": {
+    "type": "Text",
+    "value": "7321-7c0d"
+  },
+  "name": {
+    "type": "Text",
+    "value": "Mobile catalog administrator"
+  },
+  "role": {
+    "type": "Text",
+    "value": "CatalogAdmin"
+  },
+  "engagedParty": {
+    "type": "StructuredValue",
+    "value": {
+      "@type": "PartyRef",
+      "href": "https:/host:port/tmf-api/partyManagement/v2/individual/3b1c-74f1",
+      "id": "3b1c-74f1",
+      "@referredType": "Individual"
+    }
+  },
+  "partyRoleSpecification": {
+    "type": "URL",
+    "value": "urn:ngsi-ld:PartyRoleSpecification:5713"
+  },
+  "characteristic": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "StringCharacteristic",
+        "name": "CatalogDomain",
+        "valueType": "string",
+        "value": "mobile catalog"
+      }
+    ]
+  },
+  "contactMedium": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "PhoneContactMedium",
+        "id": "1",
+        "phoneNumber": "+44 7700 900102"
+      }
+    ]
+  },
+  "relatedParty": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "RelatedPartyOrPartyRole",
+        "role": "manager",
+        "partyOrPartyRole": {
+          "@type": "PartyRef",
+          "href": "https:/host:port/tmf-api/partyManagement/v4/individual/1a0b-961f",
+          "id": "1a0b-961f",
+          "@referredType": "Individual"
+        }
+      }
+    ]
+  },
+  "status": {
+    "type": "Text",
+    "value": "validationInProgress"
+  },
+  "validFor": {
+    "type": "StructuredValue",
+    "value": {
+      "startDateTime": "2022-06-24T00:00:00.000Z",
+      "endDateTime": "2024-06-24T00:00:00.000Z"
+    }
+  },
+  "source": {
+    "type": "Text",
+    "value": "Adapted from the example payload 'PartyRole_retrieve_example_response' of the TMF669 Party Role Management 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+  }
+}

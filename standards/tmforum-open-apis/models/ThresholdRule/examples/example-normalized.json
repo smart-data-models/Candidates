@@ -1,0 +1,69 @@
+{
+  "id": "urn:ngsi-ld:ThresholdRule:f3a34f89-0046-thr-01",
+  "type": "ThresholdRule",
+  "tmfType": {
+    "type": "Text",
+    "value": "SimpleThresholdRule"
+  },
+  "tmfBaseType": {
+    "type": "Text",
+    "value": "ThresholdRule"
+  },
+  "tmfId": {
+    "type": "Text",
+    "value": "f3a34f89-0046-thr-01"
+  },
+  "measurement": {
+    "type": "StructuredValue",
+    "value": {
+      "@type": "PerformanceMeasurementRef",
+      "@schemaLocation": "/schema-registry/v5/PerformanceMeasurementRef.yaml",
+      "href": "tmf-api/performanceManagement/v5/performanceMeasurement/f3a34f89-0046-msr-01",
+      "id": "f3a34f89-0046-msr-01",
+      "@referredType": "PerformanceMeasurement"
+    }
+  },
+  "consequence": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "Consequence",
+        "@baseType": "Consequence",
+        "@schemaLocation": "/schema-registry/v5/Consequence.yaml",
+        "description": "Raises a major severity alarm when packet drop rate exceeds the defined threshold of 283 packets per second",
+        "name": "Alarm Consequence",
+        "prescribedAction": "CreateAlarm"
+      }
+    ]
+  },
+  "perfAlarmSpecThresholdCrossingDescription": {
+    "type": "Text",
+    "value": "Packet drop rate threshold violation detected - dropped packets per second exceeded acceptable limit"
+  },
+  "performanceAlarmSpecification": {
+    "type": "StructuredValue",
+    "value": {
+      "perfAlarmSpecAdditionalText": "The packet drop rate has exceeded the defined performance threshold, indicating potential congestion or network instability. This condition may lead to degraded application performance or increased latency if not resolved promptly.",
+      "perfAlarmSpecAlarmType": "PERFORMANCE_DEGRADATION",
+      "perfAlarmSpecSeverity": "MAJOR",
+      "perfAlarmSpecSpecificProblem": "Packet drop rate exceeded",
+      "perfAlarmProbableCause": "Threshold Crossed"
+    }
+  },
+  "condition": {
+    "type": "Text",
+    "value": "Raise"
+  },
+  "name": {
+    "type": "Text",
+    "value": "DropPacketsHighRule"
+  },
+  "severity": {
+    "type": "Text",
+    "value": "MAJOR"
+  },
+  "source": {
+    "type": "Text",
+    "value": "Adapted from the example payload 'ThresholdRuleGet200ApplicationJson_response' of the TMF649 Performance Thresholding 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+  }
+}

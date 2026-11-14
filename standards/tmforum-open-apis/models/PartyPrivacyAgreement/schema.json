@@ -1,0 +1,1058 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PartyPrivacyAgreement/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - PartyPrivacyAgreement",
+  "description": "A specific type of agreement that formalizes the privacy profiles requested for a party (TM Forum TMF644 Privacy 5.0.0, OpenAPI component PartyPrivacyAgreement; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:PartyPrivacyAgreement:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "PartyPrivacyAgreement"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'PartyPrivacyAgreement'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'PartyPrivacyAgreement' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/href'. Hyperlink reference"
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:PartyPrivacyAgreement:<tmfId>. unique identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Agreement/properties/name'. A human-readable name for the agreement"
+    },
+    "agreementType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Agreement/properties/agreementType'. The type of the agreement. For example commercial"
+    },
+    "agreementItem": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AgreementItem"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Agreement/properties/agreementItem'. A part of the agreement expressed in terms of a product offering and possibly including specific terms and conditions."
+    },
+    "relatedParty": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedPartyRefOrPartyRoleRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Agreement/properties/relatedParty'. RelatedParty reference. A related party defines party or party role or its reference, linked to a specific entity"
+    },
+    "engagedParty": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PartyRefOrPartyRoleRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Agreement/properties/engagedParty'."
+    },
+    "agreementPeriod": {
+      "$ref": "#/$defs/TimePeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Agreement/properties/agreementPeriod'. A period of time, either as a deadline (endDateTime only) a startDateTime only, or both"
+    },
+    "completionDate": {
+      "$ref": "#/$defs/TimePeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Agreement/properties/completionDate'. A period of time, either as a deadline (endDateTime only) a startDateTime only, or both"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Agreement/properties/description'. Narrative that explains the agreement and details about the it , such as why the agreement is taking place."
+    },
+    "relatedDocument": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedDocumentRefOrValue"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Agreement/properties/relatedDocument'. Documents related to the agreement, suc as signed off contract"
+    },
+    "initialDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Agreement/properties/initialDate'. Date at which the agreement was initialized"
+    },
+    "statementOfIntent": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Agreement/properties/statementOfIntent'. An overview and goals of the Agreement"
+    },
+    "status": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Agreement/properties/status'. The current status of the agreement. Typical values are: in process, approved and rejected"
+    },
+    "version": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Agreement/properties/version'. A string identifying the version of the agreement"
+    },
+    "agreementSpecification": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Agreement/properties/agreementSpecification'. Agreement specification reference. An AgreementSpecification represents a template of an agreement that can be used when establishing partnerships. In TMF this is a AgreementSpecificationRef object; here the NGSI-LD id of the referenced AgreementSpecification entity (urn:ngsi-ld:AgreementSpecification:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "agreementAuthorization": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AgreementAuthorization"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Agreement/properties/agreementAuthorization'. A business participant that is responsible for approving the agreement."
+    },
+    "characteristic": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Characteristic"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Agreement/properties/characteristic'. Describes a given characteristic of an object or entity through a name/value pair."
+    },
+    "agreementRelationship": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AgreementRelationship"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Agreement/properties/agreementRelationship'. A uni-directionmal relationship from this agreement to another agreement"
+    },
+    "partyPrivacyProfile": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/PartyPrivacyAgreement/properties/partyPrivacyProfile'. The privacy profiles that are the subject of the agreement. In TMF this is an array of PartyPrivacyProfileRef objects; here the NGSI-LD ids of the referenced PartyPrivacyProfile entities (urn:ngsi-ld:PartyPrivacyProfile:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "partyPrivacyProfileCharacteristic": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PartyPrivacyProfileCharacteristic"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/PartyPrivacyAgreement/properties/partyPrivacyProfileCharacteristic'. A list of (typically) high criticality characteristics whose chosen privacy rules are included in the agreement"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tmfType"
+  ],
+  "$defs": {
+    "Addressable": {
+      "type": "object",
+      "description": "Base schema for adressable entities",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Hyperlink reference"
+        },
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        }
+      }
+    },
+    "AgreementAuthorization": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "A business participant that is responsible for approving the agreement.",
+          "properties": {
+            "date": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The date associated with the authorization state."
+            },
+            "signatureRepresentation": {
+              "type": "string",
+              "description": "Indication that represents whether the signature is a physical paper signature or a digital signature."
+            },
+            "state": {
+              "type": "string",
+              "description": "Current status of the authorization, for example in process, approved, rejected."
+            }
+          }
+        }
+      ]
+    },
+    "AgreementItem": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "A part of the agreement expressed in terms of a product offering and possibly including specific terms and conditions.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Identifier of the Agreement item (generally it is a sequence number 01, 02, 03, ...)"
+            },
+            "termOrCondition": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/AgreementTermOrCondition"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "AgreementRelationship": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "A uni-directionmal relationship from this agreement to another agreement",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique identifier of the related agreement"
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the agreement"
+            },
+            "relationshipType": {
+              "type": "string",
+              "description": "Type of relationship such as containment, substitution, dependency, exclusivity"
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            }
+          }
+        }
+      ]
+    },
+    "AgreementTermOrCondition": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Aspects of the agreement not formally specified elsewhere in the agreement and that cannot be captured elsewhere in a formal notation, or automatically monitored and require a more human level of management.",
+          "properties": {
+            "description": {
+              "type": "string",
+              "description": "Text that explains the term or condition of the agreement."
+            },
+            "id": {
+              "type": "string",
+              "description": "Unique number assigned for reference."
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            }
+          }
+        }
+      ]
+    },
+    "AnyCharacteristicValue": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/StringCharacteristic"
+        },
+        {
+          "$ref": "#/$defs/IntegerCharacteristic"
+        },
+        {
+          "$ref": "#/$defs/NumberCharacteristic"
+        },
+        {
+          "$ref": "#/$defs/BooleanCharacteristic"
+        },
+        {
+          "$ref": "#/$defs/ObjectCharacteristic"
+        },
+        {
+          "$ref": "#/$defs/StringArrayCharacteristic"
+        },
+        {
+          "$ref": "#/$defs/IntegerArrayCharacteristic"
+        },
+        {
+          "$ref": "#/$defs/NumberArrayCharacteristic"
+        },
+        {
+          "$ref": "#/$defs/BooleanArrayCharacteristic"
+        },
+        {
+          "$ref": "#/$defs/ObjectArrayCharacteristic"
+        },
+        {
+          "$ref": "#/$defs/MapAnyCharacteristicValue"
+        }
+      ]
+    },
+    "Attachment": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Entity"
+        },
+        {
+          "type": "object",
+          "description": "Complements the description of an element (for instance a product) through video, pictures...",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The name of the attachment"
+            },
+            "description": {
+              "type": "string",
+              "description": "A narrative text describing the content of the attachment",
+              "examples": [
+                "Photograph of the Product"
+              ]
+            },
+            "url": {
+              "type": "string",
+              "description": "Uniform Resource Locator, is a web page address (a subset of URI)",
+              "examples": [
+                "http://host/Content/4aafacbd-11ff-4dc8-b445-305f2215715f"
+              ]
+            },
+            "content": {
+              "type": "string",
+              "format": "base64",
+              "description": "The actual contents of the attachment object, if embedded, encoded as base64"
+            },
+            "size": {
+              "$ref": "#/$defs/Quantity"
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            },
+            "attachmentType": {
+              "type": "string",
+              "description": "a business characterization of the purpose of the attachment, for example logo, instructionManual, contractCopy"
+            },
+            "mimeType": {
+              "type": "string",
+              "description": "a technical characterization of the attachment content format using IETF Mime Types"
+            }
+          }
+        }
+      ]
+    },
+    "AttachmentRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "Attachment reference. An attachment complements the description of an element (for instance a product) through video, pictures",
+          "properties": {
+            "description": {
+              "type": "string",
+              "description": "A narrative text describing the content of the attachment"
+            },
+            "url": {
+              "description": "Link to the attachment media/content",
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "AttachmentRefOrValue": {
+      "type": "object",
+      "description": "The polymorphic attributes @type, @schemaLocation & @referredType are related to the Attachment entity and not the AttachmentRefOrValue class itself",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Attachment"
+        },
+        {
+          "$ref": "#/$defs/AttachmentRef"
+        }
+      ]
+    },
+    "BooleanArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of Boolean(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "items": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "BooleanCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Boolean.",
+          "properties": {
+            "value": {
+              "type": "boolean",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "CategoryRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "Reference to a category in the catalog.",
+          "properties": {
+            "version": {
+              "type": "string",
+              "description": "Version of the category"
+            }
+          }
+        }
+      ]
+    },
+    "Characteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Describes a given characteristic of an object or entity through a name/value pair. The value is given by the sub-class named in @type (discriminator in the TMF specification): StringCharacteristic, StringArrayCharacteristic, ObjectCharacteristic, ObjectArrayCharacteristic, NumberCharacteristic, NumberArrayCharacteristic, MapAnyCharacteristicValue, IntegerCharacteristic, IntegerArrayCharacteristic, FloatCharacteristic; see $defs.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique identifier of the characteristic"
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the characteristic"
+            },
+            "valueType": {
+              "type": "string",
+              "description": "Data type of the value of the characteristic"
+            },
+            "characteristicRelationship": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/CharacteristicRelationship"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "CharacteristicRelationship": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Another Characteristic that is related to the current Characteristic;",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique identifier of the characteristic"
+            },
+            "relationshipType": {
+              "type": "string",
+              "description": "The type of relationship"
+            }
+          }
+        }
+      ]
+    },
+    "Document": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Entity"
+        },
+        {
+          "type": "object",
+          "description": "Document is a tangible output from an activity",
+          "properties": {
+            "attachment": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/AttachmentRefOrValue"
+              }
+            },
+            "category": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/CategoryRef"
+              }
+            },
+            "characteristic": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Characteristic"
+              }
+            },
+            "creationDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The date and time the document was created. A date and time formatted in compliance with the ISO8601 standard must be used."
+            },
+            "description": {
+              "type": "string",
+              "description": "free-text description of the document"
+            },
+            "documentRelationship": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/DocumentRef"
+              }
+            },
+            "documentSpecification": {
+              "$ref": "#/$defs/DocumentSpecification"
+            },
+            "lastUpdate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The date and time the document was last modified. A date and time formatted in compliance with the ISO8601 standard must be used."
+            },
+            "lifecycleState": {
+              "type": "string",
+              "description": "The life cycle state of the document."
+            },
+            "relatedEntity": {
+              "$ref": "#/$defs/RelatedEntity"
+            },
+            "relatedParty": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RelatedPartyRefOrPartyRoleRef"
+              }
+            },
+            "documentType": {
+              "type": "string",
+              "description": "Name of the document type"
+            },
+            "version": {
+              "type": "string",
+              "description": "A particular form or variety of an artefact that is different from others or from the original. The form represents differences in properties that characterize an artefact, that are not enough to warrant creating a new artefact"
+            },
+            "name": {
+              "type": "string",
+              "description": "A string used to give a name to the document"
+            }
+          }
+        }
+      ]
+    },
+    "DocumentRef": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "DocumentRefOrValue": {
+      "type": "object",
+      "description": "",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Document"
+        },
+        {
+          "$ref": "#/$defs/DocumentRef"
+        }
+      ]
+    },
+    "DocumentSpecification": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "A document specification reference",
+          "properties": {
+            "URL": {
+              "type": "string",
+              "description": "URL of the Document Specification"
+            },
+            "name": {
+              "type": "string",
+              "description": "a String. Name of the DocumentSpecification"
+            },
+            "version": {
+              "type": "string",
+              "description": "A string, a version of the DocumentSpecification."
+            },
+            "id": {
+              "type": "string",
+              "description": "Indentifier of the DocumentSpecification"
+            }
+          }
+        }
+      ]
+    },
+    "Entity": {
+      "type": "object",
+      "description": "Base entity schema for use in TMForum Open-APIs. Property.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        }
+      ]
+    },
+    "EntityRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        },
+        {
+          "type": "object",
+          "description": "Entity reference schema to be use for all entityRef class.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "The identifier of the referred entity."
+            },
+            "href": {
+              "type": "string",
+              "description": "The URI of the referred entity."
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the referred entity."
+            },
+            "@referredType": {
+              "type": "string",
+              "description": "The actual type of the target instance when needed for disambiguation."
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      ]
+    },
+    "Extensible": {
+      "type": "object",
+      "description": "Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means that the Entity described by the schema MUST be extended with the @type",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "FloatCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Float.",
+          "properties": {
+            "value": {
+              "type": "number",
+              "format": "float",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "IntegerArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of Integer(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "IntegerCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Integer.",
+          "properties": {
+            "value": {
+              "type": "integer",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "MapAnyCharacteristicValue": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A definition of a characteristic for which the value is a mapped object",
+          "properties": {
+            "value": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/$defs/AnyCharacteristicValue"
+              },
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "NumberArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of Number(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "NumberCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Number.",
+          "properties": {
+            "value": {
+              "type": "number",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "ObjectArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of Object(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ObjectCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Object.",
+          "properties": {
+            "value": {
+              "type": "object",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "PartyPrivacyProfileCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic for an instantiated party profile, where the value indicates the allowed use of the characteristic",
+          "properties": {
+            "characterisitc": {
+              "type": "object",
+              "$ref": "#/$defs/Characteristic"
+            },
+            "relatedParty": {
+              "type": "array",
+              "description": "A list of parties to which the allowed use of the characteristic applies.",
+              "items": {
+                "$ref": "#/$defs/RelatedPartyRefOrPartyRoleRef"
+              }
+            },
+            "privacyUsagePurpose": {
+              "type": "string",
+              "description": "Defines the purpose authorized or refused for the characteristic (e.g. ADMIN, INFORMATION, MARKETING, RESEARCH, etc."
+            }
+          }
+        }
+      ]
+    },
+    "PartyRef": {
+      "type": "object",
+      "description": "A Party reference",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "PartyRefOrPartyRoleRef": {
+      "type": "object",
+      "description": "",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PartyRef"
+        },
+        {
+          "$ref": "#/$defs/PartyRoleRef"
+        }
+      ]
+    },
+    "PartyRoleRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "Party role reference. A party role represents the part played by a party in a given context.",
+          "properties": {
+            "partyId": {
+              "type": "string",
+              "description": "The identifier of the engaged party that is linked to the PartyRole object."
+            },
+            "partyName": {
+              "type": "string",
+              "description": "The name of the engaged party that is linked to the PartyRole object."
+            }
+          }
+        }
+      ]
+    },
+    "Quantity": {
+      "type": "object",
+      "description": "An amount in a given unit",
+      "properties": {
+        "amount": {
+          "type": "number",
+          "format": "float",
+          "default": 1,
+          "description": "Numeric value in a given unit"
+        },
+        "units": {
+          "type": "string",
+          "description": "Unit"
+        }
+      }
+    },
+    "RelatedDocumentRefOrValue": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Entity reference. The polymorphic attributes @type, @schemaLocation & @referredType are related to the DocumentRefOrValue entity and not the RelatedDocumentRefOrValue class itself",
+          "properties": {
+            "role": {
+              "type": "string"
+            },
+            "document": {
+              "$ref": "#/$defs/DocumentRefOrValue"
+            }
+          }
+        }
+      ]
+    },
+    "RelatedEntity": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "A reference to an entity, where the type of the entity is not known in advance.",
+          "properties": {
+            "role": {
+              "type": "string"
+            },
+            "entity": {
+              "$ref": "#/$defs/EntityRef"
+            }
+          }
+        }
+      ]
+    },
+    "RelatedPartyRefOrPartyRoleRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "RelatedParty reference. A related party defines party or party role or its reference, linked to a specific entity",
+          "properties": {
+            "role": {
+              "description": "Role played by the related party or party role in the context of the specific entity it is linked to. Such as 'initiator', 'customer', 'salesAgent', 'user'",
+              "type": "string"
+            },
+            "partyOrPartyRole": {
+              "$ref": "#/$defs/PartyRefOrPartyRoleRef"
+            }
+          }
+        }
+      ]
+    },
+    "StringArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of String(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "StringCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a String.",
+          "properties": {
+            "value": {
+              "type": "string",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "startDateTime": {
+          "description": "Start of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        },
+        "endDateTime": {
+          "description": "End of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        }
+      }
+    }
+  }
+}

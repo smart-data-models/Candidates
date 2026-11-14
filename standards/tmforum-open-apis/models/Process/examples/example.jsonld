@@ -1,0 +1,68 @@
+{
+  "id": "urn:ngsi-ld:Process:4fd-ty56-gg55",
+  "type": "Process",
+  "tmfId": "4fd-ty56-gg55",
+  "creationDate": "2024-04-11T14:52:21.823Z",
+  "state": "completed",
+  "channel": {
+    "id": "1",
+    "href": "https://www.mycsp.com/tmfapis/channel/1",
+    "name": "TMFWebStore",
+    "@type": "ChannelRef",
+    "@referredType": "Channel"
+  },
+  "processSpecification": "urn:ngsi-ld:ProcessSpecification:OC54",
+  "relatedParty": [
+    {
+      "role": "Customer",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "456-f69",
+        "href": "https://www.mycsp.com/tmfapis/partyManagement/v5/individual/456-f69",
+        "@referredType": "Individual",
+        "@type": "PartyRef"
+      }
+    }
+  ],
+  "processCharacteristic": [
+    {
+      "modality": "input",
+      "@type": "FlowCharacteristic",
+      "characteristic": {
+        "valueType": "object",
+        "name": "Offer name",
+        "@type": "ObjectCharacteristic",
+        "value": {
+          "name": "productOfferingRef",
+          "id": "TMFMobile20",
+          "href": "https://www.mycsp.com/tmfapis/productCatalog/v5/productOffering/TMFMobile20",
+          "@type": "ProductOfferingRef",
+          "@referredType": "ProductOffering"
+        }
+      }
+    }
+  ],
+  "task": [
+    "urn:ngsi-ld:Task:4fd-ty56-gg55-2",
+    "urn:ngsi-ld:Task:4fd-ty56-gg55-3",
+    "urn:ngsi-ld:Task:4fd-ty56-gg55-4",
+    "urn:ngsi-ld:Task:4fd-ty56-gg55-5"
+  ],
+  "relatedEntity": [
+    {
+      "role": "created shopping Cart",
+      "@type": "RelatedEntity",
+      "entity": {
+        "id": "1203",
+        "href": "https://www.mycsp.com/tmfapis/shoppingCartManagement/v5/shoppingCart/1203",
+        "@referredType": "ShoppingCart",
+        "@type": "EntityRef"
+      }
+    }
+  ],
+  "tmfType": "Process",
+  "source": "Adapted from the example payload 'retrieveProcessById_response' of the TMF701 Process Management 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids.",
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Process/context.jsonld"
+  ]
+}

@@ -1,0 +1,304 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ResourceCatalog/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - ResourceCatalog",
+  "description": "The root entity for resource catalog management. A resource catalog is a group of resource specifications made available through resource candidates that an organization provides to the consumers (internal consumers like its employees or B2B customers or B2C customers). (TM Forum TMF634 Resource Catalog Management 5.0.0, OpenAPI component ResourceCatalog; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:ResourceCatalog:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ResourceCatalog"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ResourceCatalog'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF634_ResourceCatalog/blob/v5.0.0/TMF634-Resource_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'ResourceCatalog' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF634_ResourceCatalog/blob/v5.0.0/TMF634-Resource_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF634_ResourceCatalog/blob/v5.0.0/TMF634-Resource_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF634_ResourceCatalog/blob/v5.0.0/TMF634-Resource_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/href'. Hyperlink reference"
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF634_ResourceCatalog/blob/v5.0.0/TMF634-Resource_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:ResourceCatalog:<tmfId>. unique identifier"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF634_ResourceCatalog/blob/v5.0.0/TMF634-Resource_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/Catalog/properties/description'. Description of this catalog"
+    },
+    "catalogType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF634_ResourceCatalog/blob/v5.0.0/TMF634-Resource_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/Catalog/properties/catalogType'. Type of this Catalog, like Product, Service, Resource etc."
+    },
+    "validFor": {
+      "$ref": "#/$defs/TimePeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF634_ResourceCatalog/blob/v5.0.0/TMF634-Resource_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/Catalog/properties/validFor'. A period of time, either as a deadline (endDateTime only) a startDateTime only, or both"
+    },
+    "version": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF634_ResourceCatalog/blob/v5.0.0/TMF634-Resource_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/Catalog/properties/version'. Catalog version"
+    },
+    "relatedParty": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedPartyRefOrPartyRoleRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF634_ResourceCatalog/blob/v5.0.0/TMF634-Resource_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/Catalog/properties/relatedParty'. List of parties involved in this catalog"
+    },
+    "lastUpdate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF634_ResourceCatalog/blob/v5.0.0/TMF634-Resource_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/Catalog/properties/lastUpdate'. Date and time of the last update"
+    },
+    "lifecycleStatus": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF634_ResourceCatalog/blob/v5.0.0/TMF634-Resource_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/Catalog/properties/lifecycleStatus'. Used to indicate the current lifecycle status"
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF634_ResourceCatalog/blob/v5.0.0/TMF634-Resource_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/Catalog/properties/name'. Name of the catalog"
+    },
+    "category": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF634_ResourceCatalog/blob/v5.0.0/TMF634-Resource_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/ResourceCatalog/properties/category'. List of root categories contained in this catalog. In TMF this is an array of ResourceCategoryRef objects; here the NGSI-LD ids of the referenced ResourceCategory entities (urn:ngsi-ld:ResourceCategory:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "externalIdentifier": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ExternalIdentifier"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF634_ResourceCatalog/blob/v5.0.0/TMF634-Resource_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/ResourceCatalog/properties/externalIdentifier'. An identification of an entity that is owned by or originates in a software system different from the current system, for example a ProductOrder handed off from a commerce platform into an order handling system. The structure identifies the system itself, the nature of the entity within the system (e.g. class name) and the unique ID of the entity within the system. It is anticipated that multiple external IDs can be held for a single entity, e.g. if the entity passed through multiple systems on the way to the current system. In this case the consumer is expected to sequence the IDs in the array in reverse order of provenance, i.e. most recent system first in the list."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tmfType"
+  ],
+  "$defs": {
+    "Addressable": {
+      "type": "object",
+      "description": "Base schema for adressable entities",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Hyperlink reference"
+        },
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        }
+      }
+    },
+    "EntityRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        },
+        {
+          "type": "object",
+          "description": "Entity reference schema to be use for all entityRef class.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "The identifier of the referred entity."
+            },
+            "href": {
+              "type": "string",
+              "description": "The URI of the referred entity."
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the referred entity."
+            },
+            "@referredType": {
+              "type": "string",
+              "description": "The actual type of the target instance when needed for disambiguation."
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      ]
+    },
+    "Extensible": {
+      "type": "object",
+      "description": "Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means that the Entity described by the schema MUST be extended with the @type",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "ExternalIdentifier": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "An identification of an entity that is owned by or originates in a software system different from the current system, for example a ProductOrder handed off from a commerce platform into an order handling system. The structure identifies the system itself, the nature of the entity within the system (e.g. class name) and the unique ID of the entity within the system. It is anticipated that multiple external IDs can be held for a single entity, e.g. if the entity passed through multiple systems on the way to the current system. In this case the consumer is expected to sequence the IDs in the array in reverse order of provenance, i.e. most recent system first in the list.",
+          "properties": {
+            "owner": {
+              "type": "string",
+              "description": "Name of the external system that owns the entity.",
+              "examples": [
+                "MagentoCommerce"
+              ]
+            },
+            "externalIdentifierType": {
+              "type": "string",
+              "description": "Type of the identification, typically would be the type of the entity within the external system",
+              "examples": [
+                "ProductOrder"
+              ]
+            },
+            "id": {
+              "type": "string",
+              "description": "identification of the entity within the external system."
+            }
+          }
+        }
+      ]
+    },
+    "PartyRef": {
+      "type": "object",
+      "description": "A Party reference",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "PartyRefOrPartyRoleRef": {
+      "type": "object",
+      "description": "",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PartyRef"
+        },
+        {
+          "$ref": "#/$defs/PartyRoleRef"
+        }
+      ]
+    },
+    "PartyRoleRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "Party role reference. A party role represents the part played by a party in a given context.",
+          "properties": {
+            "partyId": {
+              "type": "string",
+              "description": "The identifier of the engaged party that is linked to the PartyRole object."
+            },
+            "partyName": {
+              "type": "string",
+              "description": "The name of the engaged party that is linked to the PartyRole object."
+            }
+          }
+        }
+      ]
+    },
+    "RelatedPartyRefOrPartyRoleRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "RelatedParty reference. A related party defines party or party role or its reference, linked to a specific entity",
+          "properties": {
+            "role": {
+              "description": "Role played by the related party or party role in the context of the specific entity it is linked to. Such as 'initiator', 'customer', 'salesAgent', 'user'",
+              "type": "string"
+            },
+            "partyOrPartyRole": {
+              "$ref": "#/$defs/PartyRefOrPartyRoleRef"
+            }
+          }
+        }
+      ]
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "startDateTime": {
+          "description": "Start of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        },
+        "endDateTime": {
+          "description": "End of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,514 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ProvisioningArtifact/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - ProvisioningArtifact",
+  "description": "A managed provisioning artifact resource (TM Forum TMF705 Test Environment Management API 4.0.0, Swagger definition ProvisioningArtifact; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:ProvisioningArtifact:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ProvisioningArtifact"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ProvisioningArtifact'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF705_TestEnvironment/blob/v4.0.0/TMF705-TestEnvironment-v4.0.0.swagger.json#/definitions/ProvisioningArtifact/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:ProvisioningArtifact:<tmfId>. unique identifier"
+    },
+    "href": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF705_TestEnvironment/blob/v4.0.0/TMF705-TestEnvironment-v4.0.0.swagger.json#/definitions/ProvisioningArtifact/properties/href'. Hyperlink reference"
+    },
+    "description": {
+      "examples": [
+        ""
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF705_TestEnvironment/blob/v4.0.0/TMF705-TestEnvironment-v4.0.0.swagger.json#/definitions/ProvisioningArtifact/properties/description'. The description for the artifact"
+    },
+    "version": {
+      "examples": [
+        "1.2.3"
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF705_TestEnvironment/blob/v4.0.0/TMF705-TestEnvironment-v4.0.0.swagger.json#/definitions/ProvisioningArtifact/properties/version'. The artifact version"
+    },
+    "versionDescription": {
+      "examples": [
+        "What's changed: ..."
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF705_TestEnvironment/blob/v4.0.0/TMF705-TestEnvironment-v4.0.0.swagger.json#/definitions/ProvisioningArtifact/properties/versionDescription'. The artifact version description"
+    },
+    "agreement": {
+      "$ref": "#/$defs/TestAgreement",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF705_TestEnvironment/blob/v4.0.0/TMF705-TestEnvironment-v4.0.0.swagger.json#/definitions/ProvisioningArtifact/properties/agreement'."
+    },
+    "attribute": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Attribute"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF705_TestEnvironment/blob/v4.0.0/TMF705-TestEnvironment-v4.0.0.swagger.json#/definitions/ProvisioningArtifact/properties/attribute'."
+    },
+    "provisioningArtifactDefinition": {
+      "$ref": "#/$defs/ProvisioningArtifactDefinition",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF705_TestEnvironment/blob/v4.0.0/TMF705-TestEnvironment-v4.0.0.swagger.json#/definitions/ProvisioningArtifact/properties/provisioningArtifactDefinition'. Provisioning artifact definition"
+    },
+    "relatedParty": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedPartyWithContactInfo"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF705_TestEnvironment/blob/v4.0.0/TMF705-TestEnvironment-v4.0.0.swagger.json#/definitions/ProvisioningArtifact/properties/relatedParty'. Related party specialization that includes contact information"
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "incomplete",
+        "beta",
+        "stable",
+        "deprecated"
+      ],
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF705_TestEnvironment/blob/v4.0.0/TMF705-TestEnvironment-v4.0.0.swagger.json#/definitions/ProvisioningArtifact/properties/state'. Possible values for the state of a managed artifact: 'incomplete', 'beta', 'stable', 'deprecated'"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF705_TestEnvironment/blob/v4.0.0/TMF705-TestEnvironment-v4.0.0.swagger.json#/definitions/ProvisioningArtifact/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF705_TestEnvironment/blob/v4.0.0/TMF705-TestEnvironment-v4.0.0.swagger.json#/definitions/ProvisioningArtifact/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF705_TestEnvironment/blob/v4.0.0/TMF705-TestEnvironment-v4.0.0.swagger.json#/definitions/ProvisioningArtifact/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'ProvisioningArtifact' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "provisioningArtifactDefinition"
+  ],
+  "$defs": {
+    "Any": {},
+    "Attribute": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "The attribute description"
+        },
+        "characteristic": {
+          "$ref": "#/$defs/Characteristic"
+        }
+      }
+    },
+    "Characteristic": {
+      "type": "object",
+      "description": "Describes a given characteristic of an object or entity through a name/value pair.",
+      "required": [
+        "name",
+        "value"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the characteristic"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the characteristic"
+        },
+        "valueType": {
+          "type": "string",
+          "description": "Data type of the value of the characteristic"
+        },
+        "characteristicRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CharacteristicRelationship"
+          }
+        },
+        "value": {
+          "$ref": "#/$defs/Any",
+          "description": "The value of the characteristic"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "CharacteristicRelationship": {
+      "type": "object",
+      "description": "Another Characteristic that is related to the current Characteristic;",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the characteristic"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "relationshipType": {
+          "type": "string",
+          "description": "The type of relationship"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "ContactMedium": {
+      "type": "object",
+      "description": "Indicates the contact medium that could be used to contact the party.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "mediumType": {
+          "type": "string",
+          "description": "Type of the contact medium, such as: email address, telephone number, postal address"
+        },
+        "preferred": {
+          "type": "boolean",
+          "description": "If true, indicates that is the preferred contact medium"
+        },
+        "characteristic": {
+          "$ref": "#/$defs/MediumCharacteristic",
+          "description": "Any additional characteristic(s) of this contact medium"
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The time period that the contact medium is valid for"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "MediumCharacteristic": {
+      "type": "object",
+      "description": "Describes the contact medium characteristics that could be used to contact a party (an individual or an organization)",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "city": {
+          "type": "string",
+          "description": "The city"
+        },
+        "contactType": {
+          "type": "string",
+          "description": "The type of contact, for example: phone number such as mobile, fixed home, fixed office. postal address such as shipping instalation…"
+        },
+        "country": {
+          "type": "string",
+          "description": "The country"
+        },
+        "emailAddress": {
+          "type": "string",
+          "description": "Full email address in standard format"
+        },
+        "faxNumber": {
+          "type": "string",
+          "description": "The fax number of the contact"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "The primary phone number of the contact"
+        },
+        "postCode": {
+          "type": "string",
+          "description": "Postcode"
+        },
+        "socialNetworkId": {
+          "type": "string",
+          "description": "Identifier as a member of a social network"
+        },
+        "stateOrProvince": {
+          "type": "string",
+          "description": "State or province"
+        },
+        "street1": {
+          "type": "string",
+          "description": "Describes the street"
+        },
+        "street2": {
+          "type": "string",
+          "description": "Complementary street description"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "ProvisioningArtifactDefinition": {
+      "type": "object",
+      "description": "Provisioning artifact definition",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "attachmentType": {
+          "examples": [
+            "video"
+          ],
+          "type": "string",
+          "description": "Attachment type such as video, picture"
+        },
+        "content": {
+          "type": "string",
+          "format": "base64",
+          "description": "The actual contents of the attachment object, if embedded, encoded as base64"
+        },
+        "description": {
+          "examples": [
+            "Photograph of the Product"
+          ],
+          "type": "string",
+          "description": "A narrative text describing the content of the attachment"
+        },
+        "mimeType": {
+          "type": "string",
+          "description": "Attachment mime type such as extension file for video, picture and document"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the attachment"
+        },
+        "url": {
+          "examples": [
+            "http://host/Content/4aafacbd-11ff-4dc8-b445-305f2215715f"
+          ],
+          "type": "string",
+          "format": "uri",
+          "description": "Uniform Resource Locator, is a web page address (a subset of URI)"
+        },
+        "size": {
+          "$ref": "#/$defs/Quantity",
+          "description": "The size of the attachment."
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The period of time for which the attachment is valid"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "Quantity": {
+      "type": "object",
+      "description": "An amount in a given unit",
+      "properties": {
+        "amount": {
+          "default": 1,
+          "type": "number",
+          "format": "float",
+          "description": "Numeric value in a given unit"
+        },
+        "units": {
+          "type": "string",
+          "description": "Unit"
+        }
+      }
+    },
+    "RelatedPartyWithContactInfo": {
+      "type": "object",
+      "description": "Related party specialization that includes contact information",
+      "required": [
+        "@referredType"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "role": {
+          "type": "string",
+          "description": "Role played by the related party"
+        },
+        "contact": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ContactMedium"
+          }
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "TestAgreement": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "examples": [
+            "My Agreement"
+          ],
+          "type": "string",
+          "description": "The agreement name"
+        },
+        "terms": {
+          "examples": [
+            "<EULA>"
+          ],
+          "type": "string",
+          "description": "The terms of the agreement"
+        },
+        "url": {
+          "examples": [
+            "http://myagreement.com"
+          ],
+          "type": "string",
+          "format": "uri",
+          "description": "The agreement URL"
+        }
+      }
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "endDateTime": {
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ],
+          "type": "string",
+          "format": "date-time",
+          "description": "End of the time period, using IETC-RFC-3339 format"
+        },
+        "startDateTime": {
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ],
+          "type": "string",
+          "format": "date-time",
+          "description": "Start of the time period, using IETC-RFC-3339 format"
+        }
+      }
+    }
+  }
+}

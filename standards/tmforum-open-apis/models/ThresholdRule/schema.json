@@ -1,0 +1,237 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ThresholdRule/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - ThresholdRule",
+  "description": "ThresholdRule A base entity for concrete definition of thresholds. This datatype is abstract (TM Forum TMF649 Performance Thresholding 5.0.0, OpenAPI component ThresholdRule; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:ThresholdRule:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ThresholdRule"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ThresholdRule'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'ThresholdRule' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/href'. Hyperlink reference"
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:ThresholdRule:<tmfId>. unique identifier"
+    },
+    "measurement": {
+      "$ref": "#/$defs/PerformanceMeasurementRef",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/ThresholdRule/properties/measurement'. PerformanceMeasurement reference: A PerformanceMeasurement is the observed value(s) of some PerformanceIndicatorSpecification."
+    },
+    "consequence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Consequence"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/ThresholdRule/properties/consequence'. A threshold crossing or a threshold ceased to be crossing results in a Performance consequence."
+    },
+    "perfAlarmSpecThresholdCrossingDescription": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/ThresholdRule/properties/perfAlarmSpecThresholdCrossingDescription'. Defines the specification for threshold crossing alarms, including severity, type, probable cause, and additional context used when generating alarms."
+    },
+    "performanceAlarmSpecification": {
+      "$ref": "#/$defs/PerformanceAlarmSpecification",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/ThresholdRule/properties/performanceAlarmSpecification'. The specification of how to populate the alarm fields when generating a threshold crossing alarm"
+    },
+    "condition": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/ThresholdRule/properties/condition'. A concrete threshold may have two possible values: 'Raise' - a threshold was crossed or 'Clear' - a threshold ceased crossing"
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/ThresholdRule/properties/name'. A word, term, or phrase by which a Performance threshold rule is known and distinguished from other threshold rules"
+    },
+    "severity": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/ThresholdRule/properties/severity'. A threshold can be generated in different severity levels. A crossing for each level may require a different condition and possibly trigger a different consequence. The supported severity levels are equivalent to the possible severity level of alarms. Examples are CRITICAL,MAJOR,MINOR,WARNING,INTERMEDIATE"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tmfType"
+  ],
+  "$defs": {
+    "Addressable": {
+      "type": "object",
+      "description": "Base schema for addressable entities",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Hyperlink reference"
+        },
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        }
+      }
+    },
+    "Consequence": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "A threshold crossing or a threshold ceased to be crossing results in a Performance consequence.",
+          "properties": {
+            "description": {
+              "type": "string",
+              "description": "A description of a Consequence"
+            },
+            "name": {
+              "type": "string",
+              "description": "A word, term, or phrase by which a Consequence is known and distinguished from other measurements"
+            },
+            "prescribedAction": {
+              "type": "string",
+              "description": "The suggested action"
+            }
+          }
+        }
+      ]
+    },
+    "EntityRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        },
+        {
+          "type": "object",
+          "description": "Entity reference schema to be use for all entityRef class.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "The identifier of the referred entity."
+            },
+            "href": {
+              "type": "string",
+              "description": "The URI of the referred entity."
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the referred entity."
+            },
+            "@referredType": {
+              "type": "string",
+              "description": "The actual type of the target instance when needed for disambiguation."
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      ]
+    },
+    "Extensible": {
+      "type": "object",
+      "description": "Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means that the Entity described by the schema MUST be extended with the @type",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "PerformanceAlarmSpecification": {
+      "type": "object",
+      "description": "The specification of how to populate the alarm fields when generating a threshold crossing alarm",
+      "properties": {
+        "perfAlarmSpecAdditionalText": {
+          "type": "string",
+          "description": "A value for the AdditionalText attribute as part of a threshold crossing alarm definition."
+        },
+        "perfAlarmSpecAlarmType": {
+          "type": "string",
+          "description": "A value for the AlarmType attribute as part of a threshold crossing alarm definition."
+        },
+        "perfAlarmSpecSeverity": {
+          "type": "string",
+          "description": "A value for the Severity attribute as part of a threshold crossing alarm definition. Examples are CRITICAL,MAJOR,MINOR,WARNING,INTERMEDIATE"
+        },
+        "perfAlarmSpecSpecificProblem": {
+          "type": "string",
+          "description": "A value for the SpecificProblem attribute as part of a threshold crossing alarm definition"
+        },
+        "perfAlarmProbableCause": {
+          "type": "string",
+          "description": "A value for the ProbableCause attribute as part of a threshold crossing alarm definition."
+        }
+      }
+    },
+    "PerformanceMeasurementRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "PerformanceMeasurement reference: A PerformanceMeasurement is the observed value(s) of some PerformanceIndicatorSpecification.",
+          "properties": {
+            "version": {
+              "type": "string",
+              "description": "Version of the PerformanceMeasurement"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

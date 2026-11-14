@@ -1,0 +1,72 @@
+{
+  "id": "urn:ngsi-ld:PartyPrivacyProfileSpecification:103",
+  "type": "PartyPrivacyProfileSpecification",
+  "tmfId": "103",
+  "description": "This is the Individual Privacy Specification",
+  "lastUpdate": "2019-07-06T10:36:30.709Z",
+  "name": "Individual Privacy",
+  "lifecycleStatus": "active",
+  "version": "1",
+  "applicableRole": [
+    {
+      "id": "owner_123",
+      "@type": "PartyPrivacyRoleSpecification",
+      "name": "owner"
+    }
+  ],
+  "specCharacteristic": [
+    {
+      "id": "42",
+      "criticalityLevel": "low",
+      "description": "Can EmailAddress be used for information purpose",
+      "name": "emailAddress",
+      "configurable": true,
+      "privacyType": "InternalPurpose",
+      "privacyUsagePurpose": "ADMIN",
+      "allowedRole": [
+        {
+          "id": "vendor_123",
+          "@type": "PartyPrivacyRoleSpecification",
+          "name": "vendor"
+        }
+      ],
+      "characteristicValueSpecification": [
+        {
+          "isDefault": true,
+          "valueType": "string",
+          "value": "Yes",
+          "@type": "StringCharacteristicValueSpecification"
+        },
+        {
+          "isDefault": false,
+          "valueType": "string",
+          "value": "No",
+          "@type": "StringCharacteristicValueSpecification"
+        }
+      ],
+      "validFor": {
+        "endDateTime": "2019-09-06T10:36:30.709Z",
+        "startDateTime": "2020-09-06T10:36:30.709Z"
+      },
+      "@type": "PartyPrivacyProfileSpecificationCharacteristic"
+    }
+  ],
+  "relatedParty": [
+    {
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "role": "admin",
+      "partyOrPartyRole": {
+        "@type": "PartyRef",
+        "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/203",
+        "id": "203",
+        "@referredType": "Individual"
+      }
+    }
+  ],
+  "validFor": {
+    "endDateTime": "2019-09-06T10:36:30.709Z",
+    "startDateTime": "2020-09-06T10:36:30.709Z"
+  },
+  "tmfType": "partyPrivacyProfileSpecification",
+  "source": "Adapted from the example payload 'PartyPrivacyProfileSpecification_retrieve_example_response' of the TMF644 Privacy 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+}

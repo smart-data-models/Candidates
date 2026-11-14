@@ -1,0 +1,145 @@
+{
+  "id": "urn:ngsi-ld:ApiProductOrder:86387671-0997-461b-99c7-d624ffb0640c",
+  "type": "ApiProductOrder",
+  "tmfType": "ApiProductOrder",
+  "tmfId": "86387671-0997-461b-99c7-d624ffb0640c",
+  "state": "completed",
+  "creationDate": "2025-02-02T12:00:00.00Z",
+  "completionDate": "2025-02-02T12:01:00.00Z",
+  "externalId": [
+    {
+      "@type": "ExternalIdentifier",
+      "externalIdentifierType": "ApplicationOwnerCustomerOrder",
+      "id": "order_2232342",
+      "owner": "ChannelPartner"
+    }
+  ],
+  "description": "Camara API order for an Application Owner",
+  "productOrderItem": [
+    {
+      "@type": "ApiProductOrderItemAdd",
+      "@baseType": "DCSProductOrderItem",
+      "@schemaLocation": "https://mycsp.com/tmf-api/schema/Customer/ApiProductOrderItemAdd.schema.json",
+      "id": "1",
+      "state": "completed",
+      "productOffering": {
+        "@type": "ProductOfferingRef",
+        "id": "2d4ef4d3-08ce-441d-ac76-133b6dad0ccb",
+        "@referredType": "OpenGatewayProductOffering"
+      },
+      "product": {
+        "@type": "ProductRef",
+        "id": "8bb8bcdb-9fcf-4b4f-8b27-2dda848404fb",
+        "href": "https://mycsp.com/tmf-api/openGatewayOperateAPIOnboardingAndOrdering/v5/apiProduct/8bb8bcdb-9fcf-4b4f-8b27-2dda848404fb",
+        "@referredType": "ApiProduct"
+      },
+      "productAction": {
+        "@type": "ApiProductActionAddDeviceLocationVerification",
+        "@baseType": "ApiProductAction",
+        "@schemaLocation": "https://mycsp.com/tmf-api/schema/Customer/ApiProductActionAddDeviceLocationVerification_example.schema.json",
+        "purpose": "dpv:FraudPreventionAndDetection",
+        "bestAccuracy": 500,
+        "targetApplication": {
+          "@type": "ApplicationRef",
+          "id": "f1cba17d-789a-4037-b3e3-2c96e887576c",
+          "href": "https://mycsp.com/tmf-api/openGatewayOperateAPIOnboardingAndOrdering/v5/application/f1cba17d-789a-4037-b3e3-2c96e887576c",
+          "@referredType": "Application"
+        }
+      },
+      "externalIdentifier": {
+        "@type": "ExternalIdentifier",
+        "externalIdentifierType": "ApplicationOwnerProduct",
+        "id": "device_location_1234",
+        "owner": "ChannelPartner"
+      },
+      "approvedProductOfferingTermOrCondition": [
+        {
+          "@type": "ProductOfferingTermOrCondition",
+          "productOfferingTermOrConditionSpecRef": {
+            "@type": "ProductOfferingTermOrConditionSpecRef",
+            "id": "2d4ef4d3-08ce-441d-ac76-133b6dad0ccb_terms_1",
+            "@referredType": "OpenGatewayProductOfferingTermOrConditionSpecification"
+          },
+          "productOfferingTermOrConditionApproval": {
+            "approvalDate": "2023-10-20T00:00:00.000Z"
+          },
+          "applicationLegalBasisForInputData": "dpv:Consent",
+          "process": [
+            {
+              "@type": "DpvProcess",
+              "processingOperation": [
+                "dpv:Assess"
+              ],
+              "context": {
+                "@type": "DpvContext",
+                "processingContext": [
+                  "dpv:AutomatedDecisionMaking",
+                  "dpv:AutomatedScoringOfIndividuals"
+                ],
+                "duration": "dpv:FixedOccurrencesDuration",
+                "frequency": "dpv:SingularFrequency"
+              },
+              "dataExportTransitCountry": [
+                {
+                  "@type": "DataExportCountry",
+                  "countryCode": {
+                    "@type": "ISO31661Alpha2StandardIdentifier",
+                    "value": "US"
+                  },
+                  "commercialOrganizationName": "Globy Corporation",
+                  "dataPrivacyFrameworkURL": "https://www.dataprivacyframework.gov/participant/abcde"
+                }
+              ]
+            },
+            {
+              "@type": "DpvProcess",
+              "processingOperation": [
+                "dpv:Profiling"
+              ],
+              "context": {
+                "@type": "DpvContext",
+                "processingContext": [
+                  "dpv:AutomatedScoringOfIndividuals"
+                ],
+                "duration": "dpv:EndlessDuration",
+                "frequency": "dpv:SingularFrequency"
+              },
+              "dataExportTransitCountry": [
+                {
+                  "@type": "DataExportCountry",
+                  "countryCode": {
+                    "@type": "ISO31661Alpha2StandardIdentifier",
+                    "value": "US"
+                  },
+                  "commercialOrganizationName": "Globy Corporation",
+                  "dataPrivacyFrameworkURL": "https://www.dataprivacyframework.gov/participant/abcde"
+                }
+              ],
+              "dataExportStorageCountry": [
+                {
+                  "@type": "DataExportCountry",
+                  "countryCode": {
+                    "@type": "ISO31661Alpha2StandardIdentifier",
+                    "value": "US"
+                  },
+                  "commercialOrganizationName": "Globy Corporation",
+                  "dataPrivacyFrameworkURL": "https://www.dataprivacyframework.gov/participant/abcde"
+                }
+              ]
+            }
+          ],
+          "userConsentScreenshot": {
+            "@type": "SimpleAttachment",
+            "content": "JVBERi...JSVFT0Y=",
+            "mimeType": "application/pdf"
+          }
+        }
+      ]
+    }
+  ],
+  "channelPartner": "urn:ngsi-ld:PartyRole:15",
+  "source": "Adapted from the example payload 'Retrieve_an_API_Product_Order_with_add_action_from_its_identifier_response' of the TMF931 Open Gateway Operate API Onboarding and Ordering 5.2.1 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids.",
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ApiProductOrder/context.jsonld"
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "id": "urn:ngsi-ld:SalesOpportunity:7894325",
+  "type": "SalesOpportunity",
+  "tmfId": "7894325",
+  "tmfType": "SalesOpportunity",
+  "name": "GoBank account",
+  "creationDate": "2022-03-30T12:27:59.123Z",
+  "rating": "hot",
+  "status": "inProgress",
+  "revenueEstimate": [
+    {
+      "amount": {
+        "unit": "EUR",
+        "value": 1200
+      },
+      "revenueType": "oneTime"
+    }
+  ],
+  "validFor": {
+    "startDateTime": "2022-03-30T12:27:59.123Z",
+    "endDateTime": "2022-04-30T12:27:59.123Z"
+  },
+  "salesLead": [
+    "urn:ngsi-ld:SalesLead:123"
+  ],
+  "relatedParty": [
+    {
+      "role": "marketing team",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "128",
+        "@type": "PartyRef",
+        "href": "https://host:port/partyManagement/v5/organization/127128",
+        "name": "GoBank Account",
+        "@referredType": "Organization"
+      }
+    }
+  ],
+  "salesOpportunityItem": [
+    {
+      "id": "100",
+      "@type": "SalesOpportunityItem",
+      "rating": "hot",
+      "priority": "medium",
+      "relatedParty": [
+        {
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "role": "prospect",
+          "partyOrPartyRole": {
+            "id": "94587",
+            "href": "https://host:port/partyManagement/v5/individual/94587",
+            "@type": "PartyRef",
+            "@referredType": "Individual"
+          }
+        },
+        {
+          "role": "marketing team",
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "partyOrPartyRole": {
+            "id": "127",
+            "@type": "PartyRef",
+            "href": "https://host:port/partyManagement/v5/individual/127",
+            "@referredType": "Individual"
+          }
+        },
+        {
+          "role": "sales team",
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "partyOrPartyRole": {
+            "id": "475",
+            "@type": "PartyRef",
+            "href": "https://host:port/partyManagement/v5/individual/475",
+            "@referredType": "Individual"
+          }
+        }
+      ],
+      "salesActivity": [
+        {
+          "id": "7321-0a6f",
+          "href": "https://serverRoot/tmf-api/salesManagement/v5/salesActivity/7321-0a6f",
+          "name": "Prospect called by Jane Doe",
+          "@type": "SalesActivityRef",
+          "@referredType": "SalesActivity"
+        },
+        {
+          "id": "6dc1-41ca",
+          "href": "https://serverRoot/tmf-api/salesManagement/v5/salesActivity/6dc1-41ca",
+          "name": "Contract sent to prospect by email",
+          "@type": "SalesActivityRef",
+          "@referredType": "SalesActivity"
+        }
+      ],
+      "validFor": {
+        "startDateTime": "2022-03-30T12:27:59.123Z",
+        "endDateTime": "2022-04-30T12:27:59.123Z"
+      },
+      "productOffering": {
+        "id": "42",
+        "href": "https://serverRoot/tmf-api/productCatalogManagement/v5/productOffering/42",
+        "name": "Gold Credit Card",
+        "@type": "ProductOfferingRef",
+        "@referredType": "ProductOffering"
+      }
+    },
+    {
+      "id": "200",
+      "@type": "SalesOpportunityItem",
+      "rating": "hot",
+      "priority": "medium",
+      "relatedParty": [
+        {
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "role": "prospect",
+          "partyOrPartyRole": {
+            "id": "94587",
+            "href": "https://host:port/partyManagement/v5/individual/94587",
+            "@type": "PartyRef",
+            "@referredType": "Individual"
+          }
+        },
+        {
+          "role": "marketing team",
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "partyOrPartyRole": {
+            "id": "127",
+            "@type": "PartyRef",
+            "href": "https://host:port/partyManagement/v5/individual/127",
+            "@referredType": "Individual"
+          }
+        },
+        {
+          "role": "sales team",
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "partyOrPartyRole": {
+            "id": "475",
+            "@type": "PartyRef",
+            "href": "https://host:port/partyManagement/v5/individual/475",
+            "@referredType": "Individual"
+          }
+        }
+      ],
+      "validFor": {
+        "startDateTime": "2022-03-30T12:27:59.123Z",
+        "endDateTime": "2022-04-30T12:27:59.123Z"
+      },
+      "productOffering": {
+        "id": "42",
+        "href": "https://serverRoot/tmf-api/productCatalogManagement/v5/productOffering/42",
+        "name": "Gold Credit Card",
+        "@type": "ProductOfferingRef",
+        "@referredType": "ProductOffering"
+      }
+    }
+  ],
+  "source": "Adapted from the example payload 'SalesOpportunity_retrieve_example_response' of the TMF699 Sales Management 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids.",
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/SalesOpportunity/context.jsonld"
+  ]
+}

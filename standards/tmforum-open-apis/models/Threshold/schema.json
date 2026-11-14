@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Threshold/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - Threshold",
+  "description": "A threshold base entity containing threshold rules. (TM Forum TMF649 Performance Thresholding 5.0.0, OpenAPI component Threshold; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Threshold:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Threshold"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Threshold'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'Threshold' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/href'. Hyperlink reference"
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:Threshold:<tmfId>. unique identifier"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/Threshold/properties/description'. A description of the threshold"
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/Threshold/properties/name'. A word, term, or phrase by which a Performance threshold is known and distinguished from other thresholds."
+    },
+    "thresholdRule": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/Threshold/properties/thresholdRule'. A Performance Threshold contains a set of Performance threshold rules of different conditions (Raise, Clear) and different severities. In TMF this is an array of ThresholdRuleRef objects; here the NGSI-LD ids of the referenced ThresholdRule entities (urn:ngsi-ld:ThresholdRule:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tmfType"
+  ]
+}

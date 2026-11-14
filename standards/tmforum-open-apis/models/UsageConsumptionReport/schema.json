@@ -1,0 +1,704 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/UsageConsumptionReport/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - UsageConsumptionReport",
+  "description": "An usage consumption report enables to know at a given point the balances and the consumption counters related to various buckets (SMS, Voice, Data for example). It could be calculated for a device identified by a public key (msisdn number for a mobile device for example or PSTN or VOIP number for a fix device), for a subscribed offer or option or for an user. (TM Forum TMF677 Usage Consumption 5.1.0, OpenAPI component UsageConsumptionReport; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:UsageConsumptionReport:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "UsageConsumptionReport"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'UsageConsumptionReport'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF677_UsageConsumption/blob/v5.1.0/TMF677-Usage_Consumption-v5.1.0.oas.yaml#/components/schemas/Extensible/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'UsageConsumptionReport' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF677_UsageConsumption/blob/v5.1.0/TMF677-Usage_Consumption-v5.1.0.oas.yaml#/components/schemas/Extensible/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF677_UsageConsumption/blob/v5.1.0/TMF677-Usage_Consumption-v5.1.0.oas.yaml#/components/schemas/Extensible/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF677_UsageConsumption/blob/v5.1.0/TMF677-Usage_Consumption-v5.1.0.oas.yaml#/components/schemas/Addressable/properties/href'. Hyperlink reference"
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF677_UsageConsumption/blob/v5.1.0/TMF677-Usage_Consumption-v5.1.0.oas.yaml#/components/schemas/Addressable/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:UsageConsumptionReport:<tmfId>. unique identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF677_UsageConsumption/blob/v5.1.0/TMF677-Usage_Consumption-v5.1.0.oas.yaml#/components/schemas/UsageConsumptionReport/properties/name'. Usage consumption name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF677_UsageConsumption/blob/v5.1.0/TMF677-Usage_Consumption-v5.1.0.oas.yaml#/components/schemas/UsageConsumptionReport/properties/description'. Free short text describing the usage consumption content"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF677_UsageConsumption/blob/v5.1.0/TMF677-Usage_Consumption-v5.1.0.oas.yaml#/components/schemas/UsageConsumptionReport/properties/creationDate'. Date and time of the request creation"
+    },
+    "lastUpdate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF677_UsageConsumption/blob/v5.1.0/TMF677-Usage_Consumption-v5.1.0.oas.yaml#/components/schemas/UsageConsumptionReport/properties/lastUpdate'. Date when the status was last changed"
+    },
+    "validPeriod": {
+      "$ref": "#/$defs/TimePeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF677_UsageConsumption/blob/v5.1.0/TMF677-Usage_Consumption-v5.1.0.oas.yaml#/components/schemas/UsageConsumptionReport/properties/validPeriod'. A period of time, either as a deadline (endDateTime only) a startDateTime only, or both"
+    },
+    "bucket": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF677_UsageConsumption/blob/v5.1.0/TMF677-Usage_Consumption-v5.1.0.oas.yaml#/components/schemas/UsageConsumptionReport/properties/bucket'. Bucket(s) included in the offer or option subscribed. In TMF this is an array of BucketRefOrValue objects; here the NGSI-LD ids of the referenced Bucket entities (urn:ngsi-ld:Bucket:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "relatedParty": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedPartyRefOrPartyRoleRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF677_UsageConsumption/blob/v5.1.0/TMF677-Usage_Consumption-v5.1.0.oas.yaml#/components/schemas/UsageConsumptionReport/properties/relatedParty'. RelatedParty reference. A related party defines party or party role or its reference, linked to a specific entity"
+    },
+    "partyAccount": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF677_UsageConsumption/blob/v5.1.0/TMF677-Usage_Consumption-v5.1.0.oas.yaml#/components/schemas/UsageConsumptionReport/properties/partyAccount'. A reference to the account that owns the bucket. In TMF this is an array of PartyAccountRef objects; here the NGSI-LD ids of the referenced PartyAccount entities (urn:ngsi-ld:PartyAccount:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "product": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/UsageConsumptionProductRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF677_UsageConsumption/blob/v5.1.0/TMF677-Usage_Consumption-v5.1.0.oas.yaml#/components/schemas/UsageConsumptionReport/properties/product'."
+    },
+    "logicalResource": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/LogicalResourceRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF677_UsageConsumption/blob/v5.1.0/TMF677-Usage_Consumption-v5.1.0.oas.yaml#/components/schemas/UsageConsumptionReport/properties/logicalResource'. reference to the LogicalResource eg MSISDN."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tmfType"
+  ],
+  "$defs": {
+    "Addressable": {
+      "type": "object",
+      "description": "Base schema for addressable entities",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Hyperlink reference"
+        },
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        }
+      }
+    },
+    "BooleanArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of Boolean(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "description": "A characteristic which value is an array of Boolean(s).",
+              "items": {
+                "type": "boolean",
+                "description": "Characteristic item boolean value"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "BooleanCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Boolean.",
+          "properties": {
+            "value": {
+              "type": "boolean",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "BucketCounter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Entity"
+        },
+        {
+          "type": "object",
+          "description": "The bucket counters (commonly referred to as meters) detail, for example, the different kind of consumptions against a bucket.",
+          "properties": {
+            "consumptionPeriod": {
+              "$ref": "#/$defs/TimePeriod"
+            },
+            "counterType": {
+              "type": "string",
+              "description": "Type of the consumption counter. We can give for example a counter of the used value for a bucket (counterType=used for example) or the value of the consumption done out of the bucket(s) (counterType=outOfBucket for example)"
+            },
+            "level": {
+              "type": "string",
+              "description": "Counter level. The counter can be given globally for the bucket or detailed by user or by network product for example in case of shared bucket"
+            },
+            "user": {
+              "$ref": "#/$defs/RelatedPartyRefOrPartyRoleRef"
+            },
+            "value": {
+              "$ref": "#/$defs/Quantity"
+            },
+            "valueName": {
+              "type": "string",
+              "description": "Value of the counter in a formatted string used for display needs for example"
+            },
+            "characteristic": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Characteristic"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Characteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Describes a given characteristic of an object or entity through a name/value pair. This is an abstract base class, the actual value is in one of the strongly-typed subclasses : StringCharacteristic, ObjectCharacteristic, FloatCharacteristic, BooleanCharacteristic, NumberCharacteristic, IntegerCharacteristic, StringArrayCharacteristic, ObjectArrayCharacteristic, BooleanArrayCharacteristic, NumberArrayCharacteristic, IntegerArrayCharacteristic... The value is given by the sub-class named in @type (discriminator in the TMF specification): BooleanArrayCharacteristic, BooleanCharacteristic, FloatArrayCharacteristic, FloatCharacteristic, IntegerArrayCharacteristic, IntegerCharacteristic, NumberArrayCharacteristic, NumberCharacteristic, ObjectArrayCharacteristic, ObjectCharacteristic, StringArrayCharacteristic, StringCharacteristic; see $defs.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique identifier of the characteristic"
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the characteristic"
+            },
+            "valueType": {
+              "type": "string",
+              "description": "Data type of the value of the characteristic"
+            },
+            "characteristicRelationship": {
+              "type": "array",
+              "description": "Collection of characteristic relationships",
+              "items": {
+                "$ref": "#/$defs/CharacteristicRelationship"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "CharacteristicRelationship": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Another Characteristic that is related to the current Characteristic;",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique identifier of the characteristic"
+            },
+            "relationshipType": {
+              "type": "string",
+              "description": "The type of relationship"
+            }
+          }
+        }
+      ]
+    },
+    "ConsumptionSummary": {
+      "type": "object",
+      "description": "The consumption counters (called ConsumptionSummary in the SID model) detail, for example, the different kinds of usage consumption.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/BucketCounter"
+        }
+      ]
+    },
+    "Entity": {
+      "type": "object",
+      "description": "Base entity schema for use in TM Forum Open APIs. Property.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        }
+      ]
+    },
+    "EntityRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        },
+        {
+          "type": "object",
+          "description": "Entity reference schema to be use for all entityRef class.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "The identifier of the referred entity."
+            },
+            "href": {
+              "type": "string",
+              "description": "The URI of the referred entity."
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the referred entity."
+            },
+            "@referredType": {
+              "type": "string",
+              "description": "The actual type of the target instance when needed for disambiguation."
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      ]
+    },
+    "Extensible": {
+      "type": "object",
+      "description": "Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means that the Entity described by the schema MUST be extended with the @type",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "FloatArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of Float(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "description": "A characteristic which value is an array of Float(s).",
+              "items": {
+                "type": "number",
+                "format": "float",
+                "description": "Characteristic value"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "FloatCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Float.",
+          "properties": {
+            "value": {
+              "type": "number",
+              "format": "float",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "IntegerArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of Integer(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "description": "A characteristic which value is an array of Integer(s).",
+              "items": {
+                "type": "integer",
+                "description": "Characteristic value"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "IntegerCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Integer.",
+          "properties": {
+            "value": {
+              "type": "integer",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "LogicalResourceRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "reference to the LogicalResource eg MSISDN.",
+          "properties": {
+            "value": {
+              "type": "string",
+              "description": "Value used to identifiy this resource as a MSISDN or a VoIP number."
+            }
+          }
+        }
+      ]
+    },
+    "NumberArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of Number(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "description": "A characteristic which value is an array of Number(s).",
+              "items": {
+                "type": "number",
+                "description": "Characteristic value"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "NumberCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Number.",
+          "properties": {
+            "value": {
+              "type": "number",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "ObjectArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of Object(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "description": "Collection of characteristic values",
+              "items": {
+                "type": "object",
+                "description": "Characteristic value"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ObjectCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Object.",
+          "properties": {
+            "value": {
+              "type": "object",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "PartyRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "A Party reference",
+          "properties": {
+            "@type": {
+              "type": "string",
+              "enum": [
+                "PartyRef"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "PartyRefOrPartyRoleRef": {
+      "type": "object",
+      "description": "",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PartyRef"
+        },
+        {
+          "$ref": "#/$defs/PartyRoleRef"
+        }
+      ]
+    },
+    "PartyRoleRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "Party role reference. A party role represents the part played by a party in a given context.",
+          "properties": {
+            "@type": {
+              "type": "string",
+              "enum": [
+                "PartyRoleRef"
+              ]
+            },
+            "partyId": {
+              "type": "string",
+              "description": "The identifier of the engaged party that is linked to the PartyRole object."
+            },
+            "partyName": {
+              "type": "string",
+              "description": "The name of the engaged party that is linked to the PartyRole object."
+            }
+          }
+        }
+      ]
+    },
+    "ProductRef": {
+      "type": "object",
+      "description": "A Product reference",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "Quantity": {
+      "type": "object",
+      "description": "An amount in a given unit",
+      "properties": {
+        "amount": {
+          "type": "number",
+          "format": "float",
+          "default": 1,
+          "description": "Numeric value in a given unit"
+        },
+        "units": {
+          "type": "string",
+          "description": "Unit"
+        }
+      }
+    },
+    "RelatedPartyRefOrPartyRoleRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "RelatedParty reference. A related party defines party or party role or its reference, linked to a specific entity",
+          "properties": {
+            "role": {
+              "description": "Role played by the related party or party role in the context of the specific entity it is linked to. Such as 'initiator', 'customer', 'salesAgent', 'user'",
+              "type": "string"
+            },
+            "partyOrPartyRole": {
+              "$ref": "#/$defs/PartyRefOrPartyRoleRef"
+            }
+          }
+        }
+      ]
+    },
+    "StringArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of String(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "description": "Collection of string characteristics",
+              "items": {
+                "type": "string",
+                "description": "Characteristic value"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "StringCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a String.",
+          "properties": {
+            "value": {
+              "type": "string",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "startDateTime": {
+          "description": "Start of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        },
+        "endDateTime": {
+          "description": "End of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        }
+      }
+    },
+    "UsageConsumptionProductRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/ProductRef"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "consumptionSummary": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ConsumptionSummary"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

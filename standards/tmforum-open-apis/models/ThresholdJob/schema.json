@@ -1,0 +1,333 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ThresholdJob/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - ThresholdJob",
+  "description": "The Threshold Job is the operational entity to execute a threshold (a set of threshold rules). As part of the definition of a Threshold Job, a scope of monitored objects is provided and a schedule for the threshold evaluation is determined. (TM Forum TMF649 Performance Thresholding 5.0.0, OpenAPI component ThresholdJob; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:ThresholdJob:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ThresholdJob"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ThresholdJob'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'ThresholdJob' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/href'. Hyperlink reference"
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/ThresholdJob/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:ThresholdJob:<tmfId>. Unique identifier of the Threshold Job, used to reference and manage it within the Threshold Management system."
+    },
+    "adminState": {
+      "enum": [
+        "LOCKED",
+        "UNLOCKED",
+        "SHUTTING_DOWN"
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/ThresholdJob/properties/adminState'. Enumeration of administrative states of a resource. Possible values indicate whether the resource is locked, unlocked, or shutting down."
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/ThresholdJob/properties/creationDate'. Timestamp indicating when the Threshold Job was originally created in the Performance Management system."
+    },
+    "executionState": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/ThresholdJob/properties/executionState'. The current runtime state of the Threshold Job. Supported states: 'Active' - The job is currently active and executing threshold evaluation. 'Suspended' - The job is temporarily stopped but can be resumed. 'Failed' - The job stopped due to a failure. 'Completed' - The job has finished its execution successfully and is no longer active."
+    },
+    "granularity": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/ThresholdJob/properties/granularity'. Defines the evaluation granularity of the Threshold Job (e.g., G_5MN, G_15MN, G_30MN, G_1H). It specifies the periodic time interval at which KPIs are assessed against threshold rules."
+    },
+    "jobPriority": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/ThresholdJob/properties/jobPriority'. Relative priority level assigned to the Threshold Job. Higher priority jobs may be executed or scheduled ahead of lower priority jobs."
+    },
+    "lastUpdate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/ThresholdJob/properties/lastUpdate'. Timestamp of the most recent update or modification to the Threshold Job definition."
+    },
+    "monitoredObjectsCriteria": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/MonitoredObjectsCriteria"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/ThresholdJob/properties/monitoredObjectsCriteria'. Criteria that define the scope of monitored objects (resources, services, or customers) to which the Threshold Job applies."
+    },
+    "performanceThreshold": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/ThresholdJob/properties/performanceThreshold'. In TMF this is a ThresholdRef object; here the NGSI-LD id of the referenced Threshold entity (urn:ngsi-ld:Threshold:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "scheduleDefinition": {
+      "$ref": "#/$defs/ScheduleDefinition",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/ThresholdJob/properties/scheduleDefinition'. The schedule definition for running jobs."
+    },
+    "trackingRecord": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF649_PerformanceThresholding/blob/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml#/components/schemas/ThresholdJob/properties/trackingRecord'. Optional field to store tracking or correlation information related to the Threshold Job (e.g., audit trails, external references, or operator notes)."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tmfType"
+  ],
+  "$defs": {
+    "DayOfMonthRecurrence": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Specifies recurrence on particular days of the month (1–31).",
+          "properties": {
+            "days": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 31
+              },
+              "uniqueItems": true,
+              "description": "List of days in the month on which recurrence occurs."
+            }
+          }
+        }
+      ]
+    },
+    "DayOfWeekRecurrence": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "",
+          "properties": {
+            "days": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 7
+              },
+              "uniqueItems": true,
+              "description": "List of days in the week on which recurrence occurs."
+            }
+          }
+        }
+      ]
+    },
+    "Extensible": {
+      "type": "object",
+      "description": "Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means that the Entity described by the schema MUST be extended with the @type",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "HourRange": {
+      "type": "object",
+      "description": "Represents a range of hours within a single day. The range can have only a start time, only an end time, or both. Times must be specified in 24-hour HH:mm format.",
+      "properties": {
+        "startHour": {
+          "description": "The beginning of the hour range, expressed in 24-hour HH:mm format (e.g., 09:00 for 9 AM, 17:30 for 5:30 PM).",
+          "type": "string",
+          "pattern": "^([01]\\d|2[0-3]):([0-5]\\d)$",
+          "examples": [
+            "09:00"
+          ]
+        },
+        "endHour": {
+          "description": "The end of the hour range, expressed in 24-hour HH:mm format (e.g., 12:00 for noon, 23:59 for one minute before midnight).",
+          "type": "string",
+          "pattern": "^([01]\\d|2[0-3]):([0-5]\\d)$",
+          "examples": [
+            "12:00"
+          ]
+        }
+      }
+    },
+    "MonitoredObjectsCriteria": {
+      "type": "object",
+      "description": "Monitored objects are specified by the MonitoredObjectsCriteria.",
+      "properties": {
+        "monitoredObjectFilter": {
+          "description": "A filter that can be used in conjunction with the monitored object class for specifying the set of instances that are referenced",
+          "type": "string"
+        }
+      }
+    },
+    "MonthlyScheduleDayOfWeekDefinition": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "dayOfMonthRecurrence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/DayOfMonthRecurrence"
+              }
+            },
+            "recurringDaySequence": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "ScheduleDefinition": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "The schedule definition for running jobs.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Identifier of the schedule definition, it should be locally unique"
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            },
+            "recurringFrequency": {
+              "description": "A recurring frequency to run a job within day that is included in schedule definition, for example: every 5 minutes, 15 minute, 30 minutes, 1 hour",
+              "type": "string"
+            },
+            "excludedDate": {
+              "description": "A list of specific dates that should be excluded from the Schedule Definition.",
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "scheduleDefinitionHourRange": {
+              "description": "A list of time ranges within a specific day that the schedule will be active on, for example 08:00-12:00, 16:00-19:00.",
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/HourRange"
+              }
+            },
+            "weeklyScheduleDefinition": {
+              "description": "The weekly schedule is used to define a schedule that is based on the days of the week, e.g. a schedule that will be active only on Monday and Tuesday.",
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/DayOfWeekRecurrence"
+              }
+            },
+            "monthlyScheduleDayOfMonthDefinition": {
+              "description": "The schedule definition for running the threshold job",
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "monthlyScheduleDayOfWeekDefinition": {
+              "$ref": "#/$defs/MonthlyScheduleDayOfWeekDefinition"
+            },
+            "dateScheduleDefinition": {
+              "description": "The date schedule is used to define a schedule that is based on specific dates and times. Each value must be a valid IETF RFC 3339 date-time string (e.g., '2015-12-31T23:59:59Z', '2013-02-28T09:00:00-05:00').",
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "examples": [
+                [
+                  "2015-12-31T23:59:59Z",
+                  "2013-02-28T09:00:00-05:00"
+                ]
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "startDateTime": {
+          "description": "Start of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        },
+        "endDateTime": {
+          "description": "End of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        }
+      }
+    }
+  }
+}

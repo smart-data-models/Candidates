@@ -1,0 +1,436 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ProductStock/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - ProductStock",
+  "description": "ProductStock is a base class for defining a product (or configured product with values characteristic) stock level. (TM Forum TMF687 Stock Management 4.0.0, Swagger definition ProductStock; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:ProductStock:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ProductStock"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ProductStock'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:ProductStock:<tmfId>. Unique identifier of the ProductStock"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/href'. Reference of the ProductStock"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/creationDate'. Date when the ProductStock was created (whatever its status)."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/description'. Free-text description of the ProductStock"
+    },
+    "lastInventoryDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/lastInventoryDate'. Last inventory count date for this ProductStock."
+    },
+    "lastUpdate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/lastUpdate'. Last date when the ProductStock record was updated."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/name'. Name of the ProductStock"
+    },
+    "replenishmentDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/replenishmentDate'. Planned date for future replenishment for this ProductStock."
+    },
+    "stockLevelCategory": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/stockLevelCategory'. Category of the ProductStock"
+    },
+    "channel": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ChannelRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/channel'. The channel to which the resource reference to. e.g. channel for selling product offerings, channel for opening a trouble ticket etc.."
+    },
+    "marketSegment": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/MarketSegmentRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/marketSegment'. provides references to the corresponding market segment as target of a product stock. A market segment is grouping of Parties, GeographicAreas, SalesChannels, and so forth."
+    },
+    "maxStockLevel": {
+      "$ref": "#/$defs/Quantity",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/maxStockLevel'. An amount in a given unit"
+    },
+    "minStockLevel": {
+      "$ref": "#/$defs/Quantity",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/minStockLevel'. An amount in a given unit"
+    },
+    "place": {
+      "$ref": "#/$defs/RelatedPlaceRefOrValue",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/place'. Used to define a place useful for the ProductStock for example a geographical place where the Product Stock is located"
+    },
+    "productStockLevel": {
+      "$ref": "#/$defs/Quantity",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/productStockLevel'. An amount in a given unit"
+    },
+    "productStockRelationship": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ProductStockRelationship"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/productStockRelationship'. relationship to other product stock"
+    },
+    "productStockStatusType": {
+      "type": "string",
+      "enum": [
+        "reserved",
+        "available",
+        "unavailable",
+        "unknown"
+      ],
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/productStockStatusType'. The status of the ProductStock, such as available, unavailable, reserved, unknown"
+    },
+    "productStockUsageType": {
+      "type": "string",
+      "enum": [
+        "inTransit",
+        "onDisplay",
+        "damaged",
+        "returned",
+        "replenishmentInProgress",
+        "inShop"
+      ],
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/productStockUsageType'. The usage type of the ProductStock, such as inTransit, damaged, onDisplay, etc.."
+    },
+    "relatedParty": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedParty"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/relatedParty'. A list of related party references (RelatedParty [*]). A related party defines party or party role linked to a specific entity"
+    },
+    "reorderQuantity": {
+      "$ref": "#/$defs/Quantity",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/reorderQuantity'. An amount in a given unit"
+    },
+    "resource": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/resource'. The Resource managed through this ProductStock is used. In TMF this is an array of ResourceRef objects; here the NGSI-LD ids of the referenced Resource entities (urn:ngsi-ld:Resource:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "stockLevelAlert": {
+      "$ref": "#/$defs/Quantity",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/stockLevelAlert'. An amount in a given unit"
+    },
+    "stockedProduct": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/stockedProduct'. Product stocked in this product stock - could be via a productSpecification, a ProductSpecification + valued characteristic, etc. In TMF this is a ProductRefOrValue object; here the NGSI-LD id of the referenced Product entity (urn:ngsi-ld:Product:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF687_StockManagement/blob/v4.0.0/TMF687-Stock-v4.0.0.swagger.json#/definitions/ProductStock/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'ProductStock' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "productStockLevel",
+    "stockedProduct"
+  ],
+  "$defs": {
+    "ChannelRef": {
+      "type": "object",
+      "description": "The channel to which the resource reference to. e.g. channel for selling product offerings, channel for opening a trouble ticket etc..",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the channel."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "MarketSegmentRef": {
+      "type": "object",
+      "description": "provides references to the corresponding market segment as target of product offerings. A market segment is grouping of Parties, GeographicAreas, SalesChannels, and so forth.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the market segment"
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the market segment"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the market segment"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "(Class) type of the referred market segment"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "ProductStockRef": {
+      "type": "object",
+      "description": "ProductStockRef is a reference to a product stock",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the ProductStockRef"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "ProductStockRelationship": {
+      "type": "object",
+      "description": "Linked product stock with a type relationship.",
+      "required": [
+        "relationshipType"
+      ],
+      "properties": {
+        "relationshipType": {
+          "type": "string",
+          "description": "The type of relationship between product stock"
+        },
+        "stockLevel": {
+          "$ref": "#/$defs/ProductStockRef",
+          "description": "A product stock in relationship with this product stock"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "Quantity": {
+      "type": "object",
+      "description": "An amount in a given unit",
+      "properties": {
+        "amount": {
+          "default": 1,
+          "type": "number",
+          "format": "float",
+          "description": "Numeric value in a given unit"
+        },
+        "units": {
+          "type": "string",
+          "description": "Unit"
+        }
+      }
+    },
+    "RelatedParty": {
+      "type": "object",
+      "description": "Related Entity reference. A related party defines party or party role linked to a specific entity.",
+      "required": [
+        "@referredType",
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "role": {
+          "type": "string",
+          "description": "Role played by the related party"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "RelatedPlaceRefOrValue": {
+      "type": "object",
+      "description": "Related Entity reference. A related place defines a place described by reference or by value linked to a specific entity. The polymorphic attributes @type, @schemaLocation & @referredType are related to the place entity and not the RelatedPlaceRefOrValue class itself",
+      "required": [
+        "role"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the place"
+        },
+        "href": {
+          "type": "string",
+          "description": "Unique reference of the place"
+        },
+        "name": {
+          "type": "string",
+          "description": "A user-friendly name for the place, such as [Paris Store], [London Store], [Main Home]"
+        },
+        "role": {
+          "type": "string"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    }
+  }
+}

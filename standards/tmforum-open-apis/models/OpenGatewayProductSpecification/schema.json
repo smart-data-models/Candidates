@@ -1,0 +1,355 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/OpenGatewayProductSpecification/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - OpenGatewayProductSpecification",
+  "description": "The specialized ProductSpecification for GSMA Open Gateway Operate API. (TM Forum TMF936 Open Gateway Operate API - Product Catalog 5.0.0, OpenAPI component OpenGatewayProductSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:OpenGatewayProductSpecification:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "OpenGatewayProductSpecification"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'OpenGatewayProductSpecification'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'OpenGatewayProductSpecification' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/href'. Hyperlink reference"
+    },
+    "tmfId": {
+      "type": "string",
+      "maxLength": 200,
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/OpenGatewayProductSpecification/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:OpenGatewayProductSpecification:<tmfId>. unique identifier. Recommended UUID format"
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 200,
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/OpenGatewayProductSpecification/properties/name'. Name of the productSpecification"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 5000,
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/OpenGatewayProductSpecification/properties/description'. Description of the productSpecification"
+    },
+    "validFor": {
+      "$ref": "#/$defs/TimePeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/DcsProductSpecification/properties/validFor'. A period of time, either as a deadline (endDateTime only) a startDateTime only, or both"
+    },
+    "lastUpdate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/DcsProductSpecification/properties/lastUpdate'. Date and time of the last update"
+    },
+    "lifecycleStatus": {
+      "enum": [
+        "inTest",
+        "active",
+        "retired",
+        "obsolete"
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/OpenGatewayProductSpecification/properties/lifecycleStatus'. Used to indicate the current ProductSpecification lifecycleStatus with limited enum values for Open Gateway context."
+    },
+    "category": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/DcsCategoryRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/OpenGatewayProductSpecification/properties/category'. NOT USED YET IN OPEN GATEWAY CONTEXT."
+    },
+    "productSpecificationRelationship": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/OpenGatewayProductSpecificationRelationship"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/OpenGatewayProductSpecification/properties/productSpecificationRelationship'. A migration, substitution, dependency or exclusivity relationship between/among product specifications."
+    },
+    "allowedAction": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/DcsAllowedProductAction"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/DcsProductSpecification/properties/allowedAction'. List of actions that can be executed (in context of a product order) on products instantiated from this productSpecification"
+    },
+    "targetProductSchema": {
+      "$ref": "#/$defs/TargetProductSchema",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/DcsProductSpecification/properties/targetProductSchema'. The reference object to the schema and type of target product which is described by product specification"
+    },
+    "version": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/OpenGatewayProductSpecification/properties/version'. Version of the ProductSpecification. Version SHOULD use the semantic versioning X.Y.Z version format where X identifies a major version, Y is the minor version and Z a fix."
+    },
+    "attachment": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/OpenGatewayAttachment"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/OpenGatewayProductSpecification/properties/attachment'. This attribute can be used to attach additional documentation for the productSpecification, like technical documentation, frequently asked questions, getting started, ..."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tmfType"
+  ],
+  "$defs": {
+    "Addressable": {
+      "type": "object",
+      "description": "Base schema for addressable entities",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Hyperlink reference"
+        },
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        }
+      }
+    },
+    "DcsAllowedProductAction": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Defines an action that can be taken on a product in the inventory as part of a product order. It is expected that this entity will be attached to product catalog items such as specifications and offerings. This DCS schema is a subset of the standard AllowedProductAction schema, that can be extended for specific contexts. This must be done reusing existing attributes in the standard AllowedProductAction schema or adding specific attributes.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique identifier of the AllowedProductAction within the array."
+            },
+            "action": {
+              "type": "string",
+              "description": "The name of the action. Values must be taken from this list (or extended it adding more values) : add, modify, delete."
+            },
+            "@targetProductOrderItemSchema": {
+              "$ref": "#/$defs/TargetProductOrderItemSchema"
+            }
+          }
+        }
+      ]
+    },
+    "DcsCategoryRef": {
+      "type": "object",
+      "description": "Reference to a category in the catalog. This DCS schema is a subset of the standard CategoryRef schema, that can be extended for specific contexts. This must be done reusing existing attributes in the standard CategoryRef schema or adding specific attributes.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "DcsProductSpecificationRelationship": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "A migration, substitution, dependency or exclusivity relationship between/among product specifications. This DCS schema is a subset of the standard ProductSpecificationRelationship schema, that can be extended for specific contexts. This must be done reusing existing attributes in the standard ProductSpecificationRelationship schema or adding specific attributes.",
+          "properties": {
+            "relationshipType": {
+              "type": "string",
+              "description": "type of the relationship. Values must be taken from this list (or extended it adding more values for a specific context) : requires, appliesOn"
+            }
+          }
+        }
+      ]
+    },
+    "EntityRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        },
+        {
+          "type": "object",
+          "description": "Entity reference schema to be use for all entityRef class.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "The identifier of the referred entity."
+            },
+            "href": {
+              "type": "string",
+              "description": "The URI of the referred entity."
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the referred entity."
+            },
+            "@referredType": {
+              "type": "string",
+              "description": "The actual type of the target instance when needed for disambiguation."
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      ]
+    },
+    "Extensible": {
+      "type": "object",
+      "description": "Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means that the Entity described by the schema MUST be extended with the @type",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "OpenGatewayAttachment": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Generic schema for attachment in Open Gateway context.",
+          "properties": {
+            "attachmentType": {
+              "$ref": "#/$defs/OpenGatewayAttachmentType"
+            },
+            "mimeType": {
+              "type": "string",
+              "description": "a technical characterization of the attachment content format using IETF Mime Types"
+            }
+          }
+        }
+      ]
+    },
+    "OpenGatewayAttachmentType": {
+      "enum": [
+        "termsAndConditions",
+        "developerDocumentation"
+      ],
+      "type": "string",
+      "description": "Used to indicate the Attachment attachmentType with limited enum values for Open Gateway context."
+    },
+    "OpenGatewayProductSpecificationRelationship": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/DcsProductSpecificationRelationship"
+        },
+        {
+          "type": "object",
+          "description": "A migration, substitution, dependency or exclusivity relationship between/among product specifications.",
+          "properties": {
+            "relationshipType": {
+              "description": "Indicates the possible values of relationshipType between ProductSpecification. requires means that the related productSpecification is required to be ordered before; appliesOne means that the related productSpecification describes the product to which the productspecification will apply (for example a UsageVolume product applies on an Api product).",
+              "type": "string",
+              "enum": [
+                "requires",
+                "appliesOn"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "TargetProductOrderItemSchema": {
+      "type": "object",
+      "description": "The reference object to the schema and type of target product order item which is described by product allowed action",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "Class type of the target product order item"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "This field provides a link to the schema describing the target product order item"
+        }
+      }
+    },
+    "TargetProductSchema": {
+      "type": "object",
+      "description": "The reference object to the schema and type of target product which is described by product specification",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "Class type of the target product"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "This field provides a link to the schema describing the target product"
+        }
+      }
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "startDateTime": {
+          "description": "Start of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        },
+        "endDateTime": {
+          "description": "End of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        }
+      }
+    }
+  }
+}

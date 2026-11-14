@@ -1,0 +1,161 @@
+{
+  "id": "urn:ngsi-ld:ApplicationOwner:e05b75dc-f843-40d9-8d16-112275a28385",
+  "type": "ApplicationOwner",
+  "tmfType": {
+    "type": "Text",
+    "value": "ApplicationOwner"
+  },
+  "tmfId": {
+    "type": "Text",
+    "value": "e05b75dc-f843-40d9-8d16-112275a28385"
+  },
+  "name": {
+    "type": "Text",
+    "value": "Funtastic Games application owner role"
+  },
+  "creationDate": {
+    "type": "DateTime",
+    "value": "2024-12-01T13:00:00.00Z"
+  },
+  "description": {
+    "type": "Text",
+    "value": "Application owner role in the Open Gateway context"
+  },
+  "engagedParty": {
+    "type": "StructuredValue",
+    "value": {
+      "@type": "ApplicationOwnerOrganization",
+      "name": "Funtastic Games SA",
+      "tradingName": "Funtastic Games",
+      "isLegalEntity": true,
+      "organizationType": "dpv:ForProfitOrganisation",
+      "privacyPolicyURL": "https://www.funtasticgames.com/privacy",
+      "taxNumber": "00.623.904/0001-73",
+      "organizationIdentification": [
+        {
+          "@type": "OrganizationIdentification",
+          "identificationType": "CNPJ",
+          "identificationId": "EXAMPLE-0001",
+          "issuingAuthority": "Receita Federal"
+        }
+      ],
+      "externalReference": [
+        {
+          "@type": "ExternalIdentifier",
+          "id": "funtastic_games_asp",
+          "externalIdentifierType": "ApplicationOwnerOrganization",
+          "owner": "ChannelPartner"
+        }
+      ],
+      "registeredGeographicAddress": {
+        "@type": "LightGeographicAddress",
+        "streetNr": "1",
+        "streetName": "Example Street",
+        "locality": "Exampletown",
+        "city": "Exampletown",
+        "stateOrProvince": "Sao Paulo",
+        "countryCode": {
+          "@type": "ISO31661Alpha2StandardIdentifier",
+          "value": "BR"
+        },
+        "postcode": "00000",
+        "geographicSubAddress": {
+          "@type": "LightGeographicSubAddress",
+          "buildingName": "Fogo",
+          "levelNumber": "Planta 4"
+        }
+      },
+      "contactMedium": [
+        {
+          "@type": "EmailContactMedium",
+          "@baseType": "ContactMedium",
+          "id": "1",
+          "preferred": true,
+          "emailAddress": "contact@example.com"
+        }
+      ],
+      "legalRepresentative": {
+        "@type": "ApplicationOwnerRelatedIndividual",
+        "familyName": "Doe",
+        "givenName": "Jane",
+        "contactMedium": [
+          {
+            "@type": "EmailContactMedium",
+            "@baseType": "ContactMedium",
+            "id": "1",
+            "preferred": true,
+            "emailAddress": "contact@example.com"
+          }
+        ]
+      },
+      "dataProtectionOfficer": {
+        "@type": "ApplicationOwnerRelatedOrganization",
+        "name": "DPO Office",
+        "organizationType": "dpv:OrganisationalUnit",
+        "contactMedium": [
+          {
+            "@type": "EmailContactMedium",
+            "@baseType": "ContactMedium",
+            "id": "1",
+            "preferred": true,
+            "emailAddress": "contact@example.com"
+          }
+        ]
+      },
+      "privacyManager": {
+        "@type": "ApplicationOwnerRelatedOrganization",
+        "name": "Privacy Office",
+        "organizationType": "dpv:OrganisationalUnit",
+        "contactMedium": [
+          {
+            "@type": "EmailContactMedium",
+            "@baseType": "ContactMedium",
+            "id": "1",
+            "preferred": true,
+            "emailAddress": "contact@example.com"
+          }
+        ]
+      },
+      "localRepresentative": [
+        {
+          "@type": "ApplicationOwnerRelatedLocalRepresentative",
+          "countryCode": {
+            "@type": "ISO31661Alpha2StandardIdentifier",
+            "value": "EU"
+          },
+          "representative": {
+            "@type": "ApplicationOwnerRelatedIndividual",
+            "familyName": "Doe",
+            "givenName": "Jane",
+            "contactMedium": [
+              {
+                "@type": "EmailContactMedium",
+                "@baseType": "ContactMedium",
+                "@schemaLocation": "https://mycsp.com/tmf-api/schema/Common/EmailContactMedium.schema.json",
+                "id": "jgarcia",
+                "preferred": true,
+                "emailAddress": "contact@example.com"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "status": {
+    "type": "Text",
+    "value": "active"
+  },
+  "approvalStatus": {
+    "type": "Text",
+    "value": "pendingApproval"
+  },
+  "channelPartner": {
+    "type": "URL",
+    "value": "urn:ngsi-ld:PartyRole:15"
+  },
+  "source": {
+    "type": "Text",
+    "value": "Adapted from the example payload 'Retrieve_an_ApplicationOwner_from_its_identifier_response' of the TMF931 Open Gateway Operate API Onboarding and Ordering 5.2.1 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+  }
+}

@@ -1,0 +1,515 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Application/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - Application",
+  "description": "Application is a logical resource that can consume API products. It's a specialization of a LogicalResource in the Open Gateway context. (TM Forum TMF931 Open Gateway Operate API Onboarding and Ordering 5.2.1, OpenAPI component Application; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Application:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Application"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Application'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Extensible/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'Application' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Extensible/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Extensible/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Addressable/properties/href'. Hyperlink reference"
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Addressable/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:Application:<tmfId>. unique identifier"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/LogicalResource/properties/description'. free-text description of the resource"
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/LogicalResource/properties/name'. the name of the resource"
+    },
+    "operationalState": {
+      "enum": [
+        "enable",
+        "disable"
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/LogicalResource/properties/operationalState'. ResourceOperationalStateType enumerations; values defined by ITU X.731: 'disable': The resource is totally inoperable and unable to provide service to the user(s); 'enable': The resource is partially or fully operable and available for use."
+    },
+    "resourceVersion": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/LogicalResource/properties/resourceVersion'. A field that identifies the specific version of an instance of a resource."
+    },
+    "externalIdentifier": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ExternalIdentifier"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/LogicalResource/properties/externalIdentifier'. An identification of this resource that is owned by or originates in a software system different from the current system. The structure identifies the system itself, the nature of the resource within the system and the unique ID of the resource within the system. It is anticipated that multiple external IDs can be held for a single resource, e.g. if the resource passed through multiple systems on the way to the current system."
+    },
+    "commercialName": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Application/properties/commercialName'. Exact name of the Application as marketed (and known by the end-user)."
+    },
+    "logoUrl": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Application/properties/logoUrl'. Url to retrieve the Application official logo."
+    },
+    "privacyPolicyURL": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Application/properties/privacyPolicyURL'. Url to Application privacy policy, if applicable."
+    },
+    "redirectUrl": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Application/properties/redirectUrl'. After a user successfully authorizes an application, the authorization server will redirect the user back to the application."
+    },
+    "jwksUri": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Application/properties/jwksUri'. Uri pointing to a JSON Web Key (JWK) : data structure that represents a cryptographic key"
+    },
+    "category": {
+      "enum": [
+        "agriculture",
+        "artAndDesign",
+        "autoAndVehicle",
+        "beauty",
+        "booksAndReference",
+        "business",
+        "construction",
+        "defense",
+        "developerTools",
+        "education",
+        "engineering",
+        "eventsAndEntertainment",
+        "finance",
+        "foodAndDrink",
+        "games",
+        "healthAndFitness",
+        "healthcare",
+        "information",
+        "kids",
+        "librariesAndDemo",
+        "lifestyle",
+        "manufacturing",
+        "mapsAndNavigation",
+        "media",
+        "medical",
+        "mining",
+        "musicAndAudio",
+        "newsAndMagazines",
+        "organizations",
+        "other",
+        "photoAndVideo",
+        "productivity",
+        "publicService",
+        "realEstate",
+        "shopping",
+        "socialNetworkingAndCommunications",
+        "sports",
+        "tourism",
+        "utilities",
+        "trading",
+        "transportation",
+        "travelAndLocal",
+        "water",
+        "weather"
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Application/properties/category'. Valid values for the category of the Application. Please refer to main Application stores in order to retrieve a more precise definition of the categories."
+    },
+    "approvalStatus": {
+      "enum": [
+        "pendingApproval",
+        "approved",
+        "rejected"
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Application/properties/approvalStatus'. Valid values for an ApprovalStatus in the context of an approval process."
+    },
+    "approvalStatusReason": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Application/properties/approvalStatusReason'. The reason why the approval state changed. DEPRECATED in the PATCH (bug to be fixed on next major version)."
+    },
+    "applicationOwner": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Application/properties/applicationOwner'. Party role reference. A party role represents the part played by a party in a given context. In TMF this is a PartyRoleRef object; here the NGSI-LD id of the referenced PartyRole entity (urn:ngsi-ld:PartyRole:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "privacyRightsRequestContact": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ContactMedium"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Application/properties/privacyRightsRequestContact'. Contact information for the exercise of data protection rights to which the End Users can address. Must be only EmailContactMedium or WebFormContactMedium for this context."
+    },
+    "channelPartner": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Application/properties/channelPartner'. Party role reference. A party role represents the part played by a party in a given context. In TMF this is a PartyRoleRef object; here the NGSI-LD id of the referenced PartyRole entity (urn:ngsi-ld:PartyRole:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "digitalIdentity": {
+      "$ref": "#/$defs/ApiDigitalIdentity",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Application/properties/digitalIdentity'. ApiDigitalIdentity is a class that allow to describe a digital identity for an individual or a resource or a specific party role. One of these three MUST be provided. If an individual is provided, this identity will be for all her/his partyRole. To avoid confusion it is recommended in this case to not provide partyRoleIdentified. DEPRECATED in the POST and PATCH, this attribute can't be valued by the API consumer in this context."
+    },
+    "apiConsumerRole": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/LogicalResourceRole"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Application/properties/apiConsumerRole'. Each GSMA Service-API plays a role, and has specific permissions for use"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Application/properties/creationDate'. Date and time when the Application was created"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tmfType"
+  ],
+  "$defs": {
+    "Addressable": {
+      "type": "object",
+      "description": "Base schema for addressable entities",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Hyperlink reference"
+        },
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        }
+      }
+    },
+    "ApiConsumerPermission": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "An ApiConsumerPermission allows an Application to consume an API.",
+          "properties": {
+            "managedAssetGroup": {
+              "$ref": "#/$defs/ApiListAssetGroup"
+            }
+          }
+        }
+      ]
+    },
+    "ApiDigitalIdentity": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "ApiDigitalIdentity is a class that allow to describe a digital identity for an individual or a resource or a specific party role. One of these three MUST be provided. If an individual is provided, this identity will be for all her/his partyRole. To avoid confusion it is recommended in this case to not provide partyRoleIdentified. DEPRECATED in the POST and PATCH, this attribute can't be valued by the API consumer in this context.",
+          "properties": {
+            "clientId": {
+              "type": "string",
+              "description": "OAuth2 Client ID: A public identifier for apps. Even though it is public, it is best that it is not guessable by third parties, so many implementations use something like a 32-character hex string. DEPRECATED in the POST and the PATCH, this attribute can't be valued by the API consumer in this context."
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            },
+            "status": {
+              "type": "string",
+              "description": "Used to indicate the current lifecycle status of this digital identity (unknown, active, suspended, archived)."
+            },
+            "credential": {
+              "type": "array",
+              "description": "A list of credential/authentification method that are used for this digital identity.",
+              "items": {
+                "$ref": "#/$defs/OAuth2ClientCredential"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ApiListAssetGroup": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/AssetGroup"
+        },
+        {
+          "type": "object",
+          "description": "Defines a group of API assets to which access can be controlled",
+          "properties": {
+            "apiProduct": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ProductRef"
+              },
+              "description": "The list of products for which permissions are given."
+            }
+          }
+        }
+      ]
+    },
+    "ApiPermissionSet": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "The PermissionSet is a set of Permissions granted to a user (party, party role or resource). The set may be granted explicitly by an authorized user or may be acquired implicitly due to the role that the user is playing.",
+          "properties": {
+            "creationDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Date when the PermissionSet was created and assigned to a user"
+            },
+            "description": {
+              "type": "string",
+              "description": "Text describing the permission set"
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            },
+            "permission": {
+              "$ref": "#/$defs/ApiConsumerPermission"
+            }
+          }
+        }
+      ]
+    },
+    "AssetGroup": {
+      "type": "object",
+      "description": "Defines a group of assets (entities) to which access can be controlled. Specific subclasses allow definition in various ways (list of entities, queries, ownership by customer, etc.). AssetGroup is not a managed entity, its concrete subclasses are always included by value in their containing entities.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        }
+      ]
+    },
+    "ContactMedium": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Indicates the contact medium that could be used to contact the party. This is an abstract base class, the actual value is in one of the strongly-typed subclasses : EmailContactMedium, FaxContactMedium, PhoneContactMedium, GeographicAddressContactMedium, SocialMediaContactMedium...",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Identifier for this contact medium."
+            },
+            "preferred": {
+              "type": "boolean",
+              "description": "If true, indicates that is the preferred contact medium"
+            },
+            "contactType": {
+              "type": "string",
+              "description": "Type of the contact medium to qualify it like pro email / personal email. This is not used to define the contact medium used."
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            }
+          }
+        }
+      ]
+    },
+    "EntityRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        },
+        {
+          "type": "object",
+          "description": "Entity reference schema to be use for all entityRef class.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "The identifier of the referred entity."
+            },
+            "href": {
+              "type": "string",
+              "description": "The URI of the referred entity."
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the referred entity."
+            },
+            "@referredType": {
+              "type": "string",
+              "description": "The actual type of the target instance when needed for disambiguation."
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      ]
+    },
+    "Extensible": {
+      "type": "object",
+      "description": "Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means that the Entity described by the schema MUST be extended with the @type",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "ExternalIdentifier": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "An identification of an entity that is owned by or originates in a software system different from the current system, for example a ProductOrder handed off from a commerce platform into an order handling system. The structure identifies the system itself, the nature of the entity within the system (e.g. class name) and the unique ID of the entity within the system. It is anticipated that multiple external IDs can be held for a single entity, e.g. if the entity passed through multiple systems on the way to the current system. In this case the consumer is expected to sequence the IDs in the array in reverse order of provenance, i.e. most recent system first in the list.",
+          "properties": {
+            "owner": {
+              "type": "string",
+              "description": "Name of the external system that owns the entity.",
+              "examples": [
+                "MagentoCommerce"
+              ]
+            },
+            "externalIdentifierType": {
+              "type": "string",
+              "description": "Type of the identification, typically would be the type of the entity within the external system",
+              "examples": [
+                "ProductOrder"
+              ]
+            },
+            "id": {
+              "type": "string",
+              "description": "identification of the entity within the external system."
+            }
+          }
+        }
+      ]
+    },
+    "LogicalResourceRole": {
+      "type": "object",
+      "description": "A logical Resource Role is a role given to a logical resource in a given context.",
+      "properties": {
+        "grantedPermissionSet": {
+          "description": "The PermissionSet is a set of Permissions granted to a user (party, party role, resource or resource role). The set may be granted explicitly by an authorized user or may be acquired implicitly due to the role that the user is playing.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ApiPermissionSet"
+          }
+        }
+      }
+    },
+    "OAuth2ClientCredential": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "OAuth2ClientCredential describes the registration attributes in an OAuth registration process",
+          "properties": {
+            "clientSecret": {
+              "type": "string",
+              "description": "Secret that permits the Application to authenticate with OAuth2 method."
+            },
+            "state": {
+              "type": "string",
+              "description": "Used to indicate the current lifecycle state of this credential (like active, inactive, expired)."
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            }
+          }
+        }
+      ]
+    },
+    "ProductRef": {
+      "type": "object",
+      "description": "A Product reference",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "startDateTime": {
+          "description": "Start of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        },
+        "endDateTime": {
+          "description": "End of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        }
+      }
+    }
+  }
+}

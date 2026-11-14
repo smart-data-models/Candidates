@@ -1,0 +1,234 @@
+{
+  "id": "urn:ngsi-ld:BillingAccount:5430",
+  "type": "BillingAccount",
+  "tmfType": {
+    "type": "Text",
+    "value": "BillingAccount"
+  },
+  "paymentStatus": {
+    "type": "Text",
+    "value": "In Arrears"
+  },
+  "creditLimit": {
+    "type": "StructuredValue",
+    "value": {
+      "unit": "USD",
+      "value": 10000
+    }
+  },
+  "description": {
+    "type": "Text",
+    "value": "This  billing account ..."
+  },
+  "tmfId": {
+    "type": "Text",
+    "value": "5430"
+  },
+  "name": {
+    "type": "Text",
+    "value": "Home Account"
+  },
+  "state": {
+    "type": "Text",
+    "value": "Inactive"
+  },
+  "accountType": {
+    "type": "Text",
+    "value": "Business"
+  },
+  "billStructure": {
+    "type": "StructuredValue",
+    "value": {
+      "@type": "BillStructure",
+      "presentationMedia": [
+        {
+          "@type": "BillPresentationMedia",
+          "href": "https://host:port/tmf-api/accountManagement/v5/billPresentationMedia/9968",
+          "id": "9968",
+          "name": "Post Mail"
+        }
+      ],
+      "format": {
+        "@type": "BillFormat",
+        "href": "https://host:port/tmf-api/accountManagement/v5/billFormat/3555",
+        "id": "3555",
+        "name": "Detailed invoice"
+      },
+      "cycleSpecification": {
+        "@type": "BillingCycleSpecification",
+        "dateShift": 54,
+        "frequency": "monthly",
+        "href": "https://host:port/tmf-api/accountManagement/v5/billingCycleSpecification/3828",
+        "id": "3828",
+        "name": "Annual billing"
+      }
+    }
+  },
+  "paymentPlan": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "PaymentPlan",
+        "numberOfPayments": 4,
+        "paymentFrequency": "monthly",
+        "priority": 1,
+        "status": "Effective",
+        "totalAmount": {
+          "unit": "USD",
+          "value": 100
+        },
+        "planType": "regular",
+        "validFor": {
+          "startDateTime": "2018-06-11T00:00:00.000Z",
+          "endDateTime": "2019-01-10T00:00:00.000Z"
+        },
+        "paymentMethod": {
+          "@type": "PaymentMethodRef",
+          "href": "https://host:port/tmf-api/paymentMethods/v5/paymentMethod/2452",
+          "id": "2452",
+          "name": "professional payment"
+        }
+      }
+    ]
+  },
+  "financialAccount": {
+    "type": "URL",
+    "value": "urn:ngsi-ld:FinancialAccount:2063"
+  },
+  "defaultPaymentMethod": {
+    "type": "URL",
+    "value": "urn:ngsi-ld:PaymentMethod:3537"
+  },
+  "relatedParty": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "role": "service provider",
+        "@type": "RelatedPartyRefOrRelatedPartyRoleRef",
+        "partyOrPartyRole": {
+          "@type": "PartyRefOrPartyRoleRef",
+          "@referredType": "Organization",
+          "href": "https://host:port/tmf-api/partyManagement/v5/organization/9947",
+          "id": "9947",
+          "name": "Example Holding Ltd"
+        }
+      }
+    ]
+  },
+  "taxExemption": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "TaxExemption",
+        "id": "1",
+        "certificateNumber": "45678909876",
+        "issuingJurisdiction": "Prefecture",
+        "reason": "Social",
+        "taxDefinition": [
+          {
+            "@type": "TaxDefinition",
+            "id": "96",
+            "name": "Value Added Tax",
+            "taxType": "federalVat"
+          }
+        ],
+        "attachment": {
+          "@type": "Attachment",
+          "id": "1232455768567",
+          "href": "https://host:port/tmf-api/document/v5/attachment/1232455768567",
+          "attachmentType": "taxExemptionCertificate",
+          "name": "TaxExemptionCertificate-12345.pdf",
+          "description": "Electronic version of the tax exemption certificate",
+          "mimeType": "application/pdf",
+          "url": "http://host:port/DocumentManager/666/TaxExemptionCertificate-12345.pdf"
+        },
+        "validFor": {
+          "startDateTime": "2018-06-13T00:00:00.000Z",
+          "endDateTime": "2019-01-10T00:00:00.000Z"
+        }
+      }
+    ]
+  },
+  "contact": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "Contact",
+        "contactName": "Jane Doe",
+        "contactType": "secondary",
+        "partyRoleType": "Vendor",
+        "validFor": {
+          "startDateTime": "2018-06-17T00:00:00.000Z",
+          "endDateTime": "2019-01-10T00:00:00.000Z"
+        },
+        "contactMedium": [
+          {
+            "@type": "GeographicAddressContactMedium",
+            "preferred": true,
+            "mediumType": "PostalAddress",
+            "validFor": {
+              "startDateTime": "2018-06-14T00:00:00.000Z",
+              "endDateTime": "2019-01-10T00:00:00.000Z"
+            },
+            "city": "Exampletown",
+            "country": "France",
+            "postCode": "00000",
+            "street1": "1 Example Street"
+          }
+        ],
+        "relatedParty": {
+          "role": "owner",
+          "@type": "RelatedPartyRefOrRelatedPartyRoleRef",
+          "partyOrPartyRole": {
+            "@type": "PartyRefOrPartyRoleRef",
+            "@referredType": "Organization",
+            "href": "https://host:port/tmf-api/partyManagement/v5/organization/9947",
+            "id": "9947",
+            "name": "Example Holding Ltd"
+          }
+        }
+      }
+    ]
+  },
+  "accountBalance": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "AccountBalance",
+        "amount": {
+          "unit": "USD",
+          "value": 58.33
+        },
+        "balanceType": "ReceivableBalance",
+        "validFor": {
+          "startDateTime": "2018-06-10T00:00:00.000Z",
+          "endDateTime": "2019-01-10T00:00:00.000Z"
+        }
+      }
+    ]
+  },
+  "accountRelationship": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "AccountRelationship",
+        "relationshipType": "contains",
+        "validFor": {
+          "startDateTime": "2018-06-13T00:00:00.000Z",
+          "endDateTime": "2019-01-10T00:00:00.000Z"
+        },
+        "account": {
+          "@referredType": "BillingAccount",
+          "@type": "AccountRef",
+          "href": "https://host:port/tmf-api/accountManagement/v5/partyAccount/9327",
+          "id": "9327",
+          "name": "Paradise Account"
+        }
+      }
+    ]
+  },
+  "source": {
+    "type": "Text",
+    "value": "Adapted from the example payload 'BillingAccount_retrieve_example_response' of the TMF666 Account Management 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+  }
+}

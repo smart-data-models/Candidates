@@ -1,0 +1,429 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Agreement/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - Agreement",
+  "description": "An agreement represents a contract or arrangement, either written or verbal and sometimes enforceable by law, such as a service level agreement or a customer price agreement. An agreement involves a number of other business entities, such as products, services, and resources and/or their specifications. (TM Forum TMF651 Agreement Management 4.0.0, Swagger definition Agreement; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Agreement:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Agreement"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Agreement'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF651_AgreementManagement/blob/v4.0.0/TMF651-Agreement-v4.0.0.swagger.json#/definitions/Agreement/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:Agreement:<tmfId>. Unique identifier for the agreement"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF651_AgreementManagement/blob/v4.0.0/TMF651-Agreement-v4.0.0.swagger.json#/definitions/Agreement/properties/href'. Unique url identifying the agreement as a resource"
+    },
+    "agreementType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF651_AgreementManagement/blob/v4.0.0/TMF651-Agreement-v4.0.0.swagger.json#/definitions/Agreement/properties/agreementType'. The type of the agreement. For example commercial"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF651_AgreementManagement/blob/v4.0.0/TMF651-Agreement-v4.0.0.swagger.json#/definitions/Agreement/properties/description'. Narrative that explains the agreement and details about the it , such as why the agreement is taking place."
+    },
+    "documentNumber": {
+      "type": "integer",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF651_AgreementManagement/blob/v4.0.0/TMF651-Agreement-v4.0.0.swagger.json#/definitions/Agreement/properties/documentNumber'. A reference number assigned to an Agreement that follows a prescribed numbering system."
+    },
+    "initialDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF651_AgreementManagement/blob/v4.0.0/TMF651-Agreement-v4.0.0.swagger.json#/definitions/Agreement/properties/initialDate'. Date at which the agreement was initialized"
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF651_AgreementManagement/blob/v4.0.0/TMF651-Agreement-v4.0.0.swagger.json#/definitions/Agreement/properties/name'. A human-readable name for the agreement"
+    },
+    "statementOfIntent": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF651_AgreementManagement/blob/v4.0.0/TMF651-Agreement-v4.0.0.swagger.json#/definitions/Agreement/properties/statementOfIntent'. An overview and goals of the Agreement"
+    },
+    "status": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF651_AgreementManagement/blob/v4.0.0/TMF651-Agreement-v4.0.0.swagger.json#/definitions/Agreement/properties/status'. The current status of the agreement. Typical values are: in process, approved and rejected"
+    },
+    "version": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF651_AgreementManagement/blob/v4.0.0/TMF651-Agreement-v4.0.0.swagger.json#/definitions/Agreement/properties/version'. A string identifying the version of the agreement"
+    },
+    "agreementAuthorization": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AgreementAuthorization"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF651_AgreementManagement/blob/v4.0.0/TMF651-Agreement-v4.0.0.swagger.json#/definitions/Agreement/properties/agreementAuthorization'. A business participant that is responsible for approving the agreement."
+    },
+    "agreementItem": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AgreementItem"
+      },
+      "minItems": 1,
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF651_AgreementManagement/blob/v4.0.0/TMF651-Agreement-v4.0.0.swagger.json#/definitions/Agreement/properties/agreementItem'. A part of the agreement expressed in terms of a product offering and possibly including specific terms and conditions."
+    },
+    "agreementPeriod": {
+      "$ref": "#/$defs/TimePeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF651_AgreementManagement/blob/v4.0.0/TMF651-Agreement-v4.0.0.swagger.json#/definitions/Agreement/properties/agreementPeriod'. The time period during which the Agreement is in effect."
+    },
+    "agreementSpecification": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF651_AgreementManagement/blob/v4.0.0/TMF651-Agreement-v4.0.0.swagger.json#/definitions/Agreement/properties/agreementSpecification'. AgreementSpecification reference. An AgreementSpecification represents a template of an agreement that can be used when establishing partnerships. In TMF this is a AgreementSpecificationRef object; here the NGSI-LD id of the referenced AgreementSpecification entity (urn:ngsi-ld:AgreementSpecification:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "associatedAgreement": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF651_AgreementManagement/blob/v4.0.0/TMF651-Agreement-v4.0.0.swagger.json#/definitions/Agreement/properties/associatedAgreement'. Agreement reference. An agreement represents a contract or arrangement, either written or verbal and sometimes enforceable by law, such as a service level agreement or a customer price agreement. An agreement involves a number of other business entities, such as products, services, and resources and/or their specifications. In TMF this is an array of AgreementRef objects; here the NGSI-LD ids of the referenced Agreement entities (urn:ngsi-ld:Agreement:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "characteristic": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Characteristic"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF651_AgreementManagement/blob/v4.0.0/TMF651-Agreement-v4.0.0.swagger.json#/definitions/Agreement/properties/characteristic'. Describes a given characteristic of an object or entity through a name/value pair."
+    },
+    "completionDate": {
+      "$ref": "#/$defs/TimePeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF651_AgreementManagement/blob/v4.0.0/TMF651-Agreement-v4.0.0.swagger.json#/definitions/Agreement/properties/completionDate'. Date at which the agreement is completed"
+    },
+    "engagedParty": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedParty"
+      },
+      "minItems": 1,
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF651_AgreementManagement/blob/v4.0.0/TMF651-Agreement-v4.0.0.swagger.json#/definitions/Agreement/properties/engagedParty'. Related Entity reference. A related party defines party or party role linked to a specific entity."
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF651_AgreementManagement/blob/v4.0.0/TMF651-Agreement-v4.0.0.swagger.json#/definitions/Agreement/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF651_AgreementManagement/blob/v4.0.0/TMF651-Agreement-v4.0.0.swagger.json#/definitions/Agreement/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF651_AgreementManagement/blob/v4.0.0/TMF651-Agreement-v4.0.0.swagger.json#/definitions/Agreement/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'Agreement' or a sub-class / extension name. When sub-classing, this defines the sub-class entity name"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "agreementItem",
+    "agreementType",
+    "engagedParty",
+    "name"
+  ],
+  "$defs": {
+    "AgreementAuthorization": {
+      "type": "object",
+      "description": "A business participant that is responsible for approving the agreement.",
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date associated with the authorization state."
+        },
+        "signatureRepresentation": {
+          "type": "string",
+          "description": "Indication that represents whether the signature is a physical paper signature or a digital signature."
+        },
+        "state": {
+          "type": "string",
+          "description": "Current status of the authorization, for example in process, approved, rejected."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "AgreementItem": {
+      "type": "object",
+      "description": "A part of the agreement expressed in terms of a product offering and possibly including specific terms and conditions.",
+      "properties": {
+        "product": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ProductRef"
+          },
+          "description": "The list of products indirectly referred by this agreement item (since an agreement item refers primarily to product offerings)"
+        },
+        "productOffering": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ProductOfferingRef"
+          },
+          "description": "The list of product offerings referred by this agreement item"
+        },
+        "termOrCondition": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AgreementTermOrCondition"
+          }
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "AgreementTermOrCondition": {
+      "type": "object",
+      "description": "Aspects of the agreement not formally specified elsewhere in the agreement and that cannot be captured elsewhere in a formal notation, or automatically monitored and require a more human level of management.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique number assigned for reference."
+        },
+        "description": {
+          "type": "string",
+          "description": "Text that explains the term or condition of the agreement."
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The period of time during which the term or condition of the agreement applies."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "Any": {},
+    "Characteristic": {
+      "type": "object",
+      "description": "Describes a given characteristic of an object or entity through a name/value pair.",
+      "required": [
+        "name",
+        "value"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the characteristic"
+        },
+        "valueType": {
+          "type": "string",
+          "description": "Data type of the value of the characteristic"
+        },
+        "value": {
+          "$ref": "#/$defs/Any",
+          "description": "The value of the characteristic"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "ProductOfferingRef": {
+      "type": "object",
+      "description": "ProductOffering reference. A product offering represents entities that are orderable from the provider of the catalog, this resource includes pricing information.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of a related entity."
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the related entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "ProductRef": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of a related entity."
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the related entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "RelatedParty": {
+      "type": "object",
+      "description": "Related Entity reference. A related party defines party or party role linked to a specific entity.",
+      "required": [
+        "@referredType",
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of a related entity."
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the related entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "role": {
+          "type": "string",
+          "description": "Role played by the related party"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "endDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "End of the time period, using IETC-RFC-3339 format"
+        },
+        "startDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Start of the time period, using IETC-RFC-3339 format. If you define a start, you must also define an end"
+        }
+      }
+    }
+  }
+}

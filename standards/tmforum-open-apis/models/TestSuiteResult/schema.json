@@ -1,0 +1,189 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/TestSuiteResult/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - TestSuiteResult",
+  "description": "A managed test case result resource (TM Forum TMF707 Test Result 4.0.0, Swagger definition TestSuiteResult; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:TestSuiteResult:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "TestSuiteResult"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'TestSuiteResult'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF707_TestResult/blob/v4.0.0/TMF707-TestResult-v4.0.0.swagger.json#/definitions/TestSuiteResult/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:TestSuiteResult:<tmfId>. unique identifier"
+    },
+    "href": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF707_TestResult/blob/v4.0.0/TMF707-TestResult-v4.0.0.swagger.json#/definitions/TestSuiteResult/properties/href'. Hyperlink reference"
+    },
+    "testExecution": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF707_TestResult/blob/v4.0.0/TMF707-TestResult-v4.0.0.swagger.json#/definitions/TestSuiteResult/properties/testExecution'. In TMF this is a TestSuiteExecutionRefOrValue object; here the NGSI-LD id of the referenced TestSuiteExecution entity (urn:ngsi-ld:TestSuiteExecution:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "testSuiteResultDefinition": {
+      "$ref": "#/$defs/TestSuiteResultDefinition",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF707_TestResult/blob/v4.0.0/TMF707-TestResult-v4.0.0.swagger.json#/definitions/TestSuiteResult/properties/testSuiteResultDefinition'. Test suite result definition"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF707_TestResult/blob/v4.0.0/TMF707-TestResult-v4.0.0.swagger.json#/definitions/TestSuiteResult/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF707_TestResult/blob/v4.0.0/TMF707-TestResult-v4.0.0.swagger.json#/definitions/TestSuiteResult/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF707_TestResult/blob/v4.0.0/TMF707-TestResult-v4.0.0.swagger.json#/definitions/TestSuiteResult/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'TestSuiteResult' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "testExecution",
+    "testSuiteResultDefinition"
+  ],
+  "$defs": {
+    "Quantity": {
+      "type": "object",
+      "description": "An amount in a given unit",
+      "properties": {
+        "amount": {
+          "default": 1,
+          "type": "number",
+          "format": "float",
+          "description": "Numeric value in a given unit"
+        },
+        "units": {
+          "type": "string",
+          "description": "Unit"
+        }
+      }
+    },
+    "TestSuiteResultDefinition": {
+      "type": "object",
+      "description": "Test suite result definition",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "attachmentType": {
+          "examples": [
+            "video"
+          ],
+          "type": "string",
+          "description": "Attachment type such as video, picture"
+        },
+        "content": {
+          "type": "string",
+          "format": "base64",
+          "description": "The actual contents of the attachment object, if embedded, encoded as base64"
+        },
+        "description": {
+          "examples": [
+            "Photograph of the Product"
+          ],
+          "type": "string",
+          "description": "A narrative text describing the content of the attachment"
+        },
+        "mimeType": {
+          "type": "string",
+          "description": "Attachment mime type such as extension file for video, picture and document"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the attachment"
+        },
+        "url": {
+          "examples": [
+            "http://host/Content/4aafacbd-11ff-4dc8-b445-305f2215715f"
+          ],
+          "type": "string",
+          "format": "uri",
+          "description": "Uniform Resource Locator, is a web page address (a subset of URI)"
+        },
+        "size": {
+          "$ref": "#/$defs/Quantity",
+          "description": "The size of the attachment."
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The period of time for which the attachment is valid"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "endDateTime": {
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ],
+          "type": "string",
+          "format": "date-time",
+          "description": "End of the time period, using IETC-RFC-3339 format"
+        },
+        "startDateTime": {
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ],
+          "type": "string",
+          "format": "date-time",
+          "description": "Start of the time period, using IETC-RFC-3339 format"
+        }
+      }
+    }
+  }
+}

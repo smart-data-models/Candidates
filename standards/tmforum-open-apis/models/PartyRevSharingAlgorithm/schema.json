@@ -1,0 +1,340 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PartyRevSharingAlgorithm/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - PartyRevSharingAlgorithm",
+  "description": "The PartyRevSharingAlgorithm resource is policy type of algorithm to calculate revenue share (TM Forum TMF736 Revenue Sharing Algorithm Management 5.0.0, OpenAPI component PartyRevSharingAlgorithm; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:PartyRevSharingAlgorithm:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "PartyRevSharingAlgorithm"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'PartyRevSharingAlgorithm'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF736_RevenueSharingAlgorithmManagement/blob/v5.0.0/TMF736-Revenue_Sharing_Algorithm_Management-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'PartyRevSharingAlgorithm' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF736_RevenueSharingAlgorithmManagement/blob/v5.0.0/TMF736-Revenue_Sharing_Algorithm_Management-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF736_RevenueSharingAlgorithmManagement/blob/v5.0.0/TMF736-Revenue_Sharing_Algorithm_Management-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF736_RevenueSharingAlgorithmManagement/blob/v5.0.0/TMF736-Revenue_Sharing_Algorithm_Management-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/href'. Hyperlink reference"
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF736_RevenueSharingAlgorithmManagement/blob/v5.0.0/TMF736-Revenue_Sharing_Algorithm_Management-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:PartyRevSharingAlgorithm:<tmfId>. unique identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF736_RevenueSharingAlgorithmManagement/blob/v5.0.0/TMF736-Revenue_Sharing_Algorithm_Management-v5.0.0.oas.yaml#/components/schemas/PartyRevSharingAlgorithm/properties/name'. The name of party revenue sharing algorithm"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF736_RevenueSharingAlgorithmManagement/blob/v5.0.0/TMF736-Revenue_Sharing_Algorithm_Management-v5.0.0.oas.yaml#/components/schemas/PartyRevSharingAlgorithm/properties/description'. The description of party revenue sharing algorithm"
+    },
+    "policy": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PolicyRef"
+      },
+      "minItems": 1,
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF736_RevenueSharingAlgorithmManagement/blob/v5.0.0/TMF736-Revenue_Sharing_Algorithm_Management-v5.0.0.oas.yaml#/components/schemas/PartyRevSharingAlgorithm/properties/policy'. The policy type algorithm to calculate revenue share"
+    },
+    "conditionVariable": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PartyRevSharingPolicyConditionVariable"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF736_RevenueSharingAlgorithmManagement/blob/v5.0.0/TMF736-Revenue_Sharing_Algorithm_Management-v5.0.0.oas.yaml#/components/schemas/PartyRevSharingAlgorithm/properties/conditionVariable'. The policy condition variables of the policy to calculate revenue share"
+    },
+    "actionVariable": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PartyRevSharingPolicyActionVariable"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF736_RevenueSharingAlgorithmManagement/blob/v5.0.0/TMF736-Revenue_Sharing_Algorithm_Management-v5.0.0.oas.yaml#/components/schemas/PartyRevSharingAlgorithm/properties/actionVariable'. The policy action variables of the policy to calculate revenue share"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tmfType"
+  ],
+  "$defs": {
+    "Addressable": {
+      "type": "object",
+      "description": "Base schema for adressable entities",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Hyperlink reference"
+        },
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        }
+      }
+    },
+    "Entity": {
+      "type": "object",
+      "description": "Base entity schema for use in TMForum Open-APIs. Property.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        }
+      ]
+    },
+    "EntityRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        },
+        {
+          "type": "object",
+          "description": "Entity reference schema to be use for all entityRef class.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "The identifier of the referred entity."
+            },
+            "href": {
+              "type": "string",
+              "description": "The URI of the referred entity."
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the referred entity."
+            },
+            "@referredType": {
+              "type": "string",
+              "description": "The actual type of the target instance when needed for disambiguation."
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      ]
+    },
+    "Extensible": {
+      "type": "object",
+      "description": "Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means that the Entity described by the schema MUST be extended with the @type",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "PartyRevSharingPolicyActionVariable": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Entity"
+        },
+        {
+          "description": "The policy action variable and value of PartyRevSharingPolicyAlgorithm",
+          "properties": {
+            "value": {
+              "description": "The value of variable",
+              "type": "string"
+            },
+            "policyAction": {
+              "$ref": "#/$defs/PolicyActionRef"
+            },
+            "policyActionVariable": {
+              "$ref": "#/$defs/PolicyVariableRef"
+            }
+          }
+        }
+      ]
+    },
+    "PartyRevSharingPolicyConditionVariable": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Entity"
+        },
+        {
+          "description": "The policy condition variable and value of PartyRevSharingPolicyAlgorithm",
+          "properties": {
+            "value": {
+              "description": "The value of variable",
+              "type": "string"
+            },
+            "policyCondition": {
+              "$ref": "#/$defs/PolicyConditionRef"
+            },
+            "policyConditionVariable": {
+              "$ref": "#/$defs/PolicyVariableRef"
+            }
+          }
+        }
+      ]
+    },
+    "PolicyActionRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/PolicyEntityRef"
+        },
+        {
+          "type": "object",
+          "description": "Reference to PolicyAction object",
+          "properties": {
+            "@type": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "PolicyConditionRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/PolicyEntityRef"
+        },
+        {
+          "type": "object",
+          "description": "Reference to managed PolicyCondition object",
+          "properties": {
+            "@type": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "PolicyEntityRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        },
+        {
+          "type": "object",
+          "description": "PolicyEntityRef reference schema to be use for managed PolicyEntityRef class.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "The identifier of the referred entity."
+            },
+            "href": {
+              "type": "string",
+              "description": "The URI of the referred entity."
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the referred entity."
+            },
+            "@referredType": {
+              "type": "string",
+              "description": "The actual type of the target instance when needed for disambiguation."
+            }
+          }
+        }
+      ]
+    },
+    "PolicyRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "Reference to managed Policy object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "unique identifier"
+            },
+            "href": {
+              "type": "string",
+              "description": "Hyperlink reference"
+            },
+            "version": {
+              "type": "string"
+            },
+            "@type": {
+              "type": "string",
+              "description": "When sub-classing, this defines the sub-class Extensible name"
+            },
+            "@baseType": {
+              "type": "string",
+              "description": "When sub-classing, this defines the super-class"
+            },
+            "@schemaLocation": {
+              "type": "string",
+              "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+            }
+          }
+        }
+      ]
+    },
+    "PolicyVariableRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "Reference to PolicyVariable object",
+          "properties": {
+            "@type": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

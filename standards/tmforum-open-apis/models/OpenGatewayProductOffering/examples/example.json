@@ -1,0 +1,59 @@
+{
+  "id": "urn:ngsi-ld:OpenGatewayProductOffering:2d4ef4d3-08ce-441d-ac76-133b6dad0ccb",
+  "type": "OpenGatewayProductOffering",
+  "tmfId": "2d4ef4d3-08ce-441d-ac76-133b6dad0ccb",
+  "tmfType": "OpenGatewayProductOffering",
+  "tmfBaseType": "DcsProductOffering",
+  "lifecycleStatus": "launched",
+  "version": "1.0.0",
+  "name": "Location Verification Antifraud CAMARA API Standalone",
+  "description": "Location Verification product offering standalone, for antifraud purpose, accessible with CAMARA API.",
+  "lastUpdate": "2023-07-01T00:00:00Z",
+  "allowedAction": [
+    {
+      "@type": "OpenGatewayAllowedProductAction",
+      "id": "1",
+      "action": "add",
+      "@targetProductOrderItemSchema": {
+        "@type": "ProductOrderItemAddLocationVerificationAntifraudStandalone",
+        "@schemaLocation": "https://mycsp.com/tmf-api/schemas/Tmf/Product/DCS/GSMAOperateAPI/LocationVerificationAntifraudStandalone.schema.json#/definitions/ProductOrderItemAddLocationVerificationAntifraudStandalone"
+      }
+    },
+    {
+      "@type": "OpenGatewayAllowedProductAction",
+      "id": "2",
+      "action": "delete",
+      "@targetProductOrderItemSchema": {
+        "@type": "DcsProductOrderItemDelete",
+        "@schemaLocation": "https://mycsp.com/tmf-api/schemas/Tmf/Product/DCS/DcsProductOrderItemDelete.schema.json#/definitions/DcsProductOrderItemDelete"
+      }
+    }
+  ],
+  "productSpecification": "urn:ngsi-ld:OpenGatewayProductSpecification:4b6591ef-5ede-4885-9543-0c5e9070ade9",
+  "productOfferingTermOrConditionSpecification": [
+    {
+      "@type": "OpenGatewayProductOfferingTermOrConditionSpecification",
+      "id": "2d4ef4d3-08ce-441d-ac76-133b6dad0ccb_terms_1",
+      "name": "Location Verification Antifraud CAMARA API Standalone Product Offering Terms and Conditions for ApplicationOwner",
+      "description": "Terms and conditions to be approved by ApplicationOwner at the order.",
+      "attachment": {
+        "@type": "OpenGatewayFileAttachment",
+        "content": "JVBERi0xL...DQolJUVPRg==",
+        "mimeType": "application/pdf",
+        "attachmentType": "termsAndConditions"
+      }
+    }
+  ],
+  "productOfferingPrice": [
+    {
+      "id": "1",
+      "@type": "OpenGatewayProductOfferingPrice",
+      "lifecycleStatus": "active",
+      "name": "Location Verification Antifraud CAMARA API Standalone Usage Price",
+      "description": "Location Verification for Antifraud standalone product offering price. 8 EUR per API call for usage verify location for FR, ES and GB. 8 USD per API call for usage verify location for US.",
+      "lastUpdate": "2023-09-01T00:00:00Z",
+      "priceType": "composite"
+    }
+  ],
+  "source": "Adapted from the example payload 'Retrieve_a_bundle_productOffering_response' of the TMF936 Open Gateway Operate API - Product Catalog 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+}

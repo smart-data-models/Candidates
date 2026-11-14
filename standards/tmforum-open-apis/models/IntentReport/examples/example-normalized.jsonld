@@ -1,0 +1,88 @@
+{
+  "id": "urn:ngsi-ld:IntentReport:20021",
+  "type": "IntentReport",
+  "tmfId": {
+    "type": "Property",
+    "value": "20021"
+  },
+  "creationDate": {
+    "type": "Property",
+    "value": "2023-10-23T00:30:01.00Z"
+  },
+  "description": {
+    "type": "Property",
+    "value": "An Intent report example"
+  },
+  "name": {
+    "type": "Property",
+    "value": "MyIntent Report"
+  },
+  "expression": {
+    "type": "Property",
+    "value": {
+      "iri": "https://mycsp.com:8080/tmf-api/rdfs/expression-intentReport-1",
+      "expressionValue": {
+        "@context": {
+          "voc": "https://tmforum.org/vocab/intent/v1",
+          "icm": "http://tio.models.tmforum.org/tio/v3.4.0/IntentCommonModel/",
+          "imo": "http://tio.models.tmforum.org/tio/v3.4.0/IntentManagmentOntology/"
+        },
+        "@graph": [
+          {
+            "@id": "_:k0",
+            "http://www.w3.org/2006/time#inXSDDateTimeStamp": {
+              "@type": "xsd:dateTime",
+              "@value": "'2023-10-23T00:30:01.00Z'"
+            }
+          },
+          {
+            "@id": "_:k1",
+            "voc:name": {
+              "@type": "String",
+              "@value": "Intent Report"
+            }
+          },
+          {
+            "@id": "_:k2",
+            "voc:description": {
+              "@type": "String",
+              "@value": "report related to Intent 20011"
+            }
+          },
+          {
+            "@id": "_:k3",
+            "icm:target": {
+              "@type": "Intent",
+              "@value": "20011"
+            }
+          }
+        ]
+      },
+      "@baseType": "Expression",
+      "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/Common/JsonLdExpression.schema.json",
+      "@type": "JsonLdExpression"
+    }
+  },
+  "intent": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:Intent:20011"
+  },
+  "validFor": {
+    "type": "Property",
+    "value": {
+      "startDateTime": "2023-10-23T00:30:01.00Z",
+      "endDateTime": "2024-10-19T23:30:00.00Z"
+    }
+  },
+  "tmfType": {
+    "type": "Property",
+    "value": "IntentReport"
+  },
+  "source": {
+    "type": "Property",
+    "value": "Adapted from the example payload 'IntentReport_retrieve_example_response' of the TMF921 Intent Management 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+  },
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/IntentReport/context.jsonld"
+  ]
+}

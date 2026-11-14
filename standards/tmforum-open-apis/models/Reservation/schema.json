@@ -1,0 +1,460 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Reservation/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - Reservation",
+  "description": "reservation api resource (TM Forum TMF685 Resource Pool Management 1.0, Swagger definition Reservation; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Reservation:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Reservation"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Reservation'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF685_ResourcePool/blob/7700c1dd83787eb5d85654d16fb611f01f02d629/Resource_Pool_Management.admin.swagger.json#/definitions/Reservation/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword)."
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF685_ResourcePool/blob/7700c1dd83787eb5d85654d16fb611f01f02d629/Resource_Pool_Management.admin.swagger.json#/definitions/Reservation/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A string. Generic attribute containing the link to the schema that defines the structure of the class type of the current object."
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF685_ResourcePool/blob/7700c1dd83787eb5d85654d16fb611f01f02d629/Resource_Pool_Management.admin.swagger.json#/definitions/Reservation/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'Reservation' or a sub-class / extension name. A string. Indicates the (class) type of reservation. Ex. serviceItemReservation, resourceItemReservation"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF685_ResourcePool/blob/7700c1dd83787eb5d85654d16fb611f01f02d629/Resource_Pool_Management.admin.swagger.json#/definitions/Reservation/properties/description'. A string. free-text description of the reservation."
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF685_ResourcePool/blob/7700c1dd83787eb5d85654d16fb611f01f02d629/Resource_Pool_Management.admin.swagger.json#/definitions/Reservation/properties/href'. A string. Hyperlink to access the reservation."
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF685_ResourcePool/blob/7700c1dd83787eb5d85654d16fb611f01f02d629/Resource_Pool_Management.admin.swagger.json#/definitions/Reservation/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:Reservation:<tmfId>. A string. Identifier of an instance of the Reservation."
+    },
+    "relatedParty": {
+      "$ref": "#/$defs/RelatedPartyRef",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF685_ResourcePool/blob/7700c1dd83787eb5d85654d16fb611f01f02d629/Resource_Pool_Management.admin.swagger.json#/definitions/Reservation/properties/relatedParty'. RelatedParty reference. A related party defines party or party role linked to a specific entity."
+    },
+    "reservationState": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF685_ResourcePool/blob/7700c1dd83787eb5d85654d16fb611f01f02d629/Resource_Pool_Management.admin.swagger.json#/definitions/Reservation/properties/reservationState'. A string. The life cycle state of the reservation."
+    },
+    "valid_for": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF685_ResourcePool/blob/7700c1dd83787eb5d85654d16fb611f01f02d629/Resource_Pool_Management.admin.swagger.json#/definitions/Reservation/properties/valid_for'. The period of time for which the reservation is applicable."
+    },
+    "reservationItem": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ReservationItem"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF685_ResourcePool/blob/7700c1dd83787eb5d85654d16fb611f01f02d629/Resource_Pool_Management.admin.swagger.json#/definitions/Reservation/properties/reservationItem'. An identified part of the reservation. A reservation is decomposed into one or more reservation items."
+    },
+    "channelRef": {
+      "$ref": "#/$defs/ChannelRef",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF685_ResourcePool/blob/7700c1dd83787eb5d85654d16fb611f01f02d629/Resource_Pool_Management.admin.swagger.json#/definitions/Reservation/properties/channelRef'. Channel reference. The channel defines the channel for selling product offerings."
+    },
+    "requestedPeriod": {
+      "$ref": "#/$defs/RequestedPeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF685_ResourcePool/blob/7700c1dd83787eb5d85654d16fb611f01f02d629/Resource_Pool_Management.admin.swagger.json#/definitions/Reservation/properties/requestedPeriod'. The period of time for which user requested to use the resources. The user can request on the start date without the end date."
+    },
+    "productOfferingRef": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF685_ResourcePool/blob/7700c1dd83787eb5d85654d16fb611f01f02d629/Resource_Pool_Management.admin.swagger.json#/definitions/Reservation/properties/productOfferingRef'. ProductOffering reference. A product offering represents entities that are orderable from the provider of the catalog, this resource includes pricing information. In TMF this is a ProductOfferingRef object; here the NGSI-LD id of the referenced ProductOffering entity (urn:ngsi-ld:ProductOffering:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ],
+  "$defs": {
+    "ApplicableTimePeriod": {
+      "type": "object",
+      "description": "The period of time for which Capacity or CapacityDemand applies.",
+      "properties": {
+        "@baseType": {
+          "type": "string"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A string. Generic attribute containing the link to the schema that defines the structure of the class type of the current object."
+        },
+        "@type": {
+          "type": "string",
+          "description": "A string. Generic attribute containing the name of the resource class type."
+        },
+        "dayOfWeek": {
+          "type": "string",
+          "description": "A day or days representing when the schedule is applicable. For example 2, 3 represent Monday and Tuesday."
+        },
+        "fromToDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The period of time for which the schedule is applicable. Instance values are mutually exclusive with daysOfWeek values."
+        },
+        "rangeInterval": {
+          "type": "string",
+          "description": "An indicator that specifies the inclusion or exclusion of the from and to DateTime attributes. Possible values are \"open\", \"closed\", \"closedBottom\" and \"closedTop\"."
+        },
+        "validFor": {
+          "type": "string",
+          "description": "The period of time during which the schedule is considered of interest to the business."
+        }
+      }
+    },
+    "AppliedCapacityAmount": {
+      "type": "object",
+      "description": "The amount of CapcityDemand applied to a CapacityAmount.",
+      "properties": {
+        "@baseType": {
+          "type": "string",
+          "description": "A string. Generic attribute indicating the base class type of the extension class of the current object. Useful only when the class type of the current object is unknown to the implementation."
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A string. Generic attribute containing the link to the schema that defines the structure of the class type of the current object."
+        },
+        "@type": {
+          "$ref": "#/$defs/int",
+          "description": "A string. Generic attribute containing the name of the resource class type."
+        },
+        "appliedDemandAmount": {
+          "type": "string",
+          "description": "An amount of demand applied to a CapacityAmount. Note that this is a composite attribute defined by CapacityAmount."
+        },
+        "resourceCapacityDemand": {
+          "$ref": "#/$defs/ResourceCapacityDemand"
+        },
+        "resource": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResourceRef"
+          }
+        }
+      }
+    },
+    "ChannelRef": {
+      "type": "object",
+      "description": "Channel reference. The channel defines the channel for selling product offerings.",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Reference of the channel"
+        },
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the channel"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the channel"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "PlaceRef": {
+      "type": "object",
+      "description": "Used to define a place useful for the resource Used to indicate reserved resources",
+      "properties": {
+        "@referredType": {
+          "type": "string",
+          "description": "A string. Indicates the type of the referred object. This attribute is to be used when the object is representing a reference to an existing object instead of the of the object itself."
+        },
+        "href": {
+          "type": "string",
+          "description": "A string. Hyperlink to access the Place."
+        },
+        "id": {
+          "type": "string",
+          "description": "A string. Identifier of an instance of the Place"
+        },
+        "name": {
+          "type": "string",
+          "description": "A string. Name of the Place."
+        }
+      }
+    },
+    "RelatedPartyRef": {
+      "type": "object",
+      "description": "RelatedParty reference. A related party defines party or party role linked to a specific entity.",
+      "properties": {
+        "@referredType": {
+          "type": "string",
+          "description": "A string. Indicates the type of the referred object. This attribute is to be used when the object is representing a reference to an existing object instead of the of the object itself."
+        },
+        "href": {
+          "type": "string",
+          "description": "A string. Reference of the related party, could be a party reference or a party role reference."
+        },
+        "id": {
+          "type": "string",
+          "description": "A string. Unique identifier of a related party."
+        },
+        "name": {
+          "type": "string",
+          "description": "A string. Name of the related party."
+        },
+        "role": {
+          "type": "string",
+          "description": "A string. Role of the related party."
+        }
+      }
+    },
+    "RequestedPeriod": {
+      "type": "object",
+      "description": "The period of time for which user requested to use the resources. The user can request on the start date without the end date.",
+      "properties": {
+        "@baseType": {
+          "type": "string",
+          "description": "A string. Generic attribute indicating the base class type of the extension class of the current object. Useful only when the class type of the current object is unknown to the implementation."
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A string. Generic attribute containing the link to the schema that defines the structure of the class type of the current object."
+        },
+        "@type": {
+          "type": "string",
+          "description": "A string. Generic attribute containing the name of the resource class type."
+        },
+        "daysOfWeek": {
+          "type": "string",
+          "description": "A day or days representing when the schedule is applicable. For example 2, 3 represent Monday and Tuesday."
+        },
+        "fromToDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The period of time for which the schedule is applicable. Instance values are mutually exclusive with daysOfWeek values."
+        },
+        "rangeInterval": {
+          "type": "string",
+          "description": "An indicator that specifies the inclusion or exclusion of the from and to DateTime attributes. Possible values are \"open\", \"closed\", \"closedBottom\" and \"closedTop\"."
+        },
+        "validFor": {
+          "type": "string",
+          "description": "The period of time during which the schedule is considered of interest to the business."
+        }
+      }
+    },
+    "ReservationItem": {
+      "type": "object",
+      "description": "An identified part of the reservation. A reservation is decomposed into one or more reservation items.",
+      "properties": {
+        "@baseType": {
+          "type": "string"
+        },
+        "@schemaLocation": {
+          "type": "string"
+        },
+        "@type": {
+          "type": "string",
+          "description": "A string. Generic attribute containing the name of the resource class type."
+        },
+        "quantity": {
+          "type": "integer",
+          "description": "Represents the number of reservationItems that make up the reservation."
+        },
+        "subReservationState": {
+          "type": "string",
+          "description": "A string. The life cycle state of the each reservation item."
+        },
+        "resourceCapacity": {
+          "$ref": "#/$defs/ResourceCapacityDemand"
+        },
+        "appliedCapacityAmount": {
+          "$ref": "#/$defs/AppliedCapacityAmount"
+        }
+      }
+    },
+    "ResourceCapacityDemand": {
+      "type": "object",
+      "description": "the amount of capacity that is planned to be consumed or has been consumed.",
+      "properties": {
+        "@baseType": {
+          "type": "string"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A string. Generic attribute containing the link to the schema that defines the structure of the class type of the current object."
+        },
+        "@type": {
+          "type": "string",
+          "description": "A string. Indicates the (class) type of reservation."
+        },
+        "capacityDemandAmount": {
+          "type": "string",
+          "description": "A value and units that define the CapacityDemand, such as 10000 ea, 10B Mb. Instance values are mutually exclusive with From and To capacityDemandAmounts and range interval."
+        },
+        "resourcePool": {
+          "$ref": "#/$defs/ResourcePool"
+        },
+        "applicableTimePeriod": {
+          "$ref": "#/$defs/ApplicableTimePeriod"
+        },
+        "place": {
+          "$ref": "#/$defs/PlaceRef"
+        }
+      }
+    },
+    "ResourceCharacteristic": {
+      "description": "Not defined in the TMF685 specification (dangling reference); any value accepted."
+    },
+    "ResourceCollectionRef": {
+      "type": "object",
+      "description": "an aggregate entity consisting of ResourceElement",
+      "properties": {
+        "@referredType": {
+          "type": "string",
+          "description": "A string. Indicates the type of the referred object. This attribute is to be used when the object is representing a reference to an existing object instead of the of the object itself."
+        },
+        "href": {
+          "type": "string",
+          "description": "A string. Hyperlink to access the Resource collection."
+        },
+        "name": {
+          "type": "string",
+          "description": "Represents a user-friendly identifier of an object."
+        },
+        "objectId": {
+          "type": "string",
+          "description": "A list of consisted Resources."
+        }
+      }
+    },
+    "ResourcePool": {
+      "type": "object",
+      "description": "manages resource capacity with the resource state",
+      "properties": {
+        "@baseType": {
+          "type": "string",
+          "description": "A string. Generic attribute indicating the base class type of the extension class of the current object. Useful only when the class type of the current object is unknown to the implementation."
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A string. Generic attribute containing the link to the schema that defines the structure of the class type of the current object."
+        },
+        "@type": {
+          "type": "string",
+          "description": "A string. Generic attribute containing the name of the resource class type."
+        },
+        "description": {
+          "type": "string",
+          "description": "A string. free-text description of the Resource Pool."
+        },
+        "href": {
+          "type": "string",
+          "description": "A string. Hyperlink to access the Resource Pool."
+        },
+        "id": {
+          "type": "string",
+          "description": "A string. Identifier of an instance of the Resource Pool."
+        },
+        "relatedParty": {
+          "type": "string",
+          "description": "A related party defines party or party role linked to a specific entity, who uses the resource of Resource Pool."
+        },
+        "resourceCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResourceCollectionRef"
+          }
+        }
+      }
+    },
+    "ResourceRef": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "Description of the resource"
+        },
+        "href": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the Resource"
+        },
+        "state": {
+          "type": "string",
+          "description": "lifecycle of the resource"
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of the resource"
+        },
+        "place": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PlaceRef"
+          }
+        },
+        "characteristic": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResourceCharacteristic"
+          }
+        },
+        "resourceRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResourceRelationship"
+          }
+        },
+        "relatedParty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RelatedPartyRef"
+          }
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "ResourceRelationship": {
+      "description": "Not defined in the TMF685 specification (dangling reference); any value accepted."
+    },
+    "int": {
+      "description": "Not defined in the TMF685 specification (dangling reference); any value accepted."
+    }
+  }
+}

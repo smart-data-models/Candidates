@@ -1,0 +1,480 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Alarm/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - Alarm",
+  "description": "This resource represents an alarm supporting the information model defined in ITU-T X.733. (TM Forum TMF642 Alarm 5.0.1, OpenAPI component Alarm; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Alarm:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Alarm"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Alarm'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Extensible/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'Alarm' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Extensible/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Extensible/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Addressable/properties/href'. Hyperlink reference"
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Addressable/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:Alarm:<tmfId>. unique identifier"
+    },
+    "externalAlarmId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/externalAlarmId'. An identifier of the alarm in the source system."
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "raised",
+        "updated",
+        "cleared"
+      ],
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/state'. Defines the alarm state during its life cycle (raised, updated, cleared)."
+    },
+    "alarmType": {
+      "enum": [
+        "communicationsAlarm",
+        "processingErrorAlarm",
+        "environmentalAlarm",
+        "qualityOfServiceAlarm",
+        "equipmentAlarm",
+        "integrityViolation",
+        "operationalViolation",
+        "physicalViolation",
+        "securityService",
+        "mechanismViolation",
+        "timeDomainViolation"
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/alarmType'. Categorizes the alarm (X.733 8.1.1, 3GPP TS 32.111-2 Annex A)"
+    },
+    "perceivedSeverity": {
+      "enum": [
+        "critical",
+        "major",
+        "minor",
+        "warning",
+        "indeterminate",
+        "cleared"
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/perceivedSeverity'. Lists the possible severities that can be allocated to an Alarm. The values are consistent with ITU-T Recommendation X.733. Once an alarm has been cleared, its perceived severity is set to 'cleared' and can no longer be set."
+    },
+    "probableCause": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/probableCause'. Provides the probable cause of the alarm. The values are consistent with ITU-T Recommendation X.733 or 3GPP TS 32.111-2 Annex B."
+    },
+    "specificProblem": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/specificProblem'. Provides more specific information about the alarm."
+    },
+    "alarmedObjectType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/alarmedObjectType'. The type (class) of the managed object associated with the event."
+    },
+    "alarmedObject": {
+      "$ref": "#/$defs/AlarmedObjectRef",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/alarmedObject'. Reference to object which affected by Alarm (AlarmedObject)."
+    },
+    "reportingSystemId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/reportingSystemId'. Reporting system identity."
+    },
+    "sourceSystemId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/sourceSystemId'. Source system identity."
+    },
+    "alarmDetails": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/alarmDetails'. Contains further information on the alarm."
+    },
+    "alarmRaisedTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/alarmRaisedTime'. Indicates the time (as a date + time) at which the alarm occurred at its source."
+    },
+    "alarmChangedTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/alarmChangedTime'. Indicates the last date and time when the alarm is changed on the alarm-owning system. Any change to the alarm whether coming from the alarmed resource, or triggered by a change from the client is changing this time."
+    },
+    "alarmClearedTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/alarmClearedTime'. Indicates the time (as a date + time) at which the alarm is cleared at the source."
+    },
+    "alarmReportingTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/alarmReportingTime'. Indicates the time (as a date + time) at which the alarm was reported by the owning OSS. It might be different from the alarmRaisedTime. For instance, if the alarm list is maintained by an EMS, the alarmRaisedtime would be the time the alarm was detected by the NE, while the alarmReportingTime would be the time this alarm was stored in the alarm list of the EMS."
+    },
+    "ackState": {
+      "type": "string",
+      "enum": [
+        "unacknowledged",
+        "acknowledged"
+      ],
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/ackState'. Provides the Acknowledgement State of the alarm (unacknowledged, acknowledged)."
+    },
+    "ackSystemId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/ackSystemId'. Provides the name of the system that last changed the ackState of an alarm, i.e. acknowledged or unacknowledged the alarm."
+    },
+    "ackUserId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/ackUserId'. Provides the id of the user who has last changed the ack state of the alarm, i.e. acknowledged or unacknowledged the alarm."
+    },
+    "affectedService": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/affectedService'. Provides list of affected services. In TMF this is an array of ServiceRef objects; here the NGSI-LD ids of the referenced Service entities (urn:ngsi-ld:Service:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "alarmEscalation": {
+      "type": "boolean",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/alarmEscalation'. Indicates if this alarm has been escalated or not."
+    },
+    "clearSystemId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/clearSystemId'. Provides the id of the system where the user who invoked the alarmCleared operation is located."
+    },
+    "clearUserId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/clearUserId'. Provides the id of the user who invoked the alarmCleared operation"
+    },
+    "comment": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Comment"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/comment'. Provides list of Comments regards Alarm."
+    },
+    "correlatedAlarm": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/correlatedAlarm'. Provides list of correlated Alarms. In TMF this is an array of AlarmRef objects; here the NGSI-LD ids of the referenced Alarm entities (urn:ngsi-ld:Alarm:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "crossedThresholdInformation": {
+      "$ref": "#/$defs/CrossedThresholdInformation",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/crossedThresholdInformation'. Identifies the details of the threshold that has been crossed."
+    },
+    "isRootCause": {
+      "type": "boolean",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/isRootCause'. Indicates whether the alarm is a root cause alarm.."
+    },
+    "parentAlarm": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/parentAlarm'. Provides list of parrent Alarms. In TMF this is an array of AlarmRef objects; here the NGSI-LD ids of the referenced Alarm entities (urn:ngsi-ld:Alarm:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "plannedOutageIndicator": {
+      "type": "string",
+      "enum": [
+        "InService",
+        "OutOfService"
+      ],
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/plannedOutageIndicator'. Indicates that the Managed Object (related to this alarm) is in planned outage (in planned maintenance, or out-of-service)."
+    },
+    "proposedRepairedActions": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/proposedRepairedActions'. Indicates proposed repair actions, if known to the system emitting the alarm."
+    },
+    "serviceAffecting": {
+      "type": "boolean",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/serviceAffecting'. Indicates whether the alarm affects service or not."
+    },
+    "place": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedPlace"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml#/components/schemas/Alarm/properties/place'. List of related places, which are affected by Alarm."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tmfType"
+  ],
+  "$defs": {
+    "Addressable": {
+      "type": "object",
+      "description": "Base schema for addressable entities",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Hyperlink reference"
+        },
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        }
+      }
+    },
+    "AlarmedObjectRef": {
+      "type": "object",
+      "description": "Reference to object which affected by Alarm (AlarmedObject).",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "Comment": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Indicates the comments entered on the alarm.",
+          "properties": {
+            "userId": {
+              "type": "string",
+              "description": "Indicates the user commenting the alarm."
+            },
+            "systemId": {
+              "type": "string",
+              "description": "Indicates the system identifier on which the client set the comment."
+            },
+            "time": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Indicates the time commenting the alarm"
+            },
+            "comment": {
+              "type": "string",
+              "description": "Indicates the text of the comment."
+            }
+          }
+        }
+      ]
+    },
+    "CrossedThresholdInformation": {
+      "type": "object",
+      "description": "Identifies the details of the threshold that has been crossed.",
+      "properties": {
+        "threshold": {
+          "$ref": "#/$defs/ThresholdRef"
+        },
+        "direction": {
+          "type": "string",
+          "description": "Indicates the threshold crossing direction: up or down."
+        },
+        "granularity": {
+          "type": "string",
+          "description": "Indicates the granularity at which the indicator is evaluated for threshold crossing"
+        },
+        "indicatorName": {
+          "type": "string",
+          "description": "Indicates the name of indicator which crossed the threshold."
+        },
+        "indicatorUnit": {
+          "type": "string",
+          "description": "Indicates the unit of the measurement of the indicator corresponding to the threshold that has been crossed."
+        },
+        "observedValue": {
+          "type": "string",
+          "description": "Indicates the value of the indicator which crossed the threshold."
+        },
+        "thresholdCrossingDescription": {
+          "type": "string",
+          "description": "Indicates further information on the threshold crossing alarm."
+        }
+      }
+    },
+    "Entity": {
+      "type": "object",
+      "description": "Base entity schema for use in TMForum Open-APIs. Property.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        }
+      ]
+    },
+    "EntityRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        },
+        {
+          "type": "object",
+          "description": "Entity reference schema to be use for all entityRef class.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "The identifier of the referred entity."
+            },
+            "href": {
+              "type": "string",
+              "description": "The URI of the referred entity."
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the referred entity."
+            },
+            "@referredType": {
+              "type": "string",
+              "description": "The actual type of the target instance when needed for disambiguation."
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      ]
+    },
+    "Extensible": {
+      "type": "object",
+      "description": "Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means that the Entity described by the schema MUST be extended with the @type",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "ExternalIdentifier": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "An identification of an entity that is owned by or originates in a software system different from the current system, for example a ProductOrder handed off from a commerce platform into an order handling system. The structure identifies the system itself, the nature of the entity within the system (e.g. class name) and the unique ID of the entity within the system. It is anticipated that multiple external IDs can be held for a single entity, e.g. if the entity passed through multiple systems on the way to the current system. In this case the consumer is expected to sequence the IDs in the array in reverse order of provenance, i.e. most recent system first in the list.",
+          "properties": {
+            "owner": {
+              "type": "string",
+              "description": "Name of the external system that owns the entity.",
+              "examples": [
+                "MagentoCommerce"
+              ]
+            },
+            "externalIdentifierType": {
+              "type": "string",
+              "description": "Type of the identification, typically would be the type of the entity within the external system",
+              "examples": [
+                "ProductOrder"
+              ]
+            },
+            "id": {
+              "type": "string",
+              "description": "identification of the entity within the external system."
+            }
+          }
+        }
+      ]
+    },
+    "Place": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Entity"
+        },
+        {
+          "type": "object",
+          "description": "Place reference.",
+          "properties": {
+            "externalIdentifier": {
+              "type": "array",
+              "description": "Collection of external identifiers",
+              "items": {
+                "$ref": "#/$defs/ExternalIdentifier"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "RelatedPlace": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "A Place and an associated role as installation address, delivery address, etc....",
+          "properties": {
+            "role": {
+              "type": "string"
+            },
+            "relatedPlace": {
+              "$ref": "#/$defs/Place"
+            }
+          }
+        }
+      ]
+    },
+    "ThresholdRef": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    }
+  }
+}

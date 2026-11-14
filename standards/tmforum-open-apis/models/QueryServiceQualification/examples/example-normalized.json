@@ -1,0 +1,131 @@
+{
+  "id": "urn:ngsi-ld:QueryServiceQualification:54",
+  "type": "QueryServiceQualification",
+  "tmfId": {
+    "type": "Text",
+    "value": "54"
+  },
+  "description": {
+    "type": "Text",
+    "value": "Query Service Qualification Illustration - 2 serviceSpec available at this place for this category"
+  },
+  "effectiveQualificationDate": {
+    "type": "DateTime",
+    "value": "2020-04-13T13:51:41.218Z"
+  },
+  "estimatedResponseDate": {
+    "type": "DateTime",
+    "value": "2023-04-13T14:00:00.218Z"
+  },
+  "expectedQualificationDate": {
+    "type": "DateTime",
+    "value": "2023-04-13T13:51:41.218Z"
+  },
+  "expirationDate": {
+    "type": "DateTime",
+    "value": "2023-04-15T13:51:41.218Z"
+  },
+  "externalIdentifier": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "id": "CSQ1",
+        "@type": "ExternalIdentifier"
+      }
+    ]
+  },
+  "queryServiceQualificationDate": {
+    "type": "DateTime",
+    "value": "2023-04-13T13:51:41.218Z"
+  },
+  "relatedParty": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "role": "Buyer contact",
+        "@type": "RelatedPartyRefOrPartyRoleRef",
+        "partyOrPartyRole": {
+          "@type": "PartyRef",
+          "id": "456",
+          "href": "http://mycsp.com:8080/tmf-api/partyManagement/v5/individual/456",
+          "@referredType": "Individual"
+        }
+      }
+    ]
+  },
+  "searchCriteria": {
+    "type": "StructuredValue",
+    "value": {
+      "id": "1",
+      "category": {
+        "id": "1",
+        "href": "http://mycsp.com:8080/tmf-api/serviceCatalogManagement/v5/category/1",
+        "name": "Fiber Access",
+        "@type": "ServiceCategoryRef",
+        "@referredType": "ServiceCategory"
+      },
+      "service": {
+        "place": [
+          {
+            "@type": "RelatedPlaceRefOrValue",
+            "role": "Installation place",
+            "place": {
+              "@type": "PlaceRef",
+              "@referredType": "GeographicSite",
+              "id": "11",
+              "href": "http://mycsp.com:8080/tmf-api/geographicSiteManagement/v5/geographicSite/11",
+              "name": "Jane Doe home"
+            }
+          }
+        ],
+        "@type": "Service"
+      },
+      "@type": "ServiceQualificationItem"
+    }
+  },
+  "serviceQualificationItem": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "id": "1",
+        "service": {
+          "serviceSpecification": {
+            "id": "78",
+            "href": "http://mycsp.com:8080/tmf-api/serviceCatalogManagement/v5/serviceSpecification/78",
+            "name": "X-Fiber Service",
+            "@type": "ServiceSpecificationRef",
+            "@referredType": "ServiceSpecification"
+          },
+          "@type": "Service"
+        },
+        "@type": "ServiceQualificationItem"
+      },
+      {
+        "id": "2",
+        "service": {
+          "serviceSpecification": {
+            "id": "87",
+            "href": "http://mycsp.com:8080/tmf-api/serviceCatalogManagement/v5/serviceSpecification/87",
+            "name": "Standard Fiber Service",
+            "@type": "ServiceSpecificationRef",
+            "@referredType": "ServiceSpecification"
+          },
+          "@type": "Service"
+        },
+        "@type": "ServiceQualificationItem"
+      }
+    ]
+  },
+  "state": {
+    "type": "Text",
+    "value": "done"
+  },
+  "tmfType": {
+    "type": "Text",
+    "value": "QueryServiceQualification"
+  },
+  "source": {
+    "type": "Text",
+    "value": "Adapted from the example payload 'QueryServiceQualification_retrieve_example_response' of the TMF645 Service Qualification Management 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+  }
+}

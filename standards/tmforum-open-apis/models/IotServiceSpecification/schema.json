@@ -1,0 +1,993 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/IotServiceSpecification/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - IotServiceSpecification",
+  "description": "#TODO (TM Forum TMF914 IoT Service Management Component Suite 4.0.0, Swagger definition IotServiceSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:IotServiceSpecification:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "IotServiceSpecification"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'IotServiceSpecification'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF914_IoTServiceComponentSuite/blob/d8feb27048f25dc2a011d4f2e3422410452ba1d0/TMF914-IotService-v4.0.0.swagger.json#/definitions/IotServiceSpecification/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:IotServiceSpecification:<tmfId>. unique identifier"
+    },
+    "href": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF914_IoTServiceComponentSuite/blob/d8feb27048f25dc2a011d4f2e3422410452ba1d0/TMF914-IotService-v4.0.0.swagger.json#/definitions/IotServiceSpecification/properties/href'. Hyperlink reference"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF914_IoTServiceComponentSuite/blob/d8feb27048f25dc2a011d4f2e3422410452ba1d0/TMF914-IotService-v4.0.0.swagger.json#/definitions/IotServiceSpecification/properties/description'. Description of the specification"
+    },
+    "isBundle": {
+      "type": "boolean",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF914_IoTServiceComponentSuite/blob/d8feb27048f25dc2a011d4f2e3422410452ba1d0/TMF914-IotService-v4.0.0.swagger.json#/definitions/IotServiceSpecification/properties/isBundle'. isBundle determines whether specification represents a single specification (false), or a bundle of specifications (true)."
+    },
+    "lastUpdate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF914_IoTServiceComponentSuite/blob/d8feb27048f25dc2a011d4f2e3422410452ba1d0/TMF914-IotService-v4.0.0.swagger.json#/definitions/IotServiceSpecification/properties/lastUpdate'. Date and time of the last update of the specification"
+    },
+    "lifecycleStatus": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF914_IoTServiceComponentSuite/blob/d8feb27048f25dc2a011d4f2e3422410452ba1d0/TMF914-IotService-v4.0.0.swagger.json#/definitions/IotServiceSpecification/properties/lifecycleStatus'. Used to indicate the current lifecycle status of this catalog item"
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF914_IoTServiceComponentSuite/blob/d8feb27048f25dc2a011d4f2e3422410452ba1d0/TMF914-IotService-v4.0.0.swagger.json#/definitions/IotServiceSpecification/properties/name'. Name given to the specification"
+    },
+    "version": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF914_IoTServiceComponentSuite/blob/d8feb27048f25dc2a011d4f2e3422410452ba1d0/TMF914-IotService-v4.0.0.swagger.json#/definitions/IotServiceSpecification/properties/version'. specification version"
+    },
+    "attachment": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AttachmentRefOrValue"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF914_IoTServiceComponentSuite/blob/d8feb27048f25dc2a011d4f2e3422410452ba1d0/TMF914-IotService-v4.0.0.swagger.json#/definitions/IotServiceSpecification/properties/attachment'. Attachments that may be of relevance to this specification, such as picture, document, media"
+    },
+    "constraint": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ConstraintRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF914_IoTServiceComponentSuite/blob/d8feb27048f25dc2a011d4f2e3422410452ba1d0/TMF914-IotService-v4.0.0.swagger.json#/definitions/IotServiceSpecification/properties/constraint'. This is a list of constraint references applied to this specification"
+    },
+    "entitySpecRelationship": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/EntitySpecificationRelationship"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF914_IoTServiceComponentSuite/blob/d8feb27048f25dc2a011d4f2e3422410452ba1d0/TMF914-IotService-v4.0.0.swagger.json#/definitions/IotServiceSpecification/properties/entitySpecRelationship'. Relationship to another specification"
+    },
+    "featureSpecification": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/FeatureSpecification"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF914_IoTServiceComponentSuite/blob/d8feb27048f25dc2a011d4f2e3422410452ba1d0/TMF914-IotService-v4.0.0.swagger.json#/definitions/IotServiceSpecification/properties/featureSpecification'. A list of Features for this specification."
+    },
+    "relatedParty": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedParty"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF914_IoTServiceComponentSuite/blob/d8feb27048f25dc2a011d4f2e3422410452ba1d0/TMF914-IotService-v4.0.0.swagger.json#/definitions/IotServiceSpecification/properties/relatedParty'. Parties who manage or otherwise have an interest in this specification"
+    },
+    "resourceSpecification": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF914_IoTServiceComponentSuite/blob/d8feb27048f25dc2a011d4f2e3422410452ba1d0/TMF914-IotService-v4.0.0.swagger.json#/definitions/IotServiceSpecification/properties/resourceSpecification'. A list of resource specification references (ResourceSpecificationRef [*]). The ResourceSpecification is required for a service specification with type ResourceFacingServiceSpecification (RFSS). In TMF this is an array of ResourceSpecificationRef objects; here the NGSI-LD ids of the referenced ResourceSpecification entities (urn:ngsi-ld:ResourceSpecification:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "serviceLevelSpecification": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF914_IoTServiceComponentSuite/blob/d8feb27048f25dc2a011d4f2e3422410452ba1d0/TMF914-IotService-v4.0.0.swagger.json#/definitions/IotServiceSpecification/properties/serviceLevelSpecification'. A list of service level specifications related to this service specification, and which will need to be satisifiable for corresponding service instances; e.g. Gold, Platinum. In TMF this is an array of ServiceLevelSpecificationRef objects; here the NGSI-LD ids of the referenced ServiceLevelSpecification entities (urn:ngsi-ld:ServiceLevelSpecification:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "serviceSpecRelationship": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ServiceSpecRelationship"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF914_IoTServiceComponentSuite/blob/d8feb27048f25dc2a011d4f2e3422410452ba1d0/TMF914-IotService-v4.0.0.swagger.json#/definitions/IotServiceSpecification/properties/serviceSpecRelationship'. A list of service specifications related to this specification, e.g. migration, substitution, dependency or exclusivity relationship"
+    },
+    "specCharacteristic": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/CharacteristicSpecification"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF914_IoTServiceComponentSuite/blob/d8feb27048f25dc2a011d4f2e3422410452ba1d0/TMF914-IotService-v4.0.0.swagger.json#/definitions/IotServiceSpecification/properties/specCharacteristic'. List of characteristics that the entity can take"
+    },
+    "targetEntitySchema": {
+      "$ref": "#/$defs/TargetEntitySchema",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF914_IoTServiceComponentSuite/blob/d8feb27048f25dc2a011d4f2e3422410452ba1d0/TMF914-IotService-v4.0.0.swagger.json#/definitions/IotServiceSpecification/properties/targetEntitySchema'. Pointer to a schema that defines the target entity"
+    },
+    "validFor": {
+      "$ref": "#/$defs/TimePeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF914_IoTServiceComponentSuite/blob/d8feb27048f25dc2a011d4f2e3422410452ba1d0/TMF914-IotService-v4.0.0.swagger.json#/definitions/IotServiceSpecification/properties/validFor'. The period for which this REST resource is valid"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF914_IoTServiceComponentSuite/blob/d8feb27048f25dc2a011d4f2e3422410452ba1d0/TMF914-IotService-v4.0.0.swagger.json#/definitions/IotServiceSpecification/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF914_IoTServiceComponentSuite/blob/d8feb27048f25dc2a011d4f2e3422410452ba1d0/TMF914-IotService-v4.0.0.swagger.json#/definitions/IotServiceSpecification/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF914_IoTServiceComponentSuite/blob/d8feb27048f25dc2a011d4f2e3422410452ba1d0/TMF914-IotService-v4.0.0.swagger.json#/definitions/IotServiceSpecification/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'IotServiceSpecification' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ],
+  "$defs": {
+    "Any": {},
+    "AssociationSpecificationRef": {
+      "type": "object",
+      "description": "reference to an AssociationSpecification object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "AttachmentRefOrValue": {
+      "type": "object",
+      "description": "An attachment by value or by reference. An attachment complements the description of an element, for example through a document, a video, a picture.",
+      "properties": {
+        "id": {
+          "examples": [
+            "4aafacbd-11ff-4dc8-b445-305f2215715f"
+          ],
+          "type": "string",
+          "description": "Unique identifier for this particular attachment"
+        },
+        "href": {
+          "examples": [
+            "http://host/Attachment/4aafacbd-11ff-4dc8-b445-305f2215715f"
+          ],
+          "type": "string",
+          "format": "uri",
+          "description": "URI for this Attachment"
+        },
+        "attachmentType": {
+          "examples": [
+            "video"
+          ],
+          "type": "string",
+          "description": "Attachment type such as video, picture"
+        },
+        "content": {
+          "type": "string",
+          "format": "base64",
+          "description": "The actual contents of the attachment object, if embedded, encoded as base64"
+        },
+        "description": {
+          "examples": [
+            "Photograph of the Product"
+          ],
+          "type": "string",
+          "description": "A narrative text describing the content of the attachment"
+        },
+        "mimeType": {
+          "type": "string",
+          "description": "Attachment mime type such as extension file for video, picture and document"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the attachment"
+        },
+        "url": {
+          "examples": [
+            "http://host/Content/4aafacbd-11ff-4dc8-b445-305f2215715f"
+          ],
+          "type": "string",
+          "format": "uri",
+          "description": "Uniform Resource Locator, is a web page address (a subset of URI)"
+        },
+        "size": {
+          "$ref": "#/$defs/Quantity",
+          "description": "The size of the attachment."
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The period of time for which the attachment is valid"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "CharacteristicSpecification": {
+      "type": "object",
+      "description": "This class defines a characteristic specification.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique ID for the characteristic"
+        },
+        "configurable": {
+          "type": "boolean",
+          "description": "If true, the Boolean indicates that the target Characteristic is configurable"
+        },
+        "description": {
+          "type": "string",
+          "description": "A narrative that explains the CharacteristicSpecification."
+        },
+        "extensible": {
+          "type": "boolean",
+          "description": "An indicator that specifies that the values for the characteristic can be extended by adding new values when instantiating a characteristic for a resource."
+        },
+        "isUnique": {
+          "type": "boolean",
+          "description": "An indicator that specifies if a value is unique for the specification. Possible values are; \"unique while value is in effect\" and \"unique whether value is in effect or not\""
+        },
+        "maxCardinality": {
+          "type": "integer",
+          "description": "The maximum number of instances a CharacteristicValue can take on. For example, zero to five phone numbers in a group calling plan, where five is the value for the maxCardinality."
+        },
+        "minCardinality": {
+          "type": "integer",
+          "description": "The minimum number of instances a CharacteristicValue can take on. For example, zero to five phone numbers in a group calling plan, where zero is the value for the minCardinality."
+        },
+        "name": {
+          "type": "string",
+          "description": "A word, term, or phrase by which this characteristic specification is known and distinguished from other characteristic specifications."
+        },
+        "regex": {
+          "type": "string",
+          "description": "A rule or principle represented in regular expression used to derive the value of a characteristic value."
+        },
+        "valueType": {
+          "type": "string",
+          "description": "A kind of value that the characteristic can take on, such as numeric, text and so forth"
+        },
+        "charSpecRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CharacteristicSpecificationRelationship"
+          },
+          "description": "An aggregation, migration, substitution, dependency or exclusivity relationship between/among Specification Characteristics."
+        },
+        "characteristicValueSpecification": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CharacteristicValueSpecification"
+          },
+          "description": "A CharacteristicValueSpecification object is used to define a set of attributes, each of which can be assigned to a corresponding set of attributes in a CharacteristicSpecification object. The values of the attributes in the CharacteristicValueSpecification object describe the values of the attributes that a corresponding Characteristic object can take on."
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The period of time for which a characteristic is applicable."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@valueSchemaLocation": {
+          "type": "string",
+          "description": "This (optional) field provides a link to the schema describing the value type."
+        }
+      }
+    },
+    "CharacteristicSpecificationRelationship": {
+      "type": "object",
+      "description": "An aggregation, migration, substitution, dependency or exclusivity relationship between/among Characteristic specifications. The specification characteristic is embedded within the specification whose ID and href are in this entity, and identified by its ID.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "characteristicSpecificationId": {
+          "type": "string",
+          "description": "Unique identifier of the characteristic within the specification"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the target characteristic within the specification"
+        },
+        "parentSpecificationHref": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference to the parent specification containing the target characteristic"
+        },
+        "parentSpecificationId": {
+          "type": "string",
+          "description": "Unique identifier of the parent specification containing the target characteristic"
+        },
+        "relationshipType": {
+          "type": "string",
+          "description": "Type of relationship such as aggregation, migration, substitution, dependency, exclusivity"
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The period for which the object is valid"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "CharacteristicValueSpecification": {
+      "type": "object",
+      "description": "specification of a value (number or text or an object) that can be assigned to a Characteristic.",
+      "properties": {
+        "isDefault": {
+          "type": "boolean",
+          "description": "If true, the Boolean Indicates if the value is the default value for a characteristic"
+        },
+        "rangeInterval": {
+          "type": "string",
+          "description": "An indicator that specifies the inclusion or exclusion of the valueFrom and valueTo attributes. If applicable, possible values are \"open\", \"closed\", \"closedBottom\" and \"closedTop\"."
+        },
+        "regex": {
+          "type": "string",
+          "description": "A regular expression constraint for given value"
+        },
+        "unitOfMeasure": {
+          "type": "string",
+          "description": "A length, surface, volume, dry measure, liquid measure, money, weight, time, and the like. In general, a determinate quantity or magnitude of the kind designated, taken as a standard of comparison for others of the same kind, in assigning to them numerical values, as 1 foot, 1 yard, 1 mile, 1 square foot."
+        },
+        "valueFrom": {
+          "type": "integer",
+          "description": "The low range value that a characteristic can take on"
+        },
+        "valueTo": {
+          "type": "integer",
+          "description": "The upper range value that a characteristic can take on"
+        },
+        "valueType": {
+          "type": "string",
+          "description": "A kind of value that the characteristic value can take on, such as numeric, text and so forth"
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The period of time for which a value is applicable."
+        },
+        "value": {
+          "$ref": "#/$defs/Any",
+          "description": "A discrete value that the characteristic can take on, or the actual value of the characteristic"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "ConstraintRef": {
+      "type": "object",
+      "description": "Constraint reference. The Constraint resource represents a policy/rule applied to an entity or entity spec.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "version": {
+          "type": "string",
+          "description": "constraint version"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "EntitySpecificationRelationship": {
+      "type": "object",
+      "description": "A migration, substitution, dependency or exclusivity relationship between/among entity specifications.",
+      "required": [
+        "relationshipType"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "relationshipType": {
+          "type": "string",
+          "description": "Type of relationship such as migration, substitution, dependency, exclusivity"
+        },
+        "role": {
+          "type": "string",
+          "description": "The association role for this entity specification"
+        },
+        "associationSpec": {
+          "$ref": "#/$defs/AssociationSpecificationRef",
+          "description": "A specification for an association used by this relationship"
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The period for which the entitySpecRelationship is valid"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "FeatureSpecification": {
+      "type": "object",
+      "description": "Specification for resource, service or product features",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the feature specification. Must be locally unique within the containing specification, thus allowing direct access to the feature spec."
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "isBundle": {
+          "type": "boolean",
+          "description": "A flag indicating if this is a feature group (true) or not (false)"
+        },
+        "isEnabled": {
+          "type": "boolean",
+          "description": "A flag indicating if the feature is enabled (true) or not (false)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Unique name given to the feature specification"
+        },
+        "version": {
+          "type": "string",
+          "description": "Version of the feature specification"
+        },
+        "constraint": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ConstraintRef"
+          },
+          "description": "This is a list of feature constraints"
+        },
+        "featureSpecCharacteristic": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FeatureSpecificationCharacteristic"
+          },
+          "description": "This is a list of characteristics for a particular feature"
+        },
+        "featureSpecRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FeatureSpecificationRelationship"
+          },
+          "description": "A dependency, exclusivity or aggratation relationship between/among feature specifications."
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The period for which this feature specification is valid"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "FeatureSpecificationCharacteristic": {
+      "type": "object",
+      "description": "Configuration feature characteristic specification.",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique ID for the characteristic"
+        },
+        "configurable": {
+          "type": "boolean",
+          "description": "If true, the Boolean indicates that the target Characteristic is configurable"
+        },
+        "description": {
+          "type": "string",
+          "description": "A narrative that explains the CharacteristicSpecification."
+        },
+        "extensible": {
+          "type": "boolean",
+          "description": "An indicator that specifies that the values for the characteristic can be extended by adding new values when instantiating a characteristic for a resource."
+        },
+        "isUnique": {
+          "type": "boolean",
+          "description": "An indicator that specifies if a value is unique for the specification. Possible values are; \"unique while value is in effect\" and \"unique whether value is in effect or not\""
+        },
+        "maxCardinality": {
+          "type": "integer",
+          "description": "The maximum number of instances a CharacteristicValue can take on. For example, zero to five phone numbers in a group calling plan, where five is the value for the maxCardinality."
+        },
+        "minCardinality": {
+          "type": "integer",
+          "description": "The minimum number of instances a CharacteristicValue can take on. For example, zero to five phone numbers in a group calling plan, where zero is the value for the minCardinality."
+        },
+        "name": {
+          "type": "string",
+          "description": "A word, term, or phrase by which this characteristic specification is known and distinguished from other characteristic specifications."
+        },
+        "regex": {
+          "type": "string",
+          "description": "A rule or principle represented in regular expression used to derive the value of a characteristic value."
+        },
+        "valueType": {
+          "type": "string",
+          "description": "A kind of value that the characteristic can take on, such as numeric, text and so forth"
+        },
+        "featureSpecCharRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FeatureSpecificationCharacteristicRelationship"
+          },
+          "description": "An aggregation, migration, substitution, dependency or exclusivity relationship between/among feature characteristics."
+        },
+        "featureSpecCharacteristicValue": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CharacteristicValueSpecification"
+          },
+          "description": "Used to define a set of attributes, each of which can be assigned to a corresponding set of attributes in a FeatureCharacteristic object."
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The period of time for which a characteristic is applicable."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@valueSchemaLocation": {
+          "type": "string",
+          "description": "This (optional) field provides a link to the schema describing the value type."
+        }
+      }
+    },
+    "FeatureSpecificationCharacteristicRelationship": {
+      "type": "object",
+      "description": "An aggregation, migration, substitution, dependency or exclusivity relationship between/among FeatureSpecificationCharacteristics.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "characteristicId": {
+          "type": "string",
+          "description": "Unique identifier of the characteristic within the the target feature specification"
+        },
+        "featureId": {
+          "type": "string",
+          "description": "Unique identifier of the target feature specification within the resource specification."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the target characteristic"
+        },
+        "relationshipType": {
+          "type": "string",
+          "description": "Type of relationship such as aggregation, migration, substitution, dependency, exclusivity"
+        },
+        "resourceSpecificationHref": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference to the resource specification containing the target feature and feature characteristic"
+        },
+        "resourceSpecificationId": {
+          "type": "string",
+          "description": "Unique identifier of the resource specification containing the target feature and feature characteristic"
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The period for which the object is valid"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "FeatureSpecificationRelationship": {
+      "type": "object",
+      "description": "Relationship between feature specifications",
+      "required": [
+        "name",
+        "relationshipType"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "featureId": {
+          "type": "string",
+          "description": "Unique identifier of the target feature specification."
+        },
+        "name": {
+          "type": "string",
+          "description": "This is the name of the target feature specification."
+        },
+        "parentSpecificationHref": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference to the parent specification containing the target feature"
+        },
+        "parentSpecificationId": {
+          "type": "string",
+          "description": "Unique identifier of the parent specification containing the target feature"
+        },
+        "relationshipType": {
+          "type": "string",
+          "description": "This is the type of the feature specification relationship."
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The period for which this feature spoecification relationship is valid."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "Quantity": {
+      "type": "object",
+      "description": "An amount in a given unit",
+      "properties": {
+        "amount": {
+          "default": 1,
+          "type": "number",
+          "format": "float",
+          "description": "Numeric value in a given unit"
+        },
+        "units": {
+          "type": "string",
+          "description": "Unit"
+        }
+      }
+    },
+    "RelatedParty": {
+      "type": "object",
+      "description": "Related Entity reference. A related party defines party or party role linked to a specific entity.",
+      "required": [
+        "@referredType",
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "role": {
+          "type": "string",
+          "description": "Role played by the related party"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "ServiceSpecRelationship": {
+      "type": "object",
+      "description": "A dependency, substitution or exclusivity relationship between/among service specifications.",
+      "required": [
+        "relationshipType"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "relationshipType": {
+          "type": "string",
+          "description": "Type of relationship such as dependency, substitution or exclusivity"
+        },
+        "role": {
+          "type": "string",
+          "description": "The association role for this service specification"
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The period for which the serviceSpecRelationship is valid"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "TargetEntitySchema": {
+      "type": "object",
+      "description": "The reference object to the schema and type of target entity which is described by a specification",
+      "required": [
+        "@schemaLocation",
+        "@type"
+      ],
+      "properties": {
+        "@schemaLocation": {
+          "type": "string",
+          "description": "This field provides a link to the schema describing the target entity"
+        },
+        "@type": {
+          "type": "string",
+          "description": "Class type of the target entity"
+        }
+      }
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "endDateTime": {
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ],
+          "type": "string",
+          "format": "date-time",
+          "description": "End of the time period, using IETC-RFC-3339 format"
+        },
+        "startDateTime": {
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ],
+          "type": "string",
+          "format": "date-time",
+          "description": "Start of the time period, using IETC-RFC-3339 format"
+        }
+      }
+    }
+  }
+}

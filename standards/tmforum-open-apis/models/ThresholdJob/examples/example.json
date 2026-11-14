@@ -1,0 +1,58 @@
+{
+  "id": "urn:ngsi-ld:ThresholdJob:3a34f89-0046-tjb-01",
+  "type": "ThresholdJob",
+  "tmfType": "ThresholdJob",
+  "adminState": "LOCKED",
+  "creationDate": "2025-02-12T06:37:22Z",
+  "executionState": "Active",
+  "granularity": "G_30MN",
+  "tmfId": "3a34f89-0046-tjb-01",
+  "jobPriority": 610,
+  "lastUpdate": "2025-02-12T06:37:22Z",
+  "monitoredObjectsCriteria": [
+    {
+      "monitoredObjectFilter": "nodeName=Router01"
+    }
+  ],
+  "performanceThreshold": "urn:ngsi-ld:Threshold:f3a34f89-0046-pfth-01",
+  "scheduleDefinition": {
+    "@type": "ScheduleDefinition",
+    "@baseType": "ScheduleDefinition",
+    "@schemaLocation": "/schema-registry/v5/ScheduleDefinition.yaml",
+    "id": "f3a34f89-0046-sd-01",
+    "validFor": {
+      "startDateTime": "2025-04-01T06:37:22Z",
+      "endDateTime": "2025-04-15T06:37:22Z"
+    },
+    "recurringFrequency": "every 5 minutes",
+    "excludedDate": [
+      "2025-02-12T06:37:22Z"
+    ],
+    "scheduleDefinitionHourRange": [
+      {
+        "startHour": "09:00",
+        "endHour": "17:30"
+      }
+    ],
+    "weeklyScheduleDefinition": [],
+    "monthlyScheduleDayOfMonthDefinition": [
+      "2025-04-01T06:37:22Z",
+      "2025-02-15T06:37:22Z"
+    ],
+    "monthlyScheduleDayOfWeekDefinition": {
+      "@type": "MonthlyScheduleDayOfWeekDefinition",
+      "@baseType": "MonthlyScheduleDayOfWeekDefinition",
+      "@schemaLocation": "/schema-registry/v5/MonthlyScheduleDayOfWeekDefinition.yaml",
+      "dayOfMonthRecurrence": [
+        {
+          "@type": "DayOfMonthRecurrence",
+          "@baseType": "DayOfMonthRecurrence",
+          "@schemaLocation": "/schema-registry/v5/DayOfMonthRecurrence.yaml"
+        }
+      ],
+      "recurringDaySequence": "FirstWeekOfMonth"
+    }
+  },
+  "trackingRecord": "Router01_PacketDropRate_ThresholdMonitoring_ExecutionLog",
+  "source": "Adapted from the example payload 'ThresholdJobGet200ApplicationJson_response' of the TMF649 Performance Thresholding 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+}

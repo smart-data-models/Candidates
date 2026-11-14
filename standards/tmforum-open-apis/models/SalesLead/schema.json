@@ -1,0 +1,524 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/SalesLead/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - SalesLead",
+  "description": "A Sales Lead is a record that captures the initial interest expressed by a prospect (an individual or organization) in products or services. As a preliminary artifact in the sales funnel, it contains unverified information that must be nurtured and qualified. A lead is ultimately converted into a Sales Opportunity or is disqualified. (TM Forum TMF699 Sales Management 5.0.0, OpenAPI component SalesLead; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:SalesLead:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "SalesLead"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'SalesLead'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'SalesLead' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/href'. Hyperlink reference"
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:SalesLead:<tmfId>. unique identifier"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesLead/properties/description'. Concise and comprehensive description of the Sales Lead"
+    },
+    "status": {
+      "enum": [
+        "accepted",
+        "acknowledged",
+        "cancelled",
+        "inProgress",
+        "pending",
+        "rejected"
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesLead/properties/status'. Valid values for the lifecycle state of a salesLead resource"
+    },
+    "statusChangeDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesLead/properties/statusChangeDate'. Date and time of the last update of the status"
+    },
+    "referredDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesLead/properties/referredDate'. Date when the prospect information was received (for example, from a trade show)."
+    },
+    "statusChangeReason": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesLead/properties/statusChangeReason'. Reason why the status has changed"
+    },
+    "salesLeadType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesLead/properties/salesLeadType'. Indicates the nature of the salesLead, such us: newBusiness, upsell, renewal, cross-sell, etc."
+    },
+    "rating": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesLead/properties/rating'. Identifies the potential of a salesLead for becoming a sale. Usual ratings for qualified leads are: hot, warm, cold."
+    },
+    "priority": {
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesLead/properties/priority'. Urgency of working for this sales lead or sales opportunity"
+    },
+    "revenueEstimate": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RevenueEstimate"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesLead/properties/revenueEstimate'. Estimation of the revenue if the salesLead turns into a sale."
+    },
+    "validFor": {
+      "$ref": "#/$defs/TimePeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesLead/properties/validFor'. A period of time, either as a deadline (endDateTime only) a startDateTime only, or both"
+    },
+    "marketingCampaign": {
+      "$ref": "#/$defs/MarketingCampaignRef",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesLead/properties/marketingCampaign'. MarketingCampaign reference. Marketing campaign represents the carrier-initiated marketing activity which aims at the better recognition about its brand and offerings by the market"
+    },
+    "marketSegment": {
+      "$ref": "#/$defs/MarketSegmentRef",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesLead/properties/marketSegment'. provides references to the corresponding market segment as target of product offerings. A market segment is grouping of Parties, GeographicAreas, SalesChannels, and so forth."
+    },
+    "channel": {
+      "$ref": "#/$defs/ChannelRef",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesLead/properties/channel'. The channel to which the resource reference to. e.g. channel for selling product offerings, channel for opening a trouble ticket etc.."
+    },
+    "productOffering": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesLead/properties/productOffering'. List of product offerings that the prospect has shown interest in or that have been proposed as part of this Sales Lead. In TMF this is an array of ProductOfferingRef objects; here the NGSI-LD ids of the referenced ProductOffering entities (urn:ngsi-ld:ProductOffering:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "relatedParty": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedPartyRefOrPartyRoleRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesLead/properties/relatedParty'. List of related parties or party roles references associated with this Sales Lead, such as the prospect company, decision-makers, sales or marketing representatives, or other stakeholders involved in the sales process."
+    },
+    "agreement": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesLead/properties/agreement'. Array of references to agreements or terms discussed with the prospect as part of this Sales Lead. In TMF this is an array of AgreementRef objects; here the NGSI-LD ids of the referenced Agreement entities (urn:ngsi-ld:Agreement:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "prospectContactMedium": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ContactMedium"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesLead/properties/prospectContactMedium'. List of contact mediums for the prospect, including telephone, email, postal address, or other communication channels through which the prospect can be contacted."
+    },
+    "productSpecification": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesLead/properties/productSpecification'. List of product specifications related to the Sales Lead, defining the technical and/or functional characteristics of products that could be offered. In TMF this is an array of ProductSpecificationRef objects; here the NGSI-LD ids of the referenced ProductSpecification entities (urn:ngsi-ld:ProductSpecification:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "category": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesLead/properties/category'. Reference to a category in the catalog. In TMF this is a CategoryRef object; here the NGSI-LD id of the referenced Category entity (urn:ngsi-ld:Category:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "salesOpportunity": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesLead/properties/salesOpportunity'. Reference to the sales opportunity that was created from this Sales Lead once it was qualified and progressed through the sales process. In TMF this is an array of SalesOpportunityRef objects; here the NGSI-LD ids of the referenced SalesOpportunity entities (urn:ngsi-ld:SalesOpportunity:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "product": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesLead/properties/product'. Reference to the product(s) from the inventory associated with this Sales Lead. In TMF this is an array of ProductRef objects; here the NGSI-LD ids of the referenced Product entities (urn:ngsi-ld:Product:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "note": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Note"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesLead/properties/note'. A user-generated text entry providing contextual information or commentary."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesLead/properties/name'. Name of the salesLead"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesLead/properties/creationDate'. Date and time of the salesLead creation"
+    },
+    "lastUpdate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesLead/properties/lastUpdate'. Date and time of the last update to the salesLead"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tmfType",
+    "name"
+  ],
+  "$defs": {
+    "Addressable": {
+      "type": "object",
+      "description": "Base schema for addressable entities",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Hyperlink reference"
+        },
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        }
+      }
+    },
+    "ChannelRef": {
+      "type": "object",
+      "description": "The channel to which the resource reference to. e.g. channel for selling product offerings, channel for opening a trouble ticket etc..",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "ContactMedium": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Indicates the contact medium that could be used to contact the party. This is an abstract base class, the actual value is in one of the strongly-typed subclasses : EmailContactMedium, FaxContactMedium, PhoneContactMedium, GeographicAddressContactMedium, SocialMediaContactMedium...",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Identifier for this contact medium."
+            },
+            "preferred": {
+              "type": "boolean",
+              "description": "If true, indicates that is the preferred contact medium"
+            },
+            "contactType": {
+              "type": "string",
+              "description": "Type of the contact medium to qualify it like pro email / personal email. This is not used to define the contact medium used."
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            }
+          }
+        }
+      ]
+    },
+    "EntityRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        },
+        {
+          "type": "object",
+          "description": "Entity reference schema to be use for all entityRef class.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "The identifier of the referred entity."
+            },
+            "href": {
+              "type": "string",
+              "description": "The URI of the referred entity."
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the referred entity."
+            },
+            "@referredType": {
+              "type": "string",
+              "description": "The actual type of the target instance when needed for disambiguation."
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      ]
+    },
+    "Extensible": {
+      "type": "object",
+      "description": "Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means that the Entity described by the schema MUST be extended with the @type",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "MarketSegmentRef": {
+      "type": "object",
+      "description": "provides references to the corresponding market segment as target of product offerings. A market segment is grouping of Parties, GeographicAreas, SalesChannels, and so forth.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "MarketingCampaignRef": {
+      "type": "object",
+      "description": "MarketingCampaign reference. Marketing campaign represents the carrier-initiated marketing activity which aims at the better recognition about its brand and offerings by the market",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "Money": {
+      "type": "object",
+      "description": "A base / value business entity used to represent money",
+      "properties": {
+        "unit": {
+          "type": "string",
+          "description": "Currency (ISO4217 norm uses 3 letters to define the currency)"
+        },
+        "value": {
+          "type": "number",
+          "format": "float",
+          "description": "A signed floating point number, the meaning of the sign is according to the context of the API that uses this Data type"
+        }
+      }
+    },
+    "Note": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Extra information about a given entity",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Identifier of the note within its containing entity",
+              "examples": [
+                "afa9-3d90aaa8da0f"
+              ]
+            },
+            "author": {
+              "type": "string",
+              "description": "Author of the note",
+              "examples": [
+                "Mr. N. Bene"
+              ]
+            },
+            "date": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Date of the note",
+              "examples": [
+                "2020-11-20T08:00:00Z"
+              ]
+            },
+            "text": {
+              "type": "string",
+              "description": "Text of the note",
+              "examples": [
+                "This is important"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "PartyRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "A Party reference",
+          "properties": {
+            "@type": {
+              "type": "string",
+              "enum": [
+                "PartyRef"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "PartyRefOrPartyRoleRef": {
+      "type": "object",
+      "description": "",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PartyRef"
+        },
+        {
+          "$ref": "#/$defs/PartyRoleRef"
+        }
+      ]
+    },
+    "PartyRoleRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "Party role reference. A party role represents the part played by a party in a given context.",
+          "properties": {
+            "@type": {
+              "type": "string",
+              "enum": [
+                "PartyRoleRef"
+              ]
+            },
+            "partyId": {
+              "type": "string",
+              "description": "The identifier of the engaged party that is linked to the PartyRole object."
+            },
+            "partyName": {
+              "type": "string",
+              "description": "The name of the engaged party that is linked to the PartyRole object."
+            }
+          }
+        }
+      ]
+    },
+    "RelatedPartyRefOrPartyRoleRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "RelatedParty reference. A related party defines party or party role or its reference, linked to a specific entity",
+          "properties": {
+            "role": {
+              "description": "Role played by the related party or party role in the context of the specific entity it is linked to. Such as 'initiator', 'customer', 'salesAgent', 'user'",
+              "type": "string"
+            },
+            "partyOrPartyRole": {
+              "$ref": "#/$defs/PartyRefOrPartyRoleRef"
+            }
+          },
+          "required": [
+            "role"
+          ]
+        }
+      ]
+    },
+    "RevenueEstimate": {
+      "type": "object",
+      "description": "A Revenue Estimate is a projection of the potential revenue that can be generated from a sales opportunity, a sales opportunity item or a sales lead.",
+      "properties": {
+        "amount": {
+          "$ref": "#/$defs/Money"
+        },
+        "description": {
+          "type": "string",
+          "description": "Concise and comprehensive description of the Revenue Estimate, including the context and the assumptions behind the estimation."
+        },
+        "revenueType": {
+          "type": "string",
+          "description": "Indicates the nature of the revenue, such as recurring, one-time, ongoing, etc."
+        }
+      },
+      "required": [
+        "amount"
+      ]
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "startDateTime": {
+          "description": "Start of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        },
+        "endDateTime": {
+          "description": "End of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        }
+      }
+    }
+  }
+}

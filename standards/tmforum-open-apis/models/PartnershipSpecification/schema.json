@@ -1,0 +1,170 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PartnershipSpecification/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - PartnershipSpecification",
+  "description": "A partnership specification contains all the information for the setup of a partnership of a given kind. This includes the list of identified role types for the partnership with the corresponding agreement specifications. (TM Forum TMF668 Partnership Management 4.0, Swagger definition PartnershipSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:PartnershipSpecification:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "PartnershipSpecification"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'PartnershipSpecification'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF668_PartnershipType/blob/v4.0.0/TMF668-PartnershipType-v4.0.0.swagger.json#/definitions/PartnershipSpecification/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:PartnershipSpecification:<tmfId>. The identifier of the partnership specification"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF668_PartnershipType/blob/v4.0.0/TMF668-PartnershipType-v4.0.0.swagger.json#/definitions/PartnershipSpecification/properties/href'. The reference url for this partnership specification"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF668_PartnershipType/blob/v4.0.0/TMF668-PartnershipType-v4.0.0.swagger.json#/definitions/PartnershipSpecification/properties/description'. An explanatory text regarding this partnership specification"
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF668_PartnershipType/blob/v4.0.0/TMF668-PartnershipType-v4.0.0.swagger.json#/definitions/PartnershipSpecification/properties/name'. An identifying name for the partnership specification."
+    },
+    "roleSpecification": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PartnershipRoleSpecification"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF668_PartnershipType/blob/v4.0.0/TMF668-PartnershipType-v4.0.0.swagger.json#/definitions/PartnershipSpecification/properties/roleSpecification'. The list of roles specifications a engaged party will be able to play for this kind of partnership"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF668_PartnershipType/blob/v4.0.0/TMF668-PartnershipType-v4.0.0.swagger.json#/definitions/PartnershipSpecification/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF668_PartnershipType/blob/v4.0.0/TMF668-PartnershipType-v4.0.0.swagger.json#/definitions/PartnershipSpecification/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF668_PartnershipType/blob/v4.0.0/TMF668-PartnershipType-v4.0.0.swagger.json#/definitions/PartnershipSpecification/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'PartnershipSpecification' or a sub-class / extension name. When sub-classing, this defines the sub-class entity name"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "name"
+  ],
+  "$defs": {
+    "AgreementSpecificationRef": {
+      "type": "object",
+      "description": "AgreementSpecification reference. An AgreementSpecification represents a template of an agreement that can be used when establishing partnerships.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of a related entity."
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the related entity."
+        },
+        "description": {
+          "type": "string",
+          "description": "A narrative that explains in detail what the agreement specification is about."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the agreement specification"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "format": "uri"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "PartnershipRoleSpecification": {
+      "type": "object",
+      "description": "A PartnershipRoleSpecification represents a specification of a role defined in the context of a given type of partnership (PartnershipSpecification), such as Buyer, Seller.",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "An explanatory text documenting the role specification"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the role specification. This name uniquely identifies the role specification within the partnership"
+        },
+        "requiresBilling": {
+          "type": "boolean",
+          "description": "Indicates whether billing operations will be associated to parties playing the role"
+        },
+        "requiresSettlement": {
+          "type": "boolean",
+          "description": "Indicates whether settlement operations will be associated to parties playing the role"
+        },
+        "agreementSpecification": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AgreementSpecificationRef"
+          }
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "format": "uri"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    }
+  }
+}

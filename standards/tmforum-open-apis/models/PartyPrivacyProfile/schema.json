@@ -1,0 +1,608 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PartyPrivacyProfile/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - PartyPrivacyProfile",
+  "description": "A Party Privacy Profile represents the set of Privacy settings defined for a Party (TM Forum TMF644 Privacy 5.0.0, OpenAPI component PartyPrivacyProfile; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:PartyPrivacyProfile:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "PartyPrivacyProfile"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'PartyPrivacyProfile'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'PartyPrivacyProfile' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/href'. Hyperlink reference"
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:PartyPrivacyProfile:<tmfId>. unique identifier"
+    },
+    "applicableForParty": {
+      "$ref": "#/$defs/RelatedPartyRefOrPartyRoleRef",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/PartyPrivacyProfile/properties/applicableForParty'. RelatedParty reference. A related party defines party or party role or its reference, linked to a specific entity"
+    },
+    "agreement": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/PartyPrivacyProfile/properties/agreement'. Reference to Party Privacy Agreement resource. In TMF this is a PartyPrivacyAgreementRef object; here the NGSI-LD id of the referenced PartyPrivacyAgreement entity (urn:ngsi-ld:PartyPrivacyAgreement:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/PartyPrivacyProfile/properties/creationDate'. The date on which the PartyPrivacyProfile was created"
+    },
+    "lastUpdate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/PartyPrivacyProfile/properties/lastUpdate'. Date and time when the PartyPrivacyProfile was last updated"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/PartyPrivacyProfile/properties/description'. Description of the privacy profile"
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/PartyPrivacyProfile/properties/name'. Name of the privacy profile"
+    },
+    "status": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/PartyPrivacyProfile/properties/status'. The status of this profile (for example: created, terminated, etc.)"
+    },
+    "validFor": {
+      "$ref": "#/$defs/TimePeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/PartyPrivacyProfile/properties/validFor'. A period of time, either as a deadline (endDateTime only) a startDateTime only, or both"
+    },
+    "partyPrivacyProfileSpecification": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/PartyPrivacyProfile/properties/partyPrivacyProfileSpecification'. Reference to Party Privacy Specification resource. In TMF this is a PartyPrivacyProfileSpecificationRef object; here the NGSI-LD id of the referenced PartyPrivacyProfileSpecification entity (urn:ngsi-ld:PartyPrivacyProfileSpecification:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "partyPrivacyProfileCharacteristic": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PartyPrivacyProfileCharacteristic"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/PartyPrivacyProfile/properties/partyPrivacyProfileCharacteristic'. List of characteristics of the privacy profile"
+    },
+    "agreedByParty": {
+      "$ref": "#/$defs/RelatedPartyRefOrPartyRoleRef",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF644_Privacy/blob/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml#/components/schemas/PartyPrivacyProfile/properties/agreedByParty'. RelatedParty reference. A related party defines party or party role or its reference, linked to a specific entity"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tmfType"
+  ],
+  "$defs": {
+    "Addressable": {
+      "type": "object",
+      "description": "Base schema for adressable entities",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Hyperlink reference"
+        },
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        }
+      }
+    },
+    "AnyCharacteristicValue": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/StringCharacteristic"
+        },
+        {
+          "$ref": "#/$defs/IntegerCharacteristic"
+        },
+        {
+          "$ref": "#/$defs/NumberCharacteristic"
+        },
+        {
+          "$ref": "#/$defs/BooleanCharacteristic"
+        },
+        {
+          "$ref": "#/$defs/ObjectCharacteristic"
+        },
+        {
+          "$ref": "#/$defs/StringArrayCharacteristic"
+        },
+        {
+          "$ref": "#/$defs/IntegerArrayCharacteristic"
+        },
+        {
+          "$ref": "#/$defs/NumberArrayCharacteristic"
+        },
+        {
+          "$ref": "#/$defs/BooleanArrayCharacteristic"
+        },
+        {
+          "$ref": "#/$defs/ObjectArrayCharacteristic"
+        },
+        {
+          "$ref": "#/$defs/MapAnyCharacteristicValue"
+        }
+      ]
+    },
+    "BooleanArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of Boolean(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "items": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "BooleanCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Boolean.",
+          "properties": {
+            "value": {
+              "type": "boolean",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "Characteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Describes a given characteristic of an object or entity through a name/value pair. The value is given by the sub-class named in @type (discriminator in the TMF specification): StringCharacteristic, StringArrayCharacteristic, ObjectCharacteristic, ObjectArrayCharacteristic, NumberCharacteristic, NumberArrayCharacteristic, MapAnyCharacteristicValue, IntegerCharacteristic, IntegerArrayCharacteristic, FloatCharacteristic; see $defs.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique identifier of the characteristic"
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the characteristic"
+            },
+            "valueType": {
+              "type": "string",
+              "description": "Data type of the value of the characteristic"
+            },
+            "characteristicRelationship": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/CharacteristicRelationship"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "CharacteristicRelationship": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Another Characteristic that is related to the current Characteristic;",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique identifier of the characteristic"
+            },
+            "relationshipType": {
+              "type": "string",
+              "description": "The type of relationship"
+            }
+          }
+        }
+      ]
+    },
+    "EntityRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        },
+        {
+          "type": "object",
+          "description": "Entity reference schema to be use for all entityRef class.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "The identifier of the referred entity."
+            },
+            "href": {
+              "type": "string",
+              "description": "The URI of the referred entity."
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the referred entity."
+            },
+            "@referredType": {
+              "type": "string",
+              "description": "The actual type of the target instance when needed for disambiguation."
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      ]
+    },
+    "Extensible": {
+      "type": "object",
+      "description": "Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means that the Entity described by the schema MUST be extended with the @type",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "FloatCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Float.",
+          "properties": {
+            "value": {
+              "type": "number",
+              "format": "float",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "IntegerArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of Integer(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "IntegerCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Integer.",
+          "properties": {
+            "value": {
+              "type": "integer",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "MapAnyCharacteristicValue": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A definition of a characteristic for which the value is a mapped object",
+          "properties": {
+            "value": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/$defs/AnyCharacteristicValue"
+              },
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "NumberArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of Number(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "NumberCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Number.",
+          "properties": {
+            "value": {
+              "type": "number",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "ObjectArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of Object(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ObjectCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Object.",
+          "properties": {
+            "value": {
+              "type": "object",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "PartyPrivacyProfileCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic for an instantiated party profile, where the value indicates the allowed use of the characteristic",
+          "properties": {
+            "characterisitc": {
+              "type": "object",
+              "$ref": "#/$defs/Characteristic"
+            },
+            "relatedParty": {
+              "type": "array",
+              "description": "A list of parties to which the allowed use of the characteristic applies.",
+              "items": {
+                "$ref": "#/$defs/RelatedPartyRefOrPartyRoleRef"
+              }
+            },
+            "privacyUsagePurpose": {
+              "type": "string",
+              "description": "Defines the purpose authorized or refused for the characteristic (e.g. ADMIN, INFORMATION, MARKETING, RESEARCH, etc."
+            }
+          }
+        }
+      ]
+    },
+    "PartyRef": {
+      "type": "object",
+      "description": "A Party reference",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "PartyRefOrPartyRoleRef": {
+      "type": "object",
+      "description": "",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PartyRef"
+        },
+        {
+          "$ref": "#/$defs/PartyRoleRef"
+        }
+      ]
+    },
+    "PartyRoleRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "Party role reference. A party role represents the part played by a party in a given context.",
+          "properties": {
+            "partyId": {
+              "type": "string",
+              "description": "The identifier of the engaged party that is linked to the PartyRole object."
+            },
+            "partyName": {
+              "type": "string",
+              "description": "The name of the engaged party that is linked to the PartyRole object."
+            }
+          }
+        }
+      ]
+    },
+    "RelatedPartyRefOrPartyRoleRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "RelatedParty reference. A related party defines party or party role or its reference, linked to a specific entity",
+          "properties": {
+            "role": {
+              "description": "Role played by the related party or party role in the context of the specific entity it is linked to. Such as 'initiator', 'customer', 'salesAgent', 'user'",
+              "type": "string"
+            },
+            "partyOrPartyRole": {
+              "$ref": "#/$defs/PartyRefOrPartyRoleRef"
+            }
+          }
+        }
+      ]
+    },
+    "StringArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of String(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "StringCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a String.",
+          "properties": {
+            "value": {
+              "type": "string",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "startDateTime": {
+          "description": "Start of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        },
+        "endDateTime": {
+          "description": "End of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        }
+      }
+    }
+  }
+}

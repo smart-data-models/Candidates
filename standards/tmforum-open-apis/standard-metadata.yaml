@@ -1,185 +1,564 @@
-title: "TM Forum Open APIs (Product, Service and Resource Inventory, Trouble Ticket, Product Ordering)"
+title: "TM Forum Open APIs (86 Apache-2.0 APIs, 174 resource models)"
 publisher: "TM Forum"
 sourceUrl: "https://github.com/tmforum-apis"
 specificationUrl: "https://www.tmforum.org/oda/open-apis/directory/"
 contact: "https://www.tmforum.org/contact-us/"
-sourceOntologyVersion: >
-  OpenAPI 3.0.1 specifications at release tag v5.0.0 of each repository:
-  TMF637 Product Inventory Management 5.0.0, TMF638 Service Inventory
-  Management 5.0.0, TMF639 Resource Inventory Management 5.0.0, TMF621
-  Trouble Ticket 5.0.1 (file shipped under tag v5.0.0), TMF622 Product
-  Ordering Management 5.0.0. The tag files are byte-identical to the
-  repositories' main branch on 2026-11-13.
-sourceOntologyDownload: >
-  https://raw.githubusercontent.com/tmforum-apis/TMF637_ProductInventory/v5.0.0/TMF637-ProductInventory-v5.0.0.oas.yaml ;
-  https://raw.githubusercontent.com/tmforum-apis/TMF638_ServiceInventory/v5.0.0/TMF638-Service_Inventory_Management-v5.0.0.oas.yaml ;
-  https://raw.githubusercontent.com/tmforum-apis/TMF639_ResourceInventory/v5.0.0/TMF639-Resource_Inventory_Management-v5.0.0.oas.yaml ;
-  https://raw.githubusercontent.com/tmforum-apis/TMF621_TroubleTicket/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml ;
+sourceOntologyVersion: |
+  Latest released OpenAPI/Swagger file of each repository (release tag; for the 14 repositories without any GitHub release the commit of the default branch on 2026-11-14). 38 APIs are v5 (OpenAPI 3.0.1), the others v4 or older (Swagger 2.0):
+  TMF620 Product Catalog Management 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF620-Product_Catalog_Management-v5.0.0.oas.yaml)
+  TMF621 Trouble Ticket 5.0.1 (OpenAPI 3.0; v5.0.0; file TMF621-Trouble_Ticket-v5.0.1.oas.yaml)
+  TMF622 ProductOrdering 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF622-ProductOrdering-v5.0.0.oas.yaml)
+  TMF628 Performance 4.0.0 (Swagger 2.0; no release; commit f958e5c2831a; file TMF628-Performance-v4.0.0.swagger.json)
+  TMF629 Customer Management 5.0.1 (OpenAPI 3.0; v5.0.0; file TMF629-Customer_Management-v5.0.1.oas.yaml)
+  TMF632 Party Management 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF632-Party_Management-v5.0.0.oas.yaml)
+  TMF633 Service Catalog Management 4.0.0 (Swagger 2.0; v4.0.0; file TMF633-ServiceCatalog-4.0.0.swagger.json)
+  TMF634 Resource Catalog Management 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF634-Resource_Catalog_Management-v5.0.0.oas.yaml)
+  TMF635 Product Usage Management 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF635-Product_Usage_Management-v5.0.0.oas.yaml)
+  TMF637 ProductInventory 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF637-ProductInventory-v5.0.0.oas.yaml)
+  TMF638 Service Inventory Management 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF638-Service_Inventory_Management-v5.0.0.oas.yaml)
+  TMF639 Resource Inventory Management 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF639-Resource_Inventory_Management-v5.0.0.oas.yaml)
+  TMF640 API Service Activation and Configuration 4.0.0 (Swagger 2.0; v4.0.0; file TMF640-ServiceActivationConfiguration-4.0.0.swagger.json)
+  TMF641 API ServiceOrdering 4.2.0 (Swagger 2.0; v4.2.0; file TMF641-ServiceOrdering-v4.2.0.swagger.json)
+  TMF642 Alarm 5.0.1 (OpenAPI 3.0; v5.0.0; file TMF642_Alarm_v5.0.1.oas.yaml)
+  TMF644 Privacy 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF644-Privacy-v5.0.0.oas.yaml)
+  TMF645 Service Qualification Management 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF645-Service_Qualification_Management-v5.0.0.oas.yaml)
+  TMF646 Appointment 4.0.0 (Swagger 2.0; v4.0.0; file TMF646-Appointment-v4.0.0.swagger.json)
+  TMF648 Quote 4.0.0 (Swagger 2.0; v4.0.0; file TMF648-Quote-v4.0.0.swagger.json)
+  TMF649 Performance Thresholding 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF649-Performance_Thresholding-v5.0.0.oas.yaml)
+  TMF651 Agreement Management 4.0.0 (Swagger 2.0; v4.0.0; file TMF651-Agreement-v4.0.0.swagger.json)
+  TMF652 Resource Ordering Management 4.0.0 (Swagger 2.0; v4.0.0; file TMF652-ResourceOrder-v4.0.0.swagger.json)
+  TMF653 Service Test Management 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF653-Service_Test_Management-v5.0.0.oas.yaml)
+  TMF654 Prepay Balance Management 4.0.0 (Swagger 2.0; v4.0.0; file TMF654-PrepayBalance-v4.0.0.swagger.json)
+  TMF655 API ChangeManagement 4.0.0 (Swagger 2.0; v4.0.0; file TMF655_Change_Management_API_v4.0.0_swagger.json)
+  TMF656 Service Problem Management 5.1.0 (OpenAPI 3.0; v5.1.0; file TMF656-Service_Problem_Management-v5.1.0.oas.yaml)
+  TMF657 Service Quality Management 4.0.0 (Swagger 2.0; v4.0.0; file TMF657-ServiceQualityManagement-v4.0.0.swagger.json)
+  TMF658 LoyaltySwagger 1.0 (Swagger 2.0; no release; commit 5487fe03e53a; file Loyalty_Management.admin.swagger.json)
+  TMF662 Entity Catalog Management 4.0.0 (Swagger 2.0; v4.0.0; file TMF662-EntityCatalog-v4.0.0.swagger.json)
+  TMF663 Shopping Cart 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF663-Shopping_Cart-v5.0.0.oas.yaml)
+  TMF664 Resource Function Activation and Configuration 4.0.0 (Swagger 2.0; v4.0.0; file TMF664-ResourceFunctionActivation-v4.0.0.swagger.json)
+  TMF666 Account Management 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF666-Account_Management-v5.0.0.oas.yaml)
+  TMF668 Partnership Management 4.0 (Swagger 2.0; v4.0.0; file TMF668-PartnershipType-v4.0.0.swagger.json)
+  TMF669 Party Role Management 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF669-Party_Role_Management-v5.0.0.oas.yaml)
+  TMF670 Payment Method 4.0.0 (Swagger 2.0; v4.0.0; file TMF670-PaymentMethod-v4.0.0.swagger.json)
+  TMF671 Promotion Management 4.1.0 (Swagger 2.0; v4.1.0; file TMF671_Promotion_Management_API_v4.1.0_swagger.json)
+  TMF672 User Role Permission Management API 5.1.0 (OpenAPI 3.0; v5.1.0; file TMF672-User_Role_Permission_Management_API-v5.1.0.oas.yaml)
+  TMF673 API Place - GeographicAddress 4.0.1 (Swagger 2.0; v4.0.0; file TMF673-GeographicAddress-v4.0.1.swagger.json)
+  TMF674 Geographic Site 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF674-Geographic_Site-v5.0.0.oas.yaml)
+  TMF675 API GeographicLocation 4.0.0 (Swagger 2.0; no release; commit fed0239d350d; file TMF675-GeographicLocation-v4.0.0.swagger.json)
+  TMF676 Payment 4.0.0 (Swagger 2.0; v4.0.0; file TMF676-Payment-v4.0.0.swagger.json)
+  TMF677 Usage Consumption 5.1.0 (OpenAPI 3.0; v5.1.0; file TMF677-Usage_Consumption-v5.1.0.oas.yaml)
+  TMF678 CustomerBill 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF678-CustomerBill-v5.0.0.oas.yaml)
+  TMF679 Product Offering Qualification 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF679-Product_Offering_Qualification-v5.0.0.oas.yaml)
+  TMF680 Recommendation 4.0.0 (Swagger 2.0; v4.0.0; file TMF680-Recommendation-v4.0.0.swagger.json)
+  TMF681 Communication Management API 4.0.0 (Swagger 2.0; v4.0.0; file TMF681-Communication-v4.0.0.swagger.json)
+  TMF683 Party Interaction 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF683-Party_Interaction-v5.0.0.oas.yaml)
+  TMF684 Shipment Tracking Management 1.0.0 (Swagger 2.0; no release; commit 32d71b7184b2; file shipmentTracking_v10_Jan18_SwaggerValidatorPassed.json)
+  TMF685 Resource Pool Management 1.0 (Swagger 2.0; no release; commit 7700c1dd8378; file Resource_Pool_Management.admin.swagger.json)
+  TMF687 Stock Management 4.0.0 (Swagger 2.0; v4.0.0; file TMF687-Stock-v4.0.0.swagger.json)
+  TMF688 Event Streaming API 4.0.0 (Swagger 2.0; no release; commit a88d5266404d; file TMF688-Event-v4.0.0.swagger.json)
+  TMF691 Federated ID 4.0 (Swagger 2.0; no release; commit a3aefdac28a0; file TMF691-FederatedIdentity-v4.0.0.swagger.json)
+  TMF696 Risk Management 4.0.0 (Swagger 2.0; v4.0.0; file TMF696-RiskManagement-v4.0.0.swagger.json)
+  TMF697 Work Order 4.0.0 (Swagger 2.0; no release; commit cb36aedeb265; file TMF697-WorkOrder-v4.0.0.swagger.json)
+  TMF699 Sales Management 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF699-Sales-v5.0.0.oas.yaml)
+  TMF700 API ShippingOrder 4.0.0 (Swagger 2.0; no release; commit e00143dfbf2a; file TMF700-ShippingOrder-v4.0.0.swagger.json)
+  TMF701 Process Management 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF701-Process_Management-v5.0.0.oas.yaml)
+  TMF702 API Resource Activation and Configuration 4.0.0 (Swagger 2.0; v4.0.0; file TMF702_Resource_Activation_Management_API_v4.0.0_swagger.json)
+  TMF703 Entity Inventory 4.0.0 (Swagger 2.0; no release; commit 2067f52e49c0; file TMF703-EntityInventory-v4.0.0.swagger.json)
+  TMF704 Test Case Management API 4.0.0 (Swagger 2.0; v4.0.0; file TMF704-TestCase-v4.0.0.swagger.json)
+  TMF705 Test Environment Management API 4.0.0 (Swagger 2.0; v4.0.0; file TMF705-TestEnvironment-v4.0.0.swagger.json)
+  TMF706 Test Data 4.0.0 (Swagger 2.0; v4.0.0; file TMF706-TestData-v4.0.0.swagger.json)
+  TMF707 Test Result 4.0.0 (Swagger 2.0; v4.0.0; file TMF707-TestResult-v4.0.0.swagger.json)
+  TMF708 Test Execution 4.0.0 (Swagger 2.0; v4.0.0; file TMF708-TestExecution-v4.0.0.swagger.json)
+  TMF709 Test Scenario Management API 4.0.0 (Swagger 2.0; v4.0.0; file TMF709-TestScenario-v4.0.0.swagger.json)
+  TMF710 General Test Artifact Management API 4.0.0 (Swagger 2.0; v4.0.0; file TMF710-GeneralTestArtifact-v4.0.0.swagger.json)
+  TMF716 Resource Reservation 4.0.0 (Swagger 2.0; v4.0.0; file TMF716_ResourceReservation_v4.0.0_swagger.json)
+  TMF717 Customer360 5.0.1 (OpenAPI 3.0; v5.0.1; file TMF717-Customer360-v5.0.1.oas.yaml)
+  TMF720 Digital Identity Management 4.0.0 (Swagger 2.0; v4.0.0; file TMF720-DigitalIdentity-v4.0.0.swagger.json)
+  TMF724 Incident 4.0.1 (Swagger 2.0; v4.0.0; file TMF724_Incident_Management_API_v4.0.0_swagger.json)
+  TMF730 Software and Compute Entity Management 4.0.2 (Swagger 2.0; v4.0.0; file TMF730_Software_And_Compute_Management_API_v4.0.0_swagger.json)
+  TMF735 CDR Transaction Management 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF735-CDR_Transaction_Management-v5.0.0.oas.yaml)
+  TMF736 Revenue Sharing Algorithm Management 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF736-Revenue_Sharing_Algorithm_Management-v5.0.0.oas.yaml)
+  TMF737 Revenue Sharing Report Management 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF737-Revenue_Sharing_Report_Management-v5.0.0.oas.yaml)
+  TMF738 Revenue Sharing Model Management 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF738-Revenue_Sharing_Model_Management-v5.0.0.oas.yaml)
+  TMF760 ProductConfiguration 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF760-ProductConfiguration-v5.0.0.oas.yaml)
+  TMF767 Product Usage Catalog Management 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF767-Product_Usage_Catalog_Management-v5.0.0.oas.yaml)
+  TMF771 Resource Usage Management 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF771-Resource_Usage_Management-v5.0.0.oas.yaml)
+  TMF908 IoT Device Management 4.0.0 (Swagger 2.0; no release; commit 5a98cb9af5df; file TMF908-IoTAgentAndDevice-v4.0.0.swagger.json)
+  TMF909 NAAS Component 3.0 (Swagger 2.0; no release; commit 539f6a22cc3b; file TMF909-NetworkasaService-v3.0.0.swagger.json)
+  TMF910 ComponentSuite Selfcare App 1.0 (Swagger 2.0; no release; commit 2b5a27c03fcd; file TMF910-SelfCare-v1.0.0.swagger.json)
+  TMF914 IoT Service Management Component Suite 4.0.0 (Swagger 2.0; no release; commit d8feb27048f2; file TMF914-IotService-v4.0.0.swagger.json)
+  TMF915 Ai Management 4.0.0 (Swagger 2.0; v4.0.0; file TMF915-AIManagement-v4.0.0.swagger.json)
+  TMF921 Intent Management 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF921_Intent_Management_v5.0.0.oas.yaml)
+  TMF931 Open Gateway Operate API Onboarding and Ordering 5.2.1 (OpenAPI 3.0; v5.2.1; file TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml)
+  TMF936 Open Gateway Operate API - Product Catalog 5.0.0 (OpenAPI 3.0; v5.0.0; file TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml)
+sourceOntologyDownload: |
+  https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalog/v5.0.0/TMF620-Product_Catalog_Management-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF621_TroubleTicket/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml
   https://raw.githubusercontent.com/tmforum-apis/TMF622_ProductOrder/v5.0.0/TMF622-ProductOrdering-v5.0.0.oas.yaml
-sourceOntologyNamespace: "https://github.com/tmforum-apis/<repo>/blob/v5.0.0/<file>.oas.yaml#/components/schemas/"
-sourceOntologyFormat: "OpenAPI 3.0.1 specifications (YAML); no RDF vocabulary"
-sourceExampleUrl: "components/examples of each OpenAPI file above (e.g. RetrieveProduct1_response, Service_retrieve_example_response, Resource_retrieve_example_response, TroubleTicket_retrieve_example_response, retrieveProductOrderById1_response)"
+  https://raw.githubusercontent.com/tmforum-apis/TMF628_Performance/f958e5c2831aa61286e9356282cf451b16e7a5d2/TMF628-Performance-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF629_CustomerManagement/v5.0.0/TMF629-Customer_Management-v5.0.1.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/v5.0.0/TMF632-Party_Management-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF633_ServiceCatalog/v4.0.0/TMF633-ServiceCatalog-4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF634_ResourceCatalog/v5.0.0/TMF634-Resource_Catalog_Management-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF635_UsageManagement/v5.0.0/TMF635-Product_Usage_Management-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF637_ProductInventory/v5.0.0/TMF637-ProductInventory-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF638_ServiceInventory/v5.0.0/TMF638-Service_Inventory_Management-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF639_ResourceInventory/v5.0.0/TMF639-Resource_Inventory_Management-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF641_ServiceOrder/v4.2.0/TMF641-ServiceOrdering-v4.2.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF642_AlarmManagement/v5.0.0/TMF642_Alarm_v5.0.1.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF644_Privacy/v5.0.0/TMF644-Privacy-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF645_ServiceQualification/v5.0.0/TMF645-Service_Qualification_Management-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF646_AppointmentManagement/v4.0.0/TMF646-Appointment-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF648_QuoteManagement/v4.0.0/TMF648-Quote-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF649_PerformanceThresholding/v5.0.0/TMF649-Performance_Thresholding-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF651_AgreementManagement/v4.0.0/TMF651-Agreement-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF652_ResourceOrderManagement/v4.0.0/TMF652-ResourceOrder-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF653_ServiceTestManagement/v5.0.0/TMF653-Service_Test_Management-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF654_PrepayBalanceManagement/v4.0.0/TMF654-PrepayBalance-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF655_ChangeManagement/v4.0.0/TMF655_Change_Management_API_v4.0.0_swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF656_ServiceProblemManagement/v5.1.0/TMF656-Service_Problem_Management-v5.1.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF657_ServiceQualityManagement/v4.0.0/TMF657-ServiceQualityManagement-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF658_LoyaltyManagement/5487fe03e53a5d57a6a885490529979020de3e18/Loyalty_Management.admin.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF662_EntityCatalog/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF663_ShoppingCart/v5.0.0/TMF663-Shopping_Cart-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF664_ResourceFunctionActivationConfiguration/v4.0.0/TMF664-ResourceFunctionActivation-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF666_AccountManagement/v5.0.0/TMF666-Account_Management-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF668_PartnershipType/v4.0.0/TMF668-PartnershipType-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/v5.0.0/TMF669-Party_Role_Management-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF670_PaymentMethods/v4.0.0/TMF670-PaymentMethod-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF671_Promotion/v4.1.0/TMF671_Promotion_Management_API_v4.1.0_swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF672_UserRolesPermissions/v5.1.0/TMF672-User_Role_Permission_Management_API-v5.1.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF673_GeographicAddress/v4.0.0/TMF673-GeographicAddress-v4.0.1.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF674_GeographicSite/v5.0.0/TMF674-Geographic_Site-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF675_GeographicLocation/fed0239d350d8080e0e9dfe8e488b01981d151f9/TMF675-GeographicLocation-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF676_PaymentManagement/v4.0.0/TMF676-Payment-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF677_UsageConsumption/v5.1.0/TMF677-Usage_Consumption-v5.1.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF678_CustomerBill/v5.0.0/TMF678-CustomerBill-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF679_ProductOfferingQualification/v5.0.0/TMF679-Product_Offering_Qualification-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF680_Recommendation/v4.0.0/TMF680-Recommendation-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF681_Communication/v4.0.0/TMF681-Communication-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF683_PartyInteraction/v5.0.0/TMF683-Party_Interaction-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF684_ShipmentTracking/32d71b7184b2b7f3bc0256baad4059c0435c395d/shipmentTracking_v10_Jan18_SwaggerValidatorPassed.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF685_ResourcePool/7700c1dd83787eb5d85654d16fb611f01f02d629/Resource_Pool_Management.admin.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF687_StockManagement/v4.0.0/TMF687-Stock-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF688-Event/a88d5266404d6b1f38504a9bdc149d636ccf4ab2/TMF688-Event-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF691_FederatedIdentity/a3aefdac28a013ac1bb2d7872ec92b0b513e99f2/TMF691-FederatedIdentity-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF696_RiskManagement/v4.0.0/TMF696-RiskManagement-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF697_Work_Order/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF699_Sales/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF700_ShippingOrder/e00143dfbf2af5712e54a7eb57af7233b66aae84/TMF700-ShippingOrder-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/v5.0.0/TMF701-Process_Management-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF703_EntityInventory/2067f52e49c02bacc5431c1789e3364994a6eac0/TMF703-EntityInventory-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF704_TestCase/v4.0.0/TMF704-TestCase-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF705_TestEnvironment/v4.0.0/TMF705-TestEnvironment-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF706_TestData/v4.0.0/TMF706-TestData-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF707_TestResult/v4.0.0/TMF707-TestResult-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF708_TestExecution/v4.0.0/TMF708-TestExecution-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF709_TestScenario/v4.0.0/TMF709-TestScenario-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF710_GeneralTestArtifact/v4.0.0/TMF710-GeneralTestArtifact-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF716_ResourceReservation/v4.0.0/TMF716_ResourceReservation_v4.0.0_swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF717_Customer360Management/v5.0.1/TMF717-Customer360-v5.0.1.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF720_DigitalIdentity/v4.0.0/TMF720-DigitalIdentity-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF724_IncidentManagement/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF735_CDRTransactionManagement/v5.0.0/TMF735-CDR_Transaction_Management-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF736_RevenueSharingAlgorithmManagement/v5.0.0/TMF736-Revenue_Sharing_Algorithm_Management-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF737_RevenueSharingReportManagement/v5.0.0/TMF737-Revenue_Sharing_Report_Management-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF738_RevenueSharingModelManagement/v5.0.0/TMF738-Revenue_Sharing_Model_Management-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF760_ProductConfigurationManagement/v5.0.0/TMF760-ProductConfiguration-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF767_ProductUsageCatalogManagement/v5.0.0/TMF767-Product_Usage_Catalog_Management-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF771_ResourceUsage/v5.0.0/TMF771-Resource_Usage_Management-v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF914_IoTServiceComponentSuite/d8feb27048f25dc2a011d4f2e3422410452ba1d0/TMF914-IotService-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF915_AIManagementSuite/v4.0.0/TMF915-AIManagement-v4.0.0.swagger.json
+  https://raw.githubusercontent.com/tmforum-apis/TMF921_Intent/v5.0.0/TMF921_Intent_Management_v5.0.0.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml
+  https://raw.githubusercontent.com/tmforum-apis/TMF936_OperateProductCatalog/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml
+sourceOntologyNamespace: "https://github.com/tmforum-apis/<repo>/blob/<tag or commit>/<file>#/components/schemas/ (v5) or #/definitions/ (v4)"
+sourceOntologyFormat: "OpenAPI 3.0.1 (YAML) and Swagger 2.0 (JSON) specifications; no RDF vocabulary"
+sourceExampleUrl: "components/examples of each v5 OpenAPI file (retrieve-by-id response payloads); v4 Swagger files have no example payloads, only property-level example values"
 sourceExampleLicense: "Apache-2.0 (TM Forum); illustrative example payloads from the specifications, not real operator data"
 domains:
   - CrossSector
   - SmartCities
 description: >
-  The TM Forum Open APIs are a family of about 60 REST APIs for the
-  telecom and digital-service industry, part of TM Forum's Open Digital
-  Architecture (ODA). They are implemented by communication service
-  providers and their IT vendors for ordering, inventory, assurance,
-  billing, party and catalogue management. This candidate covers the
-  inventory and assurance core: the product a customer holds (TMF637
-  Product), the services that realize it (TMF638 Service), the network,
-  logical and physical resources that support those services (TMF639
-  Resource), the order that created it (TMF622 ProductOrder) and the
-  trouble ticket raised when something goes wrong (TMF621 TroubleTicket).
-  The sector is Telecom; the APIs are also used by other digital-service
-  providers (utilities, cloud, smart-city operators).
+  The TM Forum Open APIs are the family of REST APIs of TM Forum's Open
+  Digital Architecture (ODA), implemented by communication service providers
+  and their IT vendors for catalogue, ordering, inventory, assurance, billing,
+  party, usage, testing, IoT, AI and partner (Open Gateway) management. This
+  candidate covers every TM Forum Open API published in github.com/tmforum-
+  apis under the Apache-2.0 licence (86 APIs) with one model per managed
+  resource (the resources with their own collection endpoint, identity and
+  state): 174 models, from ProductCatalog, ProductOffering and
+  ProductSpecification through ProductOrder, Product, Service and Resource to
+  TroubleTicket, Alarm, ServiceProblem, CustomerBill, BillingAccount,
+  Individual, Organization, PartyRole, GeographicAddress / GeographicSite /
+  GeographicLocation, Intent, the test-management family and the IoT and AI
+  component suites. References between these resources are NGSI-LD
+  Relationships (213 of them). The sector is Telecom; the APIs are also used
+  by other digital-service providers (utilities, cloud, smart-city operators).
 license: "Apache-2.0"
 licenseNote: >
-  The TM Forum "API Apache 2.0 Project"
-  (https://www.tmforum.org/collaboration/api-apache-2-0-project) releases
-  the "code" part of the TM Forum Open APIs (the OpenAPI specifications)
-  under the Apache 2.0 licence. Each repository used here
-  (github.com/tmforum-apis/TMF637_ProductInventory, TMF638_ServiceInventory,
-  TMF639_ResourceInventory, TMF621_TroubleTicket, TMF622_ProductOrder)
-  contains the Apache License 2.0 LICENSE file, GitHub reports it as
-  Apache-2.0, the README says "TM Forum Open API (Apache 2.0)", and the
-  TMF639 file declares info.license "Apache License 2.0". The TMF637 and
-  TMF622 files still carry the line "Copyright (c) TM Forum ... All Rights
-  Reserved" in info.description; the repository LICENSE governs.
-  Attribution: TM Forum. The user guides (PDF specification documents) are
-  member documents and were not used.
+  Checked per repository at the exact release tag (or commit) used: all 88 TMF
+  repositories used or examined contain an Apache License 2.0 LICENSE file (71
+  with TM Forum's appendix 'How to apply the Apache License to your TM Forum
+  work' stating that the TM Forum API Deliverables 'were contributed to the TM
+  Forum by an Apache 2.0 License Mode Team and are subject to an Apache 2.0
+  License Mode Copyright Notice', 17 with the plain Apache 2.0 text), and
+  GitHub's licence API reports Apache-2.0 for them. TM Forum's 'API Apache 2.0
+  Project' page (https://www.tmforum.org/collaboration/api-apache-2-0-project)
+  states that the 'code' part of the Open APIs (the OpenAPI/Swagger files) is
+  released under Apache 2.0. Excluded: TMF667_Document (no LICENSE file in the
+  repository) and TMF123_Template (repository template, not an API). 15 of the
+  files used still carry an old 'Copyright (c) TM Forum 20xx. All Rights
+  Reserved' line in info.description (TMF622, 635, 637, 641, 648, 663, 670,
+  687, 700, 701, 703, 724, 767, 931, 936); the repository LICENSE and the
+  Apache 2.0 Project statement govern, and this line should be fixed upstream.
+  Only the OpenAPI/Swagger files were used; the specification documents (user
+  guides, PDF/Word) are TM Forum member documents, not Apache-licensed, and
+  were not used. Attribution: TM Forum (Apache-2.0; NOTICE: derived from the
+  TM Forum Open API specifications).
 contributors:
   - name: "Claude (sdm-translate skill)"
     role: "automated translation from source OpenAPI specifications to SDM candidate artifacts"
 notes: |
-  Translated on 2026-11-13. Source row 35 ("TM Forum Open APIs", sector
-  Telecom) of the "Level A standards not in Smart Data Models" list
+  Translated on 2026-11-13 (5 models); extended on 2026-11-14 to all
+  Apache-2.0 TM Forum Open APIs. Source row 35 ("TM Forum Open APIs",
+  sector Telecom) of the "Level A standards not in Smart Data Models" list
   (licence verified: Yes).
 
-  SCOPE: the family has about 60 APIs. This candidate takes the coherent
-  core of the product / service / resource inventory and its order and
-  assurance lifecycle, all things with identity and state that fit
-  NGSI-LD well. Latest released OpenAPI version of each is v5 (Apache-2.0
-  in the repository), so v5 is used, not v4. Follow-ups: TMF632 Party
-  (Individual, Organization; overlaps dataModel.Organization and holds
-  personal data), TMF641 Service Ordering, TMF652 Resource Ordering,
-  TMF620 / TMF633 / TMF634 catalogues (ProductOffering,
-  ProductSpecification, ServiceSpecification, ResourceSpecification),
-  TMF642 Alarm, TMF656 Service Problem, TMF673-675 Geographic
-  Address / Site / Location, TMF666 Account, TMF678 Customer Bill.
+  SCOPE AND REPOSITORIES: github.com/tmforum-apis has 97 repositories, 90 of
+  them TMF APIs. Included: 86 APIs (38 at v5, 48 at v4 or
+  older), 81 of which contribute models; 5 (TMF640, TMF702, TMF730,
+  TMF909, TMF910) only re-expose resources defined by another API. Excluded:
+    - TMF667_Document: no LICENSE file (licence not granted).
+    - TMF123_Template: repository template, not an API.
+    - TMF937_OpenGatewayProductUsage: Apache-2.0 but no OpenAPI file in the
+      repository (nothing to translate).
+    - TMF702-ResourceActivationConfiguration: older, unreleased copy of
+      TMF702 (same 51 definitions); TMF702_ResourceActivationManagement
+      (release v4.0.0) is used.
+    - the 7 non-API repositories (tmf-api-commons, CTK and tooling).
+  Version rule: latest GitHub release of each repository (v5 where released,
+  else v4); repositories with no release at all (TMF628, 658, 675, 684, 685,
+  688, 691, 697, 700, 703, 908, 909, 910, 914) use the default-branch
+  commit given in sourceOntologyVersion. Release tags sometimes ship a newer
+  patch file (TMF621 v5.0.0 -> 5.0.1, TMF629 v5.0.0 -> 5.0.1, TMF642 v5.0.0 ->
+  5.0.1, TMF673 v4.0.0 -> 4.0.1), which is the one used.
 
-  MODELS (5), entity name = TMF resource name:
-    - Product        TMF637 Product          (36 attributes)
-    - Service        TMF638 Service          (38 attributes)
-    - Resource       TMF639 Resource         (57 attributes, sub-classes flattened in)
-    - TroubleTicket  TMF621 TroubleTicket    (34 attributes)
-    - ProductOrder   TMF622 ProductOrder     (39 attributes)
-  Attribute counts include id, type and the 4 common SDM attributes. The
-  NGSI-LD id is urn:ngsi-ld:<Type>:<TMF id>.
+  MODELS (174): one per managed resource, i.e. the resources with their own
+  collection endpoint, identity and state; entity type = TMF resource name.
+  Number of attributes in brackets (including id, type and the 4 common SDM
+  attributes); * = synthetic example (v4 spec without example payload).
+    TMF620 Product Catalog Management 5.0.0: ProductCatalog (20), Category (21), ProductOffering (40), ProductOfferingPrice (33), ProductSpecification (32)
+        skipped: ImportJob, ExportJob
+    TMF621 Trouble Ticket 5.0.1: TroubleTicket (34), TroubleTicketSpecification (20)
+    TMF622 ProductOrdering 5.0.0: ProductOrder (39)
+        skipped: CancelProductOrder
+    TMF628 Performance 4.0.0: MeasurementCollectionJob (29*), PerformanceIndicatorGroupSpecification (13*), PerformanceIndicatorSpecification (22*), TrackingRecord (15*)
+        skipped: OnDemandCollection
+    TMF629 Customer Management 5.0.1: Customer (26)
+    TMF632 Party Management 5.0.0: Individual (42), Organization (29)
+    TMF633 Service Catalog Management 4.0.0: ServiceCatalog (19*), ServiceCategory (21*), ServiceCandidate (19*), ServiceSpecification (25*)
+        skipped: ImportJob, ExportJob
+    TMF634 Resource Catalog Management 5.0.0: ResourceCatalog (21), ResourceCategory (24), ResourceCandidate (19), ResourceSpecification (27)
+        skipped: ImportJob, ExportJob
+    TMF635 Product Usage Management 5.0.0: ProductUsage (22)
+        skipped: ExportJob
+    TMF637 ProductInventory 5.0.0: Product (36)
+    TMF638 Service Inventory Management 5.0.0: Service (38)
+    TMF639 Resource Inventory Management 5.0.0: Resource (57)
+    TMF640 API Service Activation and Configuration 4.0.0: no model of its own
+        covered by: Service
+        skipped: Monitor
+    TMF641 API ServiceOrdering 4.2.0: ServiceOrder (37*), ServiceOrderSpecification (32*)
+        skipped: CancelServiceOrder
+    TMF642 Alarm 5.0.1: Alarm (42)
+        skipped: AckAlarm, UnAckAlarm, ClearAlarm, CommentAlarm, GroupAlarm, UnGroupAlarm
+    TMF644 Privacy 5.0.0: PartyPrivacyAgreement (30), PartyPrivacyProfile (22), PartyPrivacyProfileSpecification (21)
+    TMF645 Service Qualification Management 5.0.0: CheckServiceQualification (25), QueryServiceQualification (23)
+    TMF646 Appointment 4.0.0: Appointment (25*)
+        skipped: SearchTimeSlot
+    TMF648 Quote 4.0.0: Quote (32*)
+    TMF649 Performance Thresholding 5.0.0: Threshold (14), ThresholdRule (18), ThresholdJob (21)
+    TMF651 Agreement Management 4.0.0: Agreement (27*), AgreementSpecification (23*)
+    TMF652 Resource Ordering Management 4.0.0: ResourceOrder (28*)
+        skipped: CancelResourceOrder
+    TMF653 Service Test Management 5.0.0: ServiceTest (25), ServiceTestSpecification (27)
+        skipped: CancelServiceTest
+    TMF654 Prepay Balance Management 4.0.0: Bucket (26*), AccumulatedBalance (19*), BalanceActionHistory (40*)
+        skipped: TopupBalance, AdjustBalance, TransferBalance, ReserveBalance
+    TMF655 API ChangeManagement 4.0.0: ChangeRequest (46*)
+    TMF656 Service Problem Management 5.1.0: ServiceProblem (49), ServiceProblemEventRecord (16)
+        skipped: ProblemGroup, ProblemUngroup
+    TMF657 Service Quality Management 4.0.0: ServiceLevelObjective (22*), ServiceLevelSpecification (15*)
+    TMF658 LoyaltySwagger 1.0: ProgramProductSpec (14*), LoyaltyRule (18*), LoyaltyAction (15*), LoyaltyCondition (10*), LoyaltyEventType (8*), LoyaltyMember (10*), LoyaltyBalance (10*)
+    TMF662 Entity Catalog Management 4.0.0: EntityCatalog (19*), EntityCategory (21*), EntityCatalogItem (19*), EntitySpecification (24*), AssociationSpecification (19*), Association (20*)
+        skipped: ImportJob, ExportJob
+    TMF663 Shopping Cart 5.0.0: ShoppingCart (18)
+    TMF664 Resource Function Activation and Configuration 4.0.0: ResourceFunction (37*)
+        skipped: Heal, Scale, Migrate, Monitor
+    TMF666 Account Management 5.0.0: PartyAccount (27), BillingAccount (28), SettlementAccount (27), FinancialAccount (22), BillFormat (13), BillPresentationMedia (13), BillingCycleSpecification (21)
+    TMF668 Partnership Management 4.0: Partnership (15*), PartnershipSpecification (14*)
+    TMF669 Party Role Management 5.0.0: PartyRole (26), PartyRoleSpecification (27)
+    TMF670 Payment Method 4.0.0: PaymentMethod (22*)
+    TMF671 Promotion Management 4.1.0: Promotion (19*)
+    TMF672 User Role Permission Management API 5.1.0: PermissionSet (18), PermissionSpecification (16), PermissionSpecificationSet (15)
+        skipped: CheckPermission
+    TMF673 API Place - GeographicAddress 4.0.1: GeographicAddress (26*)
+        skipped: GeographicAddressValidation, GeographicSubAddress
+    TMF674 Geographic Site 5.0.0: GeographicSite (27)
+    TMF675 API GeographicLocation 4.0.0: GeographicLocation (13*)
+    TMF676 Payment 4.0.0: Payment (26*), Refund (26*)
+    TMF677 Usage Consumption 5.1.0: UsageConsumptionReport (21)
+        skipped: QueryUsageConsumption
+    TMF678 CustomerBill 5.0.0: CustomerBill (32), AppliedCustomerBillingRate (24), BillCycle (21)
+        skipped: CustomerBillOnDemand
+    TMF679 Product Offering Qualification 5.0.0: CheckProductOfferingQualification (26), QueryProductOfferingQualification (23)
+    TMF680 Recommendation 4.0.0: QueryProductRecommendation (26*)
+    TMF681 Communication Management API 4.0.0: CommunicationMessage (26*)
+    TMF683 Party Interaction 5.0.0: PartyInteraction (26)
+    TMF684 Shipment Tracking Management 1.0.0: ShipmentTracking (21*)
+    TMF685 Resource Pool Management 1.0: ResourcePool (14*), Reservation (19*)
+        skipped: AvailabilityCheck, Push, Extract
+    TMF687 Stock Management 4.0.0: ProductStock (32*)
+        skipped: AdjustProductStock, CheckProductStock, QueryProductStock, ReserveProductStock
+    TMF688 Event Streaming API 4.0.0: Topic (14*), Event (23*)
+    TMF691 Federated ID 4.0: Userinfo (27*)
+    TMF696 Risk Management 4.0.0: ProductOfferingRiskAssessment (10*), PartyRoleRiskAssessment (10*), PartyRoleProductOfferingRiskAssessment (17*), ShoppingCartRiskAssessment (16*), ProductOrderRiskAssessment (16*)
+    TMF697 Work Order 4.0.0: WorkOrder (41*)
+        skipped: CancelWorkOrder
+    TMF699 Sales Management 5.0.0: SalesLead (36), SalesOpportunity (34)
+    TMF700 API ShippingOrder 4.0.0: ShippingOrder (25*)
+    TMF701 Process Management 5.0.0: Process (27), ProcessSpecification (24), Task (27), TaskSpecification (25)
+    TMF702 API Resource Activation and Configuration 4.0.0: no model of its own
+        covered by: Resource
+        skipped: Monitor
+    TMF703 Entity Inventory 4.0.0: TmfEntity (11*)
+        covered by: Association
+    TMF704 Test Case Management API 4.0.0: TestCase (19*), TestSuite (19*), NonFunctionalTestModel (19*)
+    TMF705 Test Environment Management API 4.0.0: AbstractEnvironment (19*), ConcreteEnvironmentMetaModel (19*), TestResourceAPI (19*), ProvisioningArtifact (19*)
+    TMF706 Test Data 4.0.0: TestDataInstance (19*), TestDataSchema (19*)
+    TMF707 Test Result 4.0.0: TestCaseResult (13*), TestSuiteResult (13*), NonFunctionalTestResult (13*)
+    TMF708 Test Execution 4.0.0: TestEnvironmentAllocationExecution (18*), TestEnvironmentProvisioningExecution (16*), TestCaseExecution (17*), TestSuiteExecution (19*), NonFunctionalTestExecution (17*)
+    TMF709 Test Scenario Management API 4.0.0: TestScenario (19*)
+    TMF710 General Test Artifact Management API 4.0.0: GeneralTestArtifact (19*)
+    TMF716 Resource Reservation 4.0.0: ResourceReservation (28*)
+        skipped: CancelResourceReservation
+    TMF717 Customer360 5.0.1: Customer360 (26)
+    TMF720 Digital Identity Management 4.0.0: DigitalIdentity (23*)
+    TMF724 Incident 4.0.1: Incident (32*)
+        skipped: DiagnoseIncident, ResolveIncident
+    TMF730 Software and Compute Entity Management 4.0.2: no model of its own
+        covered by: Resource, ResourceSpecification
+    TMF735 CDR Transaction Management 5.0.0: CdrTransaction (22)
+    TMF736 Revenue Sharing Algorithm Management 5.0.0: PartyRevSharingAlgorithm (16)
+    TMF737 Revenue Sharing Report Management 5.0.0: PartyRevSharingReport (17)
+    TMF738 Revenue Sharing Model Management 5.0.0: PartyRevSharingModel (16)
+    TMF760 ProductConfiguration 5.0.0: CheckProductConfiguration (19), QueryProductConfiguration (19)
+    TMF767 Product Usage Catalog Management 5.0.0: ProductUsageSpecification (22)
+    TMF771 Resource Usage Management 5.0.0: ResourceUsage (21), ResourceUsageSpecification (23)
+    TMF908 IoT Device Management 4.0.0: IotDevice (55*), IotDeviceSpecification (24*), DataAccessEndpoint (27*), IotDataEvent (19*), IotManagementEvent (19*)
+        covered by: ResourceSpecification, Alarm
+    TMF909 NAAS Component 3.0: no model of its own
+        covered by: Service, ServiceCatalog, ServiceCategory, ServiceCandidate, ServiceSpecification, ServiceProblem, ServiceTest, ServiceTestSpecification, ServiceQualification -> CheckServiceQualification, UsageConsumptionReport
+        skipped: UsageConsumptionReportRequest, ImportJob, ExportJob
+    TMF910 ComponentSuite Selfcare App 1.0: no model of its own
+        covered by: BillingAccount, CustomerBill, AppliedCustomerBillingRate, ProductOrder, TroubleTicket, Product, ProductOffering, Usage -> ProductUsage, UsageConsumptionReport, Userinfo
+    TMF914 IoT Service Management Component Suite 4.0.0: IotService (36*), IotServiceSpecification (28*), User (12*)
+        covered by: ServiceCatalog, ServiceCategory, ServiceCandidate, ServiceProblem, ServiceTest, ServiceTestSpecification, ServiceQualification -> CheckServiceQualification, UsageConsumptionReport
+        skipped: UsageConsumptionReportRequest, ImportJob, ExportJob
+    TMF915 Ai Management 4.0.0: AiModel (39*), AiModelSpecification (35*), AiContract (24*), AiContractSpecification (24*), AiContractViolation (15*), Rule (12*)
+        covered by: Alarm, Topic, Event
+        skipped: Monitor
+    TMF921 Intent Management 5.0.0: Intent (28), IntentSpecification (26), IntentReport (17)
+    TMF931 Open Gateway Operate API Onboarding and Ordering 5.2.1: ApiProduct (29), ApiProductOrder (21), Application (30), ApplicationOwner (21)
+        skipped: Monitor
+    TMF936 Open Gateway Operate API - Product Catalog 5.0.0: OpenGatewayProductOffering (24), OpenGatewayProductSpecification (22)
+  Not models: hub/listener and event-notification payloads; task resources
+  that only apply an operation to another resource (cancelX, ack/clear/
+  comment/group alarm, balance top-up/adjust/transfer/reserve, heal/scale/
+  migrate, diagnose/resolve incident, stock adjust/check/query/reserve,
+  resource-pool availabilityCheck/push/extract, checkPermission, address
+  validation, time-slot search, on-demand bill, queryUsageConsumption,
+  onDemandCollection), import/export jobs and Monitor (async request
+  tracking). Kept although they are request-like, because they are the
+  main stored resource of their API, with lifecycle state:
+  Check/QueryServiceQualification, Check/QueryProductOfferingQualification,
+  Check/QueryProductConfiguration, QueryProductRecommendation, the TMF696
+  risk assessments, the TMF708 test executions, MeasurementCollectionJob
+  and ThresholdJob (long-lived jobs).
 
-  NAMING: every attribute name is TMF's, verbatim, except these
-  entity-level renames (NGSI-LD reserved terms / JSON-LD keywords):
-    id               -> tmfId
-    @type            -> tmfType
-    @baseType        -> tmfBaseType
-    @schemaLocation  -> tmfSchemaLocation
-    value            -> tmfValue   (LogicalResource.value, Resource only)
-  Inside nested objects (@json) TMF names, including id, @type,
-  @referredType, href and value, are kept unchanged.
+  VERSIONS: the 5 models of the first release (TroubleTicket, ProductOrder, Product, Service, Resource) were
+  regenerated with the generic generator and their schema changed, so
+  $schemaVersion is 0.0.2: references to other entities of the candidate are
+  now Relationships (Product.productOffering, productSpecification,
+  billingAccount, intent; Service.serviceSpecification, intent;
+  Resource.resourceSpecification, intent; TroubleTicket.
+  troubleTicketSpecification; ProductOrder.agreement, billingAccount,
+  payment, quote) instead of nested @json Ref objects, and the
+  descriptions name the API by its info.title. All other models are new
+  (0.0.1).
+
+  TYPE-NAME COLLISIONS BETWEEN APIS (one model per name, from the
+  canonical API):
+    - Service: TMF638 (also exposed by TMF640, TMF909); Resource: TMF639
+      (also TMF702, TMF730); ResourceSpecification: TMF634 (also TMF730,
+      TMF908); Alarm: TMF642 (also TMF908, TMF915); Topic and Event: TMF688
+      (also TMF915); ServiceCatalog/ServiceCategory/ServiceCandidate/
+      ServiceSpecification: TMF633 (also TMF909, TMF914); ServiceProblem:
+      TMF656; ServiceTest/ServiceTestSpecification: TMF653;
+      UsageConsumptionReport: TMF677 (all three also in TMF909, TMF914);
+      BillingAccount, CustomerBill, AppliedCustomerBillingRate, ProductOrder,
+      TroubleTicket, Product, ProductOffering, Usage (= ProductUsage),
+      Userinfo: canonical APIs, re-exposed by TMF910. The suite copies are
+      older v3/v4 snapshots of the same resources, not different concepts.
+    - ServiceQualification (TMF909/TMF914, pre-v5 name) is the resource that
+      TMF645 v5 splits into CheckServiceQualification and
+      QueryServiceQualification.
+    - Association: TMF662 Entity Catalog and TMF703 Entity Inventory define
+      it with identical attributes; taken from TMF662.
+    - ProductOffering / ProductSpecification (TMF620) vs TMF936 Open Gateway:
+      TMF936 defines its own extended components OpenGatewayProductOffering
+      and OpenGatewayProductSpecification, kept as separate models under
+      TMF's own (already prefixed) names.
+    - ResourceFunction: a sub-class of Resource in TMF639 v5 (its attributes
+      are flattened into Resource) and a managed resource of its own in
+      TMF664 (model ResourceFunction).
+    - Entity (TMF703) is an NGSI-LD core term: renamed TmfEntity. It is
+      TMF's generic, extensible inventory entry (identity and polymorphism
+      attributes only; the actual content comes from @schemaLocation).
+    - ShipmentTracking: TMF684's resource /shipmentTracking is described by
+      the definition TrackingDetailsType; the model takes the resource name.
+
+  NAMING: TMF attribute names verbatim, except these entity-level renames
+  (NGSI-LD reserved terms, JSON-LD keywords, SDM common attributes):
+    id -> tmfId, @type -> tmfType, @baseType -> tmfBaseType,
+    @schemaLocation -> tmfSchemaLocation, @referredType -> tmfReferredType
+    (TestSuiteExecution), value -> tmfValue (Resource, ResourceFunction,
+    DataAccessEndpoint, IotDevice, LoyaltyCondition), type ->
+    tmfTypeAttribute (LoyaltyAction), location -> tmfLocation (ChangeRequest,
+    Individual, IotDevice: not GeoJSON geometries), source -> tmfSource
+    (Event, IotDevice), dateCreated / dateModified / dataProvider ->
+    tmfDateCreated / tmfDateModified / tmfDataProvider (IotDevice, whose
+    TMF908 definition copies these SDM attributes). Inside nested objects
+    (@json) all TMF names are kept unchanged.
 
   MAPPING:
-    - TMF polymorphism (@type / @baseType / @schemaLocation): the NGSI-LD
-      `type` is the TMF base resource (Product, Service, ...). The TMF
-      @type is still needed because it names the sub-class or extension
-      actually used (e.g. LogicalResource, PhysicalResource, or an
-      operator-specific extension described by @schemaLocation), so the
-      three attributes are kept, renamed with a tmf prefix, not dropped.
-      tmfType is required, as @type is in TMF (Extensible.required).
-    - href (hyperlink to the resource in the TMF API) is kept as a
-      Property; it is API-instance specific, so the examples omit it.
-    - Resource sub-classes (LogicalResource, PhysicalResource,
-      SoftwareResource, ResourceFunction) are not separate models: their
-      own attributes are flattened into Resource and their descriptions
-      say which sub-class they belong to (set tmfType accordingly).
-    - Relationships: entity-level references to other entities of this
-      candidate become NGSI-LD Relationships (urn:ngsi-ld:<Type>:<TMF id>):
-      Product.product (ProductRefOrValue[]), Product.realizingService
-      (ServiceRef[]), Product.realizingResource (ResourceRef[]),
-      Service.supportingService (ServiceRefOrValue[]),
-      Service.supportingResource (ResourceRef[]),
-      Resource.supportingResource (ResourceRefOrValue[]). The inline-value
-      option of ...RefOrValue and the reference metadata (href, name,
-      @referredType) are not kept.
-    - Everything else stays nested with its full TMF structure, defined
-      once in $defs and "@type": "@json" in the context: references to
-      entities outside this candidate (ProductOfferingRef,
-      ProductSpecificationRef, BillingAccountRef, PartyRef, ...), and
-      references that carry a role or a relationship type
-      (productRelationship, serviceRelationship, resourceRelationship,
-      relatedParty, place, productOrderItem, relatedEntity,
-      troubleTicketRelationship). A TroubleTicket refers to the affected
-      Product / Service / Resource through relatedEntity[].entity.id,
-      which may hold the NGSI-LD id.
-    - OpenAPI to JSON Schema 2020-12: $ref to #/$defs, allOf kept,
-      oneOf turned into anyOf (the TMF alternatives such as PartyRef and
-      PartyRoleRef overlap and are told apart only by the OpenAPI
-      discriminator on @type, which JSON Schema does not have, so oneOf
-      would reject valid payloads), discriminator / nullable dropped,
-      example -> examples. Discriminator mappings are not followed, except
-      for Characteristic, whose sub-classes (StringCharacteristic,
-      NumberCharacteristic, ObjectCharacteristic, ...) carry the `value`
-      and are kept in $defs. Code lists (status, state and the resource
-      state types) are enums inlined in the attribute.
-    - Deprecated attributes left out: Resource.category,
-      PhysicalResource.powerState, PhysicalResource.versionNumber.
+    - TMF polymorphism: the NGSI-LD type is the TMF resource; tmfType keeps
+      @type (sub-class or extension in use), tmfBaseType and
+      tmfSchemaLocation are kept. tmfType is required where @type is.
+    - Resource sub-classes LogicalResource, PhysicalResource,
+      SoftwareResource, ResourceFunction are flattened into Resource.
+    - Relationships (213 in 100 models): an entity-level attribute whose TMF type is
+      XRef or XRefOrValue, where X is a model of this candidate (same API
+      first, then the canonical one), is an NGSI-LD Relationship
+      (urn:ngsi-ld:X:<TMF id>); e.g. ProductOffering ->
+      ProductSpecification / ProductOfferingPrice / Category,
+      ProductSpecification -> ServiceSpecification / ResourceSpecification,
+      Service -> ServiceSpecification, Resource -> ResourceSpecification,
+      Product -> ProductOffering / BillingAccount, ServiceProblem ->
+      Service / Resource / TroubleTicket, CustomerBill -> BillingAccount /
+      BillCycle, Customer / PartyRole -> PartyRoleSpecification /
+      PaymentMethod, test executions -> test cases / suites / data.
+      Generic refs (EntityRef, PartyRef, PlaceRef, AccountRef, EventRef,
+      UsageRef) and refs that carry a role or relationship type
+      (relatedParty, productRelationship, relatedEntity, place, ...) stay
+      nested @json with their full TMF structure in $defs.
+    - OpenAPI/Swagger to JSON Schema 2020-12: $ref -> #/$defs, allOf kept,
+      oneOf -> anyOf (TMF alternatives overlap and are told apart only by
+      the discriminator on @type), discriminator/nullable/readOnly dropped,
+      example -> examples, code lists as enums. Discriminator mappings are
+      not followed except for Characteristic (its value sub-classes are in
+      $defs).
+    - href is kept as an optional Property but no longer required where TMF
+      requires it (TMF664 ResourceFunction, TMF684 TrackingDetailsType): it
+      is the URL of the resource in one API instance, not data.
+    - Deprecated attributes left out: ApiDigitalIdentity.jwksUri, ApiDigitalIdentity.redirectUrl, AttachmentRef.description, AttachmentRef.url, AttachmentRef_EVO.description, AttachmentRef_EVO.url, CheckProductOfferingQualification.instantSyncQualification, CheckServiceQualification.instantSyncQualification, GeographicSite.code, GeographicSite_EVO.code, ProductOfferingTermOrConditionApproval.authorization, QueryProductOfferingQualification.instantSyncQualification, QueryServiceQualification.instantSyncQualification, RelatedOrderItem.role, Resource.category, Resource.powerState, Resource.versionNumber, TestMeasure.metricHref, TestMeasureDefinition.metricHref, TestMeasureDefinition.valueType.
 
-  CONTEXT IRIs: TMF has no RDF vocabulary. Each term maps to its
-  component property inside the OpenAPI file at tag v5.0.0 on GitHub
-  (https://github.com/tmforum-apis/<repo>/blob/v5.0.0/<file>#/components/schemas/<Component>/properties/<attribute>);
-  inherited attributes point to the component that declares them
-  (Extensible, Addressable, or the Resource sub-class).
+  CONTEXT IRIs: TMF has no RDF vocabulary. Each term maps to its component
+  property inside the OpenAPI/Swagger file at the tag or commit used
+  (https://github.com/tmforum-apis/<repo>/blob/<tag>/<file>#/components/schemas/<Component>/properties/<attribute>,
+  or #/definitions/... for Swagger 2.0); inherited attributes point to the
+  component that declares them. All 3181 TMF IRIs were checked against the
+  files and the 81 file URLs return HTTP 200.
+
+  PERSONAL DATA: Individual, Customer, Customer360, PartyInteraction,
+  DigitalIdentity, Userinfo, User, ApplicationOwner, LoyaltyMember,
+  PartyPrivacyAgreement/Profile, SalesLead, SalesOpportunity,
+  CommunicationMessage, Appointment, PaymentMethod, PartyAccount,
+  BillingAccount, ShippingOrder, ShipmentTracking and PartyRole hold
+  personal data in real deployments. All examples are fictitious: names of
+  people found in the TMF example payloads (about 35, e.g. in references
+  to Individuals, note authors, account contacts) are removed or replaced
+  by the placeholder "Jane Doe"; birth dates set to 1990-01-01; e-mail
+  addresses replaced by contact@example.com; phone numbers by numbers
+  reserved for fiction (Ofcom +44 7700 900xxx, NANP 555-01xx, ARCEP
+  +33 1 99 00 xx xx); postal addresses of people by "1 Example Street",
+  postcode 00000, Exampletown; identity-document numbers by EXAMPLE-0001;
+  URLs in synthetic examples point to example.com.
+
+  EXAMPLES: 78 models use the retrieve example payload of their v5
+  OpenAPI file (Apache-2.0, illustrative; the five original models keep
+  their aligned set: Product g265-tf85 realized by Service 5351 and Resource
+  839933ec-..., TroubleTicket 3180 pointing to the Product). 96 models (all from v4 or
+  older Swagger files, which have no example payloads) have a synthetic
+  example built from
+  the schema and its property-level example values, with Relationships to
+  the other models' example ids; their `source` says so. Example attributes
+  that are not in the schema or violate it were dropped (see SOURCE ISSUES).
 
   SOURCE ISSUES (worth reporting upstream):
-    - TMF637 ProductStatusType enumerates "aborted " with a trailing
-      space; the enum here is "aborted".
-    - TMF638 Service example: keys "featureCharacteritic" (should be
-      featureCharacteristic) and "ServiceRelationshipCharacteristic"
-      (should be serviceRelationshipCharacteristic); corrected in the
-      example.
-    - TMF621 TroubleTicket example: expectedResolutionDate (2019) is
-      before creationDate (2022); kept as published.
-    - TMF622 example: itemTerm[].duration carries "@type", which the
-      Duration schema does not declare (allowed, as TMF schemas are open).
-    - TMF637 / TMF622 info.description still says "All Rights Reserved"
-      although the repositories are Apache-2.0.
-    - TMF621 release tag v5.0.0 ships the file versioned 5.0.1.
+    - 15 OpenAPI/Swagger files still say "All Rights Reserved" (see
+      licenseNote); TMF667_Document has no LICENSE file.
+    - TMF637 ProductStatusType enumerates "aborted " (trailing space).
+    - TMF638 Service example: keys "featureCharacteritic" and
+      "ServiceRelationshipCharacteristic" misspelt (fixed in the example).
+    - TMF621 example: expectedResolutionDate before creationDate.
+    - TMF653 examples use hour 24 ("2016-03-02T24:00:00.30Z"), invalid
+      date-times; replaced by T23:59:59.
+    - Example attributes absent from the schema: TMF632 Individual.fullName,
+      TMF666 *Account.lastModified, TMF683 PartyInteraction.lastUpdateDate,
+      TMF921 Intent.isBundled, TMF634 ResourceCandidate.name, TMF677
+      UsageConsumptionReport.effectiveDate, TMF678 BillCycle.
+      billCycleSpecification, TMF679 "CheckProductOfferingQualificationItem"
+      (capitalised key), TMF649 ThresholdRule example (8 attributes of an
+      older model: conformanceTargetUpper/Lower, thresholdTarget, ...).
+    - TMF771 ResourceUsageSpecification examples have no id (the NGSI-LD
+      id of that example is generated); the TMF936 productSpecification
+      example has @type ApiProductSpecification.
+    - TMF685 Reservation references undefined definitions
+      ResourceCharacteristic, ResourceRelationship and "int".
+    - TMF671 GET /promotion/{id} returns Promotion_Create instead of
+      Promotion.
+    - TMF664 ResourceFunction and TMF684 TrackingDetailsType require href.
+    - TMF675 GeographicLocation and TMF670 PaymentMethod use @type as a
+      code list (GeoJSON geometry types; cash, tokenizedCard, ...).
+    - TMF908 IotDevice copies the SDM attributes dateCreated, dateModified,
+      source, dataProvider and location into the TMF definition.
+    - TMF684 Swagger file is cp1252-encoded, not UTF-8; TMF658, TMF684,
+      TMF685, TMF910 are v1 drafts and TMF909 is v3, none released.
+    - TMF702 exists twice (TMF702-ResourceActivationConfiguration and
+      TMF702_ResourceActivationManagement).
 
-  EXAMPLES: adapted from the example payloads in the OpenAPI files
-  themselves (Apache-2.0, illustrative, not real operator data). Changes,
-  stated in each `source`: names of people removed (party references,
-  note authors, "for Jean" in a product name); phone numbers replaced by
-  numbers reserved for fiction (MSISDN 447700900123 from Ofcom's drama
-  range instead of 491702283968; 415 555 0139 instead of 415 279 7439);
-  href and @schemaLocation URLs left out; ids aligned so the five
-  examples form one set: Product g265-tf85 is realized by Service 5351
-  and Resource 839933ec-... (the MSISDN), Service 5351 is supported by
-  that Resource, and TroubleTicket 3180 gets a relatedEntity
-  "affectedProduct" pointing to the Product.
-
-  DUPLICATION RISK:
-    - dataModel.IT Service (IT service / orchestration) and the hsds
-      candidate's Service (human services) share the type name Service
-      with a different meaning; gs1-web-vocabulary and untp candidates
-      have Product (a product type / trade item, not a subscribed product
-      instance); gaiax-ontology and saref4envi candidates have Resource.
-      Type names will need disambiguation (e.g. TMF prefix or a separate
-      subject) at promotion.
-    - dataModel.IssueTracking (IssueReporting, Open311 service_requests)
-      overlaps in scope with TroubleTicket.
-    - The camara-apis candidate covers telecom network capabilities
-      (QoS, device location), not inventory; no overlap in types.
-    - TMF632 Party was not included because it overlaps
-      dataModel.Organization (Organization, Person).
+  DUPLICATION RISK (type names; meanings differ unless stated):
+    - Official Smart Data Models: Alarm (dataModel.OCF, S4BLDG),
+      Appointment (dataModel.PredictiveMaintenance), Event
+      (dataModel.TourismDestinations), Organization (dataModel.Organization,
+      dataModel.Hl7: same concept), Rule (dataModel.CPSV-AP), Service
+      (dataModel.IT). Same scope with other names: Individual vs
+      dataModel.Organization Person, IotDevice / IotDeviceSpecification vs
+      dataModel.Device Device / DeviceModel, TroubleTicket / Incident vs
+      dataModel.IssueTracking IssueReporting, GeographicAddress vs the SDM
+      address property, ServiceLevelObjective / Threshold vs
+      dataModel.KeyPerformanceIndicator.
+    - Other candidates: Organization (realestatecore, edint-organizaciones,
+      edint-infraestructura, gs1-web-vocabulary, ocds, hsds), Event
+      (saref4city, mds), Incident (mds), Product (untp, gs1-web-vocabulary),
+      Resource (gaiax-ontology, saref4envi), Service (hsds), User
+      (saref4ehaw, saref4wear). Generic names (Category, Task, Process,
+      Rule, Topic, Event, Application, User, Payment, Quote, Promotion,
+      Agreement, Appointment, Reservation) will need a TMF prefix or a
+      separate subject at promotion.
+    - The camara-apis candidate covers network capabilities that TMF931 /
+      TMF936 Open Gateway sell as ApiProduct / OpenGatewayProductOffering;
+      no type overlap.

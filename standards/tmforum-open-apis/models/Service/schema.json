@@ -1,10 +1,10 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$schemaVersion": "0.0.1",
+  "$schemaVersion": "0.0.2",
   "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Service/schema.json",
   "modelTags": "TMForum,OpenAPI,ODA,Telecom",
   "title": "Smart Data Models - TM Forum Open APIs - Service",
-  "description": "Service is a base class for defining the Service hierarchy. All Services are characterized as either being possibly visible and usable by a Customer or not. This gives rise to the two subclasses of Service: CustomerFacingService and ResourceFacingService. (TM Forum TMF638 Service Inventory Management v5.0.0, OpenAPI component Service; attribute names kept verbatim except id/@type/@baseType/@schemaLocation; deprecated attributes left out.)",
+  "description": "Service is a base class for defining the Service hierarchy. All Services are characterized as either being possibly visible and usable by a Customer or not. This gives rise to the two subclasses of Service: CustomerFacingService and ResourceFacingService. (TM Forum TMF638 Service Inventory Management 5.0.0, OpenAPI component Service; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
   "type": "object",
   "properties": {
     "id": {
@@ -212,16 +212,18 @@
       "description": "Property. Model:'https://github.com/tmforum-apis/TMF638_ServiceInventory/blob/v5.0.0/TMF638-Service_Inventory_Management-v5.0.0.oas.yaml#/components/schemas/Service/properties/operatingStatus'. Valid values for the Operating status of the service"
     },
     "serviceSpecification": {
-      "$ref": "#/$defs/ServiceSpecificationRef",
-      "description": "Property. Model:'https://github.com/tmforum-apis/TMF638_ServiceInventory/blob/v5.0.0/TMF638-Service_Inventory_Management-v5.0.0.oas.yaml#/components/schemas/Service/properties/serviceSpecification'. Service specification reference: ServiceSpecification(s) required to realize a ProductSpecification."
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF638_ServiceInventory/blob/v5.0.0/TMF638-Service_Inventory_Management-v5.0.0.oas.yaml#/components/schemas/Service/properties/serviceSpecification'. Service specification reference: ServiceSpecification(s) required to realize a ProductSpecification. In TMF this is a ServiceSpecificationRef object; here the NGSI-LD id of the referenced ServiceSpecification entity (urn:ngsi-ld:ServiceSpecification:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
     },
     "serviceDate": {
       "type": "string",
       "description": "Property. Model:'https://github.com/tmforum-apis/TMF638_ServiceInventory/blob/v5.0.0/TMF638-Service_Inventory_Management-v5.0.0.oas.yaml#/components/schemas/Service/properties/serviceDate'. Date when the service was created (whatever its status)."
     },
     "intent": {
-      "$ref": "#/$defs/IntentRefOrValue",
-      "description": "Property. Model:'https://github.com/tmforum-apis/TMF638_ServiceInventory/blob/v5.0.0/TMF638-Service_Inventory_Management-v5.0.0.oas.yaml#/components/schemas/Service/properties/intent'. Intent Ref (if Intent already exists) or Value (if Intent be created or its details be presented)"
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF638_ServiceInventory/blob/v5.0.0/TMF638-Service_Inventory_Management-v5.0.0.oas.yaml#/components/schemas/Service/properties/intent'. Intent Ref (if Intent already exists) or Value (if Intent be created or its details be presented). In TMF this is a IntentRefOrValue object; here the NGSI-LD id of the referenced Intent entity (urn:ngsi-ld:Intent:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
     }
   },
   "required": [

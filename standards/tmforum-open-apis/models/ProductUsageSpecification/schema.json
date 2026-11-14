@@ -1,0 +1,514 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ProductUsageSpecification/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - ProductUsageSpecification",
+  "description": "A detailed description of a product usage specification that are of interest to the business and can have product offering prices applied to it. It is comprised of characteristic specification, which define all attributes and their possible values known for a particular type of product usage. (TM Forum TMF767 Product Usage Catalog Management 5.0.0, OpenAPI component ProductUsageSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:ProductUsageSpecification:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ProductUsageSpecification"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ProductUsageSpecification'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF767_ProductUsageCatalogManagement/blob/v5.0.0/TMF767-Product_Usage_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'ProductUsageSpecification' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF767_ProductUsageCatalogManagement/blob/v5.0.0/TMF767-Product_Usage_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF767_ProductUsageCatalogManagement/blob/v5.0.0/TMF767-Product_Usage_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF767_ProductUsageCatalogManagement/blob/v5.0.0/TMF767-Product_Usage_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/href'. Hyperlink reference"
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF767_ProductUsageCatalogManagement/blob/v5.0.0/TMF767-Product_Usage_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:ProductUsageSpecification:<tmfId>. unique identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF767_ProductUsageCatalogManagement/blob/v5.0.0/TMF767-Product_Usage_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/ProductUsageSpecification/properties/name'. Name given to the product usage specification"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF767_ProductUsageCatalogManagement/blob/v5.0.0/TMF767-Product_Usage_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/ProductUsageSpecification/properties/description'. Description of the product usage specification"
+    },
+    "lastUpdate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF767_ProductUsageCatalogManagement/blob/v5.0.0/TMF767-Product_Usage_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/ProductUsageSpecification/properties/lastUpdate'. Date and time of the last update of the specification"
+    },
+    "lifecycleStatus": {
+      "enum": [
+        "inDesign",
+        "inTest",
+        "active",
+        "obsolete"
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF767_ProductUsageCatalogManagement/blob/v5.0.0/TMF767-Product_Usage_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/ProductUsageSpecification/properties/lifecycleStatus'. Possible values for the lifecycle status of the product usage specification. Refer to User Guide for comprehensive lifecycle schema and descriptions of status."
+    },
+    "version": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF767_ProductUsageCatalogManagement/blob/v5.0.0/TMF767-Product_Usage_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/ProductUsageSpecification/properties/version'. specification version"
+    },
+    "productSpecification": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF767_ProductUsageCatalogManagement/blob/v5.0.0/TMF767-Product_Usage_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/ProductUsageSpecification/properties/productSpecification'. Relationship to the product specifications that use this product usage specification to rate or meter their products. In TMF this is an array of ProductSpecificationRef objects; here the NGSI-LD ids of the referenced ProductSpecification entities (urn:ngsi-ld:ProductSpecification:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "serviceUsageSpecification": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ServiceUsageSpecificationRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF767_ProductUsageCatalogManagement/blob/v5.0.0/TMF767-Product_Usage_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/ProductUsageSpecification/properties/serviceUsageSpecification'. List of service usage specification(s) that are involved for the creation of this product usage specification."
+    },
+    "specCharacteristic": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/CharacteristicSpecification"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF767_ProductUsageCatalogManagement/blob/v5.0.0/TMF767-Product_Usage_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/ProductUsageSpecification/properties/specCharacteristic'. List of characteristic specifications that will be instantiated at the product usages creation."
+    },
+    "attachment": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AttachmentRefOrValue"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF767_ProductUsageCatalogManagement/blob/v5.0.0/TMF767-Product_Usage_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/ProductUsageSpecification/properties/attachment'. Attachments that may be of relevance to this specification, such as picture, document, media"
+    },
+    "validFor": {
+      "$ref": "#/$defs/TimePeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF767_ProductUsageCatalogManagement/blob/v5.0.0/TMF767-Product_Usage_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/ProductUsageSpecification/properties/validFor'. A period of time, either as a deadline (endDateTime only) a startDateTime only, or both"
+    },
+    "targetProductUsageSchema": {
+      "$ref": "#/$defs/TargetProductUsageSchema",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF767_ProductUsageCatalogManagement/blob/v5.0.0/TMF767-Product_Usage_Catalog_Management-v5.0.0.oas.yaml#/components/schemas/ProductUsageSpecification/properties/targetProductUsageSchema'. The reference object to the schema and type of target product usage which is described by product usage specification"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tmfType"
+  ],
+  "$defs": {
+    "Addressable": {
+      "type": "object",
+      "description": "Base schema for addressable entities",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Hyperlink reference"
+        },
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        }
+      }
+    },
+    "Attachment": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Entity"
+        },
+        {
+          "type": "object",
+          "description": "Complements the description of an element (for instance a product) through video, pictures...",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The name of the attachment"
+            },
+            "description": {
+              "type": "string",
+              "description": "A narrative text describing the content of the attachment",
+              "examples": [
+                "Photograph of the Product"
+              ]
+            },
+            "url": {
+              "type": "string",
+              "description": "Uniform Resource Locator, is a web page address (a subset of URI)",
+              "examples": [
+                "https://host/Content/4aafacbd-11ff-4dc8-b445-305f2215715f"
+              ]
+            },
+            "content": {
+              "type": "string",
+              "format": "base64",
+              "description": "The actual contents of the attachment object, if embedded, encoded as base64"
+            },
+            "size": {
+              "$ref": "#/$defs/Quantity"
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            },
+            "attachmentType": {
+              "type": "string",
+              "description": "a business characterization of the purpose of the attachment, for example logo, instructionManual, contractCopy"
+            },
+            "mimeType": {
+              "type": "string",
+              "description": "a technical characterization of the attachment content format using IETF Mime Types"
+            }
+          }
+        }
+      ]
+    },
+    "AttachmentRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "Attachment reference. An attachment complements the description of an element (for instance a product) through video, pictures",
+          "properties": {
+            "description": {
+              "type": "string",
+              "description": "A narrative text describing the content of the attachment"
+            },
+            "url": {
+              "description": "Link to the attachment media/content",
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "AttachmentRefOrValue": {
+      "type": "object",
+      "description": "The polymorphic attributes @type, @schemaLocation & @referredType are related to the Attachment entity and not the AttachmentRefOrValue class itself",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Attachment"
+        },
+        {
+          "$ref": "#/$defs/AttachmentRef"
+        }
+      ]
+    },
+    "CharacteristicSpecification": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "This class defines a characteristic specification.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique ID for the characteristic"
+            },
+            "name": {
+              "type": "string",
+              "description": "A word, term, or phrase by which this characteristic specification is known and distinguished from other characteristic specifications."
+            },
+            "valueType": {
+              "type": "string",
+              "description": "A kind of value that the characteristic can take on, such as numeric, text and so forth"
+            },
+            "description": {
+              "type": "string",
+              "description": "A narrative that explains the CharacteristicSpecification."
+            },
+            "configurable": {
+              "type": "boolean",
+              "description": "If true, the Boolean indicates that the target Characteristic is configurable"
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            },
+            "minCardinality": {
+              "type": "integer",
+              "description": "The minimum number of instances a CharacteristicValue can take on. For example, zero to five phone numbers in a group calling plan, where zero is the value for the minCardinality."
+            },
+            "maxCardinality": {
+              "type": "integer",
+              "description": "The maximum number of instances a CharacteristicValue can take on. For example, zero to five phone numbers in a group calling plan, where five is the value for the maxCardinality."
+            },
+            "isUnique": {
+              "type": "boolean",
+              "description": "Specifies if the value of this characteristic is unique across all entities instantiated from the specification that uses this characteristic. For example, consider a ProductSpecification for a set-top box, with a CharacteristicSpecification cardID. Each set-top box must have a different value for cardID, so this isUnique attribute would be set to true for the characteristic."
+            },
+            "regex": {
+              "type": "string",
+              "description": "A rule or principle represented in regular expression used to derive the value of a characteristic value."
+            },
+            "extensible": {
+              "type": "boolean",
+              "description": "An indicator that specifies that the values for the characteristic can be extended by adding new values when instantiating a characteristic for a resource."
+            },
+            "@valueSchemaLocation": {
+              "type": "string",
+              "description": "This (optional) field provides a link to the schema describing the value type."
+            },
+            "charSpecRelationship": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/CharacteristicSpecificationRelationship"
+              },
+              "description": "An aggregation, migration, substitution, dependency or exclusivity relationship between/among Specification Characteristics."
+            },
+            "characteristicValueSpecification": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/CharacteristicValueSpecification"
+              },
+              "description": "A CharacteristicValueSpecification object is used to define a set of attributes, each of which can be assigned to a corresponding set of attributes in a CharacteristicSpecification object. The values of the attributes in the CharacteristicValueSpecification object describe the values of the attributes that a corresponding Characteristic object can take on."
+            }
+          }
+        }
+      ]
+    },
+    "CharacteristicSpecificationRelationship": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "An aggregation, migration, substitution, dependency or exclusivity relationship between/among Characteristic specifications. The specification characteristic is embedded within the specification whose ID and href are in this entity, and identified by its ID.",
+          "properties": {
+            "relationshipType": {
+              "type": "string",
+              "description": "Type of relationship such as aggregation, migration, substitution, dependency, exclusivity"
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the target characteristic within the specification"
+            },
+            "characteristicSpecificationId": {
+              "type": "string",
+              "description": "Unique identifier of the characteristic within the specification"
+            },
+            "parentSpecificationHref": {
+              "type": "string",
+              "format": "uri",
+              "description": "Hyperlink reference to the parent specification containing the target characteristic"
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            },
+            "parentSpecificationId": {
+              "type": "string",
+              "description": "Unique identifier of the parent specification containing the target characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "CharacteristicValueSpecification": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "specification of a value (number or text or an object) that can be assigned to a Characteristic. This is an abstract base class, the actual value is in one of the strongly-typed subclasses : BooleanArrayCharacteristicValueSpecification, BooleanCharacteristicValueSpecification, FloatArrayCharacteristicValueSpecification, FloatCharacteristicValueSpecification, IntegerArrayCharacteristicValueSpecification, IntegerCharacteristicValueSpecification, MapArrayCharacteristicValueSpecification, MapCharacteristicValueSpecification, NumberArrayCharacteristicValueSpecification, NumberCharacteristicValueSpecification, ObjectArrayCharacteristicValueSpecification, ObjectCharacteristicValueSpecification, StringArrayCharacteristicValueSpecification, StringCharacteristicValueSpecification...",
+          "properties": {
+            "valueType": {
+              "type": "string",
+              "description": "A kind of value that the characteristic value can take on, such as numeric, text and so forth"
+            },
+            "isDefault": {
+              "type": "boolean",
+              "description": "If true, the Boolean Indicates if the value is the default value for a characteristic"
+            },
+            "unitOfMeasure": {
+              "type": "string",
+              "description": "A length, surface, volume, dry measure, liquid measure, money, weight, time, and the like. In general, a determinate quantity or magnitude of the kind designated, taken as a standard of comparison for others of the same kind, in assigning to them numerical values, as 1 foot, 1 yard, 1 mile, 1 square foot."
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            },
+            "valueFrom": {
+              "type": "integer",
+              "description": "The low range value that a characteristic can take on"
+            },
+            "valueTo": {
+              "type": "integer",
+              "description": "The upper range value that a characteristic can take on"
+            },
+            "rangeInterval": {
+              "type": "string",
+              "description": "An indicator that specifies the inclusion or exclusion of the valueFrom and valueTo attributes. If applicable, possible values are \"open\", \"closed\", \"closedBottom\" and \"closedTop\"."
+            },
+            "regex": {
+              "type": "string",
+              "description": "A regular expression constraint for given value"
+            }
+          }
+        }
+      ]
+    },
+    "Entity": {
+      "type": "object",
+      "description": "Base entity schema for use in TM Forum Open APIs. Property.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        }
+      ]
+    },
+    "EntityRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        },
+        {
+          "type": "object",
+          "description": "Entity reference schema to be use for all entityRef class.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "The identifier of the referred entity."
+            },
+            "href": {
+              "type": "string",
+              "description": "The URI of the referred entity."
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the referred entity."
+            },
+            "@referredType": {
+              "type": "string",
+              "description": "The actual type of the target instance when needed for disambiguation."
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      ]
+    },
+    "Extensible": {
+      "type": "object",
+      "description": "Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means that the Entity described by the schema MUST be extended with the @type",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "Quantity": {
+      "type": "object",
+      "description": "An amount in a given unit",
+      "properties": {
+        "amount": {
+          "type": "number",
+          "format": "float",
+          "default": 1,
+          "description": "Numeric value in a given unit"
+        },
+        "units": {
+          "type": "string",
+          "description": "Unit"
+        }
+      }
+    },
+    "ServiceUsageSpecificationRef": {
+      "type": "object",
+      "description": "UsageSpecification reference. UsageSpecification is a detailed description of a service usage event that are of interest to the business. It is comprised of characteristics, which define all attributes known for a particular type of usage.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "TargetProductUsageSchema": {
+      "type": "object",
+      "description": "The reference object to the schema and type of target product usage which is described by product usage specification",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "Class type of the target product usage"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "This field provides a link to the schema describing the target product usage"
+        }
+      }
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "startDateTime": {
+          "description": "Start of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        },
+        "endDateTime": {
+          "description": "End of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        }
+      }
+    }
+  }
+}
