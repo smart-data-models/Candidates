@@ -1,0 +1,55 @@
+{
+  "id": "urn:ngsi-ld:PermissionSet:Prms-jnzgh456",
+  "type": "PermissionSet",
+  "tmfType": "PermissionSet",
+  "tmfId": "Prms-jnzgh456",
+  "creationDate": "2019-10-01T00:00:00.000Z",
+  "description": "superProfile Granted for user",
+  "validFor": {
+    "startDateTime": "2019-10-01T00:00:00.000Z",
+    "endDateTime": "2019-10-31T23:59:59.000Z"
+  },
+  "granter": {
+    "role": "customer advisor",
+    "@type": "RelatedPartyRefOrPartyRoleRef",
+    "partyOrPartyRole": {
+      "href": "https://serverRoot/partyManagement/v5/party/cclt-456745",
+      "id": "cclt-456745",
+      "@type": "PartyRef",
+      "@referredType": "Individual"
+    }
+  },
+  "user": {
+    "role": "client",
+    "@type": "RelatedSecurityPrincipal",
+    "securityPrincipal": {
+      "id": "cust-745712-A",
+      "href": "https://serverRoot/partyManagement/v5/party/cust-745712-A",
+      "@type": "PartyRef",
+      "@referredType": "Individual"
+    }
+  },
+  "permission": [
+    {
+      "@type": "Permission",
+      "permissionSpecification": {
+        "@type": "PermissionSpecification",
+        "href": "https://serverRoot/rolesAndPermissionsManagement/v5/permissionSpecification/ps-31d5b770",
+        "id": "ps-31d5b770",
+        "name": "ProductOrder:update",
+        "function": "ProductOrder",
+        "action": "update"
+      },
+      "managedAssetGroup": {
+        "@type": "FilterAssetGroup",
+        "@baseType": "AssetGroup",
+        "entityType": "ProductOrder",
+        "filter": "relatedParty.id=\"cid3366116688\"&relatedParty.@referredType=\"Customer\""
+      }
+    }
+  ],
+  "source": "Adapted from the example payload 'permissionSet_POST_201_1_response' of the TMF672 User Role Permission Management API 5.1.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids.",
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PermissionSet/context.jsonld"
+  ]
+}

@@ -1,0 +1,2285 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/CheckServiceQualification/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - CheckServiceQualification",
+  "description": "CheckServiceQualification is used to perform a technical eligibility on service configuration(s). It allows to retrieve services that are technically available in the context of the interaction (place, party, service characteristics, ...). (TM Forum TMF645 Service Qualification Management 5.0.0, OpenAPI component CheckServiceQualification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:CheckServiceQualification:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "CheckServiceQualification"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'CheckServiceQualification'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/v5.0.0/TMF645-Service_Qualification_Management-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'CheckServiceQualification' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/v5.0.0/TMF645-Service_Qualification_Management-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/v5.0.0/TMF645-Service_Qualification_Management-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/v5.0.0/TMF645-Service_Qualification_Management-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/href'. Hyperlink reference"
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/v5.0.0/TMF645-Service_Qualification_Management-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:CheckServiceQualification:<tmfId>. unique identifier"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/v5.0.0/TMF645-Service_Qualification_Management-v5.0.0.oas.yaml#/components/schemas/ServiceQualification/properties/description'. Description of the serviceQualification"
+    },
+    "effectiveQualificationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/v5.0.0/TMF645-Service_Qualification_Management-v5.0.0.oas.yaml#/components/schemas/ServiceQualification/properties/effectiveQualificationDate'. Effective date to serviceQualification completion"
+    },
+    "estimatedResponseDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/v5.0.0/TMF645-Service_Qualification_Management-v5.0.0.oas.yaml#/components/schemas/ServiceQualification/properties/estimatedResponseDate'. A Date by when the provider estimates supplying a response to the qualification request."
+    },
+    "expectedQualificationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/v5.0.0/TMF645-Service_Qualification_Management-v5.0.0.oas.yaml#/components/schemas/ServiceQualification/properties/expectedQualificationDate'. A date (DateTime). Deadline date when the requester expected a qualification answer."
+    },
+    "expirationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/v5.0.0/TMF645-Service_Qualification_Management-v5.0.0.oas.yaml#/components/schemas/ServiceQualification/properties/expirationDate'. Date when the qualification response expires"
+    },
+    "state": {
+      "enum": [
+        "acknowledged",
+        "rejected",
+        "inProgress",
+        "cancelled",
+        "done",
+        "terminatedWithError"
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/v5.0.0/TMF645-Service_Qualification_Management-v5.0.0.oas.yaml#/components/schemas/ServiceQualification/properties/state'. Possible values for the state of a task"
+    },
+    "relatedParty": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedPartyRefOrPartyRoleRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/v5.0.0/TMF645-Service_Qualification_Management-v5.0.0.oas.yaml#/components/schemas/ServiceQualification/properties/relatedParty'. A list of related party references, defines party or party role linked to this request."
+    },
+    "externalIdentifier": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ExternalIdentifier"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/v5.0.0/TMF645-Service_Qualification_Management-v5.0.0.oas.yaml#/components/schemas/ServiceQualification/properties/externalIdentifier'. A list of external identifiers associated with this resource"
+    },
+    "errorMessage": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ErrorMessage"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/v5.0.0/TMF645-Service_Qualification_Management-v5.0.0.oas.yaml#/components/schemas/ServiceQualification/properties/errorMessage'. A list of error message contains the error that caused the termination of ServiceQualification task."
+    },
+    "serviceQualificationItem": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/CheckServiceQualificationItem"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/v5.0.0/TMF645-Service_Qualification_Management-v5.0.0.oas.yaml#/components/schemas/CheckServiceQualification/properties/serviceQualificationItem'. A list of service qualification items."
+    },
+    "provideAlternative": {
+      "type": "boolean",
+      "default": false,
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/v5.0.0/TMF645-Service_Qualification_Management-v5.0.0.oas.yaml#/components/schemas/CheckServiceQualification/properties/provideAlternative'. When the value is TRUE means that alternative solutions should be provided"
+    },
+    "provideResultReason": {
+      "type": "boolean",
+      "default": false,
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/v5.0.0/TMF645-Service_Qualification_Management-v5.0.0.oas.yaml#/components/schemas/CheckServiceQualification/properties/provideResultReason'. When the value is TRUE means that result reason are expected for available or not of product offering."
+    },
+    "qualificationResult": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/v5.0.0/TMF645-Service_Qualification_Management-v5.0.0.oas.yaml#/components/schemas/CheckServiceQualification/properties/qualificationResult'. Qualification result for this serviceQualification. It could be: qualified (all qualification item are qualified), alternate (At least one item alternate and no item with unqualified), unqualified (At least one item unqualified)"
+    },
+    "checkServiceQualificationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/v5.0.0/TMF645-Service_Qualification_Management-v5.0.0.oas.yaml#/components/schemas/CheckServiceQualification/properties/checkServiceQualificationDate'. Date when the serviceQualification was submitted"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tmfType"
+  ],
+  "$defs": {
+    "Addressable": {
+      "type": "object",
+      "description": "Base schema for addressable entities",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Hyperlink reference"
+        },
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        }
+      }
+    },
+    "AlternateServiceProposal": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Alternate service proposal is used when the requested service is not available with characteristic and date asked for. An alternate proposal could be a distinct serviceSpecification close to requested one or same as requested but with a different activation date",
+          "properties": {
+            "id": {
+              "description": "Identifier of a alternate service proposal",
+              "type": "string"
+            },
+            "alternateServiceAvailabilityDate": {
+              "description": "Alternate availability date in case seller is not able to meet requested expected availability date for the service",
+              "type": "string",
+              "format": "date-time"
+            },
+            "alternateService": {
+              "$ref": "#/$defs/ServiceRefOrValue"
+            }
+          }
+        }
+      ]
+    },
+    "Attachment": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Entity"
+        },
+        {
+          "type": "object",
+          "description": "Complements the description of an element (for instance a product) through video, pictures...",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The name of the attachment"
+            },
+            "description": {
+              "type": "string",
+              "description": "A narrative text describing the content of the attachment",
+              "examples": [
+                "Photograph of the Product"
+              ]
+            },
+            "url": {
+              "type": "string",
+              "description": "Uniform Resource Locator, is a web page address (a subset of URI)",
+              "examples": [
+                "https://host/Content/4aafacbd-11ff-4dc8-b445-305f2215715f"
+              ]
+            },
+            "content": {
+              "type": "string",
+              "format": "base64",
+              "description": "The actual contents of the attachment object, if embedded, encoded as base64"
+            },
+            "size": {
+              "$ref": "#/$defs/Quantity"
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            },
+            "attachmentType": {
+              "type": "string",
+              "description": "a business characterization of the purpose of the attachment, for example logo, instructionManual, contractCopy"
+            },
+            "mimeType": {
+              "type": "string",
+              "description": "a technical characterization of the attachment content format using IETF Mime Types"
+            }
+          }
+        }
+      ]
+    },
+    "AttachmentRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "Attachment reference. An attachment complements the description of an element (for instance a product) through video, pictures",
+          "properties": {
+            "description": {
+              "type": "string",
+              "description": "A narrative text describing the content of the attachment"
+            },
+            "url": {
+              "description": "Link to the attachment media/content",
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "AttachmentRefOrValue": {
+      "type": "object",
+      "description": "The polymorphic attributes @type, @schemaLocation & @referredType are related to the Attachment entity and not the AttachmentRefOrValue class itself",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Attachment"
+        },
+        {
+          "$ref": "#/$defs/AttachmentRef"
+        }
+      ]
+    },
+    "BooleanArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of Boolean(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "description": "A characteristic which value is an array of Boolean(s).",
+              "items": {
+                "type": "boolean",
+                "description": "Characteristic item boolean value"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "BooleanCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Boolean.",
+          "properties": {
+            "value": {
+              "type": "boolean",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarPeriod": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "The CalendarPeriod schema represents a period of time within a calendar, defining various attributes such as the applicable day, timezone, hour period, and status. It is designed to capture information about the availability or status of a calendar period, which can be used in scheduling, booking, or resource allocation applications.",
+          "properties": {
+            "day": {
+              "type": "string",
+              "description": "Day where the calendar status applies (e.g.: monday, mon-to-fri, weekdays, weekend, all week, ...)"
+            },
+            "timeZone": {
+              "type": "string",
+              "description": "Indication of the timezone applicable to the calendar information (e.g.: Paris, GMT+1)"
+            },
+            "hourPeriod": {
+              "type": "array",
+              "description": "Collection of hour intervals",
+              "items": {
+                "$ref": "#/$defs/HourPeriod"
+              }
+            },
+            "status": {
+              "type": "string",
+              "description": "Indication of the availability of the calendar period (e.g.: available, booked, etc.)"
+            }
+          }
+        }
+      ]
+    },
+    "Characteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Describes a given characteristic of an object or entity through a name/value pair. This is an abstract base class, the actual value is in one of the strongly-typed subclasses : StringCharacteristic, ObjectCharacteristic, FloatCharacteristic, BooleanCharacteristic, NumberCharacteristic, IntegerCharacteristic, StringArrayCharacteristic, ObjectArrayCharacteristic, BooleanArrayCharacteristic, NumberArrayCharacteristic, IntegerArrayCharacteristic... The value is given by the sub-class named in @type (discriminator in the TMF specification): BooleanArrayCharacteristic, BooleanCharacteristic, FloatCharacteristic, IntegerArrayCharacteristic, IntegerCharacteristic, NumberArrayCharacteristic, NumberCharacteristic, ObjectArrayCharacteristic, ObjectCharacteristic, StringArrayCharacteristic, StringCharacteristic; see $defs.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique identifier of the characteristic"
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the characteristic"
+            },
+            "valueType": {
+              "type": "string",
+              "description": "Data type of the value of the characteristic"
+            },
+            "characteristicRelationship": {
+              "type": "array",
+              "description": "Collection of characteristic relationships",
+              "items": {
+                "$ref": "#/$defs/CharacteristicRelationship"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "CharacteristicRelationship": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Another Characteristic that is related to the current Characteristic;",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique identifier of the characteristic"
+            },
+            "relationshipType": {
+              "type": "string",
+              "description": "The type of relationship"
+            }
+          }
+        }
+      ]
+    },
+    "CheckServiceQualificationItem": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/ServiceQualificationItem"
+        },
+        {
+          "type": "object",
+          "description": "A ServiceQualificationItem relates to a specific service being checked in a qualification operation.",
+          "properties": {
+            "qualificationResult": {
+              "type": "string",
+              "description": "Qualification result for serviceQualification item. It could be: - qualified (request service are available), - unqualified (requested not available and not alternate available), - alternate (requested not available but proposal available)"
+            },
+            "state": {
+              "type": "string",
+              "description": "State of the CheckServiceQualificationItem: described in the state machine diagram"
+            },
+            "eligibilityResultReason": {
+              "type": "array",
+              "description": "A list of eligibility result reasons (EligibilityResultReason [*]). Reason for eligibility result, whatever the result is (availability or unavailability).",
+              "items": {
+                "$ref": "#/$defs/EligibilityResultReason"
+              }
+            },
+            "qualificationItemRelationship": {
+              "type": "array",
+              "description": "A list of qualification item relationships used to describe relationship between serviceQualification item from the same serviceQualification.",
+              "items": {
+                "$ref": "#/$defs/ServiceQualificationItemRelationship"
+              }
+            },
+            "terminationError": {
+              "type": "array",
+              "description": "If qualificationItem has not been done properly this lists the error(s) that caused termination of the qualification.",
+              "items": {
+                "$ref": "#/$defs/TerminationError"
+              }
+            },
+            "alternateServiceProposal": {
+              "type": "array",
+              "description": "Alternate service proposal is used when the requested service is not available with characteristic and date asked for. An alternate proposal could be a distinct service Spec close to requested one or same as requested but with a different availability date.",
+              "items": {
+                "$ref": "#/$defs/AlternateServiceProposal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ContactMedium": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Indicates the contact medium that could be used to contact the party. This is an abstract base class, the actual value is in one of the strongly-typed subclasses : EmailContactMedium, FaxContactMedium, PhoneContactMedium, GeographicAddressContactMedium, SocialMediaContactMedium...",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Identifier for this contact medium."
+            },
+            "preferred": {
+              "type": "boolean",
+              "description": "If true, indicates that is the preferred contact medium"
+            },
+            "contactType": {
+              "type": "string",
+              "description": "Type of the contact medium to qualify it like pro email / personal email. This is not used to define the contact medium used."
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            }
+          }
+        }
+      ]
+    },
+    "ContextUpdate": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Holds the date when the status/state last changed and provides a reason/context to the current value of the status/state. It has the relatedEntity and relatedParty in relation to the status/state value.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Identifier of the context update"
+            },
+            "lastUpdate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The date and time the status/state last changed."
+            },
+            "reason": {
+              "type": "string",
+              "description": "The reason/context for the current value of the status/state."
+            },
+            "relatedEntity": {
+              "type": "array",
+              "description": "A list of entities that represent observations, anomalies or managing entities etc associated to the current status/state value.",
+              "items": {
+                "$ref": "#/$defs/EntityRef"
+              }
+            },
+            "relatedParty": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RelatedPartyRefOrPartyRoleRef"
+              },
+              "description": "List of parties associated to the current status/state value."
+            }
+          }
+        }
+      ]
+    },
+    "EligibilityResultReason": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Reason for eligibility result if the ServiceQualification result is no (meaning the Service is not available)",
+          "properties": {
+            "code": {
+              "type": "string",
+              "description": "Result reason code"
+            },
+            "label": {
+              "type": "string",
+              "description": "Human readable result reason label"
+            }
+          }
+        }
+      ]
+    },
+    "Entity": {
+      "type": "object",
+      "description": "Base entity schema for use in TM Forum Open APIs. Property.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        }
+      ]
+    },
+    "EntityRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        },
+        {
+          "type": "object",
+          "description": "Entity reference schema to be use for all entityRef class.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "The identifier of the referred entity."
+            },
+            "href": {
+              "type": "string",
+              "description": "The URI of the referred entity."
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the referred entity."
+            },
+            "@referredType": {
+              "type": "string",
+              "description": "The actual type of the target instance when needed for disambiguation."
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      ]
+    },
+    "EntityRefOrValue": {
+      "type": "object",
+      "description": "",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Entity"
+        },
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "EntityRelationship": {
+      "type": "object",
+      "description": "A uni-directional relationship from this entity to a target entity instance",
+      "properties": {
+        "href": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string",
+          "description": "The association role for this entity"
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod"
+        },
+        "associationSpec": {
+          "$ref": "#/$defs/EntityRef"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "relationshipType": {
+          "type": "string",
+          "description": "Type of relationship such as migration, substitution, dependency, exclusivity"
+        },
+        "id": {
+          "type": "string"
+        },
+        "@referredType": {
+          "type": "string"
+        },
+        "@type": {
+          "type": "string"
+        }
+      }
+    },
+    "ErrorMessage": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "represents an Error",
+          "properties": {
+            "code": {
+              "type": "string",
+              "description": "error code"
+            },
+            "reason": {
+              "type": "string",
+              "description": "Explanation of the reason for the error"
+            },
+            "message": {
+              "type": "string",
+              "description": "More details and corrective actions related to the error"
+            },
+            "status": {
+              "type": "string",
+              "description": "error code extension like sys-ABC-2001"
+            },
+            "referenceError": {
+              "type": "string",
+              "description": "URI of documentation describing the error"
+            }
+          }
+        }
+      ]
+    },
+    "Extensible": {
+      "type": "object",
+      "description": "Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means that the Entity described by the schema MUST be extended with the @type",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "ExternalIdentifier": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "An identification of an entity that is owned by or originates in a software system different from the current system, for example a ProductOrder handed off from a commerce platform into an order handling system. The structure identifies the system itself, the nature of the entity within the system (e.g. class name) and the unique ID of the entity within the system. It is anticipated that multiple external IDs can be held for a single entity, e.g. if the entity passed through multiple systems on the way to the current system. In this case the consumer is expected to sequence the IDs in the array in reverse order of provenance, i.e. most recent system first in the list.",
+          "properties": {
+            "owner": {
+              "type": "string",
+              "description": "Name of the external system that owns the entity.",
+              "examples": [
+                "MagentoCommerce"
+              ]
+            },
+            "externalIdentifierType": {
+              "type": "string",
+              "description": "Type of the identification, typically would be the type of the entity within the external system",
+              "examples": [
+                "ProductOrder"
+              ]
+            },
+            "id": {
+              "type": "string",
+              "description": "identification of the entity within the external system."
+            }
+          }
+        }
+      ]
+    },
+    "Feature": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Configuration feature.",
+          "properties": {
+            "isBundle": {
+              "description": "True if this is a feature group. Default is false.",
+              "type": "boolean"
+            },
+            "featureRelationship": {
+              "type": "array",
+              "description": "Collection of feature relationships",
+              "items": {
+                "$ref": "#/$defs/FeatureRelationship"
+              }
+            },
+            "featureCharacteristic": {
+              "description": "This is a list of Characteristics for a particular feature.",
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Characteristic"
+              }
+            },
+            "policyConstraint": {
+              "description": "Reference to manage a list of feature specification policy constraints",
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/PolicyRef"
+              }
+            },
+            "isEnabled": {
+              "description": "True if this feature is enabled. Default is true.",
+              "type": "boolean"
+            },
+            "id": {
+              "type": "string",
+              "description": "unique identifier"
+            },
+            "name": {
+              "description": "This is the name for the feature.",
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "FeatureRelationship": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "Configuration feature",
+          "properties": {
+            "relationshipType": {
+              "description": "This is the type of the feature relationship.",
+              "type": "string",
+              "enum": [
+                "excluded",
+                "includes",
+                "may include",
+                "requires"
+              ]
+            },
+            "name": {
+              "description": "This is the name of the target feature.",
+              "type": "string"
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            }
+          }
+        }
+      ]
+    },
+    "FloatCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Float.",
+          "properties": {
+            "value": {
+              "type": "number",
+              "format": "float",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "GeographicAddress": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Place"
+        },
+        {
+          "type": "object",
+          "description": "Structured textual way of describing how to find a Property in an urban area (country properties are often defined differently). Note : Address corresponds to SID UrbanPropertyAddress",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "City that the address is in"
+            },
+            "country": {
+              "type": "string",
+              "description": "Country that the address is in"
+            },
+            "locality": {
+              "type": "string",
+              "description": "An area of defined or undefined boundaries within a local authority or other legislatively defined area, usually rural or semi rural in nature. [ANZLIC-STREET], or a suburb, a bounded locality within a city, town or shire principally of urban character [ANZLICSTREET]"
+            },
+            "postcode": {
+              "type": "string",
+              "description": "descriptor for a postal delivery area, used to speed and simplify the delivery of mail (also know as zipcode)"
+            },
+            "stateOrProvince": {
+              "type": "string",
+              "description": "the State or Province that the address is in"
+            },
+            "streetName": {
+              "type": "string",
+              "description": "Name of the street or other street type"
+            },
+            "streetNr": {
+              "type": "string",
+              "description": "Number identifying a specific property on a public street. It may be combined with streetNrLast for ranged addresses"
+            },
+            "streetNrLast": {
+              "type": "string",
+              "description": "Last number in a range of street numbers allocated to a property"
+            },
+            "streetNrLastSuffix": {
+              "type": "string",
+              "description": "Last street number suffix for a ranged address"
+            },
+            "streetNrSuffix": {
+              "type": "string",
+              "description": "the first street number suffix"
+            },
+            "streetSuffix": {
+              "type": "string",
+              "description": "A modifier denoting a relative direction"
+            },
+            "streetType": {
+              "type": "string",
+              "description": "alley, avenue, boulevard, brae, crescent, drive, highway, lane, terrace, parade, place, tarn, way, wharf"
+            },
+            "countryCode": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/StandardIdentifier"
+              },
+              "description": "Country codes are short alphabetic or numeric geographical codes (geocodes) developed to represent countries and dependent areas, for use in data processing and communications. Several different systems have been developed to do this. The term country code frequently refers to ISO 3166-1 alpha-2 or international dialing codes, the E.164 country calling codes."
+            },
+            "geographicLocation": {
+              "$ref": "#/$defs/GeographicLocationRefOrValue"
+            },
+            "geographicSubAddress": {
+              "type": "array",
+              "description": "Collection of sub addresses",
+              "items": {
+                "$ref": "#/$defs/GeographicSubAddress"
+              }
+            },
+            "geographicAddressType": {
+              "type": "string",
+              "description": "Classification of the address, e.g., residential, industrial"
+            },
+            "geographicSite": {
+              "$ref": "#/$defs/GeographicSiteRefOrValue"
+            },
+            "geographicAddressRelationship": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/GeographicAddressRelationship"
+              },
+              "description": "A list of geographic addresses relationships. Represents a relationship between geographic addresses"
+            }
+          }
+        }
+      ]
+    },
+    "GeographicAddressRelationship": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "The GeographicAddressRelationship schema represents a relationship between geographic addresses. It defines the structure for storing information about how two geographic addresses are related to each other within a system.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique identifier of the related geographic address. This identifier serves as a reference to uniquely identify the associated geographic address within the system."
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the geographic address. This attribute provides a human-readable name or label for the related geographic address, which can help users identify and differentiate between different addresses."
+            },
+            "relationshipType": {
+              "type": "string",
+              "description": "Type of relationship between the geographic addresses. This attribute specifies the nature of the relationship between the related addresses. It provides context for understanding how the addresses are related to each other."
+            }
+          }
+        }
+      ]
+    },
+    "GeographicLocation": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Place"
+        },
+        {
+          "type": "object",
+          "description": "A GeographicLocation is a pure-virtual super-class to the GeoJSON-aligned geometries of Point (addresses and locations), MultiPoint, LineString (streets, highways and boundaries), MultiLineString and Polygon (countries, provinces, tracts of land). Use the @type attribute to specify which of these is being specified by the geometry attribute.",
+          "properties": {
+            "bbox": {
+              "$ref": "#/$defs/bbox"
+            }
+          }
+        }
+      ]
+    },
+    "GeographicLocationRef": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "GeographicLocationRefOrValue": {
+      "type": "object",
+      "description": "The polymorphic attributes @type, @schemaLocation & @referredType are related to the GeographicLocation entity and not the GeographicLocationRefOrValue class itself",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/GeographicLocation"
+        },
+        {
+          "$ref": "#/$defs/GeographicLocationRef"
+        }
+      ]
+    },
+    "GeographicSite": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Place"
+        },
+        {
+          "type": "object",
+          "description": "It defines a Site as a convenience class that allows to easily refer to places important to other entities",
+          "properties": {
+            "code": {
+              "type": "string",
+              "description": "A code that may be used for some addressing schemes eg: [ANSI T1.253-1999]",
+              "examples": [
+                "BTS"
+              ]
+            },
+            "creationDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Date and time when the GeographicSite was created",
+              "examples": [
+                "2024-09-23T00:00:00Z"
+              ]
+            },
+            "description": {
+              "type": "string",
+              "description": "Text describing additional information regarding the site",
+              "examples": [
+                "GeographiSite for the base station BS-9283"
+              ]
+            },
+            "status": {
+              "type": "string",
+              "description": "The condition of the GeographicSite, such as planned, underConstruction, cancelled, active, inactive, former",
+              "examples": [
+                "planned"
+              ]
+            },
+            "relatedParty": {
+              "type": "array",
+              "description": "Related parties collection",
+              "items": {
+                "$ref": "#/$defs/RelatedPartyRefOrPartyRoleRef"
+              }
+            },
+            "externalIdentifier": {
+              "type": "array",
+              "description": "Collection of external identifiers",
+              "items": {
+                "$ref": "#/$defs/ExternalIdentifier"
+              }
+            },
+            "calendar": {
+              "type": "array",
+              "description": "Collection of calendar items",
+              "items": {
+                "$ref": "#/$defs/CalendarPeriod"
+              }
+            },
+            "place": {
+              "type": "array",
+              "description": "Collection of place objects",
+              "items": {
+                "$ref": "#/$defs/PlaceRefOrValue"
+              }
+            },
+            "siteRelationship": {
+              "type": "array",
+              "description": "Collection of site siteRelationships",
+              "items": {
+                "$ref": "#/$defs/GeographicSiteRelationship"
+              }
+            },
+            "siteCategory": {
+              "type": "string",
+              "description": "Site classification/category.",
+              "examples": [
+                "ShoppingUnit"
+              ]
+            },
+            "contactMedium": {
+              "type": "array",
+              "description": "Collection of contact information",
+              "items": {
+                "$ref": "#/$defs/ContactMedium"
+              }
+            },
+            "siteFeature": {
+              "type": "array",
+              "description": "Collection of site features",
+              "items": {
+                "$ref": "#/$defs/GeographicSiteFeature"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "GeographicSiteFeature": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Feature"
+        },
+        {
+          "type": "object",
+          "description": "Geographic Site Feature captures various site information, ranging from survey data to safety guidelines and hazard information",
+          "properties": {
+            "validFor": {
+              "type": "array",
+              "description": "Collection of validity information",
+              "items": {
+                "$ref": "#/$defs/CalendarPeriod"
+              }
+            },
+            "attachment": {
+              "type": "array",
+              "description": "Attachments that may be of relevance to this specification, such as picture, document, media",
+              "items": {
+                "$ref": "#/$defs/AttachmentRefOrValue"
+              }
+            },
+            "note": {
+              "type": "array",
+              "description": "Collection of notes",
+              "items": {
+                "$ref": "#/$defs/Note"
+              }
+            },
+            "relatedParty": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RelatedPartyRefOrPartyRoleRef"
+              },
+              "description": "The associated party or partyRole",
+              "minItems": 1
+            },
+            "featureCategory": {
+              "type": "array",
+              "description": "Collection of feature category",
+              "items": {
+                "type": "string",
+                "description": "This parameter represents a feature category which may be assigned to certain groups of features.",
+                "examples": [
+                  "Access Information"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "GeographicSiteRef": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "GeographicSiteRefOrValue": {
+      "type": "object",
+      "description": "The polymorphic attributes @type, @schemaLocation & @referredType are related to the GeographicSite entity and not the GeographicSiteRefOrValue class itself",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/GeographicSite"
+        },
+        {
+          "$ref": "#/$defs/GeographicSiteRef"
+        }
+      ]
+    },
+    "GeographicSiteRelationship": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Details of geographic site relationship",
+          "properties": {
+            "href": {
+              "type": "string",
+              "description": "Reference of the related geographic site"
+            },
+            "role": {
+              "type": "string",
+              "description": "Role of the related site in the relationship"
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            },
+            "id": {
+              "type": "string",
+              "description": "Unique identifier of the related site entity within the server"
+            },
+            "relationshipType": {
+              "type": "string",
+              "description": "Type of relationship"
+            }
+          }
+        }
+      ]
+    },
+    "GeographicSubAddress": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Entity"
+        },
+        {
+          "type": "object",
+          "description": "Representation of a GeographicSubAddress It is used for addressing within a property in an urban area (country properties are often defined differently). It may refer to a building, a building cluster, or a floor of a multistory building.",
+          "properties": {
+            "buildingName": {
+              "type": "string",
+              "description": "allows for buildings that have well-known names"
+            },
+            "href": {
+              "type": "string",
+              "description": "Link to the subAddress"
+            },
+            "id": {
+              "type": "string",
+              "description": "Unique Identifier of the subAddress"
+            },
+            "levelNumber": {
+              "type": "string",
+              "description": "used where a level type may be repeated e.g. BASEMENT 1, BASEMENT 2"
+            },
+            "levelType": {
+              "type": "string",
+              "description": "describes level types within a building"
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the subAddress to identify it with a meaningful identification"
+            },
+            "privateStreetName": {
+              "type": "string",
+              "description": "private streets internal to a property (e.g. a university) may have internal names that are not recorded by the land title office."
+            },
+            "privateStreetNumber": {
+              "type": "string",
+              "description": "private streets numbers internal to a private street"
+            },
+            "subUnit": {
+              "type": "array",
+              "description": "Representation of a SubUnit. It is used for describing subunit within a subAddress e.g. BERTH, FLAT, PIER, SUITE, SHOP, TOWER, UNIT, WHARF.",
+              "items": {
+                "$ref": "#/$defs/GeographicSubAddressUnit"
+              }
+            },
+            "subAddressType": {
+              "type": "string",
+              "description": "Type of subAddress : it can be a subunit or a private street"
+            }
+          }
+        }
+      ]
+    },
+    "GeographicSubAddressUnit": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Representation of a SubUnit. It is used for describing subunit within a subAddress e.g. BERTH, FLAT, PIER, SUITE, SHOP, TOWER, UNIT, WHARF.",
+          "properties": {
+            "subUnitNumber": {
+              "type": "string",
+              "description": "The discriminator used for the subunit, often just a simple number but may also be a range."
+            },
+            "subUnitType": {
+              "type": "string",
+              "description": "The type of subunit e.g.BERTH, FLAT, PIER, SUITE, SHOP, TOWER, UNIT, WHARF, RACK"
+            }
+          }
+        }
+      ]
+    },
+    "HourPeriod": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Hour interval",
+          "properties": {
+            "endHour": {
+              "type": "string",
+              "description": "The time when the status ends applying"
+            },
+            "startHour": {
+              "type": "string",
+              "description": "The time when the status starts applying"
+            }
+          }
+        }
+      ]
+    },
+    "IntegerArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of Integer(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "description": "A characteristic which value is an array of Integer(s).",
+              "items": {
+                "type": "integer",
+                "description": "Characteristic value"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "IntegerCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Integer.",
+          "properties": {
+            "value": {
+              "type": "integer",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "Intent": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Entity"
+        },
+        {
+          "type": "object",
+          "description": "An Intent instance is the formal description of all expectations including requirements, goals, and constraints given to a technical system",
+          "properties": {
+            "description": {
+              "type": "string",
+              "description": "The description of the intent."
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            },
+            "isBundle": {
+              "type": "boolean",
+              "description": "isBundle determines whether an intent represents a single intent (false), or a bundle of intents(true)."
+            },
+            "priority": {
+              "type": "string",
+              "description": "Can be used by intent owner to prioritize intents in an intent management system"
+            },
+            "statusChangeDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "A date time( DateTime). The date that the entity status changed to the current one"
+            },
+            "context": {
+              "type": "string",
+              "description": "A string used to give a context to the intent"
+            },
+            "version": {
+              "type": "string",
+              "description": "A field that identifies the specific version of an instance of an intent."
+            },
+            "intentSpecification": {
+              "$ref": "#/$defs/EntityRef"
+            },
+            "intentRelationship": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/EntityRelationship"
+              },
+              "description": "A list of intents related to this intent"
+            },
+            "characteristic": {
+              "type": "array",
+              "description": "Collection of characteristics",
+              "items": {
+                "$ref": "#/$defs/Characteristic"
+              }
+            },
+            "relatedParty": {
+              "type": "array",
+              "description": "Collection of related parties",
+              "items": {
+                "$ref": "#/$defs/RelatedPartyRefOrPartyRoleRef"
+              }
+            },
+            "attachment": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/AttachmentRefOrValue"
+              },
+              "description": "Attachments that may be of relevance to this intent, such as picture, document, media"
+            },
+            "name": {
+              "type": "string",
+              "description": "The name of the intent."
+            },
+            "expression": {
+              "$ref": "#/$defs/IntentExpression"
+            },
+            "creationDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Date and time of the creation of this REST resource"
+            },
+            "lastUpdate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Date and time of the last update of this REST resource"
+            },
+            "lifecycleStatus": {
+              "type": "string",
+              "description": "Used to indicate the current lifecycle status of this intent"
+            }
+          }
+        }
+      ]
+    },
+    "IntentExpression": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "An Intent expression",
+          "properties": {
+            "iri": {
+              "type": "string",
+              "description": "Internationalized Resource Identifier of the intent Expression"
+            }
+          }
+        }
+      ]
+    },
+    "IntentRef": {
+      "type": "object",
+      "description": "Intent reference, for when Intent is used by other entities",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "IntentRefOrValue": {
+      "type": "object",
+      "description": "Intent Ref (if Intent already exists) or Value (if Intent be created or its details be presented)",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/IntentRef"
+        },
+        {
+          "$ref": "#/$defs/Intent"
+        }
+      ]
+    },
+    "Note": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Extra information about a given entity",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Identifier of the note within its containing entity",
+              "examples": [
+                "afa9-3d90aaa8da0f"
+              ]
+            },
+            "author": {
+              "type": "string",
+              "description": "Author of the note",
+              "examples": [
+                "Mr. N. Bene"
+              ]
+            },
+            "date": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Date of the note",
+              "examples": [
+                "2020-11-20T08:00:00Z"
+              ]
+            },
+            "text": {
+              "type": "string",
+              "description": "Text of the note",
+              "examples": [
+                "This is important"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "NumberArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of Number(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "description": "A characteristic which value is an array of Number(s).",
+              "items": {
+                "type": "number",
+                "description": "Characteristic value"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "NumberCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Number.",
+          "properties": {
+            "value": {
+              "type": "number",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "ObjectArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of Object(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "description": "Collection of characteristic values",
+              "items": {
+                "type": "object",
+                "description": "Characteristic value"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ObjectCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Object.",
+          "properties": {
+            "value": {
+              "type": "object",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "OrderItemActionType": {
+      "enum": [
+        "add",
+        "modify",
+        "delete",
+        "noChange"
+      ],
+      "type": "string",
+      "description": "action to be performed on the product"
+    },
+    "PartyRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "A Party reference",
+          "properties": {
+            "@type": {
+              "type": "string",
+              "enum": [
+                "PartyRef"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "PartyRefOrPartyRoleRef": {
+      "type": "object",
+      "description": "",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PartyRef"
+        },
+        {
+          "$ref": "#/$defs/PartyRoleRef"
+        }
+      ]
+    },
+    "PartyRoleRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "Party role reference. A party role represents the part played by a party in a given context.",
+          "properties": {
+            "@type": {
+              "type": "string",
+              "enum": [
+                "PartyRoleRef"
+              ]
+            },
+            "partyId": {
+              "type": "string",
+              "description": "The identifier of the engaged party that is linked to the PartyRole object."
+            },
+            "partyName": {
+              "type": "string",
+              "description": "The name of the engaged party that is linked to the PartyRole object."
+            }
+          }
+        }
+      ]
+    },
+    "Place": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Entity"
+        },
+        {
+          "type": "object",
+          "description": "Place reference.",
+          "properties": {
+            "externalIdentifier": {
+              "type": "array",
+              "description": "Collection of external identifiers",
+              "items": {
+                "$ref": "#/$defs/ExternalIdentifier"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "PlaceRef": {
+      "type": "object",
+      "description": "Place reference.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "PlaceRefOrValue": {
+      "type": "object",
+      "description": "The polymorphic attributes @type, @schemaLocation & @referredType are related to the Place entity and not the PlaceRefOrValue class itself",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/GeographicLocation"
+        },
+        {
+          "$ref": "#/$defs/GeographicSite"
+        },
+        {
+          "$ref": "#/$defs/GeographicAddress"
+        },
+        {
+          "$ref": "#/$defs/PlaceRef"
+        }
+      ]
+    },
+    "PolicyRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "Reference to managed Policy object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "unique identifier"
+            },
+            "href": {
+              "type": "string",
+              "description": "Hyperlink reference"
+            },
+            "version": {
+              "type": "string"
+            },
+            "@type": {
+              "type": "string",
+              "description": "When sub-classing, this defines the sub-class Extensible name"
+            },
+            "@baseType": {
+              "type": "string",
+              "description": "When sub-classing, this defines the super-class"
+            },
+            "@schemaLocation": {
+              "type": "string",
+              "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+            }
+          }
+        }
+      ]
+    },
+    "Quantity": {
+      "type": "object",
+      "description": "An amount in a given unit",
+      "properties": {
+        "amount": {
+          "type": "number",
+          "format": "float",
+          "default": 1,
+          "description": "Numeric value in a given unit"
+        },
+        "units": {
+          "type": "string",
+          "description": "Unit"
+        }
+      }
+    },
+    "RelatedEntityRefOrValue": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "A reference to an entity, where the type of the entity is not known in advance. A related entity defines a entity described by reference or by value linked to a specific entity. The polymorphic attributes @type, @schemaLocation & @referredType are related to the Entity and not the RelatedEntityRefOrValue class itself",
+          "properties": {
+            "role": {
+              "type": "string"
+            },
+            "entity": {
+              "$ref": "#/$defs/EntityRefOrValue"
+            }
+          }
+        }
+      ]
+    },
+    "RelatedPartyRefOrPartyRoleRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "RelatedParty reference. A related party defines party or party role or its reference, linked to a specific entity",
+          "properties": {
+            "role": {
+              "description": "Role played by the related party or party role in the context of the specific entity it is linked to. Such as 'initiator', 'customer', 'salesAgent', 'user'",
+              "type": "string"
+            },
+            "partyOrPartyRole": {
+              "$ref": "#/$defs/PartyRefOrPartyRoleRef"
+            }
+          }
+        }
+      ]
+    },
+    "RelatedPlaceRefOrValue": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Entity reference. The polymorphic attributes @type, @schemaLocation & @referredType are related to the RelatedPlace entity and not the RelatedPlaceRefOrValue class itself",
+          "properties": {
+            "role": {
+              "type": "string"
+            },
+            "place": {
+              "$ref": "#/$defs/PlaceRefOrValue"
+            }
+          }
+        }
+      ]
+    },
+    "RelatedServiceOrderItem": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "RelatedServiceOrderItem (a ServiceOrder item) .The service order item which triggered service creation/change/termination.",
+          "properties": {
+            "@referredType": {
+              "type": "string",
+              "description": "The actual type of the target instance when needed for disambiguation."
+            },
+            "serviceOrderHref": {
+              "type": "string",
+              "description": "Reference of the related entity."
+            },
+            "serviceOrderId": {
+              "type": "string",
+              "description": "Unique identifier of a related entity."
+            },
+            "itemAction": {
+              "$ref": "#/$defs/OrderItemActionType"
+            },
+            "itemId": {
+              "type": "string",
+              "description": "Identifier of the order item where the service was managed"
+            },
+            "role": {
+              "type": "string",
+              "description": "role of the service order item for this service"
+            }
+          }
+        }
+      ]
+    },
+    "ResourceRef": {
+      "type": "object",
+      "description": "Resource reference, for when Resource is used by other entities.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "Service": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Entity"
+        },
+        {
+          "type": "object",
+          "description": "Service is a base class for defining the Service hierarchy. All Services are characterized as either being possibly visible and usable by a Customer or not. This gives rise to the two subclasses of Service: CustomerFacingService and ResourceFacingService.",
+          "properties": {
+            "description": {
+              "description": "Free-text description of the service",
+              "type": "string"
+            },
+            "isServiceEnabled": {
+              "type": "boolean",
+              "description": "If FALSE and hasStarted is FALSE, this particular Service has NOT been enabled for use - if FALSE and hasStarted is TRUE then the service has failed"
+            },
+            "hasStarted": {
+              "type": "boolean",
+              "description": "If TRUE, this Service has already been started"
+            },
+            "startMode": {
+              "type": "string",
+              "description": "This attribute is an enumerated integer that indicates how the Service is started, such as: 0: Unknown; 1: Automatically by the managed environment; 2: Automatically by the owning device; 3: Manually by the Provider of the Service; 4: Manually by a Customer of the Provider; 5: Any of the above"
+            },
+            "isStateful": {
+              "type": "boolean",
+              "description": "If TRUE, this Service can be changed without affecting any other services"
+            },
+            "startDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Date when the service starts"
+            },
+            "endDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Date when the service ends"
+            },
+            "serviceOrderItem": {
+              "type": "array",
+              "description": "A list of service order items related to this service",
+              "items": {
+                "$ref": "#/$defs/RelatedServiceOrderItem"
+              }
+            },
+            "note": {
+              "type": "array",
+              "description": "A list of notes made on this service",
+              "items": {
+                "$ref": "#/$defs/Note"
+              }
+            },
+            "serviceType": {
+              "description": "Business type of the service",
+              "type": "string"
+            },
+            "isBundle": {
+              "description": "If true, the service is a ServiceBundle which regroup a service hierachy. If false, the service is a 'atomic' service (hierachy leaf).",
+              "type": "boolean"
+            },
+            "name": {
+              "description": "Name of the service",
+              "type": "string"
+            },
+            "category": {
+              "type": "string",
+              "description": "Is it a customer facing or resource facing service"
+            },
+            "feature": {
+              "type": "array",
+              "description": "A list of feature associated with this service",
+              "items": {
+                "$ref": "#/$defs/Feature"
+              }
+            },
+            "relatedEntity": {
+              "type": "array",
+              "description": "A list of related entities in relationship with this service",
+              "items": {
+                "$ref": "#/$defs/RelatedEntityRefOrValue"
+              }
+            },
+            "externalIdentifier": {
+              "type": "array",
+              "description": "A list of external identifiers assoicated with this service",
+              "items": {
+                "$ref": "#/$defs/ExternalIdentifier"
+              }
+            },
+            "serviceCharacteristic": {
+              "type": "array",
+              "description": "A list of characteristics that characterize this service (ServiceCharacteristic [*])",
+              "items": {
+                "$ref": "#/$defs/Characteristic"
+              }
+            },
+            "serviceRelationship": {
+              "type": "array",
+              "description": "A list of service relationships (ServiceRelationship [*]). Describes links with other service(s) in the inventory.",
+              "items": {
+                "$ref": "#/$defs/ServiceRelationship"
+              }
+            },
+            "supportingService": {
+              "type": "array",
+              "description": "A list of supporting services (SupportingService [*]). A collection of services that support this service (bundling, link CFS to RFS)",
+              "items": {
+                "$ref": "#/$defs/ServiceRefOrValue"
+              }
+            },
+            "supportingResource": {
+              "type": "array",
+              "description": "A list of supporting resources (SupportingResource [*]).Note: only Service of type RFS can be associated with Resources",
+              "items": {
+                "$ref": "#/$defs/ResourceRef"
+              }
+            },
+            "relatedParty": {
+              "type": "array",
+              "description": "A list of related party references (RelatedParty [*]). A related party defines party or party role linked to a specific entity",
+              "items": {
+                "$ref": "#/$defs/RelatedPartyRefOrPartyRoleRef"
+              }
+            },
+            "place": {
+              "type": "array",
+              "description": "A list of places (Place [*]). Used to define a place useful for the service (for example a geographical place whre the service is installed)",
+              "items": {
+                "$ref": "#/$defs/RelatedPlaceRefOrValue"
+              }
+            },
+            "state": {
+              "$ref": "#/$defs/ServiceStateType"
+            },
+            "operatingStatus": {
+              "$ref": "#/$defs/ServiceOperatingStatusType"
+            },
+            "operatingStatusContextUpdate": {
+              "$ref": "#/$defs/ContextUpdate"
+            },
+            "serviceSpecification": {
+              "$ref": "#/$defs/ServiceSpecificationRef"
+            },
+            "serviceDate": {
+              "description": "Date when the service was created (whatever its status).",
+              "type": "string"
+            },
+            "intent": {
+              "$ref": "#/$defs/IntentRefOrValue"
+            }
+          }
+        }
+      ]
+    },
+    "ServiceCategoryRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "The (service) category resource is used to group service candidates in logical containers. Categories can contain other categories.",
+          "properties": {
+            "version": {
+              "type": "string",
+              "description": "Category version"
+            }
+          }
+        }
+      ]
+    },
+    "ServiceOperatingStatusType": {
+      "enum": [
+        "pending",
+        "configured",
+        "starting",
+        "running",
+        "degraded",
+        "failed",
+        "limited",
+        "stopping",
+        "stopped",
+        "unknown"
+      ],
+      "type": "string",
+      "description": "Valid values for the Operating status of the service"
+    },
+    "ServiceQualificationItem": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "A ServiceQualificationItem relates to a specific service being checked in a qualification operation.",
+          "properties": {
+            "expectedActivationDate": {
+              "type": "string",
+              "description": "The date when the service is expected to be activated",
+              "format": "date-time"
+            },
+            "id": {
+              "type": "string",
+              "description": "Id of the Service Qualification Item"
+            },
+            "service": {
+              "$ref": "#/$defs/ServiceRefOrValue"
+            },
+            "expectedServiceAvailabilityDate": {
+              "description": "Date when the requester looks for service availability",
+              "type": "string",
+              "format": "date-time"
+            },
+            "expirationDate": {
+              "description": "Date when the qualification item response expires",
+              "type": "string",
+              "format": "date-time"
+            },
+            "category": {
+              "$ref": "#/$defs/ServiceCategoryRef"
+            },
+            "appointmentRequired": {
+              "type": "boolean",
+              "description": "Indicates whether an appointment is required or not",
+              "default": false
+            }
+          }
+        }
+      ]
+    },
+    "ServiceQualificationItemRelationship": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Structure used to describe relationship between serviceQualification items from the same serviceQualification.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Id of the serviceQualificationItem (from the same serviceQualificationItem)."
+            },
+            "relationshipType": {
+              "type": "string",
+              "description": "Type of relationship (ex: reliesOn, connectedTo, etc...)"
+            }
+          }
+        }
+      ]
+    },
+    "ServiceRef": {
+      "type": "object",
+      "description": "Service reference, for when Service is used by other entities.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "ServiceRefOrValue": {
+      "type": "object",
+      "description": "The polymorphic attributes @type, @schemaLocation & @referredType are related to the Service entity and not the ServiceRefOrValue class itself",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Service"
+        },
+        {
+          "$ref": "#/$defs/ServiceRef"
+        }
+      ]
+    },
+    "ServiceRelationship": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "serviceRelationshipCharacteristic": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Characteristic"
+              }
+            },
+            "service": {
+              "$ref": "#/$defs/ServiceRefOrValue"
+            },
+            "relationshipType": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "ServiceSpecificationRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "Service specification reference: ServiceSpecification(s) required to realize a ProductSpecification.",
+          "properties": {
+            "version": {
+              "type": "string",
+              "description": "Service specification version"
+            }
+          }
+        }
+      ]
+    },
+    "ServiceStateType": {
+      "enum": [
+        "created",
+        "feasibilityChecked",
+        "designed",
+        "reserved",
+        "inactive",
+        "pendingActive",
+        "active",
+        "suspended",
+        "pendingTerminate",
+        "terminated"
+      ],
+      "type": "string",
+      "description": "Valid values for the lifecycle state of the service"
+    },
+    "StandardIdentifier": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Entity"
+        },
+        {
+          "type": "object",
+          "description": "The corresponding identification of the resource in different standard, regulatory definitions. The standard specification identifier (e.g., ISO 3166-1 Alpha-2) and the corresponding value (e.g., BE) relevant to a particular resource. It is anticipated that multiple standards can provide definitions for a single entity, e.g., a country identifier can be specified in various standards (e.g., \"ISO 3166-1 Alpha 2\", \"ISO 3166-1 Alpha 3\", \"ISO 3166-1 Numeric\")",
+          "properties": {
+            "format": {
+              "type": "string",
+              "description": "Standard/Regulatory definition identifier. e.g., ISO 3166-1",
+              "examples": [
+                "ISO 3166-1"
+              ]
+            },
+            "value": {
+              "type": "string",
+              "description": "The value of the resource in the corresponding standard.e.g., a country code value",
+              "examples": [
+                "GB"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "StringArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of String(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "description": "Collection of string characteristics",
+              "items": {
+                "type": "string",
+                "description": "Characteristic value"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "StringCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a String.",
+          "properties": {
+            "value": {
+              "type": "string",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "TerminationError": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Extra information about a given entity",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique identifier of the termination error"
+            },
+            "value": {
+              "type": "string",
+              "description": "Text to describe the termination error - for example: Unable to proceed to qualification because incomplete information provided"
+            }
+          }
+        }
+      ]
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "startDateTime": {
+          "description": "Start of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        },
+        "endDateTime": {
+          "description": "End of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        }
+      }
+    },
+    "bbox": {
+      "items": {
+        "type": "number"
+      },
+      "minItems": 4,
+      "type": "array",
+      "description": "A bounding box array that contains the geometry. The axes order follows the axes order of the geometry"
+    }
+  }
+}

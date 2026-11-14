@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ServiceLevelSpecification/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - ServiceLevelSpecification",
+  "description": "A Service Level Specification represents a pre-defined or negotiated set of Service Level Objectives. In addition, certain consequences are associated with not meeting the Service Level Objectives. Service Level Agreements are expressed in terms of Service Level Specifications. (TM Forum TMF657 Service Quality Management 4.0.0, Swagger definition ServiceLevelSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:ServiceLevelSpecification:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ServiceLevelSpecification"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ServiceLevelSpecification'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF657_ServiceQualityManagement/blob/v4.0.0/TMF657-ServiceQualityManagement-v4.0.0.swagger.json#/definitions/ServiceLevelSpecification/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:ServiceLevelSpecification:<tmfId>. The identifier to a service level specification."
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF657_ServiceQualityManagement/blob/v4.0.0/TMF657-ServiceQualityManagement-v4.0.0.swagger.json#/definitions/ServiceLevelSpecification/properties/href'. The hyperlink to access a service level specification."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF657_ServiceQualityManagement/blob/v4.0.0/TMF657-ServiceQualityManagement-v4.0.0.swagger.json#/definitions/ServiceLevelSpecification/properties/description'. A brief introduction of a service level specification."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF657_ServiceQualityManagement/blob/v4.0.0/TMF657-ServiceQualityManagement-v4.0.0.swagger.json#/definitions/ServiceLevelSpecification/properties/name'. The name of Service Level Specification"
+    },
+    "relatedServiceLevelObjective": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF657_ServiceQualityManagement/blob/v4.0.0/TMF657-ServiceQualityManagement-v4.0.0.swagger.json#/definitions/ServiceLevelSpecification/properties/relatedServiceLevelObjective'. A list of objectives related to this service level specification. In TMF this is an array of ServiceLevelObjectiveRef objects; here the NGSI-LD ids of the referenced ServiceLevelObjective entities (urn:ngsi-ld:ServiceLevelObjective:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "validFor": {
+      "$ref": "#/$defs/TimePeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF657_ServiceQualityManagement/blob/v4.0.0/TMF657-ServiceQualityManagement-v4.0.0.swagger.json#/definitions/ServiceLevelSpecification/properties/validFor'. A valid duration of a thing."
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF657_ServiceQualityManagement/blob/v4.0.0/TMF657-ServiceQualityManagement-v4.0.0.swagger.json#/definitions/ServiceLevelSpecification/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF657_ServiceQualityManagement/blob/v4.0.0/TMF657-ServiceQualityManagement-v4.0.0.swagger.json#/definitions/ServiceLevelSpecification/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF657_ServiceQualityManagement/blob/v4.0.0/TMF657-ServiceQualityManagement-v4.0.0.swagger.json#/definitions/ServiceLevelSpecification/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'ServiceLevelSpecification' or a sub-class / extension name. When sub-classing, this defines the sub-class entity name"
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ],
+  "$defs": {
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "endDateTime": {
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ],
+          "type": "string",
+          "format": "date-time",
+          "description": "End of the time period, using IETC-RFC-3339 format"
+        },
+        "startDateTime": {
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ],
+          "type": "string",
+          "format": "date-time",
+          "description": "Start of the time period, using IETC-RFC-3339 format. If you define a start, you must also define an end"
+        }
+      }
+    }
+  }
+}

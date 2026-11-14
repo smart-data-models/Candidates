@@ -1,0 +1,743 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/TaskSpecification/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - TaskSpecification",
+  "description": "TaskSpecification is a class that allow to describe a task design. A task design defines the tasks that can potentially be instantiated within a process that is instantiated from this process specification. (TM Forum TMF701 Process Management 5.0.0, OpenAPI component TaskSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:TaskSpecification:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "TaskSpecification"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'TaskSpecification'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/v5.0.0/TMF701-Process_Management-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'TaskSpecification' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/v5.0.0/TMF701-Process_Management-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/v5.0.0/TMF701-Process_Management-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/v5.0.0/TMF701-Process_Management-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/href'. Hyperlink reference"
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/v5.0.0/TMF701-Process_Management-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:TaskSpecification:<tmfId>. unique identifier"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/v5.0.0/TMF701-Process_Management-v5.0.0.oas.yaml#/components/schemas/TaskSpecification/properties/description'. Description of the TaskSpecification"
+    },
+    "taskType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/v5.0.0/TMF701-Process_Management-v5.0.0.oas.yaml#/components/schemas/TaskSpecification/properties/taskType'. The type of the task, the BPMN standard distinguish different types of tasks like sendTask, receiveTask, userTask, manualTask, scriptTask, businessRuleTask."
+    },
+    "lastUpdate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/v5.0.0/TMF701-Process_Management-v5.0.0.oas.yaml#/components/schemas/TaskSpecification/properties/lastUpdate'. Date and time of the last update of the TaskSpecification"
+    },
+    "lifecycleStatus": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/v5.0.0/TMF701-Process_Management-v5.0.0.oas.yaml#/components/schemas/TaskSpecification/properties/lifecycleStatus'. Used to indicate the current lifecycle status of this TaskSpecification, for example: onDesign, active, deprecated"
+    },
+    "validFor": {
+      "$ref": "#/$defs/TimePeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/v5.0.0/TMF701-Process_Management-v5.0.0.oas.yaml#/components/schemas/TaskSpecification/properties/validFor'. A period of time, either as a deadline (endDateTime only) a startDateTime only, or both"
+    },
+    "version": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/v5.0.0/TMF701-Process_Management-v5.0.0.oas.yaml#/components/schemas/TaskSpecification/properties/version'. taskSpecification version"
+    },
+    "attachment": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AttachmentRefOrValue"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/v5.0.0/TMF701-Process_Management-v5.0.0.oas.yaml#/components/schemas/TaskSpecification/properties/attachment'. Attachments that are of relevance to this TaskSpecification, such as picture, document, media. This could be for example a how-to or a faq to explain this TaskSpecification"
+    },
+    "taskSpecificationRelationship": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/TaskSpecificationRelationship"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/v5.0.0/TMF701-Process_Management-v5.0.0.oas.yaml#/components/schemas/TaskSpecification/properties/taskSpecificationRelationship'. A list of tasks related to this task, representing dependencies, sequencing, or logical associations."
+    },
+    "channel": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ChannelRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/v5.0.0/TMF701-Process_Management-v5.0.0.oas.yaml#/components/schemas/TaskSpecification/properties/channel'. A list of channels where Tasks instantiated from this TaskSpecification could be executed."
+    },
+    "taskSpecificationCharacteristic": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/FlowCharacteristicSpecification"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/v5.0.0/TMF701-Process_Management-v5.0.0.oas.yaml#/components/schemas/TaskSpecification/properties/taskSpecificationCharacteristic'. List of characteristics that the TaskSpecification can take"
+    },
+    "relatedParty": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedPartyRefOrPartyRoleRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/v5.0.0/TMF701-Process_Management-v5.0.0.oas.yaml#/components/schemas/TaskSpecification/properties/relatedParty'. Parties who manage or otherwise have an interest in this TaskSpecification"
+    },
+    "relatedProcessSpecification": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedProcessSpecification"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/v5.0.0/TMF701-Process_Management-v5.0.0.oas.yaml#/components/schemas/TaskSpecification/properties/relatedProcessSpecification'. A related ProcessSpecification (for example when the TaskSpecification completion requires another ProcessSpecification to be triggered & completed)"
+    },
+    "taskSpecificationPolicy": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PolicyRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/v5.0.0/TMF701-Process_Management-v5.0.0.oas.yaml#/components/schemas/TaskSpecification/properties/taskSpecificationPolicy'. A list of policies related to this taskSpecification"
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/v5.0.0/TMF701-Process_Management-v5.0.0.oas.yaml#/components/schemas/TaskSpecification/properties/name'. Name given to the TaskSpecification"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tmfType",
+    "name"
+  ],
+  "$defs": {
+    "Addressable": {
+      "type": "object",
+      "description": "Base schema for addressable entities",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Hyperlink reference"
+        },
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        }
+      }
+    },
+    "Attachment": {
+      "description": "Complements the description of an element (for instance a product) through video, pictures...",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Entity"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The name of the attachment"
+            },
+            "description": {
+              "type": "string",
+              "description": "A narrative text describing the content of the attachment",
+              "examples": [
+                "Photograph of the Product"
+              ]
+            },
+            "url": {
+              "type": "string",
+              "description": "The URL pointing to the attachment content held in an external system, such as a content management system or document repository. Mutually exclusive with content.",
+              "examples": [
+                "https://host/Content/4aafacbd-11ff-4dc8-b445-305f2215715f"
+              ]
+            },
+            "content": {
+              "type": "string",
+              "format": "base64",
+              "description": "The actual contents of the attachment object, embedded inline and encoded as base64. Mutually exclusive with url."
+            },
+            "size": {
+              "$ref": "#/$defs/Quantity"
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            },
+            "attachmentType": {
+              "type": "string",
+              "description": "a business characterization of the purpose of the attachment, for example logo, instructionManual, contractCopy"
+            },
+            "mimeType": {
+              "type": "string",
+              "description": "A technical characterization of the attachment content format using an IETF Media Type, for example application/pdf or image/png. Note: this property is named mimeType for historical reasons."
+            }
+          },
+          "required": [
+            "attachmentType",
+            "mimeType"
+          ]
+        }
+      ]
+    },
+    "AttachmentRef": {
+      "description": "Attachment reference. An attachment complements the description of an element (for instance a product) through video, pictures",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "properties": {}
+        }
+      ]
+    },
+    "AttachmentRefOrValue": {
+      "type": "object",
+      "description": "The polymorphic attributes @type, @schemaLocation & @referredType are related to the Attachment entity and not the AttachmentRefOrValue class itself",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Attachment"
+        },
+        {
+          "$ref": "#/$defs/AttachmentRef"
+        }
+      ]
+    },
+    "ChannelRef": {
+      "type": "object",
+      "description": "The channel to which the resource reference to. e.g. channel for selling product offerings, channel for opening a trouble ticket etc..",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "CharacteristicSpecification": {
+      "description": "This class defines a characteristic specification.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique ID for the characteristic"
+            },
+            "name": {
+              "type": "string",
+              "description": "A word, term, or phrase by which this characteristic specification is known and distinguished from other characteristic specifications."
+            },
+            "valueType": {
+              "type": "string",
+              "description": "A kind of value that the characteristic can take on, such as numeric, text and so forth"
+            },
+            "description": {
+              "type": "string",
+              "description": "A narrative that explains the CharacteristicSpecification."
+            },
+            "configurable": {
+              "type": "boolean",
+              "description": "If true, the Boolean indicates that the target Characteristic is configurable"
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            },
+            "minCardinality": {
+              "type": "integer",
+              "description": "The minimum number of instances a CharacteristicValue can take on. For example, zero to five phone numbers in a group calling plan, where zero is the value for the minCardinality."
+            },
+            "maxCardinality": {
+              "type": "integer",
+              "description": "The maximum number of instances a CharacteristicValue can take on. For example, zero to five phone numbers in a group calling plan, where five is the value for the maxCardinality."
+            },
+            "isUnique": {
+              "type": "boolean",
+              "description": "Specifies if the value of this characteristic is unique across all entities instantiated from the specification that uses this characteristic. For example, consider a ProductSpecification for a set-top box, with a CharacteristicSpecification cardID. Each set-top box must have a different value for cardID, so this isUnique attribute would be set to true for the characteristic."
+            },
+            "regex": {
+              "type": "string",
+              "description": "A rule or principle represented in regular expression used to derive the value of a characteristic value."
+            },
+            "extensible": {
+              "type": "boolean",
+              "description": "An indicator that specifies that the values for the characteristic can be extended by adding new values when instantiating a characteristic for a resource."
+            },
+            "@valueSchemaLocation": {
+              "type": "string",
+              "description": "This (optional) field provides a link to the schema describing the value type."
+            },
+            "charSpecRelationship": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/CharacteristicSpecificationRelationship"
+              },
+              "description": "An aggregation, migration, substitution, dependency or exclusivity relationship between/among Specification Characteristics."
+            },
+            "characteristicValueSpecification": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/CharacteristicValueSpecification"
+              },
+              "description": "A CharacteristicValueSpecification object is used to define a set of attributes, each of which can be assigned to a corresponding set of attributes in a CharacteristicSpecification object. The values of the attributes in the CharacteristicValueSpecification object describe the values of the attributes that a corresponding Characteristic object can take on."
+            }
+          },
+          "required": [
+            "name",
+            "valueType"
+          ]
+        }
+      ]
+    },
+    "CharacteristicSpecificationRelationship": {
+      "description": "An aggregation, migration, substitution, dependency or exclusivity relationship between/among Characteristic specifications. The specification characteristic is embedded within the specification whose ID and href are in this entity, and identified by its ID.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "relationshipType": {
+              "type": "string",
+              "description": "Type of relationship such as aggregation, migration, substitution, dependency, exclusivity"
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the target characteristic within the specification"
+            },
+            "characteristicSpecificationId": {
+              "type": "string",
+              "description": "Unique identifier of the characteristic within the specification"
+            },
+            "parentSpecificationHref": {
+              "type": "string",
+              "format": "uri",
+              "description": "Hyperlink reference to the parent specification containing the target characteristic"
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            },
+            "parentSpecificationId": {
+              "type": "string",
+              "description": "Unique identifier of the parent specification containing the target characteristic"
+            }
+          },
+          "required": [
+            "parentSpecificationId",
+            "name",
+            "relationshipType"
+          ]
+        }
+      ]
+    },
+    "CharacteristicValueSpecification": {
+      "description": "specification of a value (number or text or an object) that can be assigned to a Characteristic. This is an abstract base class, the actual value is in one of the strongly-typed subclasses : BooleanArrayCharacteristicValueSpecification, BooleanCharacteristicValueSpecification, FloatArrayCharacteristicValueSpecification, FloatCharacteristicValueSpecification, IntegerArrayCharacteristicValueSpecification, IntegerCharacteristicValueSpecification, MapArrayCharacteristicValueSpecification, MapCharacteristicValueSpecification, NumberArrayCharacteristicValueSpecification, NumberCharacteristicValueSpecification, ObjectArrayCharacteristicValueSpecification, ObjectCharacteristicValueSpecification, StringArrayCharacteristicValueSpecification, StringCharacteristicValueSpecification...",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "valueType": {
+              "type": "string",
+              "description": "A kind of value that the characteristic value can take on, such as numeric, text and so forth"
+            },
+            "isDefault": {
+              "type": "boolean",
+              "description": "If true, the Boolean Indicates if the value is the default value for a characteristic"
+            },
+            "unitOfMeasure": {
+              "type": "string",
+              "description": "A length, surface, volume, dry measure, liquid measure, money, weight, time, and the like. In general, a determinate quantity or magnitude of the kind designated, taken as a standard of comparison for others of the same kind, in assigning to them numerical values, as 1 foot, 1 yard, 1 mile, 1 square foot."
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            },
+            "valueFrom": {
+              "type": "integer",
+              "description": "The low range value that a characteristic can take on"
+            },
+            "valueTo": {
+              "type": "integer",
+              "description": "The upper range value that a characteristic can take on"
+            },
+            "rangeInterval": {
+              "type": "string",
+              "description": "An indicator that specifies the inclusion or exclusion of the valueFrom and valueTo attributes. If applicable, possible values are \"open\", \"closed\", \"closedBottom\" and \"closedTop\"."
+            },
+            "regex": {
+              "type": "string",
+              "description": "A regular expression constraint for given value"
+            }
+          }
+        }
+      ]
+    },
+    "Entity": {
+      "type": "object",
+      "description": "Base entity schema for use in TM Forum Open APIs. Property.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        }
+      ]
+    },
+    "EntityRef": {
+      "description": "Entity reference schema to be use for all entityRef class.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "The identifier of the referred entity."
+            },
+            "href": {
+              "type": "string",
+              "description": "The URI of the referred entity."
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the referred entity."
+            },
+            "@referredType": {
+              "type": "string",
+              "description": "The actual type of the target instance when needed for disambiguation."
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      ]
+    },
+    "Extensible": {
+      "type": "object",
+      "description": "Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means that the Entity described by the schema MUST be extended with the @type",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "FlowCharacteristicSpecification": {
+      "description": "This class defines a characteristic specification.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "modality": {
+              "type": "string",
+              "description": "modality of use of this characteristic specification"
+            },
+            "characteristicSpecification": {
+              "$ref": "#/$defs/CharacteristicSpecification"
+            }
+          },
+          "required": [
+            "modality",
+            "characteristicSpecification"
+          ]
+        }
+      ]
+    },
+    "PartyRef": {
+      "description": "A Party reference",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "@type": {
+              "type": "string",
+              "enum": [
+                "PartyRef"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "PartyRefOrPartyRoleRef": {
+      "type": "object",
+      "description": "",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PartyRef"
+        },
+        {
+          "$ref": "#/$defs/PartyRoleRef"
+        }
+      ]
+    },
+    "PartyRoleRef": {
+      "description": "Party role reference. A party role represents the part played by a party in a given context.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "@type": {
+              "type": "string",
+              "enum": [
+                "PartyRoleRef"
+              ]
+            },
+            "partyId": {
+              "type": "string",
+              "description": "The identifier of the engaged party that is linked to the PartyRole object."
+            },
+            "partyName": {
+              "type": "string",
+              "description": "The name of the engaged party that is linked to the PartyRole object."
+            }
+          }
+        }
+      ]
+    },
+    "PolicyRef": {
+      "description": "Reference to managed Policy object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "unique identifier"
+            },
+            "href": {
+              "type": "string",
+              "description": "Hyperlink reference"
+            },
+            "version": {
+              "type": "string"
+            },
+            "@type": {
+              "type": "string",
+              "description": "When sub-classing, this defines the sub-class Extensible name"
+            },
+            "@baseType": {
+              "type": "string",
+              "description": "When sub-classing, this defines the super-class"
+            },
+            "@schemaLocation": {
+              "type": "string",
+              "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      ]
+    },
+    "ProcessSpecificationRef": {
+      "description": "A reference to a process specification defined on design time",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "version": {
+              "type": "string",
+              "description": "The version of the referred process specification."
+            }
+          }
+        }
+      ]
+    },
+    "Quantity": {
+      "type": "object",
+      "description": "An amount in a given unit",
+      "properties": {
+        "amount": {
+          "type": "number",
+          "format": "float",
+          "default": 1,
+          "description": "Numeric value in a given unit"
+        },
+        "units": {
+          "type": "string",
+          "description": "Unit"
+        }
+      }
+    },
+    "RelatedPartyRefOrPartyRoleRef": {
+      "description": "RelatedParty reference. A related party defines party or party role or its reference, linked to a specific entity",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "role": {
+              "description": "Role played by the related party or party role in the context of the specific entity it is linked to. Such as 'initiator', 'customer', 'salesAgent', 'user'",
+              "type": "string"
+            },
+            "partyOrPartyRole": {
+              "$ref": "#/$defs/PartyRefOrPartyRoleRef"
+            }
+          },
+          "required": [
+            "role"
+          ]
+        }
+      ]
+    },
+    "RelatedProcessSpecification": {
+      "description": "A reference to an external process specification which can be triggered, stopped or updated following this task design",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "role": {
+              "type": "string"
+            },
+            "processSpecification": {
+              "$ref": "#/$defs/ProcessSpecificationRef"
+            }
+          },
+          "required": [
+            "role",
+            "processSpecification"
+          ]
+        }
+      ]
+    },
+    "TaskSpecificationRef": {
+      "description": "A reference to a TaskSpecification defined on design-time",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "version": {
+              "type": "string",
+              "description": "The version of the referred task specification."
+            }
+          }
+        }
+      ]
+    },
+    "TaskSpecificationRelationship": {
+      "description": "A relationship (triggers, delegates, etc...) between/among task specifications.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "relationshipType": {
+              "type": "string",
+              "description": "Type of relationship such as triggers, delegates, etc."
+            },
+            "taskSpecification": {
+              "$ref": "#/$defs/TaskSpecificationRef"
+            }
+          },
+          "required": [
+            "relationshipType",
+            "taskSpecification"
+          ]
+        }
+      ]
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "startDateTime": {
+          "description": "Start of the time period, using IETF-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        },
+        "endDateTime": {
+          "description": "End of the time period, using IETF-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        }
+      }
+    }
+  }
+}

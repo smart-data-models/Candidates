@@ -1,0 +1,253 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Association/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - Association",
+  "description": "Association is the class that describes a relationship between two or more entities or entity specifications based on a given association specification. The role of each endpoint in the relationship is given by an association role. The type of endpoints in the relationship should match the ones as defined in the corresponding association role specification. A relationship between entity specifications may be governed by conditions and rules which are addressed by constraint references in this resource. Constraints for a relationship may include new rules and conditions in addition to those defined for the corresponding association specification (TM Forum TMF662 Entity Catalog Management 4.0.0, Swagger definition Association; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Association:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Association"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Association'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/Association/properties/description'. Description of the association"
+    },
+    "lastUpdate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/Association/properties/lastUpdate'. The last modified date of this association object"
+    },
+    "lifecycleStatus": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/Association/properties/lifecycleStatus'. Indicates the current lifecycle status"
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/Association/properties/name'. Name given to this association"
+    },
+    "validFor": {
+      "$ref": "#/$defs/TimePeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/Association/properties/validFor'. The period for which this association is valid"
+    },
+    "version": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/Association/properties/version'. Version of this REST resource"
+    },
+    "associationSpec": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/Association/properties/associationSpec'. The specification of this association. In TMF this is a AssociationSpecificationRef object; here the NGSI-LD id of the referenced AssociationSpecification entity (urn:ngsi-ld:AssociationSpecification:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "associationRole": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AssociationRole"
+      },
+      "minItems": 2,
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/Association/properties/associationRole'. The end point roles of this association"
+    },
+    "constraint": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ConstraintRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/Association/properties/constraint'. Any constraints in this association"
+    },
+    "href": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/Association/properties/href'. Hyperlink reference"
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/Association/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:Association:<tmfId>. unique identifier"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/Association/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/Association/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/v4.0.0/TMF662-EntityCatalog-v4.0.0.swagger.json#/definitions/Association/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'Association' or a sub-class / extension name. When sub-classing, this defines the sub-class entity name"
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ],
+  "$defs": {
+    "AssociationRole": {
+      "type": "object",
+      "description": "This embedded object represents the role and type of each entity involved in a relationship.",
+      "required": [
+        "entity",
+        "role"
+      ],
+      "properties": {
+        "isSource": {
+          "type": "boolean",
+          "description": "A flag indicating if the participant involved in a relationship is the source or not. If this flag is true for both roles in an association, the association is bi-directional (both end points are navigable)"
+        },
+        "role": {
+          "type": "string",
+          "description": "The association role of this relationship participant as defined in the associationRoleSpecification"
+        },
+        "entity": {
+          "$ref": "#/$defs/EntityRef",
+          "description": "The entity being referred to"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "ConstraintRef": {
+      "type": "object",
+      "description": "Constraint reference. The Constraint resource represents a policy/rule applied to an entity or entity spec.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "version": {
+          "type": "string",
+          "description": "constraint version"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "EntityRef": {
+      "type": "object",
+      "description": "Entity reference schema to be use for all entityRef class.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "endDateTime": {
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ],
+          "type": "string",
+          "format": "date-time",
+          "description": "End of the time period, using IETC-RFC-3339 format"
+        },
+        "startDateTime": {
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ],
+          "type": "string",
+          "format": "date-time",
+          "description": "Start of the time period, using IETC-RFC-3339 format"
+        }
+      }
+    }
+  }
+}

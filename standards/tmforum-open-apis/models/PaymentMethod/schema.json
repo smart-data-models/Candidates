@@ -1,0 +1,280 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PaymentMethod/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - PaymentMethod",
+  "description": "Defines a specific method of payment (e.g. direct debit with all details associated) (TM Forum TMF670 Payment Method 4.0.0, Swagger definition PaymentMethod; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:PaymentMethod:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "PaymentMethod"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'PaymentMethod'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF670_PaymentMethods/blob/v4.0.0/TMF670-PaymentMethod-v4.0.0.swagger.json#/definitions/Entity/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:PaymentMethod:<tmfId>. unique identifier"
+    },
+    "href": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF670_PaymentMethods/blob/v4.0.0/TMF670-PaymentMethod-v4.0.0.swagger.json#/definitions/Entity/properties/href'. Hyperlink reference"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF670_PaymentMethods/blob/v4.0.0/TMF670-PaymentMethod-v4.0.0.swagger.json#/definitions/Entity/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF670_PaymentMethods/blob/v4.0.0/TMF670-PaymentMethod-v4.0.0.swagger.json#/definitions/Entity/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "tmfType": {
+      "type": "string",
+      "enum": [
+        "cash",
+        "digitalWallet",
+        "tokenizedCard",
+        "bankAccountTransfer",
+        "bankAccountDebit",
+        "bankCard",
+        "voucher",
+        "check",
+        "bucketPaymentMethod",
+        "accountPaymentMethod",
+        "loyaltyPaymentMethod",
+        "directDebit"
+      ],
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF670_PaymentMethods/blob/v4.0.0/TMF670-PaymentMethod-v4.0.0.swagger.json#/definitions/PaymentMethod/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'PaymentMethod' or a sub-class / extension name. Type of payment method (e.g.: bank card, cash, voucher…). The details field type depends on the value assigned to this one."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF670_PaymentMethods/blob/v4.0.0/TMF670-PaymentMethod-v4.0.0.swagger.json#/definitions/PaymentMethod/properties/name'. Friendly name assigned to the payment method"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF670_PaymentMethods/blob/v4.0.0/TMF670-PaymentMethod-v4.0.0.swagger.json#/definitions/PaymentMethod/properties/description'. Text description of the contents of the payment method"
+    },
+    "isPreferred": {
+      "type": "boolean",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF670_PaymentMethods/blob/v4.0.0/TMF670-PaymentMethod-v4.0.0.swagger.json#/definitions/PaymentMethod/properties/isPreferred'. If the method is the preferred one by the owner. Typically used when querying for the payment methods of a specific customer or account"
+    },
+    "authorizationCode": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF670_PaymentMethods/blob/v4.0.0/TMF670-PaymentMethod-v4.0.0.swagger.json#/definitions/PaymentMethod/properties/authorizationCode'. Review: Authorization code provided by a financial institution. Typically this would be populated for recurring payments using the method, as payments have an authorization code of their own."
+    },
+    "status": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF670_PaymentMethods/blob/v4.0.0/TMF670-PaymentMethod-v4.0.0.swagger.json#/definitions/PaymentMethod/properties/status'. Status of the payment method"
+    },
+    "statusDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF670_PaymentMethods/blob/v4.0.0/TMF670-PaymentMethod-v4.0.0.swagger.json#/definitions/PaymentMethod/properties/statusDate'. The last time the payment method status changed."
+    },
+    "statusReason": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF670_PaymentMethods/blob/v4.0.0/TMF670-PaymentMethod-v4.0.0.swagger.json#/definitions/PaymentMethod/properties/statusReason'. The reason for the last status change."
+    },
+    "validFor": {
+      "$ref": "#/$defs/TimePeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF670_PaymentMethods/blob/v4.0.0/TMF670-PaymentMethod-v4.0.0.swagger.json#/definitions/PaymentMethod/properties/validFor'. Date interval in which the payment method is valid"
+    },
+    "relatedParty": {
+      "$ref": "#/$defs/RelatedParty",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF670_PaymentMethods/blob/v4.0.0/TMF670-PaymentMethod-v4.0.0.swagger.json#/definitions/PaymentMethod/properties/relatedParty'. Reference to the customer or party that owns that payment method or can use it."
+    },
+    "relatedPlace": {
+      "$ref": "#/$defs/RelatedPlace",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF670_PaymentMethods/blob/v4.0.0/TMF670-PaymentMethod-v4.0.0.swagger.json#/definitions/PaymentMethod/properties/relatedPlace'. Reference to a place for billing or delivery address, if different to that of the related party."
+    },
+    "account": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AccountRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF670_PaymentMethods/blob/v4.0.0/TMF670-PaymentMethod-v4.0.0.swagger.json#/definitions/PaymentMethod/properties/account'. Reference to the accounts that are linked to the payment method. May be a party account or a financial account."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tmfType",
+    "name"
+  ],
+  "$defs": {
+    "AccountRef": {
+      "type": "object",
+      "description": "Account reference. A account may be a party account or a financial account.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the account"
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the account"
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of the account"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the account"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "RelatedParty": {
+      "type": "object",
+      "description": "Related Entity reference. A related party defines party or party role linked to a specific entity.",
+      "required": [
+        "@referredType",
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "role": {
+          "type": "string",
+          "description": "Role played by the related party"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "RelatedPlace": {
+      "type": "object",
+      "description": "A Place and an associated role as installation adress, delivery address, etc....",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the place"
+        },
+        "href": {
+          "type": "string",
+          "description": "Unique reference of the place"
+        },
+        "name": {
+          "type": "string",
+          "description": "A user-friendly name for the place, such as [Paris Store], [London Store], [Main Home]"
+        },
+        "role": {
+          "type": "string",
+          "description": "Role of the place, such as: [home delivery], [shop retrieval])"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "endDateTime": {
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ],
+          "type": "string",
+          "format": "date-time",
+          "description": "End of the time period, using IETC-RFC-3339 format"
+        },
+        "startDateTime": {
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ],
+          "type": "string",
+          "format": "date-time",
+          "description": "Start of the time period, using IETC-RFC-3339 format"
+        }
+      }
+    }
+  }
+}

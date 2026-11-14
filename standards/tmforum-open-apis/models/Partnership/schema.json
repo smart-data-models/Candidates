@@ -1,0 +1,531 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Partnership/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - Partnership",
+  "description": "A partnership represents a formalized collaboration between various parties, each party playing a role in the partnership. The parties playing a role in the partnership represented by the Partner entity. The structure of a partnership is specified by a PartnershipSpecification which contain all the information for the setup of the partnership, including the list of identified roles and the agreement that should apply. (TM Forum TMF668 Partnership Management 4.0, Swagger definition Partnership; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Partnership:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Partnership"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Partnership'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF668_PartnershipType/blob/v4.0.0/TMF668-PartnershipType-v4.0.0.swagger.json#/definitions/Partnership/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:Partnership:<tmfId>. The identifier of the partnership"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF668_PartnershipType/blob/v4.0.0/TMF668-PartnershipType-v4.0.0.swagger.json#/definitions/Partnership/properties/href'. The reference url for this partnership"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF668_PartnershipType/blob/v4.0.0/TMF668-PartnershipType-v4.0.0.swagger.json#/definitions/Partnership/properties/description'. An explanatory text regarding this partnership"
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF668_PartnershipType/blob/v4.0.0/TMF668-PartnershipType-v4.0.0.swagger.json#/definitions/Partnership/properties/name'. An identifying name for the partnership."
+    },
+    "partner": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Partner"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF668_PartnershipType/blob/v4.0.0/TMF668-PartnershipType-v4.0.0.swagger.json#/definitions/Partnership/properties/partner'. The list of partners of the partnership, where a partner represents a party playing a given role. Hence a partner structure includes primarily a reference to the engaged party and a role name matching necessarily the name of one of the role specifications defined in the specification of the partnership."
+    },
+    "specification": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF668_PartnershipType/blob/v4.0.0/TMF668-PartnershipType-v4.0.0.swagger.json#/definitions/Partnership/properties/specification'. The specification of this partnership. In TMF this is a PartnershipSpecificationRef object; here the NGSI-LD id of the referenced PartnershipSpecification entity (urn:ngsi-ld:PartnershipSpecification:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF668_PartnershipType/blob/v4.0.0/TMF668-PartnershipType-v4.0.0.swagger.json#/definitions/Partnership/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF668_PartnershipType/blob/v4.0.0/TMF668-PartnershipType-v4.0.0.swagger.json#/definitions/Partnership/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF668_PartnershipType/blob/v4.0.0/TMF668-PartnershipType-v4.0.0.swagger.json#/definitions/Partnership/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'Partnership' or a sub-class / extension name. When sub-classing, this defines the sub-class entity name"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "name",
+    "specification"
+  ],
+  "$defs": {
+    "AccountRef": {
+      "type": "object",
+      "description": "Account reference. A account may be a party account or a financial account.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the account"
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the account"
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of the account"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the account"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "format": "uri"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "AgreementRef": {
+      "type": "object",
+      "description": "Agreement reference. An agreement represents a contract or arrangement, either written or verbal and sometimes enforceable by law, such as a service level agreement or a customer price agreement. An agreement involves a number of other business entities, such as products, services, and resources and/or their specifications.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of a related entity."
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the related entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the agreement"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "format": "uri"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "Any": {},
+    "Characteristic": {
+      "type": "object",
+      "description": "Describes a given characteristic of an object or entity through a name/value pair.",
+      "required": [
+        "name",
+        "value"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the characteristic"
+        },
+        "valueType": {
+          "type": "string",
+          "description": "Data type of the value of the characteristic"
+        },
+        "value": {
+          "$ref": "#/$defs/Any",
+          "description": "The value of the characteristic"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "format": "uri"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "ContactMedium": {
+      "type": "object",
+      "description": "Indicates the contact medium that could be used to contact the party.",
+      "properties": {
+        "mediumType": {
+          "type": "string",
+          "description": "Type of the contact medium, such as: email address, telephone number, postal address"
+        },
+        "preferred": {
+          "type": "boolean",
+          "description": "If true, indicates that is the preferred contact medium"
+        },
+        "characteristic": {
+          "$ref": "#/$defs/MediumCharacteristic",
+          "description": "Any additional characteristic(s) of this contact medium"
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The time period that the contact medium is valid for"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "format": "uri"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "CreditProfile": {
+      "type": "object",
+      "description": "Credit profile for the party (containing credit scoring, ...). By default only the current credit profile is retrieved. It can be used as a list to give the party credit profiles history, the first one in the list will be the current one.",
+      "properties": {
+        "creditProfileDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date the profile was established"
+        },
+        "creditRiskRating": {
+          "type": "integer",
+          "description": "This is an integer whose value is used to rate the risk"
+        },
+        "creditScore": {
+          "type": "integer",
+          "description": "A measure of a person or organizations creditworthiness calculated on the basis of a combination of factors such as their income and credit history"
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The period for which the profile is valid"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "format": "uri"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "MediumCharacteristic": {
+      "type": "object",
+      "description": "Describes the contact medium characteristics that could be used to contact a party (an individual or an organization)",
+      "properties": {
+        "city": {
+          "type": "string",
+          "description": "The city"
+        },
+        "contactType": {
+          "type": "string",
+          "description": "The type of contact, for example: phone number such as mobile, fixed home, fixed office. postal address such as shipping instalation…"
+        },
+        "country": {
+          "type": "string",
+          "description": "The country"
+        },
+        "emailAddress": {
+          "type": "string",
+          "description": "Full email address in standard format"
+        },
+        "faxNumber": {
+          "type": "string",
+          "description": "The fax number of the contact"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "The primary phone number of the contact"
+        },
+        "postCode": {
+          "type": "string",
+          "description": "Postcode"
+        },
+        "socialNetworkId": {
+          "type": "string",
+          "description": "Identifier as a member of a social network"
+        },
+        "stateOrProvince": {
+          "type": "string",
+          "description": "State or province"
+        },
+        "street1": {
+          "type": "string",
+          "description": "Describes the street"
+        },
+        "street2": {
+          "type": "string",
+          "description": "Complementary street description"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "format": "uri"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "Partner": {
+      "type": "object",
+      "description": "A party playing a given role in the partnership",
+      "required": [
+        "engagedParty",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for Partners"
+        },
+        "href": {
+          "type": "string",
+          "description": "Url used to reference the partner."
+        },
+        "name": {
+          "type": "string",
+          "description": "A word, term, or phrase by which the Partner is known and distinguished from other Partners."
+        },
+        "status": {
+          "type": "string",
+          "description": "Used to track the lifecycle status of the partner."
+        },
+        "statusReason": {
+          "type": "string",
+          "description": "A string providing an explanation on the value of the status lifecycle. For instance if the status is Rejected, statusReason will provide the reason for rejection."
+        },
+        "account": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AccountRef"
+          }
+        },
+        "agreement": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AgreementRef"
+          }
+        },
+        "characteristic": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Characteristic"
+          },
+          "description": "Describes the characteristic of a partner."
+        },
+        "contactMedium": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ContactMedium"
+          }
+        },
+        "creditProfile": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CreditProfile"
+          }
+        },
+        "engagedParty": {
+          "$ref": "#/$defs/RelatedParty",
+          "description": "The reference to the party engaged in this partnership."
+        },
+        "paymentMethod": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PaymentMethodRef"
+          }
+        },
+        "relatedParty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RelatedParty"
+          }
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The time period that the Partner is valid for."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "format": "uri"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "PaymentMethodRef": {
+      "type": "object",
+      "description": "PaymentMethod reference. A payment method defines a specific mean of payment (e.g direct debit).",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the payment mean"
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the payment mean"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the payment mean"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "format": "uri"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "RelatedParty": {
+      "type": "object",
+      "description": "Related Entity reference. A related party defines party or party role linked to a specific entity.",
+      "required": [
+        "@referredType",
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of a related entity."
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the related entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "role": {
+          "type": "string",
+          "description": "Role played by the related party"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "format": "uri"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "endDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "End of the time period, using IETC-RFC-3339 format"
+        },
+        "startDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Start of the time period, using IETC-RFC-3339 format. If you define a start, you must also define an end"
+        }
+      }
+    }
+  }
+}

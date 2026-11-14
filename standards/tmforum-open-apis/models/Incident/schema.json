@@ -1,0 +1,459 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Incident/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - Incident",
+  "description": "An Incident is a record of an event that has altered the operational state of a entity (Resource, Service or Customers Product). An incident represents an issue that needs to be diagnosed and resolved. (TM Forum TMF724 Incident 4.0.1, Swagger definition Incident; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Incident:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Incident"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Incident'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:Incident:<tmfId>. unique identifier"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/href'. Hyperlink, a reference to the incident entity"
+    },
+    "ackTime": {
+      "examples": [
+        "2022-03-10T04:01:12Z"
+      ],
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/ackTime'. The ackTime or acknowledgeTime of the incident. An acknowledged incident is being worked on, but is not yet resolved"
+    },
+    "category": {
+      "examples": [
+        "BTS Software Fault"
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/category'. The category of the incident (category is the term used by ITU)"
+    },
+    "clearTime": {
+      "examples": [
+        "2022-03-10T04:01:12Z"
+      ],
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/clearTime'. The clear time of the incident"
+    },
+    "domain": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/domain'. The domain of the incident, for example RAN, PON, OTN, Cross-Domain etc"
+    },
+    "incidentDetail": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/incidentDetail'. A textual succinct description of the nature, symptoms, cause, or effect of the incident."
+    },
+    "incidentResolutionSuggestion": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/incidentResolutionSuggestion'. Incident resolution suggestion or tip to resolve the incident"
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/name'. The name of the incident. A short-form string that provides succinct, important information about the incident"
+    },
+    "occurTime": {
+      "examples": [
+        "2022-03-10T04:01:12Z"
+      ],
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/occurTime'. Indicates the time (as a date + time) at which the incident occurred at its source"
+    },
+    "updateTime": {
+      "examples": [
+        "2022-03-10T04:01:12Z"
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/updateTime'. The last update time of the incident"
+    },
+    "ackState": {
+      "type": "string",
+      "enum": [
+        "acknowledged",
+        "unacknowledged"
+      ],
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/ackState'. Provides the Acknowledgement State of the incident (unacknowledged | acknowledged)."
+    },
+    "affectedEntity": {
+      "examples": [
+        "e.g  a ref to a service or resource"
+      ],
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/EntityRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/affectedEntity'. List of affected entities"
+    },
+    "eventId": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ResourceEntity"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/eventId'. The correlation event object such as alarm, externalAlarm, performance, etc."
+    },
+    "extensionInfo": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Characteristic"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/extensionInfo'. This is used for extend the incident with attributes"
+    },
+    "externalIdentifier": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ExternalIdentifier"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/externalIdentifier'. An identification of an entity that is owned by or originates in a software system different from the current system, for example a ProductOrder handed off from a commerce platform into an order handling system. The structure identifies the system itself, the nature of the entity within the system (e.g. class name) and the unique ID of the entity within the system. It is anticipated that multiple external IDs can be held for a single entity, e.g. if the entity passed through multiple systems on the way to the current system. In this case the consumer is expected to sequence the IDs in the array in reverse order of provenance, i.e. most recent system first in the list."
+    },
+    "impact": {
+      "type": "string",
+      "enum": [
+        "extensive",
+        "significant",
+        "moderate",
+        "minor"
+      ],
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/impact'. Impact which indicates the degree of impact on affected services or users. This field is optional. The options are extensive, significant, moderate, and minor"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "critical",
+        "high",
+        "medium",
+        "low"
+      ],
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/priority'. The priority of the incident, priority critical/high/medium/low"
+    },
+    "rootCause": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RootCause"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/rootCause'. A root cause is a fundamental or underlying reason behind why an incident occurred that identifies one or more failures. An incident many have multiple rootCauses"
+    },
+    "rootEventId": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ResourceEntity"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/rootEventId'. The root event object such as alarm, externalAlarm, performance, etc."
+    },
+    "sourceObject": {
+      "examples": [
+        "e.g. weak optical signals, the fault object is a PON port, the root cause is an optical splitter, and the affected object is an ONU"
+      ],
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ResourceEntity"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/sourceObject'. The objects show the incident, it may be part of Network Equipment. Fault object, which may be an NE or a port."
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "raised",
+        "updated",
+        "cleared"
+      ],
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/state'. Incident state. The options are raised | updated | cleared. Cleared means Resolved)"
+    },
+    "urgency": {
+      "type": "string",
+      "enum": [
+        "critical",
+        "high",
+        "medium",
+        "low"
+      ],
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/urgency'. Urgency is the speed required for resolving the service issues. A measure of how long it will be until an incident has a significant impact on the business. This field is optional. The options are critical, high, medium, and low"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF724_IncidentManagement/blob/v4.0.0/TMF724_Incident_Management_API_v4.0.0_swagger.json#/definitions/Incident/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'Incident' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ],
+  "$defs": {
+    "Any": {},
+    "Characteristic": {
+      "type": "object",
+      "description": "Describes a given characteristic of an object or entity through a name/value pair.",
+      "required": [
+        "name",
+        "value"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the characteristic"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the characteristic"
+        },
+        "valueType": {
+          "type": "string",
+          "description": "Data type of the value of the characteristic"
+        },
+        "characteristicRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CharacteristicRelationship"
+          }
+        },
+        "value": {
+          "$ref": "#/$defs/Any",
+          "description": "The value of the characteristic"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "CharacteristicRelationship": {
+      "type": "object",
+      "description": "Another Characteristic that is related to the current Characteristic.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the characteristic"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "relationshipType": {
+          "type": "string",
+          "description": "The type of relationship"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "EntityRef": {
+      "type": "object",
+      "description": "Entity reference schema to be use for all entityRef class.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "ExternalIdentifier": {
+      "type": "object",
+      "description": "An identification of an entity that is owned by or originates in a software system different from the current system, for example a ProductOrder handed off from a commerce platform into an order handling system. The structure identifies the system itself, the nature of the entity within the system (e.g. class name) and the unique ID of the entity within the system. It is anticipated that multiple external IDs can be held for a single entity, e.g. if the entity passed through multiple systems on the way to the current system. In this case the consumer is expected to sequence the IDs in the array in reverse order of provenance, i.e. most recent system first in the list.",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "examples": [
+            "MC2255771199555"
+          ],
+          "type": "string",
+          "description": "identification of the entity within the external system."
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "externalIdentifierType": {
+          "examples": [
+            "ProductOrder"
+          ],
+          "type": "string",
+          "description": "Type of the identification, typically would be the type of the entity within the external system"
+        },
+        "owner": {
+          "examples": [
+            "MagentoCommerce"
+          ],
+          "type": "string",
+          "description": "Name of the external system that owns the entity."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "ResourceEntity": {
+      "type": "object",
+      "description": "Base schema for REST Resources",
+      "properties": {
+        "id": {
+          "examples": [
+            "aac9969d-219d-4ff1-b256-1765dcf9b342"
+          ],
+          "type": "string",
+          "description": "ID created by the implementing service"
+        },
+        "href": {
+          "examples": [
+            "http://myservice.com/resource-path"
+          ],
+          "type": "string",
+          "description": "Hyperlink to access the test resource"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "RootCause": {
+      "type": "object",
+      "description": "The name of RootCause, for example:Power Down",
+      "required": [
+        "location"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "location": {
+          "examples": [
+            "Ne Name=cc_lte1, Cabinet No.=0, Subrack No.=0, Slot No.=0"
+          ],
+          "type": "string"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    }
+  }
+}

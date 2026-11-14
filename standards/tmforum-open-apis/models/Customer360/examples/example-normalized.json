@@ -1,0 +1,394 @@
+{
+  "id": "urn:ngsi-ld:Customer360:1140",
+  "type": "Customer360",
+  "tmfType": {
+    "type": "Text",
+    "value": "Customer360"
+  },
+  "tmfId": {
+    "type": "Text",
+    "value": "1140"
+  },
+  "validFor": {
+    "type": "StructuredValue",
+    "value": {
+      "startDateTime": "2018-06-13T00:00:00.000Z",
+      "endDateTime": "2019-01-11T00:00:00.000Z"
+    }
+  },
+  "customer": {
+    "type": "StructuredValue",
+    "value": {
+      "@type": "Customer360CustomerVO",
+      "href": "https://host:port/tmf-api/customerManagement/v5/customer/1140",
+      "id": "1140",
+      "contactMedium": [
+        {
+          "@type": "PhoneContactMedium",
+          "@baseType": "ContactMedium",
+          "@schemaLocation": "/schema-registry/schema/PhoneContactMedium",
+          "id": "2256789876",
+          "preferred": true,
+          "contactType": "homePhone",
+          "validFor": {
+            "startDateTime": "2018-06-13T00:00:00.000Z",
+            "endDateTime": "2019-01-11T00:00:00.000Z"
+          },
+          "phoneNumber": "+44 7700 900105"
+        },
+        {
+          "@type": "GeographicAddressContactMedium",
+          "@baseType": "ContactMedium",
+          "@schemaLocation": "/schema-registry/schema/GeographicAddressContactMedium",
+          "id": "12345",
+          "stateOrProvince": "NY",
+          "preferred": false,
+          "contactType": "homeAddress",
+          "validFor": {
+            "startDateTime": "2018-06-13T00:00:00.000Z",
+            "endDateTime": "2019-01-11T00:00:00.000Z"
+          },
+          "geographicAddress": {
+            "@type": "GeographicAddressRef",
+            "href": "https://host:port/tmf-api/geographicAddressManagement/v5/geographicAddress/12345",
+            "id": "12345",
+            "@referredType": "GeographicAddress"
+          },
+          "city": "Exampletown",
+          "country": "France",
+          "postCode": "00000",
+          "street1": "1 Example Street"
+        }
+      ],
+      "engagedParty": {
+        "@type": "PartyRef",
+        "href": "https://host:port/tmf-api/partyManagement/v4/organization/500",
+        "id": "500",
+        "name": "Happy Travellers",
+        "@referredType": "Organization"
+      },
+      "name": "Moon Football Club",
+      "relatedParty": [
+        {
+          "@type": "RelatedPartyOrPartyRole",
+          "role": "bill receiver",
+          "partyOrPartyRole": {
+            "@type": "PartyRef",
+            "href": "https://host:port/tmf-api/partyManagement/v5/organization/2777",
+            "id": "2777",
+            "@schemaLocation": "/schema-registry/schema/PartyRef",
+            "@referredType": "Organization",
+            "name": "John Doe (Accounting) Ltd"
+          }
+        }
+      ],
+      "status": "Approved",
+      "validFor": {
+        "startDateTime": "2018-06-12T00:00:00.000Z",
+        "endDateTime": "2019-01-11T00:00:00.000Z"
+      }
+    }
+  },
+  "account": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "Customer360AccountVO",
+        "href": "https://host:port/tmf-api/accountManagement/v5/account/5430",
+        "id": "5430",
+        "accountType": "Business",
+        "description": "This billing account ...",
+        "lastUpdate": "2018-06-14T10:30:00.000Z",
+        "name": "Home Account",
+        "state": "Inactive"
+      }
+    ]
+  },
+  "agreement": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "Customer360AgreementVO",
+        "href": "https://host:port/tmf-api/agreementManagement/v4/agreement/28",
+        "id": "28",
+        "agreementPeriod": {
+          "startDateTime": "2024-04-25T00:00:00.000Z",
+          "endDateTime": "2028-04-25T00:00:00.000Z"
+        },
+        "agreementSpecification": {
+          "@type": "AgreementSpecificationRef",
+          "href": "https://host:port/tmf-api/agreementManagement/v4/agreementSpecification/9834-11",
+          "id": "9834-11",
+          "name": "Bandwith extender",
+          "@referredType": "AgreementSpecification",
+          "description": "Special agreement with higher bandwith."
+        },
+        "agreementType": "commercial",
+        "engagedParty": [
+          {
+            "@type": "PartyRef",
+            "href": "https://host:port/tmf-api/partyManagement/v4/organization/1140",
+            "id": "1140",
+            "name": "Moon Football Club",
+            "@referredType": "Organization"
+          }
+        ],
+        "name": "Summer Contract Agreement"
+      }
+    ]
+  },
+  "appointment": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "Customer360AppointmentVO",
+        "href": "https://serverRoot/tmf-api/appointment/v4/appointment/21",
+        "id": "21",
+        "calendarEvent": {
+          "@type": "CalendarEventRef",
+          "href": "https://serverRoot/tmf-api/timeManagement/v4/calendarEvent/33",
+          "id": "33",
+          "name": "Intervention calendar event",
+          "@referredType": "CalendarEvent"
+        },
+        "category": "intervention",
+        "creationDate": "2018-02-01T14:40:43.000Z",
+        "description": "Fix an internet connexion problem for a customer",
+        "externalId": "432113",
+        "lastUpdate": "2018-02-04T14:40:43.000Z",
+        "status": "confirmed",
+        "validFor": {
+          "startDateTime": "2018-02-15T14:00:00.000Z",
+          "endDateTime": "2018-02-15T16:00:00.000Z"
+        }
+      }
+    ]
+  },
+  "customerBill": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "Customer360CustomerBillVO",
+        "href": "https://server:port/tmf-api/Customer_Bill_Management/v5/customerBill/CB-123",
+        "id": "CB-123",
+        "billNo": "33-3419823740981023948701987340912365912873487927635901ß2084370129347-23A",
+        "category": "Monthly",
+        "state": "sent"
+      },
+      {
+        "@type": "Customer360CustomerBillVO",
+        "href": "https://server:port/tmf-api/Customer_Bill_Management/v5/customerBill/CB-123",
+        "id": "CB-123",
+        "billNo": "780123456",
+        "category": "normal",
+        "state": "settled"
+      }
+    ]
+  },
+  "loyaltyAccount": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "Customer360LoyaltyAccountVO",
+        "@baseType": "PartyAccount",
+        "href": "https://host:port/tmf-api/loyaltyManagement/v5/loyaltyAccount/12345",
+        "id": "12345",
+        "description": "Loyalty account for loyalty program member",
+        "lastUpdate": "2024-05-01T20:30:52.370Z",
+        "name": "Loyalty Account",
+        "state": "Active",
+        "accountType": "Loyalty Account",
+        "relatedParty": [
+          {
+            "@type": "RelatedPartyRefOrPartyRoleRef",
+            "role": "Loyalty Program Member",
+            "partyOrPartyRole": {
+              "id": "1140",
+              "href": "https://host:port/tmf-api/partyRoleManagement/v5/partyRole/1140",
+              "@type": "PartyRoleRef",
+              "name": "Moon Football Club",
+              "@referredType": "LoyaltyProgramMember"
+            }
+          }
+        ],
+        "accountBalance": [
+          {
+            "id": "AB123",
+            "@type": "AccountBalance",
+            "amount": {
+              "value": 50,
+              "unit": "POINTS"
+            },
+            "balanceType": "LoyaltyEarningsWallet",
+            "validFor": {
+              "startDateTime": "2021-03-17T00:00:00.000Z",
+              "endDateTime": "2022-03-17T00:00:00.000Z"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "partyInteraction": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "Customer360PartyInteractionVO",
+        "href": "https://host:port/partyInteraction/v5/partyInteraction/123",
+        "id": "123",
+        "interactionDate": {
+          "startDateTime": "2019-10-02T11:36:18.758Z",
+          "endDateTime": "2019-10-02T11:53:21.789Z"
+        },
+        "description": "Visit to store",
+        "reason": "The user wanted to buy TV and internet plan",
+        "status": "ongoing"
+      }
+    ]
+  },
+  "paymentMethod": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "Customer360PaymentMethodVO",
+        "href": "https://host:port/tmf-api/paymentMethod/v5/paymentMethod/12345",
+        "id": "12345",
+        "description": "My gold mastercard",
+        "isPreferred": true,
+        "validFor": {
+          "startDateTime": "2021-03-17T00:00:00.000Z",
+          "endDateTime": "2024-04-16T00:00:00.000Z"
+        },
+        "name": "Main credit card",
+        "status": "active",
+        "statusDate": "2021-03-17T00:00:00.000Z"
+      }
+    ]
+  },
+  "productOrder": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "Customer360ProductOrderVO",
+        "href": "https://host:port/productOrderingManagement/v5/productOrder/30001",
+        "id": "30001",
+        "category": "B2C product order",
+        "completionDate": "2019-05-02T08:13:59.506Z",
+        "description": "Product Order illustration sample",
+        "expectedCompletionDate": "2019-05-02T08:13:59.506Z",
+        "externalId": "PO-456",
+        "creationDate": "2019-04-30T08:13:59.506Z",
+        "priority": "1",
+        "productOrderItem": [
+          {
+            "@type": "ProductOrderItem",
+            "id": "1",
+            "action": "add",
+            "quantity": 1,
+            "state": "completed"
+          }
+        ],
+        "state": "completed"
+      }
+    ]
+  },
+  "product": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "Customer360ProductVO",
+        "href": "https://host:port/productInventoryManagement/v5/product/g265-tf85",
+        "id": "g265-tf85",
+        "description": "product description",
+        "name": "Voice Over IP Basic instance",
+        "productOffering": {
+          "@type": "ProductOfferingRef",
+          "href": "https://host:port/productCatalogManagement/v5/productOffering/PO-101-1",
+          "id": "PO-101-1",
+          "name": "Voice Over IP Basic",
+          "@referredType": "ProductOffering"
+        },
+        "status": "active"
+      }
+    ]
+  },
+  "quote": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "Customer360QuoteVO",
+        "href": "https://host:port/quoteManagement/v4/quote/12dd-78hg",
+        "id": "12dd-78hg",
+        "category": "BSBS Quote",
+        "creationDate": "2021-05-05T12:45:12.028Z",
+        "description": "Quote illustration",
+        "effectiveQuoteCompletionDate": "2021-05-21T12:45:12.028Z",
+        "expectedFulfillmentStartDate": "2021-05-21T12:45:12.028Z",
+        "expectedQuoteCompletionDate": "2021-05-14T12:45:12.028Z",
+        "state": "approved",
+        "validFor": {
+          "startDateTime": "2021-05-06T12:45:12.033Z",
+          "endDateTime": "2021-06-06T12:45:12.033Z"
+        },
+        "version": "1"
+      }
+    ]
+  },
+  "serviceProblem": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "Customer360ServiceProblemVO",
+        "href": "https://mycsp.com:8080/tmf-api/serviceProblemManagement/v5/serviceProblem/problemxxxx0000",
+        "id": "problemxxxx0000",
+        "affectedService": [
+          {
+            "@type": "ServiceRef",
+            "href": "https://mycsp.com:8080/tmf-api/serviceInventory/v5/service/NW1_Tokyo_Osaka",
+            "id": "NW1_Tokyo_Osaka",
+            "@referredType": "Service"
+          },
+          {
+            "@type": "ServiceRef",
+            "href": "https://mycsp.com:8080/tmf-api/serviceInventory/v5/service/NW1_Tokyo_xxxx",
+            "id": "NW1_Tokyo_xxxx",
+            "@referredType": "Service"
+          }
+        ],
+        "category": "supplier.originated",
+        "description": "connection failure between Tokyo and Osaka",
+        "originatingSystem": "System_001",
+        "priority": 1,
+        "reason": "Network infrastructure failure",
+        "status": "resolved"
+      }
+    ]
+  },
+  "troubleTicket": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "Customer360TroubleTicketVO",
+        "href": "https://mycsp.com:8080/tmf-api/troubleTicket/v5/troubleTicket/3180",
+        "id": "3180",
+        "creationDate": "2019-05-31T07:34:45.968Z",
+        "description": "I do not accept the last VOD charge, since the movie was constantly interrupted, I had to quit watching the movie in the middle",
+        "expectedResolutionDate": "2019-06-10T07:34:45.968Z",
+        "externalIdentifier": "213-9909",
+        "lastUpdate": "2019-06-01T10:15:30.500Z",
+        "name": "Compliant over last bill",
+        "priority": "High",
+        "requestedResolutionDate": "2019-05-31T07:34:45.968Z",
+        "severity": "Urgent",
+        "status": "pending",
+        "statusChangeDate": "2019-06-01T10:15:30.500Z",
+        "statusChangeReason": "Need more information from the customer",
+        "ticketType": "Bill Dispute"
+      }
+    ]
+  },
+  "source": {
+    "type": "Text",
+    "value": "Adapted from the example payload 'Customer360_retrieve_example_response' of the TMF717 Customer360 5.0.1 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+  }
+}

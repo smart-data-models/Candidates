@@ -1,0 +1,383 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ShipmentTracking/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - ShipmentTracking",
+  "description": "TrackingDetailsType (TM Forum TMF684 Shipment Tracking Management 1.0.0, Swagger definition TrackingDetailsType; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:ShipmentTracking:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ShipmentTracking"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ShipmentTracking'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF684_ShipmentTracking/blob/32d71b7184b2b7f3bc0256baad4059c0435c395d/shipmentTracking_v10_Jan18_SwaggerValidatorPassed.json#/definitions/TrackingDetailsType/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:ShipmentTracking:<tmfId>. Unique identifier of the shipment"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF684_ShipmentTracking/blob/32d71b7184b2b7f3bc0256baad4059c0435c395d/shipmentTracking_v10_Jan18_SwaggerValidatorPassed.json#/definitions/TrackingDetailsType/properties/href'. Reference to the shipment to be queried or to perform actions on it via API"
+    },
+    "carrier": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF684_ShipmentTracking/blob/32d71b7184b2b7f3bc0256baad4059c0435c395d/shipmentTracking_v10_Jan18_SwaggerValidatorPassed.json#/definitions/TrackingDetailsType/properties/carrier'. Carrier that is performing the shipment"
+    },
+    "trackingCode": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF684_ShipmentTracking/blob/32d71b7184b2b7f3bc0256baad4059c0435c395d/shipmentTracking_v10_Jan18_SwaggerValidatorPassed.json#/definitions/TrackingDetailsType/properties/trackingCode'. Tracking code in the carrier network"
+    },
+    "carrierTrackingUrl": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF684_ShipmentTracking/blob/32d71b7184b2b7f3bc0256baad4059c0435c395d/shipmentTracking_v10_Jan18_SwaggerValidatorPassed.json#/definitions/TrackingDetailsType/properties/carrierTrackingUrl'. URL to a public page provided by the carrier that shows tracking details for this tracker"
+    },
+    "trackingDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF684_ShipmentTracking/blob/32d71b7184b2b7f3bc0256baad4059c0435c395d/shipmentTracking_v10_Jan18_SwaggerValidatorPassed.json#/definitions/TrackingDetailsType/properties/trackingDate'. Date when the shipment began to be tracked"
+    },
+    "status": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF684_ShipmentTracking/blob/32d71b7184b2b7f3bc0256baad4059c0435c395d/shipmentTracking_v10_Jan18_SwaggerValidatorPassed.json#/definitions/TrackingDetailsType/properties/status'. Current status of the package"
+    },
+    "statusChangeDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF684_ShipmentTracking/blob/32d71b7184b2b7f3bc0256baad4059c0435c395d/shipmentTracking_v10_Jan18_SwaggerValidatorPassed.json#/definitions/TrackingDetailsType/properties/statusChangeDate'. Date when the tracking status last changed"
+    },
+    "statusChangeReason": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF684_ShipmentTracking/blob/32d71b7184b2b7f3bc0256baad4059c0435c395d/shipmentTracking_v10_Jan18_SwaggerValidatorPassed.json#/definitions/TrackingDetailsType/properties/statusChangeReason'. Text describing the reason for the status of the tracking"
+    },
+    "weight": {
+      "type": "number",
+      "format": "decimal",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF684_ShipmentTracking/blob/32d71b7184b2b7f3bc0256baad4059c0435c395d/shipmentTracking_v10_Jan18_SwaggerValidatorPassed.json#/definitions/TrackingDetailsType/properties/weight'. Weight of the package in grams"
+    },
+    "estimatedDeliveryDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF684_ShipmentTracking/blob/32d71b7184b2b7f3bc0256baad4059c0435c395d/shipmentTracking_v10_Jan18_SwaggerValidatorPassed.json#/definitions/TrackingDetailsType/properties/estimatedDeliveryDate'. Estimated deliveryDate"
+    },
+    "addressFrom": {
+      "$ref": "#/$defs/AddressType",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF684_ShipmentTracking/blob/32d71b7184b2b7f3bc0256baad4059c0435c395d/shipmentTracking_v10_Jan18_SwaggerValidatorPassed.json#/definitions/TrackingDetailsType/properties/addressFrom'. Information describing a postal address"
+    },
+    "addressTo": {
+      "$ref": "#/$defs/AddressType",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF684_ShipmentTracking/blob/32d71b7184b2b7f3bc0256baad4059c0435c395d/shipmentTracking_v10_Jan18_SwaggerValidatorPassed.json#/definitions/TrackingDetailsType/properties/addressTo'. Information describing a postal address"
+    },
+    "checkpoint": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/CheckpointType"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF684_ShipmentTracking/blob/32d71b7184b2b7f3bc0256baad4059c0435c395d/shipmentTracking_v10_Jan18_SwaggerValidatorPassed.json#/definitions/TrackingDetailsType/properties/checkpoint'."
+    },
+    "order": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/OrderRefType"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF684_ShipmentTracking/blob/32d71b7184b2b7f3bc0256baad4059c0435c395d/shipmentTracking_v10_Jan18_SwaggerValidatorPassed.json#/definitions/TrackingDetailsType/properties/order'. Order that triggered this shipment"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tmfId",
+    "status",
+    "carrier",
+    "addressTo",
+    "trackingDate"
+  ],
+  "$defs": {
+    "AddressType": {
+      "description": "Information describing a postal address",
+      "properties": {
+        "streetNr": {
+          "type": "string",
+          "description": "The street number"
+        },
+        "streetNrSuffix": {
+          "type": "string",
+          "description": "Suffix of the street number"
+        },
+        "streetNrLast": {
+          "type": "string",
+          "description": "Use it in case the address covers a range of numbers in a street. The range will be limited by streetNr and this field"
+        },
+        "streetNrLastSuffix": {
+          "type": "string",
+          "description": "Suffix of the last street number"
+        },
+        "streetName": {
+          "type": "string",
+          "description": "Name of the street (e.g.: Gran Vía)"
+        },
+        "streetType": {
+          "type": "string",
+          "description": "Type of street (e.g.: Street, Calle, Square, Avenue, Platz, etc.)"
+        },
+        "streetSuffix": {
+          "type": "string",
+          "description": "Suffix of the street"
+        },
+        "postcode": {
+          "type": "string",
+          "description": "Postal code"
+        },
+        "locality": {
+          "type": "string",
+          "description": "To define a second administrative area such as a district or borough"
+        },
+        "city": {
+          "type": "string",
+          "description": "Local administrative name such as a city, town, municipality or council, partido, concello, etc. that might comprise smaller entities"
+        },
+        "stateOrProvince": {
+          "type": "string",
+          "description": "Region, state, or province"
+        },
+        "country": {
+          "type": "string",
+          "description": "Country"
+        },
+        "@type": {
+          "type": "string",
+          "description": "type of address"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "Where to find a schema for the polymorphic types definitions"
+        },
+        "geographicLocation": {
+          "$ref": "#/$defs/GeographicLocationType"
+        },
+        "geographicSubAddress": {
+          "$ref": "#/$defs/SubAddressType"
+        }
+      },
+      "required": [
+        "streetName",
+        "streetNr",
+        "streetType",
+        "postcode",
+        "locality",
+        "city",
+        "stateOrProvince",
+        "country"
+      ]
+    },
+    "CheckpointType": {
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "Status of the package at the time of the scan event"
+        },
+        "message": {
+          "type": "string",
+          "description": "Message describing the performed action e.g.: attempted delivery, departed from warehouse..."
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "checkPost": {
+          "type": "string",
+          "description": "Location display name"
+        },
+        "city": {
+          "type": "string",
+          "description": "Local administrative name such as a city, town, municipality or council, partido, concello, etc. that might comprise smaller entities"
+        },
+        "stateOrProvince": {
+          "type": "string",
+          "description": "Region, state, or province"
+        },
+        "country": {
+          "type": "string",
+          "description": "Country"
+        }
+      }
+    },
+    "GeographicLocationType": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of a GeoLocation"
+        },
+        "href": {
+          "type": "string",
+          "description": "href of the GeoLocation"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of a GeoLocation"
+        },
+        "type": {
+          "type": "string",
+          "description": "Type allows describing Geolocation form: it could be a point, a line, a polygon, a cylinder, etc...."
+        },
+        "geographicPoint": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/GeographicPointType"
+          },
+          "description": "A list of geo points (GeographicPoint [*]). A GeoPoint defines a geographic point through coordinates"
+        },
+        "accuracy": {
+          "type": "string",
+          "description": "Accuracy of the coordinate specified"
+        },
+        "spatialRef": {
+          "type": "string",
+          "description": "Geocoding referential"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "Geographic Location base type"
+        },
+        "@type": {
+          "type": "string",
+          "description": "Indicates the type of the resource for extensibility purposes"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A link to the schema describing this REST Resource"
+        }
+      },
+      "required": [
+        "type",
+        "geographicPoint"
+      ]
+    },
+    "GeographicPointType": {
+      "properties": {
+        "x": {
+          "type": "string",
+          "description": "x coordinate (usually latitude)"
+        },
+        "y": {
+          "type": "string",
+          "description": "y coordinate (usually longitude)"
+        },
+        "z": {
+          "type": "string",
+          "description": "z coordinate (usually elevation)"
+        }
+      },
+      "required": [
+        "x",
+        "y"
+      ]
+    },
+    "OrderRefType": {
+      "description": "Reference to an order that can typically be queried with another API.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the order"
+        },
+        "href": {
+          "type": "string",
+          "description": "URI where to query or perform actions on the order"
+        },
+        "name": {
+          "type": "string",
+          "description": "Screen name of the order"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "Type of the referred order in case it is polymorphic"
+        }
+      },
+      "required": [
+        "id",
+        "href"
+      ]
+    },
+    "SubAddressType": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique Identifier of the subAddress"
+        },
+        "href": {
+          "type": "string",
+          "description": "href of the subAddress"
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of subAddress. It can be a subunit or a private street"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the subAddress to identify it with a meaningful identification"
+        },
+        "subUnitType": {
+          "type": "string",
+          "description": "A string. the type of subunit e.g.BERTH, FLAT, PIER, SUITE, SHOP, TOWER, UNIT, WHARF."
+        },
+        "subUnitNumber": {
+          "type": "string",
+          "description": "the discriminator used for the subunit often just a simple number e.g. FLAT 5, may also be a range"
+        },
+        "levelType": {
+          "type": "string",
+          "description": "describes level types within a building"
+        },
+        "levelNumber": {
+          "type": "string",
+          "description": "used where a level type may be repeated e.g. BASEMENT 1, BASEMENT 2"
+        },
+        "buildingName": {
+          "type": "string",
+          "description": "allows for buildings that have well-known names"
+        },
+        "privateStreetName": {
+          "type": "string",
+          "description": "private streets internal to a property (e.g. a university) may have internal names that are not recorded by the land title office"
+        },
+        "privateStreetNumber": {
+          "type": "string",
+          "description": "private streets numbers internal to a private street"
+        },
+        "@type": {
+          "type": "string",
+          "description": "Indicates the type of the resource for extensibility purposes"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A link to the schema describing this REST Resource"
+        }
+      }
+    }
+  }
+}

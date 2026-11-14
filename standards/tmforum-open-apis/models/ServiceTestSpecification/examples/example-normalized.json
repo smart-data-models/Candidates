@@ -1,0 +1,196 @@
+{
+  "id": "urn:ngsi-ld:ServiceTestSpecification:12",
+  "type": "ServiceTestSpecification",
+  "tmfId": {
+    "type": "Text",
+    "value": "12"
+  },
+  "version": {
+    "type": "Text",
+    "value": "1.0"
+  },
+  "lifecycleStatus": {
+    "type": "Text",
+    "value": "active"
+  },
+  "name": {
+    "type": "Text",
+    "value": "Fixed Broadband service test"
+  },
+  "description": {
+    "type": "Text",
+    "value": "Service Test Specification for Fixed Broadband service"
+  },
+  "validFor": {
+    "type": "StructuredValue",
+    "value": {
+      "startDateTime": "2016-03-02T23:59:59.00Z",
+      "endDateTime": "2020-03-02T23:59:59.00Z"
+    }
+  },
+  "testMeasureDefinition": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "TestMeasureDefinition",
+        "id": "10",
+        "captureFrequency": "once",
+        "captureMethod": "automatic capture by instrument",
+        "capturePeriod": {
+          "amount": 15,
+          "units": "seconds"
+        },
+        "metricDescription": "This is the flow speed in a service",
+        "metricUri": "https://mycsp.com:8080/metricRepository/metric/21",
+        "metricName": "Flow speed",
+        "name": "Definition of Flow speed",
+        "unitOfMeasure": "bits per second",
+        "valueType": "number",
+        "specCharacteristic": [
+          {
+            "name": "metricValue",
+            "description": "This characteristic describes the flow speed metric value",
+            "valueType": "number",
+            "@type": "CharacteristicSpecification",
+            "configurable": false,
+            "validFor": {
+              "startDateTime": "2016-03-02T23:59:59.00Z",
+              "endDateTime": "2020-03-02T23:59:59.00Z"
+            },
+            "minCardinality": 0,
+            "maxCardinality": 1,
+            "isUnique": true,
+            "extensible": false,
+            "characteristicValueSpecification": [
+              {
+                "valueType": "number",
+                "@type": "NumberCharacteristicValueSpecification",
+                "unitOfMeasure": "bits per second",
+                "validFor": {
+                  "startDateTime": "2016-03-02T23:59:59.00Z",
+                  "endDateTime": "2020-03-02T23:59:59.00Z"
+                }
+              }
+            ]
+          }
+        ],
+        "thresholdRule": [
+          {
+            "@type": "MetricDefMeasureThresholdRule",
+            "conformanceTargetUpper": "2500",
+            "conformanceComparatorUpper": "greater than ",
+            "description": "This speed is greater than the target upper",
+            "name": "tooMuchTraffic",
+            "numberOfAllowedCrossing": 0,
+            "thresholdRuleSeverity": "1",
+            "tolerancePeriod": {
+              "amount": 15,
+              "units": "minutes"
+            },
+            "consequence": [
+              {
+                "@type": "MetricDefMeasureConsequence",
+                "prescribeAction": "sendWarning",
+                "description": "send a warning to the system",
+                "name": "sendWarning",
+                "repeatAction": false,
+                "validFor": {
+                  "startDateTime": "2016-03-02T23:59:59.00Z",
+                  "endDateTime": "2020-03-02T23:59:59.00Z"
+                }
+              },
+              {
+                "@type": "MetricDefMeasureConsequence",
+                "prescribeAction": "generateReport",
+                "description": "generate a warning report ",
+                "name": "generateReport",
+                "repeatAction": false,
+                "validFor": {
+                  "startDateTime": "2016-03-02T23:59:59.00Z",
+                  "endDateTime": "2020-03-02T23:59:59.00Z"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "specCharacteristic": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "name": "restart",
+        "description": "This characteristic describes if restart of the service is required",
+        "@type": "CharacteristicSpecification",
+        "valueType": "Boolean",
+        "configurable": true,
+        "validFor": {
+          "startDateTime": "2016-03-02T23:59:59.00Z",
+          "endDateTime": "2020-03-02T23:59:59.00Z"
+        },
+        "minCardinality": 0,
+        "maxCardinality": 1,
+        "isUnique": true,
+        "extensible": false,
+        "characteristicValueSpecification": [
+          {
+            "valueType": "Boolean",
+            "@type": "BooleanCharacteristicValueSpecification",
+            "isDefault": false,
+            "value": true,
+            "validFor": {
+              "startDateTime": "2016-03-02T23:59:59.00Z",
+              "endDateTime": "2020-03-02T23:59:59.00Z"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "relatedParty": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "role": "testSupervisor",
+        "@type": "RelatedPartyRefOrPartyRoleRef",
+        "partyOrPartyRole": {
+          "id": "9866",
+          "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/Individual/9866",
+          "@type": "PartyRef",
+          "@referredType": "Individual"
+        }
+      }
+    ]
+  },
+  "serviceTestSpecificationRelationship": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "ServiceTestSpecificationRelationship",
+        "@referredType": "ServiceTestSpecification",
+        "id": "13",
+        "href": "https://mycsp.com:8080/tmf-api/serviceTestManagement/v5/serviceTestSpecification/13",
+        "relationshipType": "dependency"
+      }
+    ]
+  },
+  "relatedServiceSpecification": {
+    "type": "URL",
+    "value": [
+      "urn:ngsi-ld:ServiceSpecification:31"
+    ]
+  },
+  "tmfBaseType": {
+    "type": "Text",
+    "value": "ServiceTestSpecification"
+  },
+  "tmfType": {
+    "type": "Text",
+    "value": "ServiceTestSpecification"
+  },
+  "source": {
+    "type": "Text",
+    "value": "Adapted from the example payload 'ServiceTestSpecification_retrieve_example_response' of the TMF653 Service Test Management 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+  }
+}

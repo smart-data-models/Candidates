@@ -1,0 +1,662 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/MeasurementCollectionJob/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - MeasurementCollectionJob",
+  "description": "Used to control the periodic collection of performance indicators, implemented as a sub-entity of the PM Measurement Job. (TM Forum TMF628 Performance 4.0.0, Swagger definition MeasurementCollectionJob; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:MeasurementCollectionJob:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "MeasurementCollectionJob"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'MeasurementCollectionJob'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF628_Performance/blob/f958e5c2831aa61286e9356282cf451b16e7a5d2/TMF628-Performance-v4.0.0.swagger.json#/definitions/MeasurementCollectionJob/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:MeasurementCollectionJob:<tmfId>. unique identifier"
+    },
+    "href": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF628_Performance/blob/f958e5c2831aa61286e9356282cf451b16e7a5d2/TMF628-Performance-v4.0.0.swagger.json#/definitions/MeasurementCollectionJob/properties/href'. Hyperlink reference"
+    },
+    "consumingApplicationId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF628_Performance/blob/f958e5c2831aa61286e9356282cf451b16e7a5d2/TMF628-Performance-v4.0.0.swagger.json#/definitions/MeasurementCollectionJob/properties/consumingApplicationId'. The identifier of the application that consumes performance indicators."
+    },
+    "creationTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF628_Performance/blob/f958e5c2831aa61286e9356282cf451b16e7a5d2/TMF628-Performance-v4.0.0.swagger.json#/definitions/MeasurementCollectionJob/properties/creationTime'. The measurement job creation time."
+    },
+    "jobId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF628_Performance/blob/f958e5c2831aa61286e9356282cf451b16e7a5d2/TMF628-Performance-v4.0.0.swagger.json#/definitions/MeasurementCollectionJob/properties/jobId'. The ID of the management job."
+    },
+    "jobPriority": {
+      "default": 5,
+      "type": "integer",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF628_Performance/blob/f958e5c2831aa61286e9356282cf451b16e7a5d2/TMF628-Performance-v4.0.0.swagger.json#/definitions/MeasurementCollectionJob/properties/jobPriority'. The priority of the management job. The way the management application will use the JobPriority to schedule job execution is application specific and outside the scope. Integer, limited to a range of 1 to 10."
+    },
+    "lastModifiedTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF628_Performance/blob/f958e5c2831aa61286e9356282cf451b16e7a5d2/TMF628-Performance-v4.0.0.swagger.json#/definitions/MeasurementCollectionJob/properties/lastModifiedTime'. The last time that a measurement job was modified."
+    },
+    "outputFormat": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF628_Performance/blob/f958e5c2831aa61286e9356282cf451b16e7a5d2/TMF628-Performance-v4.0.0.swagger.json#/definitions/MeasurementCollectionJob/properties/outputFormat'."
+    },
+    "producingApplicationId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF628_Performance/blob/f958e5c2831aa61286e9356282cf451b16e7a5d2/TMF628-Performance-v4.0.0.swagger.json#/definitions/MeasurementCollectionJob/properties/producingApplicationId'. The identifier of the application that produces performance indicators."
+    },
+    "adminState": {
+      "type": "string",
+      "enum": [
+        "locked",
+        "unlocked"
+      ],
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF628_Performance/blob/f958e5c2831aa61286e9356282cf451b16e7a5d2/TMF628-Performance-v4.0.0.swagger.json#/definitions/MeasurementCollectionJob/properties/adminState'. This is enumeration for Administrative state"
+    },
+    "executionState": {
+      "type": "string",
+      "enum": [
+        "acknowledged",
+        "rejected",
+        "pending",
+        "inProgress",
+        "cancelled",
+        "completed",
+        "failed"
+      ],
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF628_Performance/blob/f958e5c2831aa61286e9356282cf451b16e7a5d2/TMF628-Performance-v4.0.0.swagger.json#/definitions/MeasurementCollectionJob/properties/executionState'. Possible values for the state of the execution"
+    },
+    "fileTransferData": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/FileTransferData"
+      },
+      "minItems": 1,
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF628_Performance/blob/f958e5c2831aa61286e9356282cf451b16e7a5d2/TMF628-Performance-v4.0.0.swagger.json#/definitions/MeasurementCollectionJob/properties/fileTransferData'."
+    },
+    "granularity": {
+      "type": "string",
+      "enum": [
+        "g_1mn",
+        "g_5mn",
+        "g_15mn",
+        "g_30mn",
+        "g_1h",
+        "g_24h",
+        "g_1m",
+        "g_1y",
+        "na"
+      ],
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF628_Performance/blob/f958e5c2831aa61286e9356282cf451b16e7a5d2/TMF628-Performance-v4.0.0.swagger.json#/definitions/MeasurementCollectionJob/properties/granularity'. Sampling rate of the collection or production of performance indicators."
+    },
+    "monitoredClassCriteria": {
+      "$ref": "#/$defs/MonitoredClassCriteria",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF628_Performance/blob/f958e5c2831aa61286e9356282cf451b16e7a5d2/TMF628-Performance-v4.0.0.swagger.json#/definitions/MeasurementCollectionJob/properties/monitoredClassCriteria'. Specifies a monitored object class (a string) in conjunction with a filter object."
+    },
+    "monitoredInstancesCriteria": {
+      "$ref": "#/$defs/MonitoredInstancesCriteria",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF628_Performance/blob/f958e5c2831aa61286e9356282cf451b16e7a5d2/TMF628-Performance-v4.0.0.swagger.json#/definitions/MeasurementCollectionJob/properties/monitoredInstancesCriteria'. List of monitored instances"
+    },
+    "performanceIndicatorGroupSpecification": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PerformanceIndicatorGroupSpecification"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF628_Performance/blob/f958e5c2831aa61286e9356282cf451b16e7a5d2/TMF628-Performance-v4.0.0.swagger.json#/definitions/MeasurementCollectionJob/properties/performanceIndicatorGroupSpecification'."
+    },
+    "performanceIndicatorSpecification": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF628_Performance/blob/f958e5c2831aa61286e9356282cf451b16e7a5d2/TMF628-Performance-v4.0.0.swagger.json#/definitions/MeasurementCollectionJob/properties/performanceIndicatorSpecification'. A product to be created defined by value or existing defined by reference. The polymorphic attributes @type, @schemaLocation & @referredType are related to the product entity and not the RelatedProductRefOrValue class itself. In TMF this is an array of PerformanceIndicatorSpecificationRefOrValue objects; here the NGSI-LD ids of the referenced PerformanceIndicatorSpecification entities (urn:ngsi-ld:PerformanceIndicatorSpecification:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "reportingPeriod": {
+      "type": "string",
+      "enum": [
+        "r_1mn",
+        "r_5mn",
+        "r_15mn",
+        "r_30mn",
+        "r_1h",
+        "r_24h",
+        "na"
+      ],
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF628_Performance/blob/f958e5c2831aa61286e9356282cf451b16e7a5d2/TMF628-Performance-v4.0.0.swagger.json#/definitions/MeasurementCollectionJob/properties/reportingPeriod'. Possible values for the reporting period"
+    },
+    "scheduleDefinition": {
+      "$ref": "#/$defs/ScheduleDefinition",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF628_Performance/blob/f958e5c2831aa61286e9356282cf451b16e7a5d2/TMF628-Performance-v4.0.0.swagger.json#/definitions/MeasurementCollectionJob/properties/scheduleDefinition'. The schedule definition for running jobs."
+    },
+    "trackingRecord": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/TrackingRecord"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF628_Performance/blob/f958e5c2831aa61286e9356282cf451b16e7a5d2/TMF628-Performance-v4.0.0.swagger.json#/definitions/MeasurementCollectionJob/properties/trackingRecord'. Tracking records allow the tracking of modifications on the problem. The tracking records should not be embedded in the problem to allow retrieving the problem without the tracking records"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF628_Performance/blob/f958e5c2831aa61286e9356282cf451b16e7a5d2/TMF628-Performance-v4.0.0.swagger.json#/definitions/MeasurementCollectionJob/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF628_Performance/blob/f958e5c2831aa61286e9356282cf451b16e7a5d2/TMF628-Performance-v4.0.0.swagger.json#/definitions/MeasurementCollectionJob/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF628_Performance/blob/f958e5c2831aa61286e9356282cf451b16e7a5d2/TMF628-Performance-v4.0.0.swagger.json#/definitions/MeasurementCollectionJob/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'MeasurementCollectionJob' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "fileTransferData"
+  ],
+  "$defs": {
+    "Any": {},
+    "Characteristic": {
+      "type": "object",
+      "description": "Describes a given characteristic of an object or entity through a name/value pair.",
+      "required": [
+        "name",
+        "value"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the characteristic"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the characteristic"
+        },
+        "valueType": {
+          "type": "string",
+          "description": "Data type of the value of the characteristic"
+        },
+        "characteristicRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CharacteristicRelationship"
+          }
+        },
+        "value": {
+          "$ref": "#/$defs/Any",
+          "description": "The value of the characteristic"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "CharacteristicRelationship": {
+      "type": "object",
+      "description": "Another Characteristic that is related to the current Characteristic;",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the characteristic"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "relationshipType": {
+          "type": "string",
+          "description": "The type of relationship"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "CompressionEnumType": {
+      "type": "string",
+      "description": "Enumeration of supported compressions. All extensions allowed.",
+      "enum": [
+        "no_compression",
+        "gzip",
+        "vendor_ext",
+        "minor_ext"
+      ]
+    },
+    "CompressionType": {
+      "type": "object",
+      "description": "File compression type.",
+      "properties": {
+        "compressionEnumType": {
+          "$ref": "#/$defs/CompressionEnumType"
+        }
+      }
+    },
+    "DayOfMonthRecurrence": {
+      "type": "object",
+      "properties": {
+        "dates": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "DayOfWeekRecurrence": {
+      "type": "object",
+      "properties": {
+        "dates": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "Duration": {
+      "type": "object",
+      "description": "A time interval in a given unit of time",
+      "properties": {
+        "amount": {
+          "type": "integer",
+          "description": "Time interval (number of seconds, minutes, hours, etc.)"
+        },
+        "units": {
+          "type": "string",
+          "description": "Unit of time (seconds, minutes, hours, etc.)"
+        }
+      }
+    },
+    "FileTransferData": {
+      "type": "object",
+      "properties": {
+        "fileFormat": {
+          "type": "string"
+        },
+        "fileLocation": {
+          "type": "string",
+          "format": "uri"
+        },
+        "transportProtocol": {
+          "type": "string"
+        },
+        "compressionType": {
+          "$ref": "#/$defs/CompressionType"
+        },
+        "packingType": {
+          "$ref": "#/$defs/PackingType"
+        },
+        "retentionPeriod": {
+          "$ref": "#/$defs/Duration"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "MonitoredClassCriteria": {
+      "type": "object",
+      "description": "Specifies a monitored object class (a string) in conjunction with a filter object.",
+      "properties": {
+        "monitoredObjectClass": {
+          "type": "string",
+          "description": "A monitored object class for specifying the set of instances that are referenced by a PM query."
+        },
+        "objectInstanceFilter": {
+          "type": "string",
+          "description": "A filter that can be used in conjunction with the monitored object class for specifying the set of instances that are referenced by a PM query."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "MonitoredInstancesCriteria": {
+      "type": "object",
+      "description": "List of monitored instances",
+      "properties": {
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "MonthlyScheduleDayOfWeekDefinition": {
+      "type": "object",
+      "properties": {
+        "recurringDaySequence": {
+          "type": "string"
+        },
+        "dayOfMonthRecurrence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DayOfMonthRecurrence"
+          }
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "PackingEnumType": {
+      "type": "string",
+      "description": "Enumeration of supported packing/packaging. All extensions allowed.",
+      "enum": [
+        "NO_PACKING",
+        "GZIP",
+        "TAR",
+        "VENDOR_EXT",
+        "MINOR_EXT"
+      ]
+    },
+    "PackingType": {
+      "type": "object",
+      "description": "Specify if the output file(s) are to be packed.",
+      "properties": {
+        "packingEnumType": {
+          "$ref": "#/$defs/PackingEnumType"
+        }
+      }
+    },
+    "PerformanceIndicatorGroupSpecification": {
+      "type": "object",
+      "required": [
+        "name",
+        "performanceIndicatorSpecification"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of Group specification"
+        },
+        "performanceIndicatorSpecification": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PerformanceIndicatorSpecificationRef"
+          },
+          "minItems": 1
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "PerformanceIndicatorSpecificationRef": {
+      "type": "object",
+      "description": "PerformanceIndicatorSpecification reference: A PerformanceIndicatorSpecification is a detailed description of a tangible or intangible object made available externally in the form of a PerformanceIndicatorSpecification to customers or other parties playing a party role.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "version": {
+          "type": "string",
+          "description": "Version of the performance indicator specification"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "ScheduleDefinition": {
+      "type": "object",
+      "description": "The schedule definition for running jobs.",
+      "properties": {
+        "recurringFrequency": {
+          "type": "string",
+          "description": "A recurring frequency to run a job within day that is included in schedule definition, for example: every 5 minutes, 15 minute, 30 minutes, 1 hour"
+        },
+        "scheduleDefinitionEndTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The Endtime of the Schedule Definition. If the attribute is empty the Schedule run forever, not having a time constraint."
+        },
+        "scheduleDefinitionHourRange": {
+          "type": "string",
+          "description": "A list of time ranges within a specific day that the schedule will be active on, for example 08:00-12:00, 16:00-19:00."
+        },
+        "scheduleDefinitionStartTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The Start time of the Schedule Definition"
+        },
+        "MonthlyScheduleDayOfWeekDefinition": {
+          "$ref": "#/$defs/MonthlyScheduleDayOfWeekDefinition"
+        },
+        "WeeklyScheduledDefinition": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DayOfWeekRecurrence"
+          },
+          "description": "The weekly schedule is used to define a schedule that is based on the days of the week, e.g. a schedule that will be active only on Monday and Tuesday."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "TrackingRecord": {
+      "type": "object",
+      "description": "Tracking records allow the tracking of modifications on the problem. The tracking records should not be embedded in the problem to allow retrieving the problem without the tracking records",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the TrackingRecord"
+        },
+        "description": {
+          "examples": [
+            [
+              "acknowledge",
+              "clear"
+            ]
+          ],
+          "type": "string",
+          "description": "Describes the action being done, such as: ack, clear"
+        },
+        "systemId": {
+          "type": "string",
+          "description": "Describes the system Id from which the action was done"
+        },
+        "time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Describes the time at which the action was done"
+        },
+        "user": {
+          "type": "string",
+          "description": "Describes the user doing the action"
+        },
+        "characteristic": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Characteristic"
+          },
+          "description": "A generic list of any type of elements. Used for vendor Extensions or loose element encapsulation from other namespaces"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    }
+  }
+}

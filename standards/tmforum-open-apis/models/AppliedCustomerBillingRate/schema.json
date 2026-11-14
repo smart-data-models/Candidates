@@ -1,0 +1,470 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/AppliedCustomerBillingRate/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - AppliedCustomerBillingRate",
+  "description": "A customer bill displays applied billing rates created before or during the billing process. (TM Forum TMF678 CustomerBill 5.0.0, OpenAPI component AppliedCustomerBillingRate; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:AppliedCustomerBillingRate:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "AppliedCustomerBillingRate"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'AppliedCustomerBillingRate'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF678_CustomerBill/blob/v5.0.0/TMF678-CustomerBill-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'AppliedCustomerBillingRate' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF678_CustomerBill/blob/v5.0.0/TMF678-CustomerBill-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF678_CustomerBill/blob/v5.0.0/TMF678-CustomerBill-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF678_CustomerBill/blob/v5.0.0/TMF678-CustomerBill-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/href'. Hyperlink reference"
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF678_CustomerBill/blob/v5.0.0/TMF678-CustomerBill-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:AppliedCustomerBillingRate:<tmfId>. unique identifier"
+    },
+    "appliedTax": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AppliedBillingTaxRate"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF678_CustomerBill/blob/v5.0.0/TMF678-CustomerBill-v5.0.0.oas.yaml#/components/schemas/AppliedCustomerBillingRate/properties/appliedTax'. The applied billing tax rate represents taxes applied billing rate it refers to. It is calculated during the billing process."
+    },
+    "bill": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF678_CustomerBill/blob/v5.0.0/TMF678-CustomerBill-v5.0.0.oas.yaml#/components/schemas/AppliedCustomerBillingRate/properties/bill'. Bill reference. In TMF this is a CustomerBillRef object; here the NGSI-LD id of the referenced CustomerBill entity (urn:ngsi-ld:CustomerBill:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF678_CustomerBill/blob/v5.0.0/TMF678-CustomerBill-v5.0.0.oas.yaml#/components/schemas/AppliedCustomerBillingRate/properties/date'. Creation date of the applied billing rate"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF678_CustomerBill/blob/v5.0.0/TMF678-CustomerBill-v5.0.0.oas.yaml#/components/schemas/AppliedCustomerBillingRate/properties/description'. Additional data to be displayed on the bill for this customer applied billing rate"
+    },
+    "isBilled": {
+      "type": "boolean",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF678_CustomerBill/blob/v5.0.0/TMF678-CustomerBill-v5.0.0.oas.yaml#/components/schemas/AppliedCustomerBillingRate/properties/isBilled'. Indicates if this applied billing rate has been presented on a bill or not. If isBilled = true then bill should be provided, if false then billingAccount should be provided"
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF678_CustomerBill/blob/v5.0.0/TMF678-CustomerBill-v5.0.0.oas.yaml#/components/schemas/AppliedCustomerBillingRate/properties/name'. Name of the customer applied billing rate"
+    },
+    "periodCoverage": {
+      "$ref": "#/$defs/TimePeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF678_CustomerBill/blob/v5.0.0/TMF678-CustomerBill-v5.0.0.oas.yaml#/components/schemas/AppliedCustomerBillingRate/properties/periodCoverage'. A period of time, either as a deadline (endDateTime only) a startDateTime only, or both"
+    },
+    "taxExcludedAmount": {
+      "$ref": "#/$defs/Money",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF678_CustomerBill/blob/v5.0.0/TMF678-CustomerBill-v5.0.0.oas.yaml#/components/schemas/AppliedCustomerBillingRate/properties/taxExcludedAmount'. A base / value business entity used to represent money"
+    },
+    "taxIncludedAmount": {
+      "$ref": "#/$defs/Money",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF678_CustomerBill/blob/v5.0.0/TMF678-CustomerBill-v5.0.0.oas.yaml#/components/schemas/AppliedCustomerBillingRate/properties/taxIncludedAmount'. A base / value business entity used to represent money"
+    },
+    "appliedBillingRateType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF678_CustomerBill/blob/v5.0.0/TMF678-CustomerBill-v5.0.0.oas.yaml#/components/schemas/AppliedCustomerBillingRate/properties/appliedBillingRateType'. Type of the applied billing rate : appliedBillingCharge (any kind of charge except taxation charges : recurringCharge, oneTimeCharge, usageCharge), appliedBillingCredit (any kind of credit : rebate or productAlteration) or appliedPenaltyCharge (penalty charges such as late fees, payment rejection fees,...)"
+    },
+    "billingAccount": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF678_CustomerBill/blob/v5.0.0/TMF678-CustomerBill-v5.0.0.oas.yaml#/components/schemas/AppliedCustomerBillingRate/properties/billingAccount'. BillingAccount reference. A BillingAccount is a detailed description of a bill structure. In TMF this is a BillingAccountRef object; here the NGSI-LD id of the referenced BillingAccount entity (urn:ngsi-ld:BillingAccount:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "product": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF678_CustomerBill/blob/v5.0.0/TMF678-CustomerBill-v5.0.0.oas.yaml#/components/schemas/AppliedCustomerBillingRate/properties/product'. A Product reference. In TMF this is a ProductRef object; here the NGSI-LD id of the referenced Product entity (urn:ngsi-ld:Product:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "characteristic": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Characteristic"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF678_CustomerBill/blob/v5.0.0/TMF678-CustomerBill-v5.0.0.oas.yaml#/components/schemas/AppliedCustomerBillingRate/properties/characteristic'. Describes a given characteristic of an object or entity through a name/value pair."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tmfType"
+  ],
+  "$defs": {
+    "Addressable": {
+      "type": "object",
+      "description": "Base schema for adressable entities",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Hyperlink reference"
+        },
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        }
+      }
+    },
+    "AppliedBillingTaxRate": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Entity"
+        },
+        {
+          "type": "object",
+          "description": "The applied billing tax rate represents taxes applied billing rate it refers to. It is calculated during the billing process.",
+          "properties": {
+            "taxAmount": {
+              "$ref": "#/$defs/Money"
+            },
+            "taxCategory": {
+              "type": "string",
+              "description": "A categorization of the tax rate"
+            },
+            "taxRate": {
+              "type": "number",
+              "format": "float",
+              "description": "Applied rate"
+            }
+          }
+        }
+      ]
+    },
+    "BooleanCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Boolean.",
+          "properties": {
+            "value": {
+              "type": "boolean",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "Characteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Describes a given characteristic of an object or entity through a name/value pair. The value is given by the sub-class named in @type (discriminator in the TMF specification): StringCharacteristic, StringArrayCharacteristic, ObjectCharacteristic, ObjectArrayCharacteristic, NumberCharacteristic, NumberArrayCharacteristic, IntegerCharacteristic, IntegerArrayCharacteristic, FloatCharacteristic, BooleanCharacteristic; see $defs.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique identifier of the characteristic"
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the characteristic"
+            },
+            "valueType": {
+              "type": "string",
+              "description": "Data type of the value of the characteristic"
+            },
+            "characteristicRelationship": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/CharacteristicRelationship"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "CharacteristicRelationship": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Another Characteristic that is related to the current Characteristic;",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique identifier of the characteristic"
+            },
+            "relationshipType": {
+              "type": "string",
+              "description": "The type of relationship"
+            }
+          }
+        }
+      ]
+    },
+    "Entity": {
+      "type": "object",
+      "description": "Base entity schema for use in TMForum Open-APIs. Property.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        }
+      ]
+    },
+    "Extensible": {
+      "type": "object",
+      "description": "Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means that the Entity described by the schema MUST be extended with the @type",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "FloatCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Float.",
+          "properties": {
+            "value": {
+              "type": "number",
+              "format": "float",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "IntegerArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of Integer(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "IntegerCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Integer.",
+          "properties": {
+            "value": {
+              "type": "integer",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "Money": {
+      "type": "object",
+      "description": "A base / value business entity used to represent money",
+      "properties": {
+        "unit": {
+          "type": "string",
+          "description": "Currency (ISO4217 norm uses 3 letters to define the currency)"
+        },
+        "value": {
+          "type": "number",
+          "format": "float",
+          "description": "A signed floating point number, the meaning of the sign is according to the context of the API that uses this Data type"
+        }
+      }
+    },
+    "NumberArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of Number(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "NumberCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Number.",
+          "properties": {
+            "value": {
+              "type": "number",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "ObjectArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of Object(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ObjectCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a Object.",
+          "properties": {
+            "value": {
+              "type": "object",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "StringArrayCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is an array of String(s).",
+          "properties": {
+            "value": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "StringCharacteristic": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "description": "A characteristic which value is a String.",
+          "properties": {
+            "value": {
+              "type": "string",
+              "description": "Value of the characteristic"
+            }
+          }
+        }
+      ]
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "startDateTime": {
+          "description": "Start of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        },
+        "endDateTime": {
+          "description": "End of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        }
+      }
+    }
+  }
+}

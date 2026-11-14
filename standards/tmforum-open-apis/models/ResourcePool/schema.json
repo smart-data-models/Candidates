@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ResourcePool/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - ResourcePool",
+  "description": "manages resource capacity with the resource state (TM Forum TMF685 Resource Pool Management 1.0, Swagger definition ResourcePool; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:ResourcePool:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ResourcePool"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ResourcePool'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF685_ResourcePool/blob/7700c1dd83787eb5d85654d16fb611f01f02d629/Resource_Pool_Management.admin.swagger.json#/definitions/ResourcePool/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). A string. Generic attribute indicating the base class type of the extension class of the current object. Useful only when the class type of the current object is unknown to the implementation."
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF685_ResourcePool/blob/7700c1dd83787eb5d85654d16fb611f01f02d629/Resource_Pool_Management.admin.swagger.json#/definitions/ResourcePool/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A string. Generic attribute containing the link to the schema that defines the structure of the class type of the current object."
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF685_ResourcePool/blob/7700c1dd83787eb5d85654d16fb611f01f02d629/Resource_Pool_Management.admin.swagger.json#/definitions/ResourcePool/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'ResourcePool' or a sub-class / extension name. A string. Generic attribute containing the name of the resource class type."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF685_ResourcePool/blob/7700c1dd83787eb5d85654d16fb611f01f02d629/Resource_Pool_Management.admin.swagger.json#/definitions/ResourcePool/properties/description'. A string. free-text description of the Resource Pool."
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF685_ResourcePool/blob/7700c1dd83787eb5d85654d16fb611f01f02d629/Resource_Pool_Management.admin.swagger.json#/definitions/ResourcePool/properties/href'. A string. Hyperlink to access the Resource Pool."
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF685_ResourcePool/blob/7700c1dd83787eb5d85654d16fb611f01f02d629/Resource_Pool_Management.admin.swagger.json#/definitions/ResourcePool/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:ResourcePool:<tmfId>. A string. Identifier of an instance of the Resource Pool."
+    },
+    "relatedParty": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF685_ResourcePool/blob/7700c1dd83787eb5d85654d16fb611f01f02d629/Resource_Pool_Management.admin.swagger.json#/definitions/ResourcePool/properties/relatedParty'. A related party defines party or party role linked to a specific entity, who uses the resource of Resource Pool."
+    },
+    "resourceCollection": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ResourceCollectionRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF685_ResourcePool/blob/7700c1dd83787eb5d85654d16fb611f01f02d629/Resource_Pool_Management.admin.swagger.json#/definitions/ResourcePool/properties/resourceCollection'. an aggregate entity consisting of ResourceElement"
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ],
+  "$defs": {
+    "ResourceCollectionRef": {
+      "type": "object",
+      "description": "an aggregate entity consisting of ResourceElement",
+      "properties": {
+        "@referredType": {
+          "type": "string",
+          "description": "A string. Indicates the type of the referred object. This attribute is to be used when the object is representing a reference to an existing object instead of the of the object itself."
+        },
+        "href": {
+          "type": "string",
+          "description": "A string. Hyperlink to access the Resource collection."
+        },
+        "name": {
+          "type": "string",
+          "description": "Represents a user-friendly identifier of an object."
+        },
+        "objectId": {
+          "type": "string",
+          "description": "A list of consisted Resources."
+        }
+      }
+    }
+  }
+}

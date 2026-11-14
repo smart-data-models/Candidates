@@ -1,0 +1,1078 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ApiProduct/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - ApiProduct",
+  "description": "ApiProduct is a specialization of a Product being an instance of an atomic ProductOffering or a ProductSpecification that is realized by an API (the Service). (TM Forum TMF931 Open Gateway Operate API Onboarding and Ordering 5.2.1, OpenAPI component ApiProduct; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:ApiProduct:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ApiProduct"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ApiProduct'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Extensible/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'ApiProduct' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Extensible/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Extensible/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Addressable/properties/href'. Hyperlink reference"
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Addressable/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:ApiProduct:<tmfId>. unique identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProduct/properties/name'. Name of the product. It could be the same as the name of the product offering"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProduct/properties/description'. Is the description of the product. It could be same description than Product Offering one."
+    },
+    "productOffering": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProduct/properties/productOffering'. ProductOffering reference. A product offering represents entities that are orderable from the provider of the catalog, this resource includes pricing information. In TMF this is a ProductOfferingRef object; here the NGSI-LD id of the referenced ProductOffering entity (urn:ngsi-ld:ProductOffering:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "productSpecification": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProduct/properties/productSpecification'. ProductSpecification reference. A product Specification represents entities that are orderable from the provider of the catalog. In TMF this is a ProductSpecificationRef object; here the NGSI-LD id of the referenced ProductSpecification entity (urn:ngsi-ld:ProductSpecification:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "productRelationship": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/OpenGatewayProductRelationship"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProduct/properties/productRelationship'. Collection of product relationships"
+    },
+    "apiName": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProduct/properties/apiName'. Standardized name of the API."
+    },
+    "apiVersionDetails": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ApiVersionDetails"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProduct/properties/apiVersionDetails'. A set of ApiProduct characteristics grouped together by API major version."
+    },
+    "purpose": {
+      "enum": [
+        "dpv:AcademicResearch",
+        "dpv:AccountManagement",
+        "dpv:Advertising",
+        "dpv:AgeVerification",
+        "dpv:CombatClimateChange",
+        "dpv:CommercialPurpose",
+        "dpv:CommercialResearch",
+        "dpv:CommunicationForCustomerCare",
+        "dpv:CommunicationManagement",
+        "dpv:CounterMoneyLaundering",
+        "dpv:Counterterrorism",
+        "dpv:CreditChecking",
+        "dpv:CustomerCare",
+        "dpv:CustomerClaimsManagement",
+        "dpv:CustomerManagement",
+        "dpv:CustomerOrderManagement",
+        "dpv:CustomerRelationshipManagement",
+        "dpv:CustomerSolvencyMonitoring",
+        "dpv:DataAltruism",
+        "dpv:DeliveryOfGoods",
+        "dpv:DirectMarketing",
+        "dpv:DisputeManagement",
+        "dpv:EnforceAccessControl",
+        "dpv:EnforceSecurity",
+        "dpv:EstablishContractualAgreement",
+        "dpv:FraudPreventionAndDetection",
+        "dpv:FulfilmentOfContractualObligation",
+        "dpv:FulfilmentOfObligation",
+        "dpv:HumanResourceManagement",
+        "dpv:IdentityAuthentication",
+        "dpv:IdentityVerification",
+        "dpv:ImproveExistingProductsAndServices",
+        "dpv:ImproveHealthcare",
+        "dpv:ImproveInternalCRMProcesses",
+        "dpv:ImprovePublicServices",
+        "dpv:ImproveTransportMobility",
+        "dpv:IncreaseServiceRobustness",
+        "dpv:InternalResourceOptimisation",
+        "dpv:LegalCompliance",
+        "dpv:MaintainCreditCheckingDatabase",
+        "dpv:MaintainCreditRatingDatabase",
+        "dpv:MaintainFraudDatabase",
+        "dpv:Marketing",
+        "dpv:MemberPartnerManagement",
+        "dpv:MisusePreventionAndDetection",
+        "dpv:NonCommercialPurpose",
+        "dpv:NonCommercialResearch",
+        "dpv:OptimisationForConsumer",
+        "dpv:OptimisationForController",
+        "dpv:OptimiseUserInterface",
+        "dpv:OrganisationComplianceManagement",
+        "dpv:OrganisationGovernance",
+        "dpv:OrganisationRiskManagement",
+        "dpv:PaymentManagement",
+        "dpv:Personalisation",
+        "dpv:PersonalisedAdvertising",
+        "dpv:PersonalisedBenefits",
+        "dpv:PersonnelHiring",
+        "dpv:PersonnelManagement",
+        "dpv:PersonnelPayment",
+        "dpv:ProtectionOfIPR",
+        "dpv:ProtectionOfNationalSecurity",
+        "dpv:ProtectionOfPublicSecurity",
+        "dpv:ProvideEventRecommendations",
+        "dpv:ProvideOfficialStatistics",
+        "dpv:ProvidePersonalisedRecommendations",
+        "dpv:ProvideProductRecommendations",
+        "dpv:PublicBenefit",
+        "dpv:PublicPolicyMaking",
+        "dpv:PublicRelations",
+        "dpv:RecordManagement",
+        "dpv:RepairImpairments",
+        "dpv:RequestedServiceProvision",
+        "dpv:ResearchAndDevelopment",
+        "dpv:RightsFulfillment",
+        "dpv:ScientificResearch",
+        "dpv:SearchFunctionalities",
+        "dpv:SellDataToThirdParties",
+        "dpv:SellInsightsFromData",
+        "dpv:SellProducts",
+        "dpv:SellProductsToDataSubject",
+        "dpv:ServiceOptimisation",
+        "dpv:ServicePersonalisation",
+        "dpv:ServiceProvision",
+        "dpv:ServiceRegistration",
+        "dpv:ServiceUsageAnalytics",
+        "dpv:SocialMediaMarketing",
+        "dpv:TargetedAdvertising",
+        "dpv:TechnicalServiceProvision",
+        "dpv:UserInterfacePersonalisation",
+        "dpv:VendorManagement",
+        "dpv:VendorPayment",
+        "dpv:VendorRecordsManagement",
+        "dpv:VendorSelectionAssessment",
+        "dpv:Verification"
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProduct/properties/purpose'. Valid values for the purpose based on W3C Data Privacy Vocabulary v2 https://w3c.github.io/dpv/2.0/dpv/"
+    },
+    "countryCode": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ISO31661Alpha2StandardIdentifier"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProduct/properties/countryCode'. One or several countries where API is operated."
+    },
+    "productOrderItem": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedOrderItem"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProduct/properties/productOrderItem'. A reference to the Product Order items that involved this Product."
+    },
+    "approvedProductOfferingTermOrCondition": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ProductOfferingTermOrCondition"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProduct/properties/approvedProductOfferingTermOrCondition'. Approved Terms or Conditions of the ProductOffering."
+    },
+    "status": {
+      "enum": [
+        "created",
+        "pendingActive",
+        "cancelled",
+        "active",
+        "pendingTerminate",
+        "terminated",
+        "suspended",
+        "aborted"
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProduct/properties/status'. Possible values for the status of the product"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProduct/properties/creationDate'. Date and time when the product was created"
+    },
+    "startDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProduct/properties/startDate'. Is the date from which the product starts"
+    },
+    "orderDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProduct/properties/orderDate'. Is the date when the product was ordered"
+    },
+    "terminationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProduct/properties/terminationDate'. Is the date when the product was terminated"
+    },
+    "channelPartner": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProduct/properties/channelPartner'. Party role reference. A party role represents the part played by a party in a given context. In TMF this is a PartyRoleRef object; here the NGSI-LD id of the referenced PartyRole entity (urn:ngsi-ld:PartyRole:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "agreementItem": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AgreementItemRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProduct/properties/agreementItem'. Collection of agreement items that involves this Product."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tmfType"
+  ],
+  "$defs": {
+    "Addressable": {
+      "type": "object",
+      "description": "Base schema for addressable entities",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Hyperlink reference"
+        },
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        }
+      }
+    },
+    "AgreementItemRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "It's a Agreement item that has been executed previously.",
+          "properties": {
+            "agreementName": {
+              "type": "string",
+              "description": "Name of the related entity."
+            },
+            "agreementHref": {
+              "type": "string",
+              "description": "Reference of the related entity."
+            },
+            "@referredType": {
+              "type": "string",
+              "description": "The actual type of the target instance when needed for disambiguation."
+            },
+            "agreementId": {
+              "type": "string",
+              "description": "Unique identifier of a related entity."
+            },
+            "agreementItemId": {
+              "type": "string",
+              "description": "Id of an item of a Agreement"
+            }
+          }
+        }
+      ]
+    },
+    "ApiGrantInformation": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "ApiGrantInformation is a structured set of information regarding the grant of access to an API product, detailing its purpose, scope, grant type, and legal basis for usage.",
+          "properties": {
+            "purpose": {
+              "$ref": "#/$defs/DpvPurposeType"
+            },
+            "scope": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "One or several scopes of the API, as stated in the API that has been purchased. Examples: \"sim-swap:retrieve-date\""
+            },
+            "grantType": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "One or several grantType of the API, as stated in the API that has been purchased. Examples: \"authorization_code\" \"client_credentials\" \"urn:ietf:params:oauth:grant-type:token-exchange\" \"urn:ietf:params:oauth:grant-type:jwt-bearer\" \"urn:ietf:params:oauth:grant-type:saml2-bearer\" \"urn:ietf:params:oauth:grant-type:device_code\" \"urn:openid:params:grant-type:ciba\""
+            },
+            "legalBasis": {
+              "$ref": "#/$defs/DpvLegalBasisType"
+            }
+          }
+        }
+      ]
+    },
+    "ApiVersionDetails": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "A set of ApiProduct characteristics grouped together by API major version.",
+          "properties": {
+            "apiMajorVersion": {
+              "type": "integer",
+              "description": "Major version of the API standard specification."
+            },
+            "basePath": {
+              "type": "string",
+              "description": "Base path of the API."
+            },
+            "countryCode": {
+              "$ref": "#/$defs/ISO31661Alpha2StandardIdentifier"
+            },
+            "apiGrantInformation": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ApiGrantInformation"
+              },
+              "description": "Collection of API grant information that describe the Product. ApiGrantInformation is a structured set of information regarding the grant of access to an API product, detailing its purpose, scope, grant type, and legal basis for usage."
+            }
+          }
+        }
+      ]
+    },
+    "DataExportCountry": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "This schema permits to declare the countries and context where some data has been stored or has transited.",
+          "properties": {
+            "countryCode": {
+              "$ref": "#/$defs/ISO31661Alpha2StandardIdentifier"
+            },
+            "commercialActivity": {
+              "type": "boolean",
+              "description": "Flag to indicate if commercial activity applies to these data management."
+            },
+            "commercialOrganizationName": {
+              "type": "string",
+              "description": "Organization who is managing the data."
+            },
+            "dataPrivacyFrameworkURL": {
+              "type": "string",
+              "description": "URL to the organization or governmental data privacy framework if applies."
+            }
+          }
+        }
+      ]
+    },
+    "DpvContext": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Describes all the context and conditions within which processing takes place",
+          "properties": {
+            "processingContext": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/DpvProcessingContextType"
+              },
+              "description": "context classes of the data processing of the API."
+            },
+            "duration": {
+              "$ref": "#/$defs/DpvDurationType"
+            },
+            "frequency": {
+              "$ref": "#/$defs/DpvFrequencyType"
+            }
+          }
+        }
+      ]
+    },
+    "DpvDurationType": {
+      "enum": [
+        "dpv:EndlessDuration",
+        "dpv:FixedOccurrencesDuration",
+        "dpv:IndeterminateDuration",
+        "dpv:TemporalDuration",
+        "dpv:UntilEventDuration",
+        "dpv:UntilTimeDuration"
+      ],
+      "type": "string",
+      "description": "Valid values for the data processing duration based on W3C Data Privacy Vocabulary v2 https://w3c.github.io/dpv/2.0/dpv/"
+    },
+    "DpvFrequencyType": {
+      "enum": [
+        "dpv:ContinuousFrequency",
+        "dpv:OftenFrequency",
+        "dpv:SingularFrequency",
+        "dpv:SporadicFrequency"
+      ],
+      "type": "string",
+      "description": "Valid values for the data processing frequency based on W3C Data Privacy Vocabulary v2 https://w3c.github.io/dpv/2.0/dpv/"
+    },
+    "DpvLegalBasisType": {
+      "enum": [
+        "dpv:Consent",
+        "dpv:Contract",
+        "dpv:ContractPerformance",
+        "dpv:DataTransferLegalBasis",
+        "dpv:EnterIntoContract",
+        "dpv:LegalBasis",
+        "dpv:LegalObligation",
+        "dpv:LegitimateInterest",
+        "dpv:LegitimateInterestOfController",
+        "dpv:LegitimateInterestOfDataSubject",
+        "dpv:LegitimateInterestOfThirdParty",
+        "dpv:OfficialAuthorityOfController",
+        "dpv:PublicInterest",
+        "dpv:VitalInterest",
+        "dpv:VitalInterestOfDataSubject",
+        "dpv:VitalInterestOfNaturalPerson",
+        "dpv:InformedConsent",
+        "dpv:DataControllerContract",
+        "dpv:ImpliedConsent",
+        "dpv:DataSubjectContract",
+        "dpv:ExplicitlyExpressedConsent",
+        "dpv:UninformedConsent",
+        "dpv:DataProcessorContract",
+        "dpv:ExpressedConsent",
+        "dpv:ThirdPartyContract"
+      ],
+      "type": "string",
+      "description": "Valid values for Legal Basis based on W3C Data Privacy Vocabulary v2 https://w3c.github.io/dpv/2.0/dpv/"
+    },
+    "DpvProcess": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Describes all the operations or 'processing' performed on data",
+          "properties": {
+            "processingOperation": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/DpvProcessingOperationType"
+              },
+              "description": "operations of the data processing of the API."
+            },
+            "context": {
+              "$ref": "#/$defs/DpvContext"
+            },
+            "dataExportTransitCountry": {
+              "type": "array",
+              "description": "Field to contain all the traceability of the data until the last storage site.",
+              "items": {
+                "$ref": "#/$defs/DataExportCountry"
+              }
+            },
+            "dataExportStorageCountry": {
+              "type": "array",
+              "description": "Field to contain all the information related the last data storage site.",
+              "items": {
+                "$ref": "#/$defs/DataExportCountry"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "DpvProcessingContextType": {
+      "enum": [
+        "dpv:AlgorithmicLogic",
+        "dpv:AssistiveAutomation",
+        "dpv:AutomatedDecisionMaking",
+        "dpv:AutomatedScoringOfIndividuals",
+        "dpv:AutomationLevel",
+        "dpv:Autonomous",
+        "dpv:CannotChallengeProcess",
+        "dpv:CannotChallengeProcessInput",
+        "dpv:CannotChallengeProcessOutput",
+        "dpv:CannotCorrectProcess",
+        "dpv:CannotCorrectProcessInput",
+        "dpv:CannotCorrectProcessOutput",
+        "dpv:CannotObjectToProcess",
+        "dpv:CannotOptInToProcess",
+        "dpv:CannotOptOutFromProcess",
+        "dpv:CannotReverseProcessEffects",
+        "dpv:CannotReverseProcessInput",
+        "dpv:CannotReverseProcessOutput",
+        "dpv:CannotWithdrawFromProcess",
+        "dpv:ChallengingProcess",
+        "dpv:ChallengingProcessInput",
+        "dpv:ChallengingProcessOutput",
+        "dpv:ConditionalAutomation",
+        "dpv:ConsentControl",
+        "dpv:CorrectingProcess",
+        "dpv:CorrectingProcessInput",
+        "dpv:CorrectingProcessOutput",
+        "dpv:CompletelyManualProcessing",
+        "dpv:DataControllerDataSource",
+        "dpv:DataPublishedByDataSubject",
+        "dpv:DataSource",
+        "dpv:DataSubject",
+        "dpv:DataSubjectDataSource",
+        "dpv:DataSubjectScale",
+        "dpv:DataVolume",
+        "dpv:DecisionMaking",
+        "dpv:EntityActiveInvolvement",
+        "dpv:EntityInvolvement",
+        "dpv:EntityNonInvolvement",
+        "dpv:EntityNonPermissiveInvolvement",
+        "dpv:EntityPassiveInvolvement",
+        "dpv:EntityPermissiveInvolvement",
+        "dpv:EvaluationOfIndividuals",
+        "dpv:EvaluationScoring",
+        "dpv:FullAutomation",
+        "dpv:GeographicCoverage",
+        "dpv:GlobalScale",
+        "dpv:HighAutomation",
+        "dpv:HugeDataVolume",
+        "dpv:HugeScaleOfDataSubjects",
+        "dpv:HumanInvolved",
+        "dpv:HumanInvolvement",
+        "dpv:HumanInvolvementForControl",
+        "dpv:HumanInvolvementForDecision",
+        "dpv:HumanInvolvementForInput",
+        "dpv:HumanInvolvementForIntervention",
+        "dpv:HumanInvolvementForOversight",
+        "dpv:HumanInvolvementForVerification",
+        "dpv:HumanNotInvolved",
+        "dpv:InnovativeUseOfExistingTechnology",
+        "dpv:InnovativeUseOfNewTechnologies",
+        "dpv:InnovativeUseOfTechnology",
+        "dpv:LargeDataVolume",
+        "dpv:LargeScaleOfDataSubjects",
+        "dpv:LargeScaleProcessing",
+        "dpv:LocalEnvironmentScale",
+        "dpv:LocalityScale",
+        "dpv:MediumDataVolume",
+        "dpv:MediumScaleOfDataSubjects",
+        "dpv:MediumScaleProcessing",
+        "dpv:MultiNationalScale",
+        "dpv:NationalScale",
+        "dpv:NearlyGlobalScale",
+        "dpv:NonPublicDataSource",
+        "dpv:NotAutomated",
+        "dpv:ObjectingToProcess",
+        "dpv:ObtainConsent",
+        "dpv:OptingInToProcess",
+        "dpv:OptingOutFromProcess",
+        "dpv:PartialAutomation",
+        "dpv:ProcessingCondition",
+        "dpv:ProcessingDuration",
+        "dpv:ProcessingLocation",
+        "dpv:ProcessingScale",
+        "dpv:ProvideConsent",
+        "dpv:PublicDataSource",
+        "dpv:ReaffirmConsent",
+        "dpv:RegionalScale",
+        "dpv:ReversingProcessEffects",
+        "dpv:ReversingProcessInput",
+        "dpv:ReversingProcessOutput",
+        "dpv:Scale",
+        "dpv:ScoringOfIndividuals",
+        "dpv:SingularDataVolume",
+        "dpv:SingularScaleOfDataSubjects",
+        "dpv:SmallDataVolume",
+        "dpv:SmallScaleOfDataSubjects",
+        "dpv:SmallScaleProcessing",
+        "dpv:SporadicDataVolume",
+        "dpv:SporadicScaleOfDataSubjects",
+        "dpv:StorageCondition",
+        "dpv:StorageDeletion",
+        "dpv:StorageDuration",
+        "dpv:StorageLocation",
+        "dpv:StorageRestoration",
+        "dpv:SystematicMonitoring",
+        "dpv:ThirdPartyDataSource",
+        "dpv:WithdrawConsent",
+        "dpv:WithdrawingFromProcess"
+      ],
+      "type": "string",
+      "description": "Valid values for the data processing context classes based on W3C Data Privacy Vocabulary v2 https://w3c.github.io/dpv/2.0/dpv/"
+    },
+    "DpvProcessingOperationType": {
+      "enum": [
+        "dpv:Access",
+        "dpv:Acquire",
+        "dpv:Adapt",
+        "dpv:Aggregate",
+        "dpv:Align",
+        "dpv:Alter",
+        "dpv:Analyse",
+        "dpv:Anonymise",
+        "dpv:Assess",
+        "dpv:Collect",
+        "dpv:Combine",
+        "dpv:Consult",
+        "dpv:Copy",
+        "dpv:CrossBorderTransfer",
+        "dpv:Delete",
+        "dpv:Derive",
+        "dpv:Destruct",
+        "dpv:Disclose",
+        "dpv:DiscloseByTransmission",
+        "dpv:Display",
+        "dpv:Disseminate",
+        "dpv:Download",
+        "dpv:Erase",
+        "dpv:Export",
+        "dpv:Filter",
+        "dpv:Format",
+        "dpv:Generate",
+        "dpv:Infer",
+        "dpv:MakeAvailable",
+        "dpv:Match",
+        "dpv:Modify",
+        "dpv:Monitor",
+        "dpv:Move",
+        "dpv:Observe",
+        "dpv:Obtain",
+        "dpv:Organise",
+        "dpv:Profiling",
+        "dpv:Pseudonymise",
+        "dpv:Query",
+        "dpv:Record",
+        "dpv:Reformat",
+        "dpv:Remove",
+        "dpv:Restrict",
+        "dpv:Retrieve",
+        "dpv:Screen",
+        "dpv:Share",
+        "dpv:Store",
+        "dpv:Structure",
+        "dpv:Transfer",
+        "dpv:Transform",
+        "dpv:Transmit",
+        "dpv:Use"
+      ],
+      "type": "string",
+      "description": "Valid values for the data processing operation based on W3C Data Privacy Vocabulary v2 https://w3c.github.io/dpv/2.0/dpv/."
+    },
+    "DpvPurposeType": {
+      "enum": [
+        "dpv:AcademicResearch",
+        "dpv:AccountManagement",
+        "dpv:Advertising",
+        "dpv:AgeVerification",
+        "dpv:CombatClimateChange",
+        "dpv:CommercialPurpose",
+        "dpv:CommercialResearch",
+        "dpv:CommunicationForCustomerCare",
+        "dpv:CommunicationManagement",
+        "dpv:CounterMoneyLaundering",
+        "dpv:Counterterrorism",
+        "dpv:CreditChecking",
+        "dpv:CustomerCare",
+        "dpv:CustomerClaimsManagement",
+        "dpv:CustomerManagement",
+        "dpv:CustomerOrderManagement",
+        "dpv:CustomerRelationshipManagement",
+        "dpv:CustomerSolvencyMonitoring",
+        "dpv:DataAltruism",
+        "dpv:DeliveryOfGoods",
+        "dpv:DirectMarketing",
+        "dpv:DisputeManagement",
+        "dpv:EnforceAccessControl",
+        "dpv:EnforceSecurity",
+        "dpv:EstablishContractualAgreement",
+        "dpv:FraudPreventionAndDetection",
+        "dpv:FulfilmentOfContractualObligation",
+        "dpv:FulfilmentOfObligation",
+        "dpv:HumanResourceManagement",
+        "dpv:IdentityAuthentication",
+        "dpv:IdentityVerification",
+        "dpv:ImproveExistingProductsAndServices",
+        "dpv:ImproveHealthcare",
+        "dpv:ImproveInternalCRMProcesses",
+        "dpv:ImprovePublicServices",
+        "dpv:ImproveTransportMobility",
+        "dpv:IncreaseServiceRobustness",
+        "dpv:InternalResourceOptimisation",
+        "dpv:LegalCompliance",
+        "dpv:MaintainCreditCheckingDatabase",
+        "dpv:MaintainCreditRatingDatabase",
+        "dpv:MaintainFraudDatabase",
+        "dpv:Marketing",
+        "dpv:MemberPartnerManagement",
+        "dpv:MisusePreventionAndDetection",
+        "dpv:NonCommercialPurpose",
+        "dpv:NonCommercialResearch",
+        "dpv:OptimisationForConsumer",
+        "dpv:OptimisationForController",
+        "dpv:OptimiseUserInterface",
+        "dpv:OrganisationComplianceManagement",
+        "dpv:OrganisationGovernance",
+        "dpv:OrganisationRiskManagement",
+        "dpv:PaymentManagement",
+        "dpv:Personalisation",
+        "dpv:PersonalisedAdvertising",
+        "dpv:PersonalisedBenefits",
+        "dpv:PersonnelHiring",
+        "dpv:PersonnelManagement",
+        "dpv:PersonnelPayment",
+        "dpv:ProtectionOfIPR",
+        "dpv:ProtectionOfNationalSecurity",
+        "dpv:ProtectionOfPublicSecurity",
+        "dpv:ProvideEventRecommendations",
+        "dpv:ProvideOfficialStatistics",
+        "dpv:ProvidePersonalisedRecommendations",
+        "dpv:ProvideProductRecommendations",
+        "dpv:PublicBenefit",
+        "dpv:PublicPolicyMaking",
+        "dpv:PublicRelations",
+        "dpv:RecordManagement",
+        "dpv:RepairImpairments",
+        "dpv:RequestedServiceProvision",
+        "dpv:ResearchAndDevelopment",
+        "dpv:RightsFulfillment",
+        "dpv:ScientificResearch",
+        "dpv:SearchFunctionalities",
+        "dpv:SellDataToThirdParties",
+        "dpv:SellInsightsFromData",
+        "dpv:SellProducts",
+        "dpv:SellProductsToDataSubject",
+        "dpv:ServiceOptimisation",
+        "dpv:ServicePersonalisation",
+        "dpv:ServiceProvision",
+        "dpv:ServiceRegistration",
+        "dpv:ServiceUsageAnalytics",
+        "dpv:SocialMediaMarketing",
+        "dpv:TargetedAdvertising",
+        "dpv:TechnicalServiceProvision",
+        "dpv:UserInterfacePersonalisation",
+        "dpv:VendorManagement",
+        "dpv:VendorPayment",
+        "dpv:VendorRecordsManagement",
+        "dpv:VendorSelectionAssessment",
+        "dpv:Verification"
+      ],
+      "type": "string",
+      "description": "Valid values for the purpose based on W3C Data Privacy Vocabulary v2 https://w3c.github.io/dpv/2.0/dpv/"
+    },
+    "EntityRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        },
+        {
+          "type": "object",
+          "description": "Entity reference schema to be use for all entityRef class.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "The identifier of the referred entity."
+            },
+            "href": {
+              "type": "string",
+              "description": "The URI of the referred entity."
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the referred entity."
+            },
+            "@referredType": {
+              "type": "string",
+              "description": "The actual type of the target instance when needed for disambiguation."
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      ]
+    },
+    "Extensible": {
+      "type": "object",
+      "description": "Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means that the Entity described by the schema MUST be extended with the @type",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "ISO31661Alpha2StandardIdentifier": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "The corresponding identification of the resource in different standard, regulatory definitions. The standard specification identifier (e.g., ISO 3166-1 Alpha-2) and the corresponding value (e.g., BE) relevant to a particular resource.",
+          "properties": {
+            "value": {
+              "type": "string",
+              "description": "The value of the resource in the ISO 3166-1 Alpha 2 standard",
+              "pattern": "[A-Z]{2}",
+              "examples": [
+                "GB"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "ItemActionType": {
+      "enum": [
+        "add",
+        "modify",
+        "delete",
+        "noChange"
+      ],
+      "type": "string",
+      "description": "action to be performed on the entity managed by the item"
+    },
+    "OpenGatewayProductRelationship": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/ProductRelationship"
+        },
+        {
+          "type": "object",
+          "description": "Used to describe relationship between product in the Open Gateway context.",
+          "properties": {
+            "relationshipType": {
+              "type": "string",
+              "description": "Relationship in the Open Gateway context. bundles is used when the id in the productRelationship is the id of a product bundled into the main product. appliesOn is used when the id in the productRelationship is the id of a product to which the main product applies on (like a usage volume product applies on an API product).",
+              "enum": [
+                "bundles",
+                "appliesOn"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "ProductOfferingTermOrCondition": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Approved Terms or Conditions of the ProductOffering.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Identifier of the ProductOfferingTermOrCondition."
+            },
+            "name": {
+              "type": "string",
+              "description": "Identifier of the ProductOfferingTermOrCondition."
+            },
+            "productOfferingTermOrConditionSpecRef": {
+              "$ref": "#/$defs/ProductOfferingTermOrConditionSpecRef"
+            },
+            "productOfferingTermOrConditionApproval": {
+              "$ref": "#/$defs/ProductOfferingTermOrConditionApproval"
+            },
+            "product": {
+              "$ref": "#/$defs/ProductRef"
+            },
+            "applicationLegalBasisForInputData": {
+              "$ref": "#/$defs/DpvLegalBasisType"
+            },
+            "process": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/DpvProcess"
+              },
+              "description": "Lists all the operations or 'processing' performed on data by the data consumer."
+            },
+            "purposeReason": {
+              "type": "string",
+              "description": "Explain the reason justifying the purpose, indicating specifically which is the reason why the API is employed as part of the application's use case."
+            },
+            "userConsentScreenshot": {
+              "$ref": "#/$defs/SimpleAttachment"
+            }
+          }
+        }
+      ]
+    },
+    "ProductOfferingTermOrConditionApproval": {
+      "type": "object",
+      "description": "Approval entity for the ProductOfferingTermOrCondition. Exists when Terms or Conditions are approved.",
+      "properties": {
+        "approvalDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date of the approval."
+        }
+      }
+    },
+    "ProductOfferingTermOrConditionSpecRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "Reference to the ProductOfferingTermOrCondition specification.",
+          "properties": {
+            "version": {
+              "type": "string",
+              "description": "Version of the ProductOfferingTermOrCondition specification."
+            }
+          }
+        }
+      ]
+    },
+    "ProductRef": {
+      "type": "object",
+      "description": "A Product reference",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "ProductRelationship": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "Used to describe relationship between product.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Id of the related product"
+            },
+            "relationshipType": {
+              "type": "string",
+              "description": "Relationship type as relies on, bundles, etc..."
+            }
+          }
+        }
+      ]
+    },
+    "RelatedOrderItem": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "It's a Order item that has been executed previously.",
+          "properties": {
+            "orderItemAction": {
+              "$ref": "#/$defs/ItemActionType"
+            },
+            "orderHref": {
+              "type": "string",
+              "description": "Reference of the related entity."
+            },
+            "@referredType": {
+              "type": "string",
+              "description": "The actual type of the target instance when needed for disambiguation."
+            },
+            "orderId": {
+              "type": "string",
+              "description": "Unique identifier of a related Order."
+            },
+            "orderItemId": {
+              "type": "string",
+              "description": "Id of an item of a product order"
+            }
+          }
+        }
+      ]
+    },
+    "SimpleAttachment": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Complements the description of an element (for instance a product) through video, pictures...",
+          "properties": {
+            "content": {
+              "type": "string",
+              "format": "base64",
+              "description": "The actual contents of the attachment object, if embedded, encoded as base64"
+            },
+            "mimeType": {
+              "type": "string",
+              "enum": [
+                "application/pdf"
+              ],
+              "description": "a technical characterization of the attachment content format using IETF Mime Types"
+            },
+            "url": {
+              "type": "string",
+              "description": "Uniform Resource Locator, is a web page address (a subset of URI)"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,553 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/OpenGatewayProductOffering/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - OpenGatewayProductOffering",
+  "description": "The specialized ProductOffering for GSMA Open Gateway Operate API. (TM Forum TMF936 Open Gateway Operate API - Product Catalog 5.0.0, OpenAPI component OpenGatewayProductOffering; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:OpenGatewayProductOffering:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "OpenGatewayProductOffering"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'OpenGatewayProductOffering'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'OpenGatewayProductOffering' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/href'. Hyperlink reference"
+    },
+    "tmfId": {
+      "type": "string",
+      "maxLength": 200,
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/OpenGatewayProductOffering/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:OpenGatewayProductOffering:<tmfId>. unique identifier. Recommended UUID format"
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 200,
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/OpenGatewayProductOffering/properties/name'. Name of the productOffering"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 5000,
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/OpenGatewayProductOffering/properties/description'. Description of the productOffering"
+    },
+    "validFor": {
+      "$ref": "#/$defs/TimePeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/DcsProductOffering/properties/validFor'. A period of time, either as a deadline (endDateTime only) a startDateTime only, or both"
+    },
+    "lastUpdate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/DcsProductOffering/properties/lastUpdate'. Date and time of the last update"
+    },
+    "lifecycleStatus": {
+      "enum": [
+        "inTest",
+        "active",
+        "launched",
+        "retired",
+        "obsolete"
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/OpenGatewayProductOffering/properties/lifecycleStatus'. Used to indicate the ProductOffering lifecycleStatus with limited enum values for Open Gateway context."
+    },
+    "category": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/DcsCategoryRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/OpenGatewayProductOffering/properties/category'. NOT USED YET IN OPEN GATEWAY CONTEXT."
+    },
+    "productOfferingPrice": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/OpenGatewayProductOfferingPrice"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/OpenGatewayProductOffering/properties/productOfferingPrice'. An amount, usually of money, that is asked for or allowed when a ProductOffering is bought, rented, or leased. The price is valid for a defined period of time and may not represent the actual price paid by a customer."
+    },
+    "allowedAction": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/OpenGatewayAllowedProductAction"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/OpenGatewayProductOffering/properties/allowedAction'. List of actions that can be executed (in context of a product order) on products instantiated from this offering"
+    },
+    "productSpecification": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/OpenGatewayProductOffering/properties/productSpecification'. The specialized ProductSpecification for GSMA Open Gateway Operate API. In TMF this is a OpenGatewayProductSpecificationRef object; here the NGSI-LD id of the referenced OpenGatewayProductSpecification entity (urn:ngsi-ld:OpenGatewayProductSpecification:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "version": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/OpenGatewayProductOffering/properties/version'. Version of the ProductOffering. Version SHOULD use the semantic versioning X.Y.Z version format where X identifies a major version, Y is the minor version and Z a fix."
+    },
+    "productOfferingTermOrConditionSpecification": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/OpenGatewayProductOfferingTermOrConditionSpecification"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/OpenGatewayProductOffering/properties/productOfferingTermOrConditionSpecification'. List of ProductOfferingTermOrConditionSpecification applicable for the ProductOffering."
+    },
+    "bundledProductOffering": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/BundledProductOffering"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/OpenGatewayProductOffering/properties/bundledProductOffering'. A type of ProductOffering that belongs to a grouping of ProductOfferings made available to the market. It inherits of all attributes of ProductOffering."
+    },
+    "attachment": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/OpenGatewayAttachment"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF936_OperateProductCatalog/blob/v5.0.0/TMF936-Open_Gateway_Operate_API_-_Product_Catalog-v5.0.0.oas.yaml#/components/schemas/OpenGatewayProductOffering/properties/attachment'. This attribute can be used to attach additional documentation for the productOffering, like marketing documentation ..."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tmfType"
+  ],
+  "$defs": {
+    "Addressable": {
+      "type": "object",
+      "description": "Base schema for addressable entities",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Hyperlink reference"
+        },
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        }
+      }
+    },
+    "BundledProductOffering": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/ProductOfferingRef"
+        },
+        {
+          "type": "object",
+          "description": "Represents a containment of a product offering within another product offering, including specification of cardinality (e.g. is the bundled offering mandatory, how many times can it be instantiated in the parent product, etc.).",
+          "properties": {
+            "bundledProductOfferingOption": {
+              "$ref": "#/$defs/BundledProductOfferingOption"
+            }
+          }
+        }
+      ]
+    },
+    "BundledProductOfferingOption": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "A set of numbers that specifies the lower and upper limits for a ProductOffering that can be procured as part of the related BundledProductOffering. Values can range from 0 to unbounded",
+          "properties": {
+            "numberRelOfferDefault": {
+              "type": "integer",
+              "description": "Default number of produc offereings that should be procured as part of the related BundledProductOffering"
+            },
+            "numberRelOfferLowerLimit": {
+              "type": "integer",
+              "description": "lower limit for a product offering that can be procured as part of the related BundledProductOffering"
+            },
+            "numberRelOfferUpperLimit": {
+              "type": "integer",
+              "description": "upper limit for a product offering that can be procured as part of the related BundledProductOffering"
+            }
+          }
+        }
+      ]
+    },
+    "DcsAllowedProductAction": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Defines an action that can be taken on a product in the inventory as part of a product order. It is expected that this entity will be attached to product catalog items such as specifications and offerings. This DCS schema is a subset of the standard AllowedProductAction schema, that can be extended for specific contexts. This must be done reusing existing attributes in the standard AllowedProductAction schema or adding specific attributes.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique identifier of the AllowedProductAction within the array."
+            },
+            "action": {
+              "type": "string",
+              "description": "The name of the action. Values must be taken from this list (or extended it adding more values) : add, modify, delete."
+            },
+            "@targetProductOrderItemSchema": {
+              "$ref": "#/$defs/TargetProductOrderItemSchema"
+            }
+          }
+        }
+      ]
+    },
+    "DcsCategoryRef": {
+      "type": "object",
+      "description": "Reference to a category in the catalog. This DCS schema is a subset of the standard CategoryRef schema, that can be extended for specific contexts. This must be done reusing existing attributes in the standard CategoryRef schema or adding specific attributes.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "DcsProductOfferingPrice": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Is based on both the basic cost to develop and produce products and the enterprises policy on revenue targets. This price may be further revised through discounting (a Product Offering Price that reflects an alteration). This DCS schema is a subset of the standard ProductOfferingPrice schema, that can be extended for specific contexts. This must be done reusing existing attributes in the standard ProductOfferingPrice schema or adding specific attributes.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique identifier of the ProductOfferingPrice within the array."
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the productOfferingPrice"
+            },
+            "description": {
+              "type": "string",
+              "description": "Description of the productOfferingPrice"
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            },
+            "lastUpdate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "the last update time of this ProductOfferingPrice"
+            },
+            "lifecycleStatus": {
+              "type": "string",
+              "description": "Used to indicate the current lifecycle status. Values must be taken from this list (or extended it adding more values for a specific context) : inStudy, inDesign, inTest, active, launched, retired, obsolete, rejected."
+            },
+            "priceType": {
+              "type": "string",
+              "description": "Used to indicate the current price type. Values must be taken from this list (or extended it adding more values for a specific context) : usage, oneTime, recurring, discountFee, discountPercentage, taxFee, taxPercentage, taxRule, replacementUsage, remplacementOneTime, replacementRecurring."
+            }
+          }
+        }
+      ]
+    },
+    "DcsProductOfferingTermOrConditionSpecification": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Specification of Terms or Conditions of the ProductOffering. This DCS schema is a subset of the standard ProductOfferingTermOrCondition schema, that can be extended for specific contexts. This must be done reusing existing attributes in the standard ProductOfferingTermOrCondition schema or adding specific attributes.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Locally unique identifier of the productOfferingTermOrConditionSpecification within its product offering"
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the productOfferingTermOrConditionSpecification"
+            },
+            "description": {
+              "type": "string",
+              "description": "A narrative that explains in detail what the productOfferingTermOrConditionSpecification is"
+            }
+          }
+        }
+      ]
+    },
+    "EntityRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        },
+        {
+          "type": "object",
+          "description": "Entity reference schema to be use for all entityRef class.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "The identifier of the referred entity."
+            },
+            "href": {
+              "type": "string",
+              "description": "The URI of the referred entity."
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the referred entity."
+            },
+            "@referredType": {
+              "type": "string",
+              "description": "The actual type of the target instance when needed for disambiguation."
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      ]
+    },
+    "Extensible": {
+      "type": "object",
+      "description": "Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means that the Entity described by the schema MUST be extended with the @type",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "OpenGatewayAllowedProductAction": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/DcsAllowedProductAction"
+        },
+        {
+          "type": "object",
+          "description": "Defines an action that can be taken on a product in the inventory as part of a product order. It is expected that this entity will be attached to product catalog items such as specifications and offerings. This DCS schema is a subset of the standard DCS AllowedProductAction schema, that can be extended for specific contexts. This must be done reusing existing attributes in the standard AllowedProductAction schema or adding specific attributes.",
+          "properties": {
+            "action": {
+              "$ref": "#/$defs/OpenGatewayAllowedProductActionType"
+            }
+          }
+        }
+      ]
+    },
+    "OpenGatewayAllowedProductActionType": {
+      "enum": [
+        "add",
+        "delete"
+      ],
+      "type": "string",
+      "description": "Used to indicate the AllowedProductAction action with limited enum values for Open Gateway context."
+    },
+    "OpenGatewayAttachment": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Generic schema for attachment in Open Gateway context.",
+          "properties": {
+            "attachmentType": {
+              "$ref": "#/$defs/OpenGatewayAttachmentType"
+            },
+            "mimeType": {
+              "type": "string",
+              "description": "a technical characterization of the attachment content format using IETF Mime Types"
+            }
+          }
+        }
+      ]
+    },
+    "OpenGatewayAttachmentType": {
+      "enum": [
+        "termsAndConditions",
+        "developerDocumentation"
+      ],
+      "type": "string",
+      "description": "Used to indicate the Attachment attachmentType with limited enum values for Open Gateway context."
+    },
+    "OpenGatewayFileAttachment": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/OpenGatewayAttachment"
+        },
+        {
+          "type": "object",
+          "description": "Binary file attachment.",
+          "properties": {
+            "content": {
+              "type": "string",
+              "format": "base64",
+              "description": "The actual contents of the attachment object, if embedded, encoded as base64"
+            },
+            "mimeType": {
+              "type": "string",
+              "description": "Describes the possible values for the mimeType of the attachment. A media type (also known as a Multipurpose Internet Mail Extensions or MIME type) indicates the nature and format of a document, file, or assortment of bytes. MIME types are defined and standardized in IETF's RFC 6838.",
+              "enum": [
+                "application/pdf"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "OpenGatewayProductOfferingPrice": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/DcsProductOfferingPrice"
+        },
+        {
+          "type": "object",
+          "description": "ProductOfferingPrice applied to the ProductOffering.",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Name of the productOfferingPrice",
+              "maxLength": 200
+            },
+            "description": {
+              "type": "string",
+              "description": "Description of the productOfferingPrice",
+              "maxLength": 5000
+            },
+            "lifecycleStatus": {
+              "$ref": "#/$defs/OpenGatewayProductOfferingPriceLifecycleStatus"
+            },
+            "priceType": {
+              "$ref": "#/$defs/OpenGatewayProductOfferingPriceType"
+            }
+          }
+        }
+      ]
+    },
+    "OpenGatewayProductOfferingPriceLifecycleStatus": {
+      "enum": [
+        "inTest",
+        "active",
+        "retired",
+        "obsolete"
+      ],
+      "type": "string",
+      "description": "Used to indicate the current ProductOfferingPrice lifecyclestatus with limited enum values for Open Gateway context."
+    },
+    "OpenGatewayProductOfferingPriceType": {
+      "enum": [
+        "composite"
+      ],
+      "type": "string",
+      "description": "Used to indicate the ProductOfferingPrice priceType with limited enum values for Open Gateway context. Kept for base schema ProductOfferingPrice backward compatibility reason."
+    },
+    "OpenGatewayProductOfferingTermOrConditionSpecification": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/DcsProductOfferingTermOrConditionSpecification"
+        },
+        {
+          "type": "object",
+          "description": "Specification of Terms or Conditions of the ProductOffering.",
+          "properties": {
+            "attachment": {
+              "$ref": "#/$defs/OpenGatewayFileAttachment"
+            }
+          }
+        }
+      ]
+    },
+    "ProductOfferingRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "ProductOffering reference. A product offering represents entities that are orderable from the provider of the catalog, this resource includes pricing information.",
+          "properties": {
+            "version": {
+              "type": "string",
+              "description": "Version of the product offering"
+            }
+          }
+        }
+      ]
+    },
+    "TargetProductOrderItemSchema": {
+      "type": "object",
+      "description": "The reference object to the schema and type of target product order item which is described by product allowed action",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "Class type of the target product order item"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "This field provides a link to the schema describing the target product order item"
+        }
+      }
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "startDateTime": {
+          "description": "Start of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        },
+        "endDateTime": {
+          "description": "End of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        }
+      }
+    }
+  }
+}

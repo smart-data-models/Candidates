@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/GeographicAddress/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - GeographicAddress",
+  "description": "Structured textual way of describing how to find a Property in an urban area (country properties are often defined differently). Note : Address corresponds to SID UrbanPropertyAddress (TM Forum TMF673 API Place - GeographicAddress 4.0.1, Swagger definition GeographicAddress; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:GeographicAddress:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "GeographicAddress"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'GeographicAddress'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/v4.0.0/TMF673-GeographicAddress-v4.0.1.swagger.json#/definitions/GeographicAddress/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:GeographicAddress:<tmfId>. Unique identifier of the place"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/v4.0.0/TMF673-GeographicAddress-v4.0.1.swagger.json#/definitions/GeographicAddress/properties/href'. Unique reference of the place"
+    },
+    "city": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/v4.0.0/TMF673-GeographicAddress-v4.0.1.swagger.json#/definitions/GeographicAddress/properties/city'. City that the address is in"
+    },
+    "country": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/v4.0.0/TMF673-GeographicAddress-v4.0.1.swagger.json#/definitions/GeographicAddress/properties/country'. Country that the address is in"
+    },
+    "locality": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/v4.0.0/TMF673-GeographicAddress-v4.0.1.swagger.json#/definitions/GeographicAddress/properties/locality'. An area of defined or undefined boundaries within a local authority or other legislatively defined area, usually rural or semi rural in nature. [ANZLIC-STREET], or a suburb, a bounded locality within a city, town or shire principally of urban character [ANZLICSTREET]"
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/v4.0.0/TMF673-GeographicAddress-v4.0.1.swagger.json#/definitions/GeographicAddress/properties/name'. A user-friendly name for the place, such as [Paris Store], [London Store], [Main Home]"
+    },
+    "postcode": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/v4.0.0/TMF673-GeographicAddress-v4.0.1.swagger.json#/definitions/GeographicAddress/properties/postcode'. descriptor for a postal delivery area, used to speed and simplify the delivery of mail (also know as zipcode)"
+    },
+    "stateOrProvince": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/v4.0.0/TMF673-GeographicAddress-v4.0.1.swagger.json#/definitions/GeographicAddress/properties/stateOrProvince'. the State or Province that the address is in"
+    },
+    "streetName": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/v4.0.0/TMF673-GeographicAddress-v4.0.1.swagger.json#/definitions/GeographicAddress/properties/streetName'. Name of the street or other street type"
+    },
+    "streetNr": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/v4.0.0/TMF673-GeographicAddress-v4.0.1.swagger.json#/definitions/GeographicAddress/properties/streetNr'. Number identifying a specific property on a public street. It may be combined with streetNrLast for ranged addresses"
+    },
+    "streetNrLast": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/v4.0.0/TMF673-GeographicAddress-v4.0.1.swagger.json#/definitions/GeographicAddress/properties/streetNrLast'. Last number in a range of street numbers allocated to a property"
+    },
+    "streetNrLastSuffix": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/v4.0.0/TMF673-GeographicAddress-v4.0.1.swagger.json#/definitions/GeographicAddress/properties/streetNrLastSuffix'. Last street number suffix for a ranged address"
+    },
+    "streetNrSuffix": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/v4.0.0/TMF673-GeographicAddress-v4.0.1.swagger.json#/definitions/GeographicAddress/properties/streetNrSuffix'. the first street number suffix"
+    },
+    "streetSuffix": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/v4.0.0/TMF673-GeographicAddress-v4.0.1.swagger.json#/definitions/GeographicAddress/properties/streetSuffix'. A modifier denoting a relative direction"
+    },
+    "streetType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/v4.0.0/TMF673-GeographicAddress-v4.0.1.swagger.json#/definitions/GeographicAddress/properties/streetType'. alley, avenue, boulevard, brae, crescent, drive, highway, lane, terrace, parade, place, tarn, way, wharf"
+    },
+    "geographicLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/v4.0.0/TMF673-GeographicAddress-v4.0.1.swagger.json#/definitions/GeographicAddress/properties/geographicLocation'. A GeographicLocation is a pure-virtual super-class to the GeoJSON-aligned geometries of Point (addresses and locations), MultiPoint, LineString (streets, highways and boundaries), MultiLineString and Polygon (countries, provinces, tracts of land). Use the @type attribute to specify which of these is being specified by the geometry attribute. In TMF this is a GeographicLocationRefOrValue object; here the NGSI-LD id of the referenced GeographicLocation entity (urn:ngsi-ld:GeographicLocation:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "geographicSubAddress": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/GeographicSubAddress"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/v4.0.0/TMF673-GeographicAddress-v4.0.1.swagger.json#/definitions/GeographicAddress/properties/geographicSubAddress'. Representation of a GeographicSubAddress It is used for addressing within a property in an urban area (country properties are often defined differently). It may refer to a building, a building cluster, or a floor of a multistory building."
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/v4.0.0/TMF673-GeographicAddress-v4.0.1.swagger.json#/definitions/GeographicAddress/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/v4.0.0/TMF673-GeographicAddress-v4.0.1.swagger.json#/definitions/GeographicAddress/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/v4.0.0/TMF673-GeographicAddress-v4.0.1.swagger.json#/definitions/GeographicAddress/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'GeographicAddress' or a sub-class / extension name. When sub-classing, this defines the sub-class entity name"
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ],
+  "$defs": {
+    "GeographicSubAddress": {
+      "type": "object",
+      "description": "Representation of a GeographicSubAddress It is used for addressing within a property in an urban area (country properties are often defined differently). It may refer to a building, a building cluster, or a floor of a multistory building.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique Identifier of the subAddress"
+        },
+        "href": {
+          "type": "string",
+          "description": "Link to the subAddress"
+        },
+        "buildingName": {
+          "type": "string",
+          "description": "allows for buildings that have well-known names"
+        },
+        "levelNumber": {
+          "type": "string",
+          "description": "used where a level type may be repeated e.g. BASEMENT 1, BASEMENT 2"
+        },
+        "levelType": {
+          "type": "string",
+          "description": "describes level types within a building"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the subAddress to identify it with a meaningful identification"
+        },
+        "privateStreetName": {
+          "type": "string",
+          "description": "private streets internal to a property (e.g. a university) may have internal names that are not recorded by the land title office."
+        },
+        "privateStreetNumber": {
+          "type": "string",
+          "description": "private streets numbers internal to a private street"
+        },
+        "subAddressType": {
+          "type": "string",
+          "description": "Type of subAddress : it can be a subunit or a private street"
+        },
+        "subUnitNumber": {
+          "type": "string",
+          "description": "the discriminator used for the subunit often just a simple number e.g. FLAT 5, may also be a range"
+        },
+        "subUnitType": {
+          "type": "string",
+          "description": "the type of subunit e.g.BERTH, FLAT, PIER, SUITE, SHOP, TOWER, UNIT, WHARF"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    }
+  }
+}

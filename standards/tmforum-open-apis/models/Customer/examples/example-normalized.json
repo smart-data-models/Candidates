@@ -1,0 +1,78 @@
+{
+  "id": "urn:ngsi-ld:Customer:1140",
+  "type": "Customer",
+  "tmfType": {
+    "type": "Text",
+    "value": "Customer"
+  },
+  "tmfId": {
+    "type": "Text",
+    "value": "1140"
+  },
+  "name": {
+    "type": "Text",
+    "value": "Moon Football Club"
+  },
+  "status": {
+    "type": "Text",
+    "value": "Created"
+  },
+  "engagedParty": {
+    "type": "StructuredValue",
+    "value": {
+      "@type": "PartyRef",
+      "href": "https://host:port/tmf-api/partyManagement/v5/organization/500",
+      "id": "500",
+      "name": "Happy Travellers",
+      "@referredType": "Organization"
+    }
+  },
+  "contactMedium": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "PhoneContactMedium",
+        "preferred": true,
+        "contactType": "homePhone",
+        "validFor": {
+          "startDateTime": "2018-06-12T00:00:00Z",
+          "endDateTime": "2019-01-01T00:00:00Z"
+        },
+        "phoneNumber": "+44 7700 900101"
+      },
+      {
+        "@type": "GeographicAddressContactMedium",
+        "preferred": false,
+        "contactType": "homeAddress",
+        "validFor": {
+          "startDateTime": "2018-06-12T00:00:00Z",
+          "endDateTime": "2019-01-01T00:00:00Z"
+        },
+        "city": "Exampletown",
+        "country": "France",
+        "postCode": "00000",
+        "street1": "1 Example Street"
+      }
+    ]
+  },
+  "relatedParty": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "RelatedPartyRefOrPartyRoleRef",
+        "role": "bill receiver",
+        "partyOrPartyRole": {
+          "@type": "PartyRef",
+          "href": "https://host:port/tmf-api/partyManagement/v5/organization/2777",
+          "id": "2777",
+          "name": "John Doe (Accounting) Ltd",
+          "@referredType": "Organization"
+        }
+      }
+    ]
+  },
+  "source": {
+    "type": "Text",
+    "value": "Adapted from the example payload 'Customer_retrieve_example_response' of the TMF629 Customer Management 5.0.1 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+  }
+}

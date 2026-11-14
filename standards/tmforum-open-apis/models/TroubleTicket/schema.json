@@ -1,10 +1,10 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$schemaVersion": "0.0.1",
+  "$schemaVersion": "0.0.2",
   "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/TroubleTicket/schema.json",
   "modelTags": "TMForum,OpenAPI,ODA,Telecom",
   "title": "Smart Data Models - TM Forum Open APIs - TroubleTicket",
-  "description": "A trouble ticket is a record of an issue that is created, tracked, and managed by a trouble ticket management system (TM Forum TMF621 Trouble Ticket v5.0.1, OpenAPI component TroubleTicket; attribute names kept verbatim except id/@type/@baseType/@schemaLocation; deprecated attributes left out.)",
+  "description": "A trouble ticket is a record of an issue that is created, tracked, and managed by a trouble ticket management system (TM Forum TMF621 Trouble Ticket 5.0.1, OpenAPI component TroubleTicket; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
   "type": "object",
   "properties": {
     "id": {
@@ -179,8 +179,9 @@
       "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/troubleTicketRelationship'. A list of trouble ticket relationships (TroubleTicketRelationship [*]). Represents a relationship between trouble tickets"
     },
     "troubleTicketSpecification": {
-      "$ref": "#/$defs/TroubleTicketSpecificationRef",
-      "description": "Property. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/troubleTicketSpecification'. reference to an TroubleTicketSpecification object"
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF621_TroubleTicket/blob/v5.0.0/TMF621-Trouble_Ticket-v5.0.1.oas.yaml#/components/schemas/TroubleTicket/properties/troubleTicketSpecification'. reference to an TroubleTicketSpecification object. In TMF this is a TroubleTicketSpecificationRef object; here the NGSI-LD id of the referenced TroubleTicketSpecification entity (urn:ngsi-ld:TroubleTicketSpecification:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
     },
     "troubleTicketCharacteristic": {
       "type": "array",
@@ -868,23 +869,6 @@
             "relationshipType": {
               "type": "string",
               "description": "Type of relationship"
-            }
-          }
-        }
-      ]
-    },
-    "TroubleTicketSpecificationRef": {
-      "allOf": [
-        {
-          "$ref": "#/$defs/EntityRef"
-        },
-        {
-          "type": "object",
-          "description": "reference to an TroubleTicketSpecification object",
-          "properties": {
-            "version": {
-              "type": "string",
-              "description": "The version of the trouble ticket specification, in case it is desired to maintain multiple versions of trouble ticket specifications"
             }
           }
         }

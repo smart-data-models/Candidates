@@ -1,0 +1,887 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/IotDevice/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - IotDevice",
+  "description": "#TODO (TM Forum TMF908 IoT Device Management 4.0.0, Swagger definition IotDevice; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:IotDevice:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "IotDevice"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'IotDevice'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:IotDevice:<tmfId>. Identifier of an instance of the resource. Required to be unique within the resource type. Used in URIs as the identifier for specific instances of a type."
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/href'. The URI for the object itself."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/alternateName'."
+    },
+    "areaServed": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/areaServed'."
+    },
+    "batteryLevel": {
+      "type": "number",
+      "format": "float",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/batteryLevel'."
+    },
+    "tmfDataProvider": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/dataProvider'. Renamed from TMF 'dataProvider' (clash with the Smart Data Models common attribute 'dataProvider')."
+    },
+    "tmfDateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/dateCreated'. Renamed from TMF 'dateCreated' (clash with the Smart Data Models common attribute 'dateCreated')."
+    },
+    "dateFirstUsed": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/dateFirstUsed'."
+    },
+    "dateInstalled": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/dateInstalled'."
+    },
+    "dateLastCalibration": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/dateLastCalibration'."
+    },
+    "dateLastValueReported": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/dateLastValueReported'."
+    },
+    "dateManufactured": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/dateManufactured'."
+    },
+    "tmfDateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/dateModified'. Renamed from TMF 'dateModified' (clash with the Smart Data Models common attribute 'dateModified')."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/description'. free-text description of the resource"
+    },
+    "deviceState": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/deviceState'."
+    },
+    "deviceType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/deviceType'. NGSI Entity type"
+    },
+    "endDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/endDate'. A date time( DateTime). The date till the resource is effective"
+    },
+    "firmwareVersion": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/firmwareVersion'."
+    },
+    "hardwareVersion": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/hardwareVersion'."
+    },
+    "lifecycleState": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/lifecycleState'. The life cycle state of the resource."
+    },
+    "manufactureDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/manufactureDate'. This is a string attribute that defines the date of manufacture of this item in the fixed format \"dd/mm/yyyy\". This is an optional attribute."
+    },
+    "mnc": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/mnc'."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/name'. A string used to give a name to the resource"
+    },
+    "osVersion": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/osVersion'."
+    },
+    "powerState": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/powerState'. This defines the current power status of the hardware item. Values include: 0: Unknown 1: Not Applicable 2: No Power Applied 3: Full Power Applied 4: Power Save - Normal 5: Power Save - Degraded 6: Power Save - Standby 7: Power Save - Critical 8: Power Save - Low Power Mode 9: Power Save - Unknown 10: Power Cycle 11: Power Warning 12: Power Off"
+    },
+    "provider": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/provider'."
+    },
+    "serialNumber": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/serialNumber'. This is a string that represents a manufacturer-allocated number used to identify different instances of the same hardware item. The ModelNumber and PartNumber attributes are used to identify different types of hardware items. This is a REQUIRED attribute."
+    },
+    "softwareVersion": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/softwareVersion'."
+    },
+    "tmfSource": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/source'. Renamed from TMF 'source' (clash with the Smart Data Models common attribute 'source')."
+    },
+    "startDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/startDate'. A date time( DateTime). The date from which the resource is effective"
+    },
+    "tmfValue": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/value'. Renamed from TMF 'value' (NGSI-LD reserved term)."
+    },
+    "version": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/version'. A field that identifies the specific version of an instance of a resource."
+    },
+    "versionNumber": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/versionNumber'. This is a string that identifies the version of this object. This is an optional attribute."
+    },
+    "address": {
+      "$ref": "#/$defs/Address",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/address'. Structured textual way of describing how to find a Property in an urban area (country properties are often defined differently). Note : Address corresponds to SID UrbanPropertyAddress"
+    },
+    "category": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/CategoryType"
+      },
+      "minItems": 1,
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/category'."
+    },
+    "characteristic": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ResourceCharacteristic"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/characteristic'."
+    },
+    "configuration": {
+      "$ref": "#/$defs/Configuration",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/configuration'. #TODO"
+    },
+    "dataAccessEndPoint": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/DataAccessEndpoint"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/dataAccessEndPoint'. This is the endpoint exposed by the IoT Device to authorized users."
+    },
+    "tmfLocation": {
+      "$ref": "#/$defs/GeographicLocation",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/location'. Renamed from TMF 'location' (NGSI-LD reserved term). A GeographicLocation is a pure-virtual super-class to the GeoJSON-aligned geometries of Point (addresses and locations), MultiPoint, LineString (streets, highways and boundaries), MultiLineString and Polygon (countries, provinces, tracts of land). Use the @type attribute to specify which of these is being specified by the geometry attribute."
+    },
+    "macAddress": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/MacAddressType"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/macAddress'. #TODO"
+    },
+    "note": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Note"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/note'. Extra information about a given entity"
+    },
+    "partyRole": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/partyRole'. Party role reference. A party role represents the part played by a party in a given context. In TMF this is an array of PartyRoleRef objects; here the NGSI-LD ids of the referenced PartyRole entities (urn:ngsi-ld:PartyRole:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "place": {
+      "$ref": "#/$defs/Place",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/place'. Place reference. Place defines the places where the products are sold or delivered."
+    },
+    "relatedParty": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedParty"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/relatedParty'. Related Entity reference. A related party defines party or party role linked to a specific entity."
+    },
+    "resourceRelationship": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ResourceRelationship"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/resourceRelationship'. Describes links between resources"
+    },
+    "rule": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Rule"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/rule'."
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF908_IoTAgentAndDeviceComponentSuite/blob/5a98cb9af5dfd2837de186272f813c2b06fc0e3d/TMF908-IoTAgentAndDevice-v4.0.0.swagger.json#/definitions/IotDevice/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'IotDevice' or a sub-class / extension name. When sub-classing, this defines the sub-class entity name"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "category",
+    "tmfId"
+  ],
+  "$defs": {
+    "Address": {
+      "type": "object",
+      "description": "Structured textual way of describing how to find a Property in an urban area (country properties are often defined differently). Note : Address corresponds to SID UrbanPropertyAddress",
+      "properties": {
+        "city": {
+          "type": "string",
+          "description": "City that the address is in"
+        },
+        "country": {
+          "type": "string",
+          "description": "Country that the address is in"
+        },
+        "locality": {
+          "type": "string",
+          "description": "\"An area of defined or undefined boundaries within a local authority or other legislatively defined area, usually rural or semi rural in nature.\" [ANZLIC-STREET], or a suburb \"a bounded locality within a city, town or shire principally of urban character \" [ANZLICSTREET]"
+        },
+        "postcode": {
+          "type": "string",
+          "description": "descriptor for a postal delivery area, used to speed and simplify the delivery of mail (also know as zipcode)"
+        },
+        "stateOrProvince": {
+          "type": "string",
+          "description": "the State or Province that the address is in"
+        },
+        "streetName": {
+          "type": "string",
+          "description": "Name of the street or other street type"
+        },
+        "streetNr": {
+          "type": "string",
+          "description": "Number identifying a specific property on a public street. It may be combined with streetNrLast for ranged addresses"
+        },
+        "streetNrLast": {
+          "type": "string",
+          "description": "Last number in a range of street numbers allocated to a property"
+        },
+        "streetNrLastSuffix": {
+          "type": "string",
+          "description": "Last street number suffix for a ranged address"
+        },
+        "streetNrSuffix": {
+          "type": "string",
+          "description": "the first street number suffix"
+        },
+        "streetSuffix": {
+          "type": "string",
+          "description": "A modifier denoting a relative direction"
+        },
+        "streetType": {
+          "type": "string",
+          "description": "alley, avenue, boulevard, brae, crescent, drive, highway, lane, terrace, parade, place, tarn, way, wharf"
+        },
+        "subAddress": {
+          "$ref": "#/$defs/SubAddress",
+          "description": "Within a property in an urban area, may refer to a building, building cluster, or a floor of a multistory building"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "CategoryType": {
+      "type": "object",
+      "properties": {
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "Configuration": {
+      "type": "object",
+      "description": "#TODO",
+      "properties": {
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "DataAccessEndpoint": {
+      "type": "object",
+      "description": "This is the endpoint exposed by the IoT Device to authorized users.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of an instance of the resource. Required to be unique within the resource type. Used in URIs as the identifier for specific instances of a type"
+        },
+        "href": {
+          "type": "string",
+          "description": "The URI for the object itself."
+        },
+        "apiType": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string",
+          "description": "Category of the concrete resource, such as: Gold, Silver for MSISDN concrete resource"
+        },
+        "description": {
+          "type": "string",
+          "description": "Free-text description of the resource"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date till the resource is effective"
+        },
+        "lifecycleState": {
+          "type": "string",
+          "description": "The life cycle state of the resource"
+        },
+        "name": {
+          "type": "string",
+          "description": "A string used to give a name to the resource"
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "A date time( DateTime). The date from which the resource is effective"
+        },
+        "uri": {
+          "type": "string",
+          "description": "URI for using the data access API"
+        },
+        "value": {
+          "type": "string",
+          "description": "The value of the logical resource, such as: 0044746712345 for an MSISDN"
+        },
+        "version": {
+          "type": "string",
+          "description": "A field that identifies the specific version of an instance of a resource"
+        },
+        "characteristic": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResourceCharacteristic"
+          }
+        },
+        "note": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          }
+        },
+        "partyRole": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PartyRoleRef"
+          }
+        },
+        "place": {
+          "$ref": "#/$defs/Place"
+        },
+        "relatedParty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RelatedParty"
+          }
+        },
+        "resourceRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResourceRelationship"
+          }
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "GeographicLocation": {
+      "type": "object",
+      "description": "A GeographicLocation is a pure-virtual super-class to the GeoJSON-aligned geometries of Point (addresses and locations), MultiPoint, LineString (streets, highways and boundaries), MultiLineString and Polygon (countries, provinces, tracts of land). Use the @type attribute to specify which of these is being specified by the geometry attribute.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the geographic location"
+        },
+        "href": {
+          "type": "string",
+          "description": "An URI used to access to the geographic location resource"
+        },
+        "@type": {
+          "type": "string",
+          "enum": [
+            "GeoJsonPoint",
+            "GeoJsonMultiPoint",
+            "GeoJsonLineString",
+            "GeoJsonMultiLineString",
+            "GeoJsonPolygon"
+          ],
+          "description": "The name of the GeoJSON structure used in the geometry attribute"
+        },
+        "bbox": {
+          "type": "array",
+          "description": "A bounding box array that contains the geometry. The axes order follows the axes order of the geometry",
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/$defs/Place"
+        }
+      ],
+      "required": [
+        "@type"
+      ]
+    },
+    "MacAddressType": {
+      "type": "object",
+      "description": "#TODO",
+      "properties": {
+        "MacAddressType": {
+          "type": "string"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "Note": {
+      "type": "object",
+      "description": "Extra information about a given entity",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the note within its containing entity (may or may not be globally unique, depending on provider implementation)"
+        },
+        "author": {
+          "type": "string",
+          "description": "Author of the note"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date of the note"
+        },
+        "text": {
+          "type": "string",
+          "description": "Text of the note"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "PartyRoleRef": {
+      "type": "object",
+      "description": "Party role reference. A party role represents the part played by a party in a given context.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the product"
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the product"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the referred party role."
+        },
+        "partyId": {
+          "type": "string",
+          "description": "The identifier of the engaged party that is linked to the PartyRole object."
+        },
+        "partyName": {
+          "type": "string",
+          "description": "The name of the engaged party that is linked to the PartyRole object."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "Place": {
+      "type": "object",
+      "description": "Place reference. Place defines the places where the products are sold or delivered.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the place"
+        },
+        "href": {
+          "type": "string",
+          "description": "Unique reference of the place"
+        },
+        "name": {
+          "type": "string",
+          "description": "A user-friendly name for the place, such as [Paris Store], [London Store], [Main Home]"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "RelatedParty": {
+      "type": "object",
+      "description": "Related Entity reference. A related party defines party or party role linked to a specific entity.",
+      "required": [
+        "@referredType",
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of a related entity."
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the related entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "role": {
+          "type": "string",
+          "description": "Role played by the related party"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "ResourceCharacteristic": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "name of the characteristic"
+        },
+        "value": {
+          "type": "string",
+          "description": "value of the characteristic"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "ResourceRef": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of a related entity."
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the related entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the resource"
+        },
+        "value": {
+          "type": "string",
+          "description": "The resource value that can be used to identify a resource with a public key (e.g.: a tel nr, an msisdn)"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "ResourceRelationship": {
+      "type": "object",
+      "description": "Describes links between resources",
+      "properties": {
+        "relationshipType": {
+          "type": "string",
+          "description": "Semantic of the relationship"
+        },
+        "resource": {
+          "$ref": "#/$defs/ResourceRef",
+          "description": "A reference to the resource"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "Rule": {
+      "type": "object",
+      "properties": {
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "SubAddress": {
+      "type": "object",
+      "description": "Representation of a SubAddress It is used for addressing within a property in an urban area (country properties are often defined differently). It may refer to a building, a building cluster, or a floor of a multistory building.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique ID for this SubAddress"
+        },
+        "href": {
+          "type": "string"
+        },
+        "buildingName": {
+          "type": "string",
+          "description": "Allows for buildings that have well-known names"
+        },
+        "levelNumber": {
+          "type": "string",
+          "description": "Used where a level type may be repeated e.g. BASEMENT 1, BASEMENT 2"
+        },
+        "levelType": {
+          "type": "string",
+          "description": "Describes level types within a building"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the subAddress to identify it with a meaningful identification"
+        },
+        "privateStreetName": {
+          "type": "string",
+          "description": "Private streets internal to a property (e.g. a university) may have internal names that are not recorded by the land title office."
+        },
+        "privateStreetNumber": {
+          "type": "string",
+          "description": "Private streets numbers internal to a private street"
+        },
+        "subAddressType": {
+          "type": "string",
+          "description": "The type of subaddress : it can be a subunit or a private street"
+        },
+        "subUnitNumber": {
+          "type": "string",
+          "description": "The discriminator of the subunit, often just a simple number e.g. FLAT 5, may also be a range"
+        },
+        "subUnitType": {
+          "type": "string",
+          "description": "The type of subunit, such as BERTH, FLAT, PIER, SUITE, SHOP, TOWER, UNIT, WHARF"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,438 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/CommunicationMessage/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - CommunicationMessage",
+  "description": "Communication message means a notification approach in the format of a message which can be dispatched (sent) to the certain user by the system with the content which can be felt and understood by the recipient. The user can be either a final customer or a customer service agent. The message can reach the customer in different interaction channels, including: email, short message, mobile app notification (push). (TM Forum TMF681 Communication Management API 4.0.0, Swagger definition CommunicationMessage; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:CommunicationMessage:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "CommunicationMessage"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'CommunicationMessage'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF681_Communication/blob/v4.0.0/TMF681-Communication-v4.0.0.swagger.json#/definitions/CommunicationMessage/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:CommunicationMessage:<tmfId>. Unique identifier of Communication Message"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF681_Communication/blob/v4.0.0/TMF681-Communication-v4.0.0.swagger.json#/definitions/CommunicationMessage/properties/href'. Hypertext Reference of the Communication Message"
+    },
+    "content": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF681_Communication/blob/v4.0.0/TMF681-Communication-v4.0.0.swagger.json#/definitions/CommunicationMessage/properties/content'. The content of the communication message"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF681_Communication/blob/v4.0.0/TMF681-Communication-v4.0.0.swagger.json#/definitions/CommunicationMessage/properties/description'. Description for the whole object"
+    },
+    "logFlag": {
+      "type": "boolean",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF681_Communication/blob/v4.0.0/TMF681-Communication-v4.0.0.swagger.json#/definitions/CommunicationMessage/properties/logFlag'."
+    },
+    "messageType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF681_Communication/blob/v4.0.0/TMF681-Communication-v4.0.0.swagger.json#/definitions/CommunicationMessage/properties/messageType'. The type of message, such as: SMS, Email, Mobile app push notification"
+    },
+    "priority": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF681_Communication/blob/v4.0.0/TMF681-Communication-v4.0.0.swagger.json#/definitions/CommunicationMessage/properties/priority'. The priority of the communication message. Small number means higher priority."
+    },
+    "scheduledSendTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF681_Communication/blob/v4.0.0/TMF681-Communication-v4.0.0.swagger.json#/definitions/CommunicationMessage/properties/scheduledSendTime'. The scheduled time for sending the communication message"
+    },
+    "sendTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF681_Communication/blob/v4.0.0/TMF681-Communication-v4.0.0.swagger.json#/definitions/CommunicationMessage/properties/sendTime'. The time of sending communication message"
+    },
+    "sendTimeComplete": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF681_Communication/blob/v4.0.0/TMF681-Communication-v4.0.0.swagger.json#/definitions/CommunicationMessage/properties/sendTimeComplete'. The time of completion of sending communication message"
+    },
+    "subject": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF681_Communication/blob/v4.0.0/TMF681-Communication-v4.0.0.swagger.json#/definitions/CommunicationMessage/properties/subject'. The title of the message, necessary for the email and mobile app push"
+    },
+    "tryTimes": {
+      "type": "integer",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF681_Communication/blob/v4.0.0/TMF681-Communication-v4.0.0.swagger.json#/definitions/CommunicationMessage/properties/tryTimes'. How many times do you want to retry the delivery of this message?"
+    },
+    "attachment": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Attachment"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF681_Communication/blob/v4.0.0/TMF681-Communication-v4.0.0.swagger.json#/definitions/CommunicationMessage/properties/attachment'. Any attachment associated with this message"
+    },
+    "characteristic": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Characteristic"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF681_Communication/blob/v4.0.0/TMF681-Communication-v4.0.0.swagger.json#/definitions/CommunicationMessage/properties/characteristic'. Any additional characteristic(s) of this message"
+    },
+    "receiver": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Receiver"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF681_Communication/blob/v4.0.0/TMF681-Communication-v4.0.0.swagger.json#/definitions/CommunicationMessage/properties/receiver'. The receiver(s) of this message"
+    },
+    "sender": {
+      "$ref": "#/$defs/Sender",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF681_Communication/blob/v4.0.0/TMF681-Communication-v4.0.0.swagger.json#/definitions/CommunicationMessage/properties/sender'. The sender of this message"
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "initial",
+        "inProgress",
+        "completed",
+        "cancelled",
+        "failed"
+      ],
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF681_Communication/blob/v4.0.0/TMF681-Communication-v4.0.0.swagger.json#/definitions/CommunicationMessage/properties/state'. Status of communication message"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF681_Communication/blob/v4.0.0/TMF681-Communication-v4.0.0.swagger.json#/definitions/CommunicationMessage/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF681_Communication/blob/v4.0.0/TMF681-Communication-v4.0.0.swagger.json#/definitions/CommunicationMessage/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF681_Communication/blob/v4.0.0/TMF681-Communication-v4.0.0.swagger.json#/definitions/CommunicationMessage/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'CommunicationMessage' or a sub-class / extension name. When sub-classing, this defines the sub-class entity name"
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ],
+  "$defs": {
+    "Any": {},
+    "Attachment": {
+      "type": "object",
+      "description": "Complements the description of an element (for instance a product) through video, pictures...",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for this particular attachment"
+        },
+        "href": {
+          "type": "string",
+          "description": "URI for this Attachment"
+        },
+        "attachmentType": {
+          "type": "string",
+          "description": "Attachment type such as video, picture"
+        },
+        "content": {
+          "type": "string",
+          "description": "The actual contents of the attachment object, if embedded, encoded as base64"
+        },
+        "description": {
+          "type": "string",
+          "description": "A narrative text describing the content of the attachment"
+        },
+        "mimeType": {
+          "type": "string",
+          "description": "Attachment mime type such as extension file for video, picture and document"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the attachment"
+        },
+        "url": {
+          "type": "string",
+          "description": "Uniform Resource Locator, is a web page address (a subset of URI)"
+        },
+        "size": {
+          "$ref": "#/$defs/Quantity",
+          "description": "The size of the attachment."
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The period of time for which the attachment is valid"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "Characteristic": {
+      "type": "object",
+      "description": "Describes a given characteristic of an object or entity through a name/value pair.",
+      "required": [
+        "name",
+        "value"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the characteristic"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the characteristic"
+        },
+        "valueType": {
+          "type": "string",
+          "description": "Data type of the value of the characteristic"
+        },
+        "characteristicRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CharacteristicRelationship"
+          }
+        },
+        "value": {
+          "$ref": "#/$defs/Any",
+          "description": "The value of the characteristic"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "CharacteristicRelationship": {
+      "type": "object",
+      "description": "Another Characteristic that is related to the current Characteristic;",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the characteristic"
+        },
+        "relationshipType": {
+          "type": "string",
+          "description": "The type of relationship"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "Quantity": {
+      "type": "object",
+      "description": "An amount in a given unit",
+      "properties": {
+        "amount": {
+          "default": 1,
+          "type": "number",
+          "format": "float",
+          "description": "Numeric value in a given unit"
+        },
+        "units": {
+          "type": "string",
+          "description": "Unit"
+        }
+      }
+    },
+    "Receiver": {
+      "type": "object",
+      "description": "Receivers of the communication message.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ID of the receiver"
+        },
+        "appUserId": {
+          "type": "string",
+          "description": "ID of the mobile app user"
+        },
+        "email": {
+          "type": "string",
+          "description": "Receiver address of email, if the communication type is email"
+        },
+        "ip": {
+          "type": "string",
+          "description": "IP address of the receiver"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the receiver"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "Phone number of the receiver, if the communication type is SMS."
+        },
+        "party": {
+          "$ref": "#/$defs/RelatedParty"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "RelatedParty": {
+      "type": "object",
+      "description": "Related Entity reference. A related party defines party or party role linked to a specific entity.",
+      "required": [
+        "@referredType",
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of a related entity."
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the related entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "role": {
+          "type": "string",
+          "description": "Role played by the related party"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "Sender": {
+      "type": "object",
+      "description": "Sender of the communication message.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ID of the sender"
+        },
+        "email": {
+          "type": "string",
+          "description": "Sender address of email, if the communication type is email"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the sender"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "Phone number of the sender, if the communication type is SMS."
+        },
+        "party": {
+          "$ref": "#/$defs/RelatedParty"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "endDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "End of the time period, using IETC-RFC-3339 format"
+        },
+        "startDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Start of the time period, using IETC-RFC-3339 format. If you define a start, you must also define an end"
+        }
+      }
+    }
+  }
+}

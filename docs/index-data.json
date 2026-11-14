@@ -7328,8 +7328,8 @@
   },
   {
     "slug": "tmforum-open-apis",
-    "title": "TM Forum Open APIs (Product, Service and Resource Inventory, Trouble Ticket, Product Ordering)",
-    "description": "The TM Forum Open APIs are a family of about 60 REST APIs for the telecom and digital-service industry, part of TM Forum's Open Digital Architecture (ODA). They are implemented by communication service providers and their IT vendors for ordering, inventory, assurance, billing, party and catalogue management. This candidate covers the inventory and assurance core: the product a customer holds (TMF637 Product), the services that realize it (TMF638 Service), the network, logical and physical resources that support those services (TMF639 Resource), the order that created it (TMF622 ProductOrder) and the trouble ticket raised when something goes wrong (TMF621 TroubleTicket). The sector is Telecom; the APIs are also used by other digital-service providers (utilities, cloud, smart-city operators).",
+    "title": "TM Forum Open APIs (86 Apache-2.0 APIs, 174 resource models)",
+    "description": "The TM Forum Open APIs are the family of REST APIs of TM Forum's Open Digital Architecture (ODA), implemented by communication service providers and their IT vendors for catalogue, ordering, inventory, assurance, billing, party, usage, testing, IoT, AI and partner (Open Gateway) management. This candidate covers every TM Forum Open API published in github.com/tmforum- apis under the Apache-2.0 licence (86 APIs) with one model per managed resource (the resources with their own collection endpoint, identity and state): 174 models, from ProductCatalog, ProductOffering and ProductSpecification through ProductOrder, Product, Service and Resource to TroubleTicket, Alarm, ServiceProblem, CustomerBill, BillingAccount, Individual, Organization, PartyRole, GeographicAddress / GeographicSite / GeographicLocation, Intent, the test-management family and the IoT and AI component suites. References between these resources are NGSI-LD Relationships (213 of them). The sector is Telecom; the APIs are also used by other digital-service providers (utilities, cloud, smart-city operators).",
     "publisher": "TM Forum",
     "sourceUrl": "https://github.com/tmforum-apis",
     "license": "Apache-2.0",
@@ -7337,42 +7337,1225 @@
       "CrossSector",
       "SmartCities"
     ],
-    "modelCount": 5,
+    "modelCount": 174,
     "models": [
+      {
+        "name": "AbstractEnvironment",
+        "title": "Smart Data Models - TM Forum Open APIs - AbstractEnvironment",
+        "description": "A managed abstract environment resource (TM Forum TMF705 Test Environment Management API 4.0.0, Swagger definition AbstractEnvironment; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/AbstractEnvironment/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/AbstractEnvironment"
+      },
+      {
+        "name": "AccumulatedBalance",
+        "title": "Smart Data Models - TM Forum Open APIs - AccumulatedBalance",
+        "description": "Represents and tracks the aggregated amount remained or owed in certain account which is owned by certain customer for a set of buckets. (TM Forum TMF654 Prepay Balance Management 4.0.0, Swagger definition AccumulatedBalance; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/AccumulatedBalance/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/AccumulatedBalance"
+      },
+      {
+        "name": "Agreement",
+        "title": "Smart Data Models - TM Forum Open APIs - Agreement",
+        "description": "An agreement represents a contract or arrangement, either written or verbal and sometimes enforceable by law, such as a service level agreement or a customer price agreement. An agreement involves a number of other business entities, such as products, services, and resources and/or their specifications. (TM Forum TMF651 Agreement Management 4.0.0, Swagger definition Agreement; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Agreement/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Agreement"
+      },
+      {
+        "name": "AgreementSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - AgreementSpecification",
+        "description": "A template of an agreement that can be used when establishing partnerships (TM Forum TMF651 Agreement Management 4.0.0, Swagger definition AgreementSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/AgreementSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/AgreementSpecification"
+      },
+      {
+        "name": "AiContract",
+        "title": "Smart Data Models - TM Forum Open APIs - AiContract",
+        "description": "An Ai Contract represents a contract or arrangement, either written or verbal and sometimes enforceable by law, such as a service level agreement or a customer price agreement. An agreement involves a number of other business entities, such as products, services, and resources and/or their specifications. (TM Forum TMF915 Ai Management 4.0.0, Swagger definition AiContract; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/AiContract/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/AiContract"
+      },
+      {
+        "name": "AiContractSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - AiContractSpecification",
+        "description": "A template of an agreement that can be used when establishing partnerships (TM Forum TMF915 Ai Management 4.0.0, Swagger definition AiContractSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/AiContractSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/AiContractSpecification"
+      },
+      {
+        "name": "AiContractViolation",
+        "title": "Smart Data Models - TM Forum Open APIs - AiContractViolation",
+        "description": "AiContractViolation (TM Forum TMF915 Ai Management 4.0.0, Swagger definition AiContractViolation; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/AiContractViolation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/AiContractViolation"
+      },
+      {
+        "name": "AiModel",
+        "title": "Smart Data Models - TM Forum Open APIs - AiModel",
+        "description": "AiModel is a base class for defining the AiModel hierarchy (TM Forum TMF915 Ai Management 4.0.0, Swagger definition AiModel; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/AiModel/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/AiModel"
+      },
+      {
+        "name": "AiModelSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - AiModelSpecification",
+        "description": "AiModelSpecification is a class that offers characteristics to describe a type of service. Functionally, it acts as a template by which Services may be instantiated. By sharing the same specification, these services would therefore share the same set of characteristics. (TM Forum TMF915 Ai Management 4.0.0, Swagger definition AiModelSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/AiModelSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/AiModelSpecification"
+      },
+      {
+        "name": "Alarm",
+        "title": "Smart Data Models - TM Forum Open APIs - Alarm",
+        "description": "This resource represents an alarm supporting the information model defined in ITU-T X.733. (TM Forum TMF642 Alarm 5.0.1, OpenAPI component Alarm; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Alarm/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Alarm"
+      },
+      {
+        "name": "ApiProduct",
+        "title": "Smart Data Models - TM Forum Open APIs - ApiProduct",
+        "description": "ApiProduct is a specialization of a Product being an instance of an atomic ProductOffering or a ProductSpecification that is realized by an API (the Service). (TM Forum TMF931 Open Gateway Operate API Onboarding and Ordering 5.2.1, OpenAPI component ApiProduct; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ApiProduct/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ApiProduct"
+      },
+      {
+        "name": "ApiProductOrder",
+        "title": "Smart Data Models - TM Forum Open APIs - ApiProductOrder",
+        "description": "An ApiProductOrder is a specialization of a ProductOrder, which can be used to place an order between a customer and a service provider or between a service provider and a partner and vice versa. (TM Forum TMF931 Open Gateway Operate API Onboarding and Ordering 5.2.1, OpenAPI component ApiProductOrder; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ApiProductOrder/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ApiProductOrder"
+      },
+      {
+        "name": "Application",
+        "title": "Smart Data Models - TM Forum Open APIs - Application",
+        "description": "Application is a logical resource that can consume API products. It's a specialization of a LogicalResource in the Open Gateway context. (TM Forum TMF931 Open Gateway Operate API Onboarding and Ordering 5.2.1, OpenAPI component Application; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Application/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Application"
+      },
+      {
+        "name": "ApplicationOwner",
+        "title": "Smart Data Models - TM Forum Open APIs - ApplicationOwner",
+        "description": "Application Owner represents the role played by the organization that owns an Application that can consume API products. It's a specialization of a PartyRole in the Open Gateway context. (TM Forum TMF931 Open Gateway Operate API Onboarding and Ordering 5.2.1, OpenAPI component ApplicationOwner; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ApplicationOwner/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ApplicationOwner"
+      },
+      {
+        "name": "AppliedCustomerBillingRate",
+        "title": "Smart Data Models - TM Forum Open APIs - AppliedCustomerBillingRate",
+        "description": "A customer bill displays applied billing rates created before or during the billing process. (TM Forum TMF678 CustomerBill 5.0.0, OpenAPI component AppliedCustomerBillingRate; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/AppliedCustomerBillingRate/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/AppliedCustomerBillingRate"
+      },
+      {
+        "name": "Appointment",
+        "title": "Smart Data Models - TM Forum Open APIs - Appointment",
+        "description": "An Appointment is an arrangement to do something or meet someone at a particular time, at a place (for face to face appointment) or in a contact medium (for phone appointment). (TM Forum TMF646 Appointment 4.0.0, Swagger definition Appointment; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Appointment/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Appointment"
+      },
+      {
+        "name": "Association",
+        "title": "Smart Data Models - TM Forum Open APIs - Association",
+        "description": "Association is the class that describes a relationship between two or more entities or entity specifications based on a given association specification. The role of each endpoint in the relationship is given by an association role. The type of endpoints in the relationship should match the ones as defined in the corresponding association role specification. A relationship between entity specifications may be governed by conditions and rules which are addressed by constraint references in this resource. Constraints for a relationship may include new rules and conditions in addition to those defined for the corresponding association specification (TM Forum TMF662 Entity Catalog Management 4.0.0, Swagger definition Association; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Association/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Association"
+      },
+      {
+        "name": "AssociationSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - AssociationSpecification",
+        "description": "AssociationSpecification is an association class that describes a type of relationship between two entities. This is a generic construct that may be used to describe relationship types and roles. The role and type of each entity in the relationship is given by an association role specification. Two role specifications are embedded in the association specification. (TM Forum TMF662 Entity Catalog Management 4.0.0, Swagger definition AssociationSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/AssociationSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/AssociationSpecification"
+      },
+      {
+        "name": "BalanceActionHistory",
+        "title": "Smart Data Models - TM Forum Open APIs - BalanceActionHistory",
+        "description": "A history of the following operations performed on the bucket: TopupBalance, AdjustBalance and TransferBalance (TM Forum TMF654 Prepay Balance Management 4.0.0, Swagger definition BalanceActionHistory; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/BalanceActionHistory/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/BalanceActionHistory"
+      },
+      {
+        "name": "BillCycle",
+        "title": "Smart Data Models - TM Forum Open APIs - BillCycle",
+        "description": "A detailed description of a billing cycle and the various sub steps of a billing cycle. (TM Forum TMF678 CustomerBill 5.0.0, OpenAPI component BillCycle; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/BillCycle/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/BillCycle"
+      },
+      {
+        "name": "BillFormat",
+        "title": "Smart Data Models - TM Forum Open APIs - BillFormat",
+        "description": "A detailed description of the way in which a bill is presented. (TM Forum TMF666 Account Management 5.0.0, OpenAPI component BillFormat; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/BillFormat/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/BillFormat"
+      },
+      {
+        "name": "BillPresentationMedia",
+        "title": "Smart Data Models - TM Forum Open APIs - BillPresentationMedia",
+        "description": "A mean of communicating a bill, supported by the associated bill format. For example, post mail, email, web page. (TM Forum TMF666 Account Management 5.0.0, OpenAPI component BillPresentationMedia; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/BillPresentationMedia/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/BillPresentationMedia"
+      },
+      {
+        "name": "BillingAccount",
+        "title": "Smart Data Models - TM Forum Open APIs - BillingAccount",
+        "description": "A party account used for billing purposes. It includes a description of the bill structure (frequency, presentation media, format and so on). It is a specialization of entity PartyAccount. (TM Forum TMF666 Account Management 5.0.0, OpenAPI component BillingAccount; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/BillingAccount/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/BillingAccount"
+      },
+      {
+        "name": "BillingCycleSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - BillingCycleSpecification",
+        "description": "A detailed description of when to initiate a billing cycle and the various sub steps of a billing cycle. (TM Forum TMF666 Account Management 5.0.0, OpenAPI component BillingCycleSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/BillingCycleSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/BillingCycleSpecification"
+      },
+      {
+        "name": "Bucket",
+        "title": "Smart Data Models - TM Forum Open APIs - Bucket",
+        "description": "A bucket (called UsageVolumProduct in the SID Model) represents and tracks a quantity of usage (remaining or consumed). It could be either a quantity or an amount in a currency. It can represent a fixed number of SMS,MMS, call minutes, quantity of data and so on (TM Forum TMF654 Prepay Balance Management 4.0.0, Swagger definition Bucket; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Bucket/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Bucket"
+      },
+      {
+        "name": "Category",
+        "title": "Smart Data Models - TM Forum Open APIs - Category",
+        "description": "The category resource is used to group product offerings, service and resource candidates in logical containers. Categories can contain other categories and/or product offerings, resource or service candidates. (TM Forum TMF620 Product Catalog Management 5.0.0, OpenAPI component Category; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Category/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Category"
+      },
+      {
+        "name": "CdrTransaction",
+        "title": "Smart Data Models - TM Forum Open APIs - CdrTransaction",
+        "description": "A party revenue sharing transaction is a type of transaction which can be used to launch a revenue share between a partner and a service provider or between multiple partners (TM Forum TMF735 CDR Transaction Management 5.0.0, OpenAPI component CdrTransaction; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/CdrTransaction/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/CdrTransaction"
+      },
+      {
+        "name": "ChangeRequest",
+        "title": "Smart Data Models - TM Forum Open APIs - ChangeRequest",
+        "description": "Change Request is a type of request which can be used for the management and control of Change Management process -within a service provider organisation or -between a customer and a service provider or -between a service provider and a partner and vice versa. (TM Forum TMF655 API ChangeManagement 4.0.0, Swagger definition ChangeRequest; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ChangeRequest/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ChangeRequest"
+      },
+      {
+        "name": "CheckProductConfiguration",
+        "title": "Smart Data Models - TM Forum Open APIs - CheckProductConfiguration",
+        "description": "CheckProductConfiguration is is used to create a task that check validity of product configuration(s). (TM Forum TMF760 ProductConfiguration 5.0.0, OpenAPI component CheckProductConfiguration; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/CheckProductConfiguration/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/CheckProductConfiguration"
+      },
+      {
+        "name": "CheckProductOfferingQualification",
+        "title": "Smart Data Models - TM Forum Open APIs - CheckProductOfferingQualification",
+        "description": "CheckProductOfferingQualification is used to perform a commercial eligibility. It allows to request an eligibility check for a list of productOfferings (one per item). The response will provide qualification result depending on catalog rules and of the context of the interaction (defined be place, channel, party, product). (TM Forum TMF679 Product Offering Qualification 5.0.0, OpenAPI component CheckProductOfferingQualification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/CheckProductOfferingQualification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/CheckProductOfferingQualification"
+      },
+      {
+        "name": "CheckServiceQualification",
+        "title": "Smart Data Models - TM Forum Open APIs - CheckServiceQualification",
+        "description": "CheckServiceQualification is used to perform a technical eligibility on service configuration(s). It allows to retrieve services that are technically available in the context of the interaction (place, party, service characteristics, ...). (TM Forum TMF645 Service Qualification Management 5.0.0, OpenAPI component CheckServiceQualification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/CheckServiceQualification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/CheckServiceQualification"
+      },
+      {
+        "name": "CommunicationMessage",
+        "title": "Smart Data Models - TM Forum Open APIs - CommunicationMessage",
+        "description": "Communication message means a notification approach in the format of a message which can be dispatched (sent) to the certain user by the system with the content which can be felt and understood by the recipient. The user can be either a final customer or a customer service agent. The message can reach the customer in different interaction channels, including: email, short message, mobile app notification (push). (TM Forum TMF681 Communication Management API 4.0.0, Swagger definition CommunicationMessage; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/CommunicationMessage/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/CommunicationMessage"
+      },
+      {
+        "name": "ConcreteEnvironmentMetaModel",
+        "title": "Smart Data Models - TM Forum Open APIs - ConcreteEnvironmentMetaModel",
+        "description": "A managed concrete environment resource metamodel resource (TM Forum TMF705 Test Environment Management API 4.0.0, Swagger definition ConcreteEnvironmentMetaModel; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ConcreteEnvironmentMetaModel/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ConcreteEnvironmentMetaModel"
+      },
+      {
+        "name": "Customer",
+        "title": "Smart Data Models - TM Forum Open APIs - Customer",
+        "description": "Customer (TM Forum TMF629 Customer Management 5.0.1, OpenAPI component Customer; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Customer/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Customer"
+      },
+      {
+        "name": "Customer360",
+        "title": "Smart Data Models - TM Forum Open APIs - Customer360",
+        "description": "Object represents a consolidated Customer overview. The id of the Customer360 equals the id of the Customer. (TM Forum TMF717 Customer360 5.0.1, OpenAPI component Customer360; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Customer360/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Customer360"
+      },
+      {
+        "name": "CustomerBill",
+        "title": "Smart Data Models - TM Forum Open APIs - CustomerBill",
+        "description": "The customer bill. Can be a regular recurring bill or an extra bill on demand by the customer or the csp. (TM Forum TMF678 CustomerBill 5.0.0, OpenAPI component CustomerBill; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/CustomerBill/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/CustomerBill"
+      },
+      {
+        "name": "DataAccessEndpoint",
+        "title": "Smart Data Models - TM Forum Open APIs - DataAccessEndpoint",
+        "description": "This is the endpoint exposed by the IoT Device to authorized users. (TM Forum TMF908 IoT Device Management 4.0.0, Swagger definition DataAccessEndpoint; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/DataAccessEndpoint/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/DataAccessEndpoint"
+      },
+      {
+        "name": "DigitalIdentity",
+        "title": "Smart Data Models - TM Forum Open APIs - DigitalIdentity",
+        "description": "DigitalIdentity is a class that allow to describe a digital identity for an individual or a resource or a specific party role. One of these three MUST be provided. If an individual is provided, this identity will be for all her/his partyRole. To avoid confusion it is recommended in this case to not provide partyRoleIdentified. (TM Forum TMF720 Digital Identity Management 4.0.0, Swagger definition DigitalIdentity; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/DigitalIdentity/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/DigitalIdentity"
+      },
+      {
+        "name": "EntityCatalog",
+        "title": "Smart Data Models - TM Forum Open APIs - EntityCatalog",
+        "description": "The root entity for entity catalog management. An entity catalog can be defined as a collection of entity catalog items and arranging them in a particular manner based on the need. In comparison to Product, Service and Resource catalogs, the entity catalog is intended for the purpose of providing any SID entity to consumers via a catalog, with its specification and policy providing governance over its content. Even Entity catalog may have an overlap with Product, Service or Resource catalog, it does not replace them. It is primarily intended to address those SID entities which may not be addressed by any of Product, Service or Resource catalog. An entity catalog comprises of a list of RootEntities made available through EntityCatalogItems. This API addresses only RootEntity extended items as EntitySpecification. An entity catalog typically includes name, description and time period that it is valid for. (TM Forum TMF662 Entity Catalog Management 4.0.0, Swagger definition EntityCatalog; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/EntityCatalog/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/EntityCatalog"
+      },
+      {
+        "name": "EntityCatalogItem",
+        "title": "Smart Data Models - TM Forum Open APIs - EntityCatalogItem",
+        "description": "An EntityCatalogItem is an entity that allows any ProductOffering, ServiceCandidate, ResourceCandidate, or even any object inheriting from RootEntity, to be available to a catalog. The CatalogSpecification and Policy of the catalog governs the content of the EntityCatalogItem. This API addresses only EntitySpecification items extended from RootEntity as EntityCatalogItem. The EntityCatalogItem resource (JSON format) represents a set of characteristics that define the values given by the EntityCatalogItem. (TM Forum TMF662 Entity Catalog Management 4.0.0, Swagger definition EntityCatalogItem; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/EntityCatalogItem/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/EntityCatalogItem"
+      },
+      {
+        "name": "EntityCategory",
+        "title": "Smart Data Models - TM Forum Open APIs - EntityCategory",
+        "description": "The (entity) category resource is used to group entity catalog items in logical containers. Categories can contain other categories. Resource IDs for categories are strings and are defined by the catalog application. (TM Forum TMF662 Entity Catalog Management 4.0.0, Swagger definition EntityCategory; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/EntityCategory/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/EntityCategory"
+      },
+      {
+        "name": "EntitySpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - EntitySpecification",
+        "description": "EntitySpecification is a class that offers characteristics to describe a type of entity. Entities are generic constructs that may be used to describe bespoke business entities that are not effectively covered by the existing SID model. Functionally, the entity specification acts as a template by which entities may be instantiated and described. By sharing the same specification, these entities would therefore share the same set of characteristics. Note: The ‘configurable’ attribute on the specCharacteristics determines if an entity instantiated from the entity specification can override the value of the attribute. When set to false, the entity instance may not define a value that differs from the value in the specification. (TM Forum TMF662 Entity Catalog Management 4.0.0, Swagger definition EntitySpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/EntitySpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/EntitySpecification"
+      },
+      {
+        "name": "Event",
+        "title": "Smart Data Models - TM Forum Open APIs - Event",
+        "description": "event with common attributes. (TM Forum TMF688 Event Streaming API 4.0.0, Swagger definition Event; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Event/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Event"
+      },
+      {
+        "name": "FinancialAccount",
+        "title": "Smart Data Models - TM Forum Open APIs - FinancialAccount",
+        "description": "An account of money owed by a party to another entity in exchange for goods or services that have been delivered or used. A financial (account receivable account/account payable) aggregates the amounts of one or more party accounts (billing or settlement) owned by a given party. It is a specialization of entity Account. (TM Forum TMF666 Account Management 5.0.0, OpenAPI component FinancialAccount; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/FinancialAccount/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/FinancialAccount"
+      },
+      {
+        "name": "GeneralTestArtifact",
+        "title": "Smart Data Models - TM Forum Open APIs - GeneralTestArtifact",
+        "description": "A managed general test artifact resource (TM Forum TMF710 General Test Artifact Management API 4.0.0, Swagger definition GeneralTestArtifact; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/GeneralTestArtifact/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/GeneralTestArtifact"
+      },
+      {
+        "name": "GeographicAddress",
+        "title": "Smart Data Models - TM Forum Open APIs - GeographicAddress",
+        "description": "Structured textual way of describing how to find a Property in an urban area (country properties are often defined differently). Note : Address corresponds to SID UrbanPropertyAddress (TM Forum TMF673 API Place - GeographicAddress 4.0.1, Swagger definition GeographicAddress; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/GeographicAddress/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/GeographicAddress"
+      },
+      {
+        "name": "GeographicLocation",
+        "title": "Smart Data Models - TM Forum Open APIs - GeographicLocation",
+        "description": "A GeographicLocation is a pure-virtual super-class to the GeoJSON-aligned geometries of Point (addresses and locations), MultiPoint, LineString (streets, highways and boundaries), MultiLineString and Polygon (countries, provinces, tracts of land). Use the @type attribute to specify which of these is being specified by the geometry attribute. (TM Forum TMF675 API GeographicLocation 4.0.0, Swagger definition GeographicLocation; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/GeographicLocation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/GeographicLocation"
+      },
+      {
+        "name": "GeographicSite",
+        "title": "Smart Data Models - TM Forum Open APIs - GeographicSite",
+        "description": "A GeographicSite is a managed place, such as a retail store, warehouse or data centre. It will have related responsible parties, a calendar of access times and be described by addresses and/or locations (TM Forum TMF674 Geographic Site 5.0.0, OpenAPI component GeographicSite; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/GeographicSite/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/GeographicSite"
+      },
+      {
+        "name": "Incident",
+        "title": "Smart Data Models - TM Forum Open APIs - Incident",
+        "description": "An Incident is a record of an event that has altered the operational state of a entity (Resource, Service or Customers Product). An incident represents an issue that needs to be diagnosed and resolved. (TM Forum TMF724 Incident 4.0.1, Swagger definition Incident; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Incident/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Incident"
+      },
+      {
+        "name": "Individual",
+        "title": "Smart Data Models - TM Forum Open APIs - Individual",
+        "description": "Individual represents a single human being (a man, woman or child). The individual can be a customer, an employee or any other person that the organization needs to store information about. (TM Forum TMF632 Party Management 5.0.0, OpenAPI component Individual; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Individual/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Individual"
+      },
+      {
+        "name": "Intent",
+        "title": "Smart Data Models - TM Forum Open APIs - Intent",
+        "description": "An Intent instance is the formal description of all expectations including requirements, goals, and constraints given to a technical system (TM Forum TMF921 Intent Management 5.0.0, OpenAPI component Intent; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Intent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Intent"
+      },
+      {
+        "name": "IntentReport",
+        "title": "Smart Data Models - TM Forum Open APIs - IntentReport",
+        "description": "IntentReport is the mechanism to report back to Intent owner on an Intents status (TM Forum TMF921 Intent Management 5.0.0, OpenAPI component IntentReport; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/IntentReport/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/IntentReport"
+      },
+      {
+        "name": "IntentSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - IntentSpecification",
+        "description": "IntentSpecification is a class that offers characteristics to describe a type of intent. Functionally, it acts as a template by which intents may be instantiated. (TM Forum TMF921 Intent Management 5.0.0, OpenAPI component IntentSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/IntentSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/IntentSpecification"
+      },
+      {
+        "name": "IotDataEvent",
+        "title": "Smart Data Models - TM Forum Open APIs - IotDataEvent",
+        "description": "#TODO (TM Forum TMF908 IoT Device Management 4.0.0, Swagger definition IotDataEvent; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/IotDataEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/IotDataEvent"
+      },
+      {
+        "name": "IotDevice",
+        "title": "Smart Data Models - TM Forum Open APIs - IotDevice",
+        "description": "#TODO (TM Forum TMF908 IoT Device Management 4.0.0, Swagger definition IotDevice; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/IotDevice/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/IotDevice"
+      },
+      {
+        "name": "IotDeviceSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - IotDeviceSpecification",
+        "description": "#TODO (TM Forum TMF908 IoT Device Management 4.0.0, Swagger definition IotDeviceSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/IotDeviceSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/IotDeviceSpecification"
+      },
+      {
+        "name": "IotManagementEvent",
+        "title": "Smart Data Models - TM Forum Open APIs - IotManagementEvent",
+        "description": "Generic IotManagementEvent structure used to define commonalities between sub concepts of PartyIotManagementEvent and Financial IotManagementEvent. (TM Forum TMF908 IoT Device Management 4.0.0, Swagger definition IotManagementEvent; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/IotManagementEvent/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/IotManagementEvent"
+      },
+      {
+        "name": "IotService",
+        "title": "Smart Data Models - TM Forum Open APIs - IotService",
+        "description": "#TODO (TM Forum TMF914 IoT Service Management Component Suite 4.0.0, Swagger definition IotService; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/IotService/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/IotService"
+      },
+      {
+        "name": "IotServiceSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - IotServiceSpecification",
+        "description": "#TODO (TM Forum TMF914 IoT Service Management Component Suite 4.0.0, Swagger definition IotServiceSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/IotServiceSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/IotServiceSpecification"
+      },
+      {
+        "name": "LoyaltyAction",
+        "title": "Smart Data Models - TM Forum Open APIs - LoyaltyAction",
+        "description": "LoyaltyAction (TM Forum TMF658 LoyaltySwagger 1.0, Swagger definition LoyaltyAction; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/LoyaltyAction/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/LoyaltyAction"
+      },
+      {
+        "name": "LoyaltyBalance",
+        "title": "Smart Data Models - TM Forum Open APIs - LoyaltyBalance",
+        "description": "LoyaltyBalance (TM Forum TMF658 LoyaltySwagger 1.0, Swagger definition LoyaltyBalance; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/LoyaltyBalance/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/LoyaltyBalance"
+      },
+      {
+        "name": "LoyaltyCondition",
+        "title": "Smart Data Models - TM Forum Open APIs - LoyaltyCondition",
+        "description": "LoyaltyCondition (TM Forum TMF658 LoyaltySwagger 1.0, Swagger definition LoyaltyCondition; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/LoyaltyCondition/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/LoyaltyCondition"
+      },
+      {
+        "name": "LoyaltyEventType",
+        "title": "Smart Data Models - TM Forum Open APIs - LoyaltyEventType",
+        "description": "LoyaltyEventType (TM Forum TMF658 LoyaltySwagger 1.0, Swagger definition LoyaltyEventType; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/LoyaltyEventType/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/LoyaltyEventType"
+      },
+      {
+        "name": "LoyaltyMember",
+        "title": "Smart Data Models - TM Forum Open APIs - LoyaltyMember",
+        "description": "LoyaltyMember (TM Forum TMF658 LoyaltySwagger 1.0, Swagger definition LoyaltyMember; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/LoyaltyMember/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/LoyaltyMember"
+      },
+      {
+        "name": "LoyaltyRule",
+        "title": "Smart Data Models - TM Forum Open APIs - LoyaltyRule",
+        "description": "LoyaltyRule (TM Forum TMF658 LoyaltySwagger 1.0, Swagger definition LoyaltyRule; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/LoyaltyRule/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/LoyaltyRule"
+      },
+      {
+        "name": "MeasurementCollectionJob",
+        "title": "Smart Data Models - TM Forum Open APIs - MeasurementCollectionJob",
+        "description": "Used to control the periodic collection of performance indicators, implemented as a sub-entity of the PM Measurement Job. (TM Forum TMF628 Performance 4.0.0, Swagger definition MeasurementCollectionJob; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/MeasurementCollectionJob/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/MeasurementCollectionJob"
+      },
+      {
+        "name": "NonFunctionalTestExecution",
+        "title": "Smart Data Models - TM Forum Open APIs - NonFunctionalTestExecution",
+        "description": "REST resource for the non-functional test execution lifecycle (TM Forum TMF708 Test Execution 4.0.0, Swagger definition NonFunctionalTestExecution; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/NonFunctionalTestExecution/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/NonFunctionalTestExecution"
+      },
+      {
+        "name": "NonFunctionalTestModel",
+        "title": "Smart Data Models - TM Forum Open APIs - NonFunctionalTestModel",
+        "description": "A managed non-functional test model resource (TM Forum TMF704 Test Case Management API 4.0.0, Swagger definition NonFunctionalTestModel; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/NonFunctionalTestModel/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/NonFunctionalTestModel"
+      },
+      {
+        "name": "NonFunctionalTestResult",
+        "title": "Smart Data Models - TM Forum Open APIs - NonFunctionalTestResult",
+        "description": "A managed non-functional test result resource (TM Forum TMF707 Test Result 4.0.0, Swagger definition NonFunctionalTestResult; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/NonFunctionalTestResult/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/NonFunctionalTestResult"
+      },
+      {
+        "name": "OpenGatewayProductOffering",
+        "title": "Smart Data Models - TM Forum Open APIs - OpenGatewayProductOffering",
+        "description": "The specialized ProductOffering for GSMA Open Gateway Operate API. (TM Forum TMF936 Open Gateway Operate API - Product Catalog 5.0.0, OpenAPI component OpenGatewayProductOffering; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/OpenGatewayProductOffering/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/OpenGatewayProductOffering"
+      },
+      {
+        "name": "OpenGatewayProductSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - OpenGatewayProductSpecification",
+        "description": "The specialized ProductSpecification for GSMA Open Gateway Operate API. (TM Forum TMF936 Open Gateway Operate API - Product Catalog 5.0.0, OpenAPI component OpenGatewayProductSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/OpenGatewayProductSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/OpenGatewayProductSpecification"
+      },
+      {
+        "name": "Organization",
+        "title": "Smart Data Models - TM Forum Open APIs - Organization",
+        "description": "Organization represents a group of people identified by shared interests or purpose. Examples include business, department and enterprise. Because of the complex nature of many businesses, both organizations and organization units are represented by the same data. (TM Forum TMF632 Party Management 5.0.0, OpenAPI component Organization; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Organization/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Organization"
+      },
+      {
+        "name": "Partnership",
+        "title": "Smart Data Models - TM Forum Open APIs - Partnership",
+        "description": "A partnership represents a formalized collaboration between various parties, each party playing a role in the partnership. The parties playing a role in the partnership represented by the Partner entity. The structure of a partnership is specified by a PartnershipSpecification which contain all the information for the setup of the partnership, including the list of identified roles and the agreement that should apply. (TM Forum TMF668 Partnership Management 4.0, Swagger definition Partnership; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Partnership/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Partnership"
+      },
+      {
+        "name": "PartnershipSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - PartnershipSpecification",
+        "description": "A partnership specification contains all the information for the setup of a partnership of a given kind. This includes the list of identified role types for the partnership with the corresponding agreement specifications. (TM Forum TMF668 Partnership Management 4.0, Swagger definition PartnershipSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PartnershipSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/PartnershipSpecification"
+      },
+      {
+        "name": "PartyAccount",
+        "title": "Smart Data Models - TM Forum Open APIs - PartyAccount",
+        "description": "Account used for billing or for settlement purposes concerning a given party (an organization or an individual). It is a specialization of entity Account. (TM Forum TMF666 Account Management 5.0.0, OpenAPI component PartyAccount; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PartyAccount/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/PartyAccount"
+      },
+      {
+        "name": "PartyInteraction",
+        "title": "Smart Data Models - TM Forum Open APIs - PartyInteraction",
+        "description": "PartyInteraction (TM Forum TMF683 Party Interaction 5.0.0, OpenAPI component PartyInteraction; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PartyInteraction/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/PartyInteraction"
+      },
+      {
+        "name": "PartyPrivacyAgreement",
+        "title": "Smart Data Models - TM Forum Open APIs - PartyPrivacyAgreement",
+        "description": "A specific type of agreement that formalizes the privacy profiles requested for a party (TM Forum TMF644 Privacy 5.0.0, OpenAPI component PartyPrivacyAgreement; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PartyPrivacyAgreement/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/PartyPrivacyAgreement"
+      },
+      {
+        "name": "PartyPrivacyProfile",
+        "title": "Smart Data Models - TM Forum Open APIs - PartyPrivacyProfile",
+        "description": "A Party Privacy Profile represents the set of Privacy settings defined for a Party (TM Forum TMF644 Privacy 5.0.0, OpenAPI component PartyPrivacyProfile; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PartyPrivacyProfile/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/PartyPrivacyProfile"
+      },
+      {
+        "name": "PartyPrivacyProfileSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - PartyPrivacyProfileSpecification",
+        "description": "Party Privacy Profile Specification serves as a template for creating Privacy Profiles. The specification defines characteristics for the profile. For example there might be a profile specification for residential customers, and a different specification for partners. (TM Forum TMF644 Privacy 5.0.0, OpenAPI component PartyPrivacyProfileSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PartyPrivacyProfileSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/PartyPrivacyProfileSpecification"
+      },
+      {
+        "name": "PartyRevSharingAlgorithm",
+        "title": "Smart Data Models - TM Forum Open APIs - PartyRevSharingAlgorithm",
+        "description": "The PartyRevSharingAlgorithm resource is policy type of algorithm to calculate revenue share (TM Forum TMF736 Revenue Sharing Algorithm Management 5.0.0, OpenAPI component PartyRevSharingAlgorithm; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PartyRevSharingAlgorithm/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/PartyRevSharingAlgorithm"
+      },
+      {
+        "name": "PartyRevSharingModel",
+        "title": "Smart Data Models - TM Forum Open APIs - PartyRevSharingModel",
+        "description": "The PartyRevSharingModel resource define how revenue is shared by an enterprise with one or more other parties (TM Forum TMF738 Revenue Sharing Model Management 5.0.0, OpenAPI component PartyRevSharingModel; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PartyRevSharingModel/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/PartyRevSharingModel"
+      },
+      {
+        "name": "PartyRevSharingReport",
+        "title": "Smart Data Models - TM Forum Open APIs - PartyRevSharingReport",
+        "description": "The PartyRevSharingReport resource define the revenue is shared by stakeholders (TM Forum TMF737 Revenue Sharing Report Management 5.0.0, OpenAPI component PartyRevSharingReport; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PartyRevSharingReport/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/PartyRevSharingReport"
+      },
+      {
+        "name": "PartyRole",
+        "title": "Smart Data Models - TM Forum Open APIs - PartyRole",
+        "description": "The part played by a party in a given context. (TM Forum TMF669 Party Role Management 5.0.0, OpenAPI component PartyRole; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PartyRole/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/PartyRole"
+      },
+      {
+        "name": "PartyRoleProductOfferingRiskAssessment",
+        "title": "Smart Data Models - TM Forum Open APIs - PartyRoleProductOfferingRiskAssessment",
+        "description": "This is a task resource allowing assessment of the risks associated with a party or party role that considers acquiring a specific product offering (TM Forum TMF696 Risk Management 4.0.0, Swagger definition PartyRoleProductOfferingRiskAssessment; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PartyRoleProductOfferingRiskAssessment/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/PartyRoleProductOfferingRiskAssessment"
+      },
+      {
+        "name": "PartyRoleRiskAssessment",
+        "title": "Smart Data Models - TM Forum Open APIs - PartyRoleRiskAssessment",
+        "description": "This is a task resource allowing assessment of the risks associated with a party role (TM Forum TMF696 Risk Management 4.0.0, Swagger definition PartyRoleRiskAssessment; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PartyRoleRiskAssessment/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/PartyRoleRiskAssessment"
+      },
+      {
+        "name": "PartyRoleSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - PartyRoleSpecification",
+        "description": "Party role specification. A party role specification gives additional details on the part played by a party in a given context. (TM Forum TMF669 Party Role Management 5.0.0, OpenAPI component PartyRoleSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PartyRoleSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/PartyRoleSpecification"
+      },
+      {
+        "name": "Payment",
+        "title": "Smart Data Models - TM Forum Open APIs - Payment",
+        "description": "The Payment resource represents a performed payment. It contains both information about the payment and the payment method used to perform it. (TM Forum TMF676 Payment 4.0.0, Swagger definition Payment; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Payment/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Payment"
+      },
+      {
+        "name": "PaymentMethod",
+        "title": "Smart Data Models - TM Forum Open APIs - PaymentMethod",
+        "description": "Defines a specific method of payment (e.g. direct debit with all details associated) (TM Forum TMF670 Payment Method 4.0.0, Swagger definition PaymentMethod; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PaymentMethod/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/PaymentMethod"
+      },
+      {
+        "name": "PerformanceIndicatorGroupSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - PerformanceIndicatorGroupSpecification",
+        "description": "PerformanceIndicatorGroupSpecification (TM Forum TMF628 Performance 4.0.0, Swagger definition PerformanceIndicatorGroupSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PerformanceIndicatorGroupSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/PerformanceIndicatorGroupSpecification"
+      },
+      {
+        "name": "PerformanceIndicatorSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - PerformanceIndicatorSpecification",
+        "description": "Holds the definition of the requested Performance indicator including: its name, value type, collection type, description and units. (TM Forum TMF628 Performance 4.0.0, Swagger definition PerformanceIndicatorSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PerformanceIndicatorSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/PerformanceIndicatorSpecification"
+      },
+      {
+        "name": "PermissionSet",
+        "title": "Smart Data Models - TM Forum Open APIs - PermissionSet",
+        "description": "The PermissionSet is a set of Permissions granted to a user (party, party role or resource). The set may be granted explicitly by an authorized user or may be acquired implicitly due to the role that the user is playing. (TM Forum TMF672 User Role Permission Management API 5.1.0, OpenAPI component PermissionSet; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PermissionSet/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/PermissionSet"
+      },
+      {
+        "name": "PermissionSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - PermissionSpecification",
+        "description": "A PermissionSpecification defines a permissible action (e.g. read, write) on some function, where a function can be an entity class name or some specific functionality. (TM Forum TMF672 User Role Permission Management API 5.1.0, OpenAPI component PermissionSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PermissionSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/PermissionSpecification"
+      },
+      {
+        "name": "PermissionSpecificationSet",
+        "title": "Smart Data Models - TM Forum Open APIs - PermissionSpecificationSet",
+        "description": "A PermissionSpecificationSet defines a set of permissions that can be attached to a party role specification. The resulting permissions will then apply to all users that adopt this party role. (TM Forum TMF672 User Role Permission Management API 5.1.0, OpenAPI component PermissionSpecificationSet; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PermissionSpecificationSet/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/PermissionSpecificationSet"
+      },
+      {
+        "name": "Process",
+        "title": "Smart Data Models - TM Forum Open APIs - Process",
+        "description": "A standardized way to execute and monitor business or technical processes in a telco or digital service provider environment (TM Forum TMF701 Process Management 5.0.0, OpenAPI component Process; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Process/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Process"
+      },
+      {
+        "name": "ProcessSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - ProcessSpecification",
+        "description": "ProcessSpecification is a class that allow to describe a process design. A process instance will use a ProcessSpecification as reference. (TM Forum TMF701 Process Management 5.0.0, OpenAPI component ProcessSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ProcessSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ProcessSpecification"
+      },
       {
         "name": "Product",
         "title": "Smart Data Models - TM Forum Open APIs - Product",
-        "description": "A product offering procured by a customer or other interested party playing a party role. A product is realized as one or more service(s) and / or resource(s). (TM Forum TMF637 Product Inventory Management v5.0.0, OpenAPI component Product; attribute names kept verbatim except id/@type/@baseType/@schemaLocation; deprecated attributes left out.)",
+        "description": "A product offering procured by a customer or other interested party playing a party role. A product is realized as one or more service(s) and / or resource(s). (TM Forum TMF637 ProductInventory 5.0.0, OpenAPI component Product; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
         "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Product/schema.json",
         "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Product"
       },
       {
+        "name": "ProductCatalog",
+        "title": "Smart Data Models - TM Forum Open APIs - ProductCatalog",
+        "description": "A collection of Product Offerings, intended for a specific DistributionChannel, enhanced with additional information such as SLA parameters, invoicing and shipping details (TM Forum TMF620 Product Catalog Management 5.0.0, OpenAPI component ProductCatalog; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ProductCatalog/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ProductCatalog"
+      },
+      {
+        "name": "ProductOffering",
+        "title": "Smart Data Models - TM Forum Open APIs - ProductOffering",
+        "description": "Represents entities that are orderable from the provider of the catalog, this resource includes pricing information. (TM Forum TMF620 Product Catalog Management 5.0.0, OpenAPI component ProductOffering; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ProductOffering/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ProductOffering"
+      },
+      {
+        "name": "ProductOfferingPrice",
+        "title": "Smart Data Models - TM Forum Open APIs - ProductOfferingPrice",
+        "description": "Is based on both the basic cost to develop and produce products and the enterprises policy on revenue targets. This price may be further revised through discounting (a Product Offering Price that reflects an alteration). The price, applied for a productOffering may also be influenced by the productOfferingTerm, the customer selected, eg: a productOffering can be offered with multiple terms, like commitment periods for the contract. The price may be influenced by this productOfferingTerm. A productOffering may be cheaper with a 24 month commitment than with a 12 month commitment. (TM Forum TMF620 Product Catalog Management 5.0.0, OpenAPI component ProductOfferingPrice; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ProductOfferingPrice/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ProductOfferingPrice"
+      },
+      {
+        "name": "ProductOfferingRiskAssessment",
+        "title": "Smart Data Models - TM Forum Open APIs - ProductOfferingRiskAssessment",
+        "description": "This is a task resource allowing assessment of the risks associated with a product offering. For example, the risk associated with iPhone X will probably be higher than the risk for a battery (TM Forum TMF696 Risk Management 4.0.0, Swagger definition ProductOfferingRiskAssessment; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ProductOfferingRiskAssessment/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ProductOfferingRiskAssessment"
+      },
+      {
         "name": "ProductOrder",
         "title": "Smart Data Models - TM Forum Open APIs - ProductOrder",
-        "description": "A Product Order is a type of order which can be used to place an order between a customer and a service provider or between a service provider and a partner and vice versa, (TM Forum TMF622 Product Ordering Management v5.0.0, OpenAPI component ProductOrder; attribute names kept verbatim except id/@type/@baseType/@schemaLocation; deprecated attributes left out.)",
+        "description": "A Product Order is a type of order which can be used to place an order between a customer and a service provider or between a service provider and a partner and vice versa, (TM Forum TMF622 ProductOrdering 5.0.0, OpenAPI component ProductOrder; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
         "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ProductOrder/schema.json",
         "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ProductOrder"
       },
       {
+        "name": "ProductOrderRiskAssessment",
+        "title": "Smart Data Models - TM Forum Open APIs - ProductOrderRiskAssessment",
+        "description": "This is a task resource allowing assessment of the risks associated with a product order - presumably submitted by a party role and containing one or more product offerings (TM Forum TMF696 Risk Management 4.0.0, Swagger definition ProductOrderRiskAssessment; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ProductOrderRiskAssessment/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ProductOrderRiskAssessment"
+      },
+      {
+        "name": "ProductSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - ProductSpecification",
+        "description": "Is a detailed description of a tangible or intangible object made available externally in the form of a ProductOffering to customers or other parties playing a party role. (TM Forum TMF620 Product Catalog Management 5.0.0, OpenAPI component ProductSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ProductSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ProductSpecification"
+      },
+      {
+        "name": "ProductStock",
+        "title": "Smart Data Models - TM Forum Open APIs - ProductStock",
+        "description": "ProductStock is a base class for defining a product (or configured product with values characteristic) stock level. (TM Forum TMF687 Stock Management 4.0.0, Swagger definition ProductStock; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ProductStock/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ProductStock"
+      },
+      {
+        "name": "ProductUsage",
+        "title": "Smart Data Models - TM Forum Open APIs - ProductUsage",
+        "description": "An occurrence of usage on a product, typically derived from one or various service usages. (TM Forum TMF635 Product Usage Management 5.0.0, OpenAPI component ProductUsage; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ProductUsage/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ProductUsage"
+      },
+      {
+        "name": "ProductUsageSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - ProductUsageSpecification",
+        "description": "A detailed description of a product usage specification that are of interest to the business and can have product offering prices applied to it. It is comprised of characteristic specification, which define all attributes and their possible values known for a particular type of product usage. (TM Forum TMF767 Product Usage Catalog Management 5.0.0, OpenAPI component ProductUsageSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ProductUsageSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ProductUsageSpecification"
+      },
+      {
+        "name": "ProgramProductSpec",
+        "title": "Smart Data Models - TM Forum Open APIs - ProgramProductSpec",
+        "description": "ProgramProductSpec (TM Forum TMF658 LoyaltySwagger 1.0, Swagger definition ProgramProductSpec; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ProgramProductSpec/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ProgramProductSpec"
+      },
+      {
+        "name": "Promotion",
+        "title": "Smart Data Models - TM Forum Open APIs - Promotion",
+        "description": "Promotion is used to provide the additional discount, voucher, bonus or gift to the customer who meets the pre-defined criteria. Using promotion, the enterprise is able to attract the users and encourage more consumption, especially continuous purchases. Normally Promotion is not regarded as one type of product or product offering. It is often applied when the customer buys the product offerings with the price or amount surpassing the certain limit. (TM Forum TMF671 Promotion Management 4.1.0, Swagger definition Promotion; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Promotion/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Promotion"
+      },
+      {
+        "name": "ProvisioningArtifact",
+        "title": "Smart Data Models - TM Forum Open APIs - ProvisioningArtifact",
+        "description": "A managed provisioning artifact resource (TM Forum TMF705 Test Environment Management API 4.0.0, Swagger definition ProvisioningArtifact; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ProvisioningArtifact/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ProvisioningArtifact"
+      },
+      {
+        "name": "QueryProductConfiguration",
+        "title": "Smart Data Models - TM Forum Open APIs - QueryProductConfiguration",
+        "description": "Query Product Configuration main resource is used to obtain product configurations in a given context (cart, quote, product order). (TM Forum TMF760 ProductConfiguration 5.0.0, OpenAPI component QueryProductConfiguration; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/QueryProductConfiguration/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/QueryProductConfiguration"
+      },
+      {
+        "name": "QueryProductOfferingQualification",
+        "title": "Smart Data Models - TM Forum Open APIs - QueryProductOfferingQualification",
+        "description": "QueryProductOfferingQualification is used to perform a commercial eligibility. It allows client side to pass a list of criteria (search criteria to provide the context of the qualification) and in the response the seller send (if any) a list of product offering qualified. (TM Forum TMF679 Product Offering Qualification 5.0.0, OpenAPI component QueryProductOfferingQualification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/QueryProductOfferingQualification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/QueryProductOfferingQualification"
+      },
+      {
+        "name": "QueryProductRecommendation",
+        "title": "Smart Data Models - TM Forum Open APIs - QueryProductRecommendation",
+        "description": "Recommendation API is used to recommend offering quickly based on the history and real-time context of customer. It is a real-time and personalized recommendation API. It is usually provided by e-commerce or BSS, CRM system in omni-channel. (TM Forum TMF680 Recommendation 4.0.0, Swagger definition QueryProductRecommendation; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/QueryProductRecommendation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/QueryProductRecommendation"
+      },
+      {
+        "name": "QueryServiceQualification",
+        "title": "Smart Data Models - TM Forum Open APIs - QueryServiceQualification",
+        "description": "QueryServiceQualification is used to retrieve a list of services that are technically available in the context of the interaction (place, party, service characteristics, ...). (TM Forum TMF645 Service Qualification Management 5.0.0, OpenAPI component QueryServiceQualification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/QueryServiceQualification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/QueryServiceQualification"
+      },
+      {
+        "name": "Quote",
+        "title": "Smart Data Models - TM Forum Open APIs - Quote",
+        "description": "Quote can be used to negotiate service and product acquisition or modification between a customer and a service provider. Quote contain list of quote items, a reference to customer (partyRole), a list of productOffering and attached prices and conditions. (TM Forum TMF648 Quote 4.0.0, Swagger definition Quote; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Quote/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Quote"
+      },
+      {
+        "name": "Refund",
+        "title": "Smart Data Models - TM Forum Open APIs - Refund",
+        "description": "The Refund resource represents a performed Refund. It contains both information about the refund and the payment method used to perform it. (TM Forum TMF676 Payment 4.0.0, Swagger definition Refund; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Refund/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Refund"
+      },
+      {
+        "name": "Reservation",
+        "title": "Smart Data Models - TM Forum Open APIs - Reservation",
+        "description": "reservation api resource (TM Forum TMF685 Resource Pool Management 1.0, Swagger definition Reservation; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Reservation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Reservation"
+      },
+      {
         "name": "Resource",
         "title": "Smart Data Models - TM Forum Open APIs - Resource",
-        "description": "Resource is an abstract entity that describes the common set of attributes shared by all concrete resources (e.g. TPE, EQUIPMENT) in the inventory. (TM Forum TMF639 Resource Inventory Management v5.0.0, OpenAPI component Resource, with the attributes of its sub-classes LogicalResource, PhysicalResource, SoftwareResource, ResourceFunction flattened in; attribute names kept verbatim except id/@type/@baseType/@schemaLocation/value; deprecated attributes left out.)",
+        "description": "Resource is an abstract entity that describes the common set of attributes shared by all concrete resources (e.g. TPE, EQUIPMENT) in the inventory. (TM Forum TMF639 Resource Inventory Management 5.0.0, OpenAPI component Resource, with the attributes of its sub-classes LogicalResource, PhysicalResource, SoftwareResource, ResourceFunction flattened in; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
         "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Resource/schema.json",
         "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Resource"
       },
       {
+        "name": "ResourceCandidate",
+        "title": "Smart Data Models - TM Forum Open APIs - ResourceCandidate",
+        "description": "ResourceCandidate is an entity that makes a resource specification available to a catalog. A ResourceCandidate and its associated resource specification may be published - made visible - in any number of resource catalogs, or in none. (TM Forum TMF634 Resource Catalog Management 5.0.0, OpenAPI component ResourceCandidate; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ResourceCandidate/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ResourceCandidate"
+      },
+      {
+        "name": "ResourceCatalog",
+        "title": "Smart Data Models - TM Forum Open APIs - ResourceCatalog",
+        "description": "The root entity for resource catalog management. A resource catalog is a group of resource specifications made available through resource candidates that an organization provides to the consumers (internal consumers like its employees or B2B customers or B2C customers). (TM Forum TMF634 Resource Catalog Management 5.0.0, OpenAPI component ResourceCatalog; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ResourceCatalog/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ResourceCatalog"
+      },
+      {
+        "name": "ResourceCategory",
+        "title": "Smart Data Models - TM Forum Open APIs - ResourceCategory",
+        "description": "The (resource) category resource is used to group resource candidates in logical containers. Categories can contain other categories. (TM Forum TMF634 Resource Catalog Management 5.0.0, OpenAPI component ResourceCategory; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ResourceCategory/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ResourceCategory"
+      },
+      {
+        "name": "ResourceFunction",
+        "title": "Smart Data Models - TM Forum Open APIs - ResourceFunction",
+        "description": "A ResourceFunction is a behavior to transform inputs of any nature into outputs of any nature independently from the way it is provided. (TM Forum TMF664 Resource Function Activation and Configuration 4.0.0, Swagger definition ResourceFunction; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ResourceFunction/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ResourceFunction"
+      },
+      {
+        "name": "ResourceOrder",
+        "title": "Smart Data Models - TM Forum Open APIs - ResourceOrder",
+        "description": "A Resource Order is a request to provision a set of Resources (logical and physical) triggered by the request to provision a Service through a Service Order (TM Forum TMF652 Resource Ordering Management 4.0.0, Swagger definition ResourceOrder; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ResourceOrder/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ResourceOrder"
+      },
+      {
+        "name": "ResourcePool",
+        "title": "Smart Data Models - TM Forum Open APIs - ResourcePool",
+        "description": "manages resource capacity with the resource state (TM Forum TMF685 Resource Pool Management 1.0, Swagger definition ResourcePool; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ResourcePool/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ResourcePool"
+      },
+      {
+        "name": "ResourceReservation",
+        "title": "Smart Data Models - TM Forum Open APIs - ResourceReservation",
+        "description": "ResourceReservation (TM Forum TMF716 Resource Reservation 4.0.0, Swagger definition ResourceReservation; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ResourceReservation/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ResourceReservation"
+      },
+      {
+        "name": "ResourceSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - ResourceSpecification",
+        "description": "Resources are physical or non-physical components (or some combination of these) within an enterprise's infrastructure or inventory. They are typically consumed or used by services (for example a physical port assigned to a service) or contribute to the realization of a Product (for example, a SIM card). They can be drawn from the Application, Computing and Network domains, and include, for example, Network Elements, software, IT systems, content and information, and technology components. A ResourceSpecification is a base class that represents a generic means for implementing a particular type of Resource. In essence, a ResourceSpecification defines the common attributes and relationships of a set of related Resources, while Resource defines a specific instance that is based on a particular ResourceSpecification. (TM Forum TMF634 Resource Catalog Management 5.0.0, OpenAPI component ResourceSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ResourceSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ResourceSpecification"
+      },
+      {
+        "name": "ResourceUsage",
+        "title": "Smart Data Models - TM Forum Open APIs - ResourceUsage",
+        "description": "An occurrence of usage on a Resource,derived from various Service usages. It is comprised of characteristics, which represent attributes of service usage. (TM Forum TMF771 Resource Usage Management 5.0.0, OpenAPI component ResourceUsage; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ResourceUsage/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ResourceUsage"
+      },
+      {
+        "name": "ResourceUsageSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - ResourceUsageSpecification",
+        "description": "A detailed description of a Resource usage event that are of interest to the business and can have charges applied to it. It is comprised of characteristics, which define all attributes known for a particular type of usage. (TM Forum TMF771 Resource Usage Management 5.0.0, OpenAPI component ResourceUsageSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ResourceUsageSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ResourceUsageSpecification"
+      },
+      {
+        "name": "Rule",
+        "title": "Smart Data Models - TM Forum Open APIs - Rule",
+        "description": "Rule (TM Forum TMF915 Ai Management 4.0.0, Swagger definition Rule; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Rule/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Rule"
+      },
+      {
+        "name": "SalesLead",
+        "title": "Smart Data Models - TM Forum Open APIs - SalesLead",
+        "description": "A Sales Lead is a record that captures the initial interest expressed by a prospect (an individual or organization) in products or services. As a preliminary artifact in the sales funnel, it contains unverified information that must be nurtured and qualified. A lead is ultimately converted into a Sales Opportunity or is disqualified. (TM Forum TMF699 Sales Management 5.0.0, OpenAPI component SalesLead; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/SalesLead/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/SalesLead"
+      },
+      {
+        "name": "SalesOpportunity",
+        "title": "Smart Data Models - TM Forum Open APIs - SalesOpportunity",
+        "description": "A Sales Opportunity represents a qualified potential for a sale, created when a prospect demonstrates a concrete and actionable interest. As a formal entry in the sales pipeline, it is tracked with an estimated value, a timeline, and a probability of success. Its lifecycle is managed through defined sales stages until it is won or lost. (TM Forum TMF699 Sales Management 5.0.0, OpenAPI component SalesOpportunity; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/SalesOpportunity/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/SalesOpportunity"
+      },
+      {
         "name": "Service",
         "title": "Smart Data Models - TM Forum Open APIs - Service",
-        "description": "Service is a base class for defining the Service hierarchy. All Services are characterized as either being possibly visible and usable by a Customer or not. This gives rise to the two subclasses of Service: CustomerFacingService and ResourceFacingService. (TM Forum TMF638 Service Inventory Management v5.0.0, OpenAPI component Service; attribute names kept verbatim except id/@type/@baseType/@schemaLocation; deprecated attributes left out.)",
+        "description": "Service is a base class for defining the Service hierarchy. All Services are characterized as either being possibly visible and usable by a Customer or not. This gives rise to the two subclasses of Service: CustomerFacingService and ResourceFacingService. (TM Forum TMF638 Service Inventory Management 5.0.0, OpenAPI component Service; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
         "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Service/schema.json",
         "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Service"
       },
       {
+        "name": "ServiceCandidate",
+        "title": "Smart Data Models - TM Forum Open APIs - ServiceCandidate",
+        "description": "ServiceCandidate is an entity that makes a service specification available to a catalog. A ServiceCandidate and its associated service specification may be published - made visible - in any number of service catalogs, or in none. One service specification can be composed of other service specifications. (TM Forum TMF633 Service Catalog Management 4.0.0, Swagger definition ServiceCandidate; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ServiceCandidate/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ServiceCandidate"
+      },
+      {
+        "name": "ServiceCatalog",
+        "title": "Smart Data Models - TM Forum Open APIs - ServiceCatalog",
+        "description": "The root entity for service catalog management. A service catalog is a group of service specifications made available through service candidates that an organization provides to the consumers (internal consumers like its employees or B2B customers or B2C customers). A service catalog typically includes name, description and time period that is valid for. It will have a list of ServiceCandidate catalog items. A ServiceCandidate is an entity that makes a ServiceSpecification available to a catalog. A ServiceCandidate and its associated ServiceSpecification may be \"published\" - made visible -in any number of ServiceCatalogs, or in none. (TM Forum TMF633 Service Catalog Management 4.0.0, Swagger definition ServiceCatalog; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ServiceCatalog/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ServiceCatalog"
+      },
+      {
+        "name": "ServiceCategory",
+        "title": "Smart Data Models - TM Forum Open APIs - ServiceCategory",
+        "description": "The (service) category resource is used to group service candidates in logical containers. Categories can contain other categories. (TM Forum TMF633 Service Catalog Management 4.0.0, Swagger definition ServiceCategory; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ServiceCategory/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ServiceCategory"
+      },
+      {
+        "name": "ServiceLevelObjective",
+        "title": "Smart Data Models - TM Forum Open APIs - ServiceLevelObjective",
+        "description": "Service level objectives are defined in terms of parameters and metrics, thresholds, and tolerances associated with the parameters. (TM Forum TMF657 Service Quality Management 4.0.0, Swagger definition ServiceLevelObjective; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ServiceLevelObjective/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ServiceLevelObjective"
+      },
+      {
+        "name": "ServiceLevelSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - ServiceLevelSpecification",
+        "description": "A Service Level Specification represents a pre-defined or negotiated set of Service Level Objectives. In addition, certain consequences are associated with not meeting the Service Level Objectives. Service Level Agreements are expressed in terms of Service Level Specifications. (TM Forum TMF657 Service Quality Management 4.0.0, Swagger definition ServiceLevelSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ServiceLevelSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ServiceLevelSpecification"
+      },
+      {
+        "name": "ServiceOrder",
+        "title": "Smart Data Models - TM Forum Open APIs - ServiceOrder",
+        "description": "ServiceOrder (TM Forum TMF641 API ServiceOrdering 4.2.0, Swagger definition ServiceOrder; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ServiceOrder/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ServiceOrder"
+      },
+      {
+        "name": "ServiceOrderSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - ServiceOrderSpecification",
+        "description": "ServiceOrderSpecification is a class that offers common properties to describe an order. The service order specification acts as a template by which orders may be instantiated and described. By sharing the same specification, these orders would therefore share the same set of behavior. (TM Forum TMF641 API ServiceOrdering 4.2.0, Swagger definition ServiceOrderSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ServiceOrderSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ServiceOrderSpecification"
+      },
+      {
+        "name": "ServiceProblem",
+        "title": "Smart Data Models - TM Forum Open APIs - ServiceProblem",
+        "description": "A Service Problem is an indication that a service is no longer functioning according to the agreement with its client(s). It is a condition where a service fails to meet its expected performance, availability, or quality standards, resulting in a negative impact on the customer experience or business operations. (TM Forum TMF656 Service Problem Management 5.1.0, OpenAPI component ServiceProblem; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ServiceProblem/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ServiceProblem"
+      },
+      {
+        "name": "ServiceProblemEventRecord",
+        "title": "Smart Data Models - TM Forum Open APIs - ServiceProblemEventRecord",
+        "description": "ServiceProblemEventRecord is a record of an event (related to a service problem) received from another system. It is a system-generated record that captures events related to a ServiceProblem, such as status changes, updates, acknowledgements, or resolution activities. It is not created directly by API consumers and serves as an audit and traceability mechanism for problem management activities. (TM Forum TMF656 Service Problem Management 5.1.0, OpenAPI component ServiceProblemEventRecord; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ServiceProblemEventRecord/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ServiceProblemEventRecord"
+      },
+      {
+        "name": "ServiceSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - ServiceSpecification",
+        "description": "ServiceSpecification is a class that offers characteristics to describe a type of service. Functionally, it acts as a template by which Services may be instantiated. By sharing the same specification, these services would therefore share the same set of characteristics. (TM Forum TMF633 Service Catalog Management 4.0.0, Swagger definition ServiceSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ServiceSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ServiceSpecification"
+      },
+      {
+        "name": "ServiceTest",
+        "title": "Smart Data Models - TM Forum Open APIs - ServiceTest",
+        "description": "A service test is an entity that exists for a controlled test invocation on a service. The service test is executed according to a schedule and contains service test configuration parameters that are to be applied at execution time, and service test measures that result. (TM Forum TMF653 Service Test Management 5.0.0, OpenAPI component ServiceTest; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ServiceTest/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ServiceTest"
+      },
+      {
+        "name": "ServiceTestSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - ServiceTestSpecification",
+        "description": "The service test specification describes the service test in terms of parameters to be configured and measures to be taken. (TM Forum TMF653 Service Test Management 5.0.0, OpenAPI component ServiceTestSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ServiceTestSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ServiceTestSpecification"
+      },
+      {
+        "name": "SettlementAccount",
+        "title": "Smart Data Models - TM Forum Open APIs - SettlementAccount",
+        "description": "A party account used for settlement purposes. It includes a description of the bill structure (frequency, presentation media, format and so on). It is a specialization of entity PartyAccount. (TM Forum TMF666 Account Management 5.0.0, OpenAPI component SettlementAccount; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/SettlementAccount/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/SettlementAccount"
+      },
+      {
+        "name": "ShipmentTracking",
+        "title": "Smart Data Models - TM Forum Open APIs - ShipmentTracking",
+        "description": "TrackingDetailsType (TM Forum TMF684 Shipment Tracking Management 1.0.0, Swagger definition TrackingDetailsType; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ShipmentTracking/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ShipmentTracking"
+      },
+      {
+        "name": "ShippingOrder",
+        "title": "Smart Data Models - TM Forum Open APIs - ShippingOrder",
+        "description": "A Shipping Order is a document used by a business to specify what items are to be transferred from a storage location or warehouse to which person and to which new location. A Shipping Order can typically be sent along with a shipment of goods so that the person receiving them can verify that the document correctly reflects the items that they actually received. (TM Forum TMF700 API ShippingOrder 4.0.0, Swagger definition ShippingOrder; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ShippingOrder/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ShippingOrder"
+      },
+      {
+        "name": "ShoppingCart",
+        "title": "Smart Data Models - TM Forum Open APIs - ShoppingCart",
+        "description": "Shopping Cart resource is used for the temporarily selection and reservation of product offerings in e-commerce, call center and retail purchase. Shopping cart supports purchase of both physical and digital goods and service (e.g. handset, telecom network service). Shopping Cart contain list of cart items, a reference to customer (partyRole) or contact medium in case customer not exist, and the total items price including promotions (TM Forum TMF663 Shopping Cart 5.0.0, OpenAPI component ShoppingCart; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ShoppingCart/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ShoppingCart"
+      },
+      {
+        "name": "ShoppingCartRiskAssessment",
+        "title": "Smart Data Models - TM Forum Open APIs - ShoppingCartRiskAssessment",
+        "description": "This is a task resource allowing assessment of the risks associated with a shopping cart - presumably created by a party role and containing one or more product offerings (TM Forum TMF696 Risk Management 4.0.0, Swagger definition ShoppingCartRiskAssessment; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ShoppingCartRiskAssessment/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ShoppingCartRiskAssessment"
+      },
+      {
+        "name": "Task",
+        "title": "Smart Data Models - TM Forum Open APIs - Task",
+        "description": "A task is an atomic or composite activity that represents a unit of work, that could be stand alone or belonging to a process, manual or automated, performed by a person, system, or external entity. (TM Forum TMF701 Process Management 5.0.0, OpenAPI component Task; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Task/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Task"
+      },
+      {
+        "name": "TaskSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - TaskSpecification",
+        "description": "TaskSpecification is a class that allow to describe a task design. A task design defines the tasks that can potentially be instantiated within a process that is instantiated from this process specification. (TM Forum TMF701 Process Management 5.0.0, OpenAPI component TaskSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/TaskSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/TaskSpecification"
+      },
+      {
+        "name": "TestCase",
+        "title": "Smart Data Models - TM Forum Open APIs - TestCase",
+        "description": "A managed test case resource (TM Forum TMF704 Test Case Management API 4.0.0, Swagger definition TestCase; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/TestCase/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/TestCase"
+      },
+      {
+        "name": "TestCaseExecution",
+        "title": "Smart Data Models - TM Forum Open APIs - TestCaseExecution",
+        "description": "REST resource for the test case execution lifecycle (TM Forum TMF708 Test Execution 4.0.0, Swagger definition TestCaseExecution; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/TestCaseExecution/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/TestCaseExecution"
+      },
+      {
+        "name": "TestCaseResult",
+        "title": "Smart Data Models - TM Forum Open APIs - TestCaseResult",
+        "description": "A managed test case result resource (TM Forum TMF707 Test Result 4.0.0, Swagger definition TestCaseResult; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/TestCaseResult/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/TestCaseResult"
+      },
+      {
+        "name": "TestDataInstance",
+        "title": "Smart Data Models - TM Forum Open APIs - TestDataInstance",
+        "description": "A managed test data instance resource (TM Forum TMF706 Test Data 4.0.0, Swagger definition TestDataInstance; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/TestDataInstance/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/TestDataInstance"
+      },
+      {
+        "name": "TestDataSchema",
+        "title": "Smart Data Models - TM Forum Open APIs - TestDataSchema",
+        "description": "A managed test data schema resource (TM Forum TMF706 Test Data 4.0.0, Swagger definition TestDataSchema; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/TestDataSchema/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/TestDataSchema"
+      },
+      {
+        "name": "TestEnvironmentAllocationExecution",
+        "title": "Smart Data Models - TM Forum Open APIs - TestEnvironmentAllocationExecution",
+        "description": "REST resource for test environment allocation lifecycle (TM Forum TMF708 Test Execution 4.0.0, Swagger definition TestEnvironmentAllocationExecution; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/TestEnvironmentAllocationExecution/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/TestEnvironmentAllocationExecution"
+      },
+      {
+        "name": "TestEnvironmentProvisioningExecution",
+        "title": "Smart Data Models - TM Forum Open APIs - TestEnvironmentProvisioningExecution",
+        "description": "REST resource for test environment provisioning lifecycle (TM Forum TMF708 Test Execution 4.0.0, Swagger definition TestEnvironmentProvisioningExecution; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/TestEnvironmentProvisioningExecution/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/TestEnvironmentProvisioningExecution"
+      },
+      {
+        "name": "TestResourceAPI",
+        "title": "Smart Data Models - TM Forum Open APIs - TestResourceAPI",
+        "description": "A managed test resource API resource (TM Forum TMF705 Test Environment Management API 4.0.0, Swagger definition TestResourceAPI; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/TestResourceAPI/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/TestResourceAPI"
+      },
+      {
+        "name": "TestScenario",
+        "title": "Smart Data Models - TM Forum Open APIs - TestScenario",
+        "description": "A managed test scenario resource (TM Forum TMF709 Test Scenario Management API 4.0.0, Swagger definition TestScenario; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/TestScenario/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/TestScenario"
+      },
+      {
+        "name": "TestSuite",
+        "title": "Smart Data Models - TM Forum Open APIs - TestSuite",
+        "description": "A managed test suite resource (TM Forum TMF704 Test Case Management API 4.0.0, Swagger definition TestSuite; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/TestSuite/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/TestSuite"
+      },
+      {
+        "name": "TestSuiteExecution",
+        "title": "Smart Data Models - TM Forum Open APIs - TestSuiteExecution",
+        "description": "REST resource for the test suite execution lifecycle (TM Forum TMF708 Test Execution 4.0.0, Swagger definition TestSuiteExecution; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/TestSuiteExecution/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/TestSuiteExecution"
+      },
+      {
+        "name": "TestSuiteResult",
+        "title": "Smart Data Models - TM Forum Open APIs - TestSuiteResult",
+        "description": "A managed test case result resource (TM Forum TMF707 Test Result 4.0.0, Swagger definition TestSuiteResult; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/TestSuiteResult/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/TestSuiteResult"
+      },
+      {
+        "name": "Threshold",
+        "title": "Smart Data Models - TM Forum Open APIs - Threshold",
+        "description": "A threshold base entity containing threshold rules. (TM Forum TMF649 Performance Thresholding 5.0.0, OpenAPI component Threshold; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Threshold/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Threshold"
+      },
+      {
+        "name": "ThresholdJob",
+        "title": "Smart Data Models - TM Forum Open APIs - ThresholdJob",
+        "description": "The Threshold Job is the operational entity to execute a threshold (a set of threshold rules). As part of the definition of a Threshold Job, a scope of monitored objects is provided and a schedule for the threshold evaluation is determined. (TM Forum TMF649 Performance Thresholding 5.0.0, OpenAPI component ThresholdJob; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ThresholdJob/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ThresholdJob"
+      },
+      {
+        "name": "ThresholdRule",
+        "title": "Smart Data Models - TM Forum Open APIs - ThresholdRule",
+        "description": "ThresholdRule A base entity for concrete definition of thresholds. This datatype is abstract (TM Forum TMF649 Performance Thresholding 5.0.0, OpenAPI component ThresholdRule; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ThresholdRule/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/ThresholdRule"
+      },
+      {
+        "name": "TmfEntity",
+        "title": "Smart Data Models - TM Forum Open APIs - TmfEntity",
+        "description": "Base entity schema for use in TMForum Open-APIs (TM Forum TMF703 Entity Inventory 4.0.0, Swagger definition Entity; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/TmfEntity/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/TmfEntity"
+      },
+      {
+        "name": "Topic",
+        "title": "Smart Data Models - TM Forum Open APIs - Topic",
+        "description": "Is a event channel provided by the Event Streaming API (TM Forum TMF688 Event Streaming API 4.0.0, Swagger definition Topic; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Topic/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Topic"
+      },
+      {
+        "name": "TrackingRecord",
+        "title": "Smart Data Models - TM Forum Open APIs - TrackingRecord",
+        "description": "Tracking records allow the tracking of modifications on the problem. The tracking records should not be embedded in the problem to allow retrieving the problem without the tracking records (TM Forum TMF628 Performance 4.0.0, Swagger definition TrackingRecord; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/TrackingRecord/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/TrackingRecord"
+      },
+      {
         "name": "TroubleTicket",
         "title": "Smart Data Models - TM Forum Open APIs - TroubleTicket",
-        "description": "A trouble ticket is a record of an issue that is created, tracked, and managed by a trouble ticket management system (TM Forum TMF621 Trouble Ticket v5.0.1, OpenAPI component TroubleTicket; attribute names kept verbatim except id/@type/@baseType/@schemaLocation; deprecated attributes left out.)",
+        "description": "A trouble ticket is a record of an issue that is created, tracked, and managed by a trouble ticket management system (TM Forum TMF621 Trouble Ticket 5.0.1, OpenAPI component TroubleTicket; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
         "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/TroubleTicket/schema.json",
         "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/TroubleTicket"
+      },
+      {
+        "name": "TroubleTicketSpecification",
+        "title": "Smart Data Models - TM Forum Open APIs - TroubleTicketSpecification",
+        "description": "TroubleTicketSpecification defines the common attributes and relationships of a set of related trouble tickets, while trouble ticket defines a specific instance that is based on a particular trouble ticket specification. (TM Forum TMF621 Trouble Ticket 5.0.1, OpenAPI component TroubleTicketSpecification; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/TroubleTicketSpecification/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/TroubleTicketSpecification"
+      },
+      {
+        "name": "UsageConsumptionReport",
+        "title": "Smart Data Models - TM Forum Open APIs - UsageConsumptionReport",
+        "description": "An usage consumption report enables to know at a given point the balances and the consumption counters related to various buckets (SMS, Voice, Data for example). It could be calculated for a device identified by a public key (msisdn number for a mobile device for example or PSTN or VOIP number for a fix device), for a subscribed offer or option or for an user. (TM Forum TMF677 Usage Consumption 5.1.0, OpenAPI component UsageConsumptionReport; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/UsageConsumptionReport/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/UsageConsumptionReport"
+      },
+      {
+        "name": "User",
+        "title": "Smart Data Models - TM Forum Open APIs - User",
+        "description": "Generic User structure used to define commonalities between sub concepts of PartyUser and Financial User. (TM Forum TMF914 IoT Service Management Component Suite 4.0.0, Swagger definition User; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/User/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/User"
+      },
+      {
+        "name": "Userinfo",
+        "title": "Smart Data Models - TM Forum Open APIs - Userinfo",
+        "description": "Userinfo (TM Forum TMF691 Federated ID 4.0, Swagger definition Userinfo; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Userinfo/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/Userinfo"
+      },
+      {
+        "name": "WorkOrder",
+        "title": "Smart Data Models - TM Forum Open APIs - WorkOrder",
+        "description": "WorkOrder (TM Forum TMF697 Work Order 4.0.0, Swagger definition WorkOrder; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+        "schemaUrl": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/WorkOrder/schema.json",
+        "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis/models/WorkOrder"
       }
     ],
     "githubUrl": "https://github.com/smart-data-models/Candidates/tree/master/standards/tmforum-open-apis"

@@ -1,0 +1,1347 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ResourceReservation/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - ResourceReservation",
+  "description": "ResourceReservation (TM Forum TMF716 Resource Reservation 4.0.0, Swagger definition ResourceReservation; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:ResourceReservation:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ResourceReservation"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ResourceReservation'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF716_ResourceReservation/blob/v4.0.0/TMF716_ResourceReservation_v4.0.0_swagger.json#/definitions/ResourceReservation/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:ResourceReservation:<tmfId>. unique identifier"
+    },
+    "href": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF716_ResourceReservation/blob/v4.0.0/TMF716_ResourceReservation_v4.0.0_swagger.json#/definitions/ResourceReservation/properties/href'. Hyperlink reference"
+    },
+    "cancellationDate": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF716_ResourceReservation/blob/v4.0.0/TMF716_ResourceReservation_v4.0.0_swagger.json#/definitions/ResourceReservation/properties/cancellationDate'. Date when the reservation is cancelled."
+    },
+    "cancellationReason": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF716_ResourceReservation/blob/v4.0.0/TMF716_ResourceReservation_v4.0.0_swagger.json#/definitions/ResourceReservation/properties/cancellationReason'. Reason why the reservation is cancelled."
+    },
+    "completionDate": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF716_ResourceReservation/blob/v4.0.0/TMF716_ResourceReservation_v4.0.0_swagger.json#/definitions/ResourceReservation/properties/completionDate'. Date when the reservation was completed"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF716_ResourceReservation/blob/v4.0.0/TMF716_ResourceReservation_v4.0.0_swagger.json#/definitions/ResourceReservation/properties/creationDate'. Date when the reservation was created"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF716_ResourceReservation/blob/v4.0.0/TMF716_ResourceReservation_v4.0.0_swagger.json#/definitions/ResourceReservation/properties/description'. A string. free-text description of the reservation."
+    },
+    "expectedCompletionDate": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF716_ResourceReservation/blob/v4.0.0/TMF716_ResourceReservation_v4.0.0_swagger.json#/definitions/ResourceReservation/properties/expectedCompletionDate'. Expected completion date amended by the provider"
+    },
+    "requestedCompletionDate": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF716_ResourceReservation/blob/v4.0.0/TMF716_ResourceReservation_v4.0.0_swagger.json#/definitions/ResourceReservation/properties/requestedCompletionDate'. Requested completion date from the requestor perspective"
+    },
+    "requestedStartDate": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF716_ResourceReservation/blob/v4.0.0/TMF716_ResourceReservation_v4.0.0_swagger.json#/definitions/ResourceReservation/properties/requestedStartDate'. Reservation fulfillment start date wished by the requestor. This is used when, for any reason, requestor cannot allow the reservation to begin before a specific date."
+    },
+    "stateChangeDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF716_ResourceReservation/blob/v4.0.0/TMF716_ResourceReservation_v4.0.0_swagger.json#/definitions/ResourceReservation/properties/stateChangeDate'. The date and time the state changed."
+    },
+    "stateChangeReason": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF716_ResourceReservation/blob/v4.0.0/TMF716_ResourceReservation_v4.0.0_swagger.json#/definitions/ResourceReservation/properties/stateChangeReason'. The reason for changing the state"
+    },
+    "channel": {
+      "$ref": "#/$defs/ChannelRef",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF716_ResourceReservation/blob/v4.0.0/TMF716_ResourceReservation_v4.0.0_swagger.json#/definitions/ResourceReservation/properties/channel'. The channel to which the resource reference to. e.g. channel for selling product offerings, channel for opening a trouble ticket etc.."
+    },
+    "relatedEntity": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedEntity"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF716_ResourceReservation/blob/v4.0.0/TMF716_ResourceReservation_v4.0.0_swagger.json#/definitions/ResourceReservation/properties/relatedEntity'. A reference to an entity, where the type of the entity is not known in advance."
+    },
+    "relatedParty": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedPartyRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF716_ResourceReservation/blob/v4.0.0/TMF716_ResourceReservation_v4.0.0_swagger.json#/definitions/ResourceReservation/properties/relatedParty'. RelatedParty reference. A related party defines party or party role linked to a specific entity."
+    },
+    "reservationItem": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ResourceReservationItem"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF716_ResourceReservation/blob/v4.0.0/TMF716_ResourceReservation_v4.0.0_swagger.json#/definitions/ResourceReservation/properties/reservationItem'."
+    },
+    "reservationPeriod": {
+      "$ref": "#/$defs/TimePeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF716_ResourceReservation/blob/v4.0.0/TMF716_ResourceReservation_v4.0.0_swagger.json#/definitions/ResourceReservation/properties/reservationPeriod'. Period of time for which the target entity is to be in a reserved state"
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "acknowledged",
+        "rejected",
+        "pending",
+        "held",
+        "inProgress",
+        "cancelled",
+        "completed",
+        "failed",
+        "partial",
+        "assessingCancellation",
+        "pendingCancellation"
+      ],
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF716_ResourceReservation/blob/v4.0.0/TMF716_ResourceReservation_v4.0.0_swagger.json#/definitions/ResourceReservation/properties/state'."
+    },
+    "validFor": {
+      "$ref": "#/$defs/TimePeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF716_ResourceReservation/blob/v4.0.0/TMF716_ResourceReservation_v4.0.0_swagger.json#/definitions/ResourceReservation/properties/validFor'. A period of time, either as a deadline (endDateTime only) a startDateTime only, or both"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF716_ResourceReservation/blob/v4.0.0/TMF716_ResourceReservation_v4.0.0_swagger.json#/definitions/ResourceReservation/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF716_ResourceReservation/blob/v4.0.0/TMF716_ResourceReservation_v4.0.0_swagger.json#/definitions/ResourceReservation/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF716_ResourceReservation/blob/v4.0.0/TMF716_ResourceReservation_v4.0.0_swagger.json#/definitions/ResourceReservation/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'ResourceReservation' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ],
+  "$defs": {
+    "Any": {},
+    "ApplicableTimePeriod": {
+      "type": "object",
+      "description": "The period of time for which Capacity or CapacityDemand applies.",
+      "properties": {
+        "dayOfWeek": {
+          "type": "string",
+          "description": "A day or days representing when the schedule is applicable. For example 2, 3 represent Monday and Tuesday."
+        },
+        "rangeInterval": {
+          "type": "string",
+          "description": "An indicator that specifies the inclusion or exclusion of the from and to DateTime attributes. Possible values are \"open\", \"closed\", \"closedBottom\" and \"closedTop\"."
+        },
+        "fromToDateTime": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The period of time for which the schedule is applicable. Instance values are mutually exclusive with daysOfWeek values."
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "AttachmentRefOrValue": {
+      "type": "object",
+      "description": "An attachment by value or by reference. An attachment complements the description of an element, for example through a document, a video, a picture.",
+      "properties": {
+        "id": {
+          "examples": [
+            "4aafacbd-11ff-4dc8-b445-305f2215715f"
+          ],
+          "type": "string",
+          "description": "Unique identifier for this particular attachment"
+        },
+        "href": {
+          "examples": [
+            "http://host/Attachment/4aafacbd-11ff-4dc8-b445-305f2215715f"
+          ],
+          "type": "string",
+          "format": "uri",
+          "description": "URI for this Attachment"
+        },
+        "attachmentType": {
+          "examples": [
+            "video"
+          ],
+          "type": "string",
+          "description": "Attachment type such as video, picture"
+        },
+        "content": {
+          "type": "string",
+          "format": "base64",
+          "description": "The actual contents of the attachment object, if embedded, encoded as base64"
+        },
+        "description": {
+          "examples": [
+            "Photograph of the Product"
+          ],
+          "type": "string",
+          "description": "A narrative text describing the content of the attachment"
+        },
+        "mimeType": {
+          "examples": [
+            "video/mp4"
+          ],
+          "type": "string",
+          "description": "Attachment mime type such as extension file for video, picture and document"
+        },
+        "name": {
+          "examples": [
+            "iPhone 14 video"
+          ],
+          "type": "string",
+          "description": "The name of the attachment"
+        },
+        "url": {
+          "examples": [
+            "http://host/Content/4aafacbd-11ff-4dc8-b445-305f2215715f"
+          ],
+          "type": "string",
+          "format": "uri",
+          "description": "Remote reference to the content if web-addressable"
+        },
+        "size": {
+          "$ref": "#/$defs/Quantity",
+          "description": "The size of the attachment"
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The period of time for which the attachment is valid"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "Capacity": {
+      "type": "object",
+      "description": "Specific ability of an entity measured in quantity and units of quantity over an extended period.",
+      "properties": {
+        "plannedOrActualCapacity": {
+          "type": "string",
+          "description": "An indicator that specifies whether the capacity is planned or actual."
+        },
+        "applicableTimePeriod": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ApplicableTimePeriod"
+          },
+          "description": "The period of time for which Capacity or CapacityDemand applies."
+        },
+        "capacityAmount": {
+          "$ref": "#/$defs/CapacityAmount",
+          "description": "quantity that defines the Capacity."
+        },
+        "capacitySpec": {
+          "$ref": "#/$defs/CapacitySpecRef",
+          "description": "capacity specification."
+        },
+        "place": {
+          "$ref": "#/$defs/PlaceRefOrValue",
+          "description": "Used to define a place useful for the resource. Used to indicate reserved resources."
+        },
+        "relatedCapacity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CapacityRef"
+          },
+          "description": "related capacity."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "CapacityAmount": {
+      "type": "object",
+      "description": "Quantity that defines the Capacity.",
+      "properties": {
+        "capacityAmount": {
+          "type": "string",
+          "description": "A value and units that define the CapacityAmount, such as 10000 ea, 10B Mb. Instance values are mutually exclusive with From and To capacityAmounts and range interval."
+        },
+        "capacityAmountFrom": {
+          "type": "string",
+          "description": "The low range value that a Capacity Amount can take on."
+        },
+        "capacityAmountTo": {
+          "type": "string",
+          "description": "The upper range value that CapacityAmount can take on."
+        },
+        "rangeInterval": {
+          "type": "string",
+          "description": "An indicator that specifies the inclusion or exclusion of the capacityAmount From and capacityAmountTo attributes. Possible values are \"open\", \"closed\", \"closedBottom\" and \"closedTop\"."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "CapacityRef": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "CapacitySpecRef": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "ChannelRef": {
+      "type": "object",
+      "description": "The channel to which the resource reference to. e.g. channel for selling product offerings, channel for opening a trouble ticket etc..",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the channel."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "Characteristic": {
+      "type": "object",
+      "description": "Describes a given characteristic of an object or entity through a name/value pair.",
+      "required": [
+        "name",
+        "value"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the characteristic"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the characteristic"
+        },
+        "valueType": {
+          "type": "string",
+          "description": "Data type of the value of the characteristic"
+        },
+        "characteristicRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CharacteristicRelationship"
+          }
+        },
+        "value": {
+          "$ref": "#/$defs/Any",
+          "description": "The value of the characteristic"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "CharacteristicRelationship": {
+      "type": "object",
+      "description": "Another Characteristic that is related to the current Characteristic.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the characteristic"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "relationshipType": {
+          "type": "string",
+          "description": "The type of relationship"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "ConstraintRef": {
+      "type": "object",
+      "description": "Constraint reference. The Constraint resource represents a policy/rule applied to an entity or entity spec.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "version": {
+          "type": "string",
+          "description": "constraint version"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "Feature": {
+      "type": "object",
+      "description": "Configuration feature.",
+      "required": [
+        "featureCharacteristic",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the feature."
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "isBundle": {
+          "type": "boolean",
+          "description": "True if this is a feature group. Default is false."
+        },
+        "isEnabled": {
+          "type": "boolean",
+          "description": "True if this feature is enabled. Default is true."
+        },
+        "name": {
+          "type": "string",
+          "description": "This is the name for the feature."
+        },
+        "constraint": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ConstraintRef"
+          },
+          "description": "This is a list of feature constraints."
+        },
+        "featureCharacteristic": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Characteristic"
+          },
+          "minItems": 1,
+          "description": "This is a list of Characteristics for a particular feature."
+        },
+        "featureRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FeatureRelationship"
+          }
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "FeatureRelationship": {
+      "type": "object",
+      "description": "Configuration feature",
+      "required": [
+        "name",
+        "relationshipType"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the target feature."
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "This is the name of the target feature."
+        },
+        "relationshipType": {
+          "type": "string",
+          "description": "This is the type of the feature relationship."
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The period for which this feature relationship is valid."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "Note": {
+      "type": "object",
+      "description": "Extra information about a given entity",
+      "properties": {
+        "id": {
+          "examples": [
+            [
+              "afa9-3d90aaa8da0f"
+            ]
+          ],
+          "type": "string",
+          "description": "Identifier of the note within its containing entity"
+        },
+        "author": {
+          "examples": [
+            [
+              "Mr. N. Bene"
+            ]
+          ],
+          "type": "string",
+          "description": "Author of the note"
+        },
+        "date": {
+          "examples": [
+            [
+              "2020-11-20T08:00:00Z"
+            ]
+          ],
+          "type": "string",
+          "format": "date-time",
+          "description": "Date of the note"
+        },
+        "text": {
+          "examples": [
+            [
+              "This is important"
+            ]
+          ],
+          "type": "string",
+          "description": "Text of the note"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "PlaceRefOrValue": {
+      "type": "object",
+      "description": "A place defines a place described by reference or by value linked to a specific entity. The polymorphic attributes @type, @schemaLocation & @referredType are related to the place entity and not the RelatedPlaceRefOrValue class itself",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the place"
+        },
+        "href": {
+          "type": "string",
+          "description": "Unique reference of the place"
+        },
+        "name": {
+          "type": "string",
+          "description": "A user-friendly name for the place, such as [Paris Store], [London Store], [Main Home]"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "Quantity": {
+      "type": "object",
+      "description": "An amount in a given unit",
+      "properties": {
+        "amount": {
+          "default": 1,
+          "type": "number",
+          "format": "float",
+          "description": "Numeric value in a given unit"
+        },
+        "units": {
+          "type": "string",
+          "description": "Unit"
+        }
+      }
+    },
+    "RelatedEntity": {
+      "type": "object",
+      "description": "A reference to an entity, where the type of the entity is not known in advance.",
+      "required": [
+        "@referredType",
+        "id",
+        "role"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "role": {
+          "type": "string",
+          "description": "The role of an entity."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "RelatedParty": {
+      "type": "object",
+      "description": "Related Entity reference. A related party defines party or party role linked to a specific entity.",
+      "required": [
+        "@referredType",
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "role": {
+          "type": "string",
+          "description": "Role played by the related party"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "RelatedPartyRef": {
+      "type": "object",
+      "description": "RelatedParty reference. A related party defines party or party role linked to a specific entity.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of a related party"
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the related party, could be a party reference or a party role reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related party"
+        },
+        "role": {
+          "type": "string",
+          "description": "Role of the related party."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "RelatedPlaceRefOrValue": {
+      "type": "object",
+      "description": "Related Entity reference. A related place defines a place described by reference or by value linked to a specific entity. The polymorphic attributes @type, @schemaLocation & @referredType are related to the place entity and not the RelatedPlaceRefOrValue class itself",
+      "required": [
+        "role"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the place"
+        },
+        "href": {
+          "type": "string",
+          "description": "Unique reference of the place"
+        },
+        "name": {
+          "type": "string",
+          "description": "A user-friendly name for the place, such as [Paris Store], [London Store], [Main Home]"
+        },
+        "role": {
+          "type": "string"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "ReservationItemActionType": {
+      "type": "string",
+      "description": "action to be performed on the entity",
+      "enum": [
+        "add",
+        "modify",
+        "delete",
+        "noChange"
+      ]
+    },
+    "ReservationItemStateType": {
+      "type": "string",
+      "description": "",
+      "enum": [
+        "acknowledged",
+        "rejected",
+        "pending",
+        "held",
+        "inProgress",
+        "cancelled",
+        "completed",
+        "failed",
+        "partial",
+        "assessingCancellation",
+        "pendingCancellation"
+      ]
+    },
+    "ResourceAdministrativeStateType": {
+      "type": "string",
+      "description": "ResourceAdministrativeStateType enumerations",
+      "enum": [
+        "locked",
+        "unlocked",
+        "shutdown"
+      ]
+    },
+    "ResourceOperationalStateType": {
+      "type": "string",
+      "description": "ResourceOperationalStateType enumerations",
+      "enum": [
+        "enable",
+        "disable"
+      ]
+    },
+    "ResourceRefOrValue": {
+      "type": "object",
+      "description": "Resource is an abstract entity that describes the common set of attributes shared by all concrete resources. The polymorphic attributes @type, @schemaLocation & @referredType are related to the Resource entity and not the related ResourceRefOrValue class itself",
+      "required": [
+        "href",
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of an instance of the resource. Required to be unique within the resource type. Used in URIs as the identifier for specific instances of a type."
+        },
+        "href": {
+          "type": "string",
+          "description": "The URI for the object itself."
+        },
+        "category": {
+          "type": "string",
+          "description": "Category of the concrete resource. e.g Gold, Silver for MSISDN concrete resource"
+        },
+        "description": {
+          "type": "string",
+          "description": "free-text description of the resource"
+        },
+        "endOperatingDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "A date time( DateTime). The date till the resource is operating"
+        },
+        "name": {
+          "type": "string",
+          "description": "A string used to give a name to the resource"
+        },
+        "resourceVersion": {
+          "type": "string",
+          "description": "A field that identifies the specific version of an instance of a resource."
+        },
+        "startOperatingDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "A date time( DateTime). The date from which the resource is operating"
+        },
+        "activationFeature": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Feature"
+          },
+          "description": "Configuration features"
+        },
+        "administrativeState": {
+          "$ref": "#/$defs/ResourceAdministrativeStateType",
+          "description": "Tracks the administrative state of the resource, such as locked, unlocked, shutdown and so on."
+        },
+        "attachment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AttachmentRefOrValue"
+          }
+        },
+        "note": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Note"
+          }
+        },
+        "operationalState": {
+          "$ref": "#/$defs/ResourceOperationalStateType",
+          "description": "Tracks the operational state of the resource, such as enable, disable and so on."
+        },
+        "place": {
+          "$ref": "#/$defs/RelatedPlaceRefOrValue"
+        },
+        "relatedParty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RelatedParty"
+          }
+        },
+        "resourceCharacteristic": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Characteristic"
+          }
+        },
+        "resourceRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResourceRelationship"
+          }
+        },
+        "resourceSpecification": {
+          "$ref": "#/$defs/ResourceSpecificationRef"
+        },
+        "resourceStatus": {
+          "$ref": "#/$defs/ResourceStatusType",
+          "description": "Tracks the resource status of the resource, such as standby, alarm, available, reserved, suspended and so on."
+        },
+        "usageState": {
+          "$ref": "#/$defs/ResourceUsageStateType",
+          "description": "Tracks the usage state of the resource, such as idle, active, busy and so on."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "ResourceRelationship": {
+      "type": "object",
+      "description": "Linked resources to the one instantiate, such as [bundled] if the resource is a bundle and you want to describe the bundled resources inside this bundle; [reliesOn] if the resource needs another already owned resource to rely on (e.g. an option on an already owned mobile access resource) [targets] or [isTargeted] (depending on the way of expressing the link) for any other kind of links that may be useful",
+      "required": [
+        "relationshipType",
+        "resource"
+      ],
+      "properties": {
+        "relationshipType": {
+          "examples": [
+            "bundled"
+          ],
+          "type": "string",
+          "description": "Type of the resource relationship, such as [bundled] if the resource is a bundle and you want to describe the bundled resources inside this bundle; [reliesOn] if the resource needs another already owned resource to rely on (eg: an option on an already owned mobile access resource) [targets] or [isTargeted] (depending on the way of expressing the link) for any other kind of links that may be useful"
+        },
+        "resource": {
+          "$ref": "#/$defs/ResourceRefOrValue"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "ResourceReservationItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "A string. Identifier of the item."
+        },
+        "quantity": {
+          "type": "integer"
+        },
+        "stateChangeDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date and time the state changed."
+        },
+        "stateChangeReason": {
+          "type": "string",
+          "description": "The reason for changing the state"
+        },
+        "action": {
+          "$ref": "#/$defs/ReservationItemActionType"
+        },
+        "appliedCapacity": {
+          "$ref": "#/$defs/Capacity"
+        },
+        "capacityDemand": {
+          "$ref": "#/$defs/Capacity"
+        },
+        "relatedEntity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RelatedEntity"
+          }
+        },
+        "relatedParty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RelatedPartyRef"
+          }
+        },
+        "reservationItem": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResourceReservationItem"
+          }
+        },
+        "reservationPeriod": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "Period of time for which the target entity is to be in a reserved state"
+        },
+        "resource": {
+          "$ref": "#/$defs/ResourceRefOrValue"
+        },
+        "state": {
+          "$ref": "#/$defs/ReservationItemStateType"
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "ResourceSpecificationRef": {
+      "type": "object",
+      "description": "Resources are physical or non-physical components (or some combination of these) within an enterprise's infrastructure or inventory. They are typically consumed or used by services (for example a physical port assigned to a service) or contribute to the realization of a Product (for example, a SIM card). They can be drawn from the Application, Computing and Network domains, and include, for example, Network Elements, software, IT systems, content and information, and technology components. A ResourceSpecification is an abstract base class for representing a generic means for implementing a particular type of Resource. In essence, a ResourceSpecification defines the common attributes and relationships of a set of related Resources, while Resource defines a specific instance that is based on a particular ResourceSpecification.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "version": {
+          "type": "string",
+          "description": "Resource Specification version"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "ResourceStatusType": {
+      "type": "string",
+      "description": "ResourceStatusType enumerations",
+      "enum": [
+        "standby",
+        "alarm",
+        "available",
+        "reserved",
+        "unknown",
+        "suspended"
+      ]
+    },
+    "ResourceUsageStateType": {
+      "type": "string",
+      "description": "ResourceUsageStateType enumerations",
+      "enum": [
+        "idle",
+        "active",
+        "busy"
+      ]
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "endDateTime": {
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ],
+          "type": "string",
+          "format": "date-time",
+          "description": "End of the time period, using IETC-RFC-3339 format"
+        },
+        "startDateTime": {
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ],
+          "type": "string",
+          "format": "date-time",
+          "description": "Start of the time period, using IETC-RFC-3339 format"
+        }
+      }
+    }
+  }
+}

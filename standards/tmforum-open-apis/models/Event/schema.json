@@ -1,0 +1,278 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Event/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - Event",
+  "description": "event with common attributes. (TM Forum TMF688 Event Streaming API 4.0.0, Swagger definition Event; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Event:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Event"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Event'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "correlationId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF688-Event/blob/a88d5266404d6b1f38504a9bdc149d636ccf4ab2/TMF688-Event-v4.0.0.swagger.json#/definitions/Event/properties/correlationId'. The correlation id for this event."
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF688-Event/blob/a88d5266404d6b1f38504a9bdc149d636ccf4ab2/TMF688-Event-v4.0.0.swagger.json#/definitions/Event/properties/description'. An explnatory of the event."
+    },
+    "domain": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF688-Event/blob/a88d5266404d6b1f38504a9bdc149d636ccf4ab2/TMF688-Event-v4.0.0.swagger.json#/definitions/Event/properties/domain'. The domain of the event."
+    },
+    "eventId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF688-Event/blob/a88d5266404d6b1f38504a9bdc149d636ccf4ab2/TMF688-Event-v4.0.0.swagger.json#/definitions/Event/properties/eventId'. The identifier of the notification."
+    },
+    "eventTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF688-Event/blob/a88d5266404d6b1f38504a9bdc149d636ccf4ab2/TMF688-Event-v4.0.0.swagger.json#/definitions/Event/properties/eventTime'. Time of the event occurrence."
+    },
+    "eventType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF688-Event/blob/a88d5266404d6b1f38504a9bdc149d636ccf4ab2/TMF688-Event-v4.0.0.swagger.json#/definitions/Event/properties/eventType'. The type of the notification."
+    },
+    "priority": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF688-Event/blob/a88d5266404d6b1f38504a9bdc149d636ccf4ab2/TMF688-Event-v4.0.0.swagger.json#/definitions/Event/properties/priority'. A priority."
+    },
+    "timeOcurred": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF688-Event/blob/a88d5266404d6b1f38504a9bdc149d636ccf4ab2/TMF688-Event-v4.0.0.swagger.json#/definitions/Event/properties/timeOcurred'. The time the event occured."
+    },
+    "title": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF688-Event/blob/a88d5266404d6b1f38504a9bdc149d636ccf4ab2/TMF688-Event-v4.0.0.swagger.json#/definitions/Event/properties/title'. The title of the event."
+    },
+    "analyticCharacteristic": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Characteristic"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF688-Event/blob/a88d5266404d6b1f38504a9bdc149d636ccf4ab2/TMF688-Event-v4.0.0.swagger.json#/definitions/Event/properties/analyticCharacteristic'. Describes a given characteristic of an object or entity through a name/value pair."
+    },
+    "event": {
+      "$ref": "#/$defs/Any",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF688-Event/blob/a88d5266404d6b1f38504a9bdc149d636ccf4ab2/TMF688-Event-v4.0.0.swagger.json#/definitions/Event/properties/event'. The event linked to the involved resource object"
+    },
+    "relatedParty": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedParty"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF688-Event/blob/a88d5266404d6b1f38504a9bdc149d636ccf4ab2/TMF688-Event-v4.0.0.swagger.json#/definitions/Event/properties/relatedParty'. Related Entity reference. A related party defines party or party role linked to a specific entity."
+    },
+    "reportingSystem": {
+      "$ref": "#/$defs/EntityRef",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF688-Event/blob/a88d5266404d6b1f38504a9bdc149d636ccf4ab2/TMF688-Event-v4.0.0.swagger.json#/definitions/Event/properties/reportingSystem'. Reporting System described by EntityRef"
+    },
+    "tmfSource": {
+      "$ref": "#/$defs/EntityRef",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF688-Event/blob/a88d5266404d6b1f38504a9bdc149d636ccf4ab2/TMF688-Event-v4.0.0.swagger.json#/definitions/Event/properties/source'. Renamed from TMF 'source' (clash with the Smart Data Models common attribute 'source'). Source Entity described by EntityRef"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF688-Event/blob/a88d5266404d6b1f38504a9bdc149d636ccf4ab2/TMF688-Event-v4.0.0.swagger.json#/definitions/Event/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF688-Event/blob/a88d5266404d6b1f38504a9bdc149d636ccf4ab2/TMF688-Event-v4.0.0.swagger.json#/definitions/Event/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF688-Event/blob/a88d5266404d6b1f38504a9bdc149d636ccf4ab2/TMF688-Event-v4.0.0.swagger.json#/definitions/Event/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'Event' or a sub-class / extension name. When sub-classing, this defines the sub-class entity name"
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ],
+  "$defs": {
+    "Any": {},
+    "Characteristic": {
+      "type": "object",
+      "description": "Describes a given characteristic of an object or entity through a name/value pair.",
+      "required": [
+        "name",
+        "value"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the characteristic"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the characteristic"
+        },
+        "valueType": {
+          "type": "string",
+          "description": "Data type of the value of the characteristic"
+        },
+        "characteristicRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CharacteristicRelationship"
+          }
+        },
+        "value": {
+          "$ref": "#/$defs/Any",
+          "description": "The value of the characteristic"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "CharacteristicRelationship": {
+      "type": "object",
+      "description": "Another Characteristic that is related to the current Characteristic;",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the characteristic"
+        },
+        "relationshipType": {
+          "type": "string",
+          "description": "The type of relationship"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "EntityRef": {
+      "type": "object",
+      "description": "Entity reference schema to be use for all entityRef class.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of a related entity."
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the related entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "RelatedParty": {
+      "type": "object",
+      "description": "Related Entity reference. A related party defines party or party role linked to a specific entity.",
+      "required": [
+        "@referredType",
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of a related entity."
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the related entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "role": {
+          "type": "string",
+          "description": "Role played by the related party"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    }
+  }
+}

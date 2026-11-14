@@ -1,0 +1,655 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/SalesOpportunity/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - SalesOpportunity",
+  "description": "A Sales Opportunity represents a qualified potential for a sale, created when a prospect demonstrates a concrete and actionable interest. As a formal entry in the sales pipeline, it is tracked with an estimated value, a timeline, and a probability of success. Its lifecycle is managed through defined sales stages until it is won or lost. (TM Forum TMF699 Sales Management 5.0.0, OpenAPI component SalesOpportunity; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:SalesOpportunity:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "SalesOpportunity"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'SalesOpportunity'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'SalesOpportunity' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/href'. Hyperlink reference"
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:SalesOpportunity:<tmfId>. unique identifier"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesOpportunity/properties/creationDate'. Date and time of the SalesOpportunity creation"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesOpportunity/properties/description'. Concise and comprehensive description of the SalesOpportunity"
+    },
+    "salesLead": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesOpportunity/properties/salesLead'. References to the SalesLead resources that gave rise to this SalesOpportunity. In TMF this is an array of SalesLeadRef objects; here the NGSI-LD ids of the referenced SalesLead entities (urn:ngsi-ld:SalesLead:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "rating": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesOpportunity/properties/rating'. Identifies the potential of the opportunity for becoming a sale, with common values being hot, warm, or cold. This overall rating is typically aggregated from its items, often reflecting the highest potential among them."
+    },
+    "referredDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesOpportunity/properties/referredDate'. Date when the prospect information was received (for example, from a trade show)."
+    },
+    "status": {
+      "enum": [
+        "accepted",
+        "acknowledged",
+        "cancelled",
+        "inProgress",
+        "pending",
+        "rejected"
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesOpportunity/properties/status'. Valid values for the lifecycle state of a opportunity resource"
+    },
+    "statusChangeDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesOpportunity/properties/statusChangeDate'. Date and time of the last update of status."
+    },
+    "statusChangeReason": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesOpportunity/properties/statusChangeReason'. Reason why the status has changed"
+    },
+    "salesOpportunityType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesOpportunity/properties/salesOpportunityType'. Indicates the nature of the SalesOpportunity, such us: newBusiness, upsell, renewal, cross-sell, etc."
+    },
+    "revenueEstimate": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RevenueEstimate"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesOpportunity/properties/revenueEstimate'. The aggregated and consolidated total value of the revenue estimate for the sales opportunity, which can be derived from the sum of its items or from a specific estimation at the opportunity level."
+    },
+    "priority": {
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesOpportunity/properties/priority'. Urgency of working for this sales lead or sales opportunity"
+    },
+    "validFor": {
+      "$ref": "#/$defs/TimePeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesOpportunity/properties/validFor'. A period of time, either as a deadline (endDateTime only) a startDateTime only, or both"
+    },
+    "category": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesOpportunity/properties/category'. Reference to a category in the catalog. In TMF this is a CategoryRef object; here the NGSI-LD id of the referenced Category entity (urn:ngsi-ld:Category:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "channel": {
+      "$ref": "#/$defs/ChannelRef",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesOpportunity/properties/channel'. The channel to which the resource reference to. e.g. channel for selling product offerings, channel for opening a trouble ticket etc.."
+    },
+    "marketSegment": {
+      "$ref": "#/$defs/MarketSegmentRef",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesOpportunity/properties/marketSegment'. provides references to the corresponding market segment as target of product offerings. A market segment is grouping of Parties, GeographicAreas, SalesChannels, and so forth."
+    },
+    "marketingCampaign": {
+      "$ref": "#/$defs/MarketingCampaignRef",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesOpportunity/properties/marketingCampaign'. MarketingCampaign reference. Marketing campaign represents the carrier-initiated marketing activity which aims at the better recognition about its brand and offerings by the market"
+    },
+    "note": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Note"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesOpportunity/properties/note'. A user-generated text entry providing contextual information or commentary."
+    },
+    "agreement": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesOpportunity/properties/agreement'. A formal agreement that documents the commercial terms and commitments negotiated and agreed upon during the lifecycle of a sales opportunity. In TMF this is an array of AgreementRef objects; here the NGSI-LD ids of the referenced Agreement entities (urn:ngsi-ld:Agreement:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "relatedParty": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedPartyRefOrPartyRoleRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesOpportunity/properties/relatedParty'. A reference to an involved party, which is identified either by its core entity or by the specific role it plays in the context of the interaction."
+    },
+    "quote": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesOpportunity/properties/quote'. A formal offer, generated during the sales opportunity lifecycle, that details the proposed products, services, and pricing. In TMF this is an array of QuoteRef objects; here the NGSI-LD ids of the referenced Quote entities (urn:ngsi-ld:Quote:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "salesProject": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/SalesProjectRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesOpportunity/properties/salesProject'. An array of references to sales projects or initiatives to which this opportunity belongs."
+    },
+    "salesOpportunityItem": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/SalesOpportunityItem"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesOpportunity/properties/salesOpportunityItem'. A collection of line items that constitutes the detailed scope of the sales opportunity, with each item specifying a target product or service, its quantity, its estimated value and all specific information."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF699_Sales/blob/v5.0.0/TMF699-Sales-v5.0.0.oas.yaml#/components/schemas/SalesOpportunity/properties/name'. Name of the SalesOpportunity"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tmfType",
+    "name"
+  ],
+  "$defs": {
+    "Addressable": {
+      "type": "object",
+      "description": "Base schema for addressable entities",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Hyperlink reference"
+        },
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        }
+      }
+    },
+    "ChannelRef": {
+      "type": "object",
+      "description": "The channel to which the resource reference to. e.g. channel for selling product offerings, channel for opening a trouble ticket etc..",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "EntityRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        },
+        {
+          "type": "object",
+          "description": "Entity reference schema to be use for all entityRef class.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "The identifier of the referred entity."
+            },
+            "href": {
+              "type": "string",
+              "description": "The URI of the referred entity."
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the referred entity."
+            },
+            "@referredType": {
+              "type": "string",
+              "description": "The actual type of the target instance when needed for disambiguation."
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      ]
+    },
+    "Extensible": {
+      "type": "object",
+      "description": "Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means that the Entity described by the schema MUST be extended with the @type",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "MarketSegmentRef": {
+      "type": "object",
+      "description": "provides references to the corresponding market segment as target of product offerings. A market segment is grouping of Parties, GeographicAreas, SalesChannels, and so forth.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "MarketingCampaignRef": {
+      "type": "object",
+      "description": "MarketingCampaign reference. Marketing campaign represents the carrier-initiated marketing activity which aims at the better recognition about its brand and offerings by the market",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "Money": {
+      "type": "object",
+      "description": "A base / value business entity used to represent money",
+      "properties": {
+        "unit": {
+          "type": "string",
+          "description": "Currency (ISO4217 norm uses 3 letters to define the currency)"
+        },
+        "value": {
+          "type": "number",
+          "format": "float",
+          "description": "A signed floating point number, the meaning of the sign is according to the context of the API that uses this Data type"
+        }
+      }
+    },
+    "Note": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "Extra information about a given entity",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Identifier of the note within its containing entity",
+              "examples": [
+                "afa9-3d90aaa8da0f"
+              ]
+            },
+            "author": {
+              "type": "string",
+              "description": "Author of the note",
+              "examples": [
+                "Mr. N. Bene"
+              ]
+            },
+            "date": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Date of the note",
+              "examples": [
+                "2020-11-20T08:00:00Z"
+              ]
+            },
+            "text": {
+              "type": "string",
+              "description": "Text of the note",
+              "examples": [
+                "This is important"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "PartyRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "A Party reference",
+          "properties": {
+            "@type": {
+              "type": "string",
+              "enum": [
+                "PartyRef"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "PartyRefOrPartyRoleRef": {
+      "type": "object",
+      "description": "",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PartyRef"
+        },
+        {
+          "$ref": "#/$defs/PartyRoleRef"
+        }
+      ]
+    },
+    "PartyRoleRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "Party role reference. A party role represents the part played by a party in a given context.",
+          "properties": {
+            "@type": {
+              "type": "string",
+              "enum": [
+                "PartyRoleRef"
+              ]
+            },
+            "partyId": {
+              "type": "string",
+              "description": "The identifier of the engaged party that is linked to the PartyRole object."
+            },
+            "partyName": {
+              "type": "string",
+              "description": "The name of the engaged party that is linked to the PartyRole object."
+            }
+          }
+        }
+      ]
+    },
+    "ProductOfferingRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "ProductOffering reference. A product offering represents entities that are orderable from the provider of the catalog, this resource includes pricing information.",
+          "properties": {
+            "version": {
+              "type": "string",
+              "description": "Version of the product offering"
+            }
+          }
+        }
+      ]
+    },
+    "ProductRef": {
+      "type": "object",
+      "description": "A Product reference",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "QuoteItemRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "A reference to Quote item that has been executed previously.",
+          "properties": {
+            "quoteHref": {
+              "type": "string",
+              "description": "Reference of the related quote."
+            },
+            "@referredType": {
+              "type": "string",
+              "description": "The actual type of the target instance when needed for disambiguation."
+            },
+            "quoteId": {
+              "type": "string",
+              "description": "Unique identifier of a refered quote."
+            },
+            "quoteItemId": {
+              "type": "string",
+              "description": "Identifier of a quote item."
+            }
+          },
+          "required": [
+            "quoteId",
+            "quoteItemId"
+          ]
+        }
+      ]
+    },
+    "RelatedPartyRefOrPartyRoleRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "RelatedParty reference. A related party defines party or party role or its reference, linked to a specific entity",
+          "properties": {
+            "role": {
+              "description": "Role played by the related party or party role in the context of the specific entity it is linked to. Such as 'initiator', 'customer', 'salesAgent', 'user'",
+              "type": "string"
+            },
+            "partyOrPartyRole": {
+              "$ref": "#/$defs/PartyRefOrPartyRoleRef"
+            }
+          },
+          "required": [
+            "role"
+          ]
+        }
+      ]
+    },
+    "RevenueEstimate": {
+      "type": "object",
+      "description": "A Revenue Estimate is a projection of the potential revenue that can be generated from a sales opportunity, a sales opportunity item or a sales lead.",
+      "properties": {
+        "amount": {
+          "$ref": "#/$defs/Money"
+        },
+        "description": {
+          "type": "string",
+          "description": "Concise and comprehensive description of the Revenue Estimate, including the context and the assumptions behind the estimation."
+        },
+        "revenueType": {
+          "type": "string",
+          "description": "Indicates the nature of the revenue, such as recurring, one-time, ongoing, etc."
+        }
+      },
+      "required": [
+        "amount"
+      ]
+    },
+    "SalesActivityRef": {
+      "type": "object",
+      "description": "provides a reference to the sales activity",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "SalesOpportunityItem": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "A single line item within a sales opportunity, detailing a specific product or service being offered to the prospect, including its quantity, estimated value and all relevant information.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Identifier (index) of the SalesOpportunityItem"
+            },
+            "action": {
+              "type": "string",
+              "description": "Action to be performed on this SalesOpportunity item"
+            },
+            "revenueEstimate": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RevenueEstimate"
+              },
+              "description": "The estimated revenue for this sales opportunity item, which can be derived from the sum of its components or from a specific estimation at the item level."
+            },
+            "rating": {
+              "type": "string",
+              "description": "Identifies the potential of the opportunity item for becoming a sale, with common values being hot, warm, or cold."
+            },
+            "priority": {
+              "$ref": "#/$defs/SalesPriorityType"
+            },
+            "salesOpportunityItemStatus": {
+              "$ref": "#/$defs/SalesOpportunityItemStateType"
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            },
+            "product": {
+              "$ref": "#/$defs/ProductRef"
+            },
+            "salesActivity": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/SalesActivityRef"
+              },
+              "description": "References to the sales activity(ies) linked to this salesOpportunityItem"
+            },
+            "quoteItem": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/QuoteItemRef"
+              },
+              "description": "References to the quote items linked to this salesOpportunityItem"
+            },
+            "productOffering": {
+              "$ref": "#/$defs/ProductOfferingRef"
+            },
+            "note": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Note"
+              },
+              "description": "Textual information capturing comments, context, or remarks related to the item."
+            },
+            "relatedParty": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RelatedPartyRefOrPartyRoleRef"
+              },
+              "description": "A reference to a party or a partyRole involved with this specific item."
+            }
+          }
+        }
+      ]
+    },
+    "SalesOpportunityItemStateType": {
+      "enum": [
+        "accepted",
+        "acknowledged",
+        "cancelled",
+        "inProgress",
+        "pending",
+        "rejected"
+      ],
+      "type": "string",
+      "description": "Valid values for the lifecycle state of a salesLead resource"
+    },
+    "SalesPriorityType": {
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "type": "string",
+      "description": "Urgency of working for this sales lead or sales opportunity"
+    },
+    "SalesProjectRef": {
+      "type": "object",
+      "description": "provides a reference to the sales project",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "startDateTime": {
+          "description": "Start of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        },
+        "endDateTime": {
+          "description": "End of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        }
+      }
+    }
+  }
+}

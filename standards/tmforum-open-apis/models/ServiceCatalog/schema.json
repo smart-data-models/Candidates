@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ServiceCatalog/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - ServiceCatalog",
+  "description": "The root entity for service catalog management. A service catalog is a group of service specifications made available through service candidates that an organization provides to the consumers (internal consumers like its employees or B2B customers or B2C customers). A service catalog typically includes name, description and time period that is valid for. It will have a list of ServiceCandidate catalog items. A ServiceCandidate is an entity that makes a ServiceSpecification available to a catalog. A ServiceCandidate and its associated ServiceSpecification may be \"published\" - made visible -in any number of ServiceCatalogs, or in none. (TM Forum TMF633 Service Catalog Management 4.0.0, Swagger definition ServiceCatalog; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:ServiceCatalog:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ServiceCatalog"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ServiceCatalog'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF633_ServiceCatalog/blob/v4.0.0/TMF633-ServiceCatalog-4.0.0.swagger.json#/definitions/ServiceCatalog/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:ServiceCatalog:<tmfId>. Unique identifier of the ServiceCatalog"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF633_ServiceCatalog/blob/v4.0.0/TMF633-ServiceCatalog-4.0.0.swagger.json#/definitions/ServiceCatalog/properties/href'. Unique reference of the service catalog"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF633_ServiceCatalog/blob/v4.0.0/TMF633-ServiceCatalog-4.0.0.swagger.json#/definitions/ServiceCatalog/properties/description'. Description of this catalog"
+    },
+    "lastUpdate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF633_ServiceCatalog/blob/v4.0.0/TMF633-ServiceCatalog-4.0.0.swagger.json#/definitions/ServiceCatalog/properties/lastUpdate'. Date and time of the last update"
+    },
+    "lifecycleStatus": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF633_ServiceCatalog/blob/v4.0.0/TMF633-ServiceCatalog-4.0.0.swagger.json#/definitions/ServiceCatalog/properties/lifecycleStatus'. Used to indicate the current lifecycle status"
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF633_ServiceCatalog/blob/v4.0.0/TMF633-ServiceCatalog-4.0.0.swagger.json#/definitions/ServiceCatalog/properties/name'. Name of the service catalog"
+    },
+    "version": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF633_ServiceCatalog/blob/v4.0.0/TMF633-ServiceCatalog-4.0.0.swagger.json#/definitions/ServiceCatalog/properties/version'. ServiceCatalog version"
+    },
+    "category": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF633_ServiceCatalog/blob/v4.0.0/TMF633-ServiceCatalog-4.0.0.swagger.json#/definitions/ServiceCatalog/properties/category'. List of service categories associated with this catalog. In TMF this is an array of ServiceCategoryRef objects; here the NGSI-LD ids of the referenced ServiceCategory entities (urn:ngsi-ld:ServiceCategory:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "relatedParty": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedParty"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF633_ServiceCatalog/blob/v4.0.0/TMF633-ServiceCatalog-4.0.0.swagger.json#/definitions/ServiceCatalog/properties/relatedParty'. List of parties or party roles related to this category"
+    },
+    "validFor": {
+      "$ref": "#/$defs/TimePeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF633_ServiceCatalog/blob/v4.0.0/TMF633-ServiceCatalog-4.0.0.swagger.json#/definitions/ServiceCatalog/properties/validFor'. The period for which the service catalog is valid"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF633_ServiceCatalog/blob/v4.0.0/TMF633-ServiceCatalog-4.0.0.swagger.json#/definitions/ServiceCatalog/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF633_ServiceCatalog/blob/v4.0.0/TMF633-ServiceCatalog-4.0.0.swagger.json#/definitions/ServiceCatalog/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF633_ServiceCatalog/blob/v4.0.0/TMF633-ServiceCatalog-4.0.0.swagger.json#/definitions/ServiceCatalog/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'ServiceCatalog' or a sub-class / extension name. When sub-classing, this defines the sub-class entity name"
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ],
+  "$defs": {
+    "RelatedParty": {
+      "type": "object",
+      "description": "RelatedParty reference. A related party defines party or party role linked to a specific entity.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of a related party"
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the related party, could be a party reference or a party role reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related party"
+        },
+        "role": {
+          "type": "string",
+          "description": "Role of the related party."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "endDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "End of the time period, using IETC-RFC-3339 format"
+        },
+        "startDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Start of the time period, using IETC-RFC-3339 format. If you define a start, you must also define an end"
+        }
+      }
+    }
+  }
+}

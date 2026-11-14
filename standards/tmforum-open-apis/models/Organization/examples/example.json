@@ -1,0 +1,174 @@
+{
+  "id": "urn:ngsi-ld:Organization:128",
+  "type": "Organization",
+  "tmfId": "128",
+  "tmfType": "Organization",
+  "tmfBaseType": "Party",
+  "isLegalEntity": true,
+  "isHeadOffice": true,
+  "organizationType": "company",
+  "existsDuring": {
+    "startDateTime": "2015-10-22T08:31:52.026Z"
+  },
+  "name": "Coffee Do Brazil",
+  "tradingName": "Coffee Do Brazil Fair Trade",
+  "nameType": "inc",
+  "status": "validated",
+  "externalReference": [
+    {
+      "name": "http://coffeedobrazil.com",
+      "externalIdentifierType": "internetSite",
+      "@type": "ExternalIdentifier"
+    }
+  ],
+  "partyCharacteristic": [
+    {
+      "name": "number of employees",
+      "value": 125,
+      "valueType": "number",
+      "@type": "IntegerCharacteristic"
+    },
+    {
+      "name": "market segment",
+      "value": "Food wholesale",
+      "valueType": "string",
+      "@type": "StringCharacteristic"
+    }
+  ],
+  "organizationIdentification": [
+    {
+      "@type": "OrganizationIdentification",
+      "identificationType": "commercialRegistration",
+      "identificationId": "EXAMPLE-0001",
+      "issuingAuthority": "US Government",
+      "issuingDate": "2015-10-22T08:31:52.028Z",
+      "validFor": {
+        "startDateTime": "2015-10-22T08:31:52.028Z"
+      },
+      "attachment": {
+        "@type": "Attachment",
+        "attachmentType": "documentCopy",
+        "name": "RegistrationCertificate421.pdf",
+        "description": "Scanned copy of the registration certificate",
+        "mimeType": "application/pdf",
+        "url": "http://DocumentManager/421/RegistrationCertificate421.pdf"
+      }
+    }
+  ],
+  "taxExemptionCertificate": [
+    {
+      "@type": "TaxExemptionCertificate",
+      "id": "1",
+      "validFor": {
+        "startDateTime": "2018-10-22T07:49:25.246Z"
+      },
+      "certificateNumber": "9875755432345",
+      "issuingJurisdiction": "USA",
+      "reason": "Voluntary Body",
+      "taxDefinition": [
+        {
+          "@type": "TaxDefinitionRef",
+          "id": "96",
+          "name": "Value Added Tax",
+          "taxType": "federalVat"
+        }
+      ],
+      "attachment": {
+        "@type": "Attachment",
+        "attachmentType": "taxExemptionCertificate",
+        "name": "TaxExemptionCertificate-233322.pdf",
+        "description": "Electronic version of the tax exemption certificate",
+        "mimeType": "application/pdf",
+        "url": "https://mycsp.com:8080/DocumentManager/666/TaxExemptionCertificate-233322.pdf"
+      }
+    }
+  ],
+  "creditRating": [
+    {
+      "@type": "CreditRating",
+      "creditAgencyName": "Experian",
+      "creditAgencyType": "externalAgency",
+      "ratingReference": "ref456",
+      "ratingScore": 400,
+      "validFor": {
+        "startDateTime": "2018-10-22T08:31:52.028Z"
+      }
+    }
+  ],
+  "relatedParty": [
+    {
+      "role": "director",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "54",
+        "href": "https://serverRoot/tmf-api/party/v5/individual/54",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      }
+    },
+    {
+      "role": "employee",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "42",
+        "href": "https://serverRoot/tmf-api/party/v5/individual/42",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      }
+    }
+  ],
+  "contactMedium": [
+    {
+      "preferred": true,
+      "mediumType": "email",
+      "validFor": {
+        "startDateTime": "2018-10-22T08:31:52.028Z"
+      },
+      "@type": "EmailContactMedium",
+      "emailAddress": "contact@example.com"
+    },
+    {
+      "preferred": false,
+      "mediumType": "postalAddress",
+      "validFor": {
+        "startDateTime": "2018-10-22T08:31:52.028Z"
+      },
+      "@type": "GeographicAddressContactMedium",
+      "city": "Exampletown",
+      "country": "USA",
+      "postCode": "00000",
+      "stateOrProvince": "New Jersey",
+      "street1": "1 Example Street"
+    }
+  ],
+  "organizationParentRelationship": {
+    "@type": "OrganizationParentRelationship",
+    "relationshipType": "juridical",
+    "organization": {
+      "@type": "OrganizationRef",
+      "id": "800",
+      "href": "https://serverRoot/tmf-api/party/v5/organization/800"
+    }
+  },
+  "organizationChildRelationship": [
+    {
+      "@type": "OrganizationChildRelationship",
+      "relationshipType": "juridical",
+      "organization": {
+        "@type": "OrganizationRef",
+        "id": "149",
+        "href": "https://serverRoot/tmf-api/party/v5/organization/149"
+      }
+    },
+    {
+      "@type": "OrganizationChildRelationship",
+      "relationshipType": "juridical",
+      "organization": {
+        "@type": "OrganizationRef",
+        "id": "150",
+        "href": "https://serverRoot/tmf-api/party/v5/organization/150"
+      }
+    }
+  ],
+  "source": "Adapted from the example payload 'Organization_retrieve_example_response' of the TMF632 Party Management 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+}

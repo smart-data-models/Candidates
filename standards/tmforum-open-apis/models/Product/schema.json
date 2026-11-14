@@ -1,10 +1,10 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$schemaVersion": "0.0.1",
+  "$schemaVersion": "0.0.2",
   "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Product/schema.json",
   "modelTags": "TMForum,OpenAPI,ODA,Telecom",
   "title": "Smart Data Models - TM Forum Open APIs - Product",
-  "description": "A product offering procured by a customer or other interested party playing a party role. A product is realized as one or more service(s) and / or resource(s). (TM Forum TMF637 Product Inventory Management v5.0.0, OpenAPI component Product; attribute names kept verbatim except id/@type/@baseType/@schemaLocation; deprecated attributes left out.)",
+  "description": "A product offering procured by a customer or other interested party playing a party role. A product is realized as one or more service(s) and / or resource(s). (TM Forum TMF637 ProductInventory 5.0.0, OpenAPI component Product; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
   "type": "object",
   "properties": {
     "id": {
@@ -65,8 +65,9 @@
       "description": "Property. Model:'https://github.com/tmforum-apis/TMF637_ProductInventory/blob/v5.0.0/TMF637-ProductInventory-v5.0.0.oas.yaml#/components/schemas/Product/properties/agreementItem'. It's a Agreement item that has been executed previously."
     },
     "billingAccount": {
-      "$ref": "#/$defs/BillingAccountRef",
-      "description": "Property. Model:'https://github.com/tmforum-apis/TMF637_ProductInventory/blob/v5.0.0/TMF637-ProductInventory-v5.0.0.oas.yaml#/components/schemas/Product/properties/billingAccount'. BillingAccount reference. A BillingAccount is a detailed description of a bill structure."
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF637_ProductInventory/blob/v5.0.0/TMF637-ProductInventory-v5.0.0.oas.yaml#/components/schemas/Product/properties/billingAccount'. BillingAccount reference. A BillingAccount is a detailed description of a bill structure. In TMF this is a BillingAccountRef object; here the NGSI-LD id of the referenced BillingAccount entity (urn:ngsi-ld:BillingAccount:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
     },
     "creationDate": {
       "type": "string",
@@ -102,8 +103,9 @@
       "description": "Property. Model:'https://github.com/tmforum-apis/TMF637_ProductInventory/blob/v5.0.0/TMF637-ProductInventory-v5.0.0.oas.yaml#/components/schemas/Product/properties/productCharacteristic'. Describes a given characteristic of an object or entity through a name/value pair."
     },
     "productOffering": {
-      "$ref": "#/$defs/ProductOfferingRef",
-      "description": "Property. Model:'https://github.com/tmforum-apis/TMF637_ProductInventory/blob/v5.0.0/TMF637-ProductInventory-v5.0.0.oas.yaml#/components/schemas/Product/properties/productOffering'. ProductOffering reference. A product offering represents entities that are orderable from the provider of the catalog, this resource includes pricing information."
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF637_ProductInventory/blob/v5.0.0/TMF637-ProductInventory-v5.0.0.oas.yaml#/components/schemas/Product/properties/productOffering'. ProductOffering reference. A product offering represents entities that are orderable from the provider of the catalog, this resource includes pricing information. In TMF this is a ProductOfferingRef object; here the NGSI-LD id of the referenced ProductOffering entity (urn:ngsi-ld:ProductOffering:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
     },
     "productOrderItem": {
       "type": "array",
@@ -139,8 +141,9 @@
       "description": "Property. Model:'https://github.com/tmforum-apis/TMF637_ProductInventory/blob/v5.0.0/TMF637-ProductInventory-v5.0.0.oas.yaml#/components/schemas/Product/properties/productSerialNumber'. Is the serial number for the product. This is typically applicable to tangible products e.g. Broadband Router."
     },
     "productSpecification": {
-      "$ref": "#/$defs/ProductSpecificationRef",
-      "description": "Property. Model:'https://github.com/tmforum-apis/TMF637_ProductInventory/blob/v5.0.0/TMF637-ProductInventory-v5.0.0.oas.yaml#/components/schemas/Product/properties/productSpecification'. ProductSpecification reference. A product Specification represents entities that are orderable from the provider of the catalog."
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF637_ProductInventory/blob/v5.0.0/TMF637-ProductInventory-v5.0.0.oas.yaml#/components/schemas/Product/properties/productSpecification'. ProductSpecification reference. A product Specification represents entities that are orderable from the provider of the catalog. In TMF this is a ProductSpecificationRef object; here the NGSI-LD id of the referenced ProductSpecification entity (urn:ngsi-ld:ProductSpecification:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
     },
     "productTerm": {
       "type": "array",
@@ -204,8 +207,9 @@
       "description": "Property. Model:'https://github.com/tmforum-apis/TMF637_ProductInventory/blob/v5.0.0/TMF637-ProductInventory-v5.0.0.oas.yaml#/components/schemas/Product/properties/terminationDate'. Is the date when the product was terminated"
     },
     "intent": {
-      "$ref": "#/$defs/IntentRefOrValue",
-      "description": "Property. Model:'https://github.com/tmforum-apis/TMF637_ProductInventory/blob/v5.0.0/TMF637-ProductInventory-v5.0.0.oas.yaml#/components/schemas/Product/properties/intent'. Intent Ref (if Intent already exists) or Value (if Intent be created or its details be presented)"
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF637_ProductInventory/blob/v5.0.0/TMF637-ProductInventory-v5.0.0.oas.yaml#/components/schemas/Product/properties/intent'. Intent Ref (if Intent already exists) or Value (if Intent be created or its details be presented). In TMF this is a IntentRefOrValue object; here the NGSI-LD id of the referenced Intent entity (urn:ngsi-ld:Intent:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
     }
   },
   "required": [
@@ -362,26 +366,6 @@
         },
         {
           "$ref": "#/$defs/AttachmentRef"
-        }
-      ]
-    },
-    "BillingAccountRef": {
-      "allOf": [
-        {
-          "$ref": "#/$defs/Extensible"
-        },
-        {
-          "$ref": "#/$defs/EntityRef"
-        },
-        {
-          "type": "object",
-          "description": "BillingAccount reference. A BillingAccount is a detailed description of a bill structure.",
-          "properties": {
-            "ratingType": {
-              "type": "string",
-              "description": "Indicates whether the account follows a specific payment option such as prepaid or postpaid"
-            }
-          }
         }
       ]
     },
@@ -654,83 +638,6 @@
           ]
         }
       ]
-    },
-    "EntityRelationship": {
-      "type": "object",
-      "description": "A uni-directionmal relationship from this entity to a target entity instance",
-      "properties": {
-        "href": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "role": {
-          "type": "string",
-          "description": "The association role for this entity"
-        },
-        "validFor": {
-          "$ref": "#/$defs/TimePeriod"
-        },
-        "associationSpec": {
-          "$ref": "#/$defs/EntityRef"
-        },
-        "@baseType": {
-          "type": "string",
-          "description": "When sub-classing, this defines the super-class"
-        },
-        "@schemaLocation": {
-          "type": "string",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
-        },
-        "relationshipType": {
-          "type": "string",
-          "description": "Type of relationship such as migration, substitution, dependency, exclusivity"
-        },
-        "id": {
-          "type": "string"
-        },
-        "@referredType": {
-          "type": "string"
-        },
-        "@type": {
-          "type": "string"
-        }
-      }
-    },
-    "Expression": {
-      "allOf": [
-        {
-          "$ref": "#/$defs/Extensible"
-        },
-        {
-          "type": "object",
-          "description": "Expression is the ontology-encoded form of the Intent",
-          "properties": {
-            "expressionLanguage": {
-              "$ref": "#/$defs/ExpressionLanguageEnum"
-            },
-            "iri": {
-              "type": "string",
-              "description": "Internationalized Resource Identifier of the intent Expression"
-            },
-            "expressionValue": {
-              "type": "string",
-              "description": "expression value is the ontology-encoded form of the Intent such as RDF-XML, Turtle, Json-LD,..."
-            }
-          }
-        }
-      ]
-    },
-    "ExpressionLanguageEnum": {
-      "enum": [
-        "Turtle",
-        "JSON-LD",
-        "RDF-XML",
-        "Other"
-      ],
-      "type": "string",
-      "description": "Possible values for the serialized Expression language of an intent or Intent report"
     },
     "Extensible": {
       "type": "object",
@@ -1327,118 +1234,6 @@
         }
       ]
     },
-    "Intent": {
-      "allOf": [
-        {
-          "$ref": "#/$defs/Entity"
-        },
-        {
-          "type": "object",
-          "description": "An Intent instance is the formal description of all expectations including requirements, goals, and constraints given to a technical system",
-          "properties": {
-            "description": {
-              "type": "string",
-              "description": "The description of the intent."
-            },
-            "validFor": {
-              "$ref": "#/$defs/TimePeriod"
-            },
-            "isBundle": {
-              "type": "boolean",
-              "description": "isBundle determines whether an intent represents a single intent (false), or a bundle of intents(true)."
-            },
-            "priority": {
-              "type": "string",
-              "description": "Can be used by intent owner to prioritize intents in an intent management system"
-            },
-            "statusChangeDate": {
-              "type": "string",
-              "format": "date-time",
-              "description": "A date time( DateTime). The date that the entity status changed to the current one"
-            },
-            "context": {
-              "type": "string",
-              "description": "A string used to give a context to the intent"
-            },
-            "version": {
-              "type": "string",
-              "description": "A field that identifies the specific version of an instance of an intent."
-            },
-            "intentSpecification": {
-              "$ref": "#/$defs/EntityRef"
-            },
-            "intentRelationship": {
-              "type": "array",
-              "items": {
-                "$ref": "#/$defs/EntityRelationship"
-              },
-              "description": "A list of intents related to this intent"
-            },
-            "characteristic": {
-              "type": "array",
-              "items": {
-                "$ref": "#/$defs/Characteristic"
-              }
-            },
-            "relatedParty": {
-              "type": "array",
-              "items": {
-                "$ref": "#/$defs/RelatedPartyRefOrPartyRoleRef"
-              }
-            },
-            "attachment": {
-              "type": "array",
-              "items": {
-                "$ref": "#/$defs/AttachmentRefOrValue"
-              },
-              "description": "Attachments that may be of relevance to this intent, such as picture, document, media"
-            },
-            "name": {
-              "type": "string",
-              "description": "The name of the intent."
-            },
-            "expression": {
-              "$ref": "#/$defs/Expression"
-            },
-            "creationDate": {
-              "type": "string",
-              "format": "date-time",
-              "description": "Date and time of the creation of this REST resource"
-            },
-            "lastUpdate": {
-              "type": "string",
-              "format": "date-time",
-              "description": "Date and time of the last update of this REST resource"
-            },
-            "lifecycleStatus": {
-              "type": "string",
-              "description": "Used to indicate the current lifecycle status of this intent"
-            }
-          }
-        }
-      ]
-    },
-    "IntentRef": {
-      "type": "object",
-      "description": "Intent reference, for when Intent is used by other entities",
-      "allOf": [
-        {
-          "$ref": "#/$defs/EntityRef"
-        }
-      ]
-    },
-    "IntentRefOrValue": {
-      "type": "object",
-      "description": "Intent Ref (if Intent already exists) or Value (if Intent be created or its details be presented)",
-      "anyOf": [
-        {
-          "$ref": "#/$defs/IntentRef"
-        },
-        {
-          "$ref": "#/$defs/Intent"
-        }
-      ]
-    },
     "ItemActionType": {
       "enum": [
         "add",
@@ -1944,18 +1739,6 @@
         }
       ]
     },
-    "PartyRefOrPartyRoleRef": {
-      "type": "object",
-      "description": "",
-      "anyOf": [
-        {
-          "$ref": "#/$defs/PartyRef"
-        },
-        {
-          "$ref": "#/$defs/PartyRoleRef"
-        }
-      ]
-    },
     "PartyRole": {
       "allOf": [
         {
@@ -2220,23 +2003,6 @@
         }
       ]
     },
-    "ProductOfferingRef": {
-      "allOf": [
-        {
-          "$ref": "#/$defs/EntityRef"
-        },
-        {
-          "type": "object",
-          "description": "ProductOffering reference. A product offering represents entities that are orderable from the provider of the catalog, this resource includes pricing information.",
-          "properties": {
-            "version": {
-              "type": "string",
-              "description": "Version of the product offering"
-            }
-          }
-        }
-      ]
-    },
     "ProductPrice": {
       "allOf": [
         {
@@ -2301,26 +2067,6 @@
             "relationshipType": {
               "type": "string",
               "description": "Relationship type as relies on, bundles, etc..."
-            }
-          }
-        }
-      ]
-    },
-    "ProductSpecificationRef": {
-      "allOf": [
-        {
-          "$ref": "#/$defs/EntityRef"
-        },
-        {
-          "type": "object",
-          "description": "ProductSpecification reference. A product Specification represents entities that are orderable from the provider of the catalog.",
-          "properties": {
-            "version": {
-              "type": "string",
-              "description": "Version of the product specification"
-            },
-            "targetProductSchema": {
-              "$ref": "#/$defs/TargetProductSchema"
             }
           }
         }
@@ -2423,26 +2169,6 @@
             },
             "partyOrPartyRole": {
               "$ref": "#/$defs/PartyOrPartyRole"
-            }
-          }
-        }
-      ]
-    },
-    "RelatedPartyRefOrPartyRoleRef": {
-      "allOf": [
-        {
-          "$ref": "#/$defs/Extensible"
-        },
-        {
-          "type": "object",
-          "description": "RelatedParty reference. A related party defines party or party role or its reference, linked to a specific entity",
-          "properties": {
-            "role": {
-              "description": "Role played by the related party or party role in the context of the specific entity it is linked to. Such as 'initiator', 'customer', 'salesAgent', 'user'",
-              "type": "string"
-            },
-            "partyOrPartyRole": {
-              "$ref": "#/$defs/PartyRefOrPartyRoleRef"
             }
           }
         }
@@ -2563,21 +2289,6 @@
           "$ref": "#/$defs/PartyRole"
         }
       ]
-    },
-    "TargetProductSchema": {
-      "type": "object",
-      "description": "The reference object to the schema and type of target product which is described by product specification",
-      "properties": {
-        "@type": {
-          "type": "string",
-          "description": "Class type of the target product"
-        },
-        "@schemaLocation": {
-          "type": "string",
-          "format": "uri",
-          "description": "This field provides a link to the schema describing the target product"
-        }
-      }
     },
     "TaxDefinition": {
       "allOf": [

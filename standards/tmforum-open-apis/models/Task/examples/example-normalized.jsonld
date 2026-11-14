@@ -1,0 +1,73 @@
+{
+  "id": "urn:ngsi-ld:Task:4fd-ty56-gg55-3",
+  "type": "Task",
+  "tmfId": {
+    "type": "Property",
+    "value": "4fd-ty56-gg55-3"
+  },
+  "isMandatory": {
+    "type": "Property",
+    "value": true
+  },
+  "state": {
+    "type": "Property",
+    "value": "active"
+  },
+  "taskType": {
+    "type": "Property",
+    "value": "businessRuleTask"
+  },
+  "name": {
+    "type": "Property",
+    "value": "Initialize ShoppingCart"
+  },
+  "taskSpecification": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:TaskSpecification:tfs1"
+  },
+  "parentProcess": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:Process:4fd-ty56-gg55"
+  },
+  "relatedParty": {
+    "type": "Property",
+    "value": [
+      {
+        "role": "Customer",
+        "@type": "RelatedPartyRefOrPartyRoleRef",
+        "partyOrPartyRole": {
+          "id": "456-f69",
+          "href": "https://www.mycsp.com/tmfapis/partyManagement/v5/individual/456-f69",
+          "@referredType": "Individual",
+          "@type": "PartyRef"
+        }
+      }
+    ]
+  },
+  "taskCharacteristic": {
+    "type": "Property",
+    "value": [
+      {
+        "modality": "input",
+        "@type": "FlowCharacteristic",
+        "characteristic": {
+          "valueType": "string",
+          "name": "Eligibility result",
+          "@type": "StringCharacteristic",
+          "value": "Qualified"
+        }
+      }
+    ]
+  },
+  "tmfType": {
+    "type": "Property",
+    "value": "Task"
+  },
+  "source": {
+    "type": "Property",
+    "value": "Adapted from the example payload 'retrieve_task_ById_response' of the TMF701 Process Management 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+  },
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Task/context.jsonld"
+  ]
+}

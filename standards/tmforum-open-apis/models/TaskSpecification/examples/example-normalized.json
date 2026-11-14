@@ -1,0 +1,143 @@
+{
+  "id": "urn:ngsi-ld:TaskSpecification:tfs0",
+  "type": "TaskSpecification",
+  "tmfId": {
+    "type": "Text",
+    "value": "tfs0"
+  },
+  "description": {
+    "type": "Text",
+    "value": "Check Offer Eligibility"
+  },
+  "lastUpdate": {
+    "type": "DateTime",
+    "value": "2024-04-30T13:03:57.839Z"
+  },
+  "lifecycleStatus": {
+    "type": "Text",
+    "value": "active"
+  },
+  "name": {
+    "type": "Text",
+    "value": "Eligibility Check"
+  },
+  "taskType": {
+    "type": "Text",
+    "value": "businessRuleTask"
+  },
+  "version": {
+    "type": "Text",
+    "value": "1"
+  },
+  "attachment": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "attachmentType": "TaskDocumentation",
+        "description": "description of the business rules to apply in order to confirm or not the eligibility",
+        "mimeType": "application/pdf",
+        "name": "tfs-2-doc",
+        "url": "http://host/content/dgpp5466-11ff-4dc8-pm55-4366ht7c43hl",
+        "size": {
+          "amount": 2105,
+          "units": "Mb"
+        },
+        "validFor": {
+          "startDateTime": "2024-04-12T23:20:50.52Z"
+        },
+        "@type": "Attachment"
+      }
+    ]
+  },
+  "taskSpecificationCharacteristic": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "modality": "input",
+        "@type": "FlowCharacteristicSpecification",
+        "characteristicSpecification": {
+          "configurable": true,
+          "description": "identification of product offering that the customer wishes to have",
+          "extensible": false,
+          "isUnique": false,
+          "maxCardinality": 1,
+          "minCardinality": 0,
+          "name": "productOfferingRef",
+          "valueType": "object",
+          "@type": "CharacteristicSpecification",
+          "@valueSchemaLocation": "https://www.mycsp.com/tmfapis/productCatalog/v5/schema/productOfferingRef.json"
+        }
+      },
+      {
+        "modality": "output",
+        "@type": "FlowCharacteristicSpecification",
+        "characteristicSpecification": {
+          "configurable": true,
+          "description": "the qualification result of the eligibility check",
+          "extensible": false,
+          "isUnique": false,
+          "maxCardinality": 1,
+          "minCardinality": 1,
+          "name": "qualification result",
+          "valueType": "string",
+          "@type": "CharacteristicSpecification"
+        }
+      }
+    ]
+  },
+  "taskSpecificationRelationship": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "relationshipType": "nextTask",
+        "@type": "TaskSpecificationRelationship",
+        "taskSpecification": {
+          "id": "tfs1",
+          "href": "https://www.mycsp.com/tmfapis/processManagement/v5/taskSpecification/tfs1",
+          "name": "Initialize ShoppingCart",
+          "@referredType": "TaskSpecification",
+          "@type": "TaskSpecificationRef"
+        }
+      }
+    ]
+  },
+  "relatedParty": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "role": "designer",
+        "@type": "RelatedPartyRefOrPartyRoleRef",
+        "partyOrPartyRole": {
+          "id": "4cf-mg1",
+          "href": "https://www.mycsp.com/tmfapis/partyManagement/v5/individual/4cf-mg1",
+          "@type": "PartyRef",
+          "@referredType": "Individual"
+        }
+      },
+      {
+        "role": "approver",
+        "@type": "RelatedPartyRefOrPartyRoleRef",
+        "partyOrPartyRole": {
+          "id": "fp5-559",
+          "href": "https://www.mycsp.com/tmfapis/partyManagement/v5/individual/fp5-559",
+          "@type": "PartyRef",
+          "@referredType": "Individual"
+        }
+      }
+    ]
+  },
+  "validFor": {
+    "type": "StructuredValue",
+    "value": {
+      "startDateTime": "2024-12-30T13:03:57.839Z"
+    }
+  },
+  "tmfType": {
+    "type": "Text",
+    "value": "TaskSpecification"
+  },
+  "source": {
+    "type": "Text",
+    "value": "Adapted from the example payload 'retrieveTaskSpecificationById_response' of the TMF701 Process Management 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "id": "urn:ngsi-ld:ProductUsageSpecification:c2d6642b-59be-4cd1-800d-f3920dd4bc7f",
+  "type": "ProductUsageSpecification",
+  "tmfType": {
+    "type": "Text",
+    "value": "ProductUsageSpecification"
+  },
+  "tmfId": {
+    "type": "Text",
+    "value": "c2d6642b-59be-4cd1-800d-f3920dd4bc7f"
+  },
+  "name": {
+    "type": "Text",
+    "value": "InternationalVoice"
+  },
+  "description": {
+    "type": "Text",
+    "value": "Specification for international voice calls usage"
+  },
+  "version": {
+    "type": "Text",
+    "value": "2.5.0"
+  },
+  "lastUpdate": {
+    "type": "DateTime",
+    "value": "2022-05-20T19:00:00Z"
+  },
+  "lifecycleStatus": {
+    "type": "Text",
+    "value": "inDesign"
+  },
+  "specCharacteristic": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "CharacteristicSpecification",
+        "name": "originatingCountryCode",
+        "valueType": "string",
+        "description": "ISO 3166 country code of the caller",
+        "regex": "^[A-Z]{2}$",
+        "minCardinality": 1,
+        "maxCardinality": 1
+      },
+      {
+        "@type": "CharacteristicSpecification",
+        "name": "originatingPhoneNumber",
+        "valueType": "string",
+        "description": "International phone number of the caller, must start with +",
+        "regex": "^\\+[1-9]\\d{1,14}$",
+        "minCardinality": 1,
+        "maxCardinality": 1
+      },
+      {
+        "@type": "CharacteristicSpecification",
+        "name": "destinationCountryCode",
+        "valueType": "string",
+        "description": "ISO 3166 country code of the called party",
+        "regex": "^[A-Z]{2}$",
+        "minCardinality": 1,
+        "maxCardinality": 1
+      },
+      {
+        "@type": "CharacteristicSpecification",
+        "name": "destinationPhoneNumber",
+        "valueType": "string",
+        "description": "International phone number of the called party, must start with +",
+        "regex": "^\\+[1-9]\\d{1,14}$",
+        "minCardinality": 1,
+        "maxCardinality": 1
+      },
+      {
+        "@type": "CharacteristicSpecification",
+        "name": "duration",
+        "valueType": "integer",
+        "description": "Total duration of the call, in seconds.",
+        "minCardinality": 1,
+        "maxCardinality": 1
+      },
+      {
+        "@type": "CharacteristicSpecification",
+        "name": "startDateTime",
+        "valueType": "date-time",
+        "description": "startdate and starttime of the call, in date-time format",
+        "minCardinality": 1,
+        "maxCardinality": 1
+      },
+      {
+        "@type": "CharacteristicSpecification",
+        "name": "endDateTime",
+        "valueType": "date-time",
+        "description": "enddate and endtime of the call, in date-time format",
+        "minCardinality": 1,
+        "maxCardinality": 1
+      },
+      {
+        "@type": "CharacteristicSpecification",
+        "name": "callType",
+        "valueType": "string",
+        "description": "Type of the call : outgoing or incoming",
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "characteristicValueSpecification": [
+          {
+            "@type": "StringCharacteristicValueSpecification",
+            "valueType": "string",
+            "value": "outgoing"
+          },
+          {
+            "@type": "StringCharacteristicValueSpecification",
+            "valueType": "string",
+            "value": "incoming"
+          }
+        ]
+      },
+      {
+        "@type": "CharacteristicSpecification",
+        "name": "callStatus",
+        "valueType": "string",
+        "description": "Status of the call : failed or completed",
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "characteristicValueSpecification": [
+          {
+            "@type": "StringCharacteristicValueSpecification",
+            "valueType": "string",
+            "value": "failed"
+          },
+          {
+            "@type": "StringCharacteristicValueSpecification",
+            "valueType": "string",
+            "value": "completed"
+          }
+        ]
+      }
+    ]
+  },
+  "validFor": {
+    "type": "StructuredValue",
+    "value": {
+      "startDateTime": "2022-05-20T19:00:00Z",
+      "endDateTime": "2099-01-11T00:00:00Z"
+    }
+  },
+  "productSpecification": {
+    "type": "URL",
+    "value": [
+      "urn:ngsi-ld:ProductSpecification:cbfa3598-2276-4b35-8f7f-3252d9b8f397"
+    ]
+  },
+  "serviceUsageSpecification": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "ServiceUsageSpecificationRef",
+        "@referredType": "ServiceUsageSpecification",
+        "href": "https://mycsp.com/tmf-api/serviceUsageManagement/v5/serviceUsageSpecification/6d414e5c-6e49-4651-b4a9-64f698bda943",
+        "id": "6d414e5c-6e49-4651-b4a9-64f698bda943",
+        "name": "InternationalVoice"
+      }
+    ]
+  },
+  "source": {
+    "type": "Text",
+    "value": "Adapted from the example payload 'Product_usage_specification_retrieve_example_response' of the TMF767 Product Usage Catalog Management 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+  }
+}

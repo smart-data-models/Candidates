@@ -1,0 +1,208 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ApiProductOrder/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - ApiProductOrder",
+  "description": "An ApiProductOrder is a specialization of a ProductOrder, which can be used to place an order between a customer and a service provider or between a service provider and a partner and vice versa. (TM Forum TMF931 Open Gateway Operate API Onboarding and Ordering 5.2.1, OpenAPI component ApiProductOrder; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:ApiProductOrder:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ApiProductOrder"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ApiProductOrder'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Extensible/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'ApiProductOrder' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Extensible/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Extensible/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Addressable/properties/href'. Hyperlink reference"
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/Addressable/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:ApiProductOrder:<tmfId>. unique identifier"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProductOrder/properties/description'. Description of the product order"
+    },
+    "externalId": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ExternalIdentifier"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProductOrder/properties/externalId'. Can be used to pass the internal identifier of the order in the Channel Partner system."
+    },
+    "productOrderItem": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/DCSProductOrderItem"
+      },
+      "minItems": 1,
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProductOrder/properties/productOrderItem'. An identified part of the order. A product order is decomposed into one or more order items."
+    },
+    "agreement": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProductOrder/properties/agreement'. A reference to an agreement defined in the context of the product order. In TMF this is an array of AgreementRef objects; here the NGSI-LD ids of the referenced Agreement entities (urn:ngsi-ld:Agreement:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "channelPartner": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProductOrder/properties/channelPartner'. Party role reference. A party role represents the part played by a party in a given context. In TMF this is a PartyRoleRef object; here the NGSI-LD id of the referenced PartyRole entity (urn:ngsi-ld:PartyRole:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "state": {
+      "enum": [
+        "acknowledged",
+        "rejected",
+        "pending",
+        "held",
+        "inProgress",
+        "cancelled",
+        "completed",
+        "failed",
+        "partial",
+        "assessingCancellation",
+        "pendingCancellation",
+        "draft",
+        "inProgress.accepted"
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProductOrder/properties/state'. Possible values for the state of the order"
+    },
+    "stateReason": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProductOrder/properties/stateReason'. A string providing an explanation on the value of the state lifecycle. For instance if the state is rejected, stateReason will provide the reason for rejection."
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProductOrder/properties/creationDate'. Date and time when the ProductOrder was created"
+    },
+    "expectedCompletionDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProductOrder/properties/expectedCompletionDate'. Expected delivery date amended by the provider"
+    },
+    "completionDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF931_OpenGatewayOnboardingAndOrderingComponentSuite/blob/v5.2.1/TMF931-Open_Gateway_Operate_API_Onboarding_and_Ordering-v5.2.1.oas.yaml#/components/schemas/ApiProductOrder/properties/completionDate'. Date when the ProductOrder was completed"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tmfType"
+  ],
+  "$defs": {
+    "DCSProductOrderItem": {
+      "type": "object",
+      "description": "An identified part of the order. A product order is decomposed into one or more order items.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/GCProductOrderItem"
+        }
+      ]
+    },
+    "Extensible": {
+      "type": "object",
+      "description": "Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means that the Entity described by the schema MUST be extended with the @type",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "ExternalIdentifier": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "An identification of an entity that is owned by or originates in a software system different from the current system, for example a ProductOrder handed off from a commerce platform into an order handling system. The structure identifies the system itself, the nature of the entity within the system (e.g. class name) and the unique ID of the entity within the system. It is anticipated that multiple external IDs can be held for a single entity, e.g. if the entity passed through multiple systems on the way to the current system. In this case the consumer is expected to sequence the IDs in the array in reverse order of provenance, i.e. most recent system first in the list.",
+          "properties": {
+            "owner": {
+              "type": "string",
+              "description": "Name of the external system that owns the entity.",
+              "examples": [
+                "MagentoCommerce"
+              ]
+            },
+            "externalIdentifierType": {
+              "type": "string",
+              "description": "Type of the identification, typically would be the type of the entity within the external system",
+              "examples": [
+                "ProductOrder"
+              ]
+            },
+            "id": {
+              "type": "string",
+              "description": "identification of the entity within the external system."
+            }
+          }
+        }
+      ]
+    },
+    "GCProductOrderItem": {
+      "type": "object",
+      "description": "General Context ProductOrderItem that can be used as a Domain Specialization Order Item or as a non-specialised OrderItem.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        }
+      ]
+    }
+  }
+}

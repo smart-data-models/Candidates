@@ -1,0 +1,48 @@
+{
+  "id": "urn:ngsi-ld:PartyRole:7321-7c0d",
+  "type": "PartyRole",
+  "tmfType": "PartyRole",
+  "tmfId": "7321-7c0d",
+  "name": "Mobile catalog administrator",
+  "role": "CatalogAdmin",
+  "engagedParty": {
+    "@type": "PartyRef",
+    "href": "https:/host:port/tmf-api/partyManagement/v2/individual/3b1c-74f1",
+    "id": "3b1c-74f1",
+    "@referredType": "Individual"
+  },
+  "partyRoleSpecification": "urn:ngsi-ld:PartyRoleSpecification:5713",
+  "characteristic": [
+    {
+      "@type": "StringCharacteristic",
+      "name": "CatalogDomain",
+      "valueType": "string",
+      "value": "mobile catalog"
+    }
+  ],
+  "contactMedium": [
+    {
+      "@type": "PhoneContactMedium",
+      "id": "1",
+      "phoneNumber": "+44 7700 900102"
+    }
+  ],
+  "relatedParty": [
+    {
+      "@type": "RelatedPartyOrPartyRole",
+      "role": "manager",
+      "partyOrPartyRole": {
+        "@type": "PartyRef",
+        "href": "https:/host:port/tmf-api/partyManagement/v4/individual/1a0b-961f",
+        "id": "1a0b-961f",
+        "@referredType": "Individual"
+      }
+    }
+  ],
+  "status": "validationInProgress",
+  "validFor": {
+    "startDateTime": "2022-06-24T00:00:00.000Z",
+    "endDateTime": "2024-06-24T00:00:00.000Z"
+  },
+  "source": "Adapted from the example payload 'PartyRole_retrieve_example_response' of the TMF669 Party Role Management 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+}

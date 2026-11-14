@@ -1,0 +1,575 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PartyRevSharingReport/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - PartyRevSharingReport",
+  "description": "The PartyRevSharingReport resource define the revenue is shared by stakeholders (TM Forum TMF737 Revenue Sharing Report Management 5.0.0, OpenAPI component PartyRevSharingReport; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:PartyRevSharingReport:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "PartyRevSharingReport"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'PartyRevSharingReport'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF737_RevenueSharingReportManagement/blob/v5.0.0/TMF737-Revenue_Sharing_Report_Management-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'PartyRevSharingReport' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF737_RevenueSharingReportManagement/blob/v5.0.0/TMF737-Revenue_Sharing_Report_Management-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF737_RevenueSharingReportManagement/blob/v5.0.0/TMF737-Revenue_Sharing_Report_Management-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF737_RevenueSharingReportManagement/blob/v5.0.0/TMF737-Revenue_Sharing_Report_Management-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/href'. Hyperlink reference"
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF737_RevenueSharingReportManagement/blob/v5.0.0/TMF737-Revenue_Sharing_Report_Management-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:PartyRevSharingReport:<tmfId>. unique identifier"
+    },
+    "partyRevSharingModel": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF737_RevenueSharingReportManagement/blob/v5.0.0/TMF737-Revenue_Sharing_Report_Management-v5.0.0.oas.yaml#/components/schemas/PartyRevSharingReport/properties/partyRevSharingModel'. A PartyRevSharingModelRef reference. In TMF this is a PartyRevSharingModelRef object; here the NGSI-LD id of the referenced PartyRevSharingModel entity (urn:ngsi-ld:PartyRevSharingModel:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "cdrTransaction": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF737_RevenueSharingReportManagement/blob/v5.0.0/TMF737-Revenue_Sharing_Report_Management-v5.0.0.oas.yaml#/components/schemas/PartyRevSharingReport/properties/cdrTransaction'. A CdrTransactionRef reference. In TMF this is a CdrTransactionRef object; here the NGSI-LD id of the referenced CdrTransaction entity (urn:ngsi-ld:CdrTransaction:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "partyRevSharingReportItem": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PartyRevSharingReportItem"
+      },
+      "minItems": 1,
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF737_RevenueSharingReportManagement/blob/v5.0.0/TMF737-Revenue_Sharing_Report_Management-v5.0.0.oas.yaml#/components/schemas/PartyRevSharingReport/properties/partyRevSharingReportItem'. The PartyRevSharingReportItem list revenue share details related to the specified partner"
+    },
+    "money": {
+      "$ref": "#/$defs/Money",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF737_RevenueSharingReportManagement/blob/v5.0.0/TMF737-Revenue_Sharing_Report_Management-v5.0.0.oas.yaml#/components/schemas/PartyRevSharingReport/properties/money'. A base / value business entity used to represent money"
+    },
+    "createDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF737_RevenueSharingReportManagement/blob/v5.0.0/TMF737-Revenue_Sharing_Report_Management-v5.0.0.oas.yaml#/components/schemas/PartyRevSharingReport/properties/createDate'. Date and time when the detail was created"
+    },
+    "lastUpdate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF737_RevenueSharingReportManagement/blob/v5.0.0/TMF737-Revenue_Sharing_Report_Management-v5.0.0.oas.yaml#/components/schemas/PartyRevSharingReport/properties/lastUpdate'. Date and time when the detail was last updated"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tmfType"
+  ],
+  "$defs": {
+    "Addressable": {
+      "type": "object",
+      "description": "Base schema for adressable entities",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Hyperlink reference"
+        },
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        }
+      }
+    },
+    "CdrTransactionItemRef": {
+      "type": "object",
+      "description": "Reference of Cdr transaction item.",
+      "properties": {
+        "transactionHref": {
+          "type": "string",
+          "description": "Reference of the related entity."
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        },
+        "transactionId": {
+          "type": "string",
+          "description": "Unique identifier of a related entity."
+        },
+        "transactionItemId": {
+          "type": "string",
+          "description": "Id of an item of a Cdr transaction"
+        }
+      }
+    },
+    "CustomerBillRef": {
+      "type": "object",
+      "description": "Bill reference.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "Entity": {
+      "type": "object",
+      "description": "Base entity schema for use in TMForum Open-APIs. Property.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        }
+      ]
+    },
+    "EntityRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        },
+        {
+          "type": "object",
+          "description": "Entity reference schema to be use for all entityRef class.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "The identifier of the referred entity."
+            },
+            "href": {
+              "type": "string",
+              "description": "The URI of the referred entity."
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the referred entity."
+            },
+            "@referredType": {
+              "type": "string",
+              "description": "The actual type of the target instance when needed for disambiguation."
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      ]
+    },
+    "Extensible": {
+      "type": "object",
+      "description": "Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means that the Entity described by the schema MUST be extended with the @type",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "Money": {
+      "type": "object",
+      "description": "A base / value business entity used to represent money",
+      "properties": {
+        "unit": {
+          "type": "string",
+          "description": "Currency (ISO4217 norm uses 3 letters to define the currency)"
+        },
+        "value": {
+          "type": "number",
+          "format": "float",
+          "description": "A signed floating point number, the meaning of the sign is according to the context of the API that uses this Data type"
+        }
+      }
+    },
+    "PartyAccountRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "$ref": "#/$defs/Entity"
+        },
+        {
+          "type": "object",
+          "description": "PartyAccount reference. A party account is an arrangement that a party has with an enterprise that provides products to the party.",
+          "properties": {
+            "description": {
+              "type": "string",
+              "description": "Detailed description of the party account"
+            },
+            "status": {
+              "type": "string",
+              "description": "The condition of the account, such as due, paid, in arrears."
+            }
+          }
+        }
+      ]
+    },
+    "PartyRef": {
+      "type": "object",
+      "description": "A Party reference",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "PartyRefOrPartyRoleRef": {
+      "type": "object",
+      "description": "",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PartyRef"
+        },
+        {
+          "$ref": "#/$defs/PartyRoleRef"
+        }
+      ]
+    },
+    "PartyRevSharingAlgorithmRef": {
+      "type": "object",
+      "description": "A PartyRevSharingAlgorithmRef reference",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "PartyRevSharingModelInvolPriceRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "A PartyRevSharingAlgorithmRef reference",
+          "properties": {
+            "revenueSharingModelId": {
+              "type": "string",
+              "description": "Unique identifier of a related revenue sharing model."
+            },
+            "revenueSharingModelItemId": {
+              "type": "string",
+              "description": "Unique identifier of a related revenue sharing model item."
+            },
+            "involPriceId": {
+              "type": "string",
+              "description": "Id of a price of a revenue sharing model item"
+            }
+          }
+        }
+      ]
+    },
+    "PartyRevSharingModelItemRef": {
+      "type": "object",
+      "description": "Reference of a party revenue sharing model item.",
+      "properties": {
+        "revenueSharingModelName": {
+          "type": "string",
+          "description": "Name of the related revenue sharing model."
+        },
+        "revenueSharingModelHref": {
+          "type": "string",
+          "description": "Reference of the related entity."
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        },
+        "revenueSharingModelId": {
+          "type": "string",
+          "description": "Unique identifier of a related entity."
+        },
+        "itemId": {
+          "type": "string",
+          "description": "Id of an item of a revenue sharing model"
+        }
+      }
+    },
+    "PartyRevSharingReportItem": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Entity"
+        },
+        {
+          "description": "The PartyRevSharingReportItem resource define the revenue is shared by the specified partner",
+          "properties": {
+            "partyRevSharingModelItem": {
+              "$ref": "#/$defs/PartyRevSharingModelItemRef",
+              "minItems": 1
+            },
+            "relatedParty": {
+              "$ref": "#/$defs/RelatedPartyRefOrPartyRoleRef",
+              "minItems": 1
+            },
+            "partyAccount": {
+              "$ref": "#/$defs/PartyAccountRef"
+            },
+            "cdrTransactionItem": {
+              "$ref": "#/$defs/CdrTransactionItemRef",
+              "minItems": 1
+            },
+            "billPeriod": {
+              "$ref": "#/$defs/TimePeriod"
+            },
+            "sharingReportItemIDetail": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/PartyRevSharingReportItemDetail"
+              },
+              "minItems": 1,
+              "description": "The PartyRevSharingReportItemDetail list revenue share details related to the specified partner"
+            },
+            "money": {
+              "$ref": "#/$defs/Money"
+            },
+            "bill": {
+              "$ref": "#/$defs/CustomerBillRef"
+            },
+            "payment": {
+              "$ref": "#/$defs/PaymentRef"
+            },
+            "status": {
+              "type": "string",
+              "description": "The status of party revenue Share report item detail"
+            },
+            "createDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Date and time when the detail was created"
+            },
+            "lastUpdate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Date and time when the detail was last updated"
+            }
+          }
+        }
+      ]
+    },
+    "PartyRevSharingReportItemDetail": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Entity"
+        },
+        {
+          "type": "object",
+          "description": "The PartyRevSharingReportItemDetail is calculate revenue share detail to a specified partner and offer price",
+          "properties": {
+            "partyRevSharingModelInvolPrice": {
+              "$ref": "#/$defs/PartyRevSharingModelInvolPriceRef",
+              "minItems": 1
+            },
+            "product": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ProductRef"
+              },
+              "description": "The partner product of revenue sharing"
+            },
+            "productOffering": {
+              "$ref": "#/$defs/ProductOfferingRef"
+            },
+            "productOfferingPrice": {
+              "$ref": "#/$defs/ProductOfferingPriceRef"
+            },
+            "partyRevSharingAlgorithm": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/PartyRevSharingAlgorithmRef"
+              },
+              "description": "The PartyRevSharingModelInvolPrice associated algorithm(s)"
+            },
+            "money": {
+              "$ref": "#/$defs/Money"
+            },
+            "status": {
+              "type": "string",
+              "description": "The status of party revenue Share report item detail"
+            },
+            "createDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Date and time when the detail was created"
+            },
+            "lastUpdate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Date and time when the detail was last updated"
+            }
+          }
+        }
+      ]
+    },
+    "PartyRoleRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "Party role reference. A party role represents the part played by a party in a given context.",
+          "properties": {
+            "partyId": {
+              "type": "string",
+              "description": "The identifier of the engaged party that is linked to the PartyRole object."
+            },
+            "partyName": {
+              "type": "string",
+              "description": "The name of the engaged party that is linked to the PartyRole object."
+            }
+          }
+        }
+      ]
+    },
+    "PaymentRef": {
+      "type": "object",
+      "description": "If an immediate payment has been done at the product order submission, the payment information are captured and stored (as a reference) in the order.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "ProductOfferingPriceRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "ProductPriceOffering reference. An amount, usually of money, that is asked for or allowed when a ProductOffering is bought, rented, or leased",
+          "properties": {
+            "version": {
+              "type": "string",
+              "description": "Version of the product offering price"
+            }
+          }
+        }
+      ]
+    },
+    "ProductOfferingRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "description": "ProductOffering reference. A product offering represents entities that are orderable from the provider of the catalog, this resource includes pricing information.",
+          "properties": {
+            "version": {
+              "type": "string",
+              "description": "Version of the product offering"
+            }
+          }
+        }
+      ]
+    },
+    "ProductRef": {
+      "type": "object",
+      "description": "A Product reference",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/EntityRef"
+        }
+      ]
+    },
+    "RelatedPartyRefOrPartyRoleRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "description": "RelatedParty reference. A related party defines party or party role or its reference, linked to a specific entity",
+          "properties": {
+            "role": {
+              "description": "Role played by the related party or party role in the context of the specific entity it is linked to. Such as 'initiator', 'customer', 'salesAgent', 'user'",
+              "type": "string"
+            },
+            "partyOrPartyRole": {
+              "$ref": "#/$defs/PartyRefOrPartyRoleRef"
+            }
+          }
+        }
+      ]
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "startDateTime": {
+          "description": "Start of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        },
+        "endDateTime": {
+          "description": "End of the time period, using IETC-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "id": "urn:ngsi-ld:PartyPrivacyProfile:103",
+  "type": "PartyPrivacyProfile",
+  "tmfId": {
+    "type": "Text",
+    "value": "103"
+  },
+  "creationDate": {
+    "type": "DateTime",
+    "value": "2019-09-06T04:54:42.690Z"
+  },
+  "description": {
+    "type": "Text",
+    "value": "Individual Privacy Profile"
+  },
+  "name": {
+    "type": "Text",
+    "value": "individual Consents"
+  },
+  "status": {
+    "type": "Text",
+    "value": "created"
+  },
+  "agreedByParty": {
+    "type": "StructuredValue",
+    "value": {
+      "role": "owner",
+      "partyOrPartyRole": {
+        "id": "9176",
+        "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/9176",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      },
+      "@type": "RelatedPartyRefOrPartyRoleRef"
+    }
+  },
+  "agreement": {
+    "type": "URL",
+    "value": "urn:ngsi-ld:PartyPrivacyAgreement:Agreement_5667789jjhbjklb7878"
+  },
+  "applicableForParty": {
+    "type": "StructuredValue",
+    "value": {
+      "role": "user",
+      "partyOrPartyRole": {
+        "id": "7889",
+        "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/7889",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      },
+      "@type": "RelatedPartyRefOrPartyRoleRef"
+    }
+  },
+  "partyPrivacyProfileCharacteristic": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "PartyPrivacyProfileCharacteristic",
+        "characterisitc": {
+          "id": "43",
+          "name": "emailAddress",
+          "valueType": "string",
+          "value": "Yes",
+          "@type": "StringCharacteristic"
+        },
+        "relatedParty": [
+          {
+            "role": "Vendor",
+            "partyOrPartyRole": {
+              "id": "8632",
+              "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/8632",
+              "@type": "PartyRef",
+              "@referredType": "Individual"
+            },
+            "@type": "RelatedPartyRefOrPartyRoleRef"
+          }
+        ]
+      }
+    ]
+  },
+  "partyPrivacyProfileSpecification": {
+    "type": "URL",
+    "value": "urn:ngsi-ld:PartyPrivacyProfileSpecification:103"
+  },
+  "validFor": {
+    "type": "StructuredValue",
+    "value": {
+      "endDateTime": "2020-09-09T04:54:42.691Z",
+      "startDateTime": "2019-09-06T04:54:42.691Z"
+    }
+  },
+  "tmfType": {
+    "type": "Text",
+    "value": "PartyPrivacyProfile"
+  },
+  "source": {
+    "type": "Text",
+    "value": "Adapted from the example payload 'PartyPrivacyProfile_retrieve_example_response' of the TMF644 Privacy 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+  }
+}

@@ -1,0 +1,305 @@
+{
+  "id": "urn:ngsi-ld:PartyRevSharingReport:3010",
+  "type": "PartyRevSharingReport",
+  "tmfType": {
+    "type": "Property",
+    "value": "PartyRevSharingReport"
+  },
+  "tmfId": {
+    "type": "Property",
+    "value": "3010"
+  },
+  "partyRevSharingModel": {
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:PartyRevSharingModel:4810"
+  },
+  "partyRevSharingReportItem": {
+    "type": "Property",
+    "value": [
+      {
+        "@type": "PartyRevSharingReportItem",
+        "id": "3021",
+        "partyRevSharingModelItem": {
+          "@type": "PartyRevSharingModelItemRef",
+          "itemId": "4811",
+          "revenueSharingModelId": "4810",
+          "revenueSharingModelName": "Revenue Sharing Model of MyFirstPartner",
+          "@referredType": "PartyRevSharingModelItem"
+        },
+        "relatedParty": {
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "role": "distributor",
+          "partyOrPartyRole": {
+            "@type": "PartyRef",
+            "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/organization/2777",
+            "id": "2777",
+            "name": "MyFirstPartner",
+            "@referredType": "Organization"
+          }
+        },
+        "partyAccount": {
+          "@type": "PartyAccountRef",
+          "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/PartyAccount/2788",
+          "id": "2788",
+          "name": "MyFirstPartner Account",
+          "@referredType": "PartyAccount",
+          "description": "MyFirstPartner Account for revenue share",
+          "status": "active"
+        },
+        "billPeriod": {
+          "startDateTime": "2023-02-01T23:59:59.52Z",
+          "endDateTime": "2023-02-28T23:59:59.52Z"
+        },
+        "sharingReportItemIDetail": [
+          {
+            "@type": "PartyRevSharingReportItemDetail",
+            "id": "3031",
+            "partyRevSharingModelInvolPrice": {
+              "@type": "PartyRevSharingModelInvolPriceRef",
+              "revenueSharingModelId": "4810",
+              "revenueSharingModelItemId": "4811",
+              "involPriceId": "4832",
+              "id": "4832",
+              "@referredType": "PartyRevSharingModelInvolPrice"
+            },
+            "product": [
+              {
+                "@type": "ProductRef",
+                "href": "https://mycsp.com:8080/tmf-api/ProductManagement/v5/Product/7810",
+                "id": "7810",
+                "name": "Mobile handset 2023 product of MyFirstPartner",
+                "@referredType": "Product"
+              }
+            ],
+            "productOffering": {
+              "@type": "ProductOfferingRef",
+              "href": "https://mycsp.com:8080/tmf-api/ProductManagement/v5/ProductOffering/6810",
+              "id": "6810",
+              "name": "Mobile handset 2023",
+              "@referredType": "ProductOffering"
+            },
+            "productOfferingPrice": {
+              "@type": "ProductOfferingPriceRef",
+              "href": "https://mycsp.com:8080/tmf-api/ProductManagement/v5/ProductOfferingPrice/6820",
+              "id": "6820",
+              "name": "Mobile handset 2023 distribution price",
+              "@referredType": "ProductOfferingPrice"
+            },
+            "partyRevSharingAlgorithm": [
+              {
+                "@type": "PartyRevSharingAlgorithmRef",
+                "href": "https://mycsp.com:8080/tmf-api/PartyRevSharingModelManagement/v5/PartyRevSharingAlgorithm/4840",
+                "id": "4840",
+                "name": "distribute charge revenue share calculate policy for Mobile handset 2023 distribution price  of MyFirstPartner",
+                "@referredType": "PartyRevSharingAlgorithm"
+              }
+            ],
+            "money": {
+              "unit": "USD",
+              "value": 50000
+            },
+            "status": "Paid",
+            "createDate": "2023-03-01T01:16:34.854Z",
+            "lastUpdate": "2023-03-10T01:16:34.854Z"
+          },
+          {
+            "@type": "PartyRevSharingReportItemDetail",
+            "id": "3032",
+            "partyRevSharingModelInvolPrice": {
+              "@type": "PartyRevSharingModelInvolPriceRef",
+              "revenueSharingModelId": "4810",
+              "revenueSharingModelItemId": "4811",
+              "involPriceId": "4831",
+              "id": "4831",
+              "@referredType": "PartyRevSharingModelInvolPrice"
+            },
+            "product": [
+              {
+                "@type": "ProductRef",
+                "href": "https://mycsp.com:8080/tmf-api/ProductManagement/v5/Product/7811",
+                "id": "7811",
+                "name": "Smart speakers 2023 product of MyFirstPartner",
+                "@referredType": "Product"
+              }
+            ],
+            "productOffering": {
+              "@type": "ProductOfferingRef",
+              "href": "https://mycsp.com:8080/tmf-api/ProductManagement/v5/ProductOffering/6812",
+              "id": "6812",
+              "name": "smart speakers 2023",
+              "@referredType": "ProductOffering"
+            },
+            "productOfferingPrice": {
+              "@type": "ProductOfferingPriceRef",
+              "href": "https://mycsp.com:8080/tmf-api/ProductManagement/v5/ProductOfferingPrice/6822",
+              "id": "6822",
+              "name": "smart speakers 2023 distribution price",
+              "@referredType": "ProductOfferingPrice"
+            },
+            "partyRevSharingAlgorithm": [
+              {
+                "@type": "PartyRevSharingAlgorithmRef",
+                "href": "https://mycsp.com:8080/tmf-api/PartyRevSharingModelManagement/v5/PartyRevSharingAlgorithm/4842",
+                "id": "4842",
+                "name": "distribute charge revenue share calculate policy for smart speakers 2023 distribution price",
+                "@referredType": "PartyRevSharingAlgorithm"
+              }
+            ],
+            "money": {
+              "unit": "USD",
+              "value": 30000
+            },
+            "status": "Paid",
+            "createDate": "2023-03-01T01:16:34.854Z",
+            "lastUpdate": "2023-03-10T01:16:34.854Z"
+          }
+        ],
+        "money": {
+          "unit": "USD",
+          "value": 80000
+        },
+        "bill": {
+          "@type": "CustomerBillRef",
+          "href": "https://mycsp.com:8080/tmf-api/CustomerManagement/v5/CustomerBill/2001",
+          "id": "2001",
+          "name": "Customer 202302 bill of MyFirstPartner",
+          "@referredType": "CustomerBill"
+        },
+        "payment": {
+          "@type": "PaymentRef",
+          "href": "https://mycsp.com:8080/tmf-api/CustomerManagement/v5/Payment/5001",
+          "id": "5001",
+          "name": "Customer 202302 bill payment of MyFirstPartner",
+          "@referredType": "Payment"
+        },
+        "status": "Paid",
+        "createDate": "2023-03-01T01:16:34.854Z",
+        "lastUpdate": "2023-03-10T01:16:34.854Z"
+      },
+      {
+        "@type": "PartyRevSharingReportItem",
+        "id": "3023",
+        "partyRevSharingModelItem": {
+          "@type": "PartyRevSharingModelItemRef",
+          "itemId": "4812",
+          "revenueSharingModelId": "4810",
+          "revenueSharingModelName": "Revenue Sharing Model of MyFirstPartner",
+          "@referredType": "PartyRevSharingModelItem"
+        },
+        "relatedParty": {
+          "@type": "RelatedPartyRefOrPartyRoleRef",
+          "role": "revenueSharingModelOwner",
+          "partyOrPartyRole": {
+            "@type": "PartyRef",
+            "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/organization/2779",
+            "id": "2779",
+            "name": "Mobi Service Providor",
+            "@referredType": "Organization"
+          }
+        },
+        "partyAccount": {
+          "@type": "PartyAccountRef",
+          "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/PartyAccount/2789",
+          "id": "2789",
+          "name": "Mobi Service Providor Account",
+          "@referredType": "PartyAccount",
+          "description": "Mobi Service Providor Account for revenue share",
+          "status": "active"
+        },
+        "billPeriod": {
+          "startDateTime": "2023-02-01T23:59:59.52Z",
+          "endDateTime": "2023-02-31T23:59:59.52Z"
+        },
+        "sharingReportItemIDetail": [
+          {
+            "@type": "PartyRevSharingReportItemDetail",
+            "id": "3033",
+            "partyRevSharingModelInvolPrice": {
+              "@type": "PartyRevSharingModelInvolPriceRef",
+              "revenueSharingModelId": "4810",
+              "revenueSharingModelItemId": "4811",
+              "involPriceId": "4830",
+              "id": "4830",
+              "@referredType": "PartyRevSharingModelInvolPrice"
+            },
+            "product": [
+              {
+                "@type": "ProductRef",
+                "href": "https://mycsp.com:8080/tmf-api/ProductManagement/v5/Product/7810",
+                "id": "7810",
+                "name": "Mobile handset 2023 product of MyFirstPartner",
+                "@referredType": "Product"
+              }
+            ],
+            "productOffering": {
+              "@type": "ProductOfferingRef",
+              "href": "https://mycsp.com:8080/tmf-api/ProductManagement/v5/ProductOffering/6810",
+              "id": "6810",
+              "name": "Mobile handset 2023",
+              "@referredType": "ProductOffering"
+            },
+            "productOfferingPrice": {
+              "@type": "ProductOfferingPriceRef",
+              "href": "https://mycsp.com:8080/tmf-api/ProductManagement/v5/ProductOfferingPrice/6820",
+              "id": "6820",
+              "name": "Mobile handset 2023 distribution price",
+              "@referredType": "ProductOfferingPrice"
+            },
+            "partyRevSharingAlgorithm": [
+              {
+                "@type": "PartyRevSharingAlgorithmRef",
+                "href": "https://mycsp.com:8080/tmf-api/PartyRevSharingModelManagement/v5/PartyRevSharingAlgorithm/4841",
+                "id": "4841",
+                "name": "distribute charge revenue share calculate policy for Mobile handset 2023 distribution price of Mobi Service Providor",
+                "@referredType": "PartyRevSharingAlgorithm"
+              }
+            ],
+            "money": {
+              "unit": "USD",
+              "value": 60000
+            },
+            "status": "Created",
+            "createDate": "2023-02-01T01:16:34.854Z",
+            "lastUpdate": "2023-02-01T01:16:34.854Z"
+          }
+        ],
+        "money": {
+          "unit": "USD",
+          "value": 60000
+        },
+        "bill": {
+          "@type": "CustomerBillRef",
+          "href": "https://mycsp.com:8080/tmf-api/CustomerManagement/v5/CustomerBill/2002",
+          "id": "2002",
+          "name": "Customer 202302 bill of Mobi Service Providor",
+          "@referredType": "CustomerBill"
+        },
+        "status": "Created",
+        "createDate": "2023-03-01T01:16:34.854Z",
+        "lastUpdate": "2023-03-01T01:16:34.854Z"
+      }
+    ]
+  },
+  "money": {
+    "type": "Property",
+    "value": {
+      "unit": "USD",
+      "value": 240000
+    }
+  },
+  "createDate": {
+    "type": "Property",
+    "value": "2023-03-01T01:16:34.854Z"
+  },
+  "lastUpdate": {
+    "type": "Property",
+    "value": "2023-08-10T01:16:34.854Z"
+  },
+  "source": {
+    "type": "Property",
+    "value": "Adapted from the example payload 'PartyRevSharingReport_partial_update_application_json_example_response' of the TMF737 Revenue Sharing Report Management 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+  },
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PartyRevSharingReport/context.jsonld"
+  ]
+}

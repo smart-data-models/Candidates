@@ -1,0 +1,2247 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/WorkOrder/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - WorkOrder",
+  "description": "WorkOrder (TM Forum TMF697 Work Order 4.0.0, Swagger definition WorkOrder; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:WorkOrder:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "WorkOrder"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'WorkOrder'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:WorkOrder:<tmfId>. ID created on repository side"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/href'. Hyperlink to access the order"
+    },
+    "cancellationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/cancellationDate'. Date when the order is cancelled. This is used when order is cancelled."
+    },
+    "cancellationReason": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/cancellationReason'. Reason why the order is cancelled. This is used when order is cancelled."
+    },
+    "category": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/category'. Used to categorize the order from a business perspective that can be useful for the OM system (e.g. \"enterprise\", \"residential\", ...)"
+    },
+    "completionDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/completionDate'. Date when the order was completed"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/description'. A free-text description of the order"
+    },
+    "expectedCompletionDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/expectedCompletionDate'. Expected completion date amended by the provider"
+    },
+    "externalId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/externalId'. ID given by the consumer to facilitate searches"
+    },
+    "notificationContact": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/notificationContact'. Contact attached to the order to send back information regarding this order"
+    },
+    "orderDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/orderDate'. Date when the order was created"
+    },
+    "priority": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/priority'. A way that can be used by consumers to prioritize orders in OM system (from 0 to 4 : 0 is the highest priority, and 4 the lowest)"
+    },
+    "requestedCompletionDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/requestedCompletionDate'. Requested completion date from the requestors perspective"
+    },
+    "requestedStartDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/requestedStartDate'. Order fulfillment start date wished by the requestor. This is used when, for any reason, requestor cannot allow provider to begin to operationally begin the fulfillment before a date."
+    },
+    "startDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/startDate'. Date when the order started"
+    },
+    "stateChangeDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/stateChangeDate'. Last change date of the order state."
+    },
+    "version": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/version'. The version number allows for the tracking of multiple evolution steps during the lifecycle of the entity. It can be correlated to the revision number related to the lifecycle management change of the entity."
+    },
+    "agreement": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/agreement'. A reference to an agreement defined in the context of the work order. In TMF this is an array of AgreementRef objects; here the NGSI-LD ids of the referenced Agreement entities (urn:ngsi-ld:Agreement:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "appointment": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/appointment'. Refers an appointment, such as a Customer presentation or internal meeting or site visit. In TMF this is a AppointmentRef object; here the NGSI-LD id of the referenced Appointment entity (urn:ngsi-ld:Appointment:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "billingAccount": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/billingAccount'. BillingAccount reference. A BillingAccount is a detailed description of a bill structure. In TMF this is a BillingAccountRef object; here the NGSI-LD id of the referenced BillingAccount entity (urn:ngsi-ld:BillingAccount:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "channel": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedChannel"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/channel'. Related channel to another entity. May be online web, mobile app, social ,etc."
+    },
+    "note": {
+      "$ref": "#/$defs/Note",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/note'. Extra information about a given entity"
+    },
+    "order": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/OrderRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/order'. ProductOrder (ProductOrder) .The product order which the recommendation is related with."
+    },
+    "orderTotalPrice": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/OrderPrice"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/orderTotalPrice'. An amount, usually of money, that represents the actual price paid by the Customer for this item or this order"
+    },
+    "payment": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/payment'. If an immediate payment has been done at the product order submission, the payment information are captured and stored (as a reference) in the order. In TMF this is an array of PaymentRef objects; here the NGSI-LD ids of the referenced Payment entities (urn:ngsi-ld:Payment:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "place": {
+      "$ref": "#/$defs/PlaceRefOrValue",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/place'. A place defines a place described by reference or by value linked to a specific entity. The polymorphic attributes @type, @schemaLocation & @referredType are related to the place entity and not the RelatedPlaceRefOrValue class itself"
+    },
+    "quote": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/quote'. It's a Quote that has been executed previously. In TMF this is an array of QuoteRef objects; here the NGSI-LD ids of the referenced Quote entities (urn:ngsi-ld:Quote:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "relatedEntity": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedEntity"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/relatedEntity'. A reference to an entity, where the type of the entity is not known in advance."
+    },
+    "relatedParty": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedParty"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/relatedParty'. Related Entity reference. A related party defines party or party role linked to a specific entity."
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "acknowledged",
+        "rejected",
+        "pending",
+        "held",
+        "inProgress",
+        "cancelled",
+        "completed",
+        "failed",
+        "partial",
+        "assessingCancellation",
+        "pendingCancellation"
+      ],
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/state'. Possible values for the state of the order"
+    },
+    "workOrderItem": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/WorkOrderItem"
+      },
+      "minItems": 1,
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/workOrderItem'. An identified part of the order. A work order is decomposed into one or more order items."
+    },
+    "workOrderRelationship": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/OrderRelationship"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/workOrderRelationship'."
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF697_Work_Order/blob/cb36aedeb26537d3eb5876bf6ba98abb6fddf0c5/TMF697-WorkOrder-v4.0.0.swagger.json#/definitions/WorkOrder/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'WorkOrder' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "workOrderItem"
+  ],
+  "$defs": {
+    "AgreementRef": {
+      "type": "object",
+      "description": "Agreement reference. An agreement represents a contract or arrangement, either written or verbal and sometimes enforceable by law, such as a service level agreement or a customer price agreement. An agreement involves a number of other business entities, such as products, services, and resources and/or their specifications.",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the agreement"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "Any": {},
+    "AppointmentRef": {
+      "type": "object",
+      "description": "Refers an appointment, such as a Customer presentation or internal meeting or site visit",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The identifier of the referred appointment"
+        },
+        "href": {
+          "type": "string",
+          "description": "The reference of the appointment"
+        },
+        "description": {
+          "type": "string",
+          "description": "An explanatory text regarding the appointment made with a party"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "AttachmentRefOrValue": {
+      "type": "object",
+      "description": "An attachment by value or by reference. An attachment complements the description of an element, for example through a document, a video, a picture.",
+      "properties": {
+        "id": {
+          "examples": [
+            "4aafacbd-11ff-4dc8-b445-305f2215715f"
+          ],
+          "type": "string",
+          "description": "Unique identifier for this particular attachment"
+        },
+        "href": {
+          "examples": [
+            "http://host/Attachment/4aafacbd-11ff-4dc8-b445-305f2215715f"
+          ],
+          "type": "string",
+          "format": "uri",
+          "description": "URI for this Attachment"
+        },
+        "attachmentType": {
+          "examples": [
+            "video"
+          ],
+          "type": "string",
+          "description": "Attachment type such as video, picture"
+        },
+        "content": {
+          "type": "string",
+          "format": "base64",
+          "description": "The actual contents of the attachment object, if embedded, encoded as base64"
+        },
+        "description": {
+          "examples": [
+            "Photograph of the Product"
+          ],
+          "type": "string",
+          "description": "A narrative text describing the content of the attachment"
+        },
+        "mimeType": {
+          "type": "string",
+          "description": "Attachment mime type such as extension file for video, picture and document"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the attachment"
+        },
+        "url": {
+          "examples": [
+            "http://host/Content/4aafacbd-11ff-4dc8-b445-305f2215715f"
+          ],
+          "type": "string",
+          "format": "uri",
+          "description": "Uniform Resource Locator, is a web page address (a subset of URI)"
+        },
+        "size": {
+          "$ref": "#/$defs/Quantity",
+          "description": "The size of the attachment."
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The period of time for which the attachment is valid"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "BillingAccountRef": {
+      "type": "object",
+      "description": "BillingAccount reference. A BillingAccount is a detailed description of a bill structure.",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the billing account"
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the billing account"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the billing account"
+        },
+        "ratingType": {
+          "type": "string",
+          "description": "Indicates whether the account follows a specific payment option such as prepaid or postpaid"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "Characteristic": {
+      "type": "object",
+      "description": "Describes a given characteristic of an object or entity through a name/value pair.",
+      "required": [
+        "name",
+        "value"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the characteristic"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the characteristic"
+        },
+        "valueType": {
+          "type": "string",
+          "description": "Data type of the value of the characteristic"
+        },
+        "characteristicRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CharacteristicRelationship"
+          }
+        },
+        "value": {
+          "$ref": "#/$defs/Any",
+          "description": "The value of the characteristic"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "CharacteristicRelationship": {
+      "type": "object",
+      "description": "Another Characteristic that is related to the current Characteristic;",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the characteristic"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "relationshipType": {
+          "type": "string",
+          "description": "The type of relationship"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "ContactMedium": {
+      "type": "object",
+      "description": "Indicates the contact medium that could be used to contact the party.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "mediumType": {
+          "type": "string",
+          "description": "Type of the contact medium, such as: email address, telephone number, postal address"
+        },
+        "preferred": {
+          "type": "boolean",
+          "description": "If true, indicates that is the preferred contact medium"
+        },
+        "characteristic": {
+          "$ref": "#/$defs/MediumCharacteristic",
+          "description": "Any additional characteristic(s) of this contact medium"
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The time period that the contact medium is valid for"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "ExternalReference": {
+      "type": "object",
+      "description": "External reference of the individual or reference in other system",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "externalReferenceType": {
+          "type": "string",
+          "description": "Type of the external reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "External reference name"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "MediumCharacteristic": {
+      "type": "object",
+      "description": "Describes the contact medium characteristics that could be used to contact a party (an individual or an organization)",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "city": {
+          "type": "string",
+          "description": "The city"
+        },
+        "contactType": {
+          "type": "string",
+          "description": "The type of contact, for example: phone number such as mobile, fixed home, fixed office. postal address such as shipping instalation…"
+        },
+        "country": {
+          "type": "string",
+          "description": "The country"
+        },
+        "emailAddress": {
+          "type": "string",
+          "description": "Full email address in standard format"
+        },
+        "faxNumber": {
+          "type": "string",
+          "description": "The fax number of the contact"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "The primary phone number of the contact"
+        },
+        "postCode": {
+          "type": "string",
+          "description": "Postcode"
+        },
+        "socialNetworkId": {
+          "type": "string",
+          "description": "Identifier as a member of a social network"
+        },
+        "stateOrProvince": {
+          "type": "string",
+          "description": "State or province"
+        },
+        "street1": {
+          "type": "string",
+          "description": "Describes the street"
+        },
+        "street2": {
+          "type": "string",
+          "description": "Complementary street description"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "Money": {
+      "type": "object",
+      "description": "A base / value business entity used to represent money",
+      "properties": {
+        "unit": {
+          "type": "string",
+          "description": "Currency (ISO4217 norm uses 3 letters to define the currency)"
+        },
+        "value": {
+          "type": "number",
+          "format": "float",
+          "description": "A signed floating point number, the meaning of the sign is according to the context of the API that uses this Data type"
+        }
+      }
+    },
+    "Note": {
+      "type": "object",
+      "description": "Extra information about a given entity",
+      "required": [
+        "text"
+      ],
+      "properties": {
+        "id": {
+          "examples": [
+            [
+              "afa9-3d90aaa8da0f"
+            ]
+          ],
+          "type": "string",
+          "description": "Identifier of the note within its containing entity"
+        },
+        "author": {
+          "examples": [
+            [
+              "Mr. N. Bene"
+            ]
+          ],
+          "type": "string",
+          "description": "Author of the note"
+        },
+        "date": {
+          "examples": [
+            [
+              "2020-11-20T08:00:00Z"
+            ]
+          ],
+          "type": "string",
+          "format": "date-time",
+          "description": "Date of the note"
+        },
+        "text": {
+          "examples": [
+            [
+              "This is important"
+            ]
+          ],
+          "type": "string",
+          "description": "Text of the note"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "OrderItemActionType": {
+      "type": "string",
+      "description": "action to be performed on the product",
+      "enum": [
+        "add",
+        "modify",
+        "delete",
+        "noChange"
+      ]
+    },
+    "OrderItemPrice": {
+      "type": "object",
+      "description": "An amount, usually of money, that represents the actual price paid by the Customer for this item or this order",
+      "required": [
+        "price",
+        "priceType"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "description": {
+          "type": "string",
+          "description": "A narrative that explains in detail the semantics of this order item price."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the order item price"
+        },
+        "priceType": {
+          "type": "string",
+          "description": "A category that describes the price, such as recurring, discount, allowance, penalty, and so forth"
+        },
+        "recurringChargePeriod": {
+          "type": "string",
+          "description": "Could be month, week..."
+        },
+        "unitOfMeasure": {
+          "type": "string",
+          "description": "Could be minutes, GB..."
+        },
+        "billingAccount": {
+          "$ref": "#/$defs/BillingAccountRef"
+        },
+        "price": {
+          "$ref": "#/$defs/Price"
+        },
+        "priceAlteration": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PriceAlteration"
+          }
+        },
+        "productOfferingPrice": {
+          "$ref": "#/$defs/ProductOfferingPriceRef"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "OrderItemRef": {
+      "type": "object",
+      "description": "ProductOrder (ProductOrder) .The product order which the recommendation is related with.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "OrderItemRelationship": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "relationshipType": {
+          "type": "string",
+          "description": "The type of order item relationship"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "OrderPrice": {
+      "type": "object",
+      "description": "An amount, usually of money, that represents the actual price paid by the Customer for this item or this order",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "description": {
+          "type": "string",
+          "description": "A narrative that explains in detail the semantics of this order item price."
+        },
+        "name": {
+          "type": "string",
+          "description": "A short descriptive name such as \"Subscription price\"."
+        },
+        "priceType": {
+          "type": "string",
+          "description": "A category that describes the price, such as recurring, discount, allowance, penalty, and so forth"
+        },
+        "recurringChargePeriod": {
+          "type": "string",
+          "description": "Could be month, week..."
+        },
+        "unitOfMeasure": {
+          "type": "string",
+          "description": "Could be minutes, GB..."
+        },
+        "billingAccount": {
+          "$ref": "#/$defs/BillingAccountRef",
+          "description": "A reference to a billing account used for paid the order price charge"
+        },
+        "price": {
+          "$ref": "#/$defs/Price",
+          "description": "a structure used to define price amount"
+        },
+        "priceAlteration": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PriceAlteration"
+          },
+          "description": "a strucuture used to describe a price alteration"
+        },
+        "productOfferingPrice": {
+          "$ref": "#/$defs/ProductOfferingPriceRef",
+          "description": "An amount, usually of money, that is asked for or allowed when a ProductOffering is bought, rented, or leased. The price is valid for a defined period of time."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "OrderRef": {
+      "type": "object",
+      "description": "ProductOrder (ProductOrder) .The product order which the recommendation is related with.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "OrderRelationship": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "href": {
+          "type": "string"
+        },
+        "relationshipType": {
+          "type": "string",
+          "description": "The type of order relationship"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "PartyCreditProfile": {
+      "type": "object",
+      "description": "An individual might be evaluated for its worthiness and this evaluation might be based on a credit rating given by a credit agency.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "creditAgencyName": {
+          "type": "string",
+          "description": "Name of the credit agency giving the score"
+        },
+        "creditAgencyType": {
+          "type": "string",
+          "description": "Type of the credit agency giving the score"
+        },
+        "ratingReference": {
+          "type": "string",
+          "description": "Reference corresponding to the credit rating"
+        },
+        "ratingScore": {
+          "type": "integer",
+          "description": "A measure of a party’s creditworthiness calculated on the basis of a combination of factors such as their income and credit history"
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "PartyRefOrValue": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the organization"
+        },
+        "href": {
+          "type": "string",
+          "description": "Hyperlink to access the organization"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "contactMedium": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ContactMedium"
+          }
+        },
+        "creditRating": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PartyCreditProfile"
+          }
+        },
+        "externalReference": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExternalReference"
+          }
+        },
+        "partyCharacteristic": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Characteristic"
+          }
+        },
+        "relatedParty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RelatedParty"
+          }
+        },
+        "taxExemptionCertificate": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TaxExemptionCertificate"
+          }
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "PaymentRef": {
+      "type": "object",
+      "description": "If an immediate payment has been done at the product order submission, the payment information are captured and stored (as a reference) in the order.",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "A name for the payment"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "PlaceRefOrValue": {
+      "type": "object",
+      "description": "A place defines a place described by reference or by value linked to a specific entity. The polymorphic attributes @type, @schemaLocation & @referredType are related to the place entity and not the RelatedPlaceRefOrValue class itself",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the place"
+        },
+        "href": {
+          "type": "string",
+          "description": "Unique reference of the place"
+        },
+        "name": {
+          "type": "string",
+          "description": "A user-friendly name for the place, such as [Paris Store], [London Store], [Main Home]"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "Price": {
+      "type": "object",
+      "description": "Provides all amounts (tax included, duty free, tax rate), used currency and percentage to apply for Price Alteration.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "percentage": {
+          "type": "number",
+          "format": "float",
+          "description": "Percentage to apply for ProdOfferPriceAlteration"
+        },
+        "taxRate": {
+          "type": "number",
+          "format": "float",
+          "description": "Tax rate"
+        },
+        "dutyFreeAmount": {
+          "$ref": "#/$defs/Money",
+          "description": "All taxes excluded amount (expressed in the given currency)"
+        },
+        "taxIncludedAmount": {
+          "$ref": "#/$defs/Money",
+          "description": "All taxes included amount (expressed in the given currency)"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "PriceAlteration": {
+      "type": "object",
+      "description": "Is an amount, usually of money, that modifies the price charged for an order item.",
+      "required": [
+        "price",
+        "priceType"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "applicationDuration": {
+          "type": "integer",
+          "description": "Duration during which the alteration applies on the order item price (for instance 2 months free of charge for the recurring charge)"
+        },
+        "description": {
+          "type": "string",
+          "description": "A narrative that explains in detail the semantics of this order item price alteration"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the order item price alteration"
+        },
+        "priceType": {
+          "type": "string",
+          "description": "A category that describes the price such as recurring, one time and usage."
+        },
+        "priority": {
+          "type": "integer",
+          "description": "Priority level for applying this alteration among all the defined alterations on the order item price"
+        },
+        "recurringChargePeriod": {
+          "type": "string",
+          "description": "Could be month, week..."
+        },
+        "unitOfMeasure": {
+          "type": "string",
+          "description": "Could be minutes, GB..."
+        },
+        "price": {
+          "$ref": "#/$defs/Price"
+        },
+        "productOfferingPrice": {
+          "$ref": "#/$defs/ProductOfferingPriceRef"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "PriceType": {
+      "type": "string",
+      "description": "Describes the type of price (ex: oneTime, recurring, etc)",
+      "enum": [
+        "recurring",
+        "oneTime",
+        "usage"
+      ]
+    },
+    "ProductOfferingPriceRef": {
+      "type": "object",
+      "description": "ProductPriceOffering reference. An amount, usually of money, that is asked for or allowed when a ProductOffering is bought, rented, or leased",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "Quantity": {
+      "type": "object",
+      "description": "An amount in a given unit",
+      "properties": {
+        "amount": {
+          "default": 1,
+          "type": "number",
+          "format": "float",
+          "description": "Numeric value in a given unit"
+        },
+        "units": {
+          "type": "string",
+          "description": "Unit"
+        }
+      }
+    },
+    "RelatedChannel": {
+      "type": "object",
+      "description": "Related channel to another entity. May be online web, mobile app, social ,etc.",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the channel."
+        },
+        "role": {
+          "type": "string",
+          "description": "Role playing by the channel."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "RelatedEntity": {
+      "type": "object",
+      "description": "A reference to an entity, where the type of the entity is not known in advance.",
+      "required": [
+        "@referredType",
+        "id",
+        "role"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "role": {
+          "type": "string",
+          "description": "The role of an entity."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "RelatedParty": {
+      "type": "object",
+      "description": "Related Entity reference. A related party defines party or party role linked to a specific entity.",
+      "required": [
+        "@referredType",
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "role": {
+          "type": "string",
+          "description": "Role played by the related party"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "RelatedPlaceRefOrValue": {
+      "type": "object",
+      "description": "Related Entity reference. A related place defines a place described by reference or by value linked to a specific entity. The polymorphic attributes @type, @schemaLocation & @referredType are related to the place entity and not the RelatedPlaceRefOrValue class itself",
+      "required": [
+        "role"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the place"
+        },
+        "href": {
+          "type": "string",
+          "description": "Unique reference of the place"
+        },
+        "name": {
+          "type": "string",
+          "description": "A user-friendly name for the place, such as [Paris Store], [London Store], [Main Home]"
+        },
+        "role": {
+          "type": "string"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "RelatedWorkOrderItem": {
+      "type": "object",
+      "description": "RelatedWorkOrderItem (WorkOrder item). The work order item which triggered this unit of work's creation/change/termination.",
+      "required": [
+        "orderItemId",
+        "workOrderId"
+      ],
+      "properties": {
+        "orderItemAction": {
+          "type": "string",
+          "description": "Action of the order item for this unit of work"
+        },
+        "orderItemId": {
+          "type": "string",
+          "description": "Identifier of the work order item where the unit of work was managed"
+        },
+        "role": {
+          "type": "string",
+          "description": "Role of the work order item for this unitof work"
+        },
+        "workOrderHref": {
+          "type": "string",
+          "description": "Reference of the related entity."
+        },
+        "workOrderId": {
+          "type": "string",
+          "description": "Unique identifier of a related entity."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "TaxDefinition": {
+      "type": "object",
+      "description": "Reference of a tax definition. A tax is levied by an authorized tax jurisdiction. There are many different types of tax (Federal Tax levied by the US Government, State Tax levied by the State of California,…).",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the tax."
+        },
+        "jurisdictionLevel": {
+          "examples": [
+            "Country"
+          ],
+          "type": "string",
+          "description": "Level of the jurisdiction that levies the tax"
+        },
+        "jurisdictionName": {
+          "examples": [
+            "USA"
+          ],
+          "type": "string",
+          "description": "Name of the jurisdiction that levies the tax"
+        },
+        "name": {
+          "type": "string",
+          "description": "Tax name."
+        },
+        "taxType": {
+          "examples": [
+            "VAT"
+          ],
+          "type": "string",
+          "description": "Type of the tax."
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The period of time for which the tax applies, might be set for example if it is known that the jurisdiction will cease to apply the tax after a certain date."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "TaxExemptionCertificate": {
+      "type": "object",
+      "description": "A tax exemption certificate represents a tax exemption granted to a party (individual or organization) by a tax jurisdiction which may be a city, state, country,... An exemption has a certificate identifier (received from the jurisdiction that levied the tax) and a validity period. An exemption is per tax types and determines for each type of tax what portion of the tax is exempted (partial by percentage or complete) via the tax definition.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the tax exemption within list of the exemptions"
+        },
+        "certificateNumber": {
+          "type": "string",
+          "description": "Identifier of a document that shows proof of exemption from taxes for the taxing jurisdiction"
+        },
+        "issuingJurisdiction": {
+          "examples": [
+            "USA"
+          ],
+          "type": "string",
+          "description": "Name of the jurisdiction that issued the exemption"
+        },
+        "reason": {
+          "type": "string",
+          "description": "Reason for the tax exemption"
+        },
+        "attachment": {
+          "$ref": "#/$defs/AttachmentRefOrValue",
+          "description": "The actual certificate contents, if such is supplied by the issuing jurisdiction"
+        },
+        "taxDefinition": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TaxDefinition"
+          },
+          "description": "A list of taxes that are covered by the exemption, e.g. City Tax, State Tax. The definition would include the exemption (e.g. for a rate exemption 0% would be a full exemption, 5% could be a partial exemption if the actual rate was 10%)."
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "The period of time for which the exemption is valid"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "endDateTime": {
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ],
+          "type": "string",
+          "format": "date-time",
+          "description": "End of the time period, using IETC-RFC-3339 format"
+        },
+        "startDateTime": {
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ],
+          "type": "string",
+          "format": "date-time",
+          "description": "Start of the time period, using IETC-RFC-3339 format"
+        }
+      }
+    },
+    "TimeSlot": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the TimeSlot"
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the TimeSlot"
+        },
+        "relatedParty": {
+          "$ref": "#/$defs/RelatedParty",
+          "description": "RelatedParty reference. A related party defines party or party role linked to a specific entity."
+        },
+        "validFor": {
+          "$ref": "#/$defs/TimePeriod",
+          "description": "Start date and end date of the timeSlot"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "WorkOrderItem": {
+      "type": "object",
+      "description": "An identified part of the order. A work order is decomposed into one or more order items.",
+      "required": [
+        "id",
+        "action"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the line item (generally it is a sequence number 01, 02, 03, ...)"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the Order Item"
+        },
+        "action": {
+          "$ref": "#/$defs/OrderItemActionType"
+        },
+        "appointment": {
+          "$ref": "#/$defs/AppointmentRef"
+        },
+        "billingAccount": {
+          "$ref": "#/$defs/BillingAccountRef"
+        },
+        "itemPrice": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OrderItemPrice"
+          }
+        },
+        "itemTotalPrice": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OrderItemPrice"
+          }
+        },
+        "note": {
+          "$ref": "#/$defs/Note"
+        },
+        "orderItem": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OrderItemRef"
+          }
+        },
+        "payment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PaymentRef"
+          }
+        },
+        "relatedEntity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RelatedEntity"
+          }
+        },
+        "state": {
+          "$ref": "#/$defs/WorkOrderItemStateType"
+        },
+        "work": {
+          "$ref": "#/$defs/WorkRefOrValue"
+        },
+        "workOrderItem": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/WorkOrderItem"
+          }
+        },
+        "workOrderItemRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OrderItemRelationship"
+          }
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "WorkOrderItemStateType": {
+      "type": "string",
+      "description": "Possible values for the state of the order",
+      "enum": [
+        "acknowledged",
+        "rejected",
+        "pending",
+        "held",
+        "inProgress",
+        "cancelled",
+        "completed",
+        "failed",
+        "partial",
+        "assessingCancellation",
+        "pendingCancellation"
+      ]
+    },
+    "WorkPrice": {
+      "type": "object",
+      "description": "An amount, usually of money, that represents the actual price paid by the Customer for this item or this order.",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "A narrative that explains in detail the semantics of this shipment price."
+        },
+        "name": {
+          "type": "string",
+          "description": "A short descriptive name such as \"Subscription price\"."
+        },
+        "recurringChargePeriod": {
+          "type": "string",
+          "description": "Could be month, week..."
+        },
+        "unitOfMeasure": {
+          "type": "string",
+          "description": "Could be minutes, GB..."
+        },
+        "billingAccount": {
+          "$ref": "#/$defs/BillingAccountRef"
+        },
+        "price": {
+          "$ref": "#/$defs/Price"
+        },
+        "priceAlteration": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PriceAlteration"
+          }
+        },
+        "priceType": {
+          "$ref": "#/$defs/PriceType"
+        },
+        "productOfferingPrice": {
+          "$ref": "#/$defs/ProductOfferingPriceRef"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "WorkRefOrValue": {
+      "type": "object",
+      "description": "A Unit of Work defined by value or existing defined by reference. The polymorphic attributes @type, @schemaLocation &amp; @referredType are related to the work entity and not the related WorkRefOrValue class itself",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "completionDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date when the order was completed"
+        },
+        "description": {
+          "type": "string",
+          "description": "Is the description of the work unit. It could be the same as the description of the work specification."
+        },
+        "expectedCompletionDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date when the requester expects the work to be completed"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "orderDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date at which the work order which triggered this unit of work's creation/change/termination was created."
+        },
+        "percentageComplete": {
+          "type": "number",
+          "format": "float"
+        },
+        "workPriority": {
+          "type": "string"
+        },
+        "workType": {
+          "type": "string"
+        },
+        "actualDuration": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "agreement": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AgreementRef"
+          }
+        },
+        "appointment": {
+          "$ref": "#/$defs/AppointmentRef"
+        },
+        "currentDuration": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "deliveryTimeSlot": {
+          "$ref": "#/$defs/TimePeriod"
+        },
+        "note": {
+          "$ref": "#/$defs/Note"
+        },
+        "place": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RelatedPlaceRefOrValue"
+          }
+        },
+        "plannedDuration": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "quantity": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "relatedParty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RelatedParty"
+          }
+        },
+        "scheduledDuration": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "state": {
+          "$ref": "#/$defs/WorkStateType"
+        },
+        "work": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/WorkRefOrValue"
+          }
+        },
+        "workCharacteristic": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Characteristic"
+          }
+        },
+        "workOrderItem": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RelatedWorkOrderItem"
+          }
+        },
+        "workPrice": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/WorkPrice"
+          }
+        },
+        "workRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/WorkRelationship"
+          }
+        },
+        "workSpecification": {
+          "$ref": "#/$defs/WorkSpecificationRef"
+        },
+        "workforceEmployeeAssignment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/WorkforceEmployeeAssignment"
+          }
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "WorkRelationship": {
+      "type": "object",
+      "required": [
+        "relationshipType"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "relationshipType": {
+          "type": "string"
+        },
+        "work": {
+          "$ref": "#/$defs/WorkRefOrValue"
+        },
+        "workRelationshipCharacteristic": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Characteristic"
+          }
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "WorkSpecificationRef": {
+      "type": "object",
+      "description": "Work specification reference",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "WorkStateType": {
+      "type": "string",
+      "description": "",
+      "enum": [
+        "acknowledged",
+        "rejected",
+        "pending",
+        "held",
+        "inProgress",
+        "cancelled",
+        "completed",
+        "failed",
+        "partial"
+      ]
+    },
+    "WorkforceEmployeeAssignment": {
+      "type": "object",
+      "description": "Represents an assignment of a particular WorforceEmployeeRole for a particular unit of work in a specific timeframe. For example, assignment of a person in a network engineer role to a trouble shooting unit of work for at least 2 hours. The assignment is associated with a TimeSlot.",
+      "required": [
+        "description",
+        "id",
+        "skillType",
+        "workforceEmployee"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "skillType": {
+          "type": "string",
+          "description": "Ex: primarySkill, secondarySkill"
+        },
+        "state": {
+          "$ref": "#/$defs/WorkforceEmployeeAssignmentStateType",
+          "description": "Ex: primarySkill, secondarySkill"
+        },
+        "timeSlot": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TimeSlot"
+          }
+        },
+        "workforceEmployee": {
+          "$ref": "#/$defs/PartyRefOrValue"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "WorkforceEmployeeAssignmentStateType": {
+      "type": "string",
+      "description": "",
+      "enum": [
+        "acknowledged",
+        "rejected",
+        "pending",
+        "held",
+        "inProgress",
+        "cancelled",
+        "completed",
+        "failed",
+        "partial"
+      ]
+    }
+  }
+}

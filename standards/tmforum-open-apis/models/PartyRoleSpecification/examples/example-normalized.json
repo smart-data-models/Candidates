@@ -1,0 +1,79 @@
+{
+  "id": "urn:ngsi-ld:PartyRoleSpecification:5713",
+  "type": "PartyRoleSpecification",
+  "tmfType": {
+    "type": "Text",
+    "value": "PartyRoleSpecification"
+  },
+  "tmfId": {
+    "type": "Text",
+    "value": "5713"
+  },
+  "name": {
+    "type": "Text",
+    "value": "Catalog administration"
+  },
+  "specCharacteristic": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "CharacteristicSpecification",
+        "name": "CatalogDomain",
+        "valueType": "string",
+        "characteristicValueSpecification": [
+          {
+            "@type": "StringCharacteristicValueSpecification",
+            "value": "mobile catalog",
+            "valueType": "string"
+          },
+          {
+            "@type": "StringCharacteristicValueSpecification",
+            "value": "internet/TV catalog",
+            "valueType": "string"
+          },
+          {
+            "@type": "StringCharacteristicValueSpecification",
+            "value": "B2B catalog",
+            "valueType": "string"
+          }
+        ]
+      }
+    ]
+  },
+  "relatedParty": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "@type": "RelatedPartyOrPartyRole",
+        "role": "Rights&access manager",
+        "partyOrPartyRole": {
+          "@type": "PartyRef",
+          "href": "https:/host:port/tmf-api/partyManagement/v4/individual/62ac-01fb",
+          "id": "62ac-01fb",
+          "@referredType": "Individual"
+        }
+      }
+    ]
+  },
+  "permissionSpecificationSet": {
+    "type": "URL",
+    "value": [
+      "urn:ngsi-ld:PermissionSpecificationSet:2473-dc10",
+      "urn:ngsi-ld:PermissionSpecificationSet:920e-01df"
+    ]
+  },
+  "lifecycleStatus": {
+    "type": "Text",
+    "value": "validationInProgress"
+  },
+  "validFor": {
+    "type": "StructuredValue",
+    "value": {
+      "startDateTime": "2022-06-01T00:00:00.000Z"
+    }
+  },
+  "source": {
+    "type": "Text",
+    "value": "Adapted from the example payload 'PartyRoleSpecification_retrieve_example_response' of the TMF669 Party Role Management 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+  }
+}

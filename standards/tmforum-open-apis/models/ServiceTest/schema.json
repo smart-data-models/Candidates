@@ -1,0 +1,842 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ServiceTest/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - ServiceTest",
+  "description": "A service test is an entity that exists for a controlled test invocation on a service. The service test is executed according to a schedule and contains service test configuration parameters that are to be applied at execution time, and service test measures that result. (TM Forum TMF653 Service Test Management 5.0.0, OpenAPI component ServiceTest; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:ServiceTest:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ServiceTest"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'ServiceTest'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF653_ServiceTestManagement/blob/v5.0.0/TMF653-Service_Test_Management-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'ServiceTest' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF653_ServiceTestManagement/blob/v5.0.0/TMF653-Service_Test_Management-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF653_ServiceTestManagement/blob/v5.0.0/TMF653-Service_Test_Management-v5.0.0.oas.yaml#/components/schemas/Extensible/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF653_ServiceTestManagement/blob/v5.0.0/TMF653-Service_Test_Management-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/href'. Hyperlink reference"
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF653_ServiceTestManagement/blob/v5.0.0/TMF653-Service_Test_Management-v5.0.0.oas.yaml#/components/schemas/Addressable/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:ServiceTest:<tmfId>. unique identifier"
+    },
+    "characteristic": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Characteristic"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF653_ServiceTestManagement/blob/v5.0.0/TMF653-Service_Test_Management-v5.0.0.oas.yaml#/components/schemas/ServiceTest/properties/characteristic'. List of characteristics with values that define the test run"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF653_ServiceTestManagement/blob/v5.0.0/TMF653-Service_Test_Management-v5.0.0.oas.yaml#/components/schemas/ServiceTest/properties/description'. Description of the service test"
+    },
+    "endDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF653_ServiceTestManagement/blob/v5.0.0/TMF653-Service_Test_Management-v5.0.0.oas.yaml#/components/schemas/ServiceTest/properties/endDateTime'. The end date and time of the service test"
+    },
+    "mode": {
+      "type": "string",
+      "examples": [
+        "Proactive"
+      ],
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF653_ServiceTestManagement/blob/v5.0.0/TMF653-Service_Test_Management-v5.0.0.oas.yaml#/components/schemas/ServiceTest/properties/mode'. An indication of whether the service test is running in 'PROACTIVE' or 'ONDEMAND' mode"
+    },
+    "validFor": {
+      "$ref": "#/$defs/TimePeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF653_ServiceTestManagement/blob/v5.0.0/TMF653-Service_Test_Management-v5.0.0.oas.yaml#/components/schemas/ServiceTest/properties/validFor'. A period of time, either as a deadline (endDateTime only) a startDateTime only, or both"
+    },
+    "relatedParty": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedPartyRefOrPartyRoleRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF653_ServiceTestManagement/blob/v5.0.0/TMF653-Service_Test_Management-v5.0.0.oas.yaml#/components/schemas/ServiceTest/properties/relatedParty'. A list of related party references (RelatedParty [*]). A related party defines party or party role linked to a specific entity"
+    },
+    "externalIdentifier": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ExternalIdentifier"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF653_ServiceTestManagement/blob/v5.0.0/TMF653-Service_Test_Management-v5.0.0.oas.yaml#/components/schemas/ServiceTest/properties/externalIdentifier'. A list of external identifiers assoicated with this service"
+    },
+    "startDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF653_ServiceTestManagement/blob/v5.0.0/TMF653-Service_Test_Management-v5.0.0.oas.yaml#/components/schemas/ServiceTest/properties/startDateTime'. The start date and time of the service test."
+    },
+    "state": {
+      "enum": [
+        "acknowledged",
+        "rejected",
+        "pending",
+        "inProgress",
+        "cancelled",
+        "completed",
+        "failed"
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF653_ServiceTestManagement/blob/v5.0.0/TMF653-Service_Test_Management-v5.0.0.oas.yaml#/components/schemas/ServiceTest/properties/state'. Possible values for the state of the execution"
+    },
+    "testMeasure": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/TestMeasure"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF653_ServiceTestManagement/blob/v5.0.0/TMF653-Service_Test_Management-v5.0.0.oas.yaml#/components/schemas/ServiceTest/properties/testMeasure'. The results of the test in terms of the measured metrics"
+    },
+    "serviceTestRelationship": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ServiceTestRelationship"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF653_ServiceTestManagement/blob/v5.0.0/TMF653-Service_Test_Management-v5.0.0.oas.yaml#/components/schemas/ServiceTest/properties/serviceTestRelationship'. A relationship to an array of service test references eg. service tests executed on related composite or atomic services"
+    },
+    "relatedService": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF653_ServiceTestManagement/blob/v5.0.0/TMF653-Service_Test_Management-v5.0.0.oas.yaml#/components/schemas/ServiceTest/properties/relatedService'. Service reference, for when Service is used by other entities. In TMF this is a ServiceRef object; here the NGSI-LD id of the referenced Service entity (urn:ngsi-ld:Service:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "testSpecification": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF653_ServiceTestManagement/blob/v5.0.0/TMF653-Service_Test_Management-v5.0.0.oas.yaml#/components/schemas/ServiceTest/properties/testSpecification'. Service Test specification reference: ServiceTestSpecification(s) required to realize a Test Specification. In TMF this is a ServiceTestSpecificationRef object; here the NGSI-LD id of the referenced ServiceTestSpecification entity (urn:ngsi-ld:ServiceTestSpecification:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF653_ServiceTestManagement/blob/v5.0.0/TMF653-Service_Test_Management-v5.0.0.oas.yaml#/components/schemas/ServiceTest/properties/name'. The name of the service test"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tmfType",
+    "relatedService",
+    "testSpecification",
+    "name"
+  ],
+  "$defs": {
+    "Addressable": {
+      "type": "object",
+      "description": "Base schema for addressable entities",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Hyperlink reference"
+        },
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        }
+      }
+    },
+    "AppliedConsequence": {
+      "description": "An Applied Consequence defines the action (prescribed action or notification) to take when a MeasureThresholdRuleViolation occurs.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "appliedAction": {
+              "type": "string",
+              "description": "The action for a violated threshold. This could be a hyperlink to the action."
+            },
+            "description": {
+              "type": "string",
+              "description": "A narrative that explains in detail what the consequence is."
+            },
+            "name": {
+              "type": "string",
+              "description": "A word, term, or phrase by which Consequence is known and distinguished from other MetricDefMeasureConsequences."
+            },
+            "repeatAction": {
+              "type": "boolean",
+              "description": "An indicator used to specify that a consequence should cease being applied if a value is in the same range as the previous value or continue being applied if a value is in the same range as the previous value. If the repeatAction is True, if the consequence is always applied as soon as the MetricMeasure value is in the range of values and if the repeatAction is False, the consequence is applied only if the previous MetricMeasure value was not in the same range."
+            }
+          }
+        }
+      ]
+    },
+    "BooleanArrayCharacteristic": {
+      "description": "A characteristic which value is an array of Boolean(s).",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "array",
+              "description": "A characteristic which value is an array of Boolean(s).",
+              "items": {
+                "type": "boolean",
+                "description": "Characteristic item boolean value"
+              }
+            }
+          },
+          "required": [
+            "value"
+          ]
+        }
+      ]
+    },
+    "BooleanCharacteristic": {
+      "description": "A characteristic which value is a Boolean.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "boolean",
+              "description": "Value of the characteristic"
+            }
+          },
+          "required": [
+            "value"
+          ]
+        }
+      ]
+    },
+    "Characteristic": {
+      "description": "Describes a given characteristic of an object or entity through a name/value pair. This is an abstract base class, the actual value is in one of the strongly-typed subclasses : StringCharacteristic, ObjectCharacteristic, FloatCharacteristic, BooleanCharacteristic, NumberCharacteristic, IntegerCharacteristic, StringArrayCharacteristic, ObjectArrayCharacteristic, BooleanArrayCharacteristic, NumberArrayCharacteristic, IntegerArrayCharacteristic...",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique identifier of the characteristic"
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the characteristic"
+            },
+            "valueType": {
+              "type": "string",
+              "description": "Data type of the value of the characteristic"
+            },
+            "characteristicRelationship": {
+              "type": "array",
+              "description": "Collection of characteristic relationships",
+              "items": {
+                "$ref": "#/$defs/CharacteristicRelationship"
+              }
+            }
+          },
+          "required": [
+            "name"
+          ]
+        }
+      ]
+    },
+    "CharacteristicRelationship": {
+      "description": "Another Characteristic that is related to the current Characteristic;",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique identifier of the characteristic"
+            },
+            "relationshipType": {
+              "type": "string",
+              "description": "The type of relationship"
+            }
+          },
+          "required": [
+            "id",
+            "relationshipType"
+          ]
+        }
+      ]
+    },
+    "Duration": {
+      "type": "object",
+      "description": "A time interval in a given unit of time",
+      "properties": {
+        "amount": {
+          "type": "integer",
+          "description": "Time interval (number of seconds, minutes, hours, etc.)"
+        },
+        "units": {
+          "type": "string",
+          "description": "Unit of time (seconds, minutes, hours, etc.)"
+        }
+      }
+    },
+    "EntityRef": {
+      "description": "Entity reference schema to be use for all entityRef class.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "$ref": "#/$defs/Addressable"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "The identifier of the referred entity."
+            },
+            "href": {
+              "type": "string",
+              "description": "The URI of the referred entity."
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the referred entity."
+            },
+            "@referredType": {
+              "type": "string",
+              "description": "The actual type of the target instance when needed for disambiguation."
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      ]
+    },
+    "Extensible": {
+      "type": "object",
+      "description": "Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means that the Entity described by the schema MUST be extended with the @type",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "ExternalIdentifier": {
+      "description": "An identification of an entity that is owned by or originates in a software system different from the current system, for example a ProductOrder handed off from a commerce platform into an order handling system. The structure identifies the system itself, the nature of the entity within the system (e.g. class name) and the unique ID of the entity within the system. It is anticipated that multiple external IDs can be held for a single entity, e.g. if the entity passed through multiple systems on the way to the current system. In this case the consumer is expected to sequence the IDs in the array in reverse order of provenance, i.e. most recent system first in the list.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "owner": {
+              "type": "string",
+              "description": "Name of the external system that owns the entity.",
+              "examples": [
+                "MagentoCommerce"
+              ]
+            },
+            "externalIdentifierType": {
+              "type": "string",
+              "description": "Type of the identification, typically would be the type of the entity within the external system",
+              "examples": [
+                "ProductOrder"
+              ]
+            },
+            "id": {
+              "type": "string",
+              "description": "identification of the entity within the external system."
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      ]
+    },
+    "IntegerArrayCharacteristic": {
+      "description": "A characteristic which value is an array of Integer(s).",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "array",
+              "description": "A characteristic which value is an array of Integer(s).",
+              "items": {
+                "type": "integer",
+                "description": "Characteristic value"
+              }
+            }
+          },
+          "required": [
+            "value"
+          ]
+        }
+      ]
+    },
+    "IntegerCharacteristic": {
+      "description": "A characteristic which value is a Integer.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "integer",
+              "description": "Value of the characteristic"
+            }
+          },
+          "required": [
+            "value"
+          ]
+        }
+      ]
+    },
+    "MeasureThresholdRuleViolation": {
+      "description": "A measureThresholdRuleViolation is a violation of a rule that defines the in the MericDefMeasureThresholdRule.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "conformanceComparatorLower": {
+              "type": "string",
+              "description": "An operator that when applied on a value specifies whether a threshold is crossed or ceased to be crossed. This operator is used to compare with the conformanceTargetLower if used."
+            },
+            "conformanceComparatorExact": {
+              "type": "boolean",
+              "description": "An operator that when applied on a value specifies whether it is the same target value or not. This operator is used to compare with the conformanceTargetExact if used."
+            },
+            "conformanceComparatorUpper": {
+              "type": "string",
+              "description": "An operator that when applied on a value specifies whether a threshold is crossed or ceased to be crossed. This operator is used to compare with the conformanceTargetUpper if used."
+            },
+            "conformanceTargetLower": {
+              "type": "string",
+              "description": "To cater for values that are not numerical test metrics. A value used to determine if the threshold is crossed or ceases to be crossed. It represents the lower limit. The value should be less than the conformanceTargetUpper if used. The conformance comparators should also be logically defined so as to not lead to a logically impossible condition."
+            },
+            "conformanceTargetUpper": {
+              "type": "string",
+              "description": "To cater for values that are not numerical test metrics. A value used to determine if the threshold is crossed or ceases to be crossed. It represents the Upper limit. The value should be greater than the conformanceTargetLower if used. The conformance comparators should also be logically defined so as to not lead to a logically impossible condition."
+            },
+            "description": {
+              "type": "string",
+              "description": "Description that helps reference the MetricDefMeasureThresholdRule that this rule violation refers to"
+            },
+            "name": {
+              "type": "string",
+              "description": "Name that helps reference the MetricDefMeasureThresholdRule that this rule violation refers to."
+            },
+            "numberOfAllowedCrossing": {
+              "type": "integer",
+              "description": "The number of allowed crossing occurrences in reference to the tolerancePeriod without a consequence being initiated."
+            },
+            "thresholdRuleSeverity": {
+              "type": "string",
+              "description": "A severity level that defines the severity of threshold rule violation eg. Critical, Warning, Informational. A crossing for each level may require a different condition and possibly trigger a different consequence."
+            },
+            "conformanceTargetExact": {
+              "type": "string",
+              "description": "To cater for values that are not numerical test metrics (e.g. a DSL line can be Synchronised or Unsynchronised. If the latter, the test should result in a rule violation).The allowed value can contain a REGEX expression."
+            },
+            "tolerancePeriod": {
+              "$ref": "#/$defs/Duration"
+            },
+            "appliedConsequence": {
+              "type": "array",
+              "description": "An Applied Consequence defines the action (prescribed action or notification) to take when a MeasureThresholdRuleViolation occurs.",
+              "items": {
+                "$ref": "#/$defs/AppliedConsequence"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "NumberArrayCharacteristic": {
+      "description": "A characteristic which value is an array of Number(s).",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "array",
+              "description": "A characteristic which value is an array of Number(s).",
+              "items": {
+                "type": "number",
+                "description": "Characteristic value"
+              }
+            }
+          },
+          "required": [
+            "value"
+          ]
+        }
+      ]
+    },
+    "NumberCharacteristic": {
+      "description": "A characteristic which value is a Number.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "description": "Value of the characteristic"
+            }
+          },
+          "required": [
+            "value"
+          ]
+        }
+      ]
+    },
+    "ObjectArrayCharacteristic": {
+      "description": "A characteristic which value is an array of Object(s).",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "array",
+              "description": "Collection of characteristic values",
+              "items": {
+                "type": "object",
+                "description": "Characteristic value"
+              }
+            }
+          },
+          "required": [
+            "value"
+          ]
+        }
+      ]
+    },
+    "ObjectCharacteristic": {
+      "description": "A characteristic which value is a Object.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "object",
+              "description": "Value of the characteristic"
+            }
+          },
+          "required": [
+            "value"
+          ]
+        }
+      ]
+    },
+    "PartyRef": {
+      "description": "A Party reference",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "@type": {
+              "type": "string",
+              "enum": [
+                "PartyRef"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "PartyRefOrPartyRoleRef": {
+      "type": "object",
+      "description": "",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PartyRef"
+        },
+        {
+          "$ref": "#/$defs/PartyRoleRef"
+        }
+      ]
+    },
+    "PartyRoleRef": {
+      "description": "Party role reference. A party role represents the part played by a party in a given context.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "@type": {
+              "type": "string",
+              "enum": [
+                "PartyRoleRef"
+              ]
+            },
+            "partyId": {
+              "type": "string",
+              "description": "The identifier of the engaged party that is linked to the PartyRole object."
+            },
+            "partyName": {
+              "type": "string",
+              "description": "The name of the engaged party that is linked to the PartyRole object."
+            }
+          }
+        }
+      ]
+    },
+    "RelatedPartyRefOrPartyRoleRef": {
+      "description": "RelatedParty reference. A related party defines party or party role or its reference, linked to a specific entity",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "role": {
+              "description": "Role played by the related party or party role in the context of the specific entity it is linked to. Such as 'initiator', 'customer', 'salesAgent', 'user'",
+              "type": "string"
+            },
+            "partyOrPartyRole": {
+              "$ref": "#/$defs/PartyRefOrPartyRoleRef"
+            }
+          },
+          "required": [
+            "role"
+          ]
+        }
+      ]
+    },
+    "ServiceTestRelationship": {
+      "description": "Linked service order item to the one containing this attribute",
+      "allOf": [
+        {
+          "$ref": "#/$defs/EntityRef"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "role": {
+              "type": "string",
+              "description": "The association role for this service test"
+            },
+            "validFor": {
+              "$ref": "#/$defs/TimePeriod"
+            },
+            "relationshipType": {
+              "type": "string",
+              "description": "Type of relationship such as substitution, dependency, exclusivity"
+            }
+          },
+          "required": [
+            "relationshipType"
+          ]
+        }
+      ]
+    },
+    "StringArrayCharacteristic": {
+      "description": "A characteristic which value is an array of String(s).",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "array",
+              "description": "Collection of string characteristics",
+              "items": {
+                "type": "string",
+                "description": "Characteristic value"
+              }
+            }
+          },
+          "required": [
+            "value"
+          ]
+        }
+      ]
+    },
+    "StringCharacteristic": {
+      "description": "A characteristic which value is a String.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Characteristic"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string",
+              "description": "Value of the characteristic"
+            }
+          },
+          "required": [
+            "value"
+          ]
+        }
+      ]
+    },
+    "TestMeasure": {
+      "description": "A TestMeasure specifies a measure of a specific aspect of a product, service, or resource test, such as lost packets or connectivity status",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Extensible"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "accuracy": {
+              "type": "number",
+              "format": "float",
+              "description": "The percentage accuracy expressed in float notation, specifying the degree closeness between the measured value and the actual value. eg. if scale range is up to 500, accuracy could be defined as +-0.5%, expressed as 0.005 in float notation"
+            },
+            "captureDateTime": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The date and time that the metric was captured"
+            },
+            "testMeasureDefinitionId": {
+              "type": "string",
+              "description": "reference to the associated testMeasureDefinition in serviceTestSpecification. This property is unique among a list of testMeasures. Each testMeasureDefinition is referenced at most once within a run time ServiceTest instance."
+            },
+            "captureMethod": {
+              "type": "string",
+              "description": "The method used to capture the Metrics, examples: probes, automated data capture, optical mark recognition, barcode recognition, voice recognition(This may be replaced by a set of entities similar to the Performance Monitoring Ref)"
+            },
+            "metricName": {
+              "type": "string",
+              "description": "The name of the metric"
+            },
+            "metricDescription": {
+              "type": "string",
+              "description": "Brief description of the metric"
+            },
+            "metricUri": {
+              "type": "string",
+              "description": "Hyperlink to access a metric for detail information"
+            },
+            "ruleViolation": {
+              "type": "array",
+              "description": "A list of rules that were violated in this test measure",
+              "items": {
+                "$ref": "#/$defs/MeasureThresholdRuleViolation"
+              }
+            },
+            "unitOfMeasure": {
+              "type": "string",
+              "description": "The unit of measure for the metric values, such as bit, byte, erlang [ISO 80000]."
+            },
+            "value": {
+              "$ref": "#/$defs/Characteristic"
+            },
+            "testMeasureCharacteristic": {
+              "type": "array",
+              "description": "A list of additional characteristics that characterize this test measurement (usageCharacteristic [*])",
+              "items": {
+                "$ref": "#/$defs/Characteristic"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "startDateTime": {
+          "description": "Start of the time period, using IETF-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        },
+        "endDateTime": {
+          "description": "End of the time period, using IETF-RFC-3339 format",
+          "type": "string",
+          "format": "date-time",
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "id": "urn:ngsi-ld:TroubleTicketSpecification:25632415",
+  "type": "TroubleTicketSpecification",
+  "tmfId": "25632415",
+  "name": "Bill Dispute",
+  "tmfType": "TroubleTicketSpecification",
+  "description": "This trouble ticket specification describes the characteristic and rules to apply when creating a Trouble Ticket...",
+  "creationDate": "2022-05-22T10:36:30.709Z",
+  "lastUpdate": "2022-06-22T10:36:30.709Z",
+  "relatedParty": [
+    {
+      "role": "approver",
+      "partyOrPartyRole": {
+        "id": "6678",
+        "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/individual/6678",
+        "@type": "PartyRef",
+        "@referredType": "Individual"
+      },
+      "@type": "RelatedPartyRefOrPartyRoleRef"
+    }
+  ],
+  "lifecycleStatus": "active",
+  "specCharacteristic": [
+    {
+      "id": "1",
+      "configurable": true,
+      "description": "The amount that is on dispute, it can be the entire charge amount or partial amount of the charge",
+      "maxCardinality": 0,
+      "minCardinality": 1,
+      "name": "disputeAmount",
+      "valueType": "number",
+      "@type": "CharacteristicSpecification"
+    },
+    {
+      "id": "2",
+      "configurable": true,
+      "description": "The positive amount to be credit, it can be equal or less than the dispute amount. In case credit is given a credit reason must be provided. In case no credit is given a reject reason must be provided",
+      "maxCardinality": 0,
+      "minCardinality": 1,
+      "name": "creditAmount",
+      "valueType": "number",
+      "charSpecRelationship": [
+        {
+          "@type": "CharacteristicSpecificationRelationship",
+          "characteristicSpecificationId": "3",
+          "name": "creditReason",
+          "relationshipType": "dependency",
+          "parentSpecificationId": "25632415"
+        }
+      ],
+      "@type": "CharacteristicSpecification"
+    },
+    {
+      "id": "3",
+      "configurable": true,
+      "description": "The reason for giving the credit, in case credit apply. In case no credit apply a reject reason must be provided",
+      "maxCardinality": 0,
+      "minCardinality": 1,
+      "name": "creditReason",
+      "valueType": "string",
+      "@type": "CharacteristicSpecification"
+    },
+    {
+      "id": "4",
+      "configurable": true,
+      "description": "The reason for rejecting the dispute, in case no credit apply.",
+      "maxCardinality": 0,
+      "minCardinality": 1,
+      "name": "rejectReason",
+      "valueType": "string",
+      "@type": "CharacteristicSpecification"
+    },
+    {
+      "id": "5",
+      "configurable": true,
+      "description": "Currency (ISO4217 norm uses 3 letters to define the currency)",
+      "maxCardinality": 0,
+      "minCardinality": 1,
+      "name": "currency",
+      "valueType": "string",
+      "@type": "CharacteristicSpecification"
+    }
+  ],
+  "validFor": {
+    "startDateTime": "2022-06-22T23:20:50.52Z"
+  },
+  "version": "1",
+  "source": "Adapted from the example payload 'TroubleTicketSpecification_retrieve_example_response' of the TMF621 Trouble Ticket 5.0.1 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids.",
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/TroubleTicketSpecification/context.jsonld"
+  ]
+}

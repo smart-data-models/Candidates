@@ -1,0 +1,112 @@
+{
+  "id": "urn:ngsi-ld:ProcessSpecification:OC54",
+  "type": "ProcessSpecification",
+  "tmfId": {
+    "type": "Text",
+    "value": "OC54"
+  },
+  "lifecycleStatus": {
+    "type": "Text",
+    "value": "onDesign"
+  },
+  "version": {
+    "type": "Text",
+    "value": "1"
+  },
+  "lastUpdate": {
+    "type": "DateTime",
+    "value": "2023-12-30T09:42:25.747Z"
+  },
+  "name": {
+    "type": "Text",
+    "value": "orderCapture"
+  },
+  "description": {
+    "type": "Text",
+    "value": "Description of the order capture process for all channels"
+  },
+  "attachment": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "attachmentType": "TaskDocumentation",
+        "description": "description of the business process with examples",
+        "mimeType": "application/pdf",
+        "name": "pfs-1-doc",
+        "url": "https://mycsp.com/content/4aafacbd-11ff-4dc8-b445-305f2215715f",
+        "size": {
+          "amount": 2423,
+          "units": "Mb"
+        },
+        "validFor": {
+          "startDateTime": "2030-04-10T23:20:50.52Z"
+        },
+        "@type": "Attachment"
+      }
+    ]
+  },
+  "processSpecificationCharacteristic": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "modality": "input",
+        "@type": "FlowCharacteristicSpecification",
+        "characteristicSpecification": {
+          "configurable": true,
+          "description": "product offering that the customer wishes to have",
+          "extensible": false,
+          "isUnique": false,
+          "maxCardinality": 1,
+          "minCardinality": 0,
+          "valueType": "object",
+          "name": "productOfferingRef",
+          "@type": "CharacteristicSpecification",
+          "@valueSchemaLocation": "https://www.mycsp.com/tmfapis/productCatalog/v5/schema/productOfferingRef.json"
+        }
+      }
+    ]
+  },
+  "relatedParty": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "role": "designer",
+        "@type": "RelatedPartyRefOrPartyRoleRef",
+        "partyOrPartyRole": {
+          "id": "4cf-mg1",
+          "href": "https://www.mycsp.com/tmfapis/partyManagement/v5/individual/4cf-mg1",
+          "@type": "PartyRef",
+          "@referredType": "Individual"
+        }
+      },
+      {
+        "role": "approver",
+        "@type": "RelatedPartyRefOrPartyRoleRef",
+        "partyOrPartyRole": {
+          "id": "fp5-559",
+          "href": "https://www.mycsp.com/tmfapis/partyManagement/v5/individual/fp5-559",
+          "@type": "PartyRef",
+          "@referredType": "Individual"
+        }
+      }
+    ]
+  },
+  "taskSpecification": {
+    "type": "URL",
+    "value": [
+      "urn:ngsi-ld:TaskSpecification:tfs99",
+      "urn:ngsi-ld:TaskSpecification:tfs0",
+      "urn:ngsi-ld:TaskSpecification:tfs1",
+      "urn:ngsi-ld:TaskSpecification:tfs2",
+      "urn:ngsi-ld:TaskSpecification:tfs3"
+    ]
+  },
+  "tmfType": {
+    "type": "Text",
+    "value": "ProcessSpecification"
+  },
+  "source": {
+    "type": "Text",
+    "value": "Adapted from the example payload 'retrieveProcessSpecificationById_response' of the TMF701 Process Management 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+  }
+}

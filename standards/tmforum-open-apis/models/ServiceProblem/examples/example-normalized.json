@@ -1,0 +1,288 @@
+{
+  "id": "urn:ngsi-ld:ServiceProblem:problemxxxx0000",
+  "type": "ServiceProblem",
+  "tmfId": {
+    "type": "Text",
+    "value": "problemxxxx0000"
+  },
+  "originatingSystem": {
+    "type": "Text",
+    "value": "System_001"
+  },
+  "category": {
+    "type": "Text",
+    "value": "supplier.originated"
+  },
+  "impactImportanceFactor": {
+    "type": "Number",
+    "value": 0
+  },
+  "priority": {
+    "type": "Number",
+    "value": 1
+  },
+  "description": {
+    "type": "Text",
+    "value": "connection failure between Tokyo and Osaka"
+  },
+  "problemEscalation": {
+    "type": "Number",
+    "value": 0
+  },
+  "statusChangeDate": {
+    "type": "DateTime",
+    "value": "2017-10-29T12:00:00.361Z"
+  },
+  "statusChangeReason": {
+    "type": "Text",
+    "value": "problem analysis has been completed in NP1"
+  },
+  "resolutionDate": {
+    "type": "DateTime",
+    "value": "2017-10-29T12:00:00.361Z"
+  },
+  "status": {
+    "type": "Text",
+    "value": "resolved"
+  },
+  "reason": {
+    "type": "Text",
+    "value": "Failure of resource NP1_Resource_1 in NP1"
+  },
+  "affectedNumberOfServices": {
+    "type": "Number",
+    "value": 2
+  },
+  "firstAlert": {
+    "type": "StructuredValue",
+    "value": {
+      "@type": "RelatedEntity",
+      "role": "trigger",
+      "entity": {
+        "@type": "EntityRef",
+        "@referredType": "TroubleTicket",
+        "id": "NP1_TT_0000000",
+        "href": "https://mycsp.com:8080/tmf-api/troubleTicketManagement/v5/troubleTicket/NP1_TT_000000"
+      }
+    }
+  },
+  "responsibleParty": {
+    "type": "StructuredValue",
+    "value": {
+      "role": "Customer",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "@type": "PartyRef",
+        "id": "456",
+        "href": "http://serverlocation:port/tmf-api/partyManagement/v5/individual/456",
+        "@referredType": "Individual"
+      }
+    }
+  },
+  "originatorParty": {
+    "type": "StructuredValue",
+    "value": {
+      "role": "ServiceProvider",
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "partyOrPartyRole": {
+        "id": "SP_00001",
+        "href": "https://mycsp.com:8080/tmf-api/partyManagement/v5/organization/SP_00001",
+        "name": "ABCompany",
+        "@type": "PartyRef",
+        "@referredType": "Organization"
+      }
+    }
+  },
+  "relatedParty": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "role": "Supplier",
+        "@type": "RelatedPartyRefOrPartyRoleRef",
+        "partyOrPartyRole": {
+          "@type": "PartyRef",
+          "id": "789",
+          "href": "http://serverlocation:port/tmf-api/partyManagement/v5/organization/789",
+          "name": "NP1",
+          "@referredType": "Organization"
+        }
+      },
+      {
+        "role": "Partner",
+        "@type": "RelatedPartyRefOrPartyRoleRef",
+        "partyOrPartyRole": {
+          "@type": "PartyRef",
+          "id": "123",
+          "href": "http://serverlocation:port/tmf-api/partyManagement/v5/organization/123",
+          "name": "SP1",
+          "@referredType": "Organization"
+        }
+      },
+      {
+        "role": "Partner",
+        "@type": "RelatedPartyRefOrPartyRoleRef",
+        "partyOrPartyRole": {
+          "@type": "PartyRef",
+          "id": "321",
+          "href": "http://serverlocation:port/tmf-api/partyManagement/v5/organization/321",
+          "name": "SP2",
+          "@referredType": "Organization"
+        }
+      }
+    ]
+  },
+  "affectedService": {
+    "type": "URL",
+    "value": [
+      "urn:ngsi-ld:Service:NP1_Tokyo_Osaka",
+      "urn:ngsi-ld:Service:NP1_Tokyo_xxxx"
+    ]
+  },
+  "affectedResource": {
+    "type": "URL",
+    "value": [
+      "urn:ngsi-ld:Resource:NP1_RES_0001"
+    ]
+  },
+  "affectedLocation": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "role": "VPN Endpoint",
+        "@type": "RelatedPlaceRefOrValue",
+        "place": {
+          "@type": "PlaceRef",
+          "@referredType": "GeographicAddress",
+          "id": "Loc000000",
+          "href": "https://mycsp.com:8080/tmf-api/geographicAddressManagement/v5/geographicAddress/Loc000000/",
+          "name": "144 Main Street Tokyo 51663556"
+        }
+      },
+      {
+        "role": "VPN Endpoint",
+        "@type": "RelatedPlaceRefOrValue",
+        "place": {
+          "@type": "PlaceRef",
+          "@referredType": "GeographicAddress",
+          "id": "Loc000001",
+          "href": "https://mycsp.com:8080/tmf-api/geographicAddressManagement/v5/geographicAddress/Loc000001/",
+          "name": "351 Main Street Osaka 3546365"
+        }
+      }
+    ]
+  },
+  "troubleTicket": {
+    "type": "URL",
+    "value": [
+      "urn:ngsi-ld:TroubleTicket:NP1_TT_0000000"
+    ]
+  },
+  "underlyingAlarm": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "id": "NP1_A_0000000",
+        "href": "https://mycsp.com:8080/tmf-api/alarmManagement/v5/resourceAlarm/NP1_A_000000",
+        "@referredType": "ResourceAlarm",
+        "@type": "ResourceAlarmRef"
+      }
+    ]
+  },
+  "slaViolation": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "id": "NP1_SLA_0000000",
+        "href": "https://mycsp.com:8080/tmf-api/SLAManagement/v5/SLAViolationRef/NP1_SLA_000000",
+        "@type": "SLAViolationRef",
+        "@referredType": "SLAViolation"
+      }
+    ]
+  },
+  "relatedEvent": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "id": "prediction_0001",
+        "href": "https://mycsp.com:8080/tmf-api/eventManagement/v5/event/prediction_0001",
+        "eventTime": "2014-12-20T17:00:00Z",
+        "@type": "EventRef",
+        "@referredType": "Event"
+      }
+    ]
+  },
+  "rootCauseService": {
+    "type": "URL",
+    "value": [
+      "urn:ngsi-ld:Service:NP1_Tokyo_Osaka"
+    ]
+  },
+  "rootCauseResource": {
+    "type": "URL",
+    "value": [
+      "urn:ngsi-ld:Resource:NP1_Resource_1"
+    ]
+  },
+  "parentProblem": {
+    "type": "URL",
+    "value": [
+      "urn:ngsi-ld:ServiceProblem:problemxxxx0001"
+    ]
+  },
+  "underlyingProblem": {
+    "type": "URL",
+    "value": [
+      "urn:ngsi-ld:ServiceProblem:problemxxxx0001"
+    ]
+  },
+  "trackingRecord": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "description": "System cleared the problem",
+        "systemId": "SNOW",
+        "time": "2014-12-20T17:00:00Z",
+        "user": "NPUSER1",
+        "id": "TR_0001",
+        "@type": "TrackingRecord"
+      }
+    ]
+  },
+  "note": {
+    "type": "StructuredValue",
+    "value": [
+      {
+        "id": "2241",
+        "author": "customer care agent",
+        "date": "2014-12-20T17:00:00Z",
+        "text": "receive trouble ticket from NP1, and create this Service Problem",
+        "@type": "Note"
+      }
+    ]
+  },
+  "impactPattern": {
+    "type": "StructuredValue",
+    "value": {
+      "description": "Many services are at risk in this problem",
+      "id": "TR_0002",
+      "characteristic": [
+        {
+          "id": "CH_003",
+          "name": "ServiceDisruption",
+          "value": true,
+          "valueType": "boolean",
+          "@type": "BooleanCharacteristic"
+        }
+      ],
+      "@type": "ImpactPattern"
+    }
+  },
+  "tmfType": {
+    "type": "Text",
+    "value": "ServiceProblem"
+  },
+  "source": {
+    "type": "Text",
+    "value": "Adapted from the example payload 'ServiceProblem_retrieve_example_response' of the TMF656 Service Problem Management 5.1.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+  }
+}

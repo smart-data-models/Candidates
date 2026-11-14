@@ -1,0 +1,321 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/AiContractViolation/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - AiContractViolation",
+  "description": "AiContractViolation (TM Forum TMF915 Ai Management 4.0.0, Swagger definition AiContractViolation; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:AiContractViolation:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "AiContractViolation"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'AiContractViolation'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF915_AIManagementSuite/blob/v4.0.0/TMF915-AIManagement-v4.0.0.swagger.json#/definitions/AiContractViolation/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:AiContractViolation:<tmfId>."
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF915_AIManagementSuite/blob/v4.0.0/TMF915-AIManagement-v4.0.0.swagger.json#/definitions/AiContractViolation/properties/href'."
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF915_AIManagementSuite/blob/v4.0.0/TMF915-AIManagement-v4.0.0.swagger.json#/definitions/AiContractViolation/properties/date'."
+    },
+    "aiContract": {
+      "$ref": "#/$defs/EntityRef",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF915_AIManagementSuite/blob/v4.0.0/TMF915-AIManagement-v4.0.0.swagger.json#/definitions/AiContractViolation/properties/aiContract'. Entity reference schema to be use for all entityRef class."
+    },
+    "relatedParty": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedParty"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF915_AIManagementSuite/blob/v4.0.0/TMF915-AIManagement-v4.0.0.swagger.json#/definitions/AiContractViolation/properties/relatedParty'. Related Entity reference. A related party defines party or party role linked to a specific entity."
+    },
+    "violation": {
+      "$ref": "#/$defs/Violation",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF915_AIManagementSuite/blob/v4.0.0/TMF915-AIManagement-v4.0.0.swagger.json#/definitions/AiContractViolation/properties/violation'."
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF915_AIManagementSuite/blob/v4.0.0/TMF915-AIManagement-v4.0.0.swagger.json#/definitions/AiContractViolation/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF915_AIManagementSuite/blob/v4.0.0/TMF915-AIManagement-v4.0.0.swagger.json#/definitions/AiContractViolation/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF915_AIManagementSuite/blob/v4.0.0/TMF915-AIManagement-v4.0.0.swagger.json#/definitions/AiContractViolation/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'AiContractViolation' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ],
+  "$defs": {
+    "AttachmentRef": {
+      "type": "object",
+      "description": "Attachment reference. An attachment complements the description of an element (for instance a product) through video, pictures",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique-Identifier for this attachment"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL serving as reference for the attachment resource"
+        },
+        "description": {
+          "type": "string",
+          "description": "A narrative text describing the content of the attachment"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Link to the attachment media/content"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "EntityRef": {
+      "type": "object",
+      "description": "Entity reference schema to be use for all entityRef class.",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "RelatedParty": {
+      "type": "object",
+      "description": "Related Entity reference. A related party defines party or party role linked to a specific entity.",
+      "required": [
+        "@referredType",
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "role": {
+          "type": "string",
+          "description": "Role played by the related party"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "RuleRef": {
+      "type": "object",
+      "description": "Rule reference. Rule is a common pattern or Template for the SLA parameters, metrics, and thresholds",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "Violation": {
+      "type": "object",
+      "required": [
+        "actualValue",
+        "consequence",
+        "operator",
+        "referenceValue"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hyperlink reference"
+        },
+        "actualValue": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "consequence": {
+          "type": "string"
+        },
+        "operator": {
+          "type": "string"
+        },
+        "referenceValue": {
+          "type": "string"
+        },
+        "tolerance": {
+          "type": "string"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "violationAverage": {
+          "type": "string"
+        },
+        "attachment": {
+          "$ref": "#/$defs/AttachmentRef"
+        },
+        "rule": {
+          "$ref": "#/$defs/RuleRef"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    }
+  }
+}

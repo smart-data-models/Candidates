@@ -1,0 +1,316 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/Bucket/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - Bucket",
+  "description": "A bucket (called UsageVolumProduct in the SID Model) represents and tracks a quantity of usage (remaining or consumed). It could be either a quantity or an amount in a currency. It can represent a fixed number of SMS,MMS, call minutes, quantity of data and so on (TM Forum TMF654 Prepay Balance Management 4.0.0, Swagger definition Bucket; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:Bucket:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Bucket"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'Bucket'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF654_PrepayBalanceManagement/blob/v4.0.0/TMF654-PrepayBalance-v4.0.0.swagger.json#/definitions/Bucket/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:Bucket:<tmfId>. Unique Identifier within the server for the bucket"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF654_PrepayBalanceManagement/blob/v4.0.0/TMF654-PrepayBalance-v4.0.0.swagger.json#/definitions/Bucket/properties/href'. A resource URI pointing to the resource in the OB that stores the detailed information for the bucket"
+    },
+    "confirmationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF654_PrepayBalanceManagement/blob/v4.0.0/TMF654-PrepayBalance-v4.0.0.swagger.json#/definitions/Bucket/properties/confirmationDate'. Date when the deduction was confirmed in the server"
+    },
+    "description": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF654_PrepayBalanceManagement/blob/v4.0.0/TMF654-PrepayBalance-v4.0.0.swagger.json#/definitions/Bucket/properties/description'. Text describing the contents of the balance managed by the bucket"
+    },
+    "isShared": {
+      "type": "boolean",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF654_PrepayBalanceManagement/blob/v4.0.0/TMF654-PrepayBalance-v4.0.0.swagger.json#/definitions/Bucket/properties/isShared'. True if the bucket is shared between several devices or users"
+    },
+    "name": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF654_PrepayBalanceManagement/blob/v4.0.0/TMF654-PrepayBalance-v4.0.0.swagger.json#/definitions/Bucket/properties/name'. Friendly name to identify the bucket"
+    },
+    "remainingValueName": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF654_PrepayBalanceManagement/blob/v4.0.0/TMF654-PrepayBalance-v4.0.0.swagger.json#/definitions/Bucket/properties/remainingValueName'. Remaining amount in a formatted string for the bucket given in the balance unit (for example 1.9 Gb). This formatted string could be used for display needs for example"
+    },
+    "requestedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF654_PrepayBalanceManagement/blob/v4.0.0/TMF654-PrepayBalance-v4.0.0.swagger.json#/definitions/Bucket/properties/requestedDate'. Date when the deduction request was received in the server"
+    },
+    "logicalResource": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/LogicalResourceRef"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF654_PrepayBalanceManagement/blob/v4.0.0/TMF654-PrepayBalance-v4.0.0.swagger.json#/definitions/Bucket/properties/logicalResource'. reference to the LogicalResource eg MSISDN"
+    },
+    "partyAccount": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF654_PrepayBalanceManagement/blob/v4.0.0/TMF654-PrepayBalance-v4.0.0.swagger.json#/definitions/Bucket/properties/partyAccount'. A reference to the account that owns the bucket. In TMF this is a PartyAccountRef object; here the NGSI-LD id of the referenced PartyAccount entity (urn:ngsi-ld:PartyAccount:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "product": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF654_PrepayBalanceManagement/blob/v4.0.0/TMF654-PrepayBalance-v4.0.0.swagger.json#/definitions/Bucket/properties/product'. In TMF this is an array of ProductRef objects; here the NGSI-LD ids of the referenced Product entities (urn:ngsi-ld:Product:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "relatedParty": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelatedParty"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF654_PrepayBalanceManagement/blob/v4.0.0/TMF654-PrepayBalance-v4.0.0.swagger.json#/definitions/Bucket/properties/relatedParty'. Used to provide information about any other entity with relation to the balance, for instance to define customer hierarchy for the balance (e.g.: customerId, userId, )"
+    },
+    "remainingValue": {
+      "$ref": "#/$defs/Quantity",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF654_PrepayBalanceManagement/blob/v4.0.0/TMF654-PrepayBalance-v4.0.0.swagger.json#/definitions/Bucket/properties/remainingValue'. Indicate the amount on the bucket"
+    },
+    "reservedValue": {
+      "$ref": "#/$defs/Quantity",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF654_PrepayBalanceManagement/blob/v4.0.0/TMF654-PrepayBalance-v4.0.0.swagger.json#/definitions/Bucket/properties/reservedValue'. Indicate the amount reserved on the bucket"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "suspended",
+        "expired"
+      ],
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF654_PrepayBalanceManagement/blob/v4.0.0/TMF654-PrepayBalance-v4.0.0.swagger.json#/definitions/Bucket/properties/status'. status for the bucket. active, expired, suspended"
+    },
+    "usageType": {
+      "type": "string",
+      "enum": [
+        "monetary",
+        "voice",
+        "data",
+        "sms",
+        "other"
+      ],
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF654_PrepayBalanceManagement/blob/v4.0.0/TMF654-PrepayBalance-v4.0.0.swagger.json#/definitions/Bucket/properties/usageType'. defines the type of the underlying Balance eg data,voice, any currency eg EUR, USD etc"
+    },
+    "validFor": {
+      "$ref": "#/$defs/TimePeriod",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF654_PrepayBalanceManagement/blob/v4.0.0/TMF654-PrepayBalance-v4.0.0.swagger.json#/definitions/Bucket/properties/validFor'. The period for which the balance in the bucket is valid"
+    },
+    "tmfBaseType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF654_PrepayBalanceManagement/blob/v4.0.0/TMF654-PrepayBalance-v4.0.0.swagger.json#/definitions/Bucket/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF654_PrepayBalanceManagement/blob/v4.0.0/TMF654-PrepayBalance-v4.0.0.swagger.json#/definitions/Bucket/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "tmfType": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF654_PrepayBalanceManagement/blob/v4.0.0/TMF654-PrepayBalance-v4.0.0.swagger.json#/definitions/Bucket/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'Bucket' or a sub-class / extension name. When sub-classing, this defines the sub-class entity name"
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ],
+  "$defs": {
+    "LogicalResourceRef": {
+      "type": "object",
+      "description": "reference to the LogicalResource eg MSISDN",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "@baseType": {
+          "examples": [
+            "ResourceSpecification"
+          ],
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "examples": [
+            "https://mycsp.com:8080/tmf-api/schema/Resource/LogicalResourceSpecification.schema.json"
+          ],
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "examples": [
+            "LogicalResourceSpecification"
+          ],
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "Quantity": {
+      "type": "object",
+      "description": "An amount in a given unit",
+      "properties": {
+        "amount": {
+          "default": 1,
+          "type": "number",
+          "format": "float",
+          "description": "Numeric value in a given unit"
+        },
+        "units": {
+          "type": "string",
+          "description": "Unit"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "RelatedParty": {
+      "type": "object",
+      "description": "Related Entity reference. A related party defines party or party role linked to a specific entity.",
+      "required": [
+        "@referredType",
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique identifier"
+        },
+        "href": {
+          "type": "string",
+          "description": "Hyperlink reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related entity."
+        },
+        "role": {
+          "type": "string",
+          "description": "Role played by the related party"
+        },
+        "@baseType": {
+          "examples": [
+            "ResourceSpecification"
+          ],
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "examples": [
+            "https://mycsp.com:8080/tmf-api/schema/Resource/LogicalResourceSpecification.schema.json"
+          ],
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "examples": [
+            "LogicalResourceSpecification"
+          ],
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "endDateTime": {
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ],
+          "type": "string",
+          "format": "date-time",
+          "description": "End of the time period, using IETC-RFC-3339 format"
+        },
+        "startDateTime": {
+          "examples": [
+            "1985-04-12T23:20:50.52Z"
+          ],
+          "type": "string",
+          "format": "date-time",
+          "description": "Start of the time period, using IETC-RFC-3339 format. If you define a start, you must also define an end"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    }
+  }
+}

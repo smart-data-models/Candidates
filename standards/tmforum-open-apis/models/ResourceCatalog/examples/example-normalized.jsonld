@@ -1,0 +1,68 @@
+{
+  "id": "urn:ngsi-ld:ResourceCatalog:5574",
+  "type": "ResourceCatalog",
+  "tmfId": {
+    "type": "Property",
+    "value": "5574"
+  },
+  "name": {
+    "type": "Property",
+    "value": "Cloud Resource Catalog"
+  },
+  "description": {
+    "type": "Property",
+    "value": "This resource catalog points to entities in the area of cloud management"
+  },
+  "tmfType": {
+    "type": "Property",
+    "value": "ResourceCatalog"
+  },
+  "version": {
+    "type": "Property",
+    "value": "1.0"
+  },
+  "validFor": {
+    "type": "Property",
+    "value": {
+      "startDateTime": "2022-08-10T00:00:00.000Z",
+      "endDateTime": "2023-03-07T00:00:00.000Z"
+    }
+  },
+  "lastUpdate": {
+    "type": "Property",
+    "value": "2021-08-09T00:00:00.000Z"
+  },
+  "lifecycleStatus": {
+    "type": "Property",
+    "value": "Active"
+  },
+  "relatedParty": {
+    "type": "Property",
+    "value": [
+      {
+        "role": "Supplier",
+        "@type": "RelatedPartyRefOrPartyRoleRef",
+        "partyOrPartyRole": {
+          "id": "5858",
+          "href": "https://mycsp.com:8080/tmf-api/partyRole/v5/supplier/5858",
+          "name": "Jane Doe",
+          "@referredType": "Supplier",
+          "@type": "PartyRoleRef"
+        }
+      }
+    ]
+  },
+  "category": {
+    "type": "Relationship",
+    "object": [
+      "urn:ngsi-ld:ResourceCategory:8121"
+    ]
+  },
+  "source": {
+    "type": "Property",
+    "value": "Adapted from the example payload 'ResourceCatalog_retrieve_example_response' of the TMF634 Resource Catalog Management 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids."
+  },
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/ResourceCatalog/context.jsonld"
+  ]
+}

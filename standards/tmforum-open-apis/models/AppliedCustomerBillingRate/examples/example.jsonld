@@ -1,0 +1,48 @@
+{
+  "id": "urn:ngsi-ld:AppliedCustomerBillingRate:ACBR-123",
+  "type": "AppliedCustomerBillingRate",
+  "tmfId": "ACBR-123",
+  "appliedBillingRateType": "monthly",
+  "date": "2020-01-19T13:38:18.938Z",
+  "isBilled": true,
+  "name": "Rental Fee",
+  "appliedTax": [
+    {
+      "taxCategory": "VAT",
+      "taxRate": 20,
+      "taxAmount": {
+        "unit": "EUR",
+        "value": 100
+      },
+      "@type": "AppliedBillingTaxRate"
+    }
+  ],
+  "bill": "urn:ngsi-ld:CustomerBill:B123",
+  "billingAccount": "urn:ngsi-ld:BillingAccount:A0815",
+  "characteristic": [
+    {
+      "name": "message",
+      "valueType": "string",
+      "@type": "StringCharacteristic",
+      "value": "Special discount this[ month only"
+    }
+  ],
+  "periodCoverage": {
+    "endDateTime": "2019-12-31T23:59:59.999Z",
+    "startDateTime": "2019-12-01T00:00:00.000Z"
+  },
+  "product": "urn:ngsi-ld:Product:P-wfs-123",
+  "taxExcludedAmount": {
+    "unit": "EUR",
+    "value": 40
+  },
+  "taxIncludedAmount": {
+    "unit": "EUR",
+    "value": 50
+  },
+  "tmfType": "AppliedCustomerBillingRate",
+  "source": "Adapted from the example payload 'AppliedCustomerBillingRate_retrieve_example_response' of the TMF678 CustomerBill 5.0.0 OpenAPI specification (TM Forum, Apache-2.0); illustrative data, not real operator data. Changes: people's names, e-mails and phone numbers replaced by fictitious ones, href/@schemaLocation URLs left out, references to entities of this candidate turned into NGSI-LD ids.",
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/AppliedCustomerBillingRate/context.jsonld"
+  ]
+}

@@ -1,0 +1,354 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://raw.githubusercontent.com/smart-data-models/Candidates/master/standards/tmforum-open-apis/models/PartyRoleProductOfferingRiskAssessment/schema.json",
+  "modelTags": "TMForum,OpenAPI,ODA,Telecom",
+  "title": "Smart Data Models - TM Forum Open APIs - PartyRoleProductOfferingRiskAssessment",
+  "description": "This is a task resource allowing assessment of the risks associated with a party or party role that considers acquiring a specific product offering (TM Forum TMF696 Risk Management 4.0.0, Swagger definition PartyRoleProductOfferingRiskAssessment; attribute names kept verbatim except the NGSI-LD reserved terms / JSON-LD keywords renamed with a tmf prefix (id, @type, @baseType, @schemaLocation, ...); deprecated attributes left out.)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Unique identifier of the entity: urn:ngsi-ld:PartyRoleProductOfferingRiskAssessment:<tmfId>."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "PartyRoleProductOfferingRiskAssessment"
+      ],
+      "description": "Property. NGSI-LD Entity type. It must be equal to 'PartyRoleProductOfferingRiskAssessment'"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Entity creation timestamp."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Property. Model:'https://schema.org/DateTime'. Timestamp of the last modification."
+    },
+    "source": {
+      "type": "string",
+      "description": "Property. A sequence of characters giving the original source of the entity data."
+    },
+    "dataProvider": {
+      "type": "string",
+      "description": "Property. A sequence of characters identifying the provider of the harmonised data entity."
+    },
+    "tmfId": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF696_RiskManagement/blob/v4.0.0/TMF696-RiskManagement-v4.0.0.swagger.json#/definitions/PartyRoleProductOfferingRiskAssessment/properties/id'. Renamed from TMF 'id' (NGSI-LD reserved term); the NGSI-LD id is urn:ngsi-ld:PartyRoleProductOfferingRiskAssessment:<tmfId>. unique identifier"
+    },
+    "href": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF696_RiskManagement/blob/v4.0.0/TMF696-RiskManagement-v4.0.0.swagger.json#/definitions/PartyRoleProductOfferingRiskAssessment/properties/href'. Hyperlink reference"
+    },
+    "status": {
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF696_RiskManagement/blob/v4.0.0/TMF696-RiskManagement-v4.0.0.swagger.json#/definitions/PartyRoleProductOfferingRiskAssessment/properties/status'. The status of the risk assessment, such as Succeeded, In Progress, Failed, output from the task"
+    },
+    "characteristic": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Characteristic"
+      },
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF696_RiskManagement/blob/v4.0.0/TMF696-RiskManagement-v4.0.0.swagger.json#/definitions/PartyRoleProductOfferingRiskAssessment/properties/characteristic'. Additional characteristics for which the risk might be assessed, optional input to the task"
+    },
+    "partyRole": {
+      "$ref": "#/$defs/RelatedPartyRef",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF696_RiskManagement/blob/v4.0.0/TMF696-RiskManagement-v4.0.0.swagger.json#/definitions/PartyRoleProductOfferingRiskAssessment/properties/partyRole'. The party or party role for which the assessment is to be carried out, must be supplied as input to the task, with the attribute id populated"
+    },
+    "place": {
+      "$ref": "#/$defs/RelatedPlace",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF696_RiskManagement/blob/v4.0.0/TMF696-RiskManagement-v4.0.0.swagger.json#/definitions/PartyRoleProductOfferingRiskAssessment/properties/place'. The place for which the risk is assessed, this is optional input to the task"
+    },
+    "productOffering": {
+      "type": "string",
+      "format": "uri",
+      "description": "Relationship. Model:'https://github.com/tmforum-apis/TMF696_RiskManagement/blob/v4.0.0/TMF696-RiskManagement-v4.0.0.swagger.json#/definitions/PartyRoleProductOfferingRiskAssessment/properties/productOffering'. The product offering for which the assessment is to be carried out, must be supplied as input to the task, with the attribute id populated. In TMF this is a ProductOfferingRef object; here the NGSI-LD id of the referenced ProductOffering entity (urn:ngsi-ld:ProductOffering:<tmf id>). Inline values and reference metadata (href, name, @referredType) are not kept."
+    },
+    "riskAssessmentResult": {
+      "$ref": "#/$defs/RiskAssessmentResult",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF696_RiskManagement/blob/v4.0.0/TMF696-RiskManagement-v4.0.0.swagger.json#/definitions/PartyRoleProductOfferingRiskAssessment/properties/riskAssessmentResult'. The result of the risk assessment, output from the task"
+    },
+    "tmfBaseType": {
+      "examples": [
+        "ResourceSpecification"
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF696_RiskManagement/blob/v4.0.0/TMF696-RiskManagement-v4.0.0.swagger.json#/definitions/PartyRoleProductOfferingRiskAssessment/properties/@baseType'. Renamed from TMF '@baseType' (JSON-LD keyword). When sub-classing, this defines the super-class"
+    },
+    "tmfSchemaLocation": {
+      "examples": [
+        "https://mycsp.com:8080/tmf-api/schema/Resource/LogicalResourceSpecification.schema.json"
+      ],
+      "type": "string",
+      "format": "uri",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF696_RiskManagement/blob/v4.0.0/TMF696-RiskManagement-v4.0.0.swagger.json#/definitions/PartyRoleProductOfferingRiskAssessment/properties/@schemaLocation'. Renamed from TMF '@schemaLocation' (JSON-LD keyword). A URI to a JSON-Schema file that defines additional attributes and relationships"
+    },
+    "tmfType": {
+      "examples": [
+        "LogicalResourceSpecification"
+      ],
+      "type": "string",
+      "description": "Property. Model:'https://github.com/tmforum-apis/TMF696_RiskManagement/blob/v4.0.0/TMF696-RiskManagement-v4.0.0.swagger.json#/definitions/PartyRoleProductOfferingRiskAssessment/properties/@type'. Renamed from TMF '@type' (JSON-LD keyword). TMF class name of the instance: 'PartyRoleProductOfferingRiskAssessment' or a sub-class / extension name. When sub-classing, this defines the sub-class Extensible name"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "partyRole",
+    "productOffering"
+  ],
+  "$defs": {
+    "Any": {},
+    "Characteristic": {
+      "type": "object",
+      "description": "Describes a given characteristic of an object or entity through a name/value pair.",
+      "required": [
+        "name",
+        "value"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the characteristic"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the characteristic"
+        },
+        "valueType": {
+          "type": "string",
+          "description": "Data type of the value of the characteristic"
+        },
+        "characteristicRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CharacteristicRelationship"
+          }
+        },
+        "value": {
+          "$ref": "#/$defs/Any",
+          "description": "The value of the characteristic"
+        },
+        "@baseType": {
+          "examples": [
+            "ResourceSpecification"
+          ],
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "examples": [
+            "https://mycsp.com:8080/tmf-api/schema/Resource/LogicalResourceSpecification.schema.json"
+          ],
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "examples": [
+            "LogicalResourceSpecification"
+          ],
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "CharacteristicRelationship": {
+      "type": "object",
+      "description": "Another Characteristic that is related to the current Characteristic;",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the characteristic"
+        },
+        "relationshipType": {
+          "type": "string",
+          "description": "The type of relationship"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "RelatedPartyRef": {
+      "type": "object",
+      "description": "RelatedParty reference. A related party defines party or party role linked to a specific entity.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of a related party"
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the related party, could be a party reference or a party role reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related party"
+        },
+        "role": {
+          "type": "string",
+          "description": "Role of the related party."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "RelatedPlace": {
+      "type": "object",
+      "description": "A Place and an associated role as installation adress, delivery address, etc....",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the place"
+        },
+        "href": {
+          "type": "string",
+          "description": "Unique reference of the place"
+        },
+        "name": {
+          "type": "string",
+          "description": "A user-friendly name for the place, such as [Paris Store], [London Store], [Main Home]"
+        },
+        "role": {
+          "type": "string",
+          "description": "Role of the place, such as: [home delivery], [shop retrieval])"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "RiskAssessmentResult": {
+      "type": "object",
+      "description": "This resource reflects the risk assessment",
+      "properties": {
+        "overallScore": {
+          "type": "number",
+          "format": "float",
+          "description": "An overall assessment of the risk, composed from the individual scores"
+        },
+        "score": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RiskScore"
+          },
+          "description": "Additional characteristics for which the risk might be assessed, optional input to the task"
+        },
+        "@baseType": {
+          "examples": [
+            "ResourceSpecification"
+          ],
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "examples": [
+            "https://mycsp.com:8080/tmf-api/schema/Resource/LogicalResourceSpecification.schema.json"
+          ],
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "examples": [
+            "LogicalResourceSpecification"
+          ],
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "RiskScore": {
+      "type": "object",
+      "description": "This resource reflects a score for a specific risk",
+      "properties": {
+        "score": {
+          "type": "number",
+          "format": "float",
+          "description": "The risk score"
+        },
+        "riskName": {
+          "$ref": "#/$defs/RiskType",
+          "description": "The name of the risk"
+        },
+        "@baseType": {
+          "examples": [
+            "ResourceSpecification"
+          ],
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "examples": [
+            "https://mycsp.com:8080/tmf-api/schema/Resource/LogicalResourceSpecification.schema.json"
+          ],
+          "type": "string",
+          "format": "uri",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "examples": [
+            "LogicalResourceSpecification"
+          ],
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class Extensible name"
+        }
+      }
+    },
+    "RiskType": {
+      "type": "string",
+      "description": "Types of risk that can be assessed",
+      "enum": [
+        "FraudRisk",
+        "BadPaymentRisk",
+        "CreditGamingRisk",
+        "IDConfidenceRisk",
+        "PaymentMethodRisk"
+      ]
+    }
+  }
+}
