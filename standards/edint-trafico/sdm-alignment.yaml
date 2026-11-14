@@ -1,0 +1,88 @@
+# Generated from the MyDataSpace EDINT-SDM table (equivalences.json 1.0.0). Contributed under CC-BY-4.0.
+title: Alignment of the edint-trafico candidate with official Smart Data Models
+description: Correspondences between the EDINT classes behind this candidate and the official Smart Data Models,
+  typed with SKOS mapping relations (exactMatch, closeMatch, broadMatch, narrowMatch), with a note on the structural
+  difference, plus the gaps on each side. Generated from the MyDataSpace EDINT-SDM table 1.0.0.
+contributor:
+  name: MyDataSpace
+  url: https://www.mydataspace.es
+  github: nekosphera
+license: CC-BY-4.0
+source:
+  table: https://www.mydataspace.es/vocabularies/semantic-models/edint-sdm/1.0.0/equivalences.ttl
+  tableVersion: 1.0.0
+  created: '2026-10-11'
+  sdmOfficialList: https://github.com/smart-data-models/data-models/blob/master/specs/AllSubjects/official_list_data_models.json
+  sdmOfficialListUpdated: '2026-07-19'
+edintVersions:
+  candidateTranslatedFrom:
+    iri: https://edint.es/def/trafico
+    version: 0.1.1
+  alignedWith:
+    iri: https://edint.es/def/trafico
+    version: 0.1.1
+matchTypes:
+  skos:exactMatch: Same thing; interchangeable.
+  skos:closeMatch: Same thing with a different structure; needs a transformation.
+  skos:broadMatch: The SDM model is broader than the EDINT class.
+  skos:narrowMatch: The SDM model is narrower than the EDINT class.
+  none: 'No equivalent on the other side: a gap.'
+mappings:
+- id: flujo-trafico
+  label: Traffic observation
+  edintClass: https://edint.es/def/trafico#TrafficObservation
+  candidateEntity: TrafficObservation
+  sdmModel: TrafficFlowObserved
+  sdmSubject: dataModel.Transportation
+  sdmSchema: https://github.com/smart-data-models/dataModel.Transportation/tree/master/TrafficFlowObserved
+  match: skos:closeMatch
+  note: 'Same data, different structure: EDINT follows SOSA (one observation per observed property: intensity, speed,
+    occupancy); SDM gathers them all in one entity per road segment and period.'
+- id: tramo-via
+  label: Street section
+  edintClass: https://edint.es/def/trafico#StreetSection
+  candidateEntity: StreetSection
+  sdmModel: RoadSegment
+  sdmSubject: dataModel.Transportation
+  sdmSchema: https://github.com/smart-data-models/dataModel.Transportation/tree/master/RoadSegment
+  match: skos:closeMatch
+  note: A road section. EDINT links it to the street directory (callejero#Via); SDM to Road.
+- id: incidencia-trafico
+  label: Traffic incident
+  edintClass: https://edint.es/def/trafico#Incident
+  candidateEntity: null
+  candidateNote: Abstract superclass in EDINT; the candidate only models PlannedIncident and UnplannedIncident
+  sdmModel: Alert
+  sdmSubject: dataModel.Alert
+  sdmSchema: https://github.com/smart-data-models/dataModel.Alert/tree/master/Alert
+  match: skos:closeMatch
+  note: 'SDM has no traffic-incident model: Alert with a traffic category is used. EDINT distinguishes planned and
+    unplanned incidents.'
+- id: obras-via
+  label: Planned incident (road works)
+  edintClass: https://edint.es/def/trafico#PlannedIncident
+  candidateEntity: PlannedIncident
+  sdmModel: CityWork
+  sdmSubject: dataModel.Transportation
+  sdmSchema: https://github.com/smart-data-models/dataModel.Transportation/tree/master/CityWork
+  match: skos:broadMatch
+  note: CityWork covers works in the city in general; EDINT's planned incident is the one that affects traffic (works,
+    events, scheduled closures).
+- id: accidente
+  label: Unplanned incident (accident)
+  edintClass: https://edint.es/def/trafico#UnplannedIncident
+  candidateEntity: UnplannedIncident
+  sdmModel: RoadAccident
+  sdmSubject: dataModel.Transportation
+  sdmSchema: https://github.com/smart-data-models/dataModel.Transportation/tree/master/RoadAccident
+  match: skos:narrowMatch
+  note: RoadAccident is only the accident; EDINT's unplanned incident also covers breakdowns, congestion and others.
+gaps:
+- id: matriz-origen-destino
+  label: Origin-destination matrix
+  sdmModel: OriginDestinationFlow
+  sdmSubject: dataModel.Transportation
+  sdmSchema: https://github.com/smart-data-models/dataModel.Transportation/tree/master/OriginDestinationFlow
+  match: none
+  note: 'Gap in EDINT: no class for origin-destination trip matrices (e.g. the Spanish Ministry of Transport''s
+    mobility studies based on mobile-phone data).'
